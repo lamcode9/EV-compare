@@ -288,7 +288,11 @@ export default function ComparisonTable() {
         </div>
       )}
 
-      <div className="overflow-x-auto">
+      <div className="p-6 border-b border-gray-100 space-y-4">
+        <h3 className="font-semibold text-gray-800 flex items-center gap-2">
+          Detailed Comparison
+        </h3>
+        <div className="overflow-x-auto">
         <table className="w-full">
           <thead className="bg-gray-50">
             <tr>
@@ -523,6 +527,7 @@ export default function ComparisonTable() {
             </tr>
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   )
