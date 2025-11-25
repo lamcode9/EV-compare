@@ -11,9 +11,9 @@ import {
   Bar,
   XAxis,
   YAxis,
-  Tooltip as RechartsTooltip,
   CartesianGrid,
   Cell,
+  LabelList,
 } from 'recharts'
 import { estimateCostPerKm, getElectricityRate } from '@/lib/utils'
 
@@ -159,20 +159,6 @@ export default function ComparisonTable() {
     value: vehicle.rangeKm,
     color: vehicleColors[idx % vehicleColors.length],
   }))
-  const costPerKmChartData = sortedVehicles.map((vehicle, idx) => ({
-    label: vehicle.name,
-    value: Number(getCostPerKm(vehicle).toFixed(3)),
-    color: vehicleColors[idx % vehicleColors.length],
-    country: vehicle.country,
-  }))
-  const bestRange = getBestValue('rangeKm', true)
-  const bestEfficiency = getBestValue('efficiencyKwhPer100km', false)
-  const bestPrice = getBestValue('onTheRoadPriceLocalCurrency', false)
-  const bestCostPerKm =
-    selectedVehicles.length > 0
-      ? Math.min(...selectedVehicles.map((vehicle) => getCostPerKm(vehicle)))
-      : null
-
   const countriesRepresented = Array.from(new Set(selectedVehicles.map((v) => v.country)))
 
   const ICE_FACTS: Record<
@@ -192,39 +178,50 @@ export default function ComparisonTable() {
       blurb: 'Assumes RON95 @ MYR 2.05/L with ~14 km/L efficiency.',
     },
   }
+  
+  const costPerKmChartData = [
+    ...sortedVehicles.map((vehicle, idx) => ({
+      label: vehicle.name,
+      value: Number(getCostPerKm(vehicle).toFixed(3)),
+      color: vehicleColors[idx % vehicleColors.length],
+      country: vehicle.country,
+    })),
+    ...countriesRepresented.map((country) => ({
+      label: `ICE (${country === 'SG' ? 'Singapore' : 'Malaysia'})`,
+      value: ICE_FACTS[country].costPerKm,
+      color: '#6b7280', // medium-dark grey
+      country: country,
+    })),
+  ]
+  const bestRange = getBestValue('rangeKm', true)
+  const bestEfficiency = getBestValue('efficiencyKwhPer100km', false)
+  const bestPrice = getBestValue('onTheRoadPriceLocalCurrency', false)
+  const bestCostPerKm =
+    selectedVehicles.length > 0
+      ? Math.min(...selectedVehicles.map((vehicle) => getCostPerKm(vehicle)))
+      : null
 
   return (
     <div className="mt-8 mb-12 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
-      <div className="bg-gradient-to-r from-ev-primary to-ev-secondary p-6 text-white">
+      <div className="p-4 text-black">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <h2 className="text-2xl font-bold">Side-by-Side Comparison</h2>
+          <h2 className="text-xl font-bold">Side-by-Side Comparison</h2>
           <div className="flex gap-2">
             <button
               onClick={exportToCSV}
-              className="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition-colors text-sm font-medium"
+              className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors text-sm font-medium text-gray-700"
             >
               Export CSV
             </button>
             <button
               onClick={clearAll}
-              className="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition-colors text-sm font-medium"
+              className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors text-sm font-medium text-gray-700"
             >
               Clear All
             </button>
           </div>
         </div>
       </div>
-
-      {insights.length > 0 && (
-        <div className="p-6 bg-blue-50 border-b border-blue-200">
-          <h3 className="font-semibold text-blue-900 mb-2">💡 Key Insights</h3>
-          <ul className="list-disc list-inside space-y-1 text-blue-800">
-            {insights.map((insight, idx) => (
-              <li key={idx}>{insight}</li>
-            ))}
-          </ul>
-        </div>
-      )}
 
       <div className="p-6 border-b border-gray-100 space-y-4">
         <h3 className="font-semibold text-gray-800 flex items-center gap-2">
@@ -250,21 +247,23 @@ export default function ComparisonTable() {
             Based on average DC charging tariffs.
           </MetricChart>
         </div>
-        <p className="text-xs text-gray-500">
-          Cost/km = (Battery capacity in kWh × average electricity rate) ÷ rated range. We use SGD{' '}
-          {getElectricityRate('SG').toFixed(2)}/kWh for Singapore and MYR{' '}
-          {getElectricityRate('MY').toFixed(2)}/kWh for Malaysia.
-        </p>
-        {countriesRepresented.length > 0 && (
-          <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 text-sm text-amber-900">
-            <h4 className="font-semibold mb-2">🤔 Did you know?</h4>
-            <div className="space-y-2">
+        <div className="text-[10px] text-gray-500 pl-6">
+          <p>
+            <span className="font-semibold">Note:</span>
+          </p>
+          <p className="mb-1">
+            <span className="font-semibold">1.</span> Cost/km = (Battery capacity in kWh × average electricity rate) ÷ rated range. We use SGD{' '}
+            {getElectricityRate('SG').toFixed(2)}/kWh for Singapore and MYR{' '}
+            {getElectricityRate('MY').toFixed(2)}/kWh for Malaysia.
+          </p>
+          {countriesRepresented.length > 0 && (
+            <div>
               {countriesRepresented.map((country) => {
                 const fact = ICE_FACTS[country]
                 if (!fact) return null
                 return (
                   <p key={country} className="leading-relaxed">
-                    In {country === 'SG' ? 'Singapore' : 'Malaysia'}, comparable ICE sedans such as{' '}
+                    <span className="font-semibold">2.</span> In {country === 'SG' ? 'Singapore' : 'Malaysia'}, comparable ICE sedans such as{' '}
                     <span className="font-semibold">{fact.models.join(' or ')}</span> average around{' '}
                     <span className="font-semibold">
                       {fact.currency} {fact.costPerKm.toFixed(2)} per km
@@ -274,9 +273,20 @@ export default function ComparisonTable() {
                 )
               })}
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
+
+      {insights.length > 0 && (
+        <div className="pt-2 pb-4 px-6 border-b border-gray-100">
+          <h3 className="text-sm font-semibold text-gray-500 mb-2">💡 Key Insights</h3>
+          <ul className="list-disc list-outside space-y-1 text-sm text-gray-500 pl-6">
+            {insights.map((insight, idx) => (
+              <li key={idx}>{insight}</li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       <div className="overflow-x-auto">
         <table className="w-full">
@@ -291,15 +301,6 @@ export default function ComparisonTable() {
                   className="px-4 py-3 text-center text-sm font-semibold text-gray-700 min-w-[200px]"
                 >
                   <div className="flex flex-col items-center gap-2">
-                    <div className="relative w-24 h-16 rounded overflow-hidden bg-gray-200">
-                      <Image
-                        src={vehicle.imageUrl}
-                        alt={`${vehicle.name} ${vehicle.modelTrim}`}
-                        fill
-                        className="object-cover"
-                        sizes="96px"
-                      />
-                    </div>
                     <div className="font-bold">{vehicle.name}</div>
                     <div className="text-xs text-gray-600">{vehicle.modelTrim}</div>
                   </div>
@@ -551,22 +552,23 @@ function MetricChart({ title, data, suffix, formatter, children }: MetricChartPr
       </div>
       <div className="h-48">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data} margin={{ top: 10, right: 8, left: 0, bottom: 0 }}>
+          <BarChart data={data} margin={{ top: 20, right: 8, left: 0, bottom: 0 }}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="label" tick={{ fontSize: 11 }} />
             <YAxis />
-            <RechartsTooltip
-              formatter={(value, _name, entry) => {
-                const val = value as number
-                const formatted = formatter ? formatter(val, entry) : `${val}${suffix ?? ''}`
-                return [formatted, entry?.payload?.label as string]
-              }}
-              labelFormatter={(label) => label as string}
-            />
             <Bar dataKey="value" radius={[4, 4, 0, 0]}>
               {data.map((entry) => (
                 <Cell key={entry.label} fill={entry.color} />
               ))}
+              <LabelList
+                dataKey="value"
+                position="top"
+                formatter={(value: number, entry: any) => {
+                  const formatted = formatter ? formatter(value, entry) : `${value}${suffix ?? ''}`
+                  return formatted
+                }}
+                style={{ fontSize: 11, fill: '#374151' }}
+              />
             </Bar>
           </BarChart>
         </ResponsiveContainer>

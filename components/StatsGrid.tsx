@@ -13,11 +13,6 @@ interface StatsGridProps {
   onToggleOption: (name: string) => void
 }
 
-const currencyRates: Record<'SG' | 'MY', number> = {
-  SG: 1.35,
-  MY: 4.7,
-}
-
 const batteryTechColors: Record<string, string> = {
   NMC: '#10b981',
   LFP: '#3b82f6',
@@ -44,8 +39,15 @@ const convertKwToHp = (kw: number): number => {
   return Math.round(kw * 1.341)
 }
 
-// Estimate 0-60 time based on power-to-weight ratio
-// Rough formula: higher power-to-weight = faster acceleration
+// Convert 0-100 km/h to 0-60 mph (0-100 km/h ≈ 0-62.14 mph, very close to 0-60)
+// For practical purposes, 0-100 km/h time is essentially the same as 0-60 mph
+const convert0To100KmhTo0To60Mph = (time0To100Kmh: number): number => {
+  // 0-100 km/h is very close to 0-60 mph (actually 0-62.14 mph)
+  // The difference is negligible for display purposes, so we use it directly
+  return time0To100Kmh
+}
+
+// Estimate 0-60 time based on power-to-weight ratio (fallback when API data not available)
 const estimate0To60Time = (powerKw: number, weightKg: number): number => {
   const powerToWeight = powerKw / (weightKg / 1000) // kW per ton
   // Rough estimation: higher power-to-weight ratio = faster 0-60
@@ -66,7 +68,10 @@ export default function StatsGrid({ vehicle, selectedOptions, onToggleOption }: 
     .reduce((sum, option) => sum + option.price, 0)
   
   const powerHp = convertKwToHp(vehicle.powerRatingKw)
-  const zeroToSixtyTime = estimate0To60Time(vehicle.powerRatingKw, vehicle.curbWeightKg)
+  // Use actual 0-100 km/h data from API if available, otherwise estimate
+  const zeroToSixtyTime = vehicle.acceleration0To100Kmh
+    ? convert0To100KmhTo0To60Mph(vehicle.acceleration0To100Kmh)
+    : estimate0To60Time(vehicle.powerRatingKw, vehicle.curbWeightKg)
 
   const insurancePremium = getInsurancePremium(vehicle.basePriceLocalCurrency)
   const governmentFees = getGovFees(vehicle.country)
@@ -91,10 +96,6 @@ export default function StatsGrid({ vehicle, selectedOptions, onToggleOption }: 
             (vehicle.chargingTimeDc0To80Min / 60)
         )
       : null
-
-  const batteryCostLocal =
-    vehicle.manufacturerCostUsd *
-    currencyRates[vehicle.country]
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -141,22 +142,24 @@ export default function StatsGrid({ vehicle, selectedOptions, onToggleOption }: 
       {/* Efficiency & Range */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold text-gray-800 border-b pb-2">📊 Efficiency & Range</h3>
-        <div className="bg-gray-50 rounded-lg p-4 space-y-2">
-          <div className="flex items-center justify-between text-sm text-gray-600">
-            <span>Efficiency</span>
-            <span className="font-semibold text-gray-900">
+        <div className="space-y-3">
+          <div className="bg-gray-50 rounded-lg p-4">
+            <div className="text-sm text-gray-600 mb-1">Efficiency</div>
+            <div className="text-2xl font-bold text-gray-900">
               {vehicle.efficiencyKwhPer100km} kWh/100km
-            </span>
+            </div>
           </div>
-          <div className="flex items-center justify-between text-sm text-gray-600">
-            <span>Range (WLTP/EPA)</span>
-            <span className="font-semibold text-gray-900">{vehicle.rangeKm} km</span>
+          <div className="bg-gray-50 rounded-lg p-4">
+            <div className="text-sm text-gray-600 mb-1">Range (WLTP | EPA)</div>
+            <div className="text-2xl font-bold text-gray-900">
+              {vehicle.rangeWltpKm ?? vehicle.rangeKm} km | {vehicle.rangeEpaKm ?? Math.round((vehicle.rangeWltpKm ?? vehicle.rangeKm) * 0.75)} km
+            </div>
           </div>
-          <div className="flex items-center justify-between text-sm text-gray-600">
-            <span>Cost / km</span>
-            <span className="font-semibold text-ev-primary">
+          <div className="bg-gray-50 rounded-lg p-4">
+            <div className="text-sm text-gray-600 mb-1">Cost / km</div>
+            <div className="text-2xl font-bold text-ev-primary">
               {formatCostPerKm(costPerKm, vehicle.country)}
-            </span>
+            </div>
           </div>
         </div>
       </div>
@@ -165,12 +168,6 @@ export default function StatsGrid({ vehicle, selectedOptions, onToggleOption }: 
       <div className="space-y-4">
         <h3 className="text-lg font-semibold text-gray-800 border-b pb-2">💰 Costs</h3>
         <div className="space-y-3">
-          <div className="bg-gray-50 rounded-lg p-4">
-            <div className="text-sm text-gray-600 mb-1">Battery Cost (est.)</div>
-            <div className="text-xl font-bold text-gray-800">
-              {formatLocalPrice(batteryCostLocal, vehicle.country)}
-            </div>
-          </div>
           <div className="bg-gray-50 rounded-lg p-4">
             <div className="text-sm text-gray-600 mb-1">Base Price</div>
             <div className="text-xl font-bold text-gray-800">

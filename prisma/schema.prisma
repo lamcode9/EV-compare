@@ -33,8 +33,11 @@ model Vehicle {
   batteryWeightPercentage     Float
   powerRatingKw               Float
   powerRatingExplanation      String            @default("Power rating (kW) is like the engine's muscle – higher means quicker acceleration, but efficiency matters more for daily drives. Think 100kW as zippy city commuting.")
+  acceleration0To100Kmh       Float?            // 0-100 km/h in seconds (≈ 0-60 mph)
   efficiencyKwhPer100km       Float
-  rangeKm                     Float
+  rangeKm                     Float              // Legacy field, use rangeWltpKm or rangeEpaKm
+  rangeWltpKm                 Float?             // WLTP range in km
+  rangeEpaKm                  Float?             // EPA range in km
   manufacturerCostUsd         Float
   batteryManufacturer         String
   batteryTechnology           BatteryTechnology

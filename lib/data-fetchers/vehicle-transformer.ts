@@ -13,15 +13,19 @@ import {
 interface VehicleInput {
   name: string
   modelTrim: string
-  rangeKm: number
+  rangeKm: number // Legacy field
+  rangeWltpKm?: number // WLTP range in km
+  rangeEpaKm?: number // EPA range in km
   efficiencyKwhPer100km: number
   powerRatingKw: number
   batteryCapacityKwh?: number
   chargingTimeDc0To80Min?: number
+  acceleration0To100Kmh?: number // 0-100 km/h in seconds (≈ 0-60 mph)
   country: Country
   basePrice?: number
   otrPrice?: number
   imageUrl?: string
+  optionPrices?: Array<{ name: string; price: number }> // Scraped options
 }
 
 /**
@@ -148,8 +152,11 @@ export async function transformAndSaveVehicle(input: VehicleInput) {
     batteryWeightPercentage,
     powerRatingKw: input.powerRatingKw,
     powerRatingExplanation: generatePowerExplanation(input.powerRatingKw),
+    acceleration0To100Kmh: input.acceleration0To100Kmh,
     efficiencyKwhPer100km: input.efficiencyKwhPer100km,
-    rangeKm: input.rangeKm,
+    rangeKm: input.rangeKm, // Legacy field
+    rangeWltpKm: input.rangeWltpKm ?? input.rangeKm, // Default to rangeKm if not provided
+    rangeEpaKm: input.rangeEpaKm ?? Math.round(input.rangeKm * 0.75), // Estimate EPA if not provided
     manufacturerCostUsd,
     batteryManufacturer: inferBatteryManufacturer(input.name),
     batteryTechnology: inferBatteryTechnology(input.name),
@@ -158,7 +165,7 @@ export async function transformAndSaveVehicle(input: VehicleInput) {
       ? `Up to ${Math.round(input.chargingTimeDc0To80Min * 10)}kW DC, 11kW AC`
       : 'Up to 150kW DC, 11kW AC',
     basePriceLocalCurrency: basePrice,
-    optionPrices: [],
+    optionPrices: input.optionPrices || [],
     onTheRoadPriceLocalCurrency: otrPrice,
     rebates,
     isAvailable: true,

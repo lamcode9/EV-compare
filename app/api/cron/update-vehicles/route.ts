@@ -3,6 +3,7 @@ import { prisma } from '@/lib/prisma'
 import { fetchVehiclesFromAPI } from '@/lib/data-fetchers/ev-api'
 import { transformAndSaveVehicle } from '@/lib/data-fetchers/vehicle-transformer'
 import { getPricingData } from '@/lib/data-fetchers/scraper'
+import { scrapeVehicleOptions } from '@/lib/data-fetchers/options-scraper'
 
 // This endpoint should be called by Vercel Cron
 // Set up in vercel.json or Vercel dashboard
@@ -48,6 +49,8 @@ export async function GET(request: NextRequest) {
 
     // Step 3: Process and save vehicles for Singapore
     console.log('Processing Singapore vehicles...')
+    const scrapeOptions = process.env.SCRAPE_OPTIONS === 'true' // Optional: set to enable option scraping
+    
     for (const apiVehicle of apiVehicles) {
       try {
         const existing = await prisma.vehicle.findFirst({
@@ -57,14 +60,31 @@ export async function GET(request: NextRequest) {
           },
         })
 
+        // Optionally scrape options from manufacturer websites
+        let optionPrices: Array<{ name: string; price: number }> = []
+        if (scrapeOptions) {
+          try {
+            console.log(`Scraping options for ${apiVehicle.name}...`)
+            optionPrices = await scrapeVehicleOptions(apiVehicle.name, apiVehicle.modelTrim, 'SG')
+            console.log(`Found ${optionPrices.length} options for ${apiVehicle.name}`)
+          } catch (error) {
+            console.warn(`Failed to scrape options for ${apiVehicle.name}:`, error)
+            // Continue without options if scraping fails
+          }
+        }
+
         await transformAndSaveVehicle({
           name: apiVehicle.name,
           modelTrim: apiVehicle.modelTrim,
           rangeKm: apiVehicle.rangeKm,
+          rangeWltpKm: apiVehicle.rangeWltpKm,
+          rangeEpaKm: apiVehicle.rangeEpaKm,
           efficiencyKwhPer100km: apiVehicle.efficiencyKwhPer100km,
           powerRatingKw: apiVehicle.powerRatingKw,
           batteryCapacityKwh: apiVehicle.batteryCapacityKwh,
           chargingTimeDc0To80Min: apiVehicle.chargingTimeDc0To80Min,
+          acceleration0To100Kmh: apiVehicle.acceleration0To100Kmh,
+          optionPrices,
           country: 'SG',
         })
 
@@ -92,14 +112,31 @@ export async function GET(request: NextRequest) {
           },
         })
 
+        // Optionally scrape options from manufacturer websites
+        let optionPrices: Array<{ name: string; price: number }> = []
+        if (scrapeOptions) {
+          try {
+            console.log(`Scraping options for ${apiVehicle.name}...`)
+            optionPrices = await scrapeVehicleOptions(apiVehicle.name, apiVehicle.modelTrim, 'MY')
+            console.log(`Found ${optionPrices.length} options for ${apiVehicle.name}`)
+          } catch (error) {
+            console.warn(`Failed to scrape options for ${apiVehicle.name}:`, error)
+            // Continue without options if scraping fails
+          }
+        }
+
         await transformAndSaveVehicle({
           name: apiVehicle.name,
           modelTrim: apiVehicle.modelTrim,
           rangeKm: apiVehicle.rangeKm,
+          rangeWltpKm: apiVehicle.rangeWltpKm,
+          rangeEpaKm: apiVehicle.rangeEpaKm,
           efficiencyKwhPer100km: apiVehicle.efficiencyKwhPer100km,
           powerRatingKw: apiVehicle.powerRatingKw,
           batteryCapacityKwh: apiVehicle.batteryCapacityKwh,
           chargingTimeDc0To80Min: apiVehicle.chargingTimeDc0To80Min,
+          acceleration0To100Kmh: apiVehicle.acceleration0To100Kmh,
+          optionPrices,
           country: 'MY',
         })
 

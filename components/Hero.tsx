@@ -1,19 +1,48 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+import Link from 'next/link'
+
 export default function Hero() {
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
-    <div className="bg-gradient-to-br from-ev-primary via-ev-secondary to-ev-accent text-white py-16 px-4">
-      <div className="container mx-auto max-w-4xl text-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-balance">
-          Compare EVs in Singapore & Malaysia
-        </h1>
-        <p className="text-xl md:text-2xl mb-2 text-balance opacity-90">
-          Battery, Efficiency, and Beyond
-        </p>
-        <p className="text-lg opacity-80 max-w-2xl mx-auto mt-4">
-          Explore electric vehicles available in Southeast Asia. Compare specs, pricing, 
-          and performance to find the perfect EV for you.
-        </p>
+    <div
+      className={`sticky top-0 z-50 py-3 px-20 transition-all duration-300 ${
+        isScrolled
+          ? 'bg-white/60 backdrop-blur-md'
+          : 'bg-transparent'
+      }`}
+      style={{
+        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
+      }}
+    >
+      <div className="container mx-auto flex items-center gap-6" style={{ maxWidth: '90rem' }}>
+        <Link
+          href="/"
+          className={`text-sm font-medium transition-colors ${
+            isScrolled ? 'text-gray-700 hover:text-ev-primary' : 'text-black hover:text-ev-primary'
+          }`}
+        >
+          EV
+        </Link>
+        <Link
+          href="/bess"
+          className={`text-sm font-medium transition-colors ${
+            isScrolled ? 'text-gray-700 hover:text-ev-primary' : 'text-black hover:text-ev-primary'
+          }`}
+        >
+          BESS
+        </Link>
       </div>
     </div>
   )

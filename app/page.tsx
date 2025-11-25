@@ -14,15 +14,18 @@ export default function Home() {
       <StructuredData />
       <main className="min-h-screen">
         <Hero />
-        <div className="container mx-auto px-4 py-8 max-w-7xl">
-          <div className="mb-8">
-            <CountrySelector />
-          </div>
-          
-          <div className="mb-8">
-            <Suspense fallback={<SearchBoxSkeleton />}>
-              <SearchBox />
-            </Suspense>
+        <div className="container mx-auto px-4 pt-12 pb-8 max-w-7xl">
+          <div className="mb-8 max-w-4xl mx-auto">
+            <div className="flex items-center gap-4">
+              <div className="flex-shrink-0">
+                <CountrySelector />
+              </div>
+              <div className="flex-1 min-w-0">
+                <Suspense fallback={<SearchBoxSkeleton />}>
+                  <SearchBox />
+                </Suspense>
+              </div>
+            </div>
           </div>
 
           <Suspense fallback={<ComparisonTableSkeleton />}>

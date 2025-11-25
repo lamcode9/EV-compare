@@ -27,11 +27,14 @@ interface APIVehicle {
 export interface TransformedVehicle {
   name: string
   modelTrim: string
-  rangeKm: number
+  rangeKm: number // Legacy field
+  rangeWltpKm?: number // WLTP range in km
+  rangeEpaKm?: number // EPA range in km
   efficiencyKwhPer100km: number
   powerRatingKw: number
   batteryCapacityKwh?: number
   chargingTimeDc0To80Min?: number
+  acceleration0To100Kmh?: number // 0-100 km/h in seconds (≈ 0-60 mph)
   imageUrl?: string
   rawData: APIVehicle
 }
@@ -153,6 +156,11 @@ function transformVehicle(apiVehicle: APIVehicle): TransformedVehicle | null {
       : undefined
 
   const rangeKm = rangeFromAPI || computedRange || 420
+  
+  // API Ninjas typically provides WLTP range. EPA is typically ~25% lower
+  // If we have a range, assume it's WLTP and calculate EPA
+  const rangeWltpKm = rangeKm
+  const rangeEpaKm = Math.round(rangeKm * 0.75) // EPA is typically 75% of WLTP
   const powerRatingKw =
     parseNumber(apiVehicle.total_power, /([0-9.]+)\s?kW/) ?? 150
 
@@ -166,6 +174,13 @@ function transformVehicle(apiVehicle: APIVehicle): TransformedVehicle | null {
       ? Math.round(((batteryCapacityKwh * 0.7) / chargingPowerKw) * 60)
       : undefined
 
+  // Extract 0-100 km/h acceleration (≈ 0-60 mph, very close)
+  // API provides in format like "5.3 s" or "5.3"
+  const acceleration0To100Kmh = parseNumber(
+    apiVehicle.acceleration_0_100_kmh,
+    /([0-9.]+)\s*(?:s|sec|seconds)?/i
+  )
+
   const modelTrim =
     apiVehicle.year_start && apiVehicle.year_start !== 'No Data'
       ? apiVehicle.year_start
@@ -174,11 +189,14 @@ function transformVehicle(apiVehicle: APIVehicle): TransformedVehicle | null {
   return {
     name: `${apiVehicle.make} ${apiVehicle.model}`.trim(),
     modelTrim,
-    rangeKm,
+    rangeKm, // Legacy field for backward compatibility
+    rangeWltpKm,
+    rangeEpaKm,
     efficiencyKwhPer100km: efficiencyKwhPer100km ?? 17,
     powerRatingKw,
     batteryCapacityKwh,
     chargingTimeDc0To80Min,
+    acceleration0To100Kmh,
     imageUrl: buildImageUrl(apiVehicle),
     rawData: apiVehicle,
   }

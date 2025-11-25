@@ -81,7 +81,7 @@ export default function SearchBox() {
   }
 
   return (
-    <div ref={searchRef} className="relative w-full max-w-2xl mx-auto">
+    <div ref={searchRef} className="relative w-full">
       <div className="relative">
         <input
           type="text"
@@ -101,7 +101,7 @@ export default function SearchBox() {
             }
           }}
           placeholder="Search EVs like Tesla Model 3, BYD Atto 3..."
-          className="w-full px-4 py-3 pl-12 text-lg border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-ev-primary focus:border-transparent"
+          className="w-full px-4 py-2 pl-12 text-sm rounded-lg bg-gray-100 focus:outline-none focus:ring-0"
           aria-label="Search for electric vehicles"
           aria-autocomplete="list"
           aria-expanded={showSuggestions && suggestions.length > 0}

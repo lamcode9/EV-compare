@@ -24,8 +24,11 @@ export interface Vehicle {
   batteryWeightPercentage: number
   powerRatingKw: number
   powerRatingExplanation: string
+  acceleration0To100Kmh?: number | null // 0-100 km/h in seconds (≈ 0-60 mph)
   efficiencyKwhPer100km: number
-  rangeKm: number
+  rangeKm: number // Legacy field
+  rangeWltpKm?: number | null // WLTP range in km
+  rangeEpaKm?: number | null // EPA range in km
   manufacturerCostUsd: number
   batteryManufacturer: string
   batteryTechnology: BatteryTechnology
