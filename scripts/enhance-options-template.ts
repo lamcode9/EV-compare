@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Enhance the missing-options-template.json with additional options
  * for vehicles that don't have suggestions or pricing

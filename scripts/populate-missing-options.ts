@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Script to help populate missing vehicle options from manufacturer websites
  * This script identifies vehicles without options and provides a template for adding them

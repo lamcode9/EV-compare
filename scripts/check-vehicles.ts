@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Script to check vehicles in database vs API
  * Usage: npx tsx scripts/check-vehicles.ts

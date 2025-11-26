@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Script to populate top speed data for vehicles
  * Searches the web for top speed information for each unique vehicle

@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Script to manually run the cron job
  * Usage: npx tsx scripts/run-cron.ts

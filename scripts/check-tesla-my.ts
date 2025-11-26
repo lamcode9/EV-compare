@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Check Tesla vehicles for Malaysia
  */

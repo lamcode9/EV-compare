@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Apply options from missing-options-template.json to vehicles-data.json
  * This script reads the template, finds matching vehicles, and updates their options

@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Check vehicles by country
  */

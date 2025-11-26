@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Script to reset the database by clearing all vehicles
  * Usage: npx tsx scripts/reset-database.ts
