@@ -47,7 +47,17 @@ async function analyzeVehicleOptions() {
       }
     }
 
-    const optionPrices = Array.isArray(v.optionPrices) ? v.optionPrices : []
+    const optionPricesRaw = Array.isArray(v.optionPrices) ? v.optionPrices : []
+    // Type guard to ensure optionPrices is the correct type
+    const optionPrices: Array<{ name: string; price: number }> = optionPricesRaw.filter(
+      (opt): opt is { name: string; price: number } =>
+        typeof opt === 'object' &&
+        opt !== null &&
+        'name' in opt &&
+        'price' in opt &&
+        typeof (opt as any).name === 'string' &&
+        typeof (opt as any).price === 'number'
+    )
     const hasOptions = optionPrices.length > 0
 
     grouped[key].trims.push({
