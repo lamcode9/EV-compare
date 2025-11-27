@@ -9,43 +9,47 @@ const CURRENCY_BY_COUNTRY: Record<Country, string> = {
   VN: 'VND',
 }
 
-export function formatPrice(price: number, country: Country): string {
+export function formatPrice(price: number, country: Country, minimumFractionDigits: number = 0): string {
   const currency = CURRENCY_BY_COUNTRY[country] || 'USD'
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency,
-    minimumFractionDigits: 0,
+    minimumFractionDigits,
+    maximumFractionDigits: minimumFractionDigits > 0 ? 2 : 0,
   }).format(price)
 }
 
-const BATTERY_WEIGHT_TO_KWH_RATIO = 6.5
-const ELECTRICITY_RATE_BY_COUNTRY: Partial<Record<Country, number>> = {
-  SG: 0.32, // SGD per kWh (avg fast-charger price)
-  MY: 0.55, // MYR per kWh (avg DC charging price)
-  // Default rates for other countries (can be updated later)
-  ID: 0.40, // IDR per kWh (approximate)
-  PH: 0.50, // PHP per kWh (approximate)
-  TH: 0.45, // THB per kWh (approximate)
-  VN: 0.35, // VND per kWh (approximate)
+// EV charging rates per kWh for DC fast chargers in Southeast Asia (2025)
+// These are typical commercial fast-charging rates, not residential rates
+const ELECTRICITY_RATE_BY_COUNTRY: Record<Country, number> = {
+  SG: 0.50, // SGD per kWh (typical DC fast charger: $0.45-$0.55/kWh)
+  MY: 1.20, // MYR per kWh (typical DC fast charger: RM1.00-RM1.40/kWh)
+  ID: 3500, // IDR per kWh (typical DC fast charger: 3,000-4,000 IDR/kWh)
+  PH: 8.50, // PHP per kWh (typical DC fast charger: 7.50-9.50 PHP/kWh)
+  TH: 6.50, // THB per kWh (typical DC fast charger: 6.00-7.00 THB/kWh)
+  VN: 3500, // VND per kWh (typical DC fast charger: 3,000-4,000 VND/kWh)
 }
 
-export function estimateBatteryCapacityFromWeight(weightKg: number): number {
-  if (!weightKg) return 0
-  return Math.round(weightKg / BATTERY_WEIGHT_TO_KWH_RATIO)
-}
-
+/**
+ * Get electricity rate for EV charging in the specified country
+ * Returns rate in local currency per kWh for DC fast charging
+ */
 export function getElectricityRate(country: Country): number {
-  return ELECTRICITY_RATE_BY_COUNTRY[country] || 0.40 // Default rate
+  return ELECTRICITY_RATE_BY_COUNTRY[country] || 0.40 // Default fallback
 }
 
-export function estimateCostPerKm(
+/**
+ * Calculate cost per km using actual battery capacity
+ */
+export function calculateCostPerKm(
   country: Country,
-  batteryWeightKg: number,
+  batteryCapacityKwh: number | null | undefined,
   rangeKm: number
 ): number {
-  if (!batteryWeightKg || !rangeKm) return 0
-  const capacity = estimateBatteryCapacityFromWeight(batteryWeightKg)
-  const costPerFullCharge = capacity * getElectricityRate(country)
+  if (!rangeKm || rangeKm <= 0) return 0
+  if (!batteryCapacityKwh || batteryCapacityKwh <= 0) return 0
+  
+  const costPerFullCharge = batteryCapacityKwh * getElectricityRate(country)
   return costPerFullCharge / rangeKm
 }
 

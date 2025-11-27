@@ -383,7 +383,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 30,
     "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
-    "technologyFeatures": "iCT Intelligent Torque, Frequency-Selective Damping, Dynaudio, Head-Up Display, V2L, Carbon Roof",
+    "technologyFeatures": "OTA Updates, 12.8\" Rotating Touchscreen, DiPilot ADAS, V2L Vehicle-to-Load",
     "basePriceLocalCurrency": 191800,
     "optionPrices": [
       {
@@ -463,7 +463,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 30,
     "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
-    "technologyFeatures": "iCT Intelligent Torque, YunNian-C Suspension, Dynaudio, AR HUD, V2L",
+    "technologyFeatures": "OTA Updates, 12.8\" Rotating Touchscreen, DiPilot ADAS, V2L Vehicle-to-Load",
     "basePriceLocalCurrency": 172800,
     "optionPrices": [
       {
@@ -583,7 +583,7 @@
     "batteryWarranty": "7 years / 150,000 km",
     "chargingTimeDc0To80Min": 35,
     "chargingCapabilities": "DC Fast Charge: Up to 88kW, AC: 7kW",
-    "technologyFeatures": "MG iSMART, 10.25\" Dual Screen, 360° Camera, ADAS Level 2",
+    "technologyFeatures": "OTA Updates, 10.25\" Touchscreen, MG Pilot ADAS",
     "basePriceLocalCurrency": 104000,
     "optionPrices": [
       {
@@ -619,7 +619,7 @@
     "batteryWarranty": "7 years / 150,000 km",
     "chargingTimeDc0To80Min": 35,
     "chargingCapabilities": "DC Fast Charge: Up to 88kW, AC: 7kW",
-    "technologyFeatures": "MG Pilot, Wireless Charging, 360° Camera, Panoramic Roof, V2L",
+    "technologyFeatures": "OTA Updates, 10.25\" Touchscreen, MG Pilot ADAS",
     "basePriceLocalCurrency": 149000,
     "optionPrices": [
       {
@@ -695,7 +695,7 @@
     "batteryWarranty": "7 years / 150,000 km",
     "chargingTimeDc0To80Min": 30,
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
-    "technologyFeatures": "Panoramic Sunroof, Wireless Charging, Sony Audio, Full ADAS Suite",
+    "technologyFeatures": "OTA Updates, 12.3\" Touchscreen, ADAS",
     "basePriceLocalCurrency": 126888,
     "optionPrices": [
       {
@@ -735,7 +735,7 @@
     "batteryWarranty": "8 years / 150,000 km",
     "chargingTimeDc0To80Min": 30,
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
-    "technologyFeatures": "ADAS Level 2, 14.6\" Touchscreen, 360° Camera, V2L, Magazine Battery",
+    "technologyFeatures": "OTA Updates, 15.6\" Touchscreen, ADiGO ADAS",
     "basePriceLocalCurrency": 119800,
     "optionPrices": [
       {
@@ -775,7 +775,7 @@
     "batteryWarranty": "8 years / 150,000 km",
     "chargingTimeDc0To80Min": 30,
     "chargingCapabilities": "DC Fast Charge: Up to 120kW, AC: 7kW",
-    "technologyFeatures": "Panoramic Sunroof, 540° Camera, ADAS Level 2+, V2L, AR Navigation",
+    "technologyFeatures": "OTA Updates, 15.6\" Touchscreen, ADiGO ADAS",
     "basePriceLocalCurrency": 135800,
     "optionPrices": [
       {
@@ -815,7 +815,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 18,
     "chargingCapabilities": "DC Fast Charge: Up to 350kW, AC: 11kW",
-    "technologyFeatures": "Bluelink, Bose Audio, V2L, Highway Driving Assist II, Remote Smart Parking",
+    "technologyFeatures": "OTA Updates, 12.3\" Dual Screen, Highway Driving Assist 2, V2L",
     "basePriceLocalCurrency": 180000,
     "optionPrices": [
       {
@@ -851,7 +851,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 18,
     "chargingCapabilities": "DC Fast Charge: Up to 350kW, AC: 11kW",
-    "technologyFeatures": "Vision Roof, Bose Premium Audio, Digital Side Mirrors, V2L, AR HUD",
+    "technologyFeatures": "OTA Updates, 12.3\" Dual Screen, Highway Driving Assist 2, V2L",
     "basePriceLocalCurrency": 200000,
     "optionPrices": [
       {
@@ -887,7 +887,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 18,
     "chargingCapabilities": "DC Fast Charge: Up to 350kW, AC: 11kW",
-    "technologyFeatures": "Dual Motor AWD, N Line Styling, 20\" Wheels, V2L, Full ADAS Suite",
+    "technologyFeatures": "OTA Updates, 12.3\" Dual Screen, Highway Driving Assist 2, V2L",
     "basePriceLocalCurrency": 220000,
     "optionPrices": [
       {
@@ -995,7 +995,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 31,
     "chargingCapabilities": "DC Fast Charge: Up to 205kW, AC: 11kW",
-    "technologyFeatures": "Curved Display, iDrive 8.5, Harman Kardon, Driving Assistant Professional",
+    "technologyFeatures": "OTA Updates, BMW iDrive 8, Driving Assistant Professional",
     "basePriceLocalCurrency": 280000,
     "optionPrices": [
       {
@@ -1031,7 +1031,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 31,
     "chargingCapabilities": "DC Fast Charge: Up to 205kW, AC: 11kW",
-    "technologyFeatures": "M Adaptive Suspension, M Carbon Exterior, Laserlights, IconicSounds Electric",
+    "technologyFeatures": "OTA Updates, BMW iDrive 8, Driving Assistant Professional",
     "basePriceLocalCurrency": 380000,
     "optionPrices": [
       {
@@ -1071,7 +1071,7 @@
     "batteryWarranty": "8 years / 150,000 km",
     "chargingTimeDc0To80Min": 20,
     "chargingCapabilities": "DC Fast Charge: Up to 200kW, AC: 11kW",
-    "technologyFeatures": "Zeekr OS, 14.6\" Touchscreen, Yamaha Audio, Face ID, AR HUD",
+    "technologyFeatures": "OTA Updates, 15.4\" Center Screen, ZEEKR ADAS, V2L",
     "basePriceLocalCurrency": 210000,
     "optionPrices": [
       {
@@ -1111,7 +1111,7 @@
     "batteryWarranty": "8 years / 150,000 km",
     "chargingTimeDc0To80Min": 20,
     "chargingCapabilities": "DC Fast Charge: Up to 200kW, AC: 11kW",
-    "technologyFeatures": "Dual Motor, Air Suspension Option, 24.3\" AR HUD, 13-speaker Yamaha",
+    "technologyFeatures": "OTA Updates, 15.4\" Center Screen, ZEEKR ADAS, V2L",
     "basePriceLocalCurrency": 240000,
     "optionPrices": [
       {
@@ -1151,7 +1151,7 @@
     "batteryWarranty": "8 years / 150,000 km",
     "chargingTimeDc0To80Min": 20,
     "chargingCapabilities": "DC Fast Charge: Up to 200kW, AC: 11kW",
-    "technologyFeatures": "Air Suspension, 15.4\" Touchscreen, Yamaha 28-speaker, Face ID, LiDAR-ready",
+    "technologyFeatures": "OTA Updates, 15.4\" Center Screen, ZEEKR ADAS, V2L",
     "basePriceLocalCurrency": 340000,
     "optionPrices": [
       {
@@ -1190,7 +1190,7 @@
     "batteryWarranty": "8 years / 150,000 km",
     "chargingTimeDc0To80Min": 20,
     "chargingCapabilities": "DC Fast Charge: Up to 200kW, AC: 11kW",
-    "technologyFeatures": "Dual Motor, Air Suspension, Carbon Roof, 22\" Wheels, Track Mode",
+    "technologyFeatures": "OTA Updates, 15.4\" Center Screen, ZEEKR ADAS, V2L",
     "basePriceLocalCurrency": 370000,
     "optionPrices": [
       {
@@ -1230,7 +1230,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 20,
     "chargingCapabilities": "DC Fast Charge: Up to 280kW, AC: 11kW",
-    "technologyFeatures": "XNGP ADAS, 15\" + 10.2\" Dual Screen, Xmart OS, V2L, AR HUD",
+    "technologyFeatures": "OTA Updates, 14.96\" Touchscreen, XNGP ADAS, V2L",
     "basePriceLocalCurrency": 250000,
     "optionPrices": [
       {
@@ -1270,7 +1270,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 20,
     "chargingCapabilities": "DC Fast Charge: Up to 280kW, AC: 11kW",
-    "technologyFeatures": "XNGP Full-Scenario ADAS, Dual-Chamber Air Suspension, Dynaudio, 540° Camera",
+    "technologyFeatures": "OTA Updates, 14.96\" Touchscreen, XNGP ADAS, V2L",
     "basePriceLocalCurrency": 280000,
     "optionPrices": [
       {
@@ -1653,7 +1653,7 @@
     "batteryWarranty": "8 years / 150,000 km",
     "chargingTimeDc0To80Min": 35,
     "chargingCapabilities": "DC Fast Charge: Up to 60kW, AC: 6.6kW",
-    "technologyFeatures": "Panoramic Sunroof, Massage Seats, 540° Camera, Full ADAS",
+    "technologyFeatures": "OTA Updates, 10.25\" Touchscreen, ADAS",
     "basePriceLocalCurrency": 699000,
     "optionPrices": [
       {
@@ -1693,7 +1693,7 @@
     "batteryWarranty": "8 years / 180,000 km",
     "chargingTimeDc0To80Min": 40,
     "chargingCapabilities": "DC Fast Charge: Up to 40kW, AC: 7kW",
-    "technologyFeatures": "12.8\" Touchscreen, 360° Camera, ADAS Level 2, V2L",
+    "technologyFeatures": "OTA Updates, 13\" Touchscreen, ADAS",
     "basePriceLocalCurrency": 599000,
     "optionPrices": [
       {
@@ -1969,7 +1969,7 @@
     "batteryWarranty": "7 years / 150,000 km",
     "chargingTimeDc0To80Min": 35,
     "chargingCapabilities": "DC Fast Charge: Up to 88kW, AC: 7kW",
-    "technologyFeatures": "MG iSMART, 10.25\" Dual Screen, 360° Camera, ADAS Level 2",
+    "technologyFeatures": "OTA Updates, 10.25\" Touchscreen, MG Pilot ADAS",
     "basePriceLocalCurrency": 158000,
     "optionPrices": [
       {
@@ -2005,7 +2005,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 40,
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 11kW",
-    "technologyFeatures": "ADAS Level 2, 15.6\" Touchscreen, AR HUD, V2L, Panoramic Roof",
+    "technologyFeatures": "OTA Updates, 15.6\" Touchscreen, ADAS",
     "basePriceLocalCurrency": 185000,
     "optionPrices": [
       {
@@ -2044,7 +2044,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 45,
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
-    "technologyFeatures": "Bluelink, 10.25\" Touchscreen, Wireless Charging, ADAS Level 2",
+    "technologyFeatures": "OTA Updates, 12.3\" Dual Screen, Highway Driving Assist 2, V2L",
     "basePriceLocalCurrency": 178000,
     "optionPrices": [
       {
@@ -2271,7 +2271,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 35,
     "chargingCapabilities": "DC Fast Charge: Up to 78kW, AC: 6.6kW",
-    "technologyFeatures": "AR HUD, Gesture Control, 15.6\" Screen, ADAS Level 2+",
+    "technologyFeatures": "OTA Updates, 15.6\" Touchscreen, ADAS",
     "basePriceLocalCurrency": 599000000,
     "optionPrices": [
       {
@@ -2349,7 +2349,7 @@
     "batteryWarranty": "7 years / 150,000 km",
     "chargingTimeDc0To80Min": 35,
     "chargingCapabilities": "DC Fast Charge: Up to 88kW, AC: 7kW",
-    "technologyFeatures": "MG iSMART, 10.25\" Dual Screen, 360° Camera, ADAS Level 2",
+    "technologyFeatures": "OTA Updates, 10.25\" Touchscreen, MG Pilot ADAS",
     "basePriceLocalCurrency": 1469000,
     "optionPrices": [
       {
@@ -2385,7 +2385,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 18,
     "chargingCapabilities": "DC Fast Charge: Up to 350kW, AC: 11kW",
-    "technologyFeatures": "Bluelink, Bose Audio, V2L, Highway Driving Assist II, Remote Smart Parking",
+    "technologyFeatures": "OTA Updates, 12.3\" Dual Screen, Highway Driving Assist 2, V2L",
     "basePriceLocalCurrency": 2840000,
     "optionPrices": [
       {
@@ -2421,7 +2421,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 35,
     "chargingCapabilities": "DC Fast Charge: Up to 195kW, AC: 11kW",
-    "technologyFeatures": "Curved Display, iDrive 8, Bowers & Wilkins Audio, Driving Assistant Professional",
+    "technologyFeatures": "OTA Updates, BMW iDrive 8, Driving Assistant Professional",
     "basePriceLocalCurrency": 6290000,
     "optionPrices": [
       {
@@ -2500,7 +2500,7 @@
     "batteryWarranty": "7 years / 150,000 km",
     "chargingTimeDc0To80Min": 54,
     "chargingCapabilities": "DC Fast Charge: Up to 87kW, AC: 7kW",
-    "technologyFeatures": "MG Pilot, 10.1\" Touchscreen, Panoramic Roof, V2L",
+    "technologyFeatures": "OTA Updates, 10.1\" Touchscreen, MG Pilot ADAS",
     "basePriceLocalCurrency": 699000000,
     "optionPrices": [
       {
@@ -2536,7 +2536,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 30,
     "chargingCapabilities": "DC Fast Charge: Up to 85kW, AC: 6.6kW",
-    "technologyFeatures": "iFly 1.5 OS, 15.6\" Screen, 4WD Option, Solar Roof",
+    "technologyFeatures": "OTA Updates, 12.3\" Touchscreen, ADAS",
     "basePriceLocalCurrency": 400000000,
     "optionPrices": [
       {
@@ -2575,7 +2575,7 @@
     "batteryWarranty": "8 years / 150,000 km",
     "chargingTimeDc0To80Min": 30,
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
-    "technologyFeatures": "ADAS Level 2, 14.6\" Touchscreen, 540° Camera, V2L",
+    "technologyFeatures": "OTA Updates, 15.6\" Touchscreen, ADiGO ADAS",
     "basePriceLocalCurrency": 500000000,
     "optionPrices": [
       {
@@ -2763,7 +2763,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 31,
     "chargingCapabilities": "DC Fast Charge: Up to 205kW, AC: 11kW",
-    "technologyFeatures": "Curved Display, Harman Kardon, IconicSounds, Driving Assistant Professional",
+    "technologyFeatures": "OTA Updates, BMW iDrive 8, Driving Assistant Professional",
     "basePriceLocalCurrency": 320000,
     "optionPrices": [
       {
@@ -2798,7 +2798,7 @@
     "batteryWarranty": "8 years / 180,000 km",
     "chargingTimeDc0To80Min": 35,
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
-    "technologyFeatures": "15.6\" Screen, 540° Camera, ADAS Level 2+, V2L, Panoramic Roof",
+    "technologyFeatures": "OTA Updates, 13\" Touchscreen, ADAS",
     "basePriceLocalCurrency": 119900,
     "optionPrices": [
       {
@@ -2876,7 +2876,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 30,
     "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
-    "technologyFeatures": "Queen’s Seat, 24.6\" Dual Screen, ADAS Level 2+, Fragrance System",
+    "technologyFeatures": "OTA Updates, 12.3\" Touchscreen, ADAS",
     "basePriceLocalCurrency": 169900,
     "optionPrices": [
       {
@@ -2954,7 +2954,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 18,
     "chargingCapabilities": "DC Fast Charge: Up to 350kW, AC: 11kW",
-    "technologyFeatures": "V2L, Bose Audio, Digital Side Mirrors option, Highway Driving Assist 2",
+    "technologyFeatures": "OTA Updates, 12.3\" Dual Screen, Highway Driving Assist 2, V2L",
     "basePriceLocalCurrency": 950000000,
     "optionPrices": [
       {
@@ -3068,7 +3068,7 @@
     "batteryWarranty": "8 years / 150,000 km",
     "chargingTimeDc0To80Min": 38,
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 11kW",
-    "technologyFeatures": "HUD, 360° Camera, ADAS Level 2, Panoramic Roof",
+    "technologyFeatures": "OTA Updates, 10.25\" Touchscreen, ADAS",
     "basePriceLocalCurrency": 1799000,
     "optionPrices": [
       {
@@ -3151,7 +3151,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 29,
     "chargingCapabilities": "DC Fast Charge: Up to 130kW, AC: 11kW",
-    "technologyFeatures": "Curved Display, Harman Kardon, Driving Assistant Professional",
+    "technologyFeatures": "OTA Updates, BMW iDrive 8, Driving Assistant Professional",
     "basePriceLocalCurrency": 248000,
     "optionPrices": [
       {
@@ -3187,7 +3187,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 34,
     "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
-    "technologyFeatures": "Panoramic Glass Roof, IconicSounds, Adaptive Suspension",
+    "technologyFeatures": "OTA Updates, BMW iDrive 8, Driving Assistant Professional",
     "basePriceLocalCurrency": 288000,
     "optionPrices": [
       {
@@ -3297,7 +3297,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 28,
     "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
-    "technologyFeatures": "15.6\" + 24.3\" Screen, Face ID, Massage Seats, AR HUD",
+    "technologyFeatures": "OTA Updates, 15.4\" Center Screen, ZEEKR ADAS, V2L",
     "basePriceLocalCurrency": 218000,
     "optionPrices": [
       {
@@ -3337,7 +3337,7 @@
     "batteryWarranty": "8 years / 200,000 km",
     "chargingTimeDc0To80Min": 28,
     "chargingCapabilities": "DC Fast Charge: Up to 360kW, AC: 11kW",
-    "technologyFeatures": "Captain Seats, Refrigerator, 8-Screen System, Air Suspension",
+    "technologyFeatures": "OTA Updates, 15.4\" Center Screen, ZEEKR ADAS, V2L",
     "basePriceLocalCurrency": 488000,
     "optionPrices": [
       {
@@ -3415,7 +3415,7 @@
     "batteryWarranty": "8 years / 150,000 km",
     "chargingTimeDc0To80Min": 35,
     "chargingCapabilities": "DC Fast Charge: Up to 60kW, AC: 6.6kW",
-    "technologyFeatures": "Panoramic Sunroof, Massage Seats, 540° Camera, Full ADAS",
+    "technologyFeatures": "OTA Updates, 10.25\" Touchscreen, ADAS",
     "basePriceLocalCurrency": 149900,
     "optionPrices": [
       {
@@ -3572,7 +3572,7 @@
     "batteryWarranty": "7 years / 150,000 km",
     "chargingTimeDc0To80Min": 54,
     "chargingCapabilities": "DC Fast Charge: Up to 87kW, AC: 7kW",
-    "technologyFeatures": "MG Pilot, 10.1\" Touchscreen, Panoramic Roof, V2L",
+    "technologyFeatures": "OTA Updates, 10.1\" Touchscreen, MG Pilot ADAS",
     "basePriceLocalCurrency": 415000000,
     "optionPrices": [
       {
@@ -3803,7 +3803,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 40,
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 11kW",
-    "technologyFeatures": "LiDAR ADAS, 15.6\" Touchscreen, AR HUD, V2L, Panoramic Roof",
+    "technologyFeatures": "OTA Updates, 15.6\" Touchscreen, ADAS",
     "basePriceLocalCurrency": 185000,
     "optionPrices": [
       {
@@ -3842,7 +3842,7 @@
     "batteryWarranty": "8 years / 150,000 km",
     "chargingTimeDc0To80Min": 30,
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
-    "technologyFeatures": "GAC ADAS, 14.6\" Touchscreen, 540° Camera, V2L",
+    "technologyFeatures": "OTA Updates, 15.6\" Touchscreen, ADiGO ADAS",
     "basePriceLocalCurrency": 195000,
     "optionPrices": [
       {
@@ -3881,7 +3881,7 @@
     "batteryWarranty": "8 years / 150,000 km",
     "chargingTimeDc0To80Min": 30,
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
-    "technologyFeatures": "Gullwing Doors, Massage Seats, Premium Audio, Advanced ADAS",
+    "technologyFeatures": "OTA Updates, 15.6\" Touchscreen, ADiGO ADAS",
     "basePriceLocalCurrency": 215000,
     "optionPrices": [
       {
@@ -3920,7 +3920,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 18,
     "chargingCapabilities": "DC Fast Charge: Up to 350kW, AC: 11kW",
-    "technologyFeatures": "V2L, Bose Audio, AR HUD, Highway Driving Assist 2",
+    "technologyFeatures": "OTA Updates, 12.3\" Dual Screen, Highway Driving Assist 2, V2L",
     "basePriceLocalCurrency": 230000,
     "optionPrices": [
       {
@@ -3956,7 +3956,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 24,
     "chargingCapabilities": "DC Fast Charge: Up to 350kW, AC: 11kW",
-    "technologyFeatures": "7-Seater, Relaxation Seats, Dual Sunroof, Advanced ADAS",
+    "technologyFeatures": "OTA Updates, 12.3\" Dual Screen, Highway Driving Assist 2, V2L",
     "basePriceLocalCurrency": 320000,
     "optionPrices": [
       {
@@ -4264,7 +4264,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 30,
     "chargingCapabilities": "DC Fast Charge: Up to 85kW, AC: 6.6kW",
-    "technologyFeatures": "Leap OS, 14.6\" Screen, LiDAR, V2L, Panoramic Roof",
+    "technologyFeatures": "OTA Updates, 15.6\" Touchscreen, ADAS",
     "basePriceLocalCurrency": 109000,
     "optionPrices": [
       {
@@ -4303,7 +4303,7 @@
     "batteryWarranty": "8 years / 200,000 km",
     "chargingTimeDc0To80Min": 25,
     "chargingCapabilities": "DC Fast Charge: Up to 360kW, AC: 11kW",
-    "technologyFeatures": "Massage Seats, 15.6\" Screen, Air Suspension, Level 2+ ADAS",
+    "technologyFeatures": "OTA Updates, 15.4\" Center Screen, ZEEKR ADAS, V2L",
     "basePriceLocalCurrency": 189900,
     "optionPrices": [
       {
@@ -4342,7 +4342,7 @@
     "batteryWarranty": "8 years / 200,000 km",
     "chargingTimeDc0To80Min": 25,
     "chargingCapabilities": "DC Fast Charge: Up to 360kW, AC: 11kW",
-    "technologyFeatures": "Performance Pack, Brembo Brakes, Harman Kardon, AR HUD",
+    "technologyFeatures": "OTA Updates, 15.4\" Center Screen, ZEEKR ADAS, V2L",
     "basePriceLocalCurrency": 209900,
     "optionPrices": [
       {
@@ -4420,7 +4420,7 @@
     "batteryWarranty": "8 years / 150,000 km",
     "chargingTimeDc0To80Min": 35,
     "chargingCapabilities": "DC Fast Charge: Up to 60kW, AC: 6.6kW",
-    "technologyFeatures": "Sport Mode, 18\" Wheels, Full ADAS, Massage Seats",
+    "technologyFeatures": "OTA Updates, 10.25\" Touchscreen, ADAS",
     "basePriceLocalCurrency": 159900,
     "optionPrices": [
       {
@@ -4499,7 +4499,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 30,
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
-    "technologyFeatures": "DiLink, 15.6\" Screen, Basic ADAS, Wireless Charging",
+    "technologyFeatures": "OTA Updates, 12.8\" Rotating Touchscreen, DiPilot ADAS, V2L Vehicle-to-Load",
     "basePriceLocalCurrency": 99900,
     "optionPrices": [
       {
@@ -4538,7 +4538,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 30,
     "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
-    "technologyFeatures": "Dynaudio, HUD, V2L, Frequency Damping",
+    "technologyFeatures": "OTA Updates, 12.8\" Rotating Touchscreen, DiPilot ADAS, V2L Vehicle-to-Load",
     "basePriceLocalCurrency": 149900,
     "optionPrices": [
       {
@@ -4616,7 +4616,7 @@
     "batteryWarranty": "8 years / 180,000 km",
     "chargingTimeDc0To80Min": 35,
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
-    "technologyFeatures": "15.6\" Screen, 540° Camera, ADAS 2+, V2L, Panoramic Roof",
+    "technologyFeatures": "OTA Updates, 13\" Touchscreen, ADAS",
     "basePriceLocalCurrency": 119900,
     "optionPrices": [
       {
@@ -4655,7 +4655,7 @@
     "batteryWarranty": "8 years / 180,000 km",
     "chargingTimeDc0To80Min": 35,
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
-    "technologyFeatures": "Massage Seats, Premium Audio, Full ADAS, Ambient Lighting",
+    "technologyFeatures": "OTA Updates, 13\" Touchscreen, ADAS",
     "basePriceLocalCurrency": 129900,
     "optionPrices": [
       {
@@ -5785,7 +5785,7 @@
     "batteryWarranty": "8 years / 180,000 km",
     "chargingTimeDc0To80Min": 40,
     "chargingCapabilities": "DC Fast Charge: Up to 40kW, AC: 7kW",
-    "technologyFeatures": "12.8\" Touchscreen, 360° Camera, ADAS 2, V2L",
+    "technologyFeatures": "OTA Updates, 13\" Touchscreen, ADAS",
     "basePriceLocalCurrency": 1500000,
     "optionPrices": [
       {
@@ -5824,7 +5824,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 28,
     "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
-    "technologyFeatures": "15.6\" + 24.3\" Screen, Face ID, Massage Seats, AR HUD",
+    "technologyFeatures": "OTA Updates, 15.4\" Center Screen, ZEEKR ADAS, V2L",
     "basePriceLocalCurrency": 218000,
     "optionPrices": [
       {
@@ -5903,7 +5903,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 29,
     "chargingCapabilities": "DC Fast Charge: Up to 130kW, AC: 11kW",
-    "technologyFeatures": "Curved Display, Harman Kardon, Driving Assistant Professional",
+    "technologyFeatures": "OTA Updates, BMW iDrive 8, Driving Assistant Professional",
     "basePriceLocalCurrency": 248000,
     "optionPrices": [
       {
@@ -5978,7 +5978,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 28,
     "chargingCapabilities": "DC Fast Charge: Up to 80kW, AC: 9.9kW",
-    "technologyFeatures": "24.6\" Dual Screen, Sony Audio, 540° Camera, V2L",
+    "technologyFeatures": "OTA Updates, 12.3\" Touchscreen, ADAS",
     "basePriceLocalCurrency": 129900,
     "optionPrices": [
       {
@@ -6018,7 +6018,7 @@
     "batteryWarranty": "8 years / 150,000 km",
     "chargingTimeDc0To80Min": 38,
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 11kW",
-    "technologyFeatures": "HUD, 360° Camera, ADAS Level 2, Panoramic Roof",
+    "technologyFeatures": "OTA Updates, 10.25\" Touchscreen, ADAS",
     "basePriceLocalCurrency": 699000000,
     "optionPrices": [
       {
@@ -6057,7 +6057,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 24,
     "chargingCapabilities": "DC Fast Charge: Up to 350kW, AC: 11kW",
-    "technologyFeatures": "7-Seater, Relaxation Seats, Dual Sunroof, Advanced ADAS",
+    "technologyFeatures": "OTA Updates, 12.3\" Dual Screen, Highway Driving Assist 2, V2L",
     "basePriceLocalCurrency": 3200000,
     "optionPrices": [
       {
@@ -6167,7 +6167,7 @@
     "batteryWarranty": "7 years / 150,000 km",
     "chargingTimeDc0To80Min": 35,
     "chargingCapabilities": "DC Fast Charge: Up to 88kW, AC: 7kW",
-    "technologyFeatures": "MG iSMART, 10.25\" Dual Screen, 360° Camera, ADAS Level 2",
+    "technologyFeatures": "OTA Updates, 10.1\" Touchscreen, MG Pilot ADAS",
     "basePriceLocalCurrency": 158000,
     "optionPrices": [
       {
@@ -6202,7 +6202,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 18,
     "chargingCapabilities": "DC Fast Charge: Up to 350kW, AC: 11kW",
-    "technologyFeatures": "V2L, Bose Audio, Digital Side Mirrors option, Highway Driving Assist 2",
+    "technologyFeatures": "OTA Updates, 12.3\" Dual Screen, Highway Driving Assist 2, V2L",
     "basePriceLocalCurrency": 230000,
     "optionPrices": [
       {
@@ -6316,7 +6316,7 @@
     "batteryWarranty": "8 years / 120,000 km",
     "chargingTimeDc0To80Min": 35,
     "chargingCapabilities": "DC Fast Charge: Up to 30kW, AC: 3.3kW",
-    "technologyFeatures": "7\" Touchscreen, Rear Camera, Basic Safety Features",
+    "technologyFeatures": "OTA Updates, Touchscreen, ADAS",
     "basePriceLocalCurrency": 189000000,
     "optionPrices": [
       {
@@ -6500,7 +6500,7 @@
     "batteryWarranty": "8 years / 200,000 km",
     "chargingTimeDc0To80Min": 25,
     "chargingCapabilities": "DC Fast Charge: Up to 360kW, AC: 11kW",
-    "technologyFeatures": "Massage Seats, 15.6\" Screen, Air Suspension, Level 2+ ADAS",
+    "technologyFeatures": "OTA Updates, 15.4\" Center Screen, ZEEKR ADAS, V2L",
     "basePriceLocalCurrency": 340000,
     "optionPrices": [
       {
@@ -6609,7 +6609,7 @@
     "batteryWarranty": "8 years / 150,000 km",
     "chargingTimeDc0To80Min": 30,
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
-    "technologyFeatures": "GAC ADAS, 14.6\" Touchscreen, 540° Camera, V2L",
+    "technologyFeatures": "OTA Updates, 15.6\" Touchscreen, ADiGO ADAS",
     "basePriceLocalCurrency": 195000,
     "optionPrices": [
       {
@@ -6648,7 +6648,7 @@
     "batteryWarranty": "8 years / 150,000 km",
     "chargingTimeDc0To80Min": 30,
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
-    "technologyFeatures": "Gullwing Doors, Massage Seats, Premium Audio, Advanced ADAS",
+    "technologyFeatures": "OTA Updates, 15.6\" Touchscreen, ADiGO ADAS",
     "basePriceLocalCurrency": 215000,
     "optionPrices": [
       {
@@ -6800,7 +6800,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 30,
     "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
-    "technologyFeatures": "Queen’s Seat, 24.6\" Dual Screen, ADAS Level 2+, Fragrance System",
+    "technologyFeatures": "OTA Updates, 12.3\" Touchscreen, ADAS",
     "basePriceLocalCurrency": 2500000,
     "optionPrices": [
       {
@@ -6839,7 +6839,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 60,
     "chargingCapabilities": "DC Fast Charge: Up to 60kW, AC: 7kW",
-    "technologyFeatures": "Cargo Space, Basic ADAS, 10\" Touchscreen, V2L",
+    "technologyFeatures": "OTA Updates, Touchscreen, ADAS",
     "basePriceLocalCurrency": 1450000,
     "optionPrices": [
       {
@@ -6917,7 +6917,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 30,
     "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
-    "technologyFeatures": "Dynaudio Audio, HUD, V2L, Advanced ADAS",
+    "technologyFeatures": "OTA Updates, 12.8\" Rotating Touchscreen, DiPilot ADAS, V2L Vehicle-to-Load",
     "basePriceLocalCurrency": 255888,
     "optionPrices": [
       {
@@ -6996,7 +6996,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 40,
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 11kW",
-    "technologyFeatures": "LiDAR ADAS, 15.6\" Touchscreen, AR HUD, V2L, Panoramic Roof",
+    "technologyFeatures": "OTA Updates, 15.6\" Touchscreen, ADAS",
     "basePriceLocalCurrency": 185000,
     "optionPrices": [
       {
@@ -7035,7 +7035,7 @@
     "batteryWarranty": "8 years / 180,000 km",
     "chargingTimeDc0To80Min": 37,
     "chargingCapabilities": "DC Fast Charge: Up to 88kW, AC: 11kW",
-    "technologyFeatures": "Massage Seats, 540° Camera, Coffee Mode, Panoramic Roof",
+    "technologyFeatures": "OTA Updates, 10.25\" Touchscreen, ADAS",
     "basePriceLocalCurrency": 169900,
     "optionPrices": [
       {
@@ -7074,7 +7074,7 @@
     "batteryWarranty": "8 years / 150,000 km",
     "chargingTimeDc0To80Min": 40,
     "chargingCapabilities": "DC Fast Charge: Up to 80kW, AC: 6.6kW",
-    "technologyFeatures": "Retro-futuristic design, 360° camera, Facial Recognition, Massage Seats",
+    "technologyFeatures": "OTA Updates, 10.25\" Touchscreen, ADAS",
     "basePriceLocalCurrency": 129900,
     "optionPrices": [
       {
@@ -7113,7 +7113,7 @@
     "batteryWarranty": "8 years / 150,000 km",
     "chargingTimeDc0To80Min": 35,
     "chargingCapabilities": "DC Fast Charge: Up to 60kW, AC: 6.6kW",
-    "technologyFeatures": "Sport Mode, 18\" Wheels, Full ADAS, Massage Seats",
+    "technologyFeatures": "OTA Updates, 10.25\" Touchscreen, ADAS",
     "basePriceLocalCurrency": 159900,
     "optionPrices": [
       {
@@ -7192,7 +7192,7 @@
     "batteryWarranty": "8 years / 150,000 km",
     "chargingTimeDc0To80Min": 38,
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 11kW",
-    "technologyFeatures": "HUD, 360° Camera, ADAS Level 2, Panoramic Roof",
+    "technologyFeatures": "OTA Updates, 10.25\" Touchscreen, ADAS",
     "basePriceLocalCurrency": 1799000,
     "optionPrices": [
       {
@@ -7539,7 +7539,7 @@
     "batteryWarranty": "8 years / 150,000 km",
     "chargingTimeDc0To80Min": 35,
     "chargingCapabilities": "DC Fast Charge: Up to 80kW, AC: 7kW",
-    "technologyFeatures": "14.6\" Screen, ADAS Level 2, V2L, Panoramic Roof",
+    "technologyFeatures": "OTA Updates, 15.6\" Touchscreen, ADiGO ADAS",
     "basePriceLocalCurrency": 1699000,
     "optionPrices": [
       {
@@ -7736,7 +7736,7 @@
     "batteryWarranty": "8 years / 120,000 km",
     "chargingTimeDc0To80Min": 60,
     "chargingCapabilities": "DC Fast Charge: Up to 45kW, AC: 6.6kW",
-    "technologyFeatures": "",
+    "technologyFeatures": "OTA Updates, Touchscreen, ADAS",
     "basePriceLocalCurrency": null,
     "optionPrices": [
       {
@@ -7953,7 +7953,11 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1480,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "batteryCapacityKwh": 44.9,
+    "torqueNm": 180,
+    "batteryWarranty": "8 years / 150,000 km",
+    "technologyFeatures": "OTA Updates, 12.8\" Rotating Touchscreen, DiPilot ADAS, V2L Vehicle-to-Load"
   },
   {
     "name": "BYD Dolphin",
@@ -7981,7 +7985,11 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1520,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "batteryCapacityKwh": 60.48,
+    "torqueNm": 310,
+    "batteryWarranty": "8 years / 150,000 km",
+    "technologyFeatures": "OTA Updates, 12.8\" Rotating Touchscreen, DiPilot ADAS, V2L Vehicle-to-Load"
   },
   {
     "name": "BYD Atto 3",
@@ -8009,7 +8017,11 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1880,
-    "topSpeedKmh": 160
+    "topSpeedKmh": 160,
+    "batteryCapacityKwh": 49.92,
+    "torqueNm": 310,
+    "batteryWarranty": "8 years / 150,000 km",
+    "technologyFeatures": "OTA Updates, 12.8\" Rotating Touchscreen, DiPilot ADAS, V2L Vehicle-to-Load"
   },
   {
     "name": "BYD Atto 3",
@@ -8037,7 +8049,11 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1950,
-    "topSpeedKmh": 160
+    "topSpeedKmh": 160,
+    "batteryCapacityKwh": 60.48,
+    "torqueNm": 310,
+    "batteryWarranty": "8 years / 150,000 km",
+    "technologyFeatures": "OTA Updates, 12.8\" Rotating Touchscreen, DiPilot ADAS, V2L Vehicle-to-Load"
   },
   {
     "name": "MG ZS EV",
@@ -8065,7 +8081,11 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1799,
-    "topSpeedKmh": 140
+    "topSpeedKmh": 140,
+    "batteryCapacityKwh": 44.5,
+    "torqueNm": 280,
+    "batteryWarranty": "8 years / 160,000 km",
+    "technologyFeatures": "OTA Updates, 10.1\" Touchscreen, MG Pilot ADAS"
   },
   {
     "name": "MG ZS EV",
@@ -8093,7 +8113,11 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1829,
-    "topSpeedKmh": 140
+    "topSpeedKmh": 140,
+    "batteryCapacityKwh": 44.5,
+    "torqueNm": 280,
+    "batteryWarranty": "8 years / 160,000 km",
+    "technologyFeatures": "OTA Updates, 10.1\" Touchscreen, MG Pilot ADAS"
   },
   {
     "name": "MG 4 EV",
@@ -8121,7 +8145,11 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1830,
-    "topSpeedKmh": 160
+    "topSpeedKmh": 160,
+    "batteryCapacityKwh": 64,
+    "torqueNm": 250,
+    "batteryWarranty": "8 years / 160,000 km",
+    "technologyFeatures": "OTA Updates, 10.25\" Touchscreen, MG Pilot ADAS"
   },
   {
     "name": "Hyundai Ioniq 5",
@@ -8149,7 +8177,11 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2340,
-    "topSpeedKmh": 185
+    "topSpeedKmh": 185,
+    "batteryCapacityKwh": 72.6,
+    "batteryWarranty": "8 years / 160,000 km",
+    "technologyFeatures": "OTA Updates, 12.3\" Dual Screen, Highway Driving Assist 2, V2L",
+    "torqueNm": 350
   },
   {
     "name": "BMW iX1",
@@ -8177,7 +8209,11 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2220,
-    "topSpeedKmh": 180
+    "topSpeedKmh": 180,
+    "batteryCapacityKwh": 64.7,
+    "batteryWarranty": "8 years / 160,000 km",
+    "technologyFeatures": "OTA Updates, BMW iDrive 8, Driving Assistant Professional",
+    "torqueNm": 247
   },
   {
     "name": "Zeekr 001",
@@ -8205,7 +8241,11 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2470,
-    "topSpeedKmh": 200
+    "topSpeedKmh": 200,
+    "batteryCapacityKwh": 100,
+    "batteryWarranty": "8 years / 200,000 km",
+    "technologyFeatures": "OTA Updates, 15.4\" Center Screen, ZEEKR ADAS, V2L",
+    "torqueNm": 686
   },
   {
     "name": "Xpeng G6",
@@ -8233,7 +8273,11 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2280,
-    "topSpeedKmh": 200
+    "topSpeedKmh": 200,
+    "torqueNm": 358,
+    "batteryWarranty": "8 years / 160,000 km",
+    "technologyFeatures": "OTA Updates, 14.96\" Touchscreen, XNGP ADAS, V2L",
+    "batteryCapacityKwh": 66
   },
   {
     "name": "GAC Aion V",
@@ -8261,7 +8305,11 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2080,
-    "topSpeedKmh": 160
+    "topSpeedKmh": 160,
+    "torqueNm": 350,
+    "batteryWarranty": "8 years / 150,000 km",
+    "technologyFeatures": "OTA Updates, 15.6\" Touchscreen, ADiGO ADAS",
+    "batteryCapacityKwh": 70
   },
   {
     "name": "GAC Aion V",
@@ -8289,7 +8337,11 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2150,
-    "topSpeedKmh": 160
+    "topSpeedKmh": 160,
+    "torqueNm": 350,
+    "batteryWarranty": "8 years / 150,000 km",
+    "technologyFeatures": "OTA Updates, 15.6\" Touchscreen, ADiGO ADAS",
+    "batteryCapacityKwh": 80
   },
   {
     "name": "Deepal S07",
@@ -8316,7 +8368,11 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2380
+    "grossVehicleWeightKg": 2380,
+    "torqueNm": 320,
+    "batteryWarranty": "8 years / 150,000 km",
+    "technologyFeatures": "OTA Updates, 15.6\" Touchscreen, ADAS",
+    "batteryCapacityKwh": 66
   },
   {
     "name": "Chery Omoda E5",
@@ -8344,7 +8400,11 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1900,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "torqueNm": 230,
+    "batteryWarranty": "8 years / 150,000 km",
+    "technologyFeatures": "OTA Updates, 12.3\" Touchscreen, ADAS",
+    "batteryCapacityKwh": 61
   },
   {
     "name": "Chery Omoda E5",
@@ -8372,7 +8432,11 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1900,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "torqueNm": 230,
+    "batteryWarranty": "8 years / 150,000 km",
+    "technologyFeatures": "OTA Updates, 12.3\" Touchscreen, ADAS",
+    "batteryCapacityKwh": 61
   },
   {
     "name": "Geely Geometry C",
@@ -8399,7 +8463,11 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1850
+    "grossVehicleWeightKg": 1850,
+    "torqueNm": 150,
+    "batteryWarranty": "8 years / 150,000 km",
+    "technologyFeatures": "OTA Updates, 10.25\" Touchscreen, ADAS",
+    "batteryCapacityKwh": 53
   },
   {
     "name": "Ora Good Cat",
@@ -8427,7 +8495,11 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1710,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "torqueNm": 210,
+    "batteryWarranty": "8 years / 150,000 km",
+    "technologyFeatures": "OTA Updates, 10.25\" Touchscreen, ADAS",
+    "batteryCapacityKwh": 47.8
   },
   {
     "name": "Ora Good Cat",
@@ -8455,7 +8527,11 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1740,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "torqueNm": 210,
+    "batteryWarranty": "8 years / 150,000 km",
+    "technologyFeatures": "OTA Updates, 10.25\" Touchscreen, ADAS",
+    "batteryCapacityKwh": 63.1
   },
   {
     "name": "Neta V",
@@ -8483,7 +8559,11 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1600,
-    "topSpeedKmh": 100
+    "topSpeedKmh": 100,
+    "torqueNm": 150,
+    "batteryWarranty": "8 years / 150,000 km",
+    "technologyFeatures": "OTA Updates, 13\" Touchscreen, ADAS",
+    "batteryCapacityKwh": 38.5
   },
   {
     "name": "Neta V",
@@ -8511,7 +8591,10 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1600,
-    "topSpeedKmh": 100
+    "topSpeedKmh": 100,
+    "batteryWarranty": "8 years / 150,000 km",
+    "technologyFeatures": "OTA Updates, 13\" Touchscreen, ADAS",
+    "batteryCapacityKwh": 38.5
   },
   {
     "name": "Porsche Taycan",
@@ -8539,7 +8622,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2450,
-    "topSpeedKmh": 260
+    "topSpeedKmh": 260,
+    "batteryCapacityKwh": 93.4
   },
   {
     "name": "Kia EV6",
@@ -8567,7 +8651,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2195,
-    "topSpeedKmh": 185
+    "topSpeedKmh": 185,
+    "batteryCapacityKwh": 77.4
   },
   {
     "name": "Kia EV6",
@@ -8595,7 +8680,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2300,
-    "topSpeedKmh": 185
+    "topSpeedKmh": 185,
+    "batteryCapacityKwh": 77.4
   },
   {
     "name": "Volvo EX30",
@@ -8623,7 +8709,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2030,
-    "topSpeedKmh": 180
+    "topSpeedKmh": 180,
+    "batteryCapacityKwh": 64
   },
   {
     "name": "Volvo EX30",
@@ -8651,7 +8738,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2090,
-    "topSpeedKmh": 180
+    "topSpeedKmh": 180,
+    "batteryCapacityKwh": 64
   },
   {
     "name": "Mercedes EQA",
@@ -8679,7 +8767,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2240,
-    "topSpeedKmh": 160
+    "topSpeedKmh": 160,
+    "batteryCapacityKwh": 66.5
   },
   {
     "name": "Mercedes EQB",
@@ -8707,7 +8796,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2380,
-    "topSpeedKmh": 160
+    "topSpeedKmh": 160,
+    "batteryCapacityKwh": 66.5
   },
   {
     "name": "Mini Cooper SE",
@@ -8735,7 +8825,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1665,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "batteryCapacityKwh": 28.9
   },
   {
     "name": "Honda e:N1",
@@ -8763,7 +8854,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1720,
-    "topSpeedKmh": 140
+    "topSpeedKmh": 140,
+    "batteryCapacityKwh": 35.5
   },
   {
     "name": "BYD Atto 3",
@@ -8791,7 +8883,11 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1880,
-    "topSpeedKmh": 160
+    "topSpeedKmh": 160,
+    "batteryCapacityKwh": 49.92,
+    "torqueNm": 310,
+    "batteryWarranty": "8 years / 150,000 km",
+    "technologyFeatures": "OTA Updates, 12.8\" Rotating Touchscreen, DiPilot ADAS, V2L Vehicle-to-Load"
   },
   {
     "name": "BYD Atto 3",
@@ -8819,7 +8915,11 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1950,
-    "topSpeedKmh": 160
+    "topSpeedKmh": 160,
+    "batteryCapacityKwh": 60.48,
+    "torqueNm": 310,
+    "batteryWarranty": "8 years / 150,000 km",
+    "technologyFeatures": "OTA Updates, 12.8\" Rotating Touchscreen, DiPilot ADAS, V2L Vehicle-to-Load"
   },
   {
     "name": "Tesla Model Y",
@@ -8847,7 +8947,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2174,
-    "topSpeedKmh": 217
+    "topSpeedKmh": 217,
+    "batteryCapacityKwh": 60
   },
   {
     "name": "Tesla Model Y",
@@ -8875,7 +8976,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2203,
-    "topSpeedKmh": 217
+    "topSpeedKmh": 217,
+    "batteryCapacityKwh": 75
   },
   {
     "name": "Denza D9",
@@ -8903,7 +9005,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2690,
-    "topSpeedKmh": 180
+    "topSpeedKmh": 180,
+    "batteryCapacityKwh": 90
   },
   {
     "name": "Xpeng G9",
@@ -8931,7 +9034,10 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2525,
-    "topSpeedKmh": 200
+    "topSpeedKmh": 200,
+    "batteryWarranty": "8 years / 160,000 km",
+    "technologyFeatures": "OTA Updates, 14.96\" Touchscreen, XNGP ADAS, V2L",
+    "batteryCapacityKwh": 93.1
   },
   {
     "name": "Xpeng G9",
@@ -8959,7 +9065,10 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2600,
-    "topSpeedKmh": 200
+    "topSpeedKmh": 200,
+    "batteryWarranty": "8 years / 160,000 km",
+    "technologyFeatures": "OTA Updates, 14.96\" Touchscreen, XNGP ADAS, V2L",
+    "batteryCapacityKwh": 93.1
   },
   {
     "name": "BMW i4",
@@ -8987,7 +9096,10 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2205,
-    "topSpeedKmh": 190
+    "topSpeedKmh": 190,
+    "batteryWarranty": "8 years / 160,000 km",
+    "technologyFeatures": "OTA Updates, BMW iDrive 8, Driving Assistant Professional",
+    "batteryCapacityKwh": 83.9
   },
   {
     "name": "BMW i4",
@@ -9015,7 +9127,10 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2415,
-    "topSpeedKmh": 225
+    "topSpeedKmh": 225,
+    "batteryWarranty": "8 years / 160,000 km",
+    "technologyFeatures": "OTA Updates, BMW iDrive 8, Driving Assistant Professional",
+    "batteryCapacityKwh": 83.9
   },
   {
     "name": "Zeekr X",
@@ -9043,7 +9158,10 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2020,
-    "topSpeedKmh": 180
+    "topSpeedKmh": 180,
+    "batteryWarranty": "8 years / 200,000 km",
+    "technologyFeatures": "OTA Updates, 15.4\" Center Screen, ZEEKR ADAS, V2L",
+    "batteryCapacityKwh": 66
   },
   {
     "name": "Zeekr X",
@@ -9071,7 +9189,11 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2080,
-    "topSpeedKmh": 180
+    "topSpeedKmh": 180,
+    "batteryWarranty": "8 years / 200,000 km",
+    "batteryCapacityKwh": 100,
+    "torqueNm": 686,
+    "technologyFeatures": "OTA Updates, 15.4\" Center Screen, ZEEKR ADAS, V2L"
   },
   {
     "name": "Chery Tiggo 8 Pro e+",
@@ -9099,7 +9221,11 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2150,
-    "topSpeedKmh": 180
+    "topSpeedKmh": 180,
+    "batteryWarranty": "8 years / 150,000 km",
+    "torqueNm": 230,
+    "technologyFeatures": "OTA Updates, 12.3\" Touchscreen, ADAS",
+    "batteryCapacityKwh": 19.27
   },
   {
     "name": "Porsche Macan Electric",
@@ -9127,7 +9253,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2400,
-    "topSpeedKmh": 220
+    "topSpeedKmh": 220,
+    "batteryCapacityKwh": 95
   },
   {
     "name": "Porsche Macan Electric",
@@ -9155,7 +9282,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2480,
-    "topSpeedKmh": 220
+    "topSpeedKmh": 220,
+    "batteryCapacityKwh": 95
   },
   {
     "name": "MG ZS EV",
@@ -9183,7 +9311,10 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1799,
-    "topSpeedKmh": 140
+    "topSpeedKmh": 140,
+    "batteryWarranty": "8 years / 160,000 km",
+    "technologyFeatures": "OTA Updates, 10.1\" Touchscreen, MG Pilot ADAS",
+    "batteryCapacityKwh": 50.3
   },
   {
     "name": "MG ZS EV",
@@ -9211,7 +9342,10 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1829,
-    "topSpeedKmh": 140
+    "topSpeedKmh": 140,
+    "batteryWarranty": "8 years / 160,000 km",
+    "technologyFeatures": "OTA Updates, 10.1\" Touchscreen, MG Pilot ADAS",
+    "batteryCapacityKwh": 50.3
   },
   {
     "name": "Ora Good Cat",
@@ -9239,7 +9373,10 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1710,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "batteryWarranty": "8 years / 150,000 km",
+    "technologyFeatures": "OTA Updates, 10.25\" Touchscreen, ADAS",
+    "batteryCapacityKwh": 63.1
   },
   {
     "name": "Mercedes EQC",
@@ -9267,7 +9404,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2609,
-    "topSpeedKmh": 180
+    "topSpeedKmh": 180,
+    "batteryCapacityKwh": 85
   },
   {
     "name": "Hyundai Ioniq 5",
@@ -9295,7 +9433,10 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2100,
-    "topSpeedKmh": 185
+    "topSpeedKmh": 185,
+    "batteryWarranty": "8 years / 160,000 km",
+    "technologyFeatures": "OTA Updates, 12.3\" Dual Screen, Highway Driving Assist 2, V2L",
+    "batteryCapacityKwh": 58
   },
   {
     "name": "Hyundai Ioniq 5",
@@ -9323,7 +9464,10 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2200,
-    "topSpeedKmh": 185
+    "topSpeedKmh": 185,
+    "batteryWarranty": "8 years / 160,000 km",
+    "technologyFeatures": "OTA Updates, 12.3\" Dual Screen, Highway Driving Assist 2, V2L",
+    "batteryCapacityKwh": 77.4
   },
   {
     "name": "Kia EV6",
@@ -9351,7 +9495,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2195,
-    "topSpeedKmh": 185
+    "topSpeedKmh": 185,
+    "batteryCapacityKwh": 77.4
   },
   {
     "name": "Lotus Eletre",
@@ -9379,7 +9524,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2720,
-    "topSpeedKmh": 250
+    "topSpeedKmh": 250,
+    "batteryCapacityKwh": 109
   },
   {
     "name": "Dongfeng Box",
@@ -9407,7 +9553,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1410,
-    "topSpeedKmh": 100
+    "topSpeedKmh": 100,
+    "batteryCapacityKwh": 50.3
   },
   {
     "name": "Honda e:N2",
@@ -9435,7 +9582,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1720,
-    "topSpeedKmh": 140
+    "topSpeedKmh": 140,
+    "batteryCapacityKwh": 68.8
   },
   {
     "name": "Volvo XC40 Recharge",
@@ -9463,7 +9611,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2240,
-    "topSpeedKmh": 180
+    "topSpeedKmh": 180,
+    "batteryCapacityKwh": 75
   },
   {
     "name": "Smart #1",
@@ -9491,7 +9640,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1980,
-    "topSpeedKmh": 180
+    "topSpeedKmh": 180,
+    "batteryCapacityKwh": 66
   },
   {
     "name": "Denza D9",
@@ -9519,7 +9669,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2690,
-    "topSpeedKmh": 180
+    "topSpeedKmh": 180,
+    "batteryCapacityKwh": 90
   },
   {
     "name": "Xpeng G9",
@@ -9547,7 +9698,11 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2525,
-    "topSpeedKmh": 200
+    "topSpeedKmh": 200,
+    "batteryWarranty": "8 years / 160,000 km",
+    "torqueNm": 358,
+    "technologyFeatures": "OTA Updates, 14.96\" Touchscreen, XNGP ADAS, V2L",
+    "batteryCapacityKwh": 93.1
   },
   {
     "name": "iCaur 03",
@@ -9575,7 +9730,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2150,
-    "topSpeedKmh": 180
+    "topSpeedKmh": 180,
+    "batteryCapacityKwh": 53
   },
   {
     "name": "Perodua EM-O",
@@ -9603,7 +9759,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1600,
-    "topSpeedKmh": 120
+    "topSpeedKmh": 120,
+    "batteryCapacityKwh": 31.9
   },
   {
     "name": "MINI Aceman",
@@ -9631,7 +9788,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1800,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "batteryCapacityKwh": 54.2
   },
   {
     "name": "Volvo EX90",
@@ -9659,7 +9817,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 3000,
-    "topSpeedKmh": 180
+    "topSpeedKmh": 180,
+    "batteryCapacityKwh": 111
   },
   {
     "name": "Geely Geometry A",
@@ -9686,7 +9845,10 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1850
+    "grossVehicleWeightKg": 1850,
+    "batteryWarranty": "8 years / 150,000 km",
+    "technologyFeatures": "OTA Updates, 10.25\" Touchscreen, ADAS",
+    "batteryCapacityKwh": 51.9
   },
   {
     "name": "Smart #1",
@@ -9714,7 +9876,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2040,
-    "topSpeedKmh": 180
+    "topSpeedKmh": 180,
+    "batteryCapacityKwh": 66
   },
   {
     "name": "Perodua EMO-II",
@@ -9742,7 +9905,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1400,
-    "topSpeedKmh": 120
+    "topSpeedKmh": 120,
+    "batteryCapacityKwh": 31.9
   },
   {
     "name": "Hyptec HT",
@@ -9770,7 +9934,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2150,
-    "topSpeedKmh": 180
+    "topSpeedKmh": 180,
+    "batteryCapacityKwh": 61.1
   },
   {
     "name": "Opel Mokka-e",
@@ -9798,7 +9963,8 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1798,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "batteryCapacityKwh": 50
   },
   {
     "name": "Porsche Macan Electric",
@@ -9946,7 +10112,7 @@
     "batteryWarranty": "7 years / 150,000 km",
     "chargingTimeDc0To80Min": 54,
     "chargingCapabilities": "DC Fast Charge: Up to 87kW, AC: 7kW",
-    "technologyFeatures": "MG Pilot, 10.1\" Touchscreen, Panoramic Roof, V2L",
+    "technologyFeatures": "OTA Updates, 10.1\" Touchscreen, MG Pilot ADAS",
     "basePriceLocalCurrency": 1399000,
     "optionPrices": [],
     "isAvailable": true,
@@ -9973,7 +10139,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 28,
     "chargingCapabilities": "DC Fast Charge: Up to 80kW, AC: 9.9kW",
-    "technologyFeatures": "24.6\" Dual Screen, Sony Audio, 540° Camera, V2L",
+    "technologyFeatures": "OTA Updates, 12.3\" Touchscreen, ADAS",
     "basePriceLocalCurrency": 1699000,
     "optionPrices": [],
     "isAvailable": true,
@@ -10054,7 +10220,7 @@
     "batteryWarranty": "7 years / 150,000 km",
     "chargingTimeDc0To80Min": 35,
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
-    "technologyFeatures": "MG iSMART, 10.25\" Dual Screen, 360° Camera, ADAS Level 2",
+    "technologyFeatures": "OTA Updates, 10.1\" Touchscreen, MG Pilot ADAS",
     "basePriceLocalCurrency": 699000000,
     "optionPrices": [],
     "isAvailable": true,
@@ -10081,7 +10247,7 @@
     "batteryWarranty": "8 years / 120,000 km",
     "chargingTimeDc0To80Min": 40,
     "chargingCapabilities": "DC Fast Charge: Up to 20kW, AC: 3.3kW",
-    "technologyFeatures": "7\" Touchscreen, Rear Camera, Basic Connectivity",
+    "technologyFeatures": "OTA Updates, 12.3\" Touchscreen, ADAS",
     "basePriceLocalCurrency": 240000000,
     "optionPrices": [],
     "isAvailable": true,
@@ -10189,7 +10355,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 30,
     "chargingCapabilities": "DC Fast Charge: Up to 85kW, AC: 6.6kW",
-    "technologyFeatures": "iFly 1.5 OS, 15.6\" Screen, 4WD Option, Solar Roof",
+    "technologyFeatures": "OTA Updates, 12.3\" Touchscreen, ADAS",
     "basePriceLocalCurrency": 400000000,
     "optionPrices": [],
     "isAvailable": true,
@@ -10216,7 +10382,7 @@
     "batteryWarranty": "8 years / 150,000 km",
     "chargingTimeDc0To80Min": 38,
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 11kW",
-    "technologyFeatures": "HUD, 360° Camera, ADAS Level 2, Panoramic Roof",
+    "technologyFeatures": "OTA Updates, 10.25\" Touchscreen, ADAS",
     "basePriceLocalCurrency": 450000000,
     "optionPrices": [],
     "isAvailable": true,
@@ -10351,7 +10517,7 @@
     "batteryWarranty": "7 years / 150,000 km",
     "chargingTimeDc0To80Min": 35,
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
-    "technologyFeatures": "MG iSMART, 10.25\" Dual Screen, 360° Camera, ADAS Level 2",
+    "technologyFeatures": "OTA Updates, 10.1\" Touchscreen, MG Pilot ADAS",
     "basePriceLocalCurrency": 799000,
     "optionPrices": [],
     "isAvailable": true,
@@ -10378,7 +10544,7 @@
     "batteryWarranty": "7 years / 150,000 km",
     "chargingTimeDc0To80Min": 35,
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
-    "technologyFeatures": "MG iSMART, 10.25\" Dual Screen, 360° Camera, ADAS Level 2",
+    "technologyFeatures": "OTA Updates, 10.1\" Touchscreen, MG Pilot ADAS",
     "basePriceLocalCurrency": 899000,
     "optionPrices": [],
     "isAvailable": true,
@@ -10405,7 +10571,7 @@
     "batteryWarranty": "8 years / 200,000 km",
     "chargingTimeDc0To80Min": 25,
     "chargingCapabilities": "DC Fast Charge: Up to 360kW, AC: 11kW",
-    "technologyFeatures": "Massage Seats, 15.6\" Screen, Air Suspension, Level 2+ ADAS",
+    "technologyFeatures": "OTA Updates, 15.4\" Center Screen, ZEEKR ADAS, V2L",
     "basePriceLocalCurrency": 2499000,
     "optionPrices": [],
     "isAvailable": true,
@@ -10432,7 +10598,7 @@
     "batteryWarranty": "8 years / 150,000 km",
     "chargingTimeDc0To80Min": 38,
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 11kW",
-    "technologyFeatures": "HUD, 360° Camera, ADAS Level 2, Panoramic Roof",
+    "technologyFeatures": "OTA Updates, 10.25\" Touchscreen, ADAS",
     "basePriceLocalCurrency": 999000,
     "optionPrices": [],
     "isAvailable": true,

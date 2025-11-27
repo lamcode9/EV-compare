@@ -31,6 +31,7 @@ export interface Vehicle {
   rangeKm: number | null // Legacy field
   rangeWltpKm?: number | null // WLTP range in km
   rangeEpaKm?: number | null // EPA range in km
+  batteryCapacityKwh: number | null // Battery capacity in kWh
   manufacturerCostUsd: number | null
   batteryManufacturer: string | null
   batteryTechnology: BatteryTechnology | null

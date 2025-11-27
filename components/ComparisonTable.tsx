@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useMemo, ReactNode } from 'react'
+import { useState, useMemo, ReactNode, useRef, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { useVehicleStore } from '@/store/VehicleStore'
 import { Vehicle } from '@/types/vehicle'
 import type { Country } from '@prisma/client'
@@ -16,35 +17,30 @@ import {
   LabelList,
 } from 'recharts'
 import { 
-  estimateCostPerKm, 
+  calculateCostPerKm, 
   getElectricityRate, 
-  estimateBatteryCapacityFromWeight,
   convertKwToHp,
   getAcceleration0To100Kmh,
   formatValueOrNA,
   formatPriceOrNA,
   formatStringOrNA,
+  formatPrice as formatPriceUtil,
 } from '@/lib/utils'
 
 type SortField = 'name' | 'rangeKm' | 'efficiencyKwhPer100km' | 'basePriceLocalCurrency' | 'powerRatingKw' | 'batteryWeightKg'
 type SortDirection = 'asc' | 'desc'
 
-export default function ComparisonTable() {
-  const { selectedVehicles, clearAll } = useVehicleStore()
-  const [sortField, setSortField] = useState<SortField | null>(null)
-  const [sortDirection, setSortDirection] = useState<SortDirection>('asc')
+const CURRENCY_BY_COUNTRY: Record<Country, string> = {
+  SG: 'SGD',
+  MY: 'MYR',
+  ID: 'IDR',
+  PH: 'PHP',
+  TH: 'THB',
+  VN: 'VND',
+}
 
-  const CURRENCY_BY_COUNTRY: Record<Country, string> = {
-    SG: 'SGD',
-    MY: 'MYR',
-    ID: 'IDR',
-    PH: 'PHP',
-    TH: 'THB',
-    VN: 'VND',
-  }
-
-  const formatPrice = (price: number, country: Country, digits: number = 0) => {
-    const currency = CURRENCY_BY_COUNTRY[country] || 'USD'
+const formatPrice = (price: number, country: Country, digits: number = 0) => {
+  const currency = CURRENCY_BY_COUNTRY[country] || 'USD'
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency,
@@ -53,23 +49,234 @@ export default function ComparisonTable() {
     }).format(price)
   }
 
+/**
+ * Info box component explaining Cost / km calculation
+ */
+function CostPerKmInfoBox({ 
+  country 
+}: { 
+  country: Country
+}) {
+  const [isOpen, setIsOpen] = useState(false)
+  const buttonRef = useRef<HTMLButtonElement | null>(null)
+
+  const electricityRate = getElectricityRate(country)
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation()
+    setIsOpen(!isOpen)
+  }
+
+  // Calculate position when opening
+  const getPosition = () => {
+    if (!buttonRef.current || !isOpen) return null
+    const rect = buttonRef.current.getBoundingClientRect()
+    return {
+      top: rect.bottom + 6,
+      left: rect.left,
+    }
+  }
+
+  const position = getPosition()
+
+  return (
+    <div className="relative inline-block">
+      <button
+        ref={buttonRef}
+        type="button"
+        onClick={handleClick}
+        className="text-gray-400 hover:text-gray-600 transition-colors"
+        aria-label="Show cost per km definition"
+      >
+        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </button>
+      
+      {isOpen && position && typeof window !== 'undefined' && createPortal((
+        <>
+          {/* Backdrop */}
+          <div 
+            className="fixed inset-0 z-[9998]" 
+            onClick={() => setIsOpen(false)}
+          />
+          {/* Info Box - rendered via portal to appear above table */}
+          <div 
+            className="fixed w-72 bg-white border border-gray-200 rounded-lg shadow-lg p-4 z-[9999]"
+            style={{
+              top: `${position.top}px`,
+              left: `${position.left}px`,
+            }}
+          >
+            <div className="text-xs font-semibold text-gray-900 mb-3">Cost / km Definition</div>
+            
+            <div className="space-y-2 text-xs text-gray-700">
+              <div>
+                <div className="font-medium text-gray-900 mb-1">Formula:</div>
+                <div className="bg-gray-50 p-2 rounded font-mono text-[10px]">
+                  Cost/km = (Battery Capacity × Electricity Rate) ÷ Range
+                </div>
+              </div>
+              
+              <div className="pt-2 border-t border-gray-100">
+                <div className="font-medium text-gray-900 mb-1.5">Key Assumptions:</div>
+                <ul className="space-y-1.5 text-gray-600">
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-gray-400 mt-0.5">•</span>
+                    <span>Uses actual battery capacity from vehicle specifications</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-gray-400 mt-0.5">•</span>
+                    <span>Electricity rate: <span className="font-medium">{formatPriceUtil(electricityRate, country, 2)}/kWh</span> (typical DC fast charger)</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-gray-400 mt-0.5">•</span>
+                    <span>Uses WLTP or EPA rated range</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div className="pt-2 border-t border-gray-100 text-[10px] text-gray-500">
+                <div className="font-medium text-gray-700 mb-0.5">Note:</div>
+                <div>Rates vary by location and charging method. Home charging may be cheaper. Values shown are for comparison purposes.</div>
+              </div>
+            </div>
+            
+            <button
+              onClick={() => setIsOpen(false)}
+              className="mt-3 text-xs text-gray-500 hover:text-gray-700"
+            >
+              Close
+            </button>
+          </div>
+        </>
+      ), document.body)}
+    </div>
+  )
+}
+
+/**
+ * Info box component explaining Cost / Full Charge calculation
+ */
+function CostPerFullChargeInfoBox({ 
+  country 
+}: { 
+  country: Country
+}) {
+  const [isOpen, setIsOpen] = useState(false)
+  const buttonRef = useRef<HTMLButtonElement | null>(null)
+
+  const electricityRate = getElectricityRate(country)
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation()
+    setIsOpen(!isOpen)
+  }
+
+  // Calculate position when opening
+  const getPosition = () => {
+    if (!buttonRef.current || !isOpen) return null
+    const rect = buttonRef.current.getBoundingClientRect()
+    return {
+      top: rect.bottom + 6,
+      left: rect.left,
+    }
+  }
+
+  const position = getPosition()
+
+  return (
+    <div className="relative inline-block">
+      <button
+        ref={buttonRef}
+        type="button"
+        onClick={handleClick}
+        className="text-gray-400 hover:text-gray-600 transition-colors"
+        aria-label="Show cost per full charge definition"
+      >
+        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </button>
+      
+      {isOpen && position && typeof window !== 'undefined' && createPortal((
+        <>
+          {/* Backdrop */}
+          <div 
+            className="fixed inset-0 z-[9998]" 
+            onClick={() => setIsOpen(false)}
+          />
+          {/* Info Box - rendered via portal to appear above table */}
+          <div 
+            className="fixed w-72 bg-white border border-gray-200 rounded-lg shadow-lg p-4 z-[9999]"
+            style={{
+              top: `${position.top}px`,
+              left: `${position.left}px`,
+            }}
+          >
+            <div className="text-xs font-semibold text-gray-900 mb-3">Cost / Full Charge Definition</div>
+            
+            <div className="space-y-2 text-xs text-gray-700">
+              <div>
+                <div className="font-medium text-gray-900 mb-1">Formula:</div>
+                <div className="bg-gray-50 p-2 rounded font-mono text-[10px]">
+                  Cost/Full Charge = Battery Capacity × Electricity Rate
+                </div>
+              </div>
+              
+              <div className="pt-2 border-t border-gray-100">
+                <div className="font-medium text-gray-900 mb-1.5">Key Assumptions:</div>
+                <ul className="space-y-1.5 text-gray-600">
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-gray-400 mt-0.5">•</span>
+                    <span>Uses actual battery capacity from vehicle specifications</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-gray-400 mt-0.5">•</span>
+                    <span>Electricity rate: <span className="font-medium">{formatPriceUtil(electricityRate, country, 2)}/kWh</span> (typical DC fast charger)</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div className="pt-2 border-t border-gray-100 text-[10px] text-gray-500">
+                <div className="font-medium text-gray-700 mb-0.5">Note:</div>
+                <div>Rates vary by location and charging method. Home charging may be cheaper. Values shown are for comparison purposes.</div>
+              </div>
+            </div>
+            
+            <button
+              onClick={() => setIsOpen(false)}
+              className="mt-3 text-xs text-gray-500 hover:text-gray-700"
+            >
+              Close
+            </button>
+          </div>
+        </>
+      ), document.body)}
+    </div>
+  )
+}
+
+export default function ComparisonTable() {
+  const { selectedVehicles, clearAll } = useVehicleStore()
+  const [sortField, setSortField] = useState<SortField | null>(null)
+  const [sortDirection, setSortDirection] = useState<SortDirection>('asc')
+
   const formatCostPerKm = (value: number, country: Country) =>
     formatPrice(value, country, 2)
 
   const getCostPerKm = (vehicle: Vehicle) => {
-    if (vehicle.batteryWeightKg === null || vehicle.batteryWeightKg === undefined || 
-        vehicle.rangeKm === null || vehicle.rangeKm === undefined) {
+    if (!vehicle.batteryCapacityKwh || vehicle.rangeKm === null || vehicle.rangeKm === undefined) {
       return null
     }
-    return estimateCostPerKm(vehicle.country, vehicle.batteryWeightKg, vehicle.rangeKm)
+    return calculateCostPerKm(vehicle.country, vehicle.batteryCapacityKwh, vehicle.rangeKm)
   }
   
   const getCostPerFullCharge = (vehicle: Vehicle) => {
-    if (vehicle.batteryWeightKg === null || vehicle.batteryWeightKg === undefined) {
+    if (!vehicle.batteryCapacityKwh) {
       return null
     }
-    const batteryCapacity = estimateBatteryCapacityFromWeight(vehicle.batteryWeightKg)
-    return batteryCapacity * getElectricityRate(vehicle.country)
+    return vehicle.batteryCapacityKwh * getElectricityRate(vehicle.country)
   }
 
   const vehicleColors = ['#0ea5e9', '#10b981', '#f97316', '#a855f7']
@@ -172,9 +379,9 @@ export default function ComparisonTable() {
       const priceDiff = maxRangeVehicle.basePriceLocalCurrency
       const minPriceValue = minPriceVehicle.basePriceLocalCurrency
       if (priceDiff !== null && minPriceValue !== null && priceDiff > minPriceValue) {
-        insights.push(
+      insights.push(
           `${getVehicleLabel(maxRangeVehicle)} wins on range (${maxRange}km) but costs ${((priceDiff - minPriceValue) / minPriceValue * 100).toFixed(0)}% more than ${getVehicleLabel(minPriceVehicle)}`
-        )
+      )
       }
     }
 
@@ -318,8 +525,8 @@ export default function ComparisonTable() {
   const bestBatteryCapacity = selectedVehicles.length > 0
     ? (() => {
         const capacities = selectedVehicles
-          .map(v => v.batteryWeightKg !== null && v.batteryWeightKg !== undefined ? estimateBatteryCapacityFromWeight(v.batteryWeightKg) : null)
-          .filter((v): v is number => v !== null && v !== undefined)
+          .map(v => v.batteryCapacityKwh)
+          .filter((v): v is number => v !== null && v !== undefined && v > 0)
         return capacities.length > 0 ? Math.max(...capacities) : null
       })()
     : null
@@ -442,8 +649,8 @@ export default function ComparisonTable() {
                   </p>
                 )
               })}
-            </div>
-          )}
+          </div>
+        )}
           </div>
       </div>
 
@@ -466,21 +673,26 @@ export default function ComparisonTable() {
         <h3 className="font-semibold text-gray-800 flex items-center gap-2">
           Detailed Comparison
         </h3>
-      <div className="overflow-x-auto">
+        {sortedVehicles.length > 2 && (
+          <p className="text-xs text-gray-500 md:hidden">
+            💡 Scroll horizontally to see all vehicles
+          </p>
+        )}
+      <div className="overflow-x-auto -mx-6 px-6">
         <table className="w-full" style={{ tableLayout: 'fixed' }}>
           <colgroup>
-            <col style={{ width: '200px' }} />
+            <col className="w-24 md:w-32 lg:w-40" />
             {sortedVehicles.map((_, index) => {
               // Calculate equal width for vehicle columns
-              // First column is 200px, remaining space divided equally
-              const vehicleColumnWidth = `calc((100% - 200px) / ${sortedVehicles.length})`;
+              // Remaining space divided equally
+              const vehicleColumnWidth = `calc((100% - 6rem) / ${sortedVehicles.length})`;
               return <col key={index} style={{ width: vehicleColumnWidth }} />;
             })}
           </colgroup>
           <thead className="bg-gray-50">
             <tr>
-              <th className="px-3 py-2 text-left text-xs font-semibold text-gray-700 sticky left-0 bg-gray-50 z-10">
-                Specification
+              <th className="px-2 py-2 text-left text-xs font-semibold text-gray-700 sticky left-0 bg-gray-50 z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+                <span className="break-words leading-tight">Specification</span>
               </th>
               {sortedVehicles.map((vehicle) => (
                 <th
@@ -499,7 +711,7 @@ export default function ComparisonTable() {
             {/* 1. Power (kW) */}
             <tr>
               <td
-                className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 cursor-pointer hover:bg-gray-50 focus:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-ev-primary whitespace-nowrap"
+                className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 cursor-pointer hover:bg-gray-50 focus:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-ev-primary max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]"
                 onClick={() => handleSort('powerRatingKw')}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
@@ -512,7 +724,10 @@ export default function ComparisonTable() {
                 aria-label="Sort by power rating"
                 aria-sort={sortField === 'powerRatingKw' ? (sortDirection === 'asc' ? 'ascending' : 'descending') : 'none'}
               >
-                Power (kW) {sortField === 'powerRatingKw' && (sortDirection === 'asc' ? '↑' : '↓')}
+                <div className="flex flex-col leading-tight">
+                  <span>Power {sortField === 'powerRatingKw' && (sortDirection === 'asc' ? '↑' : '↓')}</span>
+                  <span className="text-[10px] text-gray-500">(kW)</span>
+                </div>
               </td>
               {sortedVehicles.map((vehicle) => (
                 <td
@@ -529,8 +744,11 @@ export default function ComparisonTable() {
             </tr>
             {/* 2. Power in Horsepower (hp) */}
             <tr>
-              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
-                Power (hp)
+              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+                <div className="flex flex-col leading-tight">
+                  <span>Power</span>
+                  <span className="text-[10px] text-gray-500">(hp)</span>
+                </div>
               </td>
               {sortedVehicles.map((vehicle) => {
                 const hp = vehicle.powerRatingKw !== null && vehicle.powerRatingKw !== undefined 
@@ -546,14 +764,17 @@ export default function ComparisonTable() {
                     }`}
                   >
                     {formatValueOrNA(hp, (v) => `${v} hp`)}
-                  </td>
+                </td>
                 )
               })}
             </tr>
             {/* 3. Torque (Nm) */}
             <tr>
-              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
-                Torque (Nm)
+              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+                <div className="flex flex-col leading-tight">
+                  <span>Torque</span>
+                  <span className="text-[10px] text-gray-500">(Nm)</span>
+                </div>
               </td>
               {sortedVehicles.map((vehicle) => {
                 const isBest = selectedVehicles.length > 0 && vehicle.torqueNm !== null && vehicle.torqueNm !== undefined
@@ -574,14 +795,17 @@ export default function ComparisonTable() {
                     }`}
                   >
                     {formatValueOrNA(vehicle.torqueNm, (v) => `${v}`)}
-                  </td>
+                </td>
                 )
               })}
             </tr>
             {/* 4. Acceleration */}
             <tr>
-              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
-                Acceleration (0-100 km/h)
+              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+                <div className="flex flex-col leading-tight">
+                  <span>Acceleration</span>
+                  <span className="text-[10px] text-gray-500">(0-100 km/h)</span>
+                </div>
               </td>
               {sortedVehicles.map((vehicle) => {
                 const accel = getAcceleration0To100Kmh(
@@ -600,15 +824,18 @@ export default function ComparisonTable() {
                     }`}
                   >
                     {formatValueOrNA(accel, (v) => `${v.toFixed(1)}s`)}
-                </td>
+              </td>
                 )
               })}
             </tr>
             {/* 5. Top Speed (km/h) */}
             <tr>
-              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
-                Top Speed (km/h)
-              </td>
+              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+                <div className="flex flex-col leading-tight">
+                  <span>Top Speed</span>
+                  <span className="text-[10px] text-gray-500">(km/h)</span>
+                </div>
+                </td>
               {sortedVehicles.map((vehicle) => {
                 const isBest = selectedVehicles.length > 0 && vehicle.topSpeedKmh !== null && vehicle.topSpeedKmh !== undefined
                   ? (() => {
@@ -634,8 +861,11 @@ export default function ComparisonTable() {
             </tr>
             {/* 6. Range - WLTP (km) */}
             <tr>
-              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
-                Range - WLTP (km)
+              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+                <div className="flex flex-col leading-tight">
+                  <span>Range - WLTP</span>
+                  <span className="text-[10px] text-gray-500">(km)</span>
+                </div>
               </td>
               {sortedVehicles.map((vehicle) => {
                 const rangeWltp = vehicle.rangeWltpKm ?? vehicle.rangeKm
@@ -657,8 +887,11 @@ export default function ComparisonTable() {
             </tr>
             {/* 7. Range - EPA (km) */}
             <tr>
-              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
-                Range - EPA (km)
+              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+                <div className="flex flex-col leading-tight">
+                  <span>Range - EPA</span>
+                  <span className="text-[10px] text-gray-500">(km)</span>
+                </div>
               </td>
               {sortedVehicles.map((vehicle) => {
                 const rangeEpa = vehicle.rangeEpaKm ?? (vehicle.rangeKm !== null && vehicle.rangeKm !== undefined ? Math.round(vehicle.rangeKm * 0.75) : null)
@@ -683,7 +916,7 @@ export default function ComparisonTable() {
             {/* 8. Efficiency (kWh/100km) */}
             <tr>
               <td
-                className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 cursor-pointer hover:bg-gray-50 focus:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-ev-primary whitespace-nowrap"
+                className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 cursor-pointer hover:bg-gray-50 focus:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-ev-primary max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]"
                 onClick={() => handleSort('efficiencyKwhPer100km')}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
@@ -696,7 +929,10 @@ export default function ComparisonTable() {
                 aria-label="Sort by efficiency"
                 aria-sort={sortField === 'efficiencyKwhPer100km' ? (sortDirection === 'asc' ? 'ascending' : 'descending') : 'none'}
               >
-                Efficiency (kWh/100km) {sortField === 'efficiencyKwhPer100km' && (sortDirection === 'asc' ? '↑' : '↓')}
+                <div className="flex flex-col leading-tight">
+                  <span>Efficiency {sortField === 'efficiencyKwhPer100km' && (sortDirection === 'asc' ? '↑' : '↓')}</span>
+                  <span className="text-[10px] text-gray-500">(kWh/100km)</span>
+                </div>
               </td>
               {sortedVehicles.map((vehicle) => (
                 <td
@@ -713,8 +949,13 @@ export default function ComparisonTable() {
             </tr>
             {/* 9. Cost / km */}
             <tr>
-              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
-                Cost / km
+              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+                <div className="flex items-center gap-1.5">
+                  <span className="break-words leading-tight">Cost / km</span>
+                  <CostPerKmInfoBox 
+                    country={sortedVehicles[0]?.country || 'SG'}
+                  />
+                </div>
               </td>
               {sortedVehicles.map((vehicle) => (
                 <td
@@ -733,8 +974,13 @@ export default function ComparisonTable() {
             </tr>
             {/* 9. Cost / full charge */}
             <tr>
-              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
-                Cost / Full Charge
+              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+                <div className="flex items-center gap-1.5">
+                  <span className="break-words leading-tight">Cost / Full Charge</span>
+                  <CostPerFullChargeInfoBox 
+                    country={sortedVehicles[0]?.country || 'SG'}
+                  />
+                </div>
               </td>
               {sortedVehicles.map((vehicle) => {
                 const cost = getCostPerFullCharge(vehicle)
@@ -755,8 +1001,8 @@ export default function ComparisonTable() {
             </tr>
             {/* 11. Vehicle Base Price */}
             <tr>
-              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
-                Vehicle Base Price
+              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+                <span className="break-words leading-tight">Vehicle Base Price</span>
               </td>
               {sortedVehicles.map((vehicle) => {
                 const isBest = bestBasePrice !== null && vehicle.basePriceLocalCurrency === bestBasePrice
@@ -776,13 +1022,14 @@ export default function ComparisonTable() {
             </tr>
             {/* 12. Battery Capacity */}
             <tr>
-              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
-                Battery Capacity (kWh)
+              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+                <div className="flex flex-col leading-tight">
+                  <span>Battery Capacity</span>
+                  <span className="text-[10px] text-gray-500">(kWh)</span>
+                </div>
               </td>
               {sortedVehicles.map((vehicle) => {
-                const capacity = vehicle.batteryWeightKg !== null && vehicle.batteryWeightKg !== undefined
-                  ? estimateBatteryCapacityFromWeight(vehicle.batteryWeightKg)
-                  : null
+                const capacity = (vehicle.batteryCapacityKwh !== null && vehicle.batteryCapacityKwh !== undefined && vehicle.batteryCapacityKwh > 0) ? vehicle.batteryCapacityKwh : null
                 const isBest = bestBatteryCapacity !== null && capacity !== null && capacity === bestBatteryCapacity
                 return (
                   <td
@@ -800,8 +1047,11 @@ export default function ComparisonTable() {
             </tr>
             {/* 12. DC Fast Charge 0-80% (min) */}
             <tr>
-              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
-                DC Fast Charge 0-80% (min)
+              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+                <div className="flex flex-col leading-tight">
+                  <span>DC Fast Charge</span>
+                  <span className="text-[10px] text-gray-500">0-80% (min)</span>
+                </div>
               </td>
               {sortedVehicles.map((vehicle) => {
                 const isBest = bestChargingTime !== null && vehicle.chargingTimeDc0To80Min === bestChargingTime
@@ -821,8 +1071,8 @@ export default function ComparisonTable() {
             </tr>
             {/* 13. Charging Capabilities */}
             <tr>
-              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
-                Charging Capabilities
+              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+                <span className="break-words leading-tight">Charging Capabilities</span>
               </td>
               {sortedVehicles.map((vehicle) => (
                 <td key={vehicle.id} className="px-3 py-2 text-center text-xs text-gray-600">
@@ -832,8 +1082,11 @@ export default function ComparisonTable() {
             </tr>
             {/* 14. Vehicle Weight (kg) */}
             <tr>
-              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
-                Vehicle Weight (kg)
+              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+                <div className="flex flex-col leading-tight">
+                  <span>Vehicle Weight</span>
+                  <span className="text-[10px] text-gray-500">(kg)</span>
+                </div>
               </td>
               {sortedVehicles.map((vehicle) => {
                 const weight = vehicle.curbWeightKg !== null && vehicle.curbWeightKg !== undefined
@@ -850,14 +1103,17 @@ export default function ComparisonTable() {
                     }`}
                   >
                     {formatValueOrNA(weight, (v) => `${v} kg`)}
-                  </td>
+              </td>
                 )
               })}
             </tr>
             {/* 15. Battery Weight (kg) */}
             <tr>
-              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
-                Battery Weight (kg)
+              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+                <div className="flex flex-col leading-tight">
+                  <span>Battery Weight</span>
+                  <span className="text-[10px] text-gray-500">(kg)</span>
+                </div>
               </td>
               {sortedVehicles.map((vehicle) => {
                 const weight = vehicle.batteryWeightKg !== null && vehicle.batteryWeightKg !== undefined
@@ -880,8 +1136,11 @@ export default function ComparisonTable() {
             </tr>
             {/* 16. Battery Weight % */}
             <tr>
-              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
-                Battery Weight %
+              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+                <div className="flex flex-col leading-tight">
+                  <span>Battery Weight</span>
+                  <span className="text-[10px] text-gray-500">(%)</span>
+                </div>
               </td>
               {sortedVehicles.map((vehicle) => {
                 const isBest = bestBatteryWeightPercent !== null && vehicle.batteryWeightPercentage === bestBatteryWeightPercent
@@ -901,8 +1160,8 @@ export default function ComparisonTable() {
             </tr>
             {/* 17. Battery Manufacturer */}
             <tr>
-              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
-                Battery Manufacturer
+              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+                <span className="break-words leading-tight">Battery Manufacturer</span>
               </td>
               {sortedVehicles.map((vehicle) => (
                 <td key={vehicle.id} className="px-3 py-2 text-center text-xs text-gray-600">
@@ -912,8 +1171,8 @@ export default function ComparisonTable() {
             </tr>
             {/* 18. Battery Technology */}
             <tr>
-              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
-                Battery Technology
+              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+                <span className="break-words leading-tight">Battery Technology</span>
               </td>
               {sortedVehicles.map((vehicle) => (
                 <td key={vehicle.id} className="px-3 py-2 text-center text-xs text-gray-600">
@@ -925,8 +1184,8 @@ export default function ComparisonTable() {
             </tr>
             {/* 19. Battery Warranty */}
             <tr>
-              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
-                Battery Warranty
+              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+                <span className="break-words leading-tight">Battery Warranty</span>
               </td>
               {sortedVehicles.map((vehicle) => (
                 <td key={vehicle.id} className="px-3 py-2 text-center text-xs text-gray-600">
@@ -936,8 +1195,8 @@ export default function ComparisonTable() {
             </tr>
             {/* 20. Over the air (OTA) updates */}
             <tr>
-              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
-                Over the Air (OTA) Updates
+              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+                <span className="break-words leading-tight">Over the Air (OTA) Updates</span>
               </td>
               {sortedVehicles.map((vehicle) => {
                 // Check if technologyFeatures mentions OTA
@@ -953,8 +1212,8 @@ export default function ComparisonTable() {
             </tr>
             {/* 21. Technology Features */}
             <tr>
-              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
-                Technology Features
+              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+                <span className="break-words leading-tight">Technology Features</span>
               </td>
               {sortedVehicles.map((vehicle) => (
                 <td key={vehicle.id} className="px-3 py-2 text-center text-xs text-gray-600">
@@ -1006,7 +1265,7 @@ function MetricChart({ title, data, suffix, formatter, children }: MetricChartPr
     })
     if (currentLine) lines.push(currentLine)
     
-    return (
+  return (
       <g transform={`translate(${x},${y + 10})`}>
         <text
           x={0}

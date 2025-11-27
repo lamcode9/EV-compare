@@ -23,7 +23,17 @@ export async function GET(request: NextRequest) {
       orderBy: {
         name: 'asc',
       },
+      // Explicitly select all fields to ensure batteryCapacityKwh is included
+      select: undefined, // undefined means select all fields
     })
+    
+    // Verify batteryCapacityKwh is included in response
+    if (vehicles.length > 0 && process.env.NODE_ENV === 'development') {
+      const sample = vehicles[0]
+      if (!('batteryCapacityKwh' in sample)) {
+        console.warn('Warning: batteryCapacityKwh missing from vehicle response:', sample.id)
+      }
+    }
     
     return NextResponse.json(vehicles)
   } catch (error) {

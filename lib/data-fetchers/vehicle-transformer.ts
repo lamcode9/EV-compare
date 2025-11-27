@@ -67,6 +67,7 @@ export async function transformAndSaveVehicle(input: VehicleInput) {
   if (input.rangeKm !== undefined && input.rangeKm !== null) vehicleData.rangeKm = input.rangeKm
   if (input.rangeWltpKm !== undefined && input.rangeWltpKm !== null) vehicleData.rangeWltpKm = input.rangeWltpKm
   if (input.rangeEpaKm !== undefined && input.rangeEpaKm !== null) vehicleData.rangeEpaKm = input.rangeEpaKm
+  if (input.batteryCapacityKwh !== undefined && input.batteryCapacityKwh !== null) vehicleData.batteryCapacityKwh = input.batteryCapacityKwh
   if (input.chargingTimeDc0To80Min !== undefined && input.chargingTimeDc0To80Min !== null) vehicleData.chargingTimeDc0To80Min = input.chargingTimeDc0To80Min
   if (input.basePrice !== null && input.basePrice !== undefined) vehicleData.basePriceLocalCurrency = input.basePrice
   if (input.batteryWeightKg !== undefined && input.batteryWeightKg !== null) vehicleData.batteryWeightKg = input.batteryWeightKg
@@ -78,9 +79,12 @@ export async function transformAndSaveVehicle(input: VehicleInput) {
   if (input.chargingCapabilities) vehicleData.chargingCapabilities = input.chargingCapabilities
   if (input.technologyFeatures) vehicleData.technologyFeatures = input.technologyFeatures
 
+  // Remove id from update data (it's only used in where clause)
+  const { id: _, ...updateData } = vehicleData
+  
   await prisma.vehicle.upsert({
     where: { id: vehicleId },
-    update: vehicleData,
+    update: updateData,
     create: vehicleData,
   })
 

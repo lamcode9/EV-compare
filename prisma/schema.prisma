@@ -44,6 +44,7 @@ model Vehicle {
   rangeKm                     Float?              // Legacy field, use rangeWltpKm or rangeEpaKm
   rangeWltpKm                 Float?             // WLTP range in km
   rangeEpaKm                  Float?             // EPA range in km
+  batteryCapacityKwh          Float?             // Battery capacity in kWh
   manufacturerCostUsd         Float?
   batteryManufacturer         String?
   batteryTechnology           BatteryTechnology?
