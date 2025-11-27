@@ -432,15 +432,39 @@ export default function ComparisonTable() {
   const ICE_FACTS: Partial<Record<Country, { models: string[]; costPerKm: number; currency: string; blurb: string }>> = {
     SG: {
       models: ['Toyota Corolla Altis 1.6', 'Honda Civic 1.5T'],
-      costPerKm: 0.24,
+      costPerKm: 0.20, // 2.60 ÷ 13 = 0.20
       currency: 'SGD',
-      blurb: 'Assumes RON95 @ SGD 2.60/L with ~15 km/L real-world efficiency.',
+      blurb: 'Assumes RON95 @ SGD 2.60/L with ~13 km/L real-world efficiency.',
     },
     MY: {
       models: ['Honda City 1.5L', 'Toyota Vios 1.5L'],
-      costPerKm: 0.30,
+      costPerKm: 0.16, // 2.05 ÷ 13 = 0.16
       currency: 'MYR',
-      blurb: 'Assumes RON95 @ MYR 2.05/L with ~14 km/L efficiency.',
+      blurb: 'Assumes RON95 @ MYR 2.05/L with ~13 km/L efficiency.',
+    },
+    ID: {
+      models: ['Toyota Avanza 1.3', 'Honda Brio 1.2'],
+      costPerKm: 1318.18, // 14500 ÷ 11 = 1318.18
+      currency: 'IDR',
+      blurb: 'Assumes Pertamax @ IDR 14,500/L with ~11 km/L real-world efficiency.',
+    },
+    PH: {
+      models: ['Toyota Vios 1.3', 'Mitsubishi Mirage 1.2'],
+      costPerKm: 4.77, // 62 ÷ 13 = 4.77
+      currency: 'PHP',
+      blurb: 'Assumes RON95 @ PHP 62/L with ~13 km/L real-world efficiency.',
+    },
+    TH: {
+      models: ['Toyota Altis 1.6', 'Honda City 1.5'],
+      costPerKm: 2.23, // 29 ÷ 13 = 2.23
+      currency: 'THB',
+      blurb: 'Assumes Gasohol 95 @ THB 29/L with ~13 km/L real-world efficiency.',
+    },
+    VN: {
+      models: ['Toyota Vios 1.5', 'Honda City 1.5'],
+      costPerKm: 2083.33, // 25000 ÷ 12 = 2083.33
+      currency: 'VND',
+      blurb: 'Assumes RON95 @ VND 25,000/L with ~12 km/L real-world efficiency.',
     },
   }
   
@@ -623,15 +647,29 @@ export default function ComparisonTable() {
           </p>
           <p className="mb-1">
             <span className="font-semibold">1.</span> Cost/km = (Battery capacity in kWh × average electricity rate) ÷ rated range.{' '}
-            {countriesRepresented.length === 1 ? (
-              countriesRepresented[0] === 'SG' ? (
-                <>We use SGD {getElectricityRate('SG').toFixed(2)}/kWh for Singapore.</>
-              ) : (
-                <>We use MYR {getElectricityRate('MY').toFixed(2)}/kWh for Malaysia.</>
+            We use{' '}
+            {countriesRepresented.map((country, index) => {
+              const rate = getElectricityRate(country)
+              const currency = ICE_FACTS[country]?.currency || 'USD'
+              const countryName = {
+                SG: 'Singapore',
+                MY: 'Malaysia',
+                ID: 'Indonesia',
+                PH: 'Philippines',
+                TH: 'Thailand',
+                VN: 'Vietnam'
+              }[country] || country
+
+              const separator = index === countriesRepresented.length - 1 ? '' :
+                               index === countriesRepresented.length - 2 ? ' and ' : ', '
+
+              return (
+                <span key={country}>
+                  {currency} {rate.toFixed(2)}/kWh for {countryName}{separator}
+                </span>
               )
-            ) : (
-              <>We use SGD {getElectricityRate('SG').toFixed(2)}/kWh for Singapore and MYR {getElectricityRate('MY').toFixed(2)}/kWh for Malaysia.</>
-            )}
+            })}
+            .
         </p>
         {countriesRepresented.length > 0 && (
             <div>
@@ -640,7 +678,17 @@ export default function ComparisonTable() {
                 if (!fact) return null
                 return (
                   <p key={country} className="leading-relaxed">
-                    <span className="font-semibold">2.</span> In {country === 'SG' ? 'Singapore' : 'Malaysia'}, comparable ICE sedans such as{' '}
+                    <span className="font-semibold">2.</span> In {(() => {
+                      const countryNames = {
+                        SG: 'Singapore',
+                        MY: 'Malaysia',
+                        ID: 'Indonesia',
+                        PH: 'Philippines',
+                        TH: 'Thailand',
+                        VN: 'Vietnam'
+                      }
+                      return countryNames[country] || country
+                    })()}, comparable ICE sedans such as{' '}
                     <span className="font-semibold">{fact.models.join(' or ')}</span> average around{' '}
                     <span className="font-semibold">
                       {fact.currency} {fact.costPerKm.toFixed(2)} per km
