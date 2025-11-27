@@ -1,6 +1,6 @@
-# Interactive UI Design Guide for EVCompare SEA
+# Interactive UI Design Guide for Energy SEA
 
-This guide explains how to iteratively design and refine the UI/UX of EVCompare SEA using modern development practices.
+This guide explains how to iteratively design and refine the UI/UX of Energy SEA using modern development practices.
 
 ## Table of Contents
 1. [Quick Start: Hot Reload Development](#quick-start)

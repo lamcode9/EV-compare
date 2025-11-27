@@ -1,6 +1,6 @@
-# EVCompare SEA
+# Energy SEA
 
-A comprehensive comparison tool for electric vehicles (EVs) available in Singapore and Malaysia. Compare battery specs, efficiency, range, pricing, and more to make informed EV purchasing decisions.
+A comprehensive comparison tool for electric vehicles (EVs) available across Southeast Asia. Compare battery specs, efficiency, range, pricing, and more to make informed EV purchasing decisions.
 
 ## Features
 
@@ -9,7 +9,7 @@ A comprehensive comparison tool for electric vehicles (EVs) available in Singapo
 - 📈 **Visual Analytics**: Charts and graphs for efficiency and range
 - 💰 **Price Comparison**: Base prices, OTR prices, rebates, and options
 - 🔋 **Battery Insights**: Detailed battery weight, technology, and charging specs
-- 🌏 **Multi-Country**: Support for Singapore (SG) and Malaysia (MY)
+- 🌏 **Multi-Country**: Support for Singapore, Malaysia, Indonesia, Philippines, Thailand, and Vietnam
 - 📱 **Mobile-First**: Fully responsive design
 - ♿ **Accessible**: ARIA labels, keyboard navigation, semantic HTML
 - 🔄 **Auto-Updates**: Daily cron jobs to keep data fresh

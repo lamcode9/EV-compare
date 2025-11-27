@@ -8,38 +8,38 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: {
-    default: 'EV SEA',
-    template: '%s | EVCompare SEA',
+    default: 'Energy SEA',
+    template: '%s | Energy SEA',
   },
-  description: 'Compare electric vehicles (EVs) available in Singapore and Malaysia. Compare battery specs, efficiency, range, pricing, and more. Find the perfect EV for you.',
+  description: 'Compare electric vehicles (EVs) available across Southeast Asia. Compare battery specs, efficiency, range, pricing, and more. Find the perfect EV for you.',
   keywords: ['electric vehicles', 'EV comparison', 'Singapore', 'Malaysia', 'Tesla', 'BYD', 'EV specs', 'electric car', 'EV Singapore', 'EV Malaysia'],
-  authors: [{ name: 'EVCompare SEA' }],
-  creator: 'EVCompare SEA',
-  publisher: 'EVCompare SEA',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://evcompare-sea.vercel.app'),
+  authors: [{ name: 'Energy SEA' }],
+  creator: 'Energy SEA',
+  publisher: 'Energy SEA',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://ev-sea-26nov25.vercel.app'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'EVCompare SEA - Compare Electric Vehicles',
-    description: 'Compare electric vehicles available in Singapore and Malaysia. Battery, efficiency, range, and pricing comparison.',
+    title: 'Energy SEA - Compare Electric Vehicles',
+    description: 'Compare electric vehicles available across Southeast Asia. Battery, efficiency, range, and pricing comparison.',
     type: 'website',
     locale: 'en_US',
-    siteName: 'EVCompare SEA',
+    siteName: 'Energy SEA',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'EVCompare SEA - Compare Electric Vehicles',
+        alt: 'Energy SEA - Compare Electric Vehicles',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'EVCompare SEA - Compare Electric Vehicles',
-    description: 'Compare electric vehicles available in Singapore and Malaysia',
-    creator: '@evcomparesea',
+    title: 'Energy SEA - Compare Electric Vehicles',
+    description: 'Compare electric vehicles available across Southeast Asia',
+    creator: '@energysea',
   },
   robots: {
     index: true,

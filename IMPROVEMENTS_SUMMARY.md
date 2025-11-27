@@ -1,6 +1,6 @@
-# EVCompare SEA - Improvements Summary
+# Energy SEA - Improvements Summary
 
-This document summarizes all the enhancements made to the EVCompare SEA application.
+This document summarizes all the enhancements made to the Energy SEA application.
 
 ## ✅ Completed Enhancements
 

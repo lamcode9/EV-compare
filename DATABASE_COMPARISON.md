@@ -63,7 +63,7 @@
 
 ## Recommendation: **Neon**
 
-### Why Neon for EVCompare SEA?
+### Why Neon for Energy SEA?
 
 1. **Free tier** - Perfect for development and small projects
 2. **Serverless** - Matches Next.js serverless architecture

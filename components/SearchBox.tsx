@@ -16,6 +16,7 @@ export default function SearchBox() {
 
   // Filter vehicles by country
   const filteredVehicles = useMemo(() => {
+    if (!selectedCountry) return []
     return vehicles.filter(v => v.country === selectedCountry && v.isAvailable)
   }, [vehicles, selectedCountry])
 
@@ -91,8 +92,9 @@ export default function SearchBox() {
               firstButton?.focus()
             }
           }}
-          placeholder="Search EVs like Tesla Model 3, BYD Atto 3..."
-          className="w-full px-4 py-2 pl-12 text-sm rounded-lg bg-gray-100 focus:outline-none focus:ring-0"
+          placeholder={selectedCountry ? "Search EVs like Tesla Model 3, BYD Atto 3..." : "Select a country first"}
+          disabled={!selectedCountry}
+          className="w-full px-4 py-2 pl-12 text-sm rounded-lg bg-gray-100 focus:outline-none focus:ring-0 disabled:opacity-50 disabled:cursor-not-allowed"
           aria-label="Search for electric vehicles"
           aria-autocomplete="list"
           aria-expanded={showSuggestions && suggestions.length > 0}

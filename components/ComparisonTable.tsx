@@ -467,20 +467,29 @@ export default function ComparisonTable() {
           Detailed Comparison
         </h3>
       <div className="overflow-x-auto">
-        <table className="w-full">
+        <table className="w-full" style={{ tableLayout: 'fixed' }}>
+          <colgroup>
+            <col style={{ width: '200px' }} />
+            {sortedVehicles.map((_, index) => {
+              // Calculate equal width for vehicle columns
+              // First column is 200px, remaining space divided equally
+              const vehicleColumnWidth = `calc((100% - 200px) / ${sortedVehicles.length})`;
+              return <col key={index} style={{ width: vehicleColumnWidth }} />;
+            })}
+          </colgroup>
           <thead className="bg-gray-50">
             <tr>
-              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 sticky left-0 bg-gray-50 z-10">
+              <th className="px-3 py-2 text-left text-xs font-semibold text-gray-700 sticky left-0 bg-gray-50 z-10">
                 Specification
               </th>
               {sortedVehicles.map((vehicle) => (
                 <th
                   key={vehicle.id}
-                  className="px-4 py-3 text-center text-sm font-semibold text-gray-700 min-w-[200px]"
+                  className="px-3 py-2 text-center text-xs font-semibold text-gray-700"
                 >
-                  <div className="flex flex-col items-center gap-1">
-                    <div className="font-semibold">{vehicle.name}</div>
-                    <div className="text-xs text-light-gray-500">{vehicle.modelTrim}</div>
+                  <div className="flex flex-col items-center gap-0.5">
+                    <div className="font-semibold text-xs">{vehicle.name}</div>
+                    <div className="text-[10px] text-light-gray-500">{vehicle.modelTrim}</div>
                   </div>
                 </th>
               ))}
@@ -490,7 +499,7 @@ export default function ComparisonTable() {
             {/* 1. Power (kW) */}
             <tr>
               <td
-                className="px-4 py-3 font-medium text-gray-700 sticky left-0 bg-white z-10 cursor-pointer hover:bg-gray-50 focus:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-ev-primary whitespace-nowrap"
+                className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 cursor-pointer hover:bg-gray-50 focus:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-ev-primary whitespace-nowrap"
                 onClick={() => handleSort('powerRatingKw')}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
@@ -508,7 +517,7 @@ export default function ComparisonTable() {
               {sortedVehicles.map((vehicle) => (
                 <td
                   key={vehicle.id}
-                  className={`px-4 py-3 text-center ${
+                  className={`px-3 py-2 text-center text-xs ${
                     bestPowerKw !== null && vehicle.powerRatingKw === bestPowerKw
                       ? 'bg-green-100 font-semibold text-green-800'
                       : 'text-gray-600'
@@ -520,7 +529,7 @@ export default function ComparisonTable() {
             </tr>
             {/* 2. Power in Horsepower (hp) */}
             <tr>
-              <td className="px-4 py-3 font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
+              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
                 Power (hp)
               </td>
               {sortedVehicles.map((vehicle) => {
@@ -530,7 +539,7 @@ export default function ComparisonTable() {
                 return (
                   <td
                     key={vehicle.id}
-                    className={`px-4 py-3 text-center ${
+                    className={`px-3 py-2 text-center text-xs ${
                       bestPowerHp !== null && hp !== null && hp === bestPowerHp
                         ? 'bg-green-100 font-semibold text-green-800'
                         : 'text-gray-600'
@@ -543,7 +552,7 @@ export default function ComparisonTable() {
             </tr>
             {/* 3. Torque (Nm) */}
             <tr>
-              <td className="px-4 py-3 font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
+              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
                 Torque (Nm)
               </td>
               {sortedVehicles.map((vehicle) => {
@@ -558,7 +567,7 @@ export default function ComparisonTable() {
                 return (
                   <td
                     key={vehicle.id}
-                    className={`px-4 py-3 text-center ${
+                    className={`px-3 py-2 text-center text-xs ${
                       isBest
                         ? 'bg-green-100 font-semibold text-green-800'
                         : 'text-gray-600'
@@ -571,7 +580,7 @@ export default function ComparisonTable() {
             </tr>
             {/* 4. Acceleration */}
             <tr>
-              <td className="px-4 py-3 font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
+              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
                 Acceleration (0-100 km/h)
               </td>
               {sortedVehicles.map((vehicle) => {
@@ -584,7 +593,7 @@ export default function ComparisonTable() {
                 return (
                   <td
                     key={vehicle.id}
-                    className={`px-4 py-3 text-center ${
+                    className={`px-3 py-2 text-center text-xs ${
                       isBest
                         ? 'bg-green-100 font-semibold text-green-800'
                         : 'text-gray-600'
@@ -597,7 +606,7 @@ export default function ComparisonTable() {
             </tr>
             {/* 5. Top Speed (km/h) */}
             <tr>
-              <td className="px-4 py-3 font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
+              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
                 Top Speed (km/h)
               </td>
               {sortedVehicles.map((vehicle) => {
@@ -612,7 +621,7 @@ export default function ComparisonTable() {
                 return (
                   <td
                     key={vehicle.id}
-                    className={`px-4 py-3 text-center ${
+                    className={`px-3 py-2 text-center text-xs ${
                       isBest
                         ? 'bg-green-100 font-semibold text-green-800'
                         : 'text-gray-600'
@@ -625,7 +634,7 @@ export default function ComparisonTable() {
             </tr>
             {/* 6. Range - WLTP (km) */}
             <tr>
-              <td className="px-4 py-3 font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
+              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
                 Range - WLTP (km)
               </td>
               {sortedVehicles.map((vehicle) => {
@@ -635,7 +644,7 @@ export default function ComparisonTable() {
                 return (
                   <td
                     key={vehicle.id}
-                    className={`px-4 py-3 text-center ${
+                    className={`px-3 py-2 text-center text-xs ${
                       isBest
                         ? 'bg-green-100 font-semibold text-green-800'
                         : 'text-gray-600'
@@ -648,7 +657,7 @@ export default function ComparisonTable() {
             </tr>
             {/* 7. Range - EPA (km) */}
             <tr>
-              <td className="px-4 py-3 font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
+              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
                 Range - EPA (km)
               </td>
               {sortedVehicles.map((vehicle) => {
@@ -660,7 +669,7 @@ export default function ComparisonTable() {
                 return (
                   <td
                     key={vehicle.id}
-                    className={`px-4 py-3 text-center ${
+                    className={`px-3 py-2 text-center text-xs ${
                       isBest
                         ? 'bg-green-100 font-semibold text-green-800'
                         : 'text-gray-600'
@@ -674,7 +683,7 @@ export default function ComparisonTable() {
             {/* 8. Efficiency (kWh/100km) */}
             <tr>
               <td
-                className="px-4 py-3 font-medium text-gray-700 sticky left-0 bg-white z-10 cursor-pointer hover:bg-gray-50 focus:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-ev-primary whitespace-nowrap"
+                className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 cursor-pointer hover:bg-gray-50 focus:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-ev-primary whitespace-nowrap"
                 onClick={() => handleSort('efficiencyKwhPer100km')}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
@@ -692,7 +701,7 @@ export default function ComparisonTable() {
               {sortedVehicles.map((vehicle) => (
                 <td
                   key={vehicle.id}
-                  className={`px-4 py-3 text-center ${
+                  className={`px-3 py-2 text-center text-xs ${
                     vehicle.efficiencyKwhPer100km === bestEfficiency
                       ? 'bg-green-100 font-semibold text-green-800'
                       : 'text-gray-600'
@@ -704,13 +713,13 @@ export default function ComparisonTable() {
             </tr>
             {/* 9. Cost / km */}
             <tr>
-              <td className="px-4 py-3 font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
+              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
                 Cost / km
               </td>
               {sortedVehicles.map((vehicle) => (
                 <td
                   key={vehicle.id}
-                  className={`px-4 py-3 text-center ${
+                  className={`px-3 py-2 text-center text-xs ${
                     bestCostPerKm !== null && getCostPerKm(vehicle) === bestCostPerKm
                       ? 'bg-green-100 font-semibold text-green-800'
                       : 'text-gray-600'
@@ -724,7 +733,7 @@ export default function ComparisonTable() {
             </tr>
             {/* 9. Cost / full charge */}
             <tr>
-              <td className="px-4 py-3 font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
+              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
                 Cost / Full Charge
               </td>
               {sortedVehicles.map((vehicle) => {
@@ -733,7 +742,7 @@ export default function ComparisonTable() {
                 return (
                   <td
                     key={vehicle.id}
-                    className={`px-4 py-3 text-center ${
+                    className={`px-3 py-2 text-center text-xs ${
                       isBest
                         ? 'bg-green-100 font-semibold text-green-800'
                         : 'text-gray-600'
@@ -746,7 +755,7 @@ export default function ComparisonTable() {
             </tr>
             {/* 11. Vehicle Base Price */}
             <tr>
-              <td className="px-4 py-3 font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
+              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
                 Vehicle Base Price
               </td>
               {sortedVehicles.map((vehicle) => {
@@ -754,7 +763,7 @@ export default function ComparisonTable() {
                 return (
                   <td
                     key={vehicle.id}
-                    className={`px-4 py-3 text-center ${
+                    className={`px-3 py-2 text-center text-xs ${
                       isBest
                         ? 'bg-green-100 font-semibold text-green-800'
                         : 'text-gray-600'
@@ -767,7 +776,7 @@ export default function ComparisonTable() {
             </tr>
             {/* 12. Battery Capacity */}
             <tr>
-              <td className="px-4 py-3 font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
+              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
                 Battery Capacity (kWh)
               </td>
               {sortedVehicles.map((vehicle) => {
@@ -778,7 +787,7 @@ export default function ComparisonTable() {
                 return (
                   <td
                     key={vehicle.id}
-                    className={`px-4 py-3 text-center ${
+                    className={`px-3 py-2 text-center text-xs ${
                       isBest
                         ? 'bg-green-100 font-semibold text-green-800'
                         : 'text-gray-600'
@@ -791,7 +800,7 @@ export default function ComparisonTable() {
             </tr>
             {/* 12. DC Fast Charge 0-80% (min) */}
             <tr>
-              <td className="px-4 py-3 font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
+              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
                 DC Fast Charge 0-80% (min)
               </td>
               {sortedVehicles.map((vehicle) => {
@@ -799,7 +808,7 @@ export default function ComparisonTable() {
                 return (
                   <td
                     key={vehicle.id}
-                    className={`px-4 py-3 text-center ${
+                    className={`px-3 py-2 text-center text-xs ${
                       isBest
                         ? 'bg-green-100 font-semibold text-green-800'
                         : 'text-gray-600'
@@ -812,18 +821,18 @@ export default function ComparisonTable() {
             </tr>
             {/* 13. Charging Capabilities */}
             <tr>
-              <td className="px-4 py-3 font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
+              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
                 Charging Capabilities
               </td>
               {sortedVehicles.map((vehicle) => (
-                <td key={vehicle.id} className="px-4 py-3 text-center text-sm text-gray-600">
+                <td key={vehicle.id} className="px-3 py-2 text-center text-xs text-gray-600">
                   {formatStringOrNA(vehicle.chargingCapabilities)}
                 </td>
               ))}
             </tr>
             {/* 14. Vehicle Weight (kg) */}
             <tr>
-              <td className="px-4 py-3 font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
+              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
                 Vehicle Weight (kg)
               </td>
               {sortedVehicles.map((vehicle) => {
@@ -834,7 +843,7 @@ export default function ComparisonTable() {
                 return (
                   <td
                     key={vehicle.id}
-                    className={`px-4 py-3 text-center ${
+                    className={`px-3 py-2 text-center text-xs ${
                       isBest
                         ? 'bg-green-100 font-semibold text-green-800'
                         : 'text-gray-600'
@@ -847,7 +856,7 @@ export default function ComparisonTable() {
             </tr>
             {/* 15. Battery Weight (kg) */}
             <tr>
-              <td className="px-4 py-3 font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
+              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
                 Battery Weight (kg)
               </td>
               {sortedVehicles.map((vehicle) => {
@@ -858,7 +867,7 @@ export default function ComparisonTable() {
                 return (
                 <td
                   key={vehicle.id}
-                    className={`px-4 py-3 text-center ${
+                    className={`px-3 py-2 text-center text-xs ${
                       isBest
                         ? 'bg-green-100 font-semibold text-green-800'
                         : 'text-gray-600'
@@ -871,7 +880,7 @@ export default function ComparisonTable() {
             </tr>
             {/* 16. Battery Weight % */}
             <tr>
-              <td className="px-4 py-3 font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
+              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
                 Battery Weight %
               </td>
               {sortedVehicles.map((vehicle) => {
@@ -879,7 +888,7 @@ export default function ComparisonTable() {
                 return (
                 <td
                   key={vehicle.id}
-                  className={`px-4 py-3 text-center ${
+                  className={`px-3 py-2 text-center text-xs ${
                       isBest
                       ? 'bg-green-100 font-semibold text-green-800'
                       : 'text-gray-600'
@@ -892,22 +901,22 @@ export default function ComparisonTable() {
             </tr>
             {/* 17. Battery Manufacturer */}
             <tr>
-              <td className="px-4 py-3 font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
+              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
                 Battery Manufacturer
               </td>
               {sortedVehicles.map((vehicle) => (
-                <td key={vehicle.id} className="px-4 py-3 text-center text-gray-600">
+                <td key={vehicle.id} className="px-3 py-2 text-center text-xs text-gray-600">
                   {formatStringOrNA(vehicle.batteryManufacturer)}
                 </td>
               ))}
             </tr>
             {/* 18. Battery Technology */}
             <tr>
-              <td className="px-4 py-3 font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
+              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
                 Battery Technology
               </td>
               {sortedVehicles.map((vehicle) => (
-                <td key={vehicle.id} className="px-4 py-3 text-center text-gray-600">
+                <td key={vehicle.id} className="px-3 py-2 text-center text-xs text-gray-600">
                   <span className="inline-block px-2 py-1 rounded-full text-xs font-medium bg-gray-200">
                     {formatStringOrNA(vehicle.batteryTechnology)}
                   </span>
@@ -916,18 +925,18 @@ export default function ComparisonTable() {
             </tr>
             {/* 19. Battery Warranty */}
             <tr>
-              <td className="px-4 py-3 font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
+              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
                 Battery Warranty
               </td>
               {sortedVehicles.map((vehicle) => (
-                <td key={vehicle.id} className="px-4 py-3 text-center text-sm text-gray-600">
+                <td key={vehicle.id} className="px-3 py-2 text-center text-xs text-gray-600">
                   {formatStringOrNA(vehicle.batteryWarranty)}
                 </td>
               ))}
             </tr>
             {/* 20. Over the air (OTA) updates */}
             <tr>
-              <td className="px-4 py-3 font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
+              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
                 Over the Air (OTA) Updates
               </td>
               {sortedVehicles.map((vehicle) => {
@@ -936,7 +945,7 @@ export default function ComparisonTable() {
                               vehicle.technologyFeatures?.toLowerCase().includes('over-the-air') ||
                               vehicle.technologyFeatures?.toLowerCase().includes('over the air')
                 return (
-                  <td key={vehicle.id} className="px-4 py-3 text-center text-sm text-gray-600">
+                  <td key={vehicle.id} className="px-3 py-2 text-center text-xs text-gray-600">
                     {hasOTA ? 'Yes' : (vehicle.technologyFeatures ? 'N/A' : 'N/A')}
                   </td>
                 )
@@ -944,11 +953,11 @@ export default function ComparisonTable() {
             </tr>
             {/* 21. Technology Features */}
             <tr>
-              <td className="px-4 py-3 font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
+              <td className="px-3 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 whitespace-nowrap">
                 Technology Features
               </td>
               {sortedVehicles.map((vehicle) => (
-                <td key={vehicle.id} className="px-4 py-3 text-center text-sm text-gray-600">
+                <td key={vehicle.id} className="px-3 py-2 text-center text-xs text-gray-600">
                   {formatStringOrNA(vehicle.technologyFeatures)}
                 </td>
               ))}

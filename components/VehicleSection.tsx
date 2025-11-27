@@ -12,6 +12,12 @@ export default function VehicleSection() {
   // Fetch vehicles on mount and when country changes
   useEffect(() => {
     const fetchVehicles = async () => {
+      if (!selectedCountry) {
+        setVehicles([])
+        setIsLoading(false)
+        return
+      }
+      
       setIsLoading(true)
       try {
         const response = await fetch(`/api/vehicles?country=${selectedCountry}&available=true`)
@@ -29,14 +35,27 @@ export default function VehicleSection() {
     fetchVehicles()
   }, [selectedCountry, setVehicles])
 
+  const getCountryName = (country: string | null) => {
+    const names: Record<string, string> = {
+      SG: 'Singapore',
+      MY: 'Malaysia',
+      ID: 'Indonesia',
+      PH: 'Philippines',
+      TH: 'Thailand',
+      VN: 'Vietnam',
+    }
+    return country ? names[country] || country : 'a country'
+  }
+
   if (selectedVehicles.length === 0) {
     return (
       <div className="p-8">
         <p className="text-gray-600 text-center">
-            Use the search box above to find and compare electric vehicles available in{' '}
-            {selectedCountry === 'SG' ? 'Singapore' : 'Malaysia'}.
-          </p>
-        </div>
+          {selectedCountry 
+            ? `Use the search box above to find and compare electric vehicles available in ${getCountryName(selectedCountry)}.`
+            : 'Please select a country to start searching for electric vehicles.'}
+        </p>
+      </div>
     )
   }
 

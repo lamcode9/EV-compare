@@ -185,20 +185,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 40kW, AC: 6.6kW",
     "technologyFeatures": "DiLink 4.0, 12.8\" Rotating Touchscreen, OTA Updates, NFC Key, Apple CarPlay/Android Auto",
     "basePriceLocalCurrency": 39990,
-    "optionPrices": [
-      {
-        "name": "Sunroof",
-        "price": 2500
-      },
-      {
-        "name": "360 Camera",
-        "price": 1500
-      },
-      {
-        "name": "Premium Audio",
-        "price": 2000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1480,
     "topSpeedKmh": 150
@@ -225,20 +212,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 6.6kW",
     "technologyFeatures": "15.6\" Rotating Touchscreen, Panoramic Roof, Wireless Charging, V2L, 360° Camera",
     "basePriceLocalCurrency": 49990,
-    "optionPrices": [
-      {
-        "name": "Sunroof",
-        "price": 2500
-      },
-      {
-        "name": "360 Camera",
-        "price": 1500
-      },
-      {
-        "name": "Premium Audio",
-        "price": 2000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1520,
     "topSpeedKmh": 150
@@ -265,20 +239,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 70kW, AC: 7kW",
     "technologyFeatures": "DiLink 4.0, 15.6\" Rotating Touchscreen, Panoramic Roof, V2L, Apple CarPlay/Android Auto",
     "basePriceLocalCurrency": 44990,
-    "optionPrices": [
-      {
-        "name": "Sunroof",
-        "price": 2500
-      },
-      {
-        "name": "360 Camera",
-        "price": 1500
-      },
-      {
-        "name": "Premium Audio",
-        "price": 2000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1880,
     "topSpeedKmh": 160
@@ -305,20 +266,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 88kW, AC: 7kW",
     "technologyFeatures": "DiLink 4.0, 15.6\" Rotating Touchscreen, Panoramic Roof, V2L, NFC Key, 360° Camera",
     "basePriceLocalCurrency": 49990,
-    "optionPrices": [
-      {
-        "name": "Sunroof",
-        "price": 2500
-      },
-      {
-        "name": "360 Camera",
-        "price": 1500
-      },
-      {
-        "name": "Premium Audio",
-        "price": 2000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1950,
     "topSpeedKmh": 160
@@ -345,20 +293,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
     "technologyFeatures": "DiLink 4.0, 15.6\" Rotating Touchscreen, Dynaudio, Head-Up Display, V2L, Frequency-Selective Damping",
     "basePriceLocalCurrency": 171800,
-    "optionPrices": [
-      {
-        "name": "Sunroof",
-        "price": 4000
-      },
-      {
-        "name": "360 Camera",
-        "price": 2500
-      },
-      {
-        "name": "Premium Audio",
-        "price": 3000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2250,
     "topSpeedKmh": 180
@@ -385,20 +320,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
     "technologyFeatures": "iCT Intelligent Torque, Frequency-Selective Damping, Dynaudio, Head-Up Display, V2L, Carbon Roof",
     "basePriceLocalCurrency": 191800,
-    "optionPrices": [
-      {
-        "name": "Sunroof",
-        "price": 4000
-      },
-      {
-        "name": "360 Camera",
-        "price": 2500
-      },
-      {
-        "name": "Premium Audio",
-        "price": 3000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2380,
     "topSpeedKmh": 180
@@ -425,20 +347,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
     "technologyFeatures": "DiPilot 100, 15.6\" Rotating Screen, Dynaudio, AR HUD, V2L, Panoramic Roof",
     "basePriceLocalCurrency": 152800,
-    "optionPrices": [
-      {
-        "name": "Sunroof",
-        "price": 4000
-      },
-      {
-        "name": "360 Camera",
-        "price": 2500
-      },
-      {
-        "name": "Premium Audio",
-        "price": 3000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2380,
     "topSpeedKmh": 180
@@ -465,20 +374,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
     "technologyFeatures": "iCT Intelligent Torque, YunNian-C Suspension, Dynaudio, AR HUD, V2L",
     "basePriceLocalCurrency": 172800,
-    "optionPrices": [
-      {
-        "name": "Sunroof",
-        "price": 4000
-      },
-      {
-        "name": "360 Camera",
-        "price": 2500
-      },
-      {
-        "name": "Premium Audio",
-        "price": 3000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2450,
     "topSpeedKmh": 200
@@ -505,20 +401,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
     "technologyFeatures": "Intelligent Cockpit, ADAS Level 2+, 15.4\" Touchscreen, V2L, OTA Updates",
     "basePriceLocalCurrency": 105800,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1880,
     "topSpeedKmh": 150
@@ -545,20 +428,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
     "technologyFeatures": "Panoramic Sunroof, 360° Camera, Intelligent Cockpit, ADAS Level 2+, V2L",
     "basePriceLocalCurrency": 119800,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1920,
     "topSpeedKmh": 150
@@ -585,16 +455,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 88kW, AC: 7kW",
     "technologyFeatures": "MG iSMART, 10.25\" Dual Screen, 360° Camera, ADAS Level 2",
     "basePriceLocalCurrency": 104000,
-    "optionPrices": [
-      {
-        "name": "Premium Pack",
-        "price": 5000
-      },
-      {
-        "name": "Head-Up Display",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1830,
     "topSpeedKmh": 160
@@ -621,16 +482,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 88kW, AC: 7kW",
     "technologyFeatures": "MG Pilot, Wireless Charging, 360° Camera, Panoramic Roof, V2L",
     "basePriceLocalCurrency": 149000,
-    "optionPrices": [
-      {
-        "name": "Premium Pack",
-        "price": 5000
-      },
-      {
-        "name": "Head-Up Display",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1850,
     "topSpeedKmh": 160
@@ -657,20 +509,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
     "technologyFeatures": "ADAS Level 2+, 24.6\" Dual Screen, 360° Camera, V2L, OTA Updates",
     "basePriceLocalCurrency": 109888,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1900,
     "topSpeedKmh": 150
@@ -697,20 +536,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
     "technologyFeatures": "Panoramic Sunroof, Wireless Charging, Sony Audio, Full ADAS Suite",
     "basePriceLocalCurrency": 126888,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1900,
     "topSpeedKmh": 150
@@ -737,20 +563,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
     "technologyFeatures": "ADAS Level 2, 14.6\" Touchscreen, 360° Camera, V2L, Magazine Battery",
     "basePriceLocalCurrency": 119800,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2080,
     "topSpeedKmh": 150
@@ -777,20 +590,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 120kW, AC: 7kW",
     "technologyFeatures": "Panoramic Sunroof, 540° Camera, ADAS Level 2+, V2L, AR Navigation",
     "basePriceLocalCurrency": 135800,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2120,
     "topSpeedKmh": 150
@@ -817,16 +617,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 350kW, AC: 11kW",
     "technologyFeatures": "Bluelink, Bose Audio, V2L, Highway Driving Assist II, Remote Smart Parking",
     "basePriceLocalCurrency": 180000,
-    "optionPrices": [
-      {
-        "name": "N Line Package",
-        "price": 5000
-      },
-      {
-        "name": "Tech Pack",
-        "price": 5000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2100,
     "topSpeedKmh": 185
@@ -853,16 +644,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 350kW, AC: 11kW",
     "technologyFeatures": "Vision Roof, Bose Premium Audio, Digital Side Mirrors, V2L, AR HUD",
     "basePriceLocalCurrency": 200000,
-    "optionPrices": [
-      {
-        "name": "N Line Package",
-        "price": 5000
-      },
-      {
-        "name": "Tech Pack",
-        "price": 5000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2200,
     "topSpeedKmh": 185
@@ -889,16 +671,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 350kW, AC: 11kW",
     "technologyFeatures": "Dual Motor AWD, N Line Styling, 20\" Wheels, V2L, Full ADAS Suite",
     "basePriceLocalCurrency": 220000,
-    "optionPrices": [
-      {
-        "name": "N Line Package",
-        "price": 5000
-      },
-      {
-        "name": "Tech Pack",
-        "price": 5000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2340,
     "topSpeedKmh": 185
@@ -925,16 +698,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 350kW, AC: 11kW",
     "technologyFeatures": "Meridian Audio, V2L, AR HUD, Highway Driving Assist II, Remote Smart Parking",
     "basePriceLocalCurrency": 190000,
-    "optionPrices": [
-      {
-        "name": "N Line Package",
-        "price": 5000
-      },
-      {
-        "name": "Tech Pack",
-        "price": 5000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2195,
     "topSpeedKmh": 185
@@ -961,16 +725,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 350kW, AC: 11kW",
     "technologyFeatures": "Dual Motor AWD, Electronic LSD, 20\" Alloys, Sunroof, Full ADAS",
     "basePriceLocalCurrency": 220000,
-    "optionPrices": [
-      {
-        "name": "N Line Package",
-        "price": 5000
-      },
-      {
-        "name": "Tech Pack",
-        "price": 5000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2300,
     "topSpeedKmh": 185
@@ -997,16 +752,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 205kW, AC: 11kW",
     "technologyFeatures": "Curved Display, iDrive 8.5, Harman Kardon, Driving Assistant Professional",
     "basePriceLocalCurrency": 280000,
-    "optionPrices": [
-      {
-        "name": "M Sport Package",
-        "price": 10000
-      },
-      {
-        "name": "Premium Package",
-        "price": 15000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2205,
     "topSpeedKmh": 190
@@ -1033,20 +779,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 205kW, AC: 11kW",
     "technologyFeatures": "M Adaptive Suspension, M Carbon Exterior, Laserlights, IconicSounds Electric",
     "basePriceLocalCurrency": 380000,
-    "optionPrices": [
-      {
-        "name": "M Sport Package",
-        "price": 10000
-      },
-      {
-        "name": "Premium Package",
-        "price": 15000
-      },
-      {
-        "name": "Adaptive M Suspension",
-        "price": 12000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2415,
     "topSpeedKmh": 225
@@ -1073,20 +806,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 200kW, AC: 11kW",
     "technologyFeatures": "Zeekr OS, 14.6\" Touchscreen, Yamaha Audio, Face ID, AR HUD",
     "basePriceLocalCurrency": 210000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2020,
     "topSpeedKmh": 180
@@ -1113,20 +833,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 200kW, AC: 11kW",
     "technologyFeatures": "Dual Motor, Air Suspension Option, 24.3\" AR HUD, 13-speaker Yamaha",
     "basePriceLocalCurrency": 240000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2080,
     "topSpeedKmh": 180
@@ -1153,20 +860,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 200kW, AC: 11kW",
     "technologyFeatures": "Air Suspension, 15.4\" Touchscreen, Yamaha 28-speaker, Face ID, LiDAR-ready",
     "basePriceLocalCurrency": 340000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2390
   },
@@ -1192,20 +886,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 200kW, AC: 11kW",
     "technologyFeatures": "Dual Motor, Air Suspension, Carbon Roof, 22\" Wheels, Track Mode",
     "basePriceLocalCurrency": 370000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2470,
     "topSpeedKmh": 200
@@ -1232,20 +913,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 280kW, AC: 11kW",
     "technologyFeatures": "XNGP ADAS, 15\" + 10.2\" Dual Screen, Xmart OS, V2L, AR HUD",
     "basePriceLocalCurrency": 250000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2280,
     "topSpeedKmh": 200
@@ -1272,20 +940,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 280kW, AC: 11kW",
     "technologyFeatures": "XNGP Full-Scenario ADAS, Dual-Chamber Air Suspension, Dynaudio, 540° Camera",
     "basePriceLocalCurrency": 280000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2320
   },
@@ -1311,16 +966,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 153kW, AC: 11kW",
     "technologyFeatures": "Google Built-in, Harman Kardon, 360° Camera, Pilot Assist, OTA Updates",
     "basePriceLocalCurrency": 170000,
-    "optionPrices": [
-      {
-        "name": "Plus Pack",
-        "price": 4000
-      },
-      {
-        "name": "Ultra Pack",
-        "price": 8000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2030,
     "topSpeedKmh": 180
@@ -1347,16 +993,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 153kW, AC: 11kW",
     "technologyFeatures": "Performance Sound, 22\" Wheels, Full ADAS Suite, Google Built-in",
     "basePriceLocalCurrency": 200000,
-    "optionPrices": [
-      {
-        "name": "Plus Pack",
-        "price": 4000
-      },
-      {
-        "name": "Ultra Pack",
-        "price": 8000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2090,
     "topSpeedKmh": 180
@@ -1383,16 +1020,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 270kW, AC: 11kW",
     "technologyFeatures": "Porsche Intelligent Range Manager, 10.9\" Passenger Display, BOSE Surround, Adaptive Air Suspension",
     "basePriceLocalCurrency": 500000,
-    "optionPrices": [
-      {
-        "name": "Adaptive Air Suspension",
-        "price": 25000
-      },
-      {
-        "name": "BOSE Sound System",
-        "price": 8000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2350
   },
@@ -1418,20 +1046,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 11kW",
     "technologyFeatures": "MBUX Hyperscreen, Burmester Audio, Augmented Reality Navigation, Driving Assistance Package",
     "basePriceLocalCurrency": 250000,
-    "optionPrices": [
-      {
-        "name": "Premium Sound System",
-        "price": 8000
-      },
-      {
-        "name": "Premium Interior Package",
-        "price": 12000
-      },
-      {
-        "name": "Technology Package",
-        "price": 15000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2240
   },
@@ -1457,20 +1072,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 11kW",
     "technologyFeatures": "7-Seater Option, MBUX, 360° Camera, Third-Row Air Conditioning",
     "basePriceLocalCurrency": 280000,
-    "optionPrices": [
-      {
-        "name": "Premium Sound System",
-        "price": 8000
-      },
-      {
-        "name": "Premium Interior Package",
-        "price": 12000
-      },
-      {
-        "name": "Technology Package",
-        "price": 15000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2380
   },
@@ -1496,20 +1098,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 205kW, AC: 11kW",
     "technologyFeatures": "Google Built-in, Harman Kardon, Pixel LED Headlights, Pilot Pack",
     "basePriceLocalCurrency": 220000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2208,
     "topSpeedKmh": 205
@@ -1536,20 +1125,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 205kW, AC: 11kW",
     "technologyFeatures": "Performance Pack, Öhlins Dampers, Brembo Brakes, 20\" Wheels, Google Built-in",
     "basePriceLocalCurrency": 250000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2270,
     "topSpeedKmh": 205
@@ -1576,20 +1152,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 50kW, AC: 11kW",
     "technologyFeatures": "Mini OS 9, 9.4\" Round OLED, Heads-Up Display, Driving Assistant",
     "basePriceLocalCurrency": 150000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1640
   },
@@ -1615,20 +1178,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 60kW, AC: 6.6kW",
     "technologyFeatures": "360° Camera, ADAS Level 2, Coffee Smart Cockpit, OTA Updates",
     "basePriceLocalCurrency": 549000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 4000
-      },
-      {
-        "name": "Technology Package",
-        "price": 6400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1710,
     "topSpeedKmh": 150
@@ -1655,20 +1205,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 60kW, AC: 6.6kW",
     "technologyFeatures": "Panoramic Sunroof, Massage Seats, 540° Camera, Full ADAS",
     "basePriceLocalCurrency": 699000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 4000
-      },
-      {
-        "name": "Technology Package",
-        "price": 6400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1740,
     "topSpeedKmh": 150
@@ -1695,20 +1232,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 40kW, AC: 7kW",
     "technologyFeatures": "12.8\" Touchscreen, 360° Camera, ADAS Level 2, V2L",
     "basePriceLocalCurrency": 599000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 4000
-      },
-      {
-        "name": "Technology Package",
-        "price": 6400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1620,
     "topSpeedKmh": 100
@@ -1735,20 +1259,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 30kW, AC: 3.3kW",
     "technologyFeatures": "10\" Dual Screen, Voice Control, Rear Parking Camera",
     "basePriceLocalCurrency": 214000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 1500
-      },
-      {
-        "name": "Technology Package",
-        "price": 2400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 1800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1250,
     "topSpeedKmh": 100
@@ -1775,20 +1286,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 30kW, AC: 3.3kW",
     "technologyFeatures": "V2L, 360° Camera, Wireless Charging, Cruise Control",
     "basePriceLocalCurrency": 307500000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 1500
-      },
-      {
-        "name": "Technology Package",
-        "price": 2400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 1800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1250,
     "topSpeedKmh": 100
@@ -1815,20 +1313,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 30kW, AC: 3.3kW",
     "technologyFeatures": "10\" Touchscreen, Apple CarPlay/Android Auto, ADAS Level 2, OTA Updates",
     "basePriceLocalCurrency": 235000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 750
-      },
-      {
-        "name": "Technology Package",
-        "price": 1200
-      },
-      {
-        "name": "Comfort Package",
-        "price": 900
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1060
   },
@@ -1854,20 +1339,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 30kW, AC: 3.3kW",
     "technologyFeatures": "Panoramic Roof, 360° Camera, Wireless Charging, Full ADAS Suite",
     "basePriceLocalCurrency": 245000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 750
-      },
-      {
-        "name": "Technology Package",
-        "price": 1200
-      },
-      {
-        "name": "Comfort Package",
-        "price": 900
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1060
   },
@@ -1893,20 +1365,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 250kW, AC: 11kW",
     "technologyFeatures": "15.6\" + 8\" Screens, Level 3 ADAS Ready, Captain Seats, Air Suspension",
     "basePriceLocalCurrency": 1550000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 750
-      },
-      {
-        "name": "Technology Package",
-        "price": 1200
-      },
-      {
-        "name": "Comfort Package",
-        "price": 900
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2850
   },
@@ -1932,20 +1391,7 @@
     "chargingCapabilities": "AC: Up to 22kW",
     "technologyFeatures": "Smart EQ control app, Navigation, Climate pre-conditioning, 8\" touchscreen",
     "basePriceLocalCurrency": 145000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1295
   },
@@ -1971,16 +1417,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 88kW, AC: 7kW",
     "technologyFeatures": "MG iSMART, 10.25\" Dual Screen, 360° Camera, ADAS Level 2",
     "basePriceLocalCurrency": 158000,
-    "optionPrices": [
-      {
-        "name": "Premium Pack",
-        "price": 3000
-      },
-      {
-        "name": "Head-Up Display",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1830,
     "topSpeedKmh": 160
@@ -2007,20 +1444,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 11kW",
     "technologyFeatures": "ADAS Level 2, 15.6\" Touchscreen, AR HUD, V2L, Panoramic Roof",
     "basePriceLocalCurrency": 185000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2100
   },
@@ -2046,16 +1470,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
     "technologyFeatures": "Bluelink, 10.25\" Touchscreen, Wireless Charging, ADAS Level 2",
     "basePriceLocalCurrency": 178000,
-    "optionPrices": [
-      {
-        "name": "N Line Package",
-        "price": 5000
-      },
-      {
-        "name": "Tech Pack",
-        "price": 5000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1710
   },
@@ -2081,20 +1496,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 115kW, AC: 7kW",
     "technologyFeatures": "DiLink, 15.6\" Rotating Screen, 360° Camera, V2L, ADAS",
     "basePriceLocalCurrency": 109900,
-    "optionPrices": [
-      {
-        "name": "Sunroof",
-        "price": 4000
-      },
-      {
-        "name": "360 Camera",
-        "price": 2500
-      },
-      {
-        "name": "Premium Audio",
-        "price": 3000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2180
   },
@@ -2120,20 +1522,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 85kW, AC: 6.6kW",
     "technologyFeatures": "Leap OS, 14.6\" Touchscreen, LiDAR ADAS, V2L, Panoramic Roof",
     "basePriceLocalCurrency": 159000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2180
   },
@@ -2159,20 +1548,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 70kW, AC: 7kW",
     "technologyFeatures": "10\" Touchscreen, ADAS Level 2, Apple CarPlay, OTA Updates",
     "basePriceLocalCurrency": 458000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 750
-      },
-      {
-        "name": "Technology Package",
-        "price": 1200
-      },
-      {
-        "name": "Comfort Package",
-        "price": 900
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1540
   },
@@ -2198,16 +1574,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 350kW, AC: 11kW",
     "technologyFeatures": "Meridian Audio, V2L, AR HUD, Highway Driving Assist II",
     "basePriceLocalCurrency": 1469000000,
-    "optionPrices": [
-      {
-        "name": "N Line Package",
-        "price": 1200
-      },
-      {
-        "name": "Tech Pack",
-        "price": 900
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2195,
     "topSpeedKmh": 185
@@ -2234,20 +1601,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 30kW, AC: 3.3kW",
     "technologyFeatures": "10\" Touchscreen, Keyless Entry, Cruise Control, Rear Camera",
     "basePriceLocalCurrency": 279000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 1500
-      },
-      {
-        "name": "Technology Package",
-        "price": 2400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 1800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1320
   },
@@ -2273,20 +1627,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 78kW, AC: 6.6kW",
     "technologyFeatures": "AR HUD, Gesture Control, 15.6\" Screen, ADAS Level 2+",
     "basePriceLocalCurrency": 599000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 1500
-      },
-      {
-        "name": "Technology Package",
-        "price": 2400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 1800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2150
   },
@@ -2312,20 +1653,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
     "technologyFeatures": "DiLink 4.0, 15.6\" Rotating Touchscreen, Dynaudio, Head-Up Display, V2L",
     "basePriceLocalCurrency": 1998000,
-    "optionPrices": [
-      {
-        "name": "Sunroof",
-        "price": 3200
-      },
-      {
-        "name": "360 Camera",
-        "price": 2000
-      },
-      {
-        "name": "Premium Audio",
-        "price": 2400
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2250
   },
@@ -2351,16 +1679,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 88kW, AC: 7kW",
     "technologyFeatures": "MG iSMART, 10.25\" Dual Screen, 360° Camera, ADAS Level 2",
     "basePriceLocalCurrency": 1469000,
-    "optionPrices": [
-      {
-        "name": "Premium Pack",
-        "price": 4000
-      },
-      {
-        "name": "Head-Up Display",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1830,
     "topSpeedKmh": 160
@@ -2387,16 +1706,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 350kW, AC: 11kW",
     "technologyFeatures": "Bluelink, Bose Audio, V2L, Highway Driving Assist II, Remote Smart Parking",
     "basePriceLocalCurrency": 2840000,
-    "optionPrices": [
-      {
-        "name": "N Line Package",
-        "price": 6400
-      },
-      {
-        "name": "Tech Pack",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2100,
     "topSpeedKmh": 185
@@ -2423,20 +1733,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 195kW, AC: 11kW",
     "technologyFeatures": "Curved Display, iDrive 8, Bowers & Wilkins Audio, Driving Assistant Professional",
     "basePriceLocalCurrency": 6290000,
-    "optionPrices": [
-      {
-        "name": "Premium Sound System",
-        "price": 8000
-      },
-      {
-        "name": "Premium Interior Package",
-        "price": 12000
-      },
-      {
-        "name": "Technology Package",
-        "price": 14400
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2640,
     "topSpeedKmh": 200
@@ -2463,20 +1760,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
     "technologyFeatures": "15.6\" Touchscreen, ADAS Level 2, Wireless Charging, OTA Updates",
     "basePriceLocalCurrency": 689000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 750
-      },
-      {
-        "name": "Technology Package",
-        "price": 1200
-      },
-      {
-        "name": "Comfort Package",
-        "price": 900
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1900
   },
@@ -2502,16 +1786,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 87kW, AC: 7kW",
     "technologyFeatures": "MG Pilot, 10.1\" Touchscreen, Panoramic Roof, V2L",
     "basePriceLocalCurrency": 699000000,
-    "optionPrices": [
-      {
-        "name": "Premium Pack",
-        "price": 750
-      },
-      {
-        "name": "Head-Up Display",
-        "price": 900
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1770,
     "topSpeedKmh": 140
@@ -2538,20 +1813,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 85kW, AC: 6.6kW",
     "technologyFeatures": "iFly 1.5 OS, 15.6\" Screen, 4WD Option, Solar Roof",
     "basePriceLocalCurrency": 400000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 1500
-      },
-      {
-        "name": "Technology Package",
-        "price": 2400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 1800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1890
   },
@@ -2577,20 +1839,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
     "technologyFeatures": "ADAS Level 2, 14.6\" Touchscreen, 540° Camera, V2L",
     "basePriceLocalCurrency": 500000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 1500
-      },
-      {
-        "name": "Technology Package",
-        "price": 2400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 1800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2050
   },
@@ -2616,20 +1865,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 170kW, AC: 11kW",
     "technologyFeatures": "MBUX Hyperscreen, Burmester Audio, AR Navigation, Air Suspension",
     "basePriceLocalCurrency": 6290000,
-    "optionPrices": [
-      {
-        "name": "Premium Sound System",
-        "price": 8000
-      },
-      {
-        "name": "Premium Interior Package",
-        "price": 12000
-      },
-      {
-        "name": "Technology Package",
-        "price": 14400
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2720
   },
@@ -2655,20 +1891,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
     "technologyFeatures": "SYNC 4A, 15.5\" Touchscreen, B&O Audio, Co-Pilot360, OTA Updates",
     "basePriceLocalCurrency": 3499000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 4000
-      },
-      {
-        "name": "Technology Package",
-        "price": 6400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2400
   },
@@ -2694,16 +1917,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 250kW, AC: 11kW",
     "technologyFeatures": "Track Mode, 21\" Überturbine Wheels, Performance Brakes, Autopilot, Full Self-Driving Capability",
     "basePriceLocalCurrency": 145000,
-    "optionPrices": [
-      {
-        "name": "7-Seater Option",
-        "price": 8000
-      },
-      {
-        "name": "Tow Hitch",
-        "price": 2000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2270,
     "topSpeedKmh": 250
@@ -2730,16 +1944,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 240kW, AC: 11kW",
     "technologyFeatures": "Meridian Audio, V2L, 14\" HUD, Relaxation Seats, Dual Sunroof",
     "basePriceLocalCurrency": 298000,
-    "optionPrices": [
-      {
-        "name": "N Line Package",
-        "price": 5000
-      },
-      {
-        "name": "Tech Pack",
-        "price": 5000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2780
   },
@@ -2765,16 +1970,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 205kW, AC: 11kW",
     "technologyFeatures": "Curved Display, Harman Kardon, IconicSounds, Driving Assistant Professional",
     "basePriceLocalCurrency": 320000,
-    "optionPrices": [
-      {
-        "name": "M Sport Package",
-        "price": 10000
-      },
-      {
-        "name": "Premium Package",
-        "price": 15000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2325
   },
@@ -2800,20 +1996,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
     "technologyFeatures": "15.6\" Screen, 540° Camera, ADAS Level 2+, V2L, Panoramic Roof",
     "basePriceLocalCurrency": 119900,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1950
   },
@@ -2839,20 +2022,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 80kW, AC: 6.6kW",
     "technologyFeatures": "Retro-futuristic design, 360° camera, Facial Recognition, Massage Seats",
     "basePriceLocalCurrency": 129900,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1780
   },
@@ -2878,20 +2048,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
     "technologyFeatures": "Queen’s Seat, 24.6\" Dual Screen, ADAS Level 2+, Fragrance System",
     "basePriceLocalCurrency": 169900,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2300
   },
@@ -2917,20 +2074,7 @@
     "chargingCapabilities": "AC: 6.6kW (range-extender hybrid)",
     "technologyFeatures": "ProPILOT, e-Pedal, 360° Camera, 7-Seater Sliding Doors",
     "basePriceLocalCurrency": 575000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 1500
-      },
-      {
-        "name": "Technology Package",
-        "price": 2400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 1800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2150
   },
@@ -2956,16 +2100,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 350kW, AC: 11kW",
     "technologyFeatures": "V2L, Bose Audio, Digital Side Mirrors option, Highway Driving Assist 2",
     "basePriceLocalCurrency": 950000000,
-    "optionPrices": [
-      {
-        "name": "N Line Package",
-        "price": null
-      },
-      {
-        "name": "Tech Pack",
-        "price": null
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2180,
     "topSpeedKmh": 185
@@ -2992,20 +2127,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
     "technologyFeatures": "15.6\" + 8\" Screens, Level 2+ ADAS, V2L, Panoramic Roof",
     "basePriceLocalCurrency": 1210000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 750
-      },
-      {
-        "name": "Technology Package",
-        "price": 1200
-      },
-      {
-        "name": "Comfort Package",
-        "price": 900
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2650
   },
@@ -3031,20 +2153,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 60kW, AC: 7kW",
     "technologyFeatures": "10\" Touchscreen, ADAS Level 2, OTA Updates, V2L",
     "basePriceLocalCurrency": 690000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 750
-      },
-      {
-        "name": "Technology Package",
-        "price": 1200
-      },
-      {
-        "name": "Comfort Package",
-        "price": 900
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1690
   },
@@ -3070,20 +2179,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 11kW",
     "technologyFeatures": "HUD, 360° Camera, ADAS Level 2, Panoramic Roof",
     "basePriceLocalCurrency": 1799000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 4000
-      },
-      {
-        "name": "Technology Package",
-        "price": 6400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1980
   },
@@ -3109,24 +2205,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 250kW, AC: 11kW",
     "technologyFeatures": "7-Seater, Third-Row Aircon, Autopilot, Full Self-Driving Capability",
     "basePriceLocalCurrency": 135000,
-    "optionPrices": [
-      {
-        "name": "Full Self-Driving",
-        "price": 12000
-      },
-      {
-        "name": "Enhanced Autopilot",
-        "price": 5000
-      },
-      {
-        "name": "7-Seater Option",
-        "price": 8000
-      },
-      {
-        "name": "Tow Hitch",
-        "price": 2000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2300,
     "topSpeedKmh": 217
@@ -3153,16 +2232,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 130kW, AC: 11kW",
     "technologyFeatures": "Curved Display, Harman Kardon, Driving Assistant Professional",
     "basePriceLocalCurrency": 248000,
-    "optionPrices": [
-      {
-        "name": "M Sport Package",
-        "price": 10000
-      },
-      {
-        "name": "Premium Package",
-        "price": 15000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2210,
     "topSpeedKmh": 200
@@ -3189,16 +2259,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
     "technologyFeatures": "Panoramic Glass Roof, IconicSounds, Adaptive Suspension",
     "basePriceLocalCurrency": 288000,
-    "optionPrices": [
-      {
-        "name": "M Sport Package",
-        "price": 10000
-      },
-      {
-        "name": "Premium Package",
-        "price": 15000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2380,
     "topSpeedKmh": 180
@@ -3225,20 +2286,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 200kW, AC: 11kW",
     "technologyFeatures": "MBUX Hyperscreen, Rear-Axle Steering 10°, Burmester 3D, Air Suspension",
     "basePriceLocalCurrency": 598000,
-    "optionPrices": [
-      {
-        "name": "Premium Sound System",
-        "price": 8000
-      },
-      {
-        "name": "Premium Interior Package",
-        "price": 12000
-      },
-      {
-        "name": "Technology Package",
-        "price": 15000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2780
   },
@@ -3264,16 +2312,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 170kW, AC: 11kW",
     "technologyFeatures": "Matrix LED, Bang & Olufsen, Virtual Mirrors option, Adaptive Air Suspension",
     "basePriceLocalCurrency": 428000,
-    "optionPrices": [
-      {
-        "name": "S Line Package",
-        "price": 12000
-      },
-      {
-        "name": "Technology Package",
-        "price": 15000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2780
   },
@@ -3299,20 +2338,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
     "technologyFeatures": "15.6\" + 24.3\" Screen, Face ID, Massage Seats, AR HUD",
     "basePriceLocalCurrency": 218000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2080,
     "topSpeedKmh": 180
@@ -3339,20 +2365,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 360kW, AC: 11kW",
     "technologyFeatures": "Captain Seats, Refrigerator, 8-Screen System, Air Suspension",
     "basePriceLocalCurrency": 488000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 3170
   },
@@ -3378,20 +2391,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 22kW",
     "technologyFeatures": "Beats Audio, Halo Roof, ADAS Level 2, Avatar Assistant",
     "basePriceLocalCurrency": 198000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2090
   },
@@ -3417,20 +2417,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 60kW, AC: 6.6kW",
     "technologyFeatures": "Panoramic Sunroof, Massage Seats, 540° Camera, Full ADAS",
     "basePriceLocalCurrency": 149900,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1740,
     "topSpeedKmh": 150
@@ -3457,20 +2444,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 88kW, AC: 11kW",
     "technologyFeatures": "Massage Seats, 540° Camera, Coffee Mode, Panoramic Roof",
     "basePriceLocalCurrency": 169900,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2280
   },
@@ -3496,20 +2470,7 @@
     "chargingCapabilities": "AC: 6.6kW (Plug-in Hybrid)",
     "technologyFeatures": "ADAS Level 2+, 24.6\" Screen, AR HUD, 21\" Wheels",
     "basePriceLocalCurrency": 179900,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2150
   },
@@ -3535,20 +2496,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 60kW, AC: 6.6kW",
     "technologyFeatures": "15.6\" + 8.8\" Dual Screen, V2L, 360° Camera",
     "basePriceLocalCurrency": 398000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 1500
-      },
-      {
-        "name": "Technology Package",
-        "price": 2400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 1800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1750
   },
@@ -3574,16 +2522,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 87kW, AC: 7kW",
     "technologyFeatures": "MG Pilot, 10.1\" Touchscreen, Panoramic Roof, V2L",
     "basePriceLocalCurrency": 415000000,
-    "optionPrices": [
-      {
-        "name": "Premium Pack",
-        "price": 1500
-      },
-      {
-        "name": "Head-Up Display",
-        "price": 1800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1770,
     "topSpeedKmh": 140
@@ -3610,20 +2549,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 250kW, AC: 11kW",
     "technologyFeatures": "Captain Seats, Level 3 Ready ADAS, 15.6\" Screen, Air Suspension",
     "basePriceLocalCurrency": 1780000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 750
-      },
-      {
-        "name": "Technology Package",
-        "price": 1200
-      },
-      {
-        "name": "Comfort Package",
-        "price": 900
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2980
   },
@@ -3649,20 +2575,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 125kW, AC: 11kW",
     "technologyFeatures": "IQ.Drive, 12.9\" Infotainment, Adaptive Cruise Control, Wireless Charging",
     "basePriceLocalCurrency": 210000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1920
   },
@@ -3688,20 +2601,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 135kW, AC: 11kW",
     "technologyFeatures": "Travel Assist, Panoramic Roof, 360° Camera, Harman Kardon Audio",
     "basePriceLocalCurrency": 245000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2330
   },
@@ -3727,20 +2627,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 135kW, AC: 11kW",
     "technologyFeatures": "Dynamic World Lighting, R-Design Seats, Level 2 ADAS, 15\" Touchscreen",
     "basePriceLocalCurrency": 221900,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2400
   },
@@ -3766,20 +2653,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 135kW, AC: 11kW",
     "technologyFeatures": "Performance Brakes, 20\" Wheels, Bucket Seats, Advanced Suspension",
     "basePriceLocalCurrency": 238900,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2450
   },
@@ -3805,20 +2679,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 11kW",
     "technologyFeatures": "LiDAR ADAS, 15.6\" Touchscreen, AR HUD, V2L, Panoramic Roof",
     "basePriceLocalCurrency": 185000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2100
   },
@@ -3844,20 +2705,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
     "technologyFeatures": "GAC ADAS, 14.6\" Touchscreen, 540° Camera, V2L",
     "basePriceLocalCurrency": 195000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2050
   },
@@ -3883,20 +2731,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
     "technologyFeatures": "Gullwing Doors, Massage Seats, Premium Audio, Advanced ADAS",
     "basePriceLocalCurrency": 215000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2100
   },
@@ -3922,16 +2757,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 350kW, AC: 11kW",
     "technologyFeatures": "V2L, Bose Audio, AR HUD, Highway Driving Assist 2",
     "basePriceLocalCurrency": 230000,
-    "optionPrices": [
-      {
-        "name": "N Line Package",
-        "price": 5000
-      },
-      {
-        "name": "Tech Pack",
-        "price": 5000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2180,
     "topSpeedKmh": 185
@@ -3958,16 +2784,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 350kW, AC: 11kW",
     "technologyFeatures": "7-Seater, Relaxation Seats, Dual Sunroof, Advanced ADAS",
     "basePriceLocalCurrency": 320000,
-    "optionPrices": [
-      {
-        "name": "N Line Package",
-        "price": 5000
-      },
-      {
-        "name": "Tech Pack",
-        "price": 5000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 3000
   },
@@ -3993,20 +2810,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 30kW, AC: 3.3kW",
     "technologyFeatures": "10\" Touchscreen, Rear Camera, Keyless Entry",
     "basePriceLocalCurrency": 120000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1410
   },
@@ -4032,20 +2836,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 180kW, AC: 11kW",
     "technologyFeatures": "Level 2 ADAS, 12.8\" Screen, Heated/Ventilated Seats, Panoramic Roof",
     "basePriceLocalCurrency": 220000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2300
   },
@@ -4071,20 +2862,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 60kW, AC: 7kW",
     "technologyFeatures": "Basic ADAS, 10\" Touchscreen, Apple CarPlay, Rear Camera",
     "basePriceLocalCurrency": 59900,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1450
   },
@@ -4110,20 +2888,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 60kW, AC: 7kW",
     "technologyFeatures": "Panoramic Roof, 360° Camera, Adaptive Cruise, Wireless Charging",
     "basePriceLocalCurrency": 69900,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1500
   },
@@ -4149,20 +2914,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 40kW, AC: 6.6kW",
     "technologyFeatures": "7\" Touchscreen, Rear Sensors, Basic Safety Kit",
     "basePriceLocalCurrency": 79900,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1350
   },
@@ -4188,20 +2940,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 11kW",
     "technologyFeatures": "Off-Road Modes, 14.6\" Screen, Level 2 ADAS, Panoramic Roof",
     "basePriceLocalCurrency": 149900,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2200
   },
@@ -4227,20 +2966,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 11kW",
     "technologyFeatures": "AWD System, Terrain Response, Premium Interior, Advanced Off-Road Tech",
     "basePriceLocalCurrency": 169900,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2250
   },
@@ -4266,20 +2992,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 85kW, AC: 6.6kW",
     "technologyFeatures": "Leap OS, 14.6\" Screen, LiDAR, V2L, Panoramic Roof",
     "basePriceLocalCurrency": 109000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2000
   },
@@ -4305,20 +3018,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 360kW, AC: 11kW",
     "technologyFeatures": "Massage Seats, 15.6\" Screen, Air Suspension, Level 2+ ADAS",
     "basePriceLocalCurrency": 189900,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2500
   },
@@ -4344,20 +3044,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 360kW, AC: 11kW",
     "technologyFeatures": "Performance Pack, Brembo Brakes, Harman Kardon, AR HUD",
     "basePriceLocalCurrency": 209900,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2550
   },
@@ -4383,20 +3070,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 400kW, AC: 22kW",
     "technologyFeatures": "Brabus Pack Option, 13\" OLED Display, Level 2 ADAS, Panoramic Glass Roof",
     "basePriceLocalCurrency": 169900,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2400
   },
@@ -4422,20 +3096,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 60kW, AC: 6.6kW",
     "technologyFeatures": "Sport Mode, 18\" Wheels, Full ADAS, Massage Seats",
     "basePriceLocalCurrency": 159900,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1740,
     "topSpeedKmh": 150
@@ -4462,20 +3123,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 88kW, AC: 11kW",
     "technologyFeatures": "Coffee Mode, Panoramic Roof, 360° Camera, ADAS",
     "basePriceLocalCurrency": 159900,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2280
   },
@@ -4501,20 +3149,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
     "technologyFeatures": "DiLink, 15.6\" Screen, Basic ADAS, Wireless Charging",
     "basePriceLocalCurrency": 99900,
-    "optionPrices": [
-      {
-        "name": "Sunroof",
-        "price": 4000
-      },
-      {
-        "name": "360 Camera",
-        "price": 2500
-      },
-      {
-        "name": "Premium Audio",
-        "price": 3000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2100
   },
@@ -4540,20 +3175,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
     "technologyFeatures": "Dynaudio, HUD, V2L, Frequency Damping",
     "basePriceLocalCurrency": 149900,
-    "optionPrices": [
-      {
-        "name": "Sunroof",
-        "price": 4000
-      },
-      {
-        "name": "360 Camera",
-        "price": 2500
-      },
-      {
-        "name": "Premium Audio",
-        "price": 3000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2250
   },
@@ -4579,20 +3201,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 85kW, AC: 6.6kW",
     "technologyFeatures": "Proton Pilot, 14.6\" Screen, LiDAR ADAS, V2L",
     "basePriceLocalCurrency": 59800,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2180
   },
@@ -4618,20 +3227,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
     "technologyFeatures": "15.6\" Screen, 540° Camera, ADAS 2+, V2L, Panoramic Roof",
     "basePriceLocalCurrency": 119900,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1950
   },
@@ -4657,20 +3253,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
     "technologyFeatures": "Massage Seats, Premium Audio, Full ADAS, Ambient Lighting",
     "basePriceLocalCurrency": 129900,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1980
   },
@@ -4696,20 +3279,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 80kW, AC: 6.6kW",
     "technologyFeatures": "Facial Recognition, Massage Seats, 360° Camera, Retro Design",
     "basePriceLocalCurrency": 129900,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1780
   },
@@ -4735,20 +3305,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 6.6kW",
     "technologyFeatures": "Honda Sensing, 15.1\" Screen, Wireless Phone Mirror, Honda Connect",
     "basePriceLocalCurrency": 149900,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1800
   },
@@ -4774,20 +3331,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 20kW, AC: 3.3kW",
     "technologyFeatures": "7\" Touchscreen, Rear Camera, Basic Connectivity",
     "basePriceLocalCurrency": 178000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 1500
-      },
-      {
-        "name": "Technology Package",
-        "price": 2400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 1800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 900
   },
@@ -4813,20 +3357,7 @@
     "chargingCapabilities": "AC: 3.3kW",
     "technologyFeatures": "e-Pedal, ProPILOT Assist, 8\" Infotainment",
     "basePriceLocalCurrency": 250000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 1500
-      },
-      {
-        "name": "Technology Package",
-        "price": 2400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 1800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1190
   },
@@ -4852,20 +3383,7 @@
     "chargingCapabilities": "AC: 3.3kW",
     "technologyFeatures": "Panoramic Roof, Wireless Charging, Enhanced Safety",
     "basePriceLocalCurrency": 270000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 1500
-      },
-      {
-        "name": "Technology Package",
-        "price": 2400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 1800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1220
   },
@@ -4891,20 +3409,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
     "technologyFeatures": "Toyota Safety Sense, 12.3\" Screen, AWD Option, Panoramic View Monitor",
     "basePriceLocalCurrency": 950000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 1500
-      },
-      {
-        "name": "Technology Package",
-        "price": 2400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 1800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2150
   },
@@ -4930,16 +3435,7 @@
     "chargingCapabilities": "AC: 3.3kW",
     "technologyFeatures": "7\" Touchscreen, Rear Sensors, Infotainment",
     "basePriceLocalCurrency": 250000000,
-    "optionPrices": [
-      {
-        "name": "Premium Pack",
-        "price": 1500
-      },
-      {
-        "name": "Head-Up Display",
-        "price": 1800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1030
   },
@@ -4965,20 +3461,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 80kW, AC: 7kW",
     "technologyFeatures": "ADAS Level 2, 10.25\" Dual Screen, 360° Camera",
     "basePriceLocalCurrency": 249900000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 1500
-      },
-      {
-        "name": "Technology Package",
-        "price": 2400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 1800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1900
   },
@@ -5004,20 +3487,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7.4kW",
     "technologyFeatures": "Advanced Comfort Suspension, 10\" Touchscreen, Highway Driver Assist",
     "basePriceLocalCurrency": 600000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 1500
-      },
-      {
-        "name": "Technology Package",
-        "price": 2400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 1800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1720
   },
@@ -5043,20 +3513,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
     "technologyFeatures": "Level 2 ADAS, 15.6\" Screen, Apple CarPlay, OTA Updates",
     "basePriceLocalCurrency": 850000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 750
-      },
-      {
-        "name": "Technology Package",
-        "price": 1200
-      },
-      {
-        "name": "Comfort Package",
-        "price": 900
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2200
   },
@@ -5082,20 +3539,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
     "technologyFeatures": "Panoramic Roof, Wireless Charging, Full ADAS Suite",
     "basePriceLocalCurrency": 950000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 750
-      },
-      {
-        "name": "Technology Package",
-        "price": 1200
-      },
-      {
-        "name": "Comfort Package",
-        "price": 900
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2250
   },
@@ -5121,20 +3565,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 175kW, AC: 11kW",
     "technologyFeatures": "Matrix LED, Virtual Cockpit, Travel Assist, Canton Sound",
     "basePriceLocalCurrency": 1200000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 750
-      },
-      {
-        "name": "Technology Package",
-        "price": 1200
-      },
-      {
-        "name": "Comfort Package",
-        "price": 900
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2300
   },
@@ -5160,20 +3591,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 175kW, AC: 11kW",
     "technologyFeatures": "Dynamic Chassis Control, Panoramic Sunroof, Head-Up Display",
     "basePriceLocalCurrency": 1300000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 750
-      },
-      {
-        "name": "Technology Package",
-        "price": 1200
-      },
-      {
-        "name": "Comfort Package",
-        "price": 900
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2350
   },
@@ -5199,20 +3617,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 40kW, AC: 6.6kW",
     "technologyFeatures": "DiLink 4.0, 12.8\" Rotating Screen, OTA, NFC Key",
     "basePriceLocalCurrency": 550000000,
-    "optionPrices": [
-      {
-        "name": "Sunroof",
-        "price": 600
-      },
-      {
-        "name": "360 Camera",
-        "price": 375
-      },
-      {
-        "name": "Premium Audio",
-        "price": 450
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1480,
     "topSpeedKmh": 150
@@ -5239,20 +3644,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 70kW, AC: 7kW",
     "technologyFeatures": "DiLink 4.0, 15.6\" Rotating Screen, Panoramic Roof, V2L",
     "basePriceLocalCurrency": 650000000,
-    "optionPrices": [
-      {
-        "name": "Sunroof",
-        "price": 600
-      },
-      {
-        "name": "360 Camera",
-        "price": 375
-      },
-      {
-        "name": "Premium Audio",
-        "price": 450
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1880,
     "topSpeedKmh": 160
@@ -5279,20 +3671,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 270kW, AC: 11kW",
     "technologyFeatures": "Porsche InnoDrive, 10.9\" Passenger Display, BOSE, Air Suspension",
     "basePriceLocalCurrency": 4600000000,
-    "optionPrices": [
-      {
-        "name": "Premium Sound System",
-        "price": 1500
-      },
-      {
-        "name": "Premium Interior Package",
-        "price": 2250
-      },
-      {
-        "name": "Technology Package",
-        "price": 2700
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2350
   },
@@ -5318,20 +3697,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 270kW, AC: 11kW",
     "technologyFeatures": "Sport Chrono, Performance Battery Plus, Carbon Ceramics Option",
     "basePriceLocalCurrency": 5500000000,
-    "optionPrices": [
-      {
-        "name": "Premium Sound System",
-        "price": 1500
-      },
-      {
-        "name": "Premium Interior Package",
-        "price": 2250
-      },
-      {
-        "name": "Technology Package",
-        "price": 2700
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2350
   },
@@ -5357,20 +3723,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 270kW, AC: 11kW",
     "technologyFeatures": "Race-Tex Interior, Sport Design Package, PDCC Sport",
     "basePriceLocalCurrency": 6500000000,
-    "optionPrices": [
-      {
-        "name": "Premium Sound System",
-        "price": 1500
-      },
-      {
-        "name": "Premium Interior Package",
-        "price": 2250
-      },
-      {
-        "name": "Technology Package",
-        "price": 2700
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2400
   },
@@ -5396,20 +3749,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 11kW",
     "technologyFeatures": "MBUX, Augmented Reality Nav, Driving Assistance Package",
     "basePriceLocalCurrency": 2500000,
-    "optionPrices": [
-      {
-        "name": "Premium Sound System",
-        "price": 8000
-      },
-      {
-        "name": "Premium Interior Package",
-        "price": 12000
-      },
-      {
-        "name": "Technology Package",
-        "price": 14400
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2240
   },
@@ -5435,20 +3775,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 11kW",
     "technologyFeatures": "7-Seater Option, 360° Camera, Third-Row AC, MBUX",
     "basePriceLocalCurrency": 2800000,
-    "optionPrices": [
-      {
-        "name": "Premium Sound System",
-        "price": 8000
-      },
-      {
-        "name": "Premium Interior Package",
-        "price": 12000
-      },
-      {
-        "name": "Technology Package",
-        "price": 14400
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2380
   },
@@ -5474,20 +3801,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 30kW, AC: 3.3kW",
     "technologyFeatures": "7\" Touchscreen, Rear Camera, Basic Safety Features",
     "basePriceLocalCurrency": 588000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 4000
-      },
-      {
-        "name": "Technology Package",
-        "price": 6400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1400
   },
@@ -5513,20 +3827,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 250kW, AC: 11kW",
     "technologyFeatures": "Nappa Leather, 17\" HUD, Massaging Seats, Air Suspension",
     "basePriceLocalCurrency": 8000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 4000
-      },
-      {
-        "name": "Technology Package",
-        "price": 6400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2720
   },
@@ -5552,20 +3853,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
     "technologyFeatures": "X-Mode AWD, EyeSight, 12.3\" Touchscreen, Panoramic Roof",
     "basePriceLocalCurrency": 3000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 4000
-      },
-      {
-        "name": "Technology Package",
-        "price": 6400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2210
   },
@@ -5591,20 +3879,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 215kW, AC: 11kW",
     "technologyFeatures": "XNGP ADAS, 14.96\" HUD, Voice Assistant, OTA Updates",
     "basePriceLocalCurrency": 2000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 4000
-      },
-      {
-        "name": "Technology Package",
-        "price": 6400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2280,
     "topSpeedKmh": 200
@@ -5631,20 +3906,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 215kW, AC: 11kW",
     "technologyFeatures": "Performance AWD, 20\" Wheels, Premium Audio, Monocular LiDAR",
     "basePriceLocalCurrency": 2500000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 4000
-      },
-      {
-        "name": "Technology Package",
-        "price": 6400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2320
   },
@@ -5670,20 +3932,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 40kW, AC: 6.6kW (EREV)",
     "technologyFeatures": "LiDAR, 15.7\" + 8\" Screens, 6-Seater, Air Suspension",
     "basePriceLocalCurrency": 3500000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 4000
-      },
-      {
-        "name": "Technology Package",
-        "price": 6400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2420
   },
@@ -5709,20 +3958,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 50kW, AC: 6.6kW (EREV)",
     "technologyFeatures": "Executive Seats, 52L Fridge, 29\" Cinema Screen, NOA ADAS",
     "basePriceLocalCurrency": 4500000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 4000
-      },
-      {
-        "name": "Technology Package",
-        "price": 6400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2720
   },
@@ -5748,20 +3984,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 40kW, AC: 6.6kW (EREV)",
     "technologyFeatures": "6-Seater, 17.3\" Screen, LiDAR, Massage Seats",
     "basePriceLocalCurrency": 2800000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 4000
-      },
-      {
-        "name": "Technology Package",
-        "price": 6400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2500
   },
@@ -5787,20 +4010,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 40kW, AC: 7kW",
     "technologyFeatures": "12.8\" Touchscreen, 360° Camera, ADAS 2, V2L",
     "basePriceLocalCurrency": 1500000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 4000
-      },
-      {
-        "name": "Technology Package",
-        "price": 6400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1620
   },
@@ -5826,20 +4036,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
     "technologyFeatures": "15.6\" + 24.3\" Screen, Face ID, Massage Seats, AR HUD",
     "basePriceLocalCurrency": 218000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2080,
     "topSpeedKmh": 180
@@ -5866,20 +4063,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 30kW, AC: 3.3kW",
     "technologyFeatures": "7\" Touchscreen, Rear Camera, Basic Safety Features",
     "basePriceLocalCurrency": 588000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 4000
-      },
-      {
-        "name": "Technology Package",
-        "price": 6400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1400
   },
@@ -5905,16 +4089,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 130kW, AC: 11kW",
     "technologyFeatures": "Curved Display, Harman Kardon, Driving Assistant Professional",
     "basePriceLocalCurrency": 248000,
-    "optionPrices": [
-      {
-        "name": "M Sport Package",
-        "price": 10000
-      },
-      {
-        "name": "Premium Package",
-        "price": 15000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2210,
     "topSpeedKmh": 200
@@ -5941,20 +4116,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 115kW, AC: 7kW",
     "technologyFeatures": "DiLink, 15.6\" Rotating Screen, 360° Camera, V2L, ADAS",
     "basePriceLocalCurrency": 109900,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2650
   },
@@ -5980,20 +4142,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 80kW, AC: 9.9kW",
     "technologyFeatures": "24.6\" Dual Screen, Sony Audio, 540° Camera, V2L",
     "basePriceLocalCurrency": 129900,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 1500
-      },
-      {
-        "name": "Technology Package",
-        "price": 2400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 1800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1930,
     "topSpeedKmh": 150
@@ -6020,20 +4169,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 11kW",
     "technologyFeatures": "HUD, 360° Camera, ADAS Level 2, Panoramic Roof",
     "basePriceLocalCurrency": 699000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 750
-      },
-      {
-        "name": "Technology Package",
-        "price": 1200
-      },
-      {
-        "name": "Comfort Package",
-        "price": 900
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1980
   },
@@ -6059,16 +4195,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 350kW, AC: 11kW",
     "technologyFeatures": "7-Seater, Relaxation Seats, Dual Sunroof, Advanced ADAS",
     "basePriceLocalCurrency": 3200000,
-    "optionPrices": [
-      {
-        "name": "N Line Package",
-        "price": 6400
-      },
-      {
-        "name": "Tech Pack",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 3000
   },
@@ -6094,16 +4221,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 250kW, AC: 11kW",
     "technologyFeatures": "LiDAR, 14.5\" Driver Display, Pilot Assist, Bowers & Wilkins Audio",
     "basePriceLocalCurrency": 398000,
-    "optionPrices": [
-      {
-        "name": "Plus Pack",
-        "price": 4000
-      },
-      {
-        "name": "Ultra Pack",
-        "price": 8000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2920,
     "topSpeedKmh": 180
@@ -6130,20 +4248,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 170kW, AC: 11kW",
     "technologyFeatures": "MBUX Hyperscreen, Burmester Audio, AR Navigation, Air Suspension",
     "basePriceLocalCurrency": 6290000,
-    "optionPrices": [
-      {
-        "name": "Premium Sound System",
-        "price": 8000
-      },
-      {
-        "name": "Premium Interior Package",
-        "price": 12000
-      },
-      {
-        "name": "Technology Package",
-        "price": 14400
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2720
   },
@@ -6169,16 +4274,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 88kW, AC: 7kW",
     "technologyFeatures": "MG iSMART, 10.25\" Dual Screen, 360° Camera, ADAS Level 2",
     "basePriceLocalCurrency": 158000,
-    "optionPrices": [
-      {
-        "name": "Premium Pack",
-        "price": 3000
-      },
-      {
-        "name": "Head-Up Display",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1830
   },
@@ -6204,16 +4300,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 350kW, AC: 11kW",
     "technologyFeatures": "V2L, Bose Audio, Digital Side Mirrors option, Highway Driving Assist 2",
     "basePriceLocalCurrency": 230000,
-    "optionPrices": [
-      {
-        "name": "N Line Package",
-        "price": 5000
-      },
-      {
-        "name": "Tech Pack",
-        "price": 5000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2180,
     "topSpeedKmh": 185
@@ -6240,20 +4327,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 50kW, AC: 6.6kW",
     "technologyFeatures": "ProPILOT Assist, e-Pedal, Bose Audio, Safety Shield",
     "basePriceLocalCurrency": 500000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 1500
-      },
-      {
-        "name": "Technology Package",
-        "price": 2400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 1800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1768
   },
@@ -6279,20 +4353,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 40kW, AC: 6.6kW",
     "technologyFeatures": "DiLink 4.0, 10.1\" Rotating Screen, OTA Updates, 360° Camera",
     "basePriceLocalCurrency": 800000,
-    "optionPrices": [
-      {
-        "name": "Sunroof",
-        "price": 3200
-      },
-      {
-        "name": "360 Camera",
-        "price": 2000
-      },
-      {
-        "name": "Premium Audio",
-        "price": 2400
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1400
   },
@@ -6318,20 +4379,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 30kW, AC: 3.3kW",
     "technologyFeatures": "7\" Touchscreen, Rear Camera, Basic Safety Features",
     "basePriceLocalCurrency": 189000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 1500
-      },
-      {
-        "name": "Technology Package",
-        "price": 2400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 1800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1400
   },
@@ -6388,20 +4436,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 115kW, AC: 7kW",
     "technologyFeatures": "XNGP ADAS, 17\" HUD, 6-Seater, OTA Updates",
     "basePriceLocalCurrency": 189900,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2650
   },
@@ -6427,16 +4462,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 250kW, AC: 11kW",
     "technologyFeatures": "Track Mode, 21\" Überturbine Wheels, Performance Brakes, Autopilot, Full Self-Driving Capability",
     "basePriceLocalCurrency": 3500000,
-    "optionPrices": [
-      {
-        "name": "7-Seater Option",
-        "price": 8000
-      },
-      {
-        "name": "Tow Hitch",
-        "price": 3200
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2270,
     "topSpeedKmh": 250
@@ -6463,20 +4489,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 130kW, AC: 7kW",
     "technologyFeatures": "ProPILOT 2.0, Bose Audio, 12.3\" Dual Screens, e-4ORCE AWD Option",
     "basePriceLocalCurrency": 2800000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 4000
-      },
-      {
-        "name": "Technology Package",
-        "price": 6400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2190
   },
@@ -6502,20 +4515,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 360kW, AC: 11kW",
     "technologyFeatures": "Massage Seats, 15.6\" Screen, Air Suspension, Level 2+ ADAS",
     "basePriceLocalCurrency": 340000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2500
   },
@@ -6541,16 +4541,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 270kW, AC: 11kW",
     "technologyFeatures": "Virtual Cockpit, Matrix LED, Adaptive Air Suspension, Level 2 ADAS",
     "basePriceLocalCurrency": 348999,
-    "optionPrices": [
-      {
-        "name": "S Line Package",
-        "price": 12000
-      },
-      {
-        "name": "Technology Package",
-        "price": 15000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2550
   },
@@ -6576,16 +4567,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 270kW, AC: 11kW",
     "technologyFeatures": "Bang & Olufsen Audio, Head-Up Display, Quattro AWD, Enhanced ADAS",
     "basePriceLocalCurrency": 373999,
-    "optionPrices": [
-      {
-        "name": "S Line Package",
-        "price": 12000
-      },
-      {
-        "name": "Technology Package",
-        "price": 15000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2600
   },
@@ -6611,20 +4593,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
     "technologyFeatures": "GAC ADAS, 14.6\" Touchscreen, 540° Camera, V2L",
     "basePriceLocalCurrency": 195000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2050
   },
@@ -6650,20 +4619,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
     "technologyFeatures": "Gullwing Doors, Massage Seats, Premium Audio, Advanced ADAS",
     "basePriceLocalCurrency": 215000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2100
   },
@@ -6689,20 +4645,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 600kW, AC: 11kW",
     "technologyFeatures": "DiLink 4.0, 17.3\" Screen, Level 3 ADAS Ready, Air Suspension",
     "basePriceLocalCurrency": 450000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2700
   },
@@ -6728,20 +4671,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 600kW, AC: 11kW",
     "technologyFeatures": "Cargo Space, Panoramic Roof, Harman Kardon, Enhanced Cargo Tech",
     "basePriceLocalCurrency": 470000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2750
   },
@@ -6767,16 +4697,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 240kW, AC: 11kW",
     "technologyFeatures": "Meridian Audio, V2L, 14\" HUD, Relaxation Seats, Dual Sunroof",
     "basePriceLocalCurrency": 4500000,
-    "optionPrices": [
-      {
-        "name": "N Line Package",
-        "price": 6400
-      },
-      {
-        "name": "Tech Pack",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2780
   },
@@ -6802,20 +4723,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
     "technologyFeatures": "Queen’s Seat, 24.6\" Dual Screen, ADAS Level 2+, Fragrance System",
     "basePriceLocalCurrency": 2500000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 4000
-      },
-      {
-        "name": "Technology Package",
-        "price": 6400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2300
   },
@@ -6841,20 +4749,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 60kW, AC: 7kW",
     "technologyFeatures": "Cargo Space, Basic ADAS, 10\" Touchscreen, V2L",
     "basePriceLocalCurrency": 1450000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 4000
-      },
-      {
-        "name": "Technology Package",
-        "price": 6400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2800
   },
@@ -6880,20 +4775,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 60kW, AC: 7kW",
     "technologyFeatures": "Extended Cargo, Rear Camera, Basic Connectivity",
     "basePriceLocalCurrency": 2058000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 4000
-      },
-      {
-        "name": "Technology Package",
-        "price": 6400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2950
   },
@@ -6919,20 +4801,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
     "technologyFeatures": "Dynaudio Audio, HUD, V2L, Advanced ADAS",
     "basePriceLocalCurrency": 255888,
-    "optionPrices": [
-      {
-        "name": "Sunroof",
-        "price": 2500
-      },
-      {
-        "name": "360 Camera",
-        "price": 1500
-      },
-      {
-        "name": "Premium Audio",
-        "price": 2000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2250,
     "topSpeedKmh": 180
@@ -6959,20 +4828,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 215kW, AC: 11kW",
     "technologyFeatures": "XNGP ADAS, 14.96\" HUD, Voice Assistant, OTA Updates",
     "basePriceLocalCurrency": 221999,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2320
   },
@@ -6998,20 +4854,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 11kW",
     "technologyFeatures": "LiDAR ADAS, 15.6\" Touchscreen, AR HUD, V2L, Panoramic Roof",
     "basePriceLocalCurrency": 185000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2100
   },
@@ -7037,20 +4880,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 88kW, AC: 11kW",
     "technologyFeatures": "Massage Seats, 540° Camera, Coffee Mode, Panoramic Roof",
     "basePriceLocalCurrency": 169900,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2280
   },
@@ -7076,20 +4906,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 80kW, AC: 6.6kW",
     "technologyFeatures": "Retro-futuristic design, 360° camera, Facial Recognition, Massage Seats",
     "basePriceLocalCurrency": 129900,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1780
   },
@@ -7115,20 +4932,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 60kW, AC: 6.6kW",
     "technologyFeatures": "Sport Mode, 18\" Wheels, Full ADAS, Massage Seats",
     "basePriceLocalCurrency": 159900,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1740,
     "topSpeedKmh": 150
@@ -7155,20 +4959,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 30kW, AC: 3.3kW",
     "technologyFeatures": "10\" Touchscreen, Keyless Entry, Cruise Control, Rear Camera",
     "basePriceLocalCurrency": 279000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 1500
-      },
-      {
-        "name": "Technology Package",
-        "price": 2400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 1800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1320
   },
@@ -7194,20 +4985,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 11kW",
     "technologyFeatures": "HUD, 360° Camera, ADAS Level 2, Panoramic Roof",
     "basePriceLocalCurrency": 1799000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 4000
-      },
-      {
-        "name": "Technology Package",
-        "price": 6400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1980
   },
@@ -7233,20 +5011,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 70kW, AC: 7kW",
     "technologyFeatures": "10\" Touchscreen, ADAS Level 2, Apple CarPlay, OTA Updates",
     "basePriceLocalCurrency": 992000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 4000
-      },
-      {
-        "name": "Technology Package",
-        "price": 6400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1540
   },
@@ -7272,20 +5037,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 170kW, AC: 11kW",
     "technologyFeatures": "MBUX Hyperscreen, Burmester Audio, AR Navigation, Air Suspension",
     "basePriceLocalCurrency": 7190000,
-    "optionPrices": [
-      {
-        "name": "Premium Sound System",
-        "price": 8000
-      },
-      {
-        "name": "Premium Interior Package",
-        "price": 12000
-      },
-      {
-        "name": "Technology Package",
-        "price": 14400
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2720
   },
@@ -7311,20 +5063,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 22kW",
     "technologyFeatures": "Beats Audio, Halo Roof, ADAS Level 2, Avatar Assistant",
     "basePriceLocalCurrency": 1980000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 4000
-      },
-      {
-        "name": "Technology Package",
-        "price": 6400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2090
   },
@@ -7350,20 +5089,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 115kW, AC: 7kW",
     "technologyFeatures": "DiLink, 15.6\" Rotating Screen, 360° Camera, V2L, ADAS",
     "basePriceLocalCurrency": 1998000,
-    "optionPrices": [
-      {
-        "name": "Sunroof",
-        "price": 3200
-      },
-      {
-        "name": "360 Camera",
-        "price": 2000
-      },
-      {
-        "name": "Premium Audio",
-        "price": 2400
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2180
   },
@@ -7389,20 +5115,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 20kW, AC: 3.3kW",
     "technologyFeatures": "7\" Touchscreen, Rear Camera, Basic Connectivity",
     "basePriceLocalCurrency": 588000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 4000
-      },
-      {
-        "name": "Technology Package",
-        "price": 6400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 900
   },
@@ -7428,20 +5141,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 270kW, AC: 11kW",
     "technologyFeatures": "Porsche Active Suspension, Off-road Package, 18-way Seats",
     "basePriceLocalCurrency": 4800000000,
-    "optionPrices": [
-      {
-        "name": "Premium Sound System",
-        "price": 1500
-      },
-      {
-        "name": "Premium Interior Package",
-        "price": 2250
-      },
-      {
-        "name": "Technology Package",
-        "price": 2700
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2550
   },
@@ -7467,16 +5167,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 270kW, AC: 11kW",
     "technologyFeatures": "Bang & Olufsen, Head-Up Display, Adaptive Air Suspension",
     "basePriceLocalCurrency": 4200000000,
-    "optionPrices": [
-      {
-        "name": "Premium Sound System",
-        "price": 1500
-      },
-      {
-        "name": "Premium Interior Package",
-        "price": 2250
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2600
   },
@@ -7502,20 +5193,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 200kW, AC: 22kW",
     "technologyFeatures": "7-Seater, Hyperscreen, Rear-Axle Steering 10°, Executive Seats",
     "basePriceLocalCurrency": 8500000000,
-    "optionPrices": [
-      {
-        "name": "Premium Sound System",
-        "price": 1500
-      },
-      {
-        "name": "Premium Interior Package",
-        "price": 2250
-      },
-      {
-        "name": "Technology Package",
-        "price": 2700
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 3150
   },
@@ -7541,20 +5219,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 80kW, AC: 7kW",
     "technologyFeatures": "14.6\" Screen, ADAS Level 2, V2L, Panoramic Roof",
     "basePriceLocalCurrency": 1699000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 4000
-      },
-      {
-        "name": "Technology Package",
-        "price": 6400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1910,
     "topSpeedKmh": 150
@@ -7581,20 +5246,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 60kW, AC: 6.6kW",
     "technologyFeatures": "10.25\" Dual Screen, 360° Camera, ADAS",
     "basePriceLocalCurrency": 1388000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 4000
-      },
-      {
-        "name": "Technology Package",
-        "price": 6400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1780
   },
@@ -7620,20 +5272,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 60kW, AC: 6.6kW (EREV)",
     "technologyFeatures": "Off-road capable, 15.6\" Screen, ADAS Level 2+",
     "basePriceLocalCurrency": 1899000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 4000
-      },
-      {
-        "name": "Technology Package",
-        "price": 6400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2350
   },
@@ -7659,20 +5298,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 195kW, AC: 22kW",
     "technologyFeatures": "Starlight Headliner, Bespoke Audio, Spirit of Ecstasy illuminated",
     "basePriceLocalCurrency": 1888000,
-    "optionPrices": [
-      {
-        "name": "Premium Sound System",
-        "price": 8000
-      },
-      {
-        "name": "Premium Interior Package",
-        "price": 12000
-      },
-      {
-        "name": "Technology Package",
-        "price": 15000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 3175
   },
@@ -7698,20 +5324,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 350kW, AC: 22kW",
     "technologyFeatures": "Active Aero, 0-100 in 2.9s, Track Mode, Carbon Pack",
     "basePriceLocalCurrency": 688000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 3000
-      },
-      {
-        "name": "Technology Package",
-        "price": 5000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4000
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2850,
     "topSpeedKmh": 250
@@ -7738,20 +5351,7 @@
     "chargingCapabilities": "DC Fast Charge: Up to 45kW, AC: 6.6kW",
     "technologyFeatures": "",
     "basePriceLocalCurrency": null,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 1500
-      },
-      {
-        "name": "Technology Package",
-        "price": 2400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 1800
-      }
-    ],
+    "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": null
   },
@@ -7775,7 +5375,7 @@
     "batteryWarranty": "8 years / 192,000 km",
     "chargingTimeDc0To80Min": 25,
     "chargingCapabilities": "DC Fast Charge: Up to 250kW, AC: 11kW",
-    "technologyFeatures": "Autopilot, Enhanced Autopilot, Sentry Mode, Over-the-Air Updates, 15.4\" Touchscreen, Ambient Lighting",
+    "technologyFeatures": "Autopilot, Enhanced Autopilot (RM16,000 option), Sentry Mode, Over-the-Air Updates, 15.4\" Touchscreen, Ambient Lighting",
     "basePriceLocalCurrency": 169000,
     "optionPrices": [
       {
@@ -7811,7 +5411,7 @@
     "batteryWarranty": "8 years / 192,000 km",
     "chargingTimeDc0To80Min": 25,
     "chargingCapabilities": "DC Fast Charge: Up to 250kW, AC: 11kW",
-    "technologyFeatures": "Autopilot, Full Self-Driving Capability, Heat Pump, Double-Glazed Glass, 15.4\" Touchscreen",
+    "technologyFeatures": "Autopilot, Full Self-Driving Capability (RM32,000 option), Heat Pump, Double-Glazed Glass, 15.4\" Touchscreen",
     "basePriceLocalCurrency": 189000,
     "optionPrices": [
       {
@@ -7911,7 +5511,7 @@
     "batteryWarranty": "8 years / 192,000 km",
     "chargingTimeDc0To80Min": 25,
     "chargingCapabilities": "DC Fast Charge: Up to 250kW, AC: 11kW",
-    "technologyFeatures": "Dual Motor AWD, Launch Series Edition, Enhanced Autopilot, 7-Seater, Over-the-Air Updates, Stealth Grey Paint",
+    "technologyFeatures": "Dual Motor AWD, Launch Series Edition, Enhanced Autopilot (RM16,000), 7-Seater, Over-the-Air Updates, Stealth Grey Paint",
     "basePriceLocalCurrency": 242450,
     "optionPrices": [
       {
@@ -9820,7 +7420,7 @@
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 21,
     "chargingCapabilities": "DC Fast Charge: Up to 270kW, AC: 11kW",
-    "technologyFeatures": "Porsche Active Suspension Management, Adaptive Air Suspension, Porsche Torque Vectoring, Matrix LED headlights, 12.6\" curved driver display, 10.9\" central touchscreen, Apple CarPlay+, InnoDrive adaptive cruise, V2L",
+    "technologyFeatures": "Porsche Active Suspension Management (PASM), Adaptive Air Suspension (optional), Porsche Torque Vectoring, Matrix LED headlights, 12.6\" curved driver display, 10.9\" central touchscreen, Apple CarPlay+, InnoDrive adaptive cruise, V2L",
     "basePriceLocalCurrency": 254888,
     "optionPrices": [
       {
@@ -9850,13 +7450,13 @@
     "batteryCapacityKwh": 100,
     "batteryWeightKg": 650,
     "curbWeightKg": 2405,
-    "batteryWeightPercentage": 27,
+    "batteryWeightPercentage": 27.0,
     "batteryManufacturer": "CATL",
     "batteryTechnology": "NMC",
     "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 21,
     "chargingCapabilities": "DC Fast Charge: Up to 270kW, AC: 11kW",
-    "technologyFeatures": "Porsche Torque Vectoring Plus, Rear-axle steering, Adaptive Air Suspension with PASM, Carbon ceramic brakes, 22\" Turbo wheels, Off-road design package, Burmester 3D High-End Surround Sound, Augmented Reality HUD",
+    "technologyFeatures": "Porsche Torque Vectoring Plus (PTV+), Rear-axle steering, Adaptive Air Suspension with PASM, Carbon ceramic brakes (optional), 22\" Turbo wheels, Off-road design package (optional), Burmester 3D High-End Surround Sound, Augmented Reality HUD",
     "basePriceLocalCurrency": 388088,
     "optionPrices": [
       {
@@ -9871,815 +7471,5 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 3010,
     "topSpeedKmh": 260
-  },
-  {
-    "name": "BYD Dolphin",
-    "modelTrim": "Premium",
-    "country": "PH",
-    "powerRatingKw": 95,
-    "torqueNm": 180,
-    "acceleration0To100Kmh": 12.3,
-    "efficiencyKwhPer100km": 12.5,
-    "rangeWltpKm": 340,
-    "rangeEpaKm": 290,
-    "rangeKm": 340,
-    "batteryCapacityKwh": 30.1,
-    "batteryWeightKg": 250,
-    "curbWeightKg": 1280,
-    "batteryWeightPercentage": 19.5,
-    "batteryManufacturer": "BYD",
-    "batteryTechnology": "LFP",
-    "batteryWarranty": "8 years / 160,000 km",
-    "chargingTimeDc0To80Min": 30,
-    "chargingCapabilities": "DC Fast Charge: Up to 40kW, AC: 6.6kW",
-    "technologyFeatures": "DiLink 4.0, 12.8\" Rotating Screen, OTA Updates, NFC Key, 360° Camera",
-    "basePriceLocalCurrency": 1250000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 1480,
-    "topSpeedKmh": 150
-  },
-  {
-    "name": "VinFast VF 6",
-    "modelTrim": "Eco",
-    "country": "PH",
-    "powerRatingKw": 130,
-    "torqueNm": 250,
-    "acceleration0To100Kmh": 8,
-    "efficiencyKwhPer100km": 15,
-    "rangeWltpKm": 399,
-    "rangeEpaKm": 340,
-    "rangeKm": 399,
-    "batteryCapacityKwh": 59.6,
-    "batteryWeightKg": 380,
-    "curbWeightKg": 1700,
-    "batteryWeightPercentage": 22.4,
-    "batteryManufacturer": "Gotion",
-    "batteryTechnology": "LFP",
-    "batteryWarranty": "8 years / unlimited km",
-    "chargingTimeDc0To80Min": 30,
-    "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
-    "technologyFeatures": "15.6\" Touchscreen, ADAS Level 2, Wireless Charging, OTA Updates",
-    "basePriceLocalCurrency": 1450000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 1900,
-    "topSpeedKmh": 160
-  },
-  {
-    "name": "MG ZS EV",
-    "modelTrim": "Long Range",
-    "country": "PH",
-    "powerRatingKw": 130,
-    "torqueNm": 280,
-    "acceleration0To100Kmh": 8.2,
-    "efficiencyKwhPer100km": 15.5,
-    "rangeWltpKm": 403,
-    "rangeEpaKm": 340,
-    "rangeKm": 403,
-    "batteryCapacityKwh": 51.1,
-    "batteryWeightKg": 350,
-    "curbWeightKg": 1570,
-    "batteryWeightPercentage": 22.3,
-    "batteryManufacturer": "CATL",
-    "batteryTechnology": "NMC",
-    "batteryWarranty": "7 years / 150,000 km",
-    "chargingTimeDc0To80Min": 54,
-    "chargingCapabilities": "DC Fast Charge: Up to 87kW, AC: 7kW",
-    "technologyFeatures": "MG Pilot, 10.1\" Touchscreen, Panoramic Roof, V2L",
-    "basePriceLocalCurrency": 1399000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 1770,
-    "topSpeedKmh": 140
-  },
-  {
-    "name": "Chery Omoda E5",
-    "modelTrim": "Premium",
-    "country": "PH",
-    "powerRatingKw": 150,
-    "torqueNm": 340,
-    "acceleration0To100Kmh": 7.6,
-    "efficiencyKwhPer100km": 14.8,
-    "rangeWltpKm": 505,
-    "rangeEpaKm": 430,
-    "rangeKm": 505,
-    "batteryCapacityKwh": 61,
-    "batteryWeightKg": 400,
-    "curbWeightKg": 1730,
-    "batteryWeightPercentage": 23.1,
-    "batteryManufacturer": "CATL",
-    "batteryTechnology": "LFP",
-    "batteryWarranty": "8 years / 160,000 km",
-    "chargingTimeDc0To80Min": 28,
-    "chargingCapabilities": "DC Fast Charge: Up to 80kW, AC: 9.9kW",
-    "technologyFeatures": "24.6\" Dual Screen, Sony Audio, 540° Camera, V2L",
-    "basePriceLocalCurrency": 1699000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 1930,
-    "topSpeedKmh": 150
-  },
-  {
-    "name": "GAC Aion Y Plus",
-    "modelTrim": "Premium",
-    "country": "PH",
-    "powerRatingKw": 150,
-    "torqueNm": 225,
-    "acceleration0To100Kmh": 8.5,
-    "efficiencyKwhPer100km": 14.5,
-    "rangeWltpKm": 430,
-    "rangeEpaKm": 365,
-    "rangeKm": 430,
-    "batteryCapacityKwh": 63.2,
-    "batteryWeightKg": 410,
-    "curbWeightKg": 1710,
-    "batteryWeightPercentage": 24,
-    "batteryManufacturer": "GAC",
-    "batteryTechnology": "LFP",
-    "batteryWarranty": "8 years / 150,000 km",
-    "chargingTimeDc0To80Min": 35,
-    "chargingCapabilities": "DC Fast Charge: Up to 80kW, AC: 7kW",
-    "technologyFeatures": "14.6\" Screen, ADAS Level 2, V2L, Panoramic Roof",
-    "basePriceLocalCurrency": 1699000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 1910,
-    "topSpeedKmh": 160
-  },
-  {
-    "name": "Changan CS15 EV",
-    "modelTrim": "Standard",
-    "country": "PH",
-    "powerRatingKw": 120,
-    "torqueNm": 210,
-    "acceleration0To100Kmh": 9.5,
-    "efficiencyKwhPer100km": 14,
-    "rangeWltpKm": 400,
-    "rangeEpaKm": 340,
-    "rangeKm": 400,
-    "batteryCapacityKwh": 52,
-    "batteryWeightKg": 350,
-    "curbWeightKg": 1580,
-    "batteryWeightPercentage": 22.2,
-    "batteryManufacturer": "CATL",
-    "batteryTechnology": "LFP",
-    "batteryWarranty": "8 years / 150,000 km",
-    "chargingTimeDc0To80Min": 40,
-    "chargingCapabilities": "DC Fast Charge: Up to 60kW, AC: 6.6kW",
-    "technologyFeatures": "10.25\" Dual Screen, 360° Camera, ADAS",
-    "basePriceLocalCurrency": 1388000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 1780,
-    "topSpeedKmh": 140
-  },
-  {
-    "name": "Jetour Shanhai T2",
-    "modelTrim": "EREV",
-    "country": "PH",
-    "powerRatingKw": 280,
-    "torqueNm": 580,
-    "acceleration0To100Kmh": 7.2,
-    "efficiencyKwhPer100km": 18,
-    "rangeWltpKm": 1400,
-    "rangeEpaKm": 1190,
-    "rangeKm": 1400,
-    "batteryCapacityKwh": 43.2,
-    "batteryWeightKg": 320,
-    "curbWeightKg": 2150,
-    "batteryWeightPercentage": 14.9,
-    "batteryManufacturer": "CATL",
-    "batteryTechnology": "LFP",
-    "batteryWarranty": "8 years / 160,000 km",
-    "chargingTimeDc0To80Min": 30,
-    "chargingCapabilities": "DC Fast Charge: Up to 60kW, AC: 6.6kW (EREV)",
-    "technologyFeatures": "Off-road capable, 15.6\" Screen, ADAS Level 2+",
-    "basePriceLocalCurrency": 1899000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 2350,
-    "topSpeedKmh": 170
-  },
-  {
-    "name": "VinFast VF 3",
-    "modelTrim": "Eco",
-    "country": "VN",
-    "powerRatingKw": 32,
-    "torqueNm": 110,
-    "acceleration0To100Kmh": 12,
-    "efficiencyKwhPer100km": 12,
-    "rangeWltpKm": 210,
-    "rangeEpaKm": 170,
-    "rangeKm": 210,
-    "batteryCapacityKwh": 18.64,
-    "batteryWeightKg": 150,
-    "curbWeightKg": 860,
-    "batteryWeightPercentage": 17.4,
-    "batteryManufacturer": "Gotion",
-    "batteryTechnology": "LFP",
-    "batteryWarranty": "8 years / unlimited km",
-    "chargingTimeDc0To80Min": 36,
-    "chargingCapabilities": "DC Fast Charge: Up to 30kW, AC: 3.3kW",
-    "technologyFeatures": "10\" Touchscreen, Apple CarPlay/Android Auto, ADAS Level 2, OTA Updates",
-    "basePriceLocalCurrency": 235000000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 1060,
-    "topSpeedKmh": 100
-  },
-  {
-    "name": "VinFast VF 6",
-    "modelTrim": "Eco",
-    "country": "VN",
-    "powerRatingKw": 130,
-    "torqueNm": 250,
-    "acceleration0To100Kmh": 8,
-    "efficiencyKwhPer100km": 15,
-    "rangeWltpKm": 399,
-    "rangeEpaKm": 340,
-    "rangeKm": 399,
-    "batteryCapacityKwh": 59.6,
-    "batteryWeightKg": 380,
-    "curbWeightKg": 1700,
-    "batteryWeightPercentage": 22.4,
-    "batteryManufacturer": "Gotion",
-    "batteryTechnology": "LFP",
-    "batteryWarranty": "10 years / unlimited km",
-    "chargingTimeDc0To80Min": 30,
-    "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
-    "technologyFeatures": "15.6\" Touchscreen, ADAS Level 2, Wireless Charging, OTA Updates",
-    "basePriceLocalCurrency": 689000000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 1900,
-    "topSpeedKmh": 160
-  },
-  {
-    "name": "BYD Han EV",
-    "modelTrim": "Premium",
-    "country": "VN",
-    "powerRatingKw": 220,
-    "torqueNm": 360,
-    "acceleration0To100Kmh": 7.3,
-    "efficiencyKwhPer100km": 14,
-    "rangeWltpKm": 605,
-    "rangeEpaKm": 515,
-    "rangeKm": 605,
-    "batteryCapacityKwh": 85.4,
-    "batteryWeightKg": 550,
-    "curbWeightKg": 2020,
-    "batteryWeightPercentage": 27.2,
-    "batteryManufacturer": "BYD",
-    "batteryTechnology": "LFP",
-    "batteryWarranty": "8 years / 160,000 km",
-    "chargingTimeDc0To80Min": 30,
-    "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
-    "technologyFeatures": "DiPilot ADAS, 15.6\" Rotating Screen, Dynaudio Audio, AR HUD",
-    "basePriceLocalCurrency": 1489000000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 2220,
-    "topSpeedKmh": 200
-  },
-  {
-    "name": "BYD M6",
-    "modelTrim": "Premium",
-    "country": "VN",
-    "powerRatingKw": 150,
-    "torqueNm": 310,
-    "acceleration0To100Kmh": 8.5,
-    "efficiencyKwhPer100km": 15,
-    "rangeWltpKm": 420,
-    "rangeEpaKm": 350,
-    "rangeKm": 420,
-    "batteryCapacityKwh": 71.8,
-    "batteryWeightKg": 450,
-    "curbWeightKg": 1980,
-    "batteryWeightPercentage": 22.7,
-    "batteryManufacturer": "BYD",
-    "batteryTechnology": "LFP",
-    "batteryWarranty": "8 years / 160,000 km",
-    "chargingTimeDc0To80Min": 40,
-    "chargingCapabilities": "DC Fast Charge: Up to 115kW, AC: 7kW",
-    "technologyFeatures": "DiLink, 15.6\" Rotating Screen, 360° Camera, V2L, ADAS",
-    "basePriceLocalCurrency": 756000000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 2180,
-    "topSpeedKmh": 160
-  },
-  {
-    "name": "MG ES5",
-    "modelTrim": "Standard",
-    "country": "VN",
-    "powerRatingKw": 170,
-    "torqueNm": 250,
-    "acceleration0To100Kmh": 7.7,
-    "efficiencyKwhPer100km": 14,
-    "rangeWltpKm": 450,
-    "rangeEpaKm": 380,
-    "rangeKm": 450,
-    "batteryCapacityKwh": 64,
-    "batteryWeightKg": 420,
-    "curbWeightKg": 1650,
-    "batteryWeightPercentage": 25.5,
-    "batteryManufacturer": "CATL",
-    "batteryTechnology": "NMC",
-    "batteryWarranty": "7 years / 150,000 km",
-    "chargingTimeDc0To80Min": 35,
-    "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
-    "technologyFeatures": "MG iSMART, 10.25\" Dual Screen, 360° Camera, ADAS Level 2",
-    "basePriceLocalCurrency": 699000000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 1850,
-    "topSpeedKmh": 160
-  },
-  {
-    "name": "Chery eQ1",
-    "modelTrim": "Standard",
-    "country": "VN",
-    "powerRatingKw": 40,
-    "torqueNm": 110,
-    "acceleration0To100Kmh": 12,
-    "efficiencyKwhPer100km": 11,
-    "rangeWltpKm": 301,
-    "rangeEpaKm": 255,
-    "rangeKm": 301,
-    "batteryCapacityKwh": 9.4,
-    "batteryWeightKg": 100,
-    "curbWeightKg": 700,
-    "batteryWeightPercentage": 14.3,
-    "batteryManufacturer": "CATL",
-    "batteryTechnology": "LFP",
-    "batteryWarranty": "8 years / 120,000 km",
-    "chargingTimeDc0To80Min": 40,
-    "chargingCapabilities": "DC Fast Charge: Up to 20kW, AC: 3.3kW",
-    "technologyFeatures": "7\" Touchscreen, Rear Camera, Basic Connectivity",
-    "basePriceLocalCurrency": 240000000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 900,
-    "topSpeedKmh": 100
-  },
-  {
-    "name": "Wuling Mini EV",
-    "modelTrim": "Long Range",
-    "country": "VN",
-    "powerRatingKw": 40,
-    "torqueNm": 110,
-    "acceleration0To100Kmh": 12,
-    "efficiencyKwhPer100km": 11,
-    "rangeWltpKm": 300,
-    "rangeEpaKm": 240,
-    "rangeKm": 300,
-    "batteryCapacityKwh": 26.7,
-    "batteryWeightKg": 220,
-    "curbWeightKg": 1050,
-    "batteryWeightPercentage": 21,
-    "batteryManufacturer": "CATL",
-    "batteryTechnology": "LFP",
-    "batteryWarranty": "8 years / 120,000 km",
-    "chargingTimeDc0To80Min": 40,
-    "chargingCapabilities": "DC Fast Charge: Up to 30kW, AC: 3.3kW",
-    "technologyFeatures": "V2L, 360° Camera, Wireless Charging, Cruise Control",
-    "basePriceLocalCurrency": 307500000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 1250,
-    "topSpeedKmh": 100
-  },
-  {
-    "name": "VinFast Minio Green",
-    "modelTrim": "Standard",
-    "country": "VN",
-    "powerRatingKw": 32,
-    "torqueNm": 110,
-    "acceleration0To100Kmh": 12,
-    "efficiencyKwhPer100km": 12,
-    "rangeWltpKm": 210,
-    "rangeEpaKm": 170,
-    "rangeKm": 210,
-    "batteryCapacityKwh": 18.64,
-    "batteryWeightKg": 150,
-    "curbWeightKg": 860,
-    "batteryWeightPercentage": 17.4,
-    "batteryManufacturer": "Gotion",
-    "batteryTechnology": "LFP",
-    "batteryWarranty": "8 years / unlimited km",
-    "chargingTimeDc0To80Min": 36,
-    "chargingCapabilities": "DC Fast Charge: Up to 30kW, AC: 3.3kW",
-    "technologyFeatures": "10\" Touchscreen, ADAS Level 2, OTA Updates (taxi-optimized)",
-    "basePriceLocalCurrency": 240000000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 1060,
-    "topSpeedKmh": 100
-  },
-  {
-    "name": "VinFast Limo Green",
-    "modelTrim": "Standard",
-    "country": "VN",
-    "powerRatingKw": 110,
-    "torqueNm": 242,
-    "acceleration0To100Kmh": 9.5,
-    "efficiencyKwhPer100km": 15,
-    "rangeWltpKm": 318,
-    "rangeEpaKm": 270,
-    "rangeKm": 318,
-    "batteryCapacityKwh": 42,
-    "batteryWeightKg": 320,
-    "curbWeightKg": 1490,
-    "batteryWeightPercentage": 21.5,
-    "batteryManufacturer": "CATL",
-    "batteryTechnology": "LFP",
-    "batteryWarranty": "10 years / unlimited km",
-    "chargingTimeDc0To80Min": 35,
-    "chargingCapabilities": "DC Fast Charge: Up to 60kW, AC: 7kW",
-    "technologyFeatures": "10\" Touchscreen, ADAS Level 2, OTA Updates (taxi-optimized)",
-    "basePriceLocalCurrency": 690000000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 1690,
-    "topSpeedKmh": 130
-  },
-  {
-    "name": "DFSK Seres E1",
-    "modelTrim": "Standard",
-    "country": "ID",
-    "powerRatingKw": 40,
-    "torqueNm": 110,
-    "acceleration0To100Kmh": 12,
-    "efficiencyKwhPer100km": 11,
-    "rangeWltpKm": 301,
-    "rangeEpaKm": 255,
-    "rangeKm": 301,
-    "batteryCapacityKwh": 23.76,
-    "batteryWeightKg": 200,
-    "curbWeightKg": 1200,
-    "batteryWeightPercentage": 16.7,
-    "batteryManufacturer": "CATL",
-    "batteryTechnology": "LFP",
-    "batteryWarranty": "8 years / 120,000 km",
-    "chargingTimeDc0To80Min": 35,
-    "chargingCapabilities": "DC Fast Charge: Up to 30kW, AC: 3.3kW",
-    "technologyFeatures": "7\" Touchscreen, Rear Camera, Basic Safety Features",
-    "basePriceLocalCurrency": 189000000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 1400,
-    "topSpeedKmh": 100
-  },
-  {
-    "name": "Chery J6",
-    "modelTrim": "Standard",
-    "country": "ID",
-    "powerRatingKw": 135,
-    "torqueNm": 220,
-    "acceleration0To100Kmh": 8.5,
-    "efficiencyKwhPer100km": 15,
-    "rangeWltpKm": 472,
-    "rangeEpaKm": 400,
-    "rangeKm": 472,
-    "batteryCapacityKwh": 65,
-    "batteryWeightKg": 420,
-    "curbWeightKg": 1690,
-    "batteryWeightPercentage": 24.9,
-    "batteryManufacturer": "CATL",
-    "batteryTechnology": "LFP",
-    "batteryWarranty": "8 years / 160,000 km",
-    "chargingTimeDc0To80Min": 30,
-    "chargingCapabilities": "DC Fast Charge: Up to 85kW, AC: 6.6kW",
-    "technologyFeatures": "iFly 1.5 OS, 15.6\" Screen, 4WD Option, Solar Roof",
-    "basePriceLocalCurrency": 400000000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 1890,
-    "topSpeedKmh": 150
-  },
-  {
-    "name": "Geely EX5",
-    "modelTrim": "Premium",
-    "country": "ID",
-    "powerRatingKw": 160,
-    "torqueNm": 310,
-    "acceleration0To100Kmh": 7.7,
-    "efficiencyKwhPer100km": 14.5,
-    "rangeWltpKm": 485,
-    "rangeEpaKm": 410,
-    "rangeKm": 485,
-    "batteryCapacityKwh": 70,
-    "batteryWeightKg": 450,
-    "curbWeightKg": 1780,
-    "batteryWeightPercentage": 25.3,
-    "batteryManufacturer": "CATL",
-    "batteryTechnology": "NMC",
-    "batteryWarranty": "8 years / 150,000 km",
-    "chargingTimeDc0To80Min": 38,
-    "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 11kW",
-    "technologyFeatures": "HUD, 360° Camera, ADAS Level 2, Panoramic Roof",
-    "basePriceLocalCurrency": 450000000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 1980,
-    "topSpeedKmh": 160
-  },
-  {
-    "name": "Maxus Mifa 9",
-    "modelTrim": "Premium",
-    "country": "ID",
-    "powerRatingKw": 150,
-    "torqueNm": 310,
-    "acceleration0To100Kmh": 8.5,
-    "efficiencyKwhPer100km": 15,
-    "rangeWltpKm": 420,
-    "rangeEpaKm": 350,
-    "rangeKm": 420,
-    "batteryCapacityKwh": 71.8,
-    "batteryWeightKg": 450,
-    "curbWeightKg": 1980,
-    "batteryWeightPercentage": 22.7,
-    "batteryManufacturer": "CATL",
-    "batteryTechnology": "LFP",
-    "batteryWarranty": "8 years / 160,000 km",
-    "chargingTimeDc0To80Min": 40,
-    "chargingCapabilities": "DC Fast Charge: Up to 115kW, AC: 7kW",
-    "technologyFeatures": "DiLink, 15.6\" Rotating Screen, 360° Camera, V2L, ADAS",
-    "basePriceLocalCurrency": 500000000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 2180,
-    "topSpeedKmh": 160
-  },
-  {
-    "name": "Aletra L8 EV",
-    "modelTrim": "Standard",
-    "country": "ID",
-    "powerRatingKw": 140,
-    "torqueNm": 290,
-    "acceleration0To100Kmh": 8.5,
-    "efficiencyKwhPer100km": 15,
-    "rangeWltpKm": 420,
-    "rangeEpaKm": 355,
-    "rangeKm": 420,
-    "batteryCapacityKwh": 60,
-    "batteryWeightKg": 400,
-    "curbWeightKg": 1700,
-    "batteryWeightPercentage": 23.5,
-    "batteryManufacturer": "CATL",
-    "batteryTechnology": "LFP",
-    "batteryWarranty": "8 years / 160,000 km",
-    "chargingTimeDc0To80Min": 30,
-    "chargingCapabilities": "DC Fast Charge: Up to 80kW, AC: 7kW",
-    "technologyFeatures": "ADAS Level 2, 10.25\" Dual Screen, 360° Camera",
-    "basePriceLocalCurrency": 249900000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 1900,
-    "topSpeedKmh": 150
-  },
-  {
-    "name": "BYD Dolphin",
-    "modelTrim": "Premium",
-    "country": "TH",
-    "powerRatingKw": 95,
-    "torqueNm": 180,
-    "acceleration0To100Kmh": 12.3,
-    "efficiencyKwhPer100km": 12.5,
-    "rangeWltpKm": 340,
-    "rangeEpaKm": 290,
-    "rangeKm": 340,
-    "batteryCapacityKwh": 30.1,
-    "batteryWeightKg": 250,
-    "curbWeightKg": 1280,
-    "batteryWeightPercentage": 19.5,
-    "batteryManufacturer": "BYD",
-    "batteryTechnology": "LFP",
-    "batteryWarranty": "8 years / 160,000 km",
-    "chargingTimeDc0To80Min": 30,
-    "chargingCapabilities": "DC Fast Charge: Up to 40kW, AC: 6.6kW",
-    "technologyFeatures": "DiLink 4.0, 12.8\" Rotating Screen, OTA, NFC Key, 360° Camera",
-    "basePriceLocalCurrency": 599000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 1480,
-    "topSpeedKmh": 150
-  },
-  {
-    "name": "BYD Seal",
-    "modelTrim": "Performance",
-    "country": "TH",
-    "powerRatingKw": 390,
-    "torqueNm": 670,
-    "acceleration0To100Kmh": 3.8,
-    "efficiencyKwhPer100km": 15,
-    "rangeWltpKm": 650,
-    "rangeEpaKm": 550,
-    "rangeKm": 650,
-    "batteryCapacityKwh": 82.5,
-    "batteryWeightKg": 500,
-    "curbWeightKg": 2050,
-    "batteryWeightPercentage": 24.4,
-    "batteryManufacturer": "BYD",
-    "batteryTechnology": "LFP",
-    "batteryWarranty": "8 years / 160,000 km",
-    "chargingTimeDc0To80Min": 30,
-    "chargingCapabilities": "DC Fast Charge: Up to 150kW, AC: 11kW",
-    "technologyFeatures": "DiLink 4.0, 15.6\" Rotating Touchscreen, Dynaudio, Head-Up Display, V2L",
-    "basePriceLocalCurrency": 1699000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 2250,
-    "topSpeedKmh": 180
-  },
-  {
-    "name": "MG 4 Electric",
-    "modelTrim": "Long Range",
-    "country": "TH",
-    "powerRatingKw": 150,
-    "torqueNm": 250,
-    "acceleration0To100Kmh": 7.7,
-    "efficiencyKwhPer100km": 14,
-    "rangeWltpKm": 450,
-    "rangeEpaKm": 380,
-    "rangeKm": 450,
-    "batteryCapacityKwh": 64,
-    "batteryWeightKg": 420,
-    "curbWeightKg": 1650,
-    "batteryWeightPercentage": 25.5,
-    "batteryManufacturer": "CATL",
-    "batteryTechnology": "NMC",
-    "batteryWarranty": "7 years / 150,000 km",
-    "chargingTimeDc0To80Min": 35,
-    "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
-    "technologyFeatures": "MG iSMART, 10.25\" Dual Screen, 360° Camera, ADAS Level 2",
-    "basePriceLocalCurrency": 799000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 1850,
-    "topSpeedKmh": 160
-  },
-  {
-    "name": "MG ES5",
-    "modelTrim": "Standard",
-    "country": "TH",
-    "powerRatingKw": 170,
-    "torqueNm": 250,
-    "acceleration0To100Kmh": 7.7,
-    "efficiencyKwhPer100km": 14,
-    "rangeWltpKm": 450,
-    "rangeEpaKm": 380,
-    "rangeKm": 450,
-    "batteryCapacityKwh": 64,
-    "batteryWeightKg": 420,
-    "curbWeightKg": 1650,
-    "batteryWeightPercentage": 25.5,
-    "batteryManufacturer": "CATL",
-    "batteryTechnology": "NMC",
-    "batteryWarranty": "7 years / 150,000 km",
-    "chargingTimeDc0To80Min": 35,
-    "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 7kW",
-    "technologyFeatures": "MG iSMART, 10.25\" Dual Screen, 360° Camera, ADAS Level 2",
-    "basePriceLocalCurrency": 899000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 1850,
-    "topSpeedKmh": 160
-  },
-  {
-    "name": "Zeekr 7X",
-    "modelTrim": "RWD",
-    "country": "TH",
-    "powerRatingKw": 310,
-    "torqueNm": 440,
-    "acceleration0To100Kmh": 5.8,
-    "efficiencyKwhPer100km": 16.5,
-    "rangeWltpKm": 620,
-    "rangeEpaKm": 530,
-    "rangeKm": 620,
-    "batteryCapacityKwh": 100,
-    "batteryWeightKg": 650,
-    "curbWeightKg": 2300,
-    "batteryWeightPercentage": 28.3,
-    "batteryManufacturer": "CATL",
-    "batteryTechnology": "NMC",
-    "batteryWarranty": "8 years / 200,000 km",
-    "chargingTimeDc0To80Min": 25,
-    "chargingCapabilities": "DC Fast Charge: Up to 360kW, AC: 11kW",
-    "technologyFeatures": "Massage Seats, 15.6\" Screen, Air Suspension, Level 2+ ADAS",
-    "basePriceLocalCurrency": 2499000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 2500,
-    "topSpeedKmh": 200
-  },
-  {
-    "name": "Geely EX5",
-    "modelTrim": "Premium",
-    "country": "TH",
-    "powerRatingKw": 160,
-    "torqueNm": 310,
-    "acceleration0To100Kmh": 7.7,
-    "efficiencyKwhPer100km": 14.5,
-    "rangeWltpKm": 485,
-    "rangeEpaKm": 410,
-    "rangeKm": 485,
-    "batteryCapacityKwh": 70,
-    "batteryWeightKg": 450,
-    "curbWeightKg": 1780,
-    "batteryWeightPercentage": 25.3,
-    "batteryManufacturer": "CATL",
-    "batteryTechnology": "NMC",
-    "batteryWarranty": "8 years / 150,000 km",
-    "chargingTimeDc0To80Min": 38,
-    "chargingCapabilities": "DC Fast Charge: Up to 100kW, AC: 11kW",
-    "technologyFeatures": "HUD, 360° Camera, ADAS Level 2, Panoramic Roof",
-    "basePriceLocalCurrency": 999000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 1980,
-    "topSpeedKmh": 160
-  },
-  {
-    "name": "Changan Deepal S05",
-    "modelTrim": "Standard",
-    "country": "TH",
-    "powerRatingKw": 175,
-    "torqueNm": 320,
-    "acceleration0To100Kmh": 7,
-    "efficiencyKwhPer100km": 14,
-    "rangeWltpKm": 510,
-    "rangeEpaKm": 435,
-    "rangeKm": 510,
-    "batteryCapacityKwh": 56,
-    "batteryWeightKg": 380,
-    "curbWeightKg": 1800,
-    "batteryWeightPercentage": 21.1,
-    "batteryManufacturer": "CATL",
-    "batteryTechnology": "LFP",
-    "batteryWarranty": "8 years / 160,000 km",
-    "chargingTimeDc0To80Min": 30,
-    "chargingCapabilities": "DC Fast Charge: Up to 85kW, AC: 6.6kW",
-    "technologyFeatures": "Leap OS, 14.6\" Screen, LiDAR, V2L, Panoramic Roof",
-    "basePriceLocalCurrency": 1099000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 2000,
-    "topSpeedKmh": 170
-  },
-  {
-    "name": "Neta V-II",
-    "modelTrim": "Standard",
-    "country": "TH",
-    "powerRatingKw": 120,
-    "torqueNm": 210,
-    "acceleration0To100Kmh": 9,
-    "efficiencyKwhPer100km": 14,
-    "rangeWltpKm": 401,
-    "rangeEpaKm": 340,
-    "rangeKm": 401,
-    "batteryCapacityKwh": 45.7,
-    "batteryWeightKg": 320,
-    "curbWeightKg": 1420,
-    "batteryWeightPercentage": 22.5,
-    "batteryManufacturer": "SVOLT",
-    "batteryTechnology": "LFP",
-    "batteryWarranty": "8 years / 180,000 km",
-    "chargingTimeDc0To80Min": 40,
-    "chargingCapabilities": "DC Fast Charge: Up to 40kW, AC: 7kW",
-    "technologyFeatures": "12.8\" Touchscreen, 360° Camera, ADAS Level 2, V2L",
-    "basePriceLocalCurrency": 599000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 1620,
-    "topSpeedKmh": 130
-  },
-  {
-    "name": "Ora Good Cat",
-    "modelTrim": "500 Ultra",
-    "country": "TH",
-    "powerRatingKw": 171,
-    "torqueNm": 310,
-    "acceleration0To100Kmh": 7.5,
-    "efficiencyKwhPer100km": 14.5,
-    "rangeWltpKm": 430,
-    "rangeEpaKm": 350,
-    "rangeKm": 430,
-    "batteryCapacityKwh": 63.1,
-    "batteryWeightKg": 400,
-    "curbWeightKg": 1540,
-    "batteryWeightPercentage": 26,
-    "batteryManufacturer": "CATL",
-    "batteryTechnology": "LFP",
-    "batteryWarranty": "8 years / 150,000 km",
-    "chargingTimeDc0To80Min": 35,
-    "chargingCapabilities": "DC Fast Charge: Up to 60kW, AC: 6.6kW",
-    "technologyFeatures": "Panoramic Sunroof, Massage Seats, 540° Camera, Full ADAS",
-    "basePriceLocalCurrency": 699000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 1740,
-    "topSpeedKmh": 160
   }
 ]

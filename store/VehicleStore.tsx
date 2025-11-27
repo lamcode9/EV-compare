@@ -4,10 +4,10 @@ import { create } from 'zustand'
 import { Vehicle } from '@/types/vehicle'
 
 interface VehicleState {
-  selectedCountry: 'SG' | 'MY'
+  selectedCountry: 'SG' | 'MY' | 'ID' | 'PH' | 'TH' | 'VN' | null
   selectedVehicles: Vehicle[]
   vehicles: Vehicle[]
-  setSelectedCountry: (country: 'SG' | 'MY') => void
+  setSelectedCountry: (country: 'SG' | 'MY' | 'ID' | 'PH' | 'TH' | 'VN' | null) => void
   addVehicle: (vehicle: Vehicle) => void
   removeVehicle: (vehicleId: string) => void
   clearAll: () => void
@@ -16,7 +16,7 @@ interface VehicleState {
 }
 
 export const useVehicleStore = create<VehicleState>((set, get) => ({
-  selectedCountry: 'SG',
+  selectedCountry: null,
   selectedVehicles: [],
   vehicles: [],
   
