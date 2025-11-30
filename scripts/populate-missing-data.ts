@@ -4,7 +4,8 @@
  * This script identifies vehicles missing:
  * - batteryCapacityKwh
  * - batteryWarranty
- * - technologyFeatures (OTA updates)
+ * - technologyFeatures
+ * - otaUpdates (Over the Air (OTA) Updates status)
  * - torqueNm
  * 
  * Usage: npx tsx scripts/populate-missing-data.ts
@@ -238,8 +239,8 @@ async function populateMissingData() {
         }
       }
 
-      // Check and populate technology features (including OTA)
-      if (!vehicle.technologyFeatures || !vehicle.technologyFeatures.toLowerCase().includes('ota')) {
+      // Check and populate technology features
+      if (!vehicle.technologyFeatures) {
         // Try exact match first
         let features = knownTechFeatures[vehicle.name]
         

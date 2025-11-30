@@ -46,7 +46,11 @@ This document describes the format for the `vehicles-data.json` file used to pop
 - **chargingCapabilities** (string, optional): Description of charging capabilities (e.g., "DC Fast Charge: Up to 250kW, AC: 11kW")
 
 ### Technology
-- **technologyFeatures** (string, optional): Technology features description (e.g., "Autopilot, Sentry Mode, Dog Mode, Over-the-Air Updates")
+- **technologyFeatures** (string, optional): Technology features description (e.g., "Autopilot, Sentry Mode, Dog Mode, Over the Air (OTA) Updates")
+- **otaUpdates** (string, optional): Over the Air (OTA) Updates status - must be one of:
+  - "Yes" - Vehicle supports OTA updates
+  - "No" - Vehicle does not support OTA updates
+  - "N/A" - Information not available
 
 ### Pricing
 - **basePriceLocalCurrency** (number, optional): Base price in local currency (SGD for SG, MYR for MY)
@@ -83,7 +87,8 @@ This document describes the format for the `vehicles-data.json` file used to pop
   "batteryWarranty": "8 years / 160,000 km",
   "chargingTimeDc0To80Min": 25,
   "chargingCapabilities": "DC Fast Charge: Up to 250kW, AC: 11kW",
-  "technologyFeatures": "Autopilot, Sentry Mode, Dog Mode, Over-the-Air Updates",
+  "technologyFeatures": "Autopilot, Sentry Mode, Dog Mode, Over the Air (OTA) Updates",
+  "otaUpdates": "Yes",
   "basePriceLocalCurrency": 75000,
   "optionPrices": [
     {
@@ -105,9 +110,10 @@ This document describes the format for the `vehicles-data.json` file used to pop
 1. **All fields except `name` and `country` are optional** - use `null` or omit the field if data is not available
 2. **Country codes**: Must be exactly "SG" or "MY" (case-sensitive)
 3. **Battery Technology**: Must match one of the enum values exactly
-4. **Arrays**: `optionPrices` should be an empty array `[]` if no data is available
-5. **Numbers**: Use integers for whole numbers (e.g., `25` for minutes), decimals for precise values (e.g., `4.4` for seconds)
-6. **File Format**: The file must be valid JSON - use a JSON validator if you encounter errors
+4. **OTA Updates**: Must be exactly "Yes", "No", or "N/A" (case-sensitive)
+5. **Arrays**: `optionPrices` should be an empty array `[]` if no data is available
+6. **Numbers**: Use integers for whole numbers (e.g., `25` for minutes), decimals for precise values (e.g., `4.4` for seconds)
+7. **File Format**: The file must be valid JSON - use a JSON validator if you encounter errors
 
 ## Data Sources
 

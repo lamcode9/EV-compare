@@ -51,7 +51,9 @@ model Vehicle {
   batteryWarranty             String?          // Battery warranty description (e.g., "8 years / 160,000 km")
   chargingTimeDc0To80Min      Int?
   chargingCapabilities        String?
+  hasBidirectional            Boolean?         // Bidirectional charging (V2L/V2H) capability
   technologyFeatures          String?          // Technology features description (e.g., "Autopilot, Sentry Mode, Dog Mode")
+  otaUpdates                  String?          // Over the Air (OTA) Updates: "Yes", "No", or "N/A"
   basePriceLocalCurrency      Float?
   optionPrices                Json             // Array of {name: string, price: number}
   onTheRoadPriceLocalCurrency Float?

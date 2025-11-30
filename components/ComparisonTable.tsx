@@ -509,6 +509,79 @@ function HomeSolarInfoBox() {
 }
 
 /**
+ * Info box component for Bidirectional Charging
+ */
+function BidirectionalChargingInfoBox() {
+  const [isOpen, setIsOpen] = useState(false)
+  const buttonRef = useRef<HTMLButtonElement | null>(null)
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation()
+    setIsOpen(!isOpen)
+  }
+
+  const getPosition = () => {
+    if (!buttonRef.current || !isOpen) return null
+    const rect = buttonRef.current.getBoundingClientRect()
+    return {
+      top: rect.bottom + 6,
+      left: rect.left,
+    }
+  }
+
+  const position = getPosition()
+
+  return (
+    <div className="relative inline-block">
+      <button
+        ref={buttonRef}
+        type="button"
+        onClick={handleClick}
+        className="text-gray-400 hover:text-gray-600 transition-colors"
+        aria-label="Show bidirectional charging info"
+      >
+        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </button>
+      
+      {isOpen && position && typeof window !== 'undefined' && createPortal((
+        <>
+          {/* Backdrop */}
+          <div 
+            className="fixed inset-0 z-[9998]" 
+            onClick={() => setIsOpen(false)}
+          />
+          {/* Info Box - rendered via portal to appear above table */}
+          <div 
+            className="fixed w-72 bg-white border border-gray-200 rounded-lg shadow-lg p-4 z-[9999]"
+            style={{
+              top: `${position.top}px`,
+              left: `${position.left}px`,
+            }}
+          >
+            <div className="text-xs font-semibold text-gray-900 mb-3">Bidirectional Charging</div>
+            
+            <div className="space-y-2 text-xs text-gray-700">
+              <div className="text-gray-600">
+                Can power appliances (V2L) or backup home (V2H). Possible to be enabled via future OTA updates - depending on manufacturer and/or vehicle model.
+              </div>
+            </div>
+            
+            <button
+              onClick={() => setIsOpen(false)}
+              className="mt-3 text-xs text-gray-500 hover:text-gray-700"
+            >
+              Close
+            </button>
+          </div>
+        </>
+      ), document.body)}
+    </div>
+  )
+}
+
+/**
  * Info box component explaining Cost / Full Charge calculation
  */
 function CostPerFullChargeInfoBox({ 
@@ -686,7 +759,8 @@ export default function ComparisonTable() {
       'Battery Warranty': v.batteryWarranty || 'N/A',
       'Technology Features': v.technologyFeatures || 'N/A',
       'Charging Time 0-80% (min)': v.chargingTimeDc0To80Min !== null && v.chargingTimeDc0To80Min !== undefined ? v.chargingTimeDc0To80Min : 'N/A',
-      'Charging Capabilities': v.chargingCapabilities || 'N/A',
+      'Charging Rating': v.chargingCapabilities || 'N/A',
+      'Bidirectional Charging': v.hasBidirectional === true ? 'Yes' : v.hasBidirectional === false ? 'No' : 'N/A',
     }))
 
     const csv = Papa.unparse(data)
@@ -748,8 +822,9 @@ export default function ComparisonTable() {
     // Price difference insight - only if they're different vehicles
     if (maxPriceVehicle && minPriceVehicle && maxPriceVehicle.id !== minPriceVehicle.id) {
       const priceDiff = maxPrice - minPrice
+      const percentDiff = minPrice > 0 ? ((priceDiff / minPrice) * 100).toFixed(0) : '0'
       insights.push(
-        `Price difference: ${formatPrice(priceDiff, maxPriceVehicle.country)} between ${getVehicleLabel(maxPriceVehicle)} and ${getVehicleLabel(minPriceVehicle)}`
+        `${getVehicleLabel(maxPriceVehicle)} is ${percentDiff}% more expensive than ${getVehicleLabel(minPriceVehicle)}`
       )
     }
 
@@ -1050,14 +1125,14 @@ export default function ComparisonTable() {
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <MetricChart title="Battery Capacity (kWh)" data={batteryCapacityChartData} suffix=" kWh">
-            Total energy storage capacity.
+            Total energy storage capacity
           </MetricChart>
           <PublicFastVsHomeSolarChart 
             data={publicFastVsHomeSolarChartData}
             country={sortedVehicles[0]?.country || 'MY'}
           />
           <MetricChart title="Range (km)" data={rangeChartData} suffix=" km">
-            WLTP rated range per full charge.
+            WLTP rated range per full charge
           </MetricChart>
           <MetricChart
             title={
@@ -1085,7 +1160,7 @@ export default function ComparisonTable() {
               return label
             }}
           >
-            Based on average DC charging tariffs.
+            Based on average DC charging tariffs
           </MetricChart>
         </div>
       </div>
@@ -1505,10 +1580,10 @@ export default function ComparisonTable() {
                 )
               })}
             </tr>
-            {/* 13. Charging Capabilities */}
+            {/* 13. Charging Rating */}
             <tr>
               <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
-                <span className="break-words leading-tight">Charging Capabilities</span>
+                <span className="break-words leading-tight">Charging Rating</span>
               </td>
               {sortedVehicles.map((vehicle) => (
                 <td key={vehicle.id} className="px-3 py-2 text-center text-xs text-gray-600">
@@ -1516,7 +1591,25 @@ export default function ComparisonTable() {
                 </td>
               ))}
             </tr>
-            {/* 14. Vehicle Weight (kg) */}
+            {/* 14. Bidirectional Charging */}
+            <tr>
+              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+                <div className="flex items-center gap-1.5">
+                  <span className="break-words leading-tight">Bidirectional Charging</span>
+                  <BidirectionalChargingInfoBox />
+                </div>
+              </td>
+              {sortedVehicles.map((vehicle) => {
+                const bidirectionalValue = vehicle.hasBidirectional === true ? 'Yes' : 
+                                         vehicle.hasBidirectional === false ? 'No' : 'N/A'
+                return (
+                  <td key={vehicle.id} className="px-3 py-2 text-center text-xs text-gray-600">
+                    {bidirectionalValue}
+                  </td>
+                )
+              })}
+            </tr>
+            {/* 15. Vehicle Weight (kg) */}
             <tr>
               <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <div className="flex flex-col leading-tight">
@@ -1543,7 +1636,7 @@ export default function ComparisonTable() {
                 )
               })}
             </tr>
-            {/* 15. Battery Weight (kg) */}
+            {/* 16. Battery Weight (kg) */}
             <tr>
               <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <div className="flex flex-col leading-tight">
@@ -1570,7 +1663,7 @@ export default function ComparisonTable() {
                 )
               })}
             </tr>
-            {/* 16. Battery Weight % */}
+            {/* 17. Battery Weight % */}
             <tr>
               <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <div className="flex flex-col leading-tight">
@@ -1594,7 +1687,7 @@ export default function ComparisonTable() {
                 )
               })}
             </tr>
-            {/* 17. Battery Manufacturer */}
+            {/* 18. Battery Manufacturer */}
             <tr>
               <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <span className="break-words leading-tight">Battery Manufacturer</span>
@@ -1605,7 +1698,7 @@ export default function ComparisonTable() {
                 </td>
               ))}
             </tr>
-            {/* 18. Battery Technology */}
+            {/* 19. Battery Technology */}
             <tr>
               <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <span className="break-words leading-tight">Battery Technology</span>
@@ -1618,7 +1711,7 @@ export default function ComparisonTable() {
                 </td>
               ))}
             </tr>
-            {/* 19. Battery Warranty */}
+            {/* 20. Battery Warranty */}
             <tr>
               <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <span className="break-words leading-tight">Battery Warranty</span>
@@ -1629,24 +1722,20 @@ export default function ComparisonTable() {
                 </td>
               ))}
             </tr>
-            {/* 20. Over the air (OTA) updates */}
+            {/* 21. Over the air (OTA) updates */}
             <tr>
               <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <span className="break-words leading-tight">Over the Air (OTA) Updates</span>
               </td>
               {sortedVehicles.map((vehicle) => {
-                // Check if technologyFeatures mentions OTA
-                const hasOTA = vehicle.technologyFeatures?.toLowerCase().includes('ota') || 
-                              vehicle.technologyFeatures?.toLowerCase().includes('over-the-air') ||
-                              vehicle.technologyFeatures?.toLowerCase().includes('over the air')
                 return (
                   <td key={vehicle.id} className="px-3 py-2 text-center text-xs text-gray-600">
-                    {hasOTA ? 'Yes' : (vehicle.technologyFeatures ? 'N/A' : 'N/A')}
+                    {formatStringOrNA(vehicle.otaUpdates)}
                   </td>
                 )
               })}
             </tr>
-            {/* 21. Technology Features */}
+            {/* 22. Technology Features */}
             <tr>
               <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <span className="break-words leading-tight">Technology Features</span>
@@ -1846,13 +1935,13 @@ function PublicFastVsHomeSolarChart({ data, country }: PublicFastVsHomeSolarChar
   const renderLegend = (props: any) => {
     const { payload } = props
     return (
-      <div className="flex justify-center gap-4 mt-1.5 mb-0.5">
+      <div className="flex justify-start gap-4 mt-1.5 mb-0.5">
         {payload.map((entry: any, index: number) => (
           <div key={index} className="flex items-center gap-1">
             {entry.value === 'publicFast' ? (
               <div className="w-2.5 h-2.5 border border-gray-400 bg-gray-200" />
             ) : (
-              <div className="w-2.5 h-2.5 rounded-full border border-gray-400 bg-gray-200" />
+              <div className="w-2.5 h-2.5 rounded-full border border-gray-500 bg-gray-200" style={{ borderWidth: '1.5px' }} />
             )}
             <span className="text-[10px] text-gray-600">
               {entry.value === 'publicFast' ? 'Public Fast' : 'Home Solar'}
@@ -1867,19 +1956,19 @@ function PublicFastVsHomeSolarChart({ data, country }: PublicFastVsHomeSolarChar
     <div className="bg-gray-50 rounded-lg px-3 pt-4 pb-0 flex flex-col gap-0">
       <div>
         <div className="flex items-center gap-1.5">
-          <p className="font-semibold text-gray-800">Typical Top-Up (20-80%)</p>
+          <p className="font-semibold text-gray-800">Typical Top-Up</p>
           <TimeToChargeInfoBox />
         </div>
         <p className="text-xs text-gray-500 mt-1">
-          Public fast charging; Home Solar
+          DC fast charging vs. Home Solar (20-80%)
         </p>
-        <div className="flex justify-center gap-3 mt-5 mb-0">
+        <div className="flex justify-center gap-3 mt-3.5 mb-2">
           <div className="flex items-center gap-1">
             <div className="w-2.5 h-2.5 border border-gray-400 bg-gray-200" />
             <span className="text-[9px] text-gray-600">Public Fast</span>
           </div>
           <div className="flex items-center gap-1">
-            <div className="w-2.5 h-2.5 rounded-full border border-gray-400 bg-gray-200" />
+            <div className="w-2.5 h-2.5 rounded-full border border-gray-500 bg-gray-200" style={{ borderWidth: '1.5px' }} />
             <span className="text-[9px] text-gray-600">Home Solar</span>
           </div>
         </div>
@@ -1956,7 +2045,8 @@ function PublicFastVsHomeSolarChart({ data, country }: PublicFastVsHomeSolarChar
                       cy={cy}
                       r={4}
                       fill={dotColor}
-                      stroke="#000"
+                      fillOpacity={0.7}
+                      stroke="#6b7280"
                       strokeWidth={1.5}
                     />
                     <text

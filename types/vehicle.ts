@@ -38,7 +38,9 @@ export interface Vehicle {
   batteryWarranty: string | null
   chargingTimeDc0To80Min: number | null
   chargingCapabilities: string | null
+  hasBidirectional: boolean | null // Bidirectional charging (V2L/V2H) capability
   technologyFeatures: string | null
+  otaUpdates: string | null // Over-the-Air Updates: "Yes", "No", or "N/A"
   basePriceLocalCurrency: number | null
   optionPrices: OptionPrice[]
   onTheRoadPriceLocalCurrency: number | null

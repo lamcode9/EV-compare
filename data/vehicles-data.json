@@ -33,7 +33,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2047,
-    "topSpeedKmh": 225
+    "topSpeedKmh": 225,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Tesla Model 3",
@@ -65,7 +67,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2112,
-    "topSpeedKmh": 233
+    "topSpeedKmh": 233,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Tesla Model 3",
@@ -97,7 +101,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2140,
-    "topSpeedKmh": 261
+    "topSpeedKmh": 261,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Tesla Model Y",
@@ -129,7 +135,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2174,
-    "topSpeedKmh": 217
+    "topSpeedKmh": 217,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Tesla Model Y",
@@ -138,7 +146,7 @@
     "powerRatingKw": 378,
     "torqueNm": 560,
     "acceleration0To100Kmh": 5,
-    "efficiencyKwhPer100km": 15.5,
+    "efficiencyKwhPer100km": 15,
     "rangeWltpKm": 600,
     "rangeEpaKm": 488,
     "rangeKm": 600,
@@ -161,7 +169,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2203,
-    "topSpeedKmh": 217
+    "topSpeedKmh": 217,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BYD Dolphin",
@@ -201,7 +211,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1480,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BYD Dolphin",
@@ -210,7 +222,7 @@
     "powerRatingKw": 150,
     "torqueNm": 310,
     "acceleration0To100Kmh": 7,
-    "efficiencyKwhPer100km": 13,
+    "efficiencyKwhPer100km": 13.8,
     "rangeWltpKm": 490,
     "rangeEpaKm": 420,
     "rangeKm": 490,
@@ -241,7 +253,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1520,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BYD Atto 3",
@@ -250,7 +264,7 @@
     "powerRatingKw": 100,
     "torqueNm": 220,
     "acceleration0To100Kmh": 9,
-    "efficiencyKwhPer100km": 14,
+    "efficiencyKwhPer100km": 14.5,
     "rangeWltpKm": 320,
     "rangeEpaKm": 265,
     "rangeKm": 320,
@@ -281,7 +295,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1880,
-    "topSpeedKmh": 160
+    "topSpeedKmh": 160,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BYD Atto 3",
@@ -290,7 +306,7 @@
     "powerRatingKw": 150,
     "torqueNm": 310,
     "acceleration0To100Kmh": 7.3,
-    "efficiencyKwhPer100km": 14.5,
+    "efficiencyKwhPer100km": 15,
     "rangeWltpKm": 480,
     "rangeEpaKm": 420,
     "rangeKm": 480,
@@ -321,7 +337,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1950,
-    "topSpeedKmh": 160
+    "topSpeedKmh": 160,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BYD Seal",
@@ -330,7 +348,7 @@
     "powerRatingKw": 230,
     "torqueNm": 360,
     "acceleration0To100Kmh": 5.9,
-    "efficiencyKwhPer100km": 14.8,
+    "efficiencyKwhPer100km": 16.5,
     "rangeWltpKm": 570,
     "rangeEpaKm": 460,
     "rangeKm": 570,
@@ -361,7 +379,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2250,
-    "topSpeedKmh": 180
+    "topSpeedKmh": 180,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BYD Seal",
@@ -370,7 +390,7 @@
     "powerRatingKw": 390,
     "torqueNm": 670,
     "acceleration0To100Kmh": 3.8,
-    "efficiencyKwhPer100km": 15.5,
+    "efficiencyKwhPer100km": 17.5,
     "rangeWltpKm": 520,
     "rangeEpaKm": 435,
     "rangeKm": 520,
@@ -401,7 +421,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2380,
-    "topSpeedKmh": 180
+    "topSpeedKmh": 180,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BYD Sealion 7",
@@ -410,7 +432,7 @@
     "powerRatingKw": 230,
     "torqueNm": 380,
     "acceleration0To100Kmh": 6.7,
-    "efficiencyKwhPer100km": 16.2,
+    "efficiencyKwhPer100km": 18.5,
     "rangeWltpKm": 550,
     "rangeEpaKm": 467,
     "rangeKm": 550,
@@ -441,7 +463,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2380,
-    "topSpeedKmh": 180
+    "topSpeedKmh": 180,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BYD Sealion 7",
@@ -450,7 +474,7 @@
     "powerRatingKw": 390,
     "torqueNm": 690,
     "acceleration0To100Kmh": 4.5,
-    "efficiencyKwhPer100km": 17,
+    "efficiencyKwhPer100km": 18.5,
     "rangeWltpKm": 542,
     "rangeEpaKm": 460,
     "rangeKm": 542,
@@ -481,7 +505,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2450,
-    "topSpeedKmh": 200
+    "topSpeedKmh": 200,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Proton e.MAS 7",
@@ -490,7 +516,7 @@
     "powerRatingKw": 160,
     "torqueNm": 320,
     "acceleration0To100Kmh": 8,
-    "efficiencyKwhPer100km": 15,
+    "efficiencyKwhPer100km": 16.5,
     "rangeWltpKm": 345,
     "rangeEpaKm": 300,
     "rangeKm": 345,
@@ -521,7 +547,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1880,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Proton e.MAS 7",
@@ -530,7 +558,7 @@
     "powerRatingKw": 160,
     "torqueNm": 320,
     "acceleration0To100Kmh": 8,
-    "efficiencyKwhPer100km": 15,
+    "efficiencyKwhPer100km": 16.5,
     "rangeWltpKm": 410,
     "rangeEpaKm": 350,
     "rangeKm": 410,
@@ -561,7 +589,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1920,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "MG 4 EV",
@@ -570,7 +600,7 @@
     "powerRatingKw": 125,
     "torqueNm": 250,
     "acceleration0To100Kmh": 7.7,
-    "efficiencyKwhPer100km": 14,
+    "efficiencyKwhPer100km": 16.5,
     "rangeWltpKm": 350,
     "rangeEpaKm": 300,
     "rangeKm": 350,
@@ -597,7 +627,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1830,
-    "topSpeedKmh": 160
+    "topSpeedKmh": 160,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "MG 4 EV",
@@ -606,7 +638,7 @@
     "powerRatingKw": 150,
     "torqueNm": 250,
     "acceleration0To100Kmh": 7.7,
-    "efficiencyKwhPer100km": 14.5,
+    "efficiencyKwhPer100km": 16.5,
     "rangeWltpKm": 450,
     "rangeEpaKm": 380,
     "rangeKm": 450,
@@ -633,7 +665,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1850,
-    "topSpeedKmh": 160
+    "topSpeedKmh": 160,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Chery Omoda E5",
@@ -642,7 +676,7 @@
     "powerRatingKw": 150,
     "torqueNm": 340,
     "acceleration0To100Kmh": 7.6,
-    "efficiencyKwhPer100km": 14.5,
+    "efficiencyKwhPer100km": 16,
     "rangeWltpKm": 430,
     "rangeEpaKm": 365,
     "rangeKm": 430,
@@ -673,7 +707,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1900,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Chery Omoda E5",
@@ -682,7 +718,7 @@
     "powerRatingKw": 150,
     "torqueNm": 340,
     "acceleration0To100Kmh": 7.6,
-    "efficiencyKwhPer100km": 14.5,
+    "efficiencyKwhPer100km": 16,
     "rangeWltpKm": 505,
     "rangeEpaKm": 430,
     "rangeKm": 505,
@@ -713,7 +749,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1900,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "GAC Aion Y Plus",
@@ -722,7 +760,7 @@
     "powerRatingKw": 150,
     "torqueNm": 225,
     "acceleration0To100Kmh": 8.5,
-    "efficiencyKwhPer100km": 14.2,
+    "efficiencyKwhPer100km": 14.5,
     "rangeWltpKm": 500,
     "rangeEpaKm": 425,
     "rangeKm": 500,
@@ -753,7 +791,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2080,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "GAC Aion Y Plus",
@@ -793,7 +833,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2120,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Hyundai Ioniq 5",
@@ -829,7 +871,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2100,
-    "topSpeedKmh": 185
+    "topSpeedKmh": 185,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Hyundai Ioniq 5",
@@ -865,7 +909,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2200,
-    "topSpeedKmh": 185
+    "topSpeedKmh": 185,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Hyundai Ioniq 5",
@@ -901,7 +947,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2340,
-    "topSpeedKmh": 185
+    "topSpeedKmh": 185,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Kia EV6",
@@ -937,7 +985,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2195,
-    "topSpeedKmh": 185
+    "topSpeedKmh": 185,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Kia EV6",
@@ -946,7 +996,7 @@
     "powerRatingKw": 239,
     "torqueNm": 605,
     "acceleration0To100Kmh": 5.2,
-    "efficiencyKwhPer100km": 18,
+    "efficiencyKwhPer100km": 18.5,
     "rangeWltpKm": 510,
     "rangeEpaKm": 435,
     "rangeKm": 510,
@@ -973,7 +1023,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2300,
-    "topSpeedKmh": 185
+    "topSpeedKmh": 185,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BMW i4",
@@ -1009,7 +1061,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2205,
-    "topSpeedKmh": 190
+    "topSpeedKmh": 190,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BMW i4",
@@ -1018,7 +1072,7 @@
     "powerRatingKw": 400,
     "torqueNm": 795,
     "acceleration0To100Kmh": 3.9,
-    "efficiencyKwhPer100km": 17.5,
+    "efficiencyKwhPer100km": 20,
     "rangeWltpKm": 521,
     "rangeEpaKm": 440,
     "rangeKm": 521,
@@ -1049,7 +1103,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2415,
-    "topSpeedKmh": 225
+    "topSpeedKmh": 225,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Zeekr X",
@@ -1058,7 +1114,7 @@
     "powerRatingKw": 200,
     "torqueNm": 343,
     "acceleration0To100Kmh": 5.6,
-    "efficiencyKwhPer100km": 15,
+    "efficiencyKwhPer100km": 17,
     "rangeWltpKm": 560,
     "rangeEpaKm": 475,
     "rangeKm": 560,
@@ -1089,7 +1145,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2020,
-    "topSpeedKmh": 180
+    "topSpeedKmh": 180,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Zeekr X",
@@ -1098,7 +1156,7 @@
     "powerRatingKw": 315,
     "torqueNm": 543,
     "acceleration0To100Kmh": 3.7,
-    "efficiencyKwhPer100km": 15.5,
+    "efficiencyKwhPer100km": 17,
     "rangeWltpKm": 512,
     "rangeEpaKm": 435,
     "rangeKm": 512,
@@ -1129,7 +1187,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2080,
-    "topSpeedKmh": 180
+    "topSpeedKmh": 180,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Zeekr 001",
@@ -1138,7 +1198,7 @@
     "powerRatingKw": 310,
     "torqueNm": 686,
     "acceleration0To100Kmh": 5.9,
-    "efficiencyKwhPer100km": 15.8,
+    "efficiencyKwhPer100km": 18.5,
     "rangeWltpKm": 620,
     "rangeEpaKm": 540,
     "rangeKm": 620,
@@ -1168,7 +1228,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2390
+    "grossVehicleWeightKg": 2390,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Zeekr 001",
@@ -1177,7 +1239,7 @@
     "powerRatingKw": 475,
     "torqueNm": 820,
     "acceleration0To100Kmh": 3.8,
-    "efficiencyKwhPer100km": 16.5,
+    "efficiencyKwhPer100km": 18.5,
     "rangeWltpKm": 580,
     "rangeEpaKm": 505,
     "rangeKm": 580,
@@ -1208,7 +1270,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2470,
-    "topSpeedKmh": 200
+    "topSpeedKmh": 200,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Xpeng G6",
@@ -1217,7 +1281,7 @@
     "powerRatingKw": 218,
     "torqueNm": 440,
     "acceleration0To100Kmh": 6.9,
-    "efficiencyKwhPer100km": 15,
+    "efficiencyKwhPer100km": 15.5,
     "rangeWltpKm": 580,
     "rangeEpaKm": 495,
     "rangeKm": 580,
@@ -1248,7 +1312,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2280,
-    "topSpeedKmh": 200
+    "topSpeedKmh": 200,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Xpeng G6",
@@ -1287,7 +1353,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2320
+    "grossVehicleWeightKg": 2320,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Volvo EX30",
@@ -1296,7 +1364,7 @@
     "powerRatingKw": 200,
     "torqueNm": 343,
     "acceleration0To100Kmh": 5.7,
-    "efficiencyKwhPer100km": 15,
+    "efficiencyKwhPer100km": 16.5,
     "rangeWltpKm": 480,
     "rangeEpaKm": 410,
     "rangeKm": 480,
@@ -1323,7 +1391,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2030,
-    "topSpeedKmh": 180
+    "topSpeedKmh": 180,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Volvo EX30",
@@ -1332,7 +1402,7 @@
     "powerRatingKw": 315,
     "torqueNm": 543,
     "acceleration0To100Kmh": 3.6,
-    "efficiencyKwhPer100km": 16,
+    "efficiencyKwhPer100km": 16.5,
     "rangeWltpKm": 460,
     "rangeEpaKm": 390,
     "rangeKm": 460,
@@ -1359,7 +1429,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2090,
-    "topSpeedKmh": 180
+    "topSpeedKmh": 180,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Porsche Taycan",
@@ -1368,7 +1440,7 @@
     "powerRatingKw": 402,
     "torqueNm": 650,
     "acceleration0To100Kmh": 4,
-    "efficiencyKwhPer100km": 20.5,
+    "efficiencyKwhPer100km": 26,
     "rangeWltpKm": 450,
     "rangeEpaKm": 390,
     "rangeKm": 450,
@@ -1394,7 +1466,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2350
+    "grossVehicleWeightKg": 2350,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Mercedes-Benz EQA",
@@ -1403,7 +1477,7 @@
     "powerRatingKw": 140,
     "torqueNm": 385,
     "acceleration0To100Kmh": 8.9,
-    "efficiencyKwhPer100km": 15.7,
+    "efficiencyKwhPer100km": 18.2,
     "rangeWltpKm": 560,
     "rangeEpaKm": 475,
     "rangeKm": 560,
@@ -1433,7 +1507,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2240
+    "grossVehicleWeightKg": 2240,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Mercedes-Benz EQB",
@@ -1472,7 +1548,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2380
+    "grossVehicleWeightKg": 2380,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Polestar 2",
@@ -1481,7 +1559,7 @@
     "powerRatingKw": 220,
     "torqueNm": 490,
     "acceleration0To100Kmh": 6.2,
-    "efficiencyKwhPer100km": 15.5,
+    "efficiencyKwhPer100km": 19,
     "rangeWltpKm": 655,
     "rangeEpaKm": 555,
     "rangeKm": 655,
@@ -1512,7 +1590,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2208,
-    "topSpeedKmh": 205
+    "topSpeedKmh": 205,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Polestar 2",
@@ -1521,7 +1601,7 @@
     "powerRatingKw": 350,
     "torqueNm": 740,
     "acceleration0To100Kmh": 4.2,
-    "efficiencyKwhPer100km": 16.5,
+    "efficiencyKwhPer100km": 19,
     "rangeWltpKm": 591,
     "rangeEpaKm": 500,
     "rangeKm": 591,
@@ -1552,7 +1632,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2270,
-    "topSpeedKmh": 205
+    "topSpeedKmh": 205,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Mini Cooper SE",
@@ -1561,7 +1643,7 @@
     "powerRatingKw": 160,
     "torqueNm": 330,
     "acceleration0To100Kmh": 7.3,
-    "efficiencyKwhPer100km": 14,
+    "efficiencyKwhPer100km": 17,
     "rangeWltpKm": 402,
     "rangeEpaKm": 340,
     "rangeKm": 402,
@@ -1591,7 +1673,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1640
+    "grossVehicleWeightKg": 1640,
+    "hasBidirectional": false,
+    "otaUpdates": "No"
   },
   {
     "name": "Ora Good Cat",
@@ -1600,7 +1684,7 @@
     "powerRatingKw": 126,
     "torqueNm": 250,
     "acceleration0To100Kmh": 8.4,
-    "efficiencyKwhPer100km": 14.2,
+    "efficiencyKwhPer100km": 13.5,
     "rangeWltpKm": 420,
     "rangeEpaKm": 340,
     "rangeKm": 420,
@@ -1631,7 +1715,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1710,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Ora Good Cat",
@@ -1640,7 +1726,7 @@
     "powerRatingKw": 171,
     "torqueNm": 310,
     "acceleration0To100Kmh": 7.5,
-    "efficiencyKwhPer100km": 14.5,
+    "efficiencyKwhPer100km": 13.5,
     "rangeWltpKm": 430,
     "rangeEpaKm": 350,
     "rangeKm": 430,
@@ -1671,7 +1757,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1740,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Neta V-II",
@@ -1680,7 +1768,7 @@
     "powerRatingKw": 120,
     "torqueNm": 210,
     "acceleration0To100Kmh": 9,
-    "efficiencyKwhPer100km": 14,
+    "efficiencyKwhPer100km": 13.5,
     "rangeWltpKm": 401,
     "rangeEpaKm": 340,
     "rangeKm": 401,
@@ -1711,7 +1799,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1620,
-    "topSpeedKmh": 100
+    "topSpeedKmh": 100,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Wuling Air EV",
@@ -1720,7 +1810,7 @@
     "powerRatingKw": 40,
     "torqueNm": 110,
     "acceleration0To100Kmh": 15,
-    "efficiencyKwhPer100km": 11,
+    "efficiencyKwhPer100km": 10.5,
     "rangeWltpKm": 200,
     "rangeEpaKm": 160,
     "rangeKm": 200,
@@ -1751,7 +1841,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1250,
-    "topSpeedKmh": 100
+    "topSpeedKmh": 100,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Wuling Air EV",
@@ -1760,7 +1852,7 @@
     "powerRatingKw": 40,
     "torqueNm": 110,
     "acceleration0To100Kmh": 15,
-    "efficiencyKwhPer100km": 11,
+    "efficiencyKwhPer100km": 10.5,
     "rangeWltpKm": 300,
     "rangeEpaKm": 240,
     "rangeKm": 300,
@@ -1791,7 +1883,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1250,
-    "topSpeedKmh": 100
+    "topSpeedKmh": 100,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "VinFast VF 3",
@@ -1800,7 +1894,7 @@
     "powerRatingKw": 32,
     "torqueNm": 110,
     "acceleration0To100Kmh": 12,
-    "efficiencyKwhPer100km": 12,
+    "efficiencyKwhPer100km": 14,
     "rangeWltpKm": 210,
     "rangeEpaKm": 170,
     "rangeKm": 210,
@@ -1830,7 +1924,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1060
+    "grossVehicleWeightKg": 1060,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "VinFast VF 3",
@@ -1839,7 +1935,7 @@
     "powerRatingKw": 32,
     "torqueNm": 110,
     "acceleration0To100Kmh": 12,
-    "efficiencyKwhPer100km": 12,
+    "efficiencyKwhPer100km": 14,
     "rangeWltpKm": 210,
     "rangeEpaKm": 170,
     "rangeKm": 210,
@@ -1869,7 +1965,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1060
+    "grossVehicleWeightKg": 1060,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "VinFast VF 9",
@@ -1908,7 +2006,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2850
+    "grossVehicleWeightKg": 2850,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Smart Fortwo EQ",
@@ -1917,7 +2017,7 @@
     "powerRatingKw": 60,
     "torqueNm": 160,
     "acceleration0To100Kmh": 11.5,
-    "efficiencyKwhPer100km": 16,
+    "efficiencyKwhPer100km": 15.5,
     "rangeWltpKm": 130,
     "rangeEpaKm": 110,
     "rangeKm": 130,
@@ -1947,7 +2047,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1295
+    "grossVehicleWeightKg": 1295,
+    "hasBidirectional": false,
+    "otaUpdates": "No"
   },
   {
     "name": "MG 4 EV",
@@ -1956,7 +2058,7 @@
     "powerRatingKw": 125,
     "torqueNm": 250,
     "acceleration0To100Kmh": 7.7,
-    "efficiencyKwhPer100km": 14,
+    "efficiencyKwhPer100km": 16.5,
     "rangeWltpKm": 350,
     "rangeEpaKm": 300,
     "rangeKm": 350,
@@ -1983,7 +2085,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1830,
-    "topSpeedKmh": 160
+    "topSpeedKmh": 160,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Deepal S07",
@@ -1992,7 +2096,7 @@
     "powerRatingKw": 160,
     "torqueNm": 320,
     "acceleration0To100Kmh": 6.7,
-    "efficiencyKwhPer100km": 14.5,
+    "efficiencyKwhPer100km": 16.5,
     "rangeWltpKm": 520,
     "rangeEpaKm": 440,
     "rangeKm": 520,
@@ -2022,7 +2126,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2100
+    "grossVehicleWeightKg": 2100,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Hyundai Kona Electric",
@@ -2031,7 +2137,7 @@
     "powerRatingKw": 100,
     "torqueNm": 255,
     "acceleration0To100Kmh": 9.7,
-    "efficiencyKwhPer100km": 15.5,
+    "efficiencyKwhPer100km": 14.7,
     "rangeWltpKm": 305,
     "rangeEpaKm": 260,
     "rangeKm": 305,
@@ -2057,7 +2163,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1710
+    "grossVehicleWeightKg": 1710,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "BYD M6",
@@ -2066,7 +2174,7 @@
     "powerRatingKw": 150,
     "torqueNm": 310,
     "acceleration0To100Kmh": 8.5,
-    "efficiencyKwhPer100km": 15,
+    "efficiencyKwhPer100km": 18,
     "rangeWltpKm": 420,
     "rangeEpaKm": 350,
     "rangeKm": 420,
@@ -2096,7 +2204,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2180
+    "grossVehicleWeightKg": 2180,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Leapmotor C10",
@@ -2105,7 +2215,7 @@
     "powerRatingKw": 160,
     "torqueNm": 320,
     "acceleration0To100Kmh": 7.5,
-    "efficiencyKwhPer100km": 15.5,
+    "efficiencyKwhPer100km": 16,
     "rangeWltpKm": 410,
     "rangeEpaKm": 350,
     "rangeKm": 410,
@@ -2135,7 +2245,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2180
+    "grossVehicleWeightKg": 2180,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "VinFast VF 5",
@@ -2144,7 +2256,7 @@
     "powerRatingKw": 100,
     "torqueNm": 135,
     "acceleration0To100Kmh": 10.9,
-    "efficiencyKwhPer100km": 14,
+    "efficiencyKwhPer100km": 15,
     "rangeWltpKm": 326,
     "rangeEpaKm": 280,
     "rangeKm": 326,
@@ -2174,7 +2286,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1540
+    "grossVehicleWeightKg": 1540,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Kia EV6",
@@ -2210,7 +2324,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2195,
-    "topSpeedKmh": 185
+    "topSpeedKmh": 185,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Wuling Binguo EV",
@@ -2219,7 +2335,7 @@
     "powerRatingKw": 50,
     "torqueNm": 125,
     "acceleration0To100Kmh": 12,
-    "efficiencyKwhPer100km": 12,
+    "efficiencyKwhPer100km": 11,
     "rangeWltpKm": 333,
     "rangeEpaKm": 280,
     "rangeKm": 333,
@@ -2249,7 +2365,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1320
+    "grossVehicleWeightKg": 1320,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Changan Deepal S07",
@@ -2258,7 +2376,7 @@
     "powerRatingKw": 190,
     "torqueNm": 320,
     "acceleration0To100Kmh": 6.7,
-    "efficiencyKwhPer100km": 14.5,
+    "efficiencyKwhPer100km": 16.5,
     "rangeWltpKm": 560,
     "rangeEpaKm": 475,
     "rangeKm": 560,
@@ -2288,7 +2406,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2150
+    "grossVehicleWeightKg": 2150,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BYD Seal",
@@ -2327,7 +2447,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2250
+    "grossVehicleWeightKg": 2250,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "MG 4 EV",
@@ -2336,7 +2458,7 @@
     "powerRatingKw": 125,
     "torqueNm": 250,
     "acceleration0To100Kmh": 7.7,
-    "efficiencyKwhPer100km": 14,
+    "efficiencyKwhPer100km": 16.5,
     "rangeWltpKm": 350,
     "rangeEpaKm": 300,
     "rangeKm": 350,
@@ -2363,7 +2485,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1830,
-    "topSpeedKmh": 160
+    "topSpeedKmh": 160,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Hyundai Ioniq 5",
@@ -2399,7 +2523,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2100,
-    "topSpeedKmh": 185
+    "topSpeedKmh": 185,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BMW iX",
@@ -2439,7 +2565,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2640,
-    "topSpeedKmh": 200
+    "topSpeedKmh": 200,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "VinFast VF 6",
@@ -2448,7 +2576,7 @@
     "powerRatingKw": 130,
     "torqueNm": 250,
     "acceleration0To100Kmh": 8,
-    "efficiencyKwhPer100km": 15,
+    "efficiencyKwhPer100km": 16,
     "rangeWltpKm": 399,
     "rangeEpaKm": 340,
     "rangeKm": 399,
@@ -2478,7 +2606,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1900
+    "grossVehicleWeightKg": 1900,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "MG ZS EV",
@@ -2487,7 +2617,7 @@
     "powerRatingKw": 130,
     "torqueNm": 280,
     "acceleration0To100Kmh": 8.2,
-    "efficiencyKwhPer100km": 15.5,
+    "efficiencyKwhPer100km": 18,
     "rangeWltpKm": 403,
     "rangeEpaKm": 340,
     "rangeKm": 403,
@@ -2514,7 +2644,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1770,
-    "topSpeedKmh": 140
+    "topSpeedKmh": 140,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Chery iCar 03",
@@ -2523,7 +2655,7 @@
     "powerRatingKw": 135,
     "torqueNm": 220,
     "acceleration0To100Kmh": 8.5,
-    "efficiencyKwhPer100km": 15,
+    "efficiencyKwhPer100km": 15.5,
     "rangeWltpKm": 472,
     "rangeEpaKm": 400,
     "rangeKm": 472,
@@ -2553,7 +2685,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1890
+    "grossVehicleWeightKg": 1890,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Aion Hyptec HT",
@@ -2562,7 +2696,7 @@
     "powerRatingKw": 150,
     "torqueNm": 310,
     "acceleration0To100Kmh": 7.8,
-    "efficiencyKwhPer100km": 14.5,
+    "efficiencyKwhPer100km": 16,
     "rangeWltpKm": 550,
     "rangeEpaKm": 470,
     "rangeKm": 550,
@@ -2592,7 +2726,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2050
+    "grossVehicleWeightKg": 2050,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Mercedes-Benz EQE",
@@ -2631,7 +2767,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2720
+    "grossVehicleWeightKg": 2720,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Ford Mustang Mach-E",
@@ -2670,23 +2808,25 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2400
+    "grossVehicleWeightKg": 2400,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Tesla Model Y",
     "modelTrim": "Performance",
     "country": "SG",
-    "powerRatingKw": 450,
+    "powerRatingKw": 510,
     "torqueNm": 660,
-    "acceleration0To100Kmh": 3.7,
-    "efficiencyKwhPer100km": 16,
-    "rangeWltpKm": 514,
-    "rangeEpaKm": 465,
-    "rangeKm": 514,
+    "acceleration0To100Kmh": 3.5,
+    "efficiencyKwhPer100km": 15.5,
+    "rangeWltpKm": 533,
+    "rangeEpaKm": 456,
+    "rangeKm": 533,
     "batteryCapacityKwh": 84.85,
-    "batteryWeightKg": 570,
-    "curbWeightKg": 2070,
-    "batteryWeightPercentage": 27.5,
+    "batteryWeightKg": 550,
+    "curbWeightKg": 2020,
+    "batteryWeightPercentage": 27.2,
     "batteryManufacturer": "Panasonic",
     "batteryTechnology": "NMC",
     "batteryWarranty": "8 years / 192,000 km",
@@ -2706,7 +2846,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2270,
-    "topSpeedKmh": 250
+    "topSpeedKmh": 250,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Kia EV9",
@@ -2741,7 +2883,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2780
+    "grossVehicleWeightKg": 2780,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BMW i4",
@@ -2750,7 +2894,7 @@
     "powerRatingKw": 250,
     "torqueNm": 430,
     "acceleration0To100Kmh": 5.7,
-    "efficiencyKwhPer100km": 16.5,
+    "efficiencyKwhPer100km": 18,
     "rangeWltpKm": 590,
     "rangeEpaKm": 505,
     "rangeKm": 590,
@@ -2776,7 +2920,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2325
+    "grossVehicleWeightKg": 2325,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Neta X",
@@ -2785,7 +2931,7 @@
     "powerRatingKw": 120,
     "torqueNm": 210,
     "acceleration0To100Kmh": 9.5,
-    "efficiencyKwhPer100km": 14,
+    "efficiencyKwhPer100km": 16.5,
     "rangeWltpKm": 480,
     "rangeEpaKm": 410,
     "rangeKm": 480,
@@ -2815,7 +2961,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1950
+    "grossVehicleWeightKg": 1950,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Great Wall Ora 03",
@@ -2854,7 +3002,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1780
+    "grossVehicleWeightKg": 1780,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Chery EQ7",
@@ -2863,7 +3013,7 @@
     "powerRatingKw": 225,
     "torqueNm": 385,
     "acceleration0To100Kmh": 6.8,
-    "efficiencyKwhPer100km": 15.5,
+    "efficiencyKwhPer100km": 17,
     "rangeWltpKm": 550,
     "rangeEpaKm": 470,
     "rangeKm": 550,
@@ -2893,7 +3043,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2300
+    "grossVehicleWeightKg": 2300,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Serena e-POWER",
@@ -2902,7 +3054,7 @@
     "powerRatingKw": 100,
     "torqueNm": 320,
     "acceleration0To100Kmh": 9.8,
-    "efficiencyKwhPer100km": 18.5,
+    "efficiencyKwhPer100km": 5.2,
     "rangeWltpKm": 450,
     "rangeEpaKm": 380,
     "rangeKm": 450,
@@ -2932,7 +3084,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2150
+    "grossVehicleWeightKg": 2150,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "No"
   },
   {
     "name": "Hyundai Ioniq 6",
@@ -2941,7 +3095,7 @@
     "powerRatingKw": 168,
     "torqueNm": 350,
     "acceleration0To100Kmh": 7.4,
-    "efficiencyKwhPer100km": 14.5,
+    "efficiencyKwhPer100km": 14.3,
     "rangeWltpKm": 614,
     "rangeEpaKm": 525,
     "rangeKm": 614,
@@ -2968,7 +3122,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2180,
-    "topSpeedKmh": 185
+    "topSpeedKmh": 185,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "VinFast VF 8",
@@ -3007,7 +3163,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2650
+    "grossVehicleWeightKg": 2650,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "VinFast VF e34",
@@ -3016,7 +3174,7 @@
     "powerRatingKw": 110,
     "torqueNm": 242,
     "acceleration0To100Kmh": 9.5,
-    "efficiencyKwhPer100km": 15,
+    "efficiencyKwhPer100km": 16.5,
     "rangeWltpKm": 318,
     "rangeEpaKm": 270,
     "rangeKm": 318,
@@ -3046,7 +3204,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1690
+    "grossVehicleWeightKg": 1690,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Geely Geometry C",
@@ -3055,7 +3215,7 @@
     "powerRatingKw": 150,
     "torqueNm": 310,
     "acceleration0To100Kmh": 7.7,
-    "efficiencyKwhPer100km": 14.5,
+    "efficiencyKwhPer100km": 14,
     "rangeWltpKm": 485,
     "rangeEpaKm": 410,
     "rangeKm": 485,
@@ -3085,7 +3245,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1980
+    "grossVehicleWeightKg": 1980,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Tesla Model Y",
@@ -3094,14 +3256,14 @@
     "powerRatingKw": 378,
     "torqueNm": 560,
     "acceleration0To100Kmh": 5,
-    "efficiencyKwhPer100km": 15.8,
+    "efficiencyKwhPer100km": 15.2,
     "rangeWltpKm": 580,
     "rangeEpaKm": 470,
     "rangeKm": 580,
     "batteryCapacityKwh": 84.85,
-    "batteryWeightKg": 560,
-    "curbWeightKg": 2100,
-    "batteryWeightPercentage": 26.7,
+    "batteryWeightKg": 550,
+    "curbWeightKg": 2040,
+    "batteryWeightPercentage": 27,
     "batteryManufacturer": "Panasonic",
     "batteryTechnology": "NMC",
     "batteryWarranty": "8 years / 192,000 km",
@@ -3129,7 +3291,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2300,
-    "topSpeedKmh": 217
+    "topSpeedKmh": 217,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BMW iX1",
@@ -3165,7 +3329,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2210,
-    "topSpeedKmh": 200
+    "topSpeedKmh": 200,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BMW iX3",
@@ -3201,7 +3367,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2380,
-    "topSpeedKmh": 180
+    "topSpeedKmh": 180,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Mercedes-Benz EQS",
@@ -3210,7 +3378,7 @@
     "powerRatingKw": 265,
     "torqueNm": 568,
     "acceleration0To100Kmh": 6.2,
-    "efficiencyKwhPer100km": 18,
+    "efficiencyKwhPer100km": 19.8,
     "rangeWltpKm": 717,
     "rangeEpaKm": 610,
     "rangeKm": 717,
@@ -3240,7 +3408,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2780
+    "grossVehicleWeightKg": 2780,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Audi Q8 e-tron",
@@ -3275,7 +3445,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2780
+    "grossVehicleWeightKg": 2780,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Zeekr X",
@@ -3284,7 +3456,7 @@
     "powerRatingKw": 200,
     "torqueNm": 343,
     "acceleration0To100Kmh": 5.8,
-    "efficiencyKwhPer100km": 15.2,
+    "efficiencyKwhPer100km": 17,
     "rangeWltpKm": 560,
     "rangeEpaKm": 475,
     "rangeKm": 560,
@@ -3315,7 +3487,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2080,
-    "topSpeedKmh": 180
+    "topSpeedKmh": 180,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Zeekr 009",
@@ -3354,7 +3528,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 3170
+    "grossVehicleWeightKg": 3170,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Smart #1",
@@ -3393,7 +3569,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2090
+    "grossVehicleWeightKg": 2090,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Ora Good Cat",
@@ -3402,7 +3580,7 @@
     "powerRatingKw": 171,
     "torqueNm": 310,
     "acceleration0To100Kmh": 7.5,
-    "efficiencyKwhPer100km": 14.5,
+    "efficiencyKwhPer100km": 13.5,
     "rangeWltpKm": 430,
     "rangeEpaKm": 350,
     "rangeKm": 430,
@@ -3433,7 +3611,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1740,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "GWM Ora 07",
@@ -3472,7 +3652,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2280
+    "grossVehicleWeightKg": 2280,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Jaecoo J7 PHEV",
@@ -3511,7 +3693,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2150
+    "grossVehicleWeightKg": 2150,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Wuling Cloud EV",
@@ -3550,7 +3734,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1750
+    "grossVehicleWeightKg": 1750,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "MG ZS EV",
@@ -3559,7 +3745,7 @@
     "powerRatingKw": 130,
     "torqueNm": 280,
     "acceleration0To100Kmh": 8.2,
-    "efficiencyKwhPer100km": 15.5,
+    "efficiencyKwhPer100km": 18,
     "rangeWltpKm": 403,
     "rangeEpaKm": 340,
     "rangeKm": 403,
@@ -3586,7 +3772,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1770,
-    "topSpeedKmh": 140
+    "topSpeedKmh": 140,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "VinFast VF 9",
@@ -3595,7 +3783,7 @@
     "powerRatingKw": 300,
     "torqueNm": 620,
     "acceleration0To100Kmh": 6.5,
-    "efficiencyKwhPer100km": 20.5,
+    "efficiencyKwhPer100km": 20,
     "rangeWltpKm": 530,
     "rangeEpaKm": 450,
     "rangeKm": 530,
@@ -3625,7 +3813,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2980
+    "grossVehicleWeightKg": 2980,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Volkswagen ID.3",
@@ -3664,7 +3854,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1920
+    "grossVehicleWeightKg": 1920,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Volkswagen ID.4",
@@ -3673,7 +3865,7 @@
     "powerRatingKw": 204,
     "torqueNm": 310,
     "acceleration0To100Kmh": 8.5,
-    "efficiencyKwhPer100km": 16.5,
+    "efficiencyKwhPer100km": 19.5,
     "rangeWltpKm": 520,
     "rangeEpaKm": 440,
     "rangeKm": 520,
@@ -3703,7 +3895,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2330
+    "grossVehicleWeightKg": 2330,
+    "hasBidirectional": true,
+    "otaUpdates": "N/A"
   },
   {
     "name": "Cupra Tavascan",
@@ -3742,7 +3936,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2400
+    "grossVehicleWeightKg": 2400,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "N/A"
   },
   {
     "name": "Cupra Tavascan",
@@ -3781,7 +3977,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2450
+    "grossVehicleWeightKg": 2450,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "N/A"
   },
   {
     "name": "Deepal S07",
@@ -3790,7 +3988,7 @@
     "powerRatingKw": 160,
     "torqueNm": 320,
     "acceleration0To100Kmh": 6.7,
-    "efficiencyKwhPer100km": 14.5,
+    "efficiencyKwhPer100km": 16.5,
     "rangeWltpKm": 520,
     "rangeEpaKm": 440,
     "rangeKm": 520,
@@ -3820,7 +4018,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2100
+    "grossVehicleWeightKg": 2100,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "GAC Aion Hyper HT",
@@ -3859,7 +4059,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2050
+    "grossVehicleWeightKg": 2050,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "GAC Aion Hyper HT",
@@ -3898,7 +4100,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2100
+    "grossVehicleWeightKg": 2100,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Hyundai Ioniq 6",
@@ -3934,7 +4138,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2180,
-    "topSpeedKmh": 185
+    "topSpeedKmh": 185,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Hyundai Ioniq 9",
@@ -3969,7 +4175,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 3000
+    "grossVehicleWeightKg": 3000,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Dongfeng Box",
@@ -4008,7 +4216,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1410
+    "grossVehicleWeightKg": 1410,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "N/A"
   },
   {
     "name": "Dongfeng 007",
@@ -4047,7 +4257,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2300
+    "grossVehicleWeightKg": 2300,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "N/A"
   },
   {
     "name": "Perodua eMO-II",
@@ -4086,7 +4298,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1450
+    "grossVehicleWeightKg": 1450,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Perodua eMO-II",
@@ -4125,7 +4339,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1500
+    "grossVehicleWeightKg": 1500,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Leapmotor T03",
@@ -4164,7 +4380,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1350
+    "grossVehicleWeightKg": 1350,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Jaecoo J6",
@@ -4203,7 +4421,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2200
+    "grossVehicleWeightKg": 2200,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Jaecoo J6",
@@ -4242,7 +4462,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2250
+    "grossVehicleWeightKg": 2250,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Deepal S05",
@@ -4281,7 +4503,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2000
+    "grossVehicleWeightKg": 2000,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Zeekr 7X",
@@ -4320,7 +4544,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2500
+    "grossVehicleWeightKg": 2500,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Zeekr 7X",
@@ -4359,7 +4585,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2550
+    "grossVehicleWeightKg": 2550,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Smart #5",
@@ -4398,7 +4626,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2400
+    "grossVehicleWeightKg": 2400,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Ora Good Cat GT",
@@ -4407,7 +4637,7 @@
     "powerRatingKw": 171,
     "torqueNm": 310,
     "acceleration0To100Kmh": 7.5,
-    "efficiencyKwhPer100km": 14.5,
+    "efficiencyKwhPer100km": 13.5,
     "rangeWltpKm": 430,
     "rangeEpaKm": 350,
     "rangeKm": 430,
@@ -4438,7 +4668,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1740,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "GWM Ora 07",
@@ -4477,7 +4709,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2280
+    "grossVehicleWeightKg": 2280,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BYD Seal 6",
@@ -4516,7 +4750,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2100
+    "grossVehicleWeightKg": 2100,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BYD Seal 6",
@@ -4555,7 +4791,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2250
+    "grossVehicleWeightKg": 2250,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Proton e.MAS 5",
@@ -4594,7 +4832,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2180
+    "grossVehicleWeightKg": 2180,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Neta X",
@@ -4603,7 +4843,7 @@
     "powerRatingKw": 120,
     "torqueNm": 210,
     "acceleration0To100Kmh": 9,
-    "efficiencyKwhPer100km": 14,
+    "efficiencyKwhPer100km": 16.5,
     "rangeWltpKm": 501,
     "rangeEpaKm": 425,
     "rangeKm": 501,
@@ -4633,7 +4873,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1950
+    "grossVehicleWeightKg": 1950,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Neta X",
@@ -4642,7 +4884,7 @@
     "powerRatingKw": 120,
     "torqueNm": 210,
     "acceleration0To100Kmh": 9,
-    "efficiencyKwhPer100km": 14,
+    "efficiencyKwhPer100km": 16.5,
     "rangeWltpKm": 501,
     "rangeEpaKm": 425,
     "rangeKm": 501,
@@ -4672,7 +4914,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1980
+    "grossVehicleWeightKg": 1980,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Great Wall Ora 03",
@@ -4711,7 +4955,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1780
+    "grossVehicleWeightKg": 1780,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Honda e:N1",
@@ -4750,7 +4996,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1800
+    "grossVehicleWeightKg": 1800,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "N/A"
   },
   {
     "name": "Changan Lumin",
@@ -4789,7 +5037,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 900
+    "grossVehicleWeightKg": 900,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Nissan Sakura",
@@ -4828,7 +5078,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1190
+    "grossVehicleWeightKg": 1190,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Nissan Sakura",
@@ -4867,7 +5119,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1220
+    "grossVehicleWeightKg": 1220,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "N/A"
   },
   {
     "name": "Toyota bZ4X",
@@ -4906,7 +5160,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2150
+    "grossVehicleWeightKg": 2150,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "MG Comet EV",
@@ -4941,7 +5197,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1030
+    "grossVehicleWeightKg": 1030,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Jaecoo J5",
@@ -4980,7 +5238,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1900
+    "grossVehicleWeightKg": 1900,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Citroen e-C4",
@@ -5019,7 +5279,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1720
+    "grossVehicleWeightKg": 1720,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "N/A"
   },
   {
     "name": "VinFast VF 7",
@@ -5058,7 +5320,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2200
+    "grossVehicleWeightKg": 2200,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "VinFast VF 7",
@@ -5097,7 +5361,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2250
+    "grossVehicleWeightKg": 2250,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Skoda Elroq",
@@ -5136,7 +5402,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2300
+    "grossVehicleWeightKg": 2300,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "N/A"
   },
   {
     "name": "Skoda Enyaq",
@@ -5175,7 +5443,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2350
+    "grossVehicleWeightKg": 2350,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "N/A"
   },
   {
     "name": "BYD Dolphin",
@@ -5215,7 +5485,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1480,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BYD Atto 3",
@@ -5224,7 +5496,7 @@
     "powerRatingKw": 100,
     "torqueNm": 220,
     "acceleration0To100Kmh": 9,
-    "efficiencyKwhPer100km": 14,
+    "efficiencyKwhPer100km": 14.5,
     "rangeWltpKm": 320,
     "rangeEpaKm": 265,
     "rangeKm": 320,
@@ -5255,7 +5527,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1880,
-    "topSpeedKmh": 160
+    "topSpeedKmh": 160,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Porsche Taycan",
@@ -5264,7 +5538,7 @@
     "powerRatingKw": 300,
     "torqueNm": 650,
     "acceleration0To100Kmh": 5.4,
-    "efficiencyKwhPer100km": 20.5,
+    "efficiencyKwhPer100km": 26,
     "rangeWltpKm": 500,
     "rangeEpaKm": 425,
     "rangeKm": 500,
@@ -5294,7 +5568,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2350
+    "grossVehicleWeightKg": 2350,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Porsche Taycan",
@@ -5303,7 +5579,7 @@
     "powerRatingKw": 402,
     "torqueNm": 650,
     "acceleration0To100Kmh": 4,
-    "efficiencyKwhPer100km": 20.5,
+    "efficiencyKwhPer100km": 26,
     "rangeWltpKm": 450,
     "rangeEpaKm": 390,
     "rangeKm": 450,
@@ -5333,7 +5609,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2350
+    "grossVehicleWeightKg": 2350,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Porsche Taycan",
@@ -5342,7 +5620,7 @@
     "powerRatingKw": 440,
     "torqueNm": 650,
     "acceleration0To100Kmh": 3.7,
-    "efficiencyKwhPer100km": 21,
+    "efficiencyKwhPer100km": 26,
     "rangeWltpKm": 465,
     "rangeEpaKm": 395,
     "rangeKm": 465,
@@ -5372,7 +5650,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2400
+    "grossVehicleWeightKg": 2400,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Mercedes-Benz EQA",
@@ -5381,7 +5661,7 @@
     "powerRatingKw": 140,
     "torqueNm": 385,
     "acceleration0To100Kmh": 8.9,
-    "efficiencyKwhPer100km": 15.7,
+    "efficiencyKwhPer100km": 18.2,
     "rangeWltpKm": 560,
     "rangeEpaKm": 475,
     "rangeKm": 560,
@@ -5411,7 +5691,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2240
+    "grossVehicleWeightKg": 2240,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Mercedes-Benz EQB",
@@ -5450,7 +5732,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2380
+    "grossVehicleWeightKg": 2380,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "FAW Bestune Pony",
@@ -5489,7 +5773,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1400
+    "grossVehicleWeightKg": 1400,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "N/A"
   },
   {
     "name": "Hongqi E-HS9",
@@ -5528,7 +5814,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2720
+    "grossVehicleWeightKg": 2720,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Subaru Solterra",
@@ -5567,7 +5855,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2210
+    "grossVehicleWeightKg": 2210,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "N/A"
   },
   {
     "name": "XPeng G6",
@@ -5576,7 +5866,7 @@
     "powerRatingKw": 218,
     "torqueNm": 440,
     "acceleration0To100Kmh": 6.9,
-    "efficiencyKwhPer100km": 16,
+    "efficiencyKwhPer100km": 15.5,
     "rangeWltpKm": 570,
     "rangeEpaKm": 485,
     "rangeKm": 570,
@@ -5607,7 +5897,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2280,
-    "topSpeedKmh": 200
+    "topSpeedKmh": 200,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "XPeng G6",
@@ -5616,7 +5908,7 @@
     "powerRatingKw": 296,
     "torqueNm": 660,
     "acceleration0To100Kmh": 4.1,
-    "efficiencyKwhPer100km": 16.5,
+    "efficiencyKwhPer100km": 15.5,
     "rangeWltpKm": 755,
     "rangeEpaKm": 640,
     "rangeKm": 755,
@@ -5646,7 +5938,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2320
+    "grossVehicleWeightKg": 2320,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Li Auto L7",
@@ -5685,7 +5979,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2420
+    "grossVehicleWeightKg": 2420,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Li Auto L9",
@@ -5724,7 +6020,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2720
+    "grossVehicleWeightKg": 2720,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Seres M7",
@@ -5763,7 +6061,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2500
+    "grossVehicleWeightKg": 2500,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Neta V",
@@ -5772,7 +6072,7 @@
     "powerRatingKw": 120,
     "torqueNm": 210,
     "acceleration0To100Kmh": 9,
-    "efficiencyKwhPer100km": 14,
+    "efficiencyKwhPer100km": 13.5,
     "rangeWltpKm": 401,
     "rangeEpaKm": 340,
     "rangeKm": 401,
@@ -5802,7 +6102,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1620
+    "grossVehicleWeightKg": 1620,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Zeekr X",
@@ -5811,7 +6113,7 @@
     "powerRatingKw": 200,
     "torqueNm": 343,
     "acceleration0To100Kmh": 5.8,
-    "efficiencyKwhPer100km": 15.2,
+    "efficiencyKwhPer100km": 17,
     "rangeWltpKm": 560,
     "rangeEpaKm": 475,
     "rangeKm": 560,
@@ -5842,7 +6144,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2080,
-    "topSpeedKmh": 180
+    "topSpeedKmh": 180,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Jetour Ice Cream EV",
@@ -5881,7 +6185,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1400
+    "grossVehicleWeightKg": 1400,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "BMW iX2",
@@ -5917,7 +6223,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2210,
-    "topSpeedKmh": 200
+    "topSpeedKmh": 200,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Denza D9",
@@ -5956,7 +6264,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2650
+    "grossVehicleWeightKg": 2650,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Chery Omoda E5",
@@ -5965,7 +6275,7 @@
     "powerRatingKw": 150,
     "torqueNm": 340,
     "acceleration0To100Kmh": 7.6,
-    "efficiencyKwhPer100km": 14.8,
+    "efficiencyKwhPer100km": 16,
     "rangeWltpKm": 505,
     "rangeEpaKm": 430,
     "rangeKm": 505,
@@ -5996,7 +6306,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1930,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Geely EX5",
@@ -6035,7 +6347,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1980
+    "grossVehicleWeightKg": 1980,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Hyundai Ioniq 9",
@@ -6070,7 +6384,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 3000
+    "grossVehicleWeightKg": 3000,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Volvo EX90",
@@ -6106,7 +6422,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2920,
-    "topSpeedKmh": 180
+    "topSpeedKmh": 180,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Mercedes-Benz EQE",
@@ -6145,7 +6463,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2720
+    "grossVehicleWeightKg": 2720,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "MG S5 EV",
@@ -6180,7 +6500,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1830
+    "grossVehicleWeightKg": 1830,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Hyundai Ioniq 6",
@@ -6189,7 +6511,7 @@
     "powerRatingKw": 168,
     "torqueNm": 350,
     "acceleration0To100Kmh": 7.4,
-    "efficiencyKwhPer100km": 14.5,
+    "efficiencyKwhPer100km": 14.3,
     "rangeWltpKm": 614,
     "rangeEpaKm": 525,
     "rangeKm": 614,
@@ -6216,7 +6538,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2180,
-    "topSpeedKmh": 185
+    "topSpeedKmh": 185,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Nissan Leaf",
@@ -6225,7 +6549,7 @@
     "powerRatingKw": 110,
     "torqueNm": 320,
     "acceleration0To100Kmh": 8,
-    "efficiencyKwhPer100km": 15,
+    "efficiencyKwhPer100km": 17,
     "rangeWltpKm": 385,
     "rangeEpaKm": 327,
     "rangeKm": 385,
@@ -6255,7 +6579,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1768
+    "grossVehicleWeightKg": 1768,
+    "hasBidirectional": true,
+    "otaUpdates": "No"
   },
   {
     "name": "BYD Seagull",
@@ -6294,7 +6620,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1400
+    "grossVehicleWeightKg": 1400,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "DFSK Seres E1",
@@ -6333,7 +6661,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1400
+    "grossVehicleWeightKg": 1400,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Tesla Model 3",
@@ -6364,7 +6694,10 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2047
+    "grossVehicleWeightKg": 2047,
+    "hasBidirectional": false,
+    "topSpeedKmh": 225,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Xpeng X9",
@@ -6403,23 +6736,25 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2650
+    "grossVehicleWeightKg": 2650,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Tesla Model Y",
     "modelTrim": "Performance",
     "country": "PH",
-    "powerRatingKw": 450,
+    "powerRatingKw": 510,
     "torqueNm": 660,
-    "acceleration0To100Kmh": 3.7,
-    "efficiencyKwhPer100km": 16,
-    "rangeWltpKm": 514,
-    "rangeEpaKm": 465,
-    "rangeKm": 514,
+    "acceleration0To100Kmh": 3.5,
+    "efficiencyKwhPer100km": 15.5,
+    "rangeWltpKm": 533,
+    "rangeEpaKm": 456,
+    "rangeKm": 533,
     "batteryCapacityKwh": 84.85,
-    "batteryWeightKg": 570,
-    "curbWeightKg": 2070,
-    "batteryWeightPercentage": 27.5,
+    "batteryWeightKg": 550,
+    "curbWeightKg": 2020,
+    "batteryWeightPercentage": 27.2,
     "batteryManufacturer": "Panasonic",
     "batteryTechnology": "NMC",
     "batteryWarranty": "8 years / 192,000 km",
@@ -6439,7 +6774,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2270,
-    "topSpeedKmh": 250
+    "topSpeedKmh": 250,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Nissan Ariya",
@@ -6478,7 +6815,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2190
+    "grossVehicleWeightKg": 2190,
+    "hasBidirectional": true,
+    "otaUpdates": "N/A"
   },
   {
     "name": "Zeekr 001",
@@ -6487,7 +6826,7 @@
     "powerRatingKw": 310,
     "torqueNm": 440,
     "acceleration0To100Kmh": 5.9,
-    "efficiencyKwhPer100km": 16.5,
+    "efficiencyKwhPer100km": 18.5,
     "rangeWltpKm": 620,
     "rangeEpaKm": 530,
     "rangeKm": 620,
@@ -6517,7 +6856,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2500
+    "grossVehicleWeightKg": 2500,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Audi Q6 e-tron",
@@ -6552,7 +6893,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2550
+    "grossVehicleWeightKg": 2550,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Audi Q6 e-tron",
@@ -6587,7 +6930,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2600
+    "grossVehicleWeightKg": 2600,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "GAC Aion HT",
@@ -6626,7 +6971,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2050
+    "grossVehicleWeightKg": 2050,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "GAC Aion HT",
@@ -6665,7 +7012,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2100
+    "grossVehicleWeightKg": 2100,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Denza Z9",
@@ -6704,7 +7053,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2700
+    "grossVehicleWeightKg": 2700,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Denza Z9",
@@ -6743,7 +7094,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2750
+    "grossVehicleWeightKg": 2750,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Kia EV9",
@@ -6778,7 +7131,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2780
+    "grossVehicleWeightKg": 2780,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Chery EQ7",
@@ -6787,7 +7142,7 @@
     "powerRatingKw": 225,
     "torqueNm": 385,
     "acceleration0To100Kmh": 6.8,
-    "efficiencyKwhPer100km": 15.5,
+    "efficiencyKwhPer100km": 17,
     "rangeWltpKm": 550,
     "rangeEpaKm": 470,
     "rangeKm": 550,
@@ -6817,7 +7172,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2300
+    "grossVehicleWeightKg": 2300,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "DFSK EC75",
@@ -6856,7 +7213,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2800
+    "grossVehicleWeightKg": 2800,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Foton Transvan EV",
@@ -6895,7 +7254,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2950
+    "grossVehicleWeightKg": 2950,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "N/A"
   },
   {
     "name": "BYD Sealion 7",
@@ -6904,7 +7265,7 @@
     "powerRatingKw": 230,
     "torqueNm": 360,
     "acceleration0To100Kmh": 5.9,
-    "efficiencyKwhPer100km": 14.8,
+    "efficiencyKwhPer100km": 18.5,
     "rangeWltpKm": 570,
     "rangeEpaKm": 460,
     "rangeKm": 570,
@@ -6935,7 +7296,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2250,
-    "topSpeedKmh": 180
+    "topSpeedKmh": 180,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "XPeng G6",
@@ -6944,7 +7307,7 @@
     "powerRatingKw": 296,
     "torqueNm": 660,
     "acceleration0To100Kmh": 4.1,
-    "efficiencyKwhPer100km": 16.5,
+    "efficiencyKwhPer100km": 15.5,
     "rangeWltpKm": 755,
     "rangeEpaKm": 640,
     "rangeKm": 755,
@@ -6974,7 +7337,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2320
+    "grossVehicleWeightKg": 2320,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Deepal S07",
@@ -6983,7 +7348,7 @@
     "powerRatingKw": 200,
     "torqueNm": 320,
     "acceleration0To100Kmh": 6.7,
-    "efficiencyKwhPer100km": 14.5,
+    "efficiencyKwhPer100km": 16.5,
     "rangeWltpKm": 520,
     "rangeEpaKm": 440,
     "rangeKm": 520,
@@ -7013,7 +7378,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2100
+    "grossVehicleWeightKg": 2100,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Ora 07",
@@ -7052,7 +7419,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2280
+    "grossVehicleWeightKg": 2280,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Ora Good Cat",
@@ -7061,7 +7430,7 @@
     "powerRatingKw": 126,
     "torqueNm": 250,
     "acceleration0To100Kmh": 8.2,
-    "efficiencyKwhPer100km": 14,
+    "efficiencyKwhPer100km": 13.5,
     "rangeWltpKm": 420,
     "rangeEpaKm": 360,
     "rangeKm": 420,
@@ -7091,7 +7460,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1780
+    "grossVehicleWeightKg": 1780,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Ora Good Cat GT",
@@ -7100,7 +7471,7 @@
     "powerRatingKw": 171,
     "torqueNm": 310,
     "acceleration0To100Kmh": 7.5,
-    "efficiencyKwhPer100km": 14.5,
+    "efficiencyKwhPer100km": 13.5,
     "rangeWltpKm": 430,
     "rangeEpaKm": 350,
     "rangeKm": 430,
@@ -7131,7 +7502,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1740,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Wuling Binguo EV",
@@ -7140,7 +7513,7 @@
     "powerRatingKw": 50,
     "torqueNm": 125,
     "acceleration0To100Kmh": 12,
-    "efficiencyKwhPer100km": 12,
+    "efficiencyKwhPer100km": 11,
     "rangeWltpKm": 333,
     "rangeEpaKm": 280,
     "rangeKm": 333,
@@ -7170,7 +7543,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1320
+    "grossVehicleWeightKg": 1320,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Geely EX5",
@@ -7209,7 +7584,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1980
+    "grossVehicleWeightKg": 1980,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "VinFast VF 5",
@@ -7218,7 +7595,7 @@
     "powerRatingKw": 100,
     "torqueNm": 135,
     "acceleration0To100Kmh": 10.9,
-    "efficiencyKwhPer100km": 14,
+    "efficiencyKwhPer100km": 15,
     "rangeWltpKm": 326,
     "rangeEpaKm": 280,
     "rangeKm": 326,
@@ -7248,7 +7625,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1540
+    "grossVehicleWeightKg": 1540,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Mercedes-Benz EQE SUV",
@@ -7287,7 +7666,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2720
+    "grossVehicleWeightKg": 2720,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Lynk & Co 02",
@@ -7326,7 +7707,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2090
+    "grossVehicleWeightKg": 2090,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "N/A"
   },
   {
     "name": "BYD eMAX 7",
@@ -7365,7 +7748,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2180
+    "grossVehicleWeightKg": 2180,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Changan Lumin",
@@ -7404,7 +7789,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 900
+    "grossVehicleWeightKg": 900,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Porsche Macan EV",
@@ -7443,7 +7830,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2550
+    "grossVehicleWeightKg": 2550,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Audi Q6 e-tron",
@@ -7478,7 +7867,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2600
+    "grossVehicleWeightKg": 2600,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Mercedes-Benz EQS SUV",
@@ -7517,7 +7908,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 3150
+    "grossVehicleWeightKg": 3150,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "GAC Aion Y Plus",
@@ -7557,7 +7950,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 1910,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Changan CS15 EV",
@@ -7596,7 +7991,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 1780
+    "grossVehicleWeightKg": 1780,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Jetour Shanhai T2",
@@ -7635,7 +8032,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 2350
+    "grossVehicleWeightKg": 2350,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Rolls-Royce Spectre",
@@ -7674,7 +8073,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": 3175
+    "grossVehicleWeightKg": 3175,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "N/A"
   },
   {
     "name": "Lotus Eletre",
@@ -7714,7 +8115,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2850,
-    "topSpeedKmh": 250
+    "topSpeedKmh": 250,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "DFSK Gelora E",
@@ -7753,7 +8156,9 @@
       }
     ],
     "isAvailable": true,
-    "grossVehicleWeightKg": null
+    "grossVehicleWeightKg": null,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Tesla Model 3",
@@ -7772,7 +8177,7 @@
     "batteryWeightPercentage": 26,
     "batteryManufacturer": "Panasonic",
     "batteryTechnology": "NMC",
-    "batteryWarranty": "8 years / 192,000 km",
+    "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 25,
     "chargingCapabilities": "DC Fast Charge: Up to 250kW, AC: 11kW",
     "technologyFeatures": "Autopilot, Enhanced Autopilot, Sentry Mode, Over-the-Air Updates, 15.4\" Touchscreen, Ambient Lighting",
@@ -7789,23 +8194,25 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2047,
-    "topSpeedKmh": 225
+    "topSpeedKmh": 225,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Tesla Model 3",
     "modelTrim": "Long Range RWD",
     "country": "MY",
-    "powerRatingKw": 220,
-    "torqueNm": 350,
-    "acceleration0To100Kmh": 5.8,
-    "efficiencyKwhPer100km": 13.2,
-    "rangeWltpKm": 750,
-    "rangeEpaKm": 629,
-    "rangeKm": 750,
+    "powerRatingKw": 366,
+    "torqueNm": 510,
+    "acceleration0To100Kmh": 4.4,
+    "efficiencyKwhPer100km": 14,
+    "rangeWltpKm": 629,
+    "rangeEpaKm": 576,
+    "rangeKm": 629,
     "batteryCapacityKwh": 75,
     "batteryWeightKg": 500,
-    "curbWeightKg": 1840,
-    "batteryWeightPercentage": 27.2,
+    "curbWeightKg": 1912,
+    "batteryWeightPercentage": 26.1,
     "batteryManufacturer": "Panasonic",
     "batteryTechnology": "NMC",
     "batteryWarranty": "8 years / 192,000 km",
@@ -7821,7 +8228,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2047,
-    "topSpeedKmh": 225
+    "topSpeedKmh": 233,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Tesla Model 3",
@@ -7853,7 +8262,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2140,
-    "topSpeedKmh": 261
+    "topSpeedKmh": 261,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Tesla Model Y",
@@ -7872,7 +8283,7 @@
     "batteryWeightPercentage": 22.8,
     "batteryManufacturer": "Panasonic",
     "batteryTechnology": "NMC",
-    "batteryWarranty": "8 years / 192,000 km",
+    "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 25,
     "chargingCapabilities": "DC Fast Charge: Up to 250kW, AC: 11kW",
     "technologyFeatures": "Launch Series Badge, Full-Width Lightbar, Autopilot, Sentry Mode, 15\" Touchscreen, Vegan Suede Interior Option",
@@ -7889,7 +8300,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2174,
-    "topSpeedKmh": 217
+    "topSpeedKmh": 217,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Tesla Model Y",
@@ -7898,7 +8311,7 @@
     "powerRatingKw": 378,
     "torqueNm": 560,
     "acceleration0To100Kmh": 5,
-    "efficiencyKwhPer100km": 15.5,
+    "efficiencyKwhPer100km": 15,
     "rangeWltpKm": 600,
     "rangeEpaKm": 488,
     "rangeKm": 600,
@@ -7925,7 +8338,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2203,
-    "topSpeedKmh": 217
+    "topSpeedKmh": 217,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BYD Dolphin",
@@ -7957,7 +8372,9 @@
     "batteryCapacityKwh": 44.9,
     "torqueNm": 180,
     "batteryWarranty": "8 years / 150,000 km",
-    "technologyFeatures": "OTA Updates, 12.8\" Rotating Touchscreen, DiPilot ADAS, V2L Vehicle-to-Load"
+    "technologyFeatures": "OTA Updates, 12.8\" Rotating Touchscreen, DiPilot ADAS, V2L Vehicle-to-Load",
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BYD Dolphin",
@@ -7965,7 +8382,7 @@
     "country": "SG",
     "powerRatingKw": 150,
     "acceleration0To100Kmh": 7,
-    "efficiencyKwhPer100km": 13,
+    "efficiencyKwhPer100km": 13.8,
     "rangeWltpKm": 490,
     "rangeEpaKm": 420,
     "rangeKm": 490,
@@ -7989,7 +8406,9 @@
     "batteryCapacityKwh": 60.48,
     "torqueNm": 310,
     "batteryWarranty": "8 years / 150,000 km",
-    "technologyFeatures": "OTA Updates, 12.8\" Rotating Touchscreen, DiPilot ADAS, V2L Vehicle-to-Load"
+    "technologyFeatures": "OTA Updates, 12.8\" Rotating Touchscreen, DiPilot ADAS, V2L Vehicle-to-Load",
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BYD Atto 3",
@@ -7997,7 +8416,7 @@
     "country": "SG",
     "powerRatingKw": 100,
     "acceleration0To100Kmh": 9,
-    "efficiencyKwhPer100km": 14,
+    "efficiencyKwhPer100km": 14.5,
     "rangeWltpKm": 320,
     "rangeEpaKm": 265,
     "rangeKm": 320,
@@ -8021,7 +8440,9 @@
     "batteryCapacityKwh": 49.92,
     "torqueNm": 310,
     "batteryWarranty": "8 years / 150,000 km",
-    "technologyFeatures": "OTA Updates, 12.8\" Rotating Touchscreen, DiPilot ADAS, V2L Vehicle-to-Load"
+    "technologyFeatures": "OTA Updates, 12.8\" Rotating Touchscreen, DiPilot ADAS, V2L Vehicle-to-Load",
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BYD Atto 3",
@@ -8029,7 +8450,7 @@
     "country": "SG",
     "powerRatingKw": 150,
     "acceleration0To100Kmh": 7.3,
-    "efficiencyKwhPer100km": 14.5,
+    "efficiencyKwhPer100km": 15,
     "rangeWltpKm": 480,
     "rangeEpaKm": 420,
     "rangeKm": 480,
@@ -8053,7 +8474,9 @@
     "batteryCapacityKwh": 60.48,
     "torqueNm": 310,
     "batteryWarranty": "8 years / 150,000 km",
-    "technologyFeatures": "OTA Updates, 12.8\" Rotating Touchscreen, DiPilot ADAS, V2L Vehicle-to-Load"
+    "technologyFeatures": "OTA Updates, 12.8\" Rotating Touchscreen, DiPilot ADAS, V2L Vehicle-to-Load",
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "MG ZS EV",
@@ -8061,7 +8484,7 @@
     "country": "SG",
     "powerRatingKw": 130,
     "acceleration0To100Kmh": 9,
-    "efficiencyKwhPer100km": 15.8,
+    "efficiencyKwhPer100km": 18,
     "rangeWltpKm": 320,
     "rangeEpaKm": 260,
     "rangeKm": 320,
@@ -8085,7 +8508,9 @@
     "batteryCapacityKwh": 44.5,
     "torqueNm": 280,
     "batteryWarranty": "8 years / 160,000 km",
-    "technologyFeatures": "OTA Updates, 10.1\" Touchscreen, MG Pilot ADAS"
+    "technologyFeatures": "OTA Updates, 10.1\" Touchscreen, MG Pilot ADAS",
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "MG ZS EV",
@@ -8093,7 +8518,7 @@
     "country": "SG",
     "powerRatingKw": 130,
     "acceleration0To100Kmh": 9,
-    "efficiencyKwhPer100km": 15.8,
+    "efficiencyKwhPer100km": 18,
     "rangeWltpKm": 440,
     "rangeEpaKm": 360,
     "rangeKm": 440,
@@ -8117,7 +8542,9 @@
     "batteryCapacityKwh": 44.5,
     "torqueNm": 280,
     "batteryWarranty": "8 years / 160,000 km",
-    "technologyFeatures": "OTA Updates, 10.1\" Touchscreen, MG Pilot ADAS"
+    "technologyFeatures": "OTA Updates, 10.1\" Touchscreen, MG Pilot ADAS",
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "MG 4 EV",
@@ -8125,7 +8552,7 @@
     "country": "SG",
     "powerRatingKw": 150,
     "acceleration0To100Kmh": 7.7,
-    "efficiencyKwhPer100km": 14,
+    "efficiencyKwhPer100km": 16.5,
     "rangeWltpKm": 435,
     "rangeEpaKm": 350,
     "rangeKm": 435,
@@ -8149,7 +8576,9 @@
     "batteryCapacityKwh": 64,
     "torqueNm": 250,
     "batteryWarranty": "8 years / 160,000 km",
-    "technologyFeatures": "OTA Updates, 10.25\" Touchscreen, MG Pilot ADAS"
+    "technologyFeatures": "OTA Updates, 10.25\" Touchscreen, MG Pilot ADAS",
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Hyundai Ioniq 5",
@@ -8181,7 +8610,9 @@
     "batteryCapacityKwh": 72.6,
     "batteryWarranty": "8 years / 160,000 km",
     "technologyFeatures": "OTA Updates, 12.3\" Dual Screen, Highway Driving Assist 2, V2L",
-    "torqueNm": 350
+    "torqueNm": 350,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BMW iX1",
@@ -8213,7 +8644,9 @@
     "batteryCapacityKwh": 64.7,
     "batteryWarranty": "8 years / 160,000 km",
     "technologyFeatures": "OTA Updates, BMW iDrive 8, Driving Assistant Professional",
-    "torqueNm": 247
+    "torqueNm": 247,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Zeekr 001",
@@ -8221,7 +8654,7 @@
     "country": "SG",
     "powerRatingKw": 475,
     "acceleration0To100Kmh": 3.8,
-    "efficiencyKwhPer100km": 16.5,
+    "efficiencyKwhPer100km": 18.5,
     "rangeWltpKm": 580,
     "rangeEpaKm": 505,
     "rangeKm": 580,
@@ -8245,7 +8678,9 @@
     "batteryCapacityKwh": 100,
     "batteryWarranty": "8 years / 200,000 km",
     "technologyFeatures": "OTA Updates, 15.4\" Center Screen, ZEEKR ADAS, V2L",
-    "torqueNm": 686
+    "torqueNm": 686,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Xpeng G6",
@@ -8253,7 +8688,7 @@
     "country": "SG",
     "powerRatingKw": 218,
     "acceleration0To100Kmh": 6.9,
-    "efficiencyKwhPer100km": 15,
+    "efficiencyKwhPer100km": 15.5,
     "rangeWltpKm": 580,
     "rangeEpaKm": 495,
     "rangeKm": 580,
@@ -8277,7 +8712,9 @@
     "torqueNm": 358,
     "batteryWarranty": "8 years / 160,000 km",
     "technologyFeatures": "OTA Updates, 14.96\" Touchscreen, XNGP ADAS, V2L",
-    "batteryCapacityKwh": 66
+    "batteryCapacityKwh": 66,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "GAC Aion V",
@@ -8309,7 +8746,9 @@
     "torqueNm": 350,
     "batteryWarranty": "8 years / 150,000 km",
     "technologyFeatures": "OTA Updates, 15.6\" Touchscreen, ADiGO ADAS",
-    "batteryCapacityKwh": 70
+    "batteryCapacityKwh": 70,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "GAC Aion V",
@@ -8341,7 +8780,9 @@
     "torqueNm": 350,
     "batteryWarranty": "8 years / 150,000 km",
     "technologyFeatures": "OTA Updates, 15.6\" Touchscreen, ADiGO ADAS",
-    "batteryCapacityKwh": 80
+    "batteryCapacityKwh": 80,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Deepal S07",
@@ -8349,7 +8790,7 @@
     "country": "SG",
     "powerRatingKw": 475,
     "acceleration0To100Kmh": 4.6,
-    "efficiencyKwhPer100km": 16,
+    "efficiencyKwhPer100km": 16.5,
     "rangeWltpKm": 620,
     "rangeEpaKm": 530,
     "rangeKm": 620,
@@ -8372,7 +8813,9 @@
     "torqueNm": 320,
     "batteryWarranty": "8 years / 150,000 km",
     "technologyFeatures": "OTA Updates, 15.6\" Touchscreen, ADAS",
-    "batteryCapacityKwh": 66
+    "batteryCapacityKwh": 66,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Chery Omoda E5",
@@ -8380,7 +8823,7 @@
     "country": "SG",
     "powerRatingKw": 170,
     "acceleration0To100Kmh": 8.5,
-    "efficiencyKwhPer100km": 15,
+    "efficiencyKwhPer100km": 16,
     "rangeWltpKm": 430,
     "rangeEpaKm": 365,
     "rangeKm": 430,
@@ -8404,7 +8847,9 @@
     "torqueNm": 230,
     "batteryWarranty": "8 years / 150,000 km",
     "technologyFeatures": "OTA Updates, 12.3\" Touchscreen, ADAS",
-    "batteryCapacityKwh": 61
+    "batteryCapacityKwh": 61,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Chery Omoda E5",
@@ -8412,7 +8857,7 @@
     "country": "SG",
     "powerRatingKw": 170,
     "acceleration0To100Kmh": 8.5,
-    "efficiencyKwhPer100km": 15,
+    "efficiencyKwhPer100km": 16,
     "rangeWltpKm": 430,
     "rangeEpaKm": 365,
     "rangeKm": 430,
@@ -8436,7 +8881,9 @@
     "torqueNm": 230,
     "batteryWarranty": "8 years / 150,000 km",
     "technologyFeatures": "OTA Updates, 12.3\" Touchscreen, ADAS",
-    "batteryCapacityKwh": 61
+    "batteryCapacityKwh": 61,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Geely Geometry C",
@@ -8444,7 +8891,7 @@
     "country": "SG",
     "powerRatingKw": 150,
     "acceleration0To100Kmh": 9,
-    "efficiencyKwhPer100km": 14.5,
+    "efficiencyKwhPer100km": 14,
     "rangeWltpKm": 400,
     "rangeEpaKm": 340,
     "rangeKm": 400,
@@ -8467,7 +8914,9 @@
     "torqueNm": 150,
     "batteryWarranty": "8 years / 150,000 km",
     "technologyFeatures": "OTA Updates, 10.25\" Touchscreen, ADAS",
-    "batteryCapacityKwh": 53
+    "batteryCapacityKwh": 53,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Ora Good Cat",
@@ -8475,7 +8924,7 @@
     "country": "SG",
     "powerRatingKw": 126,
     "acceleration0To100Kmh": 8.4,
-    "efficiencyKwhPer100km": 14.2,
+    "efficiencyKwhPer100km": 13.5,
     "rangeWltpKm": 420,
     "rangeEpaKm": 340,
     "rangeKm": 420,
@@ -8499,7 +8948,9 @@
     "torqueNm": 210,
     "batteryWarranty": "8 years / 150,000 km",
     "technologyFeatures": "OTA Updates, 10.25\" Touchscreen, ADAS",
-    "batteryCapacityKwh": 47.8
+    "batteryCapacityKwh": 47.8,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Ora Good Cat",
@@ -8507,7 +8958,7 @@
     "country": "SG",
     "powerRatingKw": 171,
     "acceleration0To100Kmh": 7.5,
-    "efficiencyKwhPer100km": 14.5,
+    "efficiencyKwhPer100km": 13.5,
     "rangeWltpKm": 430,
     "rangeEpaKm": 350,
     "rangeKm": 430,
@@ -8531,7 +8982,9 @@
     "torqueNm": 210,
     "batteryWarranty": "8 years / 150,000 km",
     "technologyFeatures": "OTA Updates, 10.25\" Touchscreen, ADAS",
-    "batteryCapacityKwh": 63.1
+    "batteryCapacityKwh": 63.1,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Neta V",
@@ -8539,7 +8992,7 @@
     "country": "SG",
     "powerRatingKw": 95,
     "acceleration0To100Kmh": 10.5,
-    "efficiencyKwhPer100km": 13.8,
+    "efficiencyKwhPer100km": 13.5,
     "rangeWltpKm": 384,
     "rangeEpaKm": 310,
     "rangeKm": 384,
@@ -8563,7 +9016,9 @@
     "torqueNm": 150,
     "batteryWarranty": "8 years / 150,000 km",
     "technologyFeatures": "OTA Updates, 13\" Touchscreen, ADAS",
-    "batteryCapacityKwh": 38.5
+    "batteryCapacityKwh": 38.5,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Neta V",
@@ -8571,7 +9026,7 @@
     "country": "SG",
     "powerRatingKw": 95,
     "acceleration0To100Kmh": 10.5,
-    "efficiencyKwhPer100km": 13.8,
+    "efficiencyKwhPer100km": 13.5,
     "rangeWltpKm": 384,
     "rangeEpaKm": 310,
     "rangeKm": 384,
@@ -8594,7 +9049,9 @@
     "topSpeedKmh": 100,
     "batteryWarranty": "8 years / 150,000 km",
     "technologyFeatures": "OTA Updates, 13\" Touchscreen, ADAS",
-    "batteryCapacityKwh": 38.5
+    "batteryCapacityKwh": 38.5,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Porsche Taycan",
@@ -8602,7 +9059,7 @@
     "country": "SG",
     "powerRatingKw": 670,
     "acceleration0To100Kmh": 3.2,
-    "efficiencyKwhPer100km": 21,
+    "efficiencyKwhPer100km": 28,
     "rangeWltpKm": 450,
     "rangeEpaKm": 390,
     "rangeKm": 450,
@@ -8623,7 +9080,9 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 2450,
     "topSpeedKmh": 260,
-    "batteryCapacityKwh": 93.4
+    "batteryCapacityKwh": 93.4,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Kia EV6",
@@ -8631,7 +9090,7 @@
     "country": "SG",
     "powerRatingKw": 168,
     "acceleration0To100Kmh": 7.3,
-    "efficiencyKwhPer100km": 17,
+    "efficiencyKwhPer100km": 16.5,
     "rangeWltpKm": 528,
     "rangeEpaKm": 450,
     "rangeKm": 528,
@@ -8652,7 +9111,9 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 2195,
     "topSpeedKmh": 185,
-    "batteryCapacityKwh": 77.4
+    "batteryCapacityKwh": 77.4,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Kia EV6",
@@ -8660,7 +9121,7 @@
     "country": "SG",
     "powerRatingKw": 239,
     "acceleration0To100Kmh": 5.2,
-    "efficiencyKwhPer100km": 18,
+    "efficiencyKwhPer100km": 16.5,
     "rangeWltpKm": 510,
     "rangeEpaKm": 435,
     "rangeKm": 510,
@@ -8681,7 +9142,9 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 2300,
     "topSpeedKmh": 185,
-    "batteryCapacityKwh": 77.4
+    "batteryCapacityKwh": 77.4,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Volvo EX30",
@@ -8689,7 +9152,7 @@
     "country": "SG",
     "powerRatingKw": 200,
     "acceleration0To100Kmh": 5.7,
-    "efficiencyKwhPer100km": 15,
+    "efficiencyKwhPer100km": 16.5,
     "rangeWltpKm": 480,
     "rangeEpaKm": 410,
     "rangeKm": 480,
@@ -8710,7 +9173,9 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 2030,
     "topSpeedKmh": 180,
-    "batteryCapacityKwh": 64
+    "batteryCapacityKwh": 64,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Volvo EX30",
@@ -8718,7 +9183,7 @@
     "country": "SG",
     "powerRatingKw": 315,
     "acceleration0To100Kmh": 3.6,
-    "efficiencyKwhPer100km": 16,
+    "efficiencyKwhPer100km": 16.5,
     "rangeWltpKm": 460,
     "rangeEpaKm": 390,
     "rangeKm": 460,
@@ -8739,7 +9204,9 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 2090,
     "topSpeedKmh": 180,
-    "batteryCapacityKwh": 64
+    "batteryCapacityKwh": 64,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Mercedes EQA",
@@ -8768,7 +9235,9 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 2240,
     "topSpeedKmh": 160,
-    "batteryCapacityKwh": 66.5
+    "batteryCapacityKwh": 66.5,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Mercedes EQB",
@@ -8797,7 +9266,9 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 2380,
     "topSpeedKmh": 160,
-    "batteryCapacityKwh": 66.5
+    "batteryCapacityKwh": 66.5,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Mini Cooper SE",
@@ -8805,7 +9276,7 @@
     "country": "SG",
     "powerRatingKw": 215,
     "acceleration0To100Kmh": 6.7,
-    "efficiencyKwhPer100km": 14.5,
+    "efficiencyKwhPer100km": 17,
     "rangeWltpKm": 385,
     "rangeEpaKm": 325,
     "rangeKm": 385,
@@ -8826,7 +9297,9 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 1665,
     "topSpeedKmh": 150,
-    "batteryCapacityKwh": 28.9
+    "batteryCapacityKwh": 28.9,
+    "hasBidirectional": false,
+    "otaUpdates": "No"
   },
   {
     "name": "Honda e:N1",
@@ -8855,7 +9328,9 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 1720,
     "topSpeedKmh": 140,
-    "batteryCapacityKwh": 35.5
+    "batteryCapacityKwh": 35.5,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "N/A"
   },
   {
     "name": "BYD Atto 3",
@@ -8863,7 +9338,7 @@
     "country": "MY",
     "powerRatingKw": 100,
     "acceleration0To100Kmh": 9,
-    "efficiencyKwhPer100km": 14,
+    "efficiencyKwhPer100km": 14.5,
     "rangeWltpKm": 320,
     "rangeEpaKm": 265,
     "rangeKm": 320,
@@ -8887,7 +9362,9 @@
     "batteryCapacityKwh": 49.92,
     "torqueNm": 310,
     "batteryWarranty": "8 years / 150,000 km",
-    "technologyFeatures": "OTA Updates, 12.8\" Rotating Touchscreen, DiPilot ADAS, V2L Vehicle-to-Load"
+    "technologyFeatures": "OTA Updates, 12.8\" Rotating Touchscreen, DiPilot ADAS, V2L Vehicle-to-Load",
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BYD Atto 3",
@@ -8895,7 +9372,7 @@
     "country": "MY",
     "powerRatingKw": 150,
     "acceleration0To100Kmh": 7.3,
-    "efficiencyKwhPer100km": 14.5,
+    "efficiencyKwhPer100km": 15,
     "rangeWltpKm": 480,
     "rangeEpaKm": 420,
     "rangeKm": 480,
@@ -8919,65 +9396,9 @@
     "batteryCapacityKwh": 60.48,
     "torqueNm": 310,
     "batteryWarranty": "8 years / 150,000 km",
-    "technologyFeatures": "OTA Updates, 12.8\" Rotating Touchscreen, DiPilot ADAS, V2L Vehicle-to-Load"
-  },
-  {
-    "name": "Tesla Model Y",
-    "modelTrim": "RWD",
-    "country": "MY",
-    "powerRatingKw": 220,
-    "acceleration0To100Kmh": 6.9,
-    "efficiencyKwhPer100km": 15.5,
-    "rangeWltpKm": 466,
-    "rangeEpaKm": 455,
-    "rangeKm": 466,
-    "batteryWeightKg": 450,
-    "curbWeightKg": 1974,
-    "batteryWeightPercentage": 22.8,
-    "batteryManufacturer": "Panasonic",
-    "batteryTechnology": "NMC",
-    "chargingTimeDc0To80Min": 25,
-    "chargingCapabilities": "DC Fast Charge: Up to 250kW, AC: 11kW",
-    "basePriceLocalCurrency": 195450,
-    "optionPrices": [
-      {
-        "name": "7-Seater",
-        "price": 10000
-      }
-    ],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 2174,
-    "topSpeedKmh": 217,
-    "batteryCapacityKwh": 60
-  },
-  {
-    "name": "Tesla Model Y",
-    "modelTrim": "Long Range AWD",
-    "country": "MY",
-    "powerRatingKw": 378,
-    "acceleration0To100Kmh": 5,
-    "efficiencyKwhPer100km": 15.5,
-    "rangeWltpKm": 600,
-    "rangeEpaKm": 488,
-    "rangeKm": 600,
-    "batteryWeightKg": 550,
-    "curbWeightKg": 2003,
-    "batteryWeightPercentage": 27.5,
-    "batteryManufacturer": "Panasonic",
-    "batteryTechnology": "NMC",
-    "chargingTimeDc0To80Min": 25,
-    "chargingCapabilities": "DC Fast Charge: Up to 250kW, AC: 11kW",
-    "basePriceLocalCurrency": 230000,
-    "optionPrices": [
-      {
-        "name": "Full Self-Driving",
-        "price": 20000
-      }
-    ],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 2203,
-    "topSpeedKmh": 217,
-    "batteryCapacityKwh": 75
+    "technologyFeatures": "OTA Updates, 12.8\" Rotating Touchscreen, DiPilot ADAS, V2L Vehicle-to-Load",
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Denza D9",
@@ -9006,7 +9427,9 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 2690,
     "topSpeedKmh": 180,
-    "batteryCapacityKwh": 90
+    "batteryCapacityKwh": 90,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Xpeng G9",
@@ -9014,7 +9437,7 @@
     "country": "MY",
     "powerRatingKw": 230,
     "acceleration0To100Kmh": 6.8,
-    "efficiencyKwhPer100km": 16.2,
+    "efficiencyKwhPer100km": 18.5,
     "rangeWltpKm": 702,
     "rangeEpaKm": 595,
     "rangeKm": 702,
@@ -9037,7 +9460,9 @@
     "topSpeedKmh": 200,
     "batteryWarranty": "8 years / 160,000 km",
     "technologyFeatures": "OTA Updates, 14.96\" Touchscreen, XNGP ADAS, V2L",
-    "batteryCapacityKwh": 93.1
+    "batteryCapacityKwh": 93.1,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Xpeng G9",
@@ -9045,7 +9470,7 @@
     "country": "MY",
     "powerRatingKw": 405,
     "acceleration0To100Kmh": 3.9,
-    "efficiencyKwhPer100km": 17,
+    "efficiencyKwhPer100km": 18.5,
     "rangeWltpKm": 650,
     "rangeEpaKm": 550,
     "rangeKm": 650,
@@ -9068,7 +9493,9 @@
     "topSpeedKmh": 200,
     "batteryWarranty": "8 years / 160,000 km",
     "technologyFeatures": "OTA Updates, 14.96\" Touchscreen, XNGP ADAS, V2L",
-    "batteryCapacityKwh": 93.1
+    "batteryCapacityKwh": 93.1,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BMW i4",
@@ -9099,7 +9526,9 @@
     "topSpeedKmh": 190,
     "batteryWarranty": "8 years / 160,000 km",
     "technologyFeatures": "OTA Updates, BMW iDrive 8, Driving Assistant Professional",
-    "batteryCapacityKwh": 83.9
+    "batteryCapacityKwh": 83.9,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BMW i4",
@@ -9107,7 +9536,7 @@
     "country": "MY",
     "powerRatingKw": 400,
     "acceleration0To100Kmh": 3.9,
-    "efficiencyKwhPer100km": 17.5,
+    "efficiencyKwhPer100km": 20,
     "rangeWltpKm": 521,
     "rangeEpaKm": 440,
     "rangeKm": 521,
@@ -9130,7 +9559,9 @@
     "topSpeedKmh": 225,
     "batteryWarranty": "8 years / 160,000 km",
     "technologyFeatures": "OTA Updates, BMW iDrive 8, Driving Assistant Professional",
-    "batteryCapacityKwh": 83.9
+    "batteryCapacityKwh": 83.9,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Zeekr X",
@@ -9138,7 +9569,7 @@
     "country": "MY",
     "powerRatingKw": 200,
     "acceleration0To100Kmh": 5.6,
-    "efficiencyKwhPer100km": 15,
+    "efficiencyKwhPer100km": 17,
     "rangeWltpKm": 560,
     "rangeEpaKm": 475,
     "rangeKm": 560,
@@ -9161,7 +9592,9 @@
     "topSpeedKmh": 180,
     "batteryWarranty": "8 years / 200,000 km",
     "technologyFeatures": "OTA Updates, 15.4\" Center Screen, ZEEKR ADAS, V2L",
-    "batteryCapacityKwh": 66
+    "batteryCapacityKwh": 66,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Zeekr X",
@@ -9169,7 +9602,7 @@
     "country": "MY",
     "powerRatingKw": 315,
     "acceleration0To100Kmh": 3.7,
-    "efficiencyKwhPer100km": 15.5,
+    "efficiencyKwhPer100km": 17,
     "rangeWltpKm": 512,
     "rangeEpaKm": 435,
     "rangeKm": 512,
@@ -9193,7 +9626,9 @@
     "batteryWarranty": "8 years / 200,000 km",
     "batteryCapacityKwh": 100,
     "torqueNm": 686,
-    "technologyFeatures": "OTA Updates, 15.4\" Center Screen, ZEEKR ADAS, V2L"
+    "technologyFeatures": "OTA Updates, 15.4\" Center Screen, ZEEKR ADAS, V2L",
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Chery Tiggo 8 Pro e+",
@@ -9225,7 +9660,9 @@
     "batteryWarranty": "8 years / 150,000 km",
     "torqueNm": 230,
     "technologyFeatures": "OTA Updates, 12.3\" Touchscreen, ADAS",
-    "batteryCapacityKwh": 19.27
+    "batteryCapacityKwh": 19.27,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Porsche Macan Electric",
@@ -9254,7 +9691,9 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 2400,
     "topSpeedKmh": 220,
-    "batteryCapacityKwh": 95
+    "batteryCapacityKwh": 95,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Porsche Macan Electric",
@@ -9283,7 +9722,9 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 2480,
     "topSpeedKmh": 220,
-    "batteryCapacityKwh": 95
+    "batteryCapacityKwh": 95,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "MG ZS EV",
@@ -9291,7 +9732,7 @@
     "country": "MY",
     "powerRatingKw": 130,
     "acceleration0To100Kmh": 9,
-    "efficiencyKwhPer100km": 15.8,
+    "efficiencyKwhPer100km": 18,
     "rangeWltpKm": 320,
     "rangeEpaKm": 260,
     "rangeKm": 320,
@@ -9314,7 +9755,9 @@
     "topSpeedKmh": 140,
     "batteryWarranty": "8 years / 160,000 km",
     "technologyFeatures": "OTA Updates, 10.1\" Touchscreen, MG Pilot ADAS",
-    "batteryCapacityKwh": 50.3
+    "batteryCapacityKwh": 50.3,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "MG ZS EV",
@@ -9322,7 +9765,7 @@
     "country": "MY",
     "powerRatingKw": 130,
     "acceleration0To100Kmh": 9,
-    "efficiencyKwhPer100km": 15.8,
+    "efficiencyKwhPer100km": 18,
     "rangeWltpKm": 440,
     "rangeEpaKm": 360,
     "rangeKm": 440,
@@ -9345,7 +9788,9 @@
     "topSpeedKmh": 140,
     "batteryWarranty": "8 years / 160,000 km",
     "technologyFeatures": "OTA Updates, 10.1\" Touchscreen, MG Pilot ADAS",
-    "batteryCapacityKwh": 50.3
+    "batteryCapacityKwh": 50.3,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Ora Good Cat",
@@ -9353,7 +9798,7 @@
     "country": "MY",
     "powerRatingKw": 126,
     "acceleration0To100Kmh": 8.4,
-    "efficiencyKwhPer100km": 14.2,
+    "efficiencyKwhPer100km": 13.5,
     "rangeWltpKm": 420,
     "rangeEpaKm": 340,
     "rangeKm": 420,
@@ -9376,7 +9821,9 @@
     "topSpeedKmh": 150,
     "batteryWarranty": "8 years / 150,000 km",
     "technologyFeatures": "OTA Updates, 10.25\" Touchscreen, ADAS",
-    "batteryCapacityKwh": 63.1
+    "batteryCapacityKwh": 63.1,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Mercedes EQC",
@@ -9405,7 +9852,9 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 2609,
     "topSpeedKmh": 180,
-    "batteryCapacityKwh": 85
+    "batteryCapacityKwh": 85,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Hyundai Ioniq 5",
@@ -9413,7 +9862,7 @@
     "country": "MY",
     "powerRatingKw": 125,
     "acceleration0To100Kmh": 8.5,
-    "efficiencyKwhPer100km": 16,
+    "efficiencyKwhPer100km": 16.5,
     "rangeWltpKm": 384,
     "rangeEpaKm": 383,
     "rangeKm": 384,
@@ -9436,7 +9885,9 @@
     "topSpeedKmh": 185,
     "batteryWarranty": "8 years / 160,000 km",
     "technologyFeatures": "OTA Updates, 12.3\" Dual Screen, Highway Driving Assist 2, V2L",
-    "batteryCapacityKwh": 58
+    "batteryCapacityKwh": 58,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Hyundai Ioniq 5",
@@ -9444,7 +9895,7 @@
     "country": "MY",
     "powerRatingKw": 160,
     "acceleration0To100Kmh": 7.4,
-    "efficiencyKwhPer100km": 16.5,
+    "efficiencyKwhPer100km": 17,
     "rangeWltpKm": 480,
     "rangeEpaKm": 383,
     "rangeKm": 480,
@@ -9467,7 +9918,9 @@
     "topSpeedKmh": 185,
     "batteryWarranty": "8 years / 160,000 km",
     "technologyFeatures": "OTA Updates, 12.3\" Dual Screen, Highway Driving Assist 2, V2L",
-    "batteryCapacityKwh": 77.4
+    "batteryCapacityKwh": 77.4,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Kia EV6",
@@ -9496,7 +9949,9 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 2195,
     "topSpeedKmh": 185,
-    "batteryCapacityKwh": 77.4
+    "batteryCapacityKwh": 77.4,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Lotus Eletre",
@@ -9525,7 +9980,9 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 2720,
     "topSpeedKmh": 250,
-    "batteryCapacityKwh": 109
+    "batteryCapacityKwh": 109,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Dongfeng Box",
@@ -9554,7 +10011,9 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 1410,
     "topSpeedKmh": 100,
-    "batteryCapacityKwh": 50.3
+    "batteryCapacityKwh": 50.3,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "N/A"
   },
   {
     "name": "Honda e:N2",
@@ -9583,7 +10042,9 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 1720,
     "topSpeedKmh": 140,
-    "batteryCapacityKwh": 68.8
+    "batteryCapacityKwh": 68.8,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "N/A"
   },
   {
     "name": "Volvo XC40 Recharge",
@@ -9591,7 +10052,7 @@
     "country": "MY",
     "powerRatingKw": 170,
     "acceleration0To100Kmh": 7.3,
-    "efficiencyKwhPer100km": 18.2,
+    "efficiencyKwhPer100km": 22,
     "rangeWltpKm": 425,
     "rangeEpaKm": 360,
     "rangeKm": 425,
@@ -9612,7 +10073,9 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 2240,
     "topSpeedKmh": 180,
-    "batteryCapacityKwh": 75
+    "batteryCapacityKwh": 75,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Smart #1",
@@ -9641,7 +10104,9 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 1980,
     "topSpeedKmh": 180,
-    "batteryCapacityKwh": 66
+    "batteryCapacityKwh": 66,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Denza D9",
@@ -9670,7 +10135,9 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 2690,
     "topSpeedKmh": 180,
-    "batteryCapacityKwh": 90
+    "batteryCapacityKwh": 90,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Xpeng G9",
@@ -9678,7 +10145,7 @@
     "country": "MY",
     "powerRatingKw": 230,
     "acceleration0To100Kmh": 6.8,
-    "efficiencyKwhPer100km": 16.2,
+    "efficiencyKwhPer100km": 18.5,
     "rangeWltpKm": 702,
     "rangeEpaKm": 595,
     "rangeKm": 702,
@@ -9702,7 +10169,9 @@
     "batteryWarranty": "8 years / 160,000 km",
     "torqueNm": 358,
     "technologyFeatures": "OTA Updates, 14.96\" Touchscreen, XNGP ADAS, V2L",
-    "batteryCapacityKwh": 93.1
+    "batteryCapacityKwh": 93.1,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "iCaur 03",
@@ -9731,7 +10200,9 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 2150,
     "topSpeedKmh": 180,
-    "batteryCapacityKwh": 53
+    "batteryCapacityKwh": 53,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "N/A"
   },
   {
     "name": "Perodua EM-O",
@@ -9760,7 +10231,9 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 1600,
     "topSpeedKmh": 120,
-    "batteryCapacityKwh": 31.9
+    "batteryCapacityKwh": 31.9,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "MINI Aceman",
@@ -9789,7 +10262,9 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 1800,
     "topSpeedKmh": 150,
-    "batteryCapacityKwh": 54.2
+    "batteryCapacityKwh": 54.2,
+    "hasBidirectional": false,
+    "otaUpdates": "N/A"
   },
   {
     "name": "Volvo EX90",
@@ -9818,7 +10293,9 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 3000,
     "topSpeedKmh": 180,
-    "batteryCapacityKwh": 111
+    "batteryCapacityKwh": 111,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Geely Geometry A",
@@ -9826,7 +10303,7 @@
     "country": "MY",
     "powerRatingKw": 150,
     "acceleration0To100Kmh": 9,
-    "efficiencyKwhPer100km": 14.5,
+    "efficiencyKwhPer100km": 13.5,
     "rangeWltpKm": 400,
     "rangeEpaKm": 340,
     "rangeKm": 400,
@@ -9848,7 +10325,9 @@
     "grossVehicleWeightKg": 1850,
     "batteryWarranty": "8 years / 150,000 km",
     "technologyFeatures": "OTA Updates, 10.25\" Touchscreen, ADAS",
-    "batteryCapacityKwh": 51.9
+    "batteryCapacityKwh": 51.9,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Smart #1",
@@ -9877,7 +10356,9 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 2040,
     "topSpeedKmh": 180,
-    "batteryCapacityKwh": 66
+    "batteryCapacityKwh": 66,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Perodua EMO-II",
@@ -9906,7 +10387,9 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 1400,
     "topSpeedKmh": 120,
-    "batteryCapacityKwh": 31.9
+    "batteryCapacityKwh": 31.9,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Hyptec HT",
@@ -9935,7 +10418,9 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 2150,
     "topSpeedKmh": 180,
-    "batteryCapacityKwh": 61.1
+    "batteryCapacityKwh": 61.1,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "N/A"
   },
   {
     "name": "Opel Mokka-e",
@@ -9964,7 +10449,9 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 1798,
     "topSpeedKmh": 150,
-    "batteryCapacityKwh": 50
+    "batteryCapacityKwh": 50,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "N/A"
   },
   {
     "name": "Porsche Macan Electric",
@@ -10000,7 +10487,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2920,
-    "topSpeedKmh": 220
+    "topSpeedKmh": 220,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Porsche Macan Electric",
@@ -10036,7 +10525,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 3010,
-    "topSpeedKmh": 260
+    "topSpeedKmh": 260,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BYD Dolphin",
@@ -10045,7 +10536,7 @@
     "powerRatingKw": 95,
     "torqueNm": 180,
     "acceleration0To100Kmh": 12.3,
-    "efficiencyKwhPer100km": 12.5,
+    "efficiencyKwhPer100km": 13.8,
     "rangeWltpKm": 340,
     "rangeEpaKm": 290,
     "rangeKm": 340,
@@ -10063,7 +10554,9 @@
     "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1480,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "VinFast VF 6",
@@ -10072,7 +10565,7 @@
     "powerRatingKw": 130,
     "torqueNm": 250,
     "acceleration0To100Kmh": 8,
-    "efficiencyKwhPer100km": 15,
+    "efficiencyKwhPer100km": 16,
     "rangeWltpKm": 399,
     "rangeEpaKm": 340,
     "rangeKm": 399,
@@ -10090,7 +10583,9 @@
     "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1900,
-    "topSpeedKmh": 160
+    "topSpeedKmh": 160,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "MG ZS EV",
@@ -10099,7 +10594,7 @@
     "powerRatingKw": 130,
     "torqueNm": 280,
     "acceleration0To100Kmh": 8.2,
-    "efficiencyKwhPer100km": 15.5,
+    "efficiencyKwhPer100km": 18,
     "rangeWltpKm": 403,
     "rangeEpaKm": 340,
     "rangeKm": 403,
@@ -10117,7 +10612,9 @@
     "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1770,
-    "topSpeedKmh": 140
+    "topSpeedKmh": 140,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Chery Omoda E5",
@@ -10126,7 +10623,7 @@
     "powerRatingKw": 150,
     "torqueNm": 340,
     "acceleration0To100Kmh": 7.6,
-    "efficiencyKwhPer100km": 14.8,
+    "efficiencyKwhPer100km": 16,
     "rangeWltpKm": 505,
     "rangeEpaKm": 430,
     "rangeKm": 505,
@@ -10144,7 +10641,9 @@
     "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1930,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BYD Han EV",
@@ -10153,7 +10652,7 @@
     "powerRatingKw": 220,
     "torqueNm": 360,
     "acceleration0To100Kmh": 7.3,
-    "efficiencyKwhPer100km": 14,
+    "efficiencyKwhPer100km": 17.5,
     "rangeWltpKm": 605,
     "rangeEpaKm": 515,
     "rangeKm": 605,
@@ -10171,7 +10670,9 @@
     "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2220,
-    "topSpeedKmh": 200
+    "topSpeedKmh": 200,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BYD M6",
@@ -10180,7 +10681,7 @@
     "powerRatingKw": 150,
     "torqueNm": 310,
     "acceleration0To100Kmh": 8.5,
-    "efficiencyKwhPer100km": 15,
+    "efficiencyKwhPer100km": 18,
     "rangeWltpKm": 420,
     "rangeEpaKm": 350,
     "rangeKm": 420,
@@ -10198,7 +10699,9 @@
     "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2180,
-    "topSpeedKmh": 160
+    "topSpeedKmh": 160,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "MG ES5",
@@ -10225,7 +10728,9 @@
     "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1850,
-    "topSpeedKmh": 160
+    "topSpeedKmh": 160,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Chery eQ1",
@@ -10252,7 +10757,9 @@
     "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 900,
-    "topSpeedKmh": 100
+    "topSpeedKmh": 100,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Wuling Mini EV",
@@ -10279,7 +10786,9 @@
     "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1250,
-    "topSpeedKmh": 100
+    "topSpeedKmh": 100,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "VinFast Minio Green",
@@ -10306,7 +10815,9 @@
     "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1060,
-    "topSpeedKmh": 100
+    "topSpeedKmh": 100,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "VinFast Limo Green",
@@ -10333,7 +10844,9 @@
     "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1690,
-    "topSpeedKmh": 130
+    "topSpeedKmh": 130,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Chery J6",
@@ -10360,7 +10873,9 @@
     "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1890,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Geely EX5",
@@ -10387,7 +10902,9 @@
     "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1980,
-    "topSpeedKmh": 160
+    "topSpeedKmh": 160,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Maxus Mifa 9",
@@ -10414,7 +10931,9 @@
     "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2180,
-    "topSpeedKmh": 160
+    "topSpeedKmh": 160,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Aletra L8 EV",
@@ -10441,7 +10960,9 @@
     "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1900,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "N/A"
   },
   {
     "name": "BYD Dolphin",
@@ -10450,7 +10971,7 @@
     "powerRatingKw": 95,
     "torqueNm": 180,
     "acceleration0To100Kmh": 12.3,
-    "efficiencyKwhPer100km": 12.5,
+    "efficiencyKwhPer100km": 13.8,
     "rangeWltpKm": 340,
     "rangeEpaKm": 290,
     "rangeKm": 340,
@@ -10468,7 +10989,9 @@
     "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1480,
-    "topSpeedKmh": 150
+    "topSpeedKmh": 150,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "BYD Seal",
@@ -10477,7 +11000,7 @@
     "powerRatingKw": 390,
     "torqueNm": 670,
     "acceleration0To100Kmh": 3.8,
-    "efficiencyKwhPer100km": 15,
+    "efficiencyKwhPer100km": 17.5,
     "rangeWltpKm": 650,
     "rangeEpaKm": 550,
     "rangeKm": 650,
@@ -10495,7 +11018,9 @@
     "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2250,
-    "topSpeedKmh": 180
+    "topSpeedKmh": 180,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "MG 4 Electric",
@@ -10522,7 +11047,9 @@
     "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1850,
-    "topSpeedKmh": 160
+    "topSpeedKmh": 160,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "MG ES5",
@@ -10549,7 +11076,9 @@
     "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1850,
-    "topSpeedKmh": 160
+    "topSpeedKmh": 160,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Zeekr 7X",
@@ -10576,7 +11105,9 @@
     "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2500,
-    "topSpeedKmh": 200
+    "topSpeedKmh": 200,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Geely EX5",
@@ -10603,7 +11134,9 @@
     "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 1980,
-    "topSpeedKmh": 160
+    "topSpeedKmh": 160,
+    "hasBidirectional": "N/A",
+    "otaUpdates": "Yes"
   },
   {
     "name": "Changan Deepal S05",
@@ -10630,7 +11163,9 @@
     "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2000,
-    "topSpeedKmh": 170
+    "topSpeedKmh": 170,
+    "hasBidirectional": true,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Tesla Model 3",
@@ -10640,16 +11175,16 @@
     "torqueNm": 340,
     "acceleration0To100Kmh": 6.1,
     "efficiencyKwhPer100km": 13.5,
-    "rangeWltpKm": 629,
-    "rangeEpaKm": 567,
-    "rangeKm": 629,
-    "batteryCapacityKwh": 75,
-    "batteryWeightKg": 500,
+    "rangeWltpKm": 513,
+    "rangeEpaKm": 438,
+    "rangeKm": 513,
+    "batteryCapacityKwh": 60,
+    "batteryWeightKg": 480,
     "curbWeightKg": 1847,
-    "batteryWeightPercentage": 27.1,
+    "batteryWeightPercentage": 26,
     "batteryManufacturer": "Panasonic",
     "batteryTechnology": "NMC",
-    "batteryWarranty": "8 years / 192,000 km",
+    "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 25,
     "chargingCapabilities": "DC Fast Charge: Up to 250kW, AC: 11kW",
     "technologyFeatures": "Autopilot standard, Full Self-Driving Capability option, 15.4\" touchscreen, Heat Pump, Double-glazed glass",
@@ -10666,7 +11201,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2047,
-    "topSpeedKmh": 225
+    "topSpeedKmh": 225,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Tesla Model 3",
@@ -10676,13 +11213,13 @@
     "torqueNm": 510,
     "acceleration0To100Kmh": 4.4,
     "efficiencyKwhPer100km": 14,
-    "rangeWltpKm": 678,
-    "rangeEpaKm": 614,
-    "rangeKm": 678,
-    "batteryCapacityKwh": 82,
-    "batteryWeightKg": 520,
+    "rangeWltpKm": 629,
+    "rangeEpaKm": 576,
+    "rangeKm": 629,
+    "batteryCapacityKwh": 75,
+    "batteryWeightKg": 500,
     "curbWeightKg": 1912,
-    "batteryWeightPercentage": 27.2,
+    "batteryWeightPercentage": 26.1,
     "batteryManufacturer": "Panasonic",
     "batteryTechnology": "NMC",
     "batteryWarranty": "8 years / 192,000 km",
@@ -10698,7 +11235,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2112,
-    "topSpeedKmh": 233
+    "topSpeedKmh": 233,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Tesla Model 3",
@@ -10708,10 +11247,10 @@
     "torqueNm": 660,
     "acceleration0To100Kmh": 3.1,
     "efficiencyKwhPer100km": 14.5,
-    "rangeWltpKm": 567,
-    "rangeEpaKm": 510,
-    "rangeKm": 567,
-    "batteryCapacityKwh": 82,
+    "rangeWltpKm": 528,
+    "rangeEpaKm": 475,
+    "rangeKm": 528,
+    "batteryCapacityKwh": 75,
     "batteryWeightKg": 520,
     "curbWeightKg": 1940,
     "batteryWeightPercentage": 26.8,
@@ -10725,7 +11264,9 @@
     "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2140,
-    "topSpeedKmh": 261
+    "topSpeedKmh": 261,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Tesla Model Y",
@@ -10744,7 +11285,7 @@
     "batteryWeightPercentage": 22.8,
     "batteryManufacturer": "Panasonic",
     "batteryTechnology": "NMC",
-    "batteryWarranty": "8 years / 192,000 km",
+    "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 25,
     "chargingCapabilities": "DC Fast Charge: Up to 250kW, AC: 11kW",
     "technologyFeatures": "Full-width lightbar, 15\" touchscreen, 7-seater option",
@@ -10761,7 +11302,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2174,
-    "topSpeedKmh": 217
+    "topSpeedKmh": 217,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Tesla Model Y",
@@ -10770,7 +11313,7 @@
     "powerRatingKw": 378,
     "torqueNm": 560,
     "acceleration0To100Kmh": 5,
-    "efficiencyKwhPer100km": 15.5,
+    "efficiencyKwhPer100km": 15,
     "rangeWltpKm": 600,
     "rangeEpaKm": 488,
     "rangeKm": 600,
@@ -10793,7 +11336,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2203,
-    "topSpeedKmh": 217
+    "topSpeedKmh": 217,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Tesla Model 3",
@@ -10803,16 +11348,16 @@
     "torqueNm": 340,
     "acceleration0To100Kmh": 6.1,
     "efficiencyKwhPer100km": 13.5,
-    "rangeWltpKm": 629,
-    "rangeEpaKm": 567,
-    "rangeKm": 629,
-    "batteryCapacityKwh": 75,
-    "batteryWeightKg": 500,
+    "rangeWltpKm": 513,
+    "rangeEpaKm": 438,
+    "rangeKm": 513,
+    "batteryCapacityKwh": 60,
+    "batteryWeightKg": 480,
     "curbWeightKg": 1847,
-    "batteryWeightPercentage": 27.1,
+    "batteryWeightPercentage": 26,
     "batteryTechnology": "NMC",
     "batteryManufacturer": "Panasonic",
-    "batteryWarranty": "8 years / 192,000 km",
+    "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 25,
     "chargingCapabilities": "DC Fast Charge: Up to 250kW, AC: 11kW",
     "technologyFeatures": "Autopilot, Full Self-Driving Capability, 15.4\" touchscreen (parallel import)",
@@ -10820,7 +11365,9 @@
     "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2047,
-    "topSpeedKmh": 225
+    "topSpeedKmh": 225,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Tesla Model Y",
@@ -10829,7 +11376,7 @@
     "powerRatingKw": 378,
     "torqueNm": 560,
     "acceleration0To100Kmh": 5,
-    "efficiencyKwhPer100km": 15.5,
+    "efficiencyKwhPer100km": 15,
     "rangeWltpKm": 600,
     "rangeEpaKm": 488,
     "rangeKm": 600,
@@ -10847,7 +11394,9 @@
     "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2203,
-    "topSpeedKmh": 217
+    "topSpeedKmh": 217,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Tesla Model 3",
@@ -10857,16 +11406,16 @@
     "torqueNm": 340,
     "acceleration0To100Kmh": 6.1,
     "efficiencyKwhPer100km": 13.5,
-    "rangeWltpKm": 629,
-    "rangeEpaKm": 567,
-    "rangeKm": 629,
-    "batteryCapacityKwh": 75,
-    "batteryWeightKg": 500,
+    "rangeWltpKm": 513,
+    "rangeEpaKm": 438,
+    "rangeKm": 513,
+    "batteryCapacityKwh": 60,
+    "batteryWeightKg": 480,
     "curbWeightKg": 1847,
-    "batteryWeightPercentage": 27.1,
+    "batteryWeightPercentage": 26,
     "batteryManufacturer": "Panasonic",
     "batteryTechnology": "NMC",
-    "batteryWarranty": "8 years / 192,000 km",
+    "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 25,
     "chargingCapabilities": "DC Fast Charge: Up to 250kW, AC: 11kW",
     "technologyFeatures": "Autopilot, Full Self-Driving Capability (parallel import)",
@@ -10874,7 +11423,9 @@
     "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2047,
-    "topSpeedKmh": 225
+    "topSpeedKmh": 225,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Tesla Model 3",
@@ -10884,10 +11435,10 @@
     "torqueNm": 660,
     "acceleration0To100Kmh": 3.1,
     "efficiencyKwhPer100km": 14.5,
-    "rangeWltpKm": 567,
-    "rangeEpaKm": 510,
-    "rangeKm": 567,
-    "batteryCapacityKwh": 82,
+    "rangeWltpKm": 528,
+    "rangeEpaKm": 475,
+    "rangeKm": 528,
+    "batteryCapacityKwh": 75,
     "batteryWeightKg": 520,
     "curbWeightKg": 1940,
     "batteryWeightPercentage": 26.8,
@@ -10901,7 +11452,9 @@
     "optionPrices": [],
     "isAvailable": true,
     "grossVehicleWeightKg": 2140,
-    "topSpeedKmh": 261
+    "topSpeedKmh": 261,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Tesla Model 3",
@@ -10911,16 +11464,16 @@
     "torqueNm": 340,
     "acceleration0To100Kmh": 6.1,
     "efficiencyKwhPer100km": 13.5,
-    "rangeWltpKm": 629,
-    "rangeEpaKm": 567,
-    "rangeKm": 629,
-    "batteryCapacityKwh": 75,
-    "batteryWeightKg": 500,
+    "rangeWltpKm": 513,
+    "rangeEpaKm": 438,
+    "rangeKm": 513,
+    "batteryCapacityKwh": 60,
+    "batteryWeightKg": 480,
     "curbWeightKg": 1847,
-    "batteryWeightPercentage": 27.1,
+    "batteryWeightPercentage": 26,
     "batteryManufacturer": "Panasonic",
     "batteryTechnology": "NMC",
-    "batteryWarranty": "8 years / 192,000 km",
+    "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 25,
     "chargingCapabilities": "DC Fast Charge: Up to 250kW, AC: 11kW",
     "technologyFeatures": "Autopilot, Full Self-Driving Capability option, 15.4\" touchscreen",
@@ -10933,7 +11486,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2047,
-    "topSpeedKmh": 225
+    "topSpeedKmh": 225,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Tesla Model 3",
@@ -10943,13 +11498,13 @@
     "torqueNm": 510,
     "acceleration0To100Kmh": 4.4,
     "efficiencyKwhPer100km": 14,
-    "rangeWltpKm": 678,
-    "rangeEpaKm": 614,
-    "rangeKm": 678,
-    "batteryCapacityKwh": 82,
-    "batteryWeightKg": 520,
+    "rangeWltpKm": 629,
+    "rangeEpaKm": 576,
+    "rangeKm": 629,
+    "batteryCapacityKwh": 75,
+    "batteryWeightKg": 500,
     "curbWeightKg": 1912,
-    "batteryWeightPercentage": 27.2,
+    "batteryWeightPercentage": 26.1,
     "batteryManufacturer": "Panasonic",
     "batteryTechnology": "NMC",
     "batteryWarranty": "8 years / 192,000 km",
@@ -10965,7 +11520,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2112,
-    "topSpeedKmh": 233
+    "topSpeedKmh": 233,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Tesla Model Y",
@@ -10984,7 +11541,7 @@
     "batteryWeightPercentage": 22.8,
     "batteryManufacturer": "Panasonic",
     "batteryTechnology": "NMC",
-    "batteryWarranty": "8 years / 192,000 km",
+    "batteryWarranty": "8 years / 160,000 km",
     "chargingTimeDc0To80Min": 25,
     "chargingCapabilities": "DC Fast Charge: Up to 250kW, AC: 11kW",
     "technologyFeatures": "Full-width lightbar, 7-seater option, Launch Series",
@@ -11001,7 +11558,9 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2174,
-    "topSpeedKmh": 217
+    "topSpeedKmh": 217,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
   },
   {
     "name": "Tesla Model Y",
@@ -11010,7 +11569,7 @@
     "powerRatingKw": 378,
     "torqueNm": 560,
     "acceleration0To100Kmh": 5,
-    "efficiencyKwhPer100km": 15.5,
+    "efficiencyKwhPer100km": 15,
     "rangeWltpKm": 600,
     "rangeEpaKm": 488,
     "rangeKm": 600,
@@ -11033,6 +11592,42 @@
     ],
     "isAvailable": true,
     "grossVehicleWeightKg": 2203,
-    "topSpeedKmh": 217
+    "topSpeedKmh": 217,
+    "hasBidirectional": false,
+    "otaUpdates": "Yes"
+  },
+  {
+    "name": "Tesla Model Y",
+    "modelTrim": "Standard RWD",
+    "country": "MY",
+    "powerRatingKw": 220,
+    "acceleration0To100Kmh": 6.9,
+    "efficiencyKwhPer100km": 15.5,
+    "rangeWltpKm": 466,
+    "rangeEpaKm": 455,
+    "rangeKm": 466,
+    "batteryWeightKg": 450,
+    "curbWeightKg": 1974,
+    "batteryWeightPercentage": 22.8,
+    "batteryManufacturer": "Panasonic",
+    "batteryTechnology": "LFP",
+    "chargingTimeDc0To80Min": 25,
+    "chargingCapabilities": "DC Fast Charge: Up to 250kW, AC: 11kW",
+    "basePriceLocalCurrency": 195450,
+    "optionPrices": [
+      {
+        "name": "7-Seater",
+        "price": 10000
+      }
+    ],
+    "isAvailable": true,
+    "grossVehicleWeightKg": 2174,
+    "topSpeedKmh": 217,
+    "batteryCapacityKwh": 60,
+    "hasBidirectional": false,
+    "torqueNm": 420,
+    "batteryWarranty": "8 years / 160,000 km",
+    "technologyFeatures": "Autopilot, Full Self-Driving Capability, Sentry Mode, 15\" Touchscreen, Premium Interior",
+    "otaUpdates": "Yes"
   }
 ]
