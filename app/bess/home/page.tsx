@@ -81,6 +81,18 @@ function EnergyFlowChart({ energyFlow, country }: { energyFlow: any; country: Co
   // Check if grid export should be shown for this country
   const showGridExport = EXPORT_RATE_MULTIPLIER[country].net_billing > 0
   
+  // Detect mobile screen size
+  const [isMobile, setIsMobile] = useState(false)
+  
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+  
   // Transform hourly data for chart
   // Get battery capacity from first hour's data if available, or use a default
   const maxBatteryCapacity = energyFlow.hourly.length > 0 
@@ -146,40 +158,45 @@ function EnergyFlowChart({ energyFlow, country }: { energyFlow: any; country: Co
 
   return (
     <div className="w-full pb-4">
-      <ResponsiveContainer width="100%" height={500}>
+      <ResponsiveContainer width="100%" height={isMobile ? 300 : 500}>
         <ComposedChart
           data={chartData}
-          margin={{ top: 40, right: 50, left: 50, bottom: 20 }}
+          margin={isMobile ? { top: 20, right: 20, left: 30, bottom: 40 } : { top: 40, right: 50, left: 50, bottom: 20 }}
         >
           <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
           <XAxis 
             dataKey="time" 
             stroke="#6b7280"
-            fontSize={11}
-            height={40}
-            interval={1} // Show every hour
+            fontSize={isMobile ? 9 : 11}
+            height={isMobile ? 50 : 40}
+            interval={isMobile ? 2 : 1} // Show every 2 hours on mobile, every hour on desktop
+            angle={isMobile ? -45 : 0}
+            textAnchor={isMobile ? 'end' : 'middle'}
           />
           <YAxis 
             yAxisId="energy"
             stroke="#6b7280"
-            fontSize={12}
-            label={{ value: 'Energy (kWh)', angle: -90, position: 'insideLeft', style: { textAnchor: 'middle' } }}
+            fontSize={isMobile ? 10 : 12}
+            width={isMobile ? 35 : 50}
+            label={isMobile ? undefined : { value: 'Energy (kWh)', angle: -90, position: 'insideLeft', style: { textAnchor: 'middle' } }}
           />
           <YAxis 
             yAxisId="battery"
             orientation="right"
             stroke="#06b6d4"
-            fontSize={12}
+            fontSize={isMobile ? 10 : 12}
+            width={isMobile ? 35 : 50}
             domain={[0, 'auto']} // Ensure battery level Y-axis always starts at 0, never goes negative
             allowDataOverflow={false}
-            label={{ value: 'Battery Level (kWh)', angle: 90, position: 'insideRight', style: { textAnchor: 'middle' } }}
+            label={isMobile ? undefined : { value: 'Battery Level (kWh)', angle: 90, position: 'insideRight', style: { textAnchor: 'middle' } }}
           />
           <Tooltip
             contentStyle={{
               backgroundColor: '#fff',
               border: '1px solid #e5e7eb',
               borderRadius: '8px',
-              padding: '12px',
+              padding: isMobile ? '8px' : '12px',
+              fontSize: isMobile ? '11px' : '12px',
             }}
             formatter={(value: number, name: string) => {
               const absValue = Math.abs(value)
@@ -244,7 +261,7 @@ function EnergyFlowChart({ energyFlow, country }: { energyFlow: any; country: Co
       <div className="-mt-2 border border-gray-200 rounded-lg overflow-hidden bg-white max-w-2xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-gray-200">
           {/* Generation Sources */}
-          <div className="p-3">
+          <div className={isMobile ? "p-2" : "p-3"}>
             <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Generation</div>
             <div className="space-y-2">
               <div className="flex items-center justify-between">
@@ -272,7 +289,7 @@ function EnergyFlowChart({ energyFlow, country }: { energyFlow: any; country: Co
           </div>
 
           {/* Consumption */}
-          <div className="p-3">
+          <div className={isMobile ? "p-2" : "p-3"}>
             <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Consumption</div>
             <div className="space-y-2">
               <div className="flex items-center justify-between">
@@ -300,7 +317,7 @@ function EnergyFlowChart({ energyFlow, country }: { energyFlow: any; country: Co
           </div>
 
           {/* System Status */}
-          <div className="p-3">
+          <div className={isMobile ? "p-2" : "p-3"}>
             <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">System Status</div>
             <div className="space-y-2">
               <div className="flex items-center justify-between">
@@ -1135,14 +1152,13 @@ export default function BatteriesAtHomePage() {
 
           {/* OUTPUTS COLUMN */}
           <div className="bg-white p-6">
-            <div className="mb-10">
-              <h2 className="text-xl font-bold text-gray-900 mb-1">Live Simulation</h2>
-              <p className="text-xs text-gray-500">Real-time analysis of your energy system</p>
+            <div className="mb-6">
+              <h2 className="text-xl font-bold text-gray-900">Live Simulation</h2>
             </div>
 
             {/* Financial Overview */}
             <div className="mb-10">
-              <h3 className="text-base font-bold text-gray-900 mb-6 pb-4 border-b-2 border-emerald-600">Financial Overview</h3>
+              <h3 className="text-base font-bold text-gray-900 mb-6 pb-2 border-b-2 border-emerald-600">Financial Overview</h3>
 
               {/* Monthly View */}
               <div className="mb-8">
