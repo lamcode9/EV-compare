@@ -730,7 +730,7 @@ export default function BatteriesAtHomePage() {
                       <div className="space-y-1.5">
                         <div><span className="font-semibold">Driving Distance:</span> Daily kilometers driven per vehicle. Used to calculate daily energy needs.</div>
                         <div><span className="font-semibold">Home Charging %:</span> Percentage of total charging done at home vs. public chargers. Home charging can use solar/battery (free) or grid.</div>
-                        <div><span className="font-semibold">Charging Time:</span> When EV charging occurs. "Night only" charges during off-peak hours, "Day only" during peak solar generation, "Both" distributes throughout the day.</div>
+                        <div><span className="font-semibold">Charging Time:</span> When EV charging occurs. &quot;Night only&quot; charges during off-peak hours, &quot;Day only&quot; during peak solar generation, &quot;Both&quot; distributes throughout the day.</div>
                         <div className="pt-1 border-t border-gray-200 text-[11px] text-gray-600">
                           Public charging costs are calculated separately using country-specific public charging rates. Home charging from solar/battery is free; grid charging uses residential electricity rates.
                         </div>
@@ -880,7 +880,7 @@ export default function BatteriesAtHomePage() {
                             <span className="font-semibold">Zero-Bill:</span> Tests all combinations to find the minimum system that achieves zero monthly bill. May be smaller and cheaper than off-grid while still achieving zero bill.
                           </div>
                           <div>
-                            <span className="font-semibold">Best Net Savings:</span> Optimizes for the best 25-year financial outcome, considering system costs, electricity savings, and EV charging costs. May recommend a system that doesn't achieve zero bill but maximizes total savings.
+                            <span className="font-semibold">Best Net Savings:</span> Optimizes for the best 25-year financial outcome, considering system costs, electricity savings, and EV charging costs. May recommend a system that doesn&apos;t achieve zero bill but maximizes total savings.
                           </div>
                         </div>
                       </InfoBox>
@@ -993,7 +993,7 @@ export default function BatteriesAtHomePage() {
                                 <span className="font-semibold">Solar Cost:</span> Based on {CURRENCY_SYMBOLS[country]} {SOLAR_COST_PER_KW[country].toLocaleString()}/kW installed (2025 average, includes panels, inverters, installation).
                               </div>
                               <div className="pt-1 border-t border-gray-200 text-[11px] text-gray-600">
-                                Toggle "Include solar cost" to include or exclude solar system cost from financial calculations. Useful for comparing battery-only systems or if you already have solar.
+                                Toggle &quot;Include solar cost&quot; to include or exclude solar system cost from financial calculations. Useful for comparing battery-only systems or if you already have solar.
                               </div>
                             </div>
                           </InfoBox>
@@ -1468,7 +1468,7 @@ export default function BatteriesAtHomePage() {
                     <div><span className="font-semibold">System Cost:</span> Total upfront cost including solar panels, batteries, inverters, and installation (includes 5% maintenance reserve).</div>
                     <div><span className="font-semibold">Payback Period:</span> Years until cumulative savings equal system cost. Infinity means system never pays back.</div>
                     <div><span className="font-semibold">Zero-Bill Days:</span> Number of days per year when monthly bill is zero or negative (due to credits).</div>
-                    <div><span className="font-semibold">CO₂ Avoided:</span> Annual CO₂ emissions avoided by using solar instead of grid electricity (based on country's grid emission factor).</div>
+                    <div><span className="font-semibold">CO₂ Avoided:</span> Annual CO₂ emissions avoided by using solar instead of grid electricity (based on country&apos;s grid emission factor).</div>
                   </div>
                 </InfoBox>
               </div>
