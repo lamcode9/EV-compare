@@ -91,6 +91,7 @@ function EnergyFlowChart({ energyFlow, country }: { energyFlow: any; country: Co
     // Multiple layers of protection to ensure battery level is never negative
     let batteryLevel = hour.batteryLevel || 0
     
+    // Debug: Log if we find negative values
     if (batteryLevel < 0) {
       console.warn(`Negative battery level detected at hour ${hour.hour}:`, batteryLevel, 'Raw data:', hour)
     }
@@ -145,7 +146,7 @@ function EnergyFlowChart({ energyFlow, country }: { energyFlow: any; country: Co
 
   return (
     <div className="w-full pb-4">
-      <ResponsiveContainer width="100%" height={400}>
+      <ResponsiveContainer width="100%" height={500}>
         <ComposedChart
           data={chartData}
           margin={{ top: 40, right: 50, left: 50, bottom: 20 }}
@@ -336,17 +337,21 @@ function EnergyFlowChart({ energyFlow, country }: { energyFlow: any; country: Co
 
 export default function BatteriesAtHomePage() {
   const [country, setCountry] = useState<Country>('MY')
-  const [solarSizeKw, setSolarSizeKw] = useState(0)
+  const [solarSizeKw, setSolarSizeKw] = useState(10)
   const [includeSolarCost, setIncludeSolarCost] = useState(true)
   const [roofQuality, setRoofQuality] = useState<'Ideal' | 'Average' | 'Shaded'>('Average')
-  const [batteries, setBatteries] = useState<Array<{ model: BESS | null; quantity: number }>>([])
+  const [batteries, setBatteries] = useState<Array<{ model: BESS | null; quantity: number }>>([
+    { model: null, quantity: 0 },
+  ])
   const [vehicles, setVehicles] = useState<Array<{ 
     model: Vehicle | null
     quantity: number
     drivingDistanceKm: number
     evHomeChargingPercentage: number
     evChargingTime: 'Night only' | 'Day only' | 'Both'
-  }>>([])
+  }>>([
+    { model: null, quantity: 0, drivingDistanceKm: 45, evHomeChargingPercentage: 60, evChargingTime: 'Night only' },
+  ])
   const [dayLoad, setDayLoad] = useState<number>(8) // Default to Average (8 kWh)
   const [nightLoad, setNightLoad] = useState<number>(10) // Default to Average (10 kWh)
   // Always use net billing for all countries
@@ -562,11 +567,11 @@ export default function BatteriesAtHomePage() {
                 Design your zero-bill setup — solar + battery + EV.
               </p>
               <p className="text-lg md:text-xl text-gray-700 leading-relaxed max-w-3xl">
-                See how much you need to slash your bill in real 2025 SEA numbers.
+                Real tariffs, real solar yield, real loads — find the right setup for your home
               </p>
               <div className="pt-2 border-t border-gray-200/60">
-                <p className="text-base text-gray-600 leading-relaxed">
-                  Updated monthly • Real tariffs • Real solar yield • Real loads
+                <p className="text-base text-gray-600 leading-relaxed whitespace-nowrap">
+                  Select your country to see setup costs to optimize your home to either go off-grid, zero-bill, max-savings or anything in between
                 </p>
               </div>
             </div>
@@ -599,19 +604,16 @@ export default function BatteriesAtHomePage() {
         {/* Energy Flow Chart */}
         {outputs && outputs.energyFlow && (
           <div className="mb-12 bg-gray-50 rounded-lg p-4 border border-gray-200">
-            <div className="mb-6">
-              <div className="flex items-center gap-2 mb-1">
-                <h2 className="text-xl font-bold text-gray-900">Daily Energy Flow</h2>
-                <InfoBox title="Chart Explanation">
-                  <div className="space-y-1.5">
-                    <div>This chart shows hourly energy flows throughout a typical day. Bars show generation (Solar, Battery, Grid) and areas show consumption (Household, EV, Battery Charging). The dashed line shows battery level.</div>
-                    <div className="pt-1 border-t border-gray-200 text-[11px] text-gray-600">
-                      Generation bars are stacked upward. Consumption areas are stacked downward. Grid Export (if applicable) appears as negative bars below the axis. Battery Level uses the right Y-axis.
-                    </div>
+            <div className="flex items-center gap-2 mb-4">
+              <h2 className="text-2xl font-bold text-gray-900">Daily Energy Flow</h2>
+              <InfoBox title="Chart Explanation">
+                <div className="space-y-1.5">
+                  <div>This chart shows hourly energy flows throughout a typical day. Bars show generation (Solar, Battery, Grid) and areas show consumption (Household, EV, Battery Charging). The dashed line shows battery level.</div>
+                  <div className="pt-1 border-t border-gray-200 text-[11px] text-gray-600">
+                    Generation bars are stacked upward. Consumption areas are stacked downward. Grid Export (if applicable) appears as negative bars below the axis. Battery Level uses the right Y-axis.
                   </div>
-                </InfoBox>
-              </div>
-              <p className="text-xs text-gray-500">This chart depicts power consumption and generation from your solar/battery system based on the configuration in the Configurator section below.</p>
+                </div>
+              </InfoBox>
             </div>
             <EnergyFlowChart energyFlow={outputs.energyFlow} country={country} />
           </div>
