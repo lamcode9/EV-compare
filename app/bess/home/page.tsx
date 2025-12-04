@@ -152,7 +152,7 @@ const EnergyFlowChart = memo(function EnergyFlowChart({ energyFlow, country }: {
   }, [energyFlow.hourly, showGridExport])
 
   const COLORS = {
-    Solar: '#10b981', // emerald-500
+    Solar: '#34d399', // emerald-400 (lighter green)
     'Battery Charge': '#0891b2', // cyan-600
     'Battery Usage': '#059669', // emerald-600
     'Battery Level': '#06b6d4', // cyan-500
@@ -209,7 +209,12 @@ const EnergyFlowChart = memo(function EnergyFlowChart({ energyFlow, country }: {
             }}
             formatter={(value: number, name: string) => {
               const absValue = Math.abs(value)
-              return [`${absValue.toFixed(2)} kWh`, name]
+              // Categorize by Power Generation and Power Consumption
+              const generationItems = ['Solar', 'Battery Usage', 'Grid', 'Grid Export']
+              const consumptionItems = ['Household Load', 'EV Charging', 'Battery Charge']
+              const category = generationItems.includes(name) ? 'Power Generation' : consumptionItems.includes(name) ? 'Power Consumption' : ''
+              const categoryLabel = category ? ` (${category})` : ''
+              return [`${absValue.toFixed(2)} kWh`, `${name}${categoryLabel}`]
             }}
           />
           {/* Generation sources - stacked bars */}
@@ -271,7 +276,7 @@ const EnergyFlowChart = memo(function EnergyFlowChart({ energyFlow, country }: {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-gray-200">
           {/* Generation Sources */}
           <div className={isMobile ? "p-2" : "p-3"}>
-            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Generation</div>
+            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Power Generation</div>
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
@@ -299,7 +304,7 @@ const EnergyFlowChart = memo(function EnergyFlowChart({ energyFlow, country }: {
 
           {/* Consumption */}
           <div className={isMobile ? "p-2" : "p-3"}>
-            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Consumption</div>
+            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Power Consumption</div>
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
