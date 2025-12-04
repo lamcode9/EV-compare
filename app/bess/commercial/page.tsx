@@ -9,7 +9,7 @@ export default function BESSCommercialPage() {
           <h2 className="text-2xl font-semibold text-gray-900 mb-8 text-left">
             Commercial BESS
           </h2>
-          <div className="mb-8 max-w-4xl mx-auto">
+          <div className="mb-8">
             <div className="flex items-center gap-4">
               <div className="flex-shrink-0">
                 <CountrySelector />
