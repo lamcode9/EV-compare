@@ -1223,7 +1223,7 @@ function BatteriesAtHomePageContent() {
 
                 <div className="space-y-5">
                   {/* Roof Solar Size Slider */}
-                  <div className="group">
+                  <div>
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
                         <label className="text-sm font-medium text-gray-700">
