@@ -1279,6 +1279,11 @@ export function findOffGridSystem(
   let dayEvChargingKwh = 0
   let nightEvChargingKwh = 0
 
+  // Ensure evHomeChargingKwh is valid before distribution
+  if (isNaN(evHomeChargingKwh) || !isFinite(evHomeChargingKwh) || evHomeChargingKwh < 0) {
+    evHomeChargingKwh = 0
+  }
+
   if (baseInputs.evChargingTime === 'Day only') {
     dayEvChargingKwh = evHomeChargingKwh
     nightEvChargingKwh = 0
@@ -1288,6 +1293,14 @@ export function findOffGridSystem(
   } else { // 'Both'
     dayEvChargingKwh = evHomeChargingKwh * 0.5
     nightEvChargingKwh = evHomeChargingKwh * 0.5
+  }
+  
+  // Ensure distribution values are valid
+  if (isNaN(dayEvChargingKwh) || !isFinite(dayEvChargingKwh) || dayEvChargingKwh < 0) {
+    dayEvChargingKwh = 0
+  }
+  if (isNaN(nightEvChargingKwh) || !isFinite(nightEvChargingKwh) || nightEvChargingKwh < 0) {
+    nightEvChargingKwh = 0
   }
 
   // Calculate solar yield per kW
@@ -1322,11 +1335,56 @@ export function findOffGridSystem(
   }
   
   const nighttimeLoad = (nightLoadKwh || 0) + (nightEvChargingKwh || 0)
-  let requiredBatteryKwh = Math.ceil(nighttimeLoad * 2.5) // 2.5 days autonomy
   
-  // Ensure requiredBatteryKwh is valid
-  if (isNaN(requiredBatteryKwh) || !isFinite(requiredBatteryKwh) || requiredBatteryKwh < 0) {
-    requiredBatteryKwh = 0 // Allow no battery if calculation fails
+  // Battery must store enough energy for nighttime loads
+  // Battery must store enough energy for nighttime loads
+  // CRITICAL: Battery must handle PEAK hourly consumption (household + EV simultaneously)
+  // Night hours: 19:00 to 06:00 = 11 hours
+  const nightHours = 11
+  
+  // Calculate peak hourly consumption during nighttime
+  // This is the MAXIMUM simultaneous consumption (household + EV at same hour)
+  let peakNighttimeHourlyLoad = 0
+  if (baseInputs.evChargingTime === 'Night only' && nightEvChargingKwh > 0) {
+    // Peak household load per hour (use maximum possible, not average)
+    // Nighttime household can have peaks, so use 1.5x average for safety
+    const avgNightHouseholdPerHour = (nightLoadKwh || 0) / nightHours
+    const peakHouseholdPerHour = avgNightHouseholdPerHour * 1.5 // 50% peak factor
+    
+    // EV charging: can be up to 7kW per hour (home charging speed limit)
+    // Use the actual maximum: either 7kW (if charging is concentrated) or average
+    // For safety, assume it can reach 7kW at peak hours
+    const maxEvChargingPerHour = Math.min(7, Math.max(nightEvChargingKwh / nightHours, 5)) // At least 5kW or actual max
+    
+    // Peak hourly load = household peak + EV charging (BOTH happening simultaneously)
+    peakNighttimeHourlyLoad = peakHouseholdPerHour + maxEvChargingPerHour
+  } else if (baseInputs.evChargingTime === 'Both' && nightEvChargingKwh > 0) {
+    // For "Both": nighttime portion of EV charging
+    const avgNightHouseholdPerHour = (nightLoadKwh || 0) / nightHours
+    const peakHouseholdPerHour = avgNightHouseholdPerHour * 1.5
+    const maxEvChargingPerHour = Math.min(7, Math.max(nightEvChargingKwh / nightHours, 5))
+    peakNighttimeHourlyLoad = peakHouseholdPerHour + maxEvChargingPerHour
+  } else {
+    // For day only or no EV: just household nighttime load with peak factor
+    const avgNightHouseholdPerHour = (nightLoadKwh || 0) / nightHours
+    peakNighttimeHourlyLoad = avgNightHouseholdPerHour * 1.5
+  }
+  
+  // Battery must store enough for:
+  // 1. Total nighttime load (household + EV) to power the entire night
+  // 2. Plus enough capacity to handle peak hourly consumption (critical for simultaneous demand)
+  // 3. Plus autonomy buffer (2.5x for backup)
+  const baseBatteryNeeded = nighttimeLoad
+  // CRITICAL: Battery must be able to handle peak hourly consumption
+  // Add significant buffer to ensure battery can discharge enough for peak hours
+  // Buffer = 3 hours of peak consumption to ensure battery can handle sustained peak demand
+  const peakHourBuffer = peakNighttimeHourlyLoad * 3
+  let requiredBatteryKwh = Math.ceil((baseBatteryNeeded + peakHourBuffer) * 2.5) // 2.5 days autonomy
+  
+  // Ensure requiredBatteryKwh is valid and at least covers one night with peak demand
+  if (isNaN(requiredBatteryKwh) || !isFinite(requiredBatteryKwh) || requiredBatteryKwh < (nighttimeLoad + peakHourBuffer)) {
+    // Minimum: must cover one full night + 3 hours of peak consumption
+    requiredBatteryKwh = Math.ceil((nighttimeLoad + peakHourBuffer) * 1.5)
   }
 
   // Find best battery combination to meet capacity requirement
