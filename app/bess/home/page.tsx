@@ -1225,9 +1225,20 @@ function BatteriesAtHomePageContent() {
                   {/* Roof Solar Size Slider */}
                   <div className="group">
                     <div className="flex items-center justify-between mb-2">
-                      <label className="text-sm font-medium text-gray-700">
-                        Solar System Size
-                      </label>
+                      <div className="flex items-center gap-2">
+                        <label className="text-sm font-medium text-gray-700">
+                          Solar System Size
+                        </label>
+                        <InfoBox title="Solar System Efficiency Explained">
+                          <div className="space-y-1.5">
+                            <div><strong>System Rating vs Real Output:</strong> A 10kW system doesn't generate 10kW constantly - that's its peak capacity under perfect conditions.</div>
+                            <div><strong>Real-World Factors:</strong> Weather, roof angle, dirt, and temperature reduce output by 15-25%. A 10kW system typically produces 35-38 kWh/day in sunny conditions.</div>
+                            <div className="pt-1 border-t border-gray-200 text-[11px] text-gray-600">
+                              Your actual generation depends on local solar irradiance, system maintenance, and weather patterns.
+                            </div>
+                          </div>
+                        </InfoBox>
+                      </div>
                       <span className="text-base font-semibold text-emerald-600 tabular-nums">
                         {solarSizeKw} <span className="text-xs text-gray-500 font-normal">kW</span>
                       </span>
@@ -1248,17 +1259,6 @@ function BatteriesAtHomePageContent() {
                       <div className="flex justify-between text-xs text-gray-400 mt-1.5 px-0.5">
                         <span>0</span>
                         <span>30</span>
-                      </div>
-                      <div className="mt-2 text-xs text-gray-500">
-                        <InfoBox title="Solar System Efficiency Explained">
-                          <div className="space-y-1.5">
-                            <div><strong>System Rating vs Real Output:</strong> A 10kW system doesn't generate 10kW constantly - that's its peak capacity under perfect conditions.</div>
-                            <div><strong>Real-World Factors:</strong> Weather, roof angle, dirt, and temperature reduce output by 15-25%. A 10kW system typically produces 35-38 kWh/day in sunny conditions.</div>
-                            <div className="pt-1 border-t border-gray-200 text-[11px] text-gray-600">
-                              Your actual generation depends on local solar irradiance, system maintenance, and weather patterns.
-                            </div>
-                          </div>
-                        </InfoBox>
                       </div>
                     </div>
                     {/* Include Solar Cost Toggle */}
@@ -1700,24 +1700,23 @@ function BatteriesAtHomePageContent() {
             {/* Energy Flow */}
             <div className="mb-10">
               <div className="flex items-center justify-between mb-6 pb-2 border-b-2 border-emerald-600">
-                <h3 className="text-base font-bold text-gray-900">Energy Flow</h3>
+                <div className="flex items-center gap-2">
+                  <h3 className="text-base font-bold text-gray-900">Energy Flow</h3>
+                  {EXPORT_RATE_MULTIPLIER[country].net_billing > 0 && (
+                    <InfoBox title="Net Billing Explanation">
+                      <div className="space-y-1.5">
+                        <div>
+                          Excess solar exported to the grid is credited at {Math.round(EXPORT_RATE_MULTIPLIER[country].net_billing * 100)}% of the import tariff rate.
+                        </div>
+                        <div className="pt-1 border-t border-gray-200 text-[11px] text-gray-600">
+                          This means you receive {Math.round(EXPORT_RATE_MULTIPLIER[country].net_billing * 100)}% credit for exported energy compared to what you pay for imported energy. Credits offset your monthly bill.
+                        </div>
+                      </div>
+                    </InfoBox>
+                  )}
+                </div>
                 <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">kWh/month</span>
               </div>
-              
-              {EXPORT_RATE_MULTIPLIER[country].net_billing > 0 && (
-                <div className="mb-5">
-                  <InfoBox title="Net Billing Explanation">
-                    <div className="space-y-1.5">
-                      <div>
-                        Excess solar exported to the grid is credited at {Math.round(EXPORT_RATE_MULTIPLIER[country].net_billing * 100)}% of the import tariff rate.
-                      </div>
-                      <div className="pt-1 border-t border-gray-200 text-[11px] text-gray-600">
-                        This means you receive {Math.round(EXPORT_RATE_MULTIPLIER[country].net_billing * 100)}% credit for exported energy compared to what you pay for imported energy. Credits offset your monthly bill.
-                      </div>
-                    </div>
-                  </InfoBox>
-                </div>
-              )}
 
               <div className="border border-gray-200 rounded-lg overflow-hidden">
                 {/* Energy Consumption */}
@@ -1767,23 +1766,7 @@ function BatteriesAtHomePageContent() {
                 {/* Energy Supply */}
                 <div className="px-3 py-2">
                   <div className="flex items-baseline justify-between mb-2">
-                    <div className="flex items-center gap-2">
-                      <div className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Home Energy Supply</div>
-                      <InfoBox title="System Efficiency Losses Explained">
-                        <div className="space-y-2">
-                          <div><strong>Why less than expected?</strong> Solar systems lose 15-25% efficiency due to:</div>
-                          <div className="text-xs space-y-1 pl-2">
-                            <div>• <strong>Inverter losses:</strong> 5-8% energy conversion loss</div>
-                            <div>• <strong>Temperature:</strong> Hot panels are less efficient</div>
-                            <div>• <strong>Dust & dirt:</strong> Reduces light absorption</div>
-                            <div>• <strong>System age:</strong> Gradual efficiency decline over years</div>
-                          </div>
-                          <div className="pt-1 border-t border-gray-200 text-[11px] text-gray-600">
-                            Real-world solar rarely achieves 100% of rated capacity - weather, maintenance, and physics all play a role.
-                          </div>
-                        </div>
-                      </InfoBox>
-                    </div>
+                    <div className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Home Energy Supply</div>
                     <div className="text-xs font-bold text-gray-900 tabular-nums">
                       {(outputs.monthlyHomeEnergyUsed + outputs.monthlyEvEnergyUsed).toFixed(1)}
                     </div>
