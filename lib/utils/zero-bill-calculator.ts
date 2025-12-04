@@ -264,50 +264,97 @@ export function calculateZeroBill(inputs: ZeroBillInputs): ZeroBillOutputs {
 
   // Calculate EV charging needs based on driving distance (per-vehicle settings)
   let totalEvDailyKwhNeeded = 0
-  vehicles.forEach(v => {
-    if (!v.model || !v.model.batteryCapacityKwh || v.quantity === 0) return
-    const rangeKm = v.model.rangeWltpKm ?? v.model.rangeKm ?? 
-                    (v.model.efficiencyKwhPer100km && v.model.efficiencyKwhPer100km > 0 && v.model.batteryCapacityKwh
-                      ? (v.model.batteryCapacityKwh / v.model.efficiencyKwhPer100km * 100) 
-                      : null)
-    if (!rangeKm || rangeKm <= 0) return
-    
-    // Calculate kWh needed per km
-    const kwhPerKm = v.model.batteryCapacityKwh / rangeKm
-    // Use per-vehicle driving distance or fallback to global
-    const vehicleDrivingDistance = v.drivingDistanceKm ?? drivingDistanceKm
-    // Total daily kWh needed for all vehicles of this type
-    const dailyKwhPerVehicle = vehicleDrivingDistance * kwhPerKm
-    totalEvDailyKwhNeeded += dailyKwhPerVehicle * v.quantity
-  })
+  
+  // Safety check: ensure vehicles array exists
+  if (vehicles && Array.isArray(vehicles)) {
+    vehicles.forEach(v => {
+      if (!v.model || !v.model.batteryCapacityKwh || v.quantity === 0) return
+      const rangeKm = v.model.rangeWltpKm ?? v.model.rangeKm ?? 
+                      (v.model.efficiencyKwhPer100km && v.model.efficiencyKwhPer100km > 0 && v.model.batteryCapacityKwh
+                        ? (v.model.batteryCapacityKwh / v.model.efficiencyKwhPer100km * 100) 
+                        : null)
+      if (!rangeKm || rangeKm <= 0) return
+      
+      // Calculate kWh needed per km
+      const kwhPerKm = v.model.batteryCapacityKwh / rangeKm
+      if (isNaN(kwhPerKm) || !isFinite(kwhPerKm)) return
+      
+      // Use per-vehicle driving distance or fallback to global
+      const vehicleDrivingDistance = v.drivingDistanceKm ?? drivingDistanceKm ?? 0
+      if (isNaN(vehicleDrivingDistance) || !isFinite(vehicleDrivingDistance) || vehicleDrivingDistance <= 0) return
+      
+      // Total daily kWh needed for all vehicles of this type
+      const dailyKwhPerVehicle = vehicleDrivingDistance * kwhPerKm
+      if (isNaN(dailyKwhPerVehicle) || !isFinite(dailyKwhPerVehicle)) return
+      
+      totalEvDailyKwhNeeded += dailyKwhPerVehicle * v.quantity
+    })
+  }
+  
+  // Ensure totalEvDailyKwhNeeded is valid
+  if (isNaN(totalEvDailyKwhNeeded) || !isFinite(totalEvDailyKwhNeeded) || totalEvDailyKwhNeeded < 0) {
+    totalEvDailyKwhNeeded = 0
+  }
 
   // Calculate EV charging at home (aggregate per-vehicle percentages)
   // Calculate weighted average of home charging percentage based on each vehicle's energy needs
   let weightedHomeChargingTotal = 0
   let totalVehicleEnergy = 0
-  vehicles.forEach(v => {
-    if (!v.model || !v.model.batteryCapacityKwh || v.quantity === 0) return
-    const rangeKm = v.model.rangeWltpKm ?? v.model.rangeKm ?? 
-                    (v.model.efficiencyKwhPer100km && v.model.efficiencyKwhPer100km > 0 && v.model.batteryCapacityKwh
-                      ? (v.model.batteryCapacityKwh / v.model.efficiencyKwhPer100km * 100) 
-                      : null)
-    if (!rangeKm || rangeKm <= 0) return
-    
-    const kwhPerKm = v.model.batteryCapacityKwh / rangeKm
-    const vehicleDrivingDistance = v.drivingDistanceKm ?? drivingDistanceKm
-    const vehicleDailyKwh = vehicleDrivingDistance * kwhPerKm * v.quantity
-    const vehicleHomeChargingPct = v.evHomeChargingPercentage ?? evHomeChargingPercentage
-    
-    weightedHomeChargingTotal += vehicleDailyKwh * (vehicleHomeChargingPct / 100)
-    totalVehicleEnergy += vehicleDailyKwh
-  })
+  
+  // Safety check: ensure vehicles array exists
+  if (vehicles && Array.isArray(vehicles)) {
+    vehicles.forEach(v => {
+      if (!v.model || !v.model.batteryCapacityKwh || v.quantity === 0) return
+      const rangeKm = v.model.rangeWltpKm ?? v.model.rangeKm ?? 
+                      (v.model.efficiencyKwhPer100km && v.model.efficiencyKwhPer100km > 0 && v.model.batteryCapacityKwh
+                        ? (v.model.batteryCapacityKwh / v.model.efficiencyKwhPer100km * 100) 
+                        : null)
+      if (!rangeKm || rangeKm <= 0) return
+      
+      const kwhPerKm = v.model.batteryCapacityKwh / rangeKm
+      if (isNaN(kwhPerKm) || !isFinite(kwhPerKm)) return
+      
+      const vehicleDrivingDistance = v.drivingDistanceKm ?? drivingDistanceKm ?? 0
+      if (isNaN(vehicleDrivingDistance) || !isFinite(vehicleDrivingDistance) || vehicleDrivingDistance <= 0) return
+      
+      const vehicleDailyKwh = vehicleDrivingDistance * kwhPerKm * v.quantity
+      if (isNaN(vehicleDailyKwh) || !isFinite(vehicleDailyKwh)) return
+      
+      const vehicleHomeChargingPct = v.evHomeChargingPercentage ?? evHomeChargingPercentage ?? 0
+      if (isNaN(vehicleHomeChargingPct) || !isFinite(vehicleHomeChargingPct)) return
+      
+      weightedHomeChargingTotal += vehicleDailyKwh * (vehicleHomeChargingPct / 100)
+      totalVehicleEnergy += vehicleDailyKwh
+    })
+  }
+  
+  // Ensure calculations are valid
+  if (isNaN(weightedHomeChargingTotal) || !isFinite(weightedHomeChargingTotal)) {
+    weightedHomeChargingTotal = 0
+  }
+  if (isNaN(totalVehicleEnergy) || !isFinite(totalVehicleEnergy)) {
+    totalVehicleEnergy = 0
+  }
   
   const effectiveHomeChargingPercentage = totalVehicleEnergy > 0 
     ? (weightedHomeChargingTotal / totalVehicleEnergy) * 100 
-    : evHomeChargingPercentage
+    : (evHomeChargingPercentage || 0)
   
-  const evHomeChargingKwh = totalEvDailyKwhNeeded * (effectiveHomeChargingPercentage / 100)
-  const evPublicChargingKwh = totalEvDailyKwhNeeded * (1 - effectiveHomeChargingPercentage / 100)
+  // Ensure percentage is valid
+  const safeHomeChargingPct = isNaN(effectiveHomeChargingPercentage) || !isFinite(effectiveHomeChargingPercentage)
+    ? (evHomeChargingPercentage || 0)
+    : Math.max(0, Math.min(100, effectiveHomeChargingPercentage))
+  
+  let evHomeChargingKwh = totalEvDailyKwhNeeded * (safeHomeChargingPct / 100)
+  let evPublicChargingKwh = totalEvDailyKwhNeeded * (1 - safeHomeChargingPct / 100)
+  
+  // Ensure EV charging values are valid
+  if (isNaN(evHomeChargingKwh) || !isFinite(evHomeChargingKwh) || evHomeChargingKwh < 0) {
+    evHomeChargingKwh = 0
+  }
+  if (isNaN(evPublicChargingKwh) || !isFinite(evPublicChargingKwh) || evPublicChargingKwh < 0) {
+    evPublicChargingKwh = 0
+  }
   
   // Determine charging time: if all vehicles have same time, use it; otherwise use 'Both' as default
   const vehicleChargingTimes = vehicles
@@ -1188,20 +1235,45 @@ export function findOffGridSystem(
 
   // Calculate EV charging needs
   let totalEvDailyKwhNeeded = 0
-  baseInputs.vehicles.forEach(v => {
-    if (!v.model || !v.model.batteryCapacityKwh || v.quantity === 0) return
-    const rangeKm = v.model.rangeWltpKm ?? v.model.rangeKm ?? 
-                    (v.model.efficiencyKwhPer100km && v.model.efficiencyKwhPer100km > 0 && v.model.batteryCapacityKwh
-                      ? (v.model.batteryCapacityKwh / v.model.efficiencyKwhPer100km * 100) 
-                      : null)
-    if (!rangeKm || rangeKm <= 0) return
-    
-    const kwhPerKm = v.model.batteryCapacityKwh / rangeKm
-    const dailyKwhPerVehicle = baseInputs.drivingDistanceKm * kwhPerKm
-    totalEvDailyKwhNeeded += dailyKwhPerVehicle * v.quantity
-  })
+  
+  // Safety check: ensure vehicles array exists
+  if (baseInputs.vehicles && Array.isArray(baseInputs.vehicles)) {
+    baseInputs.vehicles.forEach(v => {
+      if (!v.model || !v.model.batteryCapacityKwh || v.quantity === 0) return
+      const rangeKm = v.model.rangeWltpKm ?? v.model.rangeKm ?? 
+                      (v.model.efficiencyKwhPer100km && v.model.efficiencyKwhPer100km > 0 && v.model.batteryCapacityKwh
+                        ? (v.model.batteryCapacityKwh / v.model.efficiencyKwhPer100km * 100) 
+                        : null)
+      if (!rangeKm || rangeKm <= 0) return
+      
+      // Safety check: ensure drivingDistanceKm is valid
+      const drivingDistance = baseInputs.drivingDistanceKm || 0
+      if (drivingDistance <= 0 || isNaN(drivingDistance)) return
+      
+      const kwhPerKm = v.model.batteryCapacityKwh / rangeKm
+      if (isNaN(kwhPerKm) || !isFinite(kwhPerKm)) return
+      
+      const dailyKwhPerVehicle = drivingDistance * kwhPerKm
+      if (isNaN(dailyKwhPerVehicle) || !isFinite(dailyKwhPerVehicle)) return
+      
+      totalEvDailyKwhNeeded += dailyKwhPerVehicle * v.quantity
+    })
+  }
+  
+  // Ensure totalEvDailyKwhNeeded is valid
+  if (isNaN(totalEvDailyKwhNeeded) || !isFinite(totalEvDailyKwhNeeded)) {
+    totalEvDailyKwhNeeded = 0
+  }
 
-  const evHomeChargingKwh = totalEvDailyKwhNeeded * (baseInputs.evHomeChargingPercentage / 100)
+  // Safety check: ensure evHomeChargingPercentage is valid
+  const evHomeChargingPct = (baseInputs.evHomeChargingPercentage || 0) / 100
+  let evHomeChargingKwh = totalEvDailyKwhNeeded * evHomeChargingPct
+  
+  // Ensure evHomeChargingKwh is valid
+  if (isNaN(evHomeChargingKwh) || !isFinite(evHomeChargingKwh) || evHomeChargingKwh < 0) {
+    // If calculation failed, set to 0 to prevent errors
+    evHomeChargingKwh = 0
+  }
 
   // Calculate EV charging distribution based on charging time preference
   let dayEvChargingKwh = 0
@@ -1219,9 +1291,14 @@ export function findOffGridSystem(
   }
 
   // Calculate solar yield per kW
-  const baseSolarYield = SOLAR_YIELD_PER_KW[baseInputs.country]
-  const roofMultiplier = ROOF_QUALITY_MULTIPLIERS[baseInputs.roofQuality]
-  const solarYieldPerKw = baseSolarYield * roofMultiplier
+  const baseSolarYield = SOLAR_YIELD_PER_KW[baseInputs.country] || 4.0 // Default fallback
+  const roofMultiplier = ROOF_QUALITY_MULTIPLIERS[baseInputs.roofQuality] || 1.0 // Default fallback
+  let solarYieldPerKw = baseSolarYield * roofMultiplier
+  
+  // Safety check: ensure solar yield is valid and not zero
+  if (isNaN(solarYieldPerKw) || !isFinite(solarYieldPerKw) || solarYieldPerKw <= 0) {
+    solarYieldPerKw = 4.0 // Default fallback to prevent division by zero
+  }
 
   // For off-grid, we need:
   // 1. Enough solar to generate TOTAL daily load (day + night + all EV) because:
@@ -1229,10 +1306,28 @@ export function findOffGridSystem(
   //    - Solar charges battery for nighttime loads
   //    - Solar charges battery for nighttime EV charging
   // 2. Enough battery to store energy for night + nighttime EV charging + 2-3 days autonomy
-  const totalDailyLoad = dayLoadKwh + nightLoadKwh + evHomeChargingKwh
+  const totalDailyLoad = (dayLoadKwh || 0) + (nightLoadKwh || 0) + (evHomeChargingKwh || 0)
+  
+  // Ensure totalDailyLoad is valid
+  if (isNaN(totalDailyLoad) || !isFinite(totalDailyLoad) || totalDailyLoad < 0) {
+    // If calculation failed, return null to prevent invalid system
+    return null
+  }
+  
   const requiredSolarKw = Math.ceil((totalDailyLoad * 1.2) / solarYieldPerKw) // 20% buffer for cloudy days
-  const nighttimeLoad = nightLoadKwh + nightEvChargingKwh
-  const requiredBatteryKwh = Math.ceil(nighttimeLoad * 2.5) // 2.5 days autonomy
+  
+  // Ensure requiredSolarKw is valid
+  if (isNaN(requiredSolarKw) || !isFinite(requiredSolarKw) || requiredSolarKw < 0) {
+    return null
+  }
+  
+  const nighttimeLoad = (nightLoadKwh || 0) + (nightEvChargingKwh || 0)
+  let requiredBatteryKwh = Math.ceil(nighttimeLoad * 2.5) // 2.5 days autonomy
+  
+  // Ensure requiredBatteryKwh is valid
+  if (isNaN(requiredBatteryKwh) || !isFinite(requiredBatteryKwh) || requiredBatteryKwh < 0) {
+    requiredBatteryKwh = 0 // Allow no battery if calculation fails
+  }
 
   // Find best battery combination to meet capacity requirement
   let bestBatteryCombo: Array<{ model: BESS | null; quantity: number }> = [{ model: null, quantity: 0 }]
