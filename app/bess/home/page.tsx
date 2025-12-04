@@ -134,7 +134,6 @@ const EnergyFlowChart = memo(function EnergyFlowChart({ energyFlow, country }: {
         'Battery Level': batteryLevel, // Ensure never negative with multiple checks
         Grid: hour.gridSupply || 0, // Ensure Grid is always a number, never undefined
         'Household Load': hour.householdLoad || 0,
-        'EV Charging': hour.evCharging || 0,
         'EV from Solar': hour.evChargingFromSolar || 0,
         'EV from Battery': hour.evChargingFromBattery || 0,
         'EV from Grid': hour.evChargingFromGrid || 0,
@@ -209,7 +208,7 @@ const EnergyFlowChart = memo(function EnergyFlowChart({ energyFlow, country }: {
                 ['Solar', 'Battery Usage', 'Grid', 'Grid Export'].includes(item.name || item.dataKey)
               )
               const consumptionItems = payload.filter((item: any) =>
-                ['Household Load', 'EV Charging', 'Battery Charge'].includes(item.name || item.dataKey)
+                ['Household Load', 'EV from Grid', 'Battery Charge'].includes(item.name || item.dataKey)
               )
 
               return (
@@ -352,10 +351,10 @@ const EnergyFlowChart = memo(function EnergyFlowChart({ energyFlow, country }: {
           <Area
             yAxisId="energy"
             type="monotone"
-            dataKey="EV Charging"
+            dataKey="EV from Grid"
             stackId="consumption"
-            fill={COLORS['EV Charging']}
-            stroke={COLORS['EV Charging']}
+            fill={COLORS['EV from Grid']}
+            stroke={COLORS['EV from Grid']}
             fillOpacity={0.4}
           />
           <Area
@@ -445,10 +444,10 @@ const EnergyFlowChart = memo(function EnergyFlowChart({ energyFlow, country }: {
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded" style={{ backgroundColor: COLORS['EV Charging'] }}></div>
-                  <span className="text-xs text-gray-700">EV Charging</span>
+                  <div className="w-3 h-3 rounded" style={{ backgroundColor: COLORS['EV from Grid'] }}></div>
+                  <span className="text-xs text-gray-700">EV from Grid</span>
                 </div>
-                <span className="text-xs font-semibold text-gray-900 tabular-nums">{energyFlow.evCharging.toFixed(1)}</span>
+                <span className="text-xs font-semibold text-gray-900 tabular-nums">{energyFlow.evChargingFromGrid.toFixed(1)}</span>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
