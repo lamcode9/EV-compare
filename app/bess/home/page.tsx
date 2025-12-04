@@ -1249,6 +1249,17 @@ function BatteriesAtHomePageContent() {
                         <span>0</span>
                         <span>30</span>
                       </div>
+                      <div className="mt-2 text-xs text-gray-500">
+                        <InfoBox title="Solar System Efficiency Explained">
+                          <div className="space-y-1.5">
+                            <div><strong>System Rating vs Real Output:</strong> A 10kW system doesn't generate 10kW constantly - that's its peak capacity under perfect conditions.</div>
+                            <div><strong>Real-World Factors:</strong> Weather, roof angle, dirt, and temperature reduce output by 15-25%. A 10kW system typically produces 35-38 kWh/day in sunny conditions.</div>
+                            <div className="pt-1 border-t border-gray-200 text-[11px] text-gray-600">
+                              Your actual generation depends on local solar irradiance, system maintenance, and weather patterns.
+                            </div>
+                          </div>
+                        </InfoBox>
+                      </div>
                     </div>
                     {/* Include Solar Cost Toggle */}
                     <div className="mt-4">
@@ -1307,13 +1318,18 @@ function BatteriesAtHomePageContent() {
                       <label className="block text-sm font-medium text-gray-700">
                         Roof Quality
                       </label>
-                      <InfoBox title="Roof Quality Multipliers">
-                        <div className="space-y-1.5">
+                      <InfoBox title="Roof Quality & Efficiency Loss">
+                        <div className="space-y-2">
                           <div><span className="font-semibold">Ideal (100%):</span> South-facing, no shading, optimal tilt angle.</div>
                           <div><span className="font-semibold">Average (90%):</span> Some shading or suboptimal orientation.</div>
                           <div><span className="font-semibold">Shaded (75%):</span> Significant shading or poor orientation.</div>
-                          <div className="pt-1 border-t border-gray-200 text-[11px] text-gray-600">
-                            Roof quality affects solar yield. The multiplier is applied to the base solar yield for your country.
+                          <div className="pt-2 border-t border-gray-200">
+                            <div className="text-xs font-semibold text-amber-700 mb-1">💡 Efficiency Loss Explained:</div>
+                            <div className="text-xs text-gray-600 space-y-1">
+                              <div><strong>Average roofs lose 10%</strong> of potential solar energy due to partial shading or poor orientation.</div>
+                              <div><strong>Shaded roofs lose 25%</strong> of potential solar energy - like having only 3/4 of your solar panels working.</div>
+                              <div className="pt-1 text-[11px] text-gray-500">This is why roof quality directly impacts your solar savings and payback period.</div>
+                            </div>
                           </div>
                         </div>
                       </InfoBox>
@@ -1751,7 +1767,23 @@ function BatteriesAtHomePageContent() {
                 {/* Energy Supply */}
                 <div className="px-3 py-2">
                   <div className="flex items-baseline justify-between mb-2">
-                    <div className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Home Energy Supply</div>
+                    <div className="flex items-center gap-2">
+                      <div className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Home Energy Supply</div>
+                      <InfoBox title="System Efficiency Losses Explained">
+                        <div className="space-y-2">
+                          <div><strong>Why less than expected?</strong> Solar systems lose 15-25% efficiency due to:</div>
+                          <div className="text-xs space-y-1 pl-2">
+                            <div>• <strong>Inverter losses:</strong> 5-8% energy conversion loss</div>
+                            <div>• <strong>Temperature:</strong> Hot panels are less efficient</div>
+                            <div>• <strong>Dust & dirt:</strong> Reduces light absorption</div>
+                            <div>• <strong>System age:</strong> Gradual efficiency decline over years</div>
+                          </div>
+                          <div className="pt-1 border-t border-gray-200 text-[11px] text-gray-600">
+                            Real-world solar rarely achieves 100% of rated capacity - weather, maintenance, and physics all play a role.
+                          </div>
+                        </div>
+                      </InfoBox>
+                    </div>
                     <div className="text-xs font-bold text-gray-900 tabular-nums">
                       {(outputs.monthlyHomeEnergyUsed + outputs.monthlyEvEnergyUsed).toFixed(1)}
                     </div>
