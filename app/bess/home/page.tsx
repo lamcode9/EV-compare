@@ -233,7 +233,7 @@ const EnergyFlowChart = memo(function EnergyFlowChart({ energyFlow, country }: {
                           const name = item.name || item.dataKey
                           const displayName = name === 'Battery Usage' ? 'Battery' : name
                           return (
-                            <div key={index} className="flex items-center justify-between">
+                            <div key={index} className="flex items-center gap-4">
                               <div className="flex items-center gap-2">
                                 <div
                                   className="w-2.5 h-2.5 rounded-sm"
@@ -266,10 +266,10 @@ const EnergyFlowChart = memo(function EnergyFlowChart({ energyFlow, country }: {
                           const name = item.name || item.dataKey
                           const displayName = name === 'Battery Charge' ? 'Battery Charging' : name === 'Household Load' ? 'Household' : name
                           return (
-                            <div key={index} className="flex items-center justify-between">
+                            <div key={index} className="flex items-center gap-4">
                               <div className="flex items-center gap-2">
                                 <div
-                                  className="w-2.5 h-2.5 rounded-sm opacity-60"
+                                  className="w-2.5 h-2.5 rounded-sm"
                                   style={{ backgroundColor: item.color || COLORS[name as keyof typeof COLORS] }}
                                 ></div>
                                 <span className="text-xs text-gray-700">{displayName}</span>
