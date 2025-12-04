@@ -1233,7 +1233,6 @@ export default function ComparisonTable() {
                 tabIndex={0}
                 role="button"
                 aria-label="Sort by power rating"
-                aria-sort={sortField === 'powerRatingKw' ? (sortDirection === 'asc' ? 'ascending' : 'descending') : 'none'}
               >
                 <div className="flex flex-col leading-tight">
                   <span>Power {sortField === 'powerRatingKw' && (sortDirection === 'asc' ? '↑' : '↓')}</span>
@@ -1438,7 +1437,6 @@ export default function ComparisonTable() {
                 tabIndex={0}
                 role="button"
                 aria-label="Sort by efficiency"
-                aria-sort={sortField === 'efficiencyKwhPer100km' ? (sortDirection === 'asc' ? 'ascending' : 'descending') : 'none'}
               >
                 <div className="flex flex-col leading-tight">
                   <span>Efficiency {sortField === 'efficiencyKwhPer100km' && (sortDirection === 'asc' ? '↑' : '↓')}</span>

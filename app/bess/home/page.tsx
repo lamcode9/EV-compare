@@ -1320,7 +1320,7 @@ function BatteriesAtHomePageContent() {
                         </label>
                         <InfoBox title="Solar System Efficiency Explained">
                           <div className="space-y-1.5">
-                            <div><strong>System Rating vs Real Output:</strong> A 10kW system doesn't generate 10kW constantly - that's its peak capacity under perfect conditions.</div>
+                            <div><strong>System Rating vs Real Output:</strong> A 10kW system doesn&apos;t generate 10kW constantly - that&apos;s its peak capacity under perfect conditions.</div>
                             <div><strong>Real-World Factors:</strong> Weather, roof angle, dirt, and temperature reduce output by 15-25%. A 10kW system typically produces 35-38 kWh/day in sunny conditions.</div>
                             <div className="pt-1 border-t border-gray-200 text-[11px] text-gray-600">
                               Your actual generation depends on local solar irradiance, system maintenance, and weather patterns.
