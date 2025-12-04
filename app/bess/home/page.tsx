@@ -407,7 +407,7 @@ function BatteriesAtHomePageContent() {
   const netMetering = 'net_billing' as const
   const [optimizationMode, setOptimizationMode] = useState<'full_off_grid' | 'best_net_savings' | 'zero_bill' | 'custom' | null>(null)
   const [homeBackupEnabled, setHomeBackupEnabled] = useState<boolean>(false)
-  const [showEnergyChart, setShowEnergyChart] = useState<boolean>(true)
+  const [showEnergyChart, setShowEnergyChart] = useState<boolean>(false)
   const [hasOptimizationApplied, setHasOptimizationApplied] = useState<boolean>(false)
   const [needsOptimizationReapply, setNeedsOptimizationReapply] = useState<boolean>(false)
   const [calculatedOptimalSystem, setCalculatedOptimalSystem] = useState<OptimalSystem | null>(null)
