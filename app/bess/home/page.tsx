@@ -333,26 +333,7 @@ const EnergyFlowChart = memo(function EnergyFlowChart({ energyFlow, country }: {
               )
             }}
           />
-
-          {/* Grid export - background area behind bars (only if country supports it) */}
-          {showGridExport && (
-            <Area
-              yAxisId="energy"
-              type="monotone"
-              dataKey="Grid Export"
-              stackId="background"
-              fill={COLORS['Grid Export']}
-              stroke={COLORS['Grid Export']}
-              fillOpacity={0.8}
-            />
-          )}
-
-          {/* Generation sources - stacked bars */}
-          <Bar yAxisId="energy" dataKey="Solar" stackId="generation" fill={COLORS.Solar} />
-          <Bar yAxisId="energy" dataKey="Battery Usage" stackId="generation" fill={COLORS['Battery Usage']} />
-          <Bar yAxisId="energy" dataKey="Grid" stackId="generation" fill={COLORS.Grid} stroke={COLORS.Grid} strokeWidth={1} />
-
-          {/* Consumption - stacked areas (Household Load + EV Charging + Battery Charging) */}
+          {/* Consumption - stacked areas (Household Load + EV Charging + Battery Charging + Grid Export) */}
           <Area
             yAxisId="energy"
             type="monotone"
@@ -380,6 +361,24 @@ const EnergyFlowChart = memo(function EnergyFlowChart({ energyFlow, country }: {
             stroke={COLORS['Battery Charge']}
             fillOpacity={0.4}
           />
+
+          {/* Grid export - stacked area on consumption (only if country supports it) */}
+          {showGridExport && (
+            <Area
+              yAxisId="energy"
+              type="monotone"
+              dataKey="Grid Export"
+              stackId="consumption"
+              fill={COLORS['Grid Export']}
+              stroke={COLORS['Grid Export']}
+              fillOpacity={0.6}
+            />
+          )}
+
+          {/* Generation sources - stacked bars (with translucency) */}
+          <Bar yAxisId="energy" dataKey="Solar" stackId="generation" fill={COLORS.Solar} fillOpacity={0.7} />
+          <Bar yAxisId="energy" dataKey="Battery Usage" stackId="generation" fill={COLORS['Battery Usage']} fillOpacity={0.7} />
+          <Bar yAxisId="energy" dataKey="Grid" stackId="generation" fill={COLORS.Grid} stroke={COLORS.Grid} strokeWidth={1} fillOpacity={0.7} />
 
           {/* Battery level - secondary line */}
           <Line
