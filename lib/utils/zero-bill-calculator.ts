@@ -1202,7 +1202,21 @@ export function findOffGridSystem(
   })
 
   const evHomeChargingKwh = totalEvDailyKwhNeeded * (baseInputs.evHomeChargingPercentage / 100)
-  const totalDailyLoad = dayLoadKwh + nightLoadKwh + evHomeChargingKwh
+
+  // Calculate EV charging distribution based on charging time preference
+  let dayEvChargingKwh = 0
+  let nightEvChargingKwh = 0
+
+  if (baseInputs.evChargingTime === 'Day only') {
+    dayEvChargingKwh = evHomeChargingKwh
+    nightEvChargingKwh = 0
+  } else if (baseInputs.evChargingTime === 'Night only') {
+    dayEvChargingKwh = 0
+    nightEvChargingKwh = evHomeChargingKwh
+  } else { // 'Both'
+    dayEvChargingKwh = evHomeChargingKwh * 0.5
+    nightEvChargingKwh = evHomeChargingKwh * 0.5
+  }
 
   // Calculate solar yield per kW
   const baseSolarYield = SOLAR_YIELD_PER_KW[baseInputs.country]
@@ -1210,10 +1224,12 @@ export function findOffGridSystem(
   const solarYieldPerKw = baseSolarYield * roofMultiplier
 
   // For off-grid, we need:
-  // 1. Enough solar to generate total daily load (with 20% buffer for cloudy days)
-  // 2. Enough battery to store energy for night + cover 2-3 days of autonomy
-  const requiredSolarKw = Math.ceil((totalDailyLoad * 1.2) / solarYieldPerKw)
-  const requiredBatteryKwh = Math.ceil((nightLoadKwh + evHomeChargingKwh) * 2.5) // 2.5 days autonomy
+  // 1. Enough solar to generate daytime load + daytime EV charging (with 20% buffer)
+  // 2. Enough battery to store energy for night + nighttime EV charging + 2-3 days autonomy
+  const daytimeLoad = dayLoadKwh + dayEvChargingKwh
+  const requiredSolarKw = Math.ceil((daytimeLoad * 1.2) / solarYieldPerKw)
+  const nighttimeLoad = nightLoadKwh + nightEvChargingKwh
+  const requiredBatteryKwh = Math.ceil(nighttimeLoad * 2.5) // 2.5 days autonomy
 
   // Find best battery combination to meet capacity requirement
   let bestBatteryCombo: Array<{ model: BESS | null; quantity: number }> = [{ model: null, quantity: 0 }]
