@@ -1318,17 +1318,11 @@ export function findOffGridSystem(
       }
     }
   } catch (error) {
-    // If calculation fails, still return the system
+    console.warn('Off-grid system verification failed:', error)
   }
 
-  return {
-    solarSizeKw: requiredSolarKw,
-    batteries: bestBatteryCombo,
-    paybackYears: Infinity, // Will be calculated by UI
-    monthlySavings: 0, // Will be calculated by UI
-    totalSystemCost,
-    gridElectricityNeeded: 0,
-  }
+  // If we get here, no valid off-grid system was found
+  return null
 }
 
 /**
