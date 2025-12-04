@@ -700,7 +700,7 @@ function BatteriesAtHomePageContent() {
     if (mode === 'full_off_grid') {
       return findOffGridSystem(baseInputs, filteredBessList)
     } else if (mode === 'zero_bill') {
-      return findZeroBillSystem(baseInputs, filteredBessList)
+      return findZeroBillSystem(baseInputs, filteredBessList, 50, 6) // Increased search space
     } else if (mode === 'best_net_savings') {
       return findBestNetSavingsSystem(baseInputs, filteredBessList)
     }
@@ -742,6 +742,9 @@ function BatteriesAtHomePageContent() {
       setCalculatedOptimalSystem(optimalSystem)
       setHasOptimizationApplied(true)
       setNeedsOptimizationReapply(false)
+    } else {
+      // No valid system found for this mode
+      alert(`No ${mode.replace('_', ' ')} system found within the search constraints (0-30kW solar, 0-4 batteries). Try adjusting your load settings or EV configuration.`)
     }
   }, [calculateOptimalSystemForMode])
 
