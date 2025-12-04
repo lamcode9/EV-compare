@@ -142,7 +142,7 @@ const EnergyFlowChart = memo(function EnergyFlowChart({ energyFlow, country }: {
       
       // Only include Grid Export if the country supports it
       if (showGridExport) {
-        data['Grid Export'] = -hour.gridExport // Negative to show below axis
+        data['Grid Export'] = hour.gridExport // Positive for stacked area on consumption
       }
       
       return data
