@@ -23,7 +23,8 @@ const navLinks: NavLink[] = [
     label: 'BESS', 
     tooltip: 'Battery Energy Storage Systems',
     dropdown: [
-      { href: '/bess/home', label: 'Batteries at Home' },
+      { href: '/bess/home', label: 'Single Home' },
+      { href: '/bess/shared-residential', label: 'Shared Residential' },
       { href: '/bess/commercial', label: 'Commercial BESS' },
       { href: '/bess/grid', label: 'Grid / Industrial BESS' },
     ]
