@@ -1,28 +1,19 @@
-import CountrySelector from '@/components/CountrySelector'
-import { VehicleProvider } from '@/store/VehicleStore'
+import type { Metadata } from 'next'
+import GridBESSClient from './page-client'
+
+export const metadata: Metadata = {
+  title: 'Grid-Scale BESS Calculator — battery.mom',
+  description:
+    'Calculate LCOE/LCOS for utility-scale battery projects, compare technologies, and track Southeast Asian grid storage developments and policies.',
+  keywords: 'grid BESS, LCOE calculator, LCOS calculator, utility storage, battery technologies, Southeast Asia policies',
+  openGraph: {
+    title: 'Grid-Scale BESS Calculator — battery.mom',
+    description: 'LCOE/LCOS calculator and technology comparison for utility-scale battery storage projects.',
+    type: 'website',
+  },
+}
 
 export default function BESSGridPage() {
-  return (
-    <VehicleProvider>
-      <main className="min-h-screen pt-12 md:pt-14">
-        <section className="container mx-auto px-4 pt-12 pb-8 max-w-7xl">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-8 text-left">
-            Grid / Industrial BESS
-          </h2>
-          <div className="mb-8">
-            <div className="flex items-center gap-4">
-              <div className="flex-shrink-0">
-                <CountrySelector />
-              </div>
-            </div>
-          </div>
-
-          <div className="text-center py-16">
-            <p className="text-lg text-gray-600">Coming Soon</p>
-          </div>
-        </section>
-      </main>
-    </VehicleProvider>
-  )
+  return <GridBESSClient />
 }
 

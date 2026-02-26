@@ -13,6 +13,7 @@ import {
   getElectricityRate,
   formatPrice,
 } from '@/lib/utils'
+import { CURRENCY_BY_COUNTRY } from '@/lib/constants'
 
 interface StatsGridProps {
   vehicle: Vehicle
@@ -25,15 +26,6 @@ const batteryTechColors: Record<string, string> = {
   LFP: '#3b82f6',
   SolidState: '#8b5cf6',
   Other: '#6b7280',
-}
-
-const CURRENCY_BY_COUNTRY: Record<Country, string> = {
-  SG: 'SGD',
-  MY: 'MYR',
-  ID: 'IDR',
-  PH: 'PHP',
-  TH: 'THB',
-  VN: 'VND',
 }
 
 const formatLocalPrice = (price: number, country: Country, digits: number = 0) =>

@@ -1,15 +1,28 @@
 import { Suspense } from 'react'
+import { Metadata } from 'next'
 import CountrySelector from '@/components/CountrySelector'
 import SearchBox from '@/components/SearchBox'
 import VehicleSection from '@/components/VehicleSection'
 import ComparisonTable from '@/components/ComparisonTable'
 import StructuredData from '@/components/StructuredData'
-import { VehicleProvider } from '@/store/VehicleStore'
 import { SearchBoxSkeleton, ComparisonTableSkeleton } from '@/components/LoadingSkeleton'
+
+export const metadata: Metadata = {
+  title: 'Compare Electric Vehicles — battery.mom',
+  description:
+    'Search and compare every electric vehicle available in Southeast Asia — specs, range, efficiency, battery tech, local pricing, and side-by-side charts for Singapore, Malaysia, Indonesia, Thailand, Vietnam, and Philippines.',
+  alternates: { canonical: '/ev' },
+  openGraph: {
+    title: 'Compare Electric Vehicles — battery.mom',
+    description:
+      'Side-by-side EV comparison with real local pricing across Southeast Asia.',
+    type: 'website',
+  },
+}
 
 export default function EVPage() {
   return (
-    <VehicleProvider>
+    <>
       <StructuredData />
       <main className="min-h-screen pt-12 md:pt-14">
         <section className="container mx-auto px-4 pt-12 pb-8 max-w-7xl">
@@ -56,7 +69,7 @@ export default function EVPage() {
           <VehicleSection />
         </section>
       </main>
-    </VehicleProvider>
+    </>
   )
 }
 

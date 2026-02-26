@@ -3,7 +3,9 @@
  * Scrapes official manufacturer websites for available options/packages for each vehicle model
  */
 
+// @ts-ignore - puppeteer may not be installed in all environments
 import puppeteer from 'puppeteer'
+// @ts-ignore - cheerio may not be installed in all environments
 import cheerio from 'cheerio'
 import type { OptionPrice } from '@/types/vehicle'
 
@@ -64,7 +66,7 @@ class TeslaOptionsScraper implements OptionsScraper {
 
       // Tesla typically has Full Self-Driving and Premium Interior options
       // Look for option buttons/selectors
-      $('[data-testid*="option"], [class*="option"], button[class*="package"]').each((_, el) => {
+      $('[data-testid*="option"], [class*="option"], button[class*="package"]').each((_: number, el: any) => {
         const text = $(el).text().trim()
         const priceText = $(el).find('[class*="price"], [data-testid*="price"]').text().trim()
 
@@ -134,7 +136,7 @@ class BYDOptionsScraper implements OptionsScraper {
       const options: ScrapedOptions[] = []
 
       // Look for option/package sections
-      $('[class*="option"], [class*="package"], [class*="accessory"]').each((_, el) => {
+      $('[class*="option"], [class*="package"], [class*="accessory"]').each((_: number, el: any) => {
         const text = $(el).find('h3, h4, [class*="title"]').text().trim()
         const priceText = $(el).find('[class*="price"]').text().trim()
 
@@ -210,7 +212,7 @@ class HyundaiKiaOptionsScraper implements OptionsScraper {
       const options: ScrapedOptions[] = []
 
       // Look for option/packages
-      $('[class*="option"], [class*="package"], [class*="accessory"]').each((_, el) => {
+      $('[class*="option"], [class*="package"], [class*="accessory"]').each((_: number, el: any) => {
         const text = $(el).find('h3, h4, [class*="name"]').text().trim()
         const priceText = $(el).find('[class*="price"]').text().trim()
 

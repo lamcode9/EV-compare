@@ -1,28 +1,19 @@
-import CountrySelector from '@/components/CountrySelector'
-import { VehicleProvider } from '@/store/VehicleStore'
+import type { Metadata } from 'next'
+import CommercialBESSClient from './page-client'
+
+export const metadata: Metadata = {
+  title: 'Commercial BESS Calculator — battery.mom',
+  description:
+    'Calculate peak shaving, demand charge reduction, and revenue stacking for commercial battery energy storage systems. Compare products and use cases across Southeast Asia.',
+  keywords: 'commercial BESS, peak shaving calculator, demand charge reduction, energy storage, battery systems, Southeast Asia',
+  openGraph: {
+    title: 'Commercial BESS Calculator — battery.mom',
+    description: 'Size commercial battery systems for peak shaving and demand charge reduction across Southeast Asia.',
+    type: 'website',
+  },
+}
 
 export default function BESSCommercialPage() {
-  return (
-    <VehicleProvider>
-      <main className="min-h-screen pt-12 md:pt-14">
-        <section className="container mx-auto px-4 pt-12 pb-8 max-w-7xl">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-8 text-left">
-            Commercial BESS
-          </h2>
-          <div className="mb-8">
-            <div className="flex items-center gap-4">
-              <div className="flex-shrink-0">
-                <CountrySelector />
-              </div>
-            </div>
-          </div>
-
-          <div className="text-center py-16">
-            <p className="text-lg text-gray-600">Coming Soon</p>
-          </div>
-        </section>
-      </main>
-    </VehicleProvider>
-  )
+  return <CommercialBESSClient />
 }
 

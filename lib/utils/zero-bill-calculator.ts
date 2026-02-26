@@ -88,15 +88,8 @@ export const ELECTRICITY_TARIFFS: Record<Country, number> = {
   PH: 12.30,   // ₱ per kWh
 }
 
-// Currency symbols by country
-export const CURRENCY_BY_COUNTRY: Record<Country, string> = {
-  SG: 'SGD',
-  MY: 'MYR',
-  ID: 'IDR',
-  PH: 'PHP',
-  TH: 'THB',
-  VN: 'VND',
-}
+// Re-export from shared constants for backward compatibility
+export { CURRENCY_BY_COUNTRY } from '@/lib/constants'
 
 // CO₂ emissions factor (kg CO₂ per kWh) - average grid mix per country
 export const CO2_EMISSIONS_FACTOR: Record<Country, number> = {
@@ -1524,7 +1517,7 @@ export function findZeroBillSystem(
   let bestBill = Infinity
 
   // Start with a reasonable solar size estimate
-  const estimatedLoad = (baseInputs.dayLoad + baseInputs.nightLoad)
+  const estimatedLoad = (Number(baseInputs.dayLoad) + Number(baseInputs.nightLoad))
   const estimatedSolarKw = Math.min(Math.ceil(estimatedLoad * 1.2 / 4.5), maxSolarKw) // Rough estimate
 
   // Try solar sizes around the estimate

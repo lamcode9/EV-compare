@@ -1,11 +1,13 @@
 'use client'
 
-import { useState, useEffect, useMemo, useRef, useCallback, memo, useLayoutEffect } from 'react'
+import { useState, useEffect, useMemo, useRef, useCallback, memo } from 'react'
 import { Country } from '@/types/bess'
 import { BESS } from '@/types/bess'
 import { Vehicle } from '@/types/vehicle'
-import { VehicleProvider, useVehicleStore } from '@/store/VehicleStore'
+import { useVehicleStore } from '@/store/VehicleStore'
+import { COUNTRY_NAMES, CURRENCY_SYMBOLS } from '@/lib/constants'
 import CountrySelector from '@/components/CountrySelector'
+import InfoTooltip from '@/components/InfoTooltip'
 import { loadBESSData } from '@/lib/data-fetchers/bess-data'
 import {
   calculateZeroBill,
@@ -23,7 +25,6 @@ import {
   EXPORT_RATE_MULTIPLIER,
 } from '@/lib/utils/zero-bill-calculator'
 import {
-  ResponsiveContainer,
   BarChart,
   ComposedChart,
   Bar,
@@ -36,47 +37,9 @@ import {
   Tooltip,
   Cell,
 } from 'recharts'
+import ResponsiveContainer from '@/components/ResponsiveContainer'
 
-const COUNTRY_NAMES: Record<Country, string> = {
-  MY: 'Malaysia',
-  SG: 'Singapore',
-  ID: 'Indonesia',
-  TH: 'Thailand',
-  VN: 'Vietnam',
-  PH: 'Philippines',
-}
-
-const CURRENCY_SYMBOLS: Record<Country, string> = {
-  MY: 'RM',
-  SG: 'S$',
-  ID: 'Rp',
-  TH: '฿',
-  VN: '₫',
-  PH: '₱',
-}
-
-// InfoBox Component
-function InfoBox({ title, children, className = '' }: { title?: string; children: React.ReactNode; className?: string }) {
-  return (
-    <div className={`relative inline-block group ${className}`} style={{ zIndex: 1 }}>
-      <button
-        type="button"
-        className="text-gray-400 hover:text-blue-600 transition-colors"
-        aria-label="Show information"
-      >
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      </button>
-      <div className="absolute left-0 top-6 w-80 max-w-[90vw] bg-white border border-gray-200 rounded-lg shadow-xl p-4 z-[100] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto">
-        <div className="text-xs font-semibold text-gray-900 mb-2">{title || 'Information'}</div>
-        <div className="text-xs text-gray-700 leading-relaxed space-y-1.5">
-          {children}
-        </div>
-      </div>
-    </div>
-  )
-}
+// InfoBox removed — now using shared InfoTooltip component
 
 // Energy Flow Chart Component
 const EnergyFlowChart = memo(function EnergyFlowChart({ energyFlow, country }: { energyFlow: any; country: Country }) {
@@ -733,7 +696,7 @@ function BatteriesAtHomePageContent() {
   const optimalSystem = calculatedOptimalSystem
 
   // Reset needsOptimizationReapply when switching to custom mode
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (optimizationMode === 'custom') {
       setNeedsOptimizationReapply(false)
       setHasOptimizationApplied(false)
@@ -906,14 +869,14 @@ function BatteriesAtHomePageContent() {
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
                 <h2 className="text-xl font-semibold text-gray-900">Daily Energy Flow</h2>
-              <InfoBox title="Chart Explanation">
+              <InfoTooltip position="bottom" title="Chart Explanation" content={
                 <div className="space-y-1.5">
                   <div>This chart shows hourly energy flows throughout a typical day. Bars show generation (Solar, Battery, Grid) and areas show consumption (Household, EV, Battery Charging). The dashed line shows battery level.</div>
                   <div className="pt-1 border-t border-gray-200 text-[11px] text-gray-600">
                     Generation bars are stacked upward. Consumption areas are stacked downward. Grid Export (if applicable) appears as negative bars below the axis. Battery Level uses the right Y-axis.
                   </div>
                 </div>
-              </InfoBox>
+              } />
             </div>
               <button
                 onClick={() => setShowEnergyChart(!showEnergyChart)}
@@ -954,7 +917,7 @@ function BatteriesAtHomePageContent() {
                 <div className="mb-4 mt-5">
                   <div className="flex items-center gap-2 mb-1">
                     <h3 className="text-base font-semibold text-gray-900">Household Load</h3>
-                    <InfoBox title="Power Usage Assumptions">
+                    <InfoTooltip position="bottom" title="Power Usage Assumptions" content={
                       <div className="space-y-1.5">
                         <div><span className="font-semibold">Daytime Load:</span> Energy used during sun hours (typically 6am-6pm). Average household uses 8 kWh/day.</div>
                         <div><span className="font-semibold">Night Load:</span> Energy used during non-sun hours (typically 6pm-6am). Average household uses 10 kWh/day.</div>
@@ -962,7 +925,7 @@ function BatteriesAtHomePageContent() {
                           These values represent total household consumption excluding EV charging. EV charging is calculated separately based on your vehicle configuration.
                         </div>
                       </div>
-                    </InfoBox>
+                    } />
                   </div>
                   <p className="text-xs text-gray-500 mb-3">Configure your household energy consumption during the day and night</p>
                 </div>
@@ -1061,7 +1024,7 @@ function BatteriesAtHomePageContent() {
                 <div className="mb-2 mt-8">
                   <div className="flex items-center gap-2 mb-1">
                     <h3 className="text-base font-semibold text-gray-900">EVs in Household</h3>
-                    <InfoBox title="EV Charging Configuration">
+                    <InfoTooltip position="bottom" title="EV Charging Configuration" content={
                       <div className="space-y-1.5">
                         <div><span className="font-semibold">Driving Distance:</span> Daily kilometers driven per vehicle. Used to calculate daily energy needs.</div>
                         <div><span className="font-semibold">Home Charging %:</span> Percentage of total charging done at home vs. public chargers. Home charging can use solar/battery (free) or grid.</div>
@@ -1070,7 +1033,7 @@ function BatteriesAtHomePageContent() {
                           Public charging costs are calculated separately using country-specific public charging rates. Home charging from solar/battery is free; grid charging uses residential electricity rates.
                         </div>
                       </div>
-                    </InfoBox>
+                    } />
                   </div>
                   <p className="text-xs text-gray-500 mb-3">Add electric vehicles in your household and configure the charging behavior for each</p>
                 <div className="space-y-4">
@@ -1206,7 +1169,7 @@ function BatteriesAtHomePageContent() {
                     <label className="block text-sm font-semibold text-gray-900">
                       Optimization Goal
                     </label>
-                    <InfoBox title="Understanding Optimization Modes">
+                    <InfoTooltip position="bottom" title="Understanding Optimization Modes" content={
                       <div className="space-y-2">
                         <div>
                           <span className="font-semibold">Full Off-Grid:</span> Uses conservative sizing with 20% solar buffer and 2.5 days battery autonomy. Prioritizes maximum reliability and independence, typically resulting in a larger, more expensive system.
@@ -1221,7 +1184,7 @@ function BatteriesAtHomePageContent() {
                           <span className="font-semibold">Custom:</span> Manually configure your system without optimization.
                         </div>
                       </div>
-                    </InfoBox>
+                    } />
                   </div>
                   <div className="grid grid-cols-4 gap-2 mb-4">
                     <button
@@ -1318,7 +1281,7 @@ function BatteriesAtHomePageContent() {
                         <label className="text-sm font-medium text-gray-700">
                           Solar System Size
                         </label>
-                        <InfoBox title="Solar System Efficiency Explained">
+                        <InfoTooltip position="bottom" title="Solar System Efficiency Explained" content={
                           <div className="space-y-1.5">
                             <div><strong>System Rating vs Real Output:</strong> A 10kW system doesn&apos;t generate 10kW constantly - that&apos;s its peak capacity under perfect conditions.</div>
                             <div><strong>Real-World Factors:</strong> Weather, roof angle, dirt, and temperature reduce output by 15-25%. A 10kW system typically produces 35-38 kWh/day in sunny conditions.</div>
@@ -1326,7 +1289,7 @@ function BatteriesAtHomePageContent() {
                               Your actual generation depends on local solar irradiance, system maintenance, and weather patterns.
                             </div>
                           </div>
-                        </InfoBox>
+                        } />
                       </div>
                       <span className="text-base font-semibold text-emerald-600 tabular-nums">
                         {solarSizeKw} <span className="text-xs text-gray-500 font-normal">kW</span>
@@ -1357,7 +1320,7 @@ function BatteriesAtHomePageContent() {
                           <label className="text-sm font-medium text-gray-700">
                             Include solar cost in calculations?
                           </label>
-                          <InfoBox title="Solar Cost Information">
+                          <InfoTooltip position="bottom" title="Solar Cost Information" content={
                             <div className="space-y-1.5">
                               <div>
                                 <span className="font-semibold">Solar Cost:</span> Based on {CURRENCY_SYMBOLS[country]} {SOLAR_COST_PER_KW[country].toLocaleString()}/kW installed (2025 average, includes panels, inverters, installation).
@@ -1366,7 +1329,7 @@ function BatteriesAtHomePageContent() {
                                 Toggle &quot;Include solar cost&quot; to include or exclude solar system cost from financial calculations. Useful for comparing battery-only systems or if you already have solar.
                               </div>
                             </div>
-                          </InfoBox>
+                          } />
                         </div>
                         <div className="flex items-center gap-3">
                         <div className="flex gap-1 bg-white rounded-lg p-0.5 border border-gray-200">
@@ -1407,7 +1370,7 @@ function BatteriesAtHomePageContent() {
                       <label className="block text-sm font-medium text-gray-700">
                         Roof Quality
                       </label>
-                      <InfoBox title="Roof Quality & Efficiency Loss">
+                      <InfoTooltip position="bottom" title="Roof Quality & Efficiency Loss" content={
                         <div className="space-y-2">
                           <div><span className="font-semibold">Ideal (100%):</span> South-facing, no shading, optimal tilt angle.</div>
                           <div><span className="font-semibold">Average (90%):</span> Some shading or suboptimal orientation.</div>
@@ -1421,7 +1384,7 @@ function BatteriesAtHomePageContent() {
                             </div>
                           </div>
                         </div>
-                      </InfoBox>
+                      } />
                     </div>
                     <div className="grid grid-cols-3 gap-2">
                       {(['Ideal', 'Average', 'Shaded'] as const).map(quality => (
@@ -1472,13 +1435,13 @@ function BatteriesAtHomePageContent() {
                         <span className="text-xs text-gray-500 group-hover:text-gray-700 transition-colors">
                           Battery with Home backup capability
                         </span>
-                        <InfoBox title="Home Backup (V2H) Capability">
+                        <InfoTooltip position="bottom" title="Home Backup (V2H) Capability" content={
                           <div className="space-y-1.5">
                             <div>
                               When enabled, only batteries with V2H-ready capability are available. These batteries can provide backup power to your home during grid outages.
                             </div>
                           </div>
-                        </InfoBox>
+                        } />
                       </label>
                     </div>
                     <div className="space-y-3">
@@ -1670,7 +1633,7 @@ function BatteriesAtHomePageContent() {
                 <div className="mb-4">
                   <div className="flex items-center gap-2 mb-1">
                     <h4 className="text-sm font-semibold text-gray-700 uppercase tracking-wider">25-Year View</h4>
-                    <InfoBox title="25-Year Projection Assumptions">
+                    <InfoTooltip position="bottom" title="25-Year Projection Assumptions" content={
                       <div className="space-y-1.5">
                         <div>
                           <span className="font-semibold">Inflation Assumption:</span> Electricity tariffs and EV charging costs increase by 3% annually over 25 years.
@@ -1679,7 +1642,7 @@ function BatteriesAtHomePageContent() {
                           This projection includes: system upfront cost, monthly electricity bills, EV home charging costs, and EV public charging costs. System maintenance costs are included in the system cost calculation.
                         </div>
                       </div>
-                    </InfoBox>
+                    } />
                   </div>
                   <p className="text-xs text-gray-500">Total cost over 25 years including electricity, EV charging, and system cost (3% annual inflation)</p>
                 </div>
@@ -1739,7 +1702,7 @@ function BatteriesAtHomePageContent() {
                   <div className="mb-4">
                     <div className="flex items-center gap-2 mb-1">
                       <h4 className="text-sm font-semibold text-gray-700 uppercase tracking-wider">Setup Cost</h4>
-                      <InfoBox title="Setup Cost Details">
+                      <InfoTooltip position="bottom" title="Setup Cost Details" content={
                         <div className="space-y-1.5">
                           <div>
                             <span className="font-semibold">System Cost:</span> Total upfront cost for solar panels and battery storage.
@@ -1751,7 +1714,7 @@ function BatteriesAtHomePageContent() {
                             Costs include installation, wiring, and basic maintenance. Payback period assumes current electricity rates and usage patterns.
                           </div>
                         </div>
-                      </InfoBox>
+                      } />
                     </div>
                     <p className="text-xs text-gray-500">Initial system investment and expected payback period</p>
                   </div>
@@ -1792,7 +1755,7 @@ function BatteriesAtHomePageContent() {
                 <div className="flex items-center gap-2">
                   <h3 className="text-base font-bold text-gray-900">Energy Flow</h3>
                   {EXPORT_RATE_MULTIPLIER[country].net_billing > 0 && (
-                    <InfoBox title="Net Billing Explanation">
+                    <InfoTooltip position="bottom" title="Net Billing Explanation" content={
                       <div className="space-y-1.5">
                         <div>
                           Excess solar exported to the grid is credited at {Math.round(EXPORT_RATE_MULTIPLIER[country].net_billing * 100)}% of the import tariff rate.
@@ -1801,7 +1764,7 @@ function BatteriesAtHomePageContent() {
                           This means you receive {Math.round(EXPORT_RATE_MULTIPLIER[country].net_billing * 100)}% credit for exported energy compared to what you pay for imported energy. Credits offset your monthly bill.
                         </div>
                       </div>
-                    </InfoBox>
+                    } />
                   )}
                 </div>
                 <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">kWh/month</span>
@@ -1894,14 +1857,14 @@ function BatteriesAtHomePageContent() {
                 <div className="flex items-center justify-between mb-6 pb-2 border-b-2 border-emerald-600">
                   <div className="flex items-center gap-2">
                     <h3 className="text-base font-bold text-gray-900">EV Charging</h3>
-                    <InfoBox title="EV Charging Assumptions">
+                    <InfoTooltip position="bottom" title="EV Charging Assumptions" content={
                       <div className="space-y-1 text-xs">
                         <div><span className="font-semibold">Home Charging:</span> 7kW AC charging speed (Level 2)</div>
                         <div><span className="font-semibold">Public Charging:</span> 100kW DC fast charging speed</div>
                         <div><span className="font-semibold">Charger Availability:</span> Always available at home, unlimited at public</div>
                         <div><span className="font-semibold">Night Charging:</span> Starts at 19:00 (7 PM)</div>
                       </div>
-                    </InfoBox>
+                    } />
                   </div>
                   <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">kWh/month</span>
                 </div>
@@ -1992,8 +1955,6 @@ function BatteriesAtHomePageContent() {
 
 export default function BatteriesAtHomePage() {
   return (
-    <VehicleProvider>
-      <BatteriesAtHomePageContent />
-    </VehicleProvider>
+    <BatteriesAtHomePageContent />
   )
 }

@@ -1,13 +1,5 @@
 import type { Country } from '@prisma/client'
-
-const CURRENCY_BY_COUNTRY: Record<Country, string> = {
-  SG: 'SGD',
-  MY: 'MYR',
-  ID: 'IDR',
-  PH: 'PHP',
-  TH: 'THB',
-  VN: 'VND',
-}
+import { CURRENCY_BY_COUNTRY } from '@/lib/constants'
 
 export function formatPrice(price: number, country: Country, minimumFractionDigits: number = 0): string {
   const currency = CURRENCY_BY_COUNTRY[country] || 'USD'

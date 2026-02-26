@@ -29,7 +29,7 @@ export async function GET(request: NextRequest) {
     
     // Verify batteryCapacityKwh is included in response
     if (vehicles.length > 0 && process.env.NODE_ENV === 'development') {
-      const sample = vehicles[0]
+      const sample = vehicles[0] as Record<string, unknown>
       if (!('batteryCapacityKwh' in sample)) {
         console.warn('Warning: batteryCapacityKwh missing from vehicle response:', sample.id)
       }

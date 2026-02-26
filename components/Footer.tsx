@@ -1,3 +1,6 @@
+import Link from 'next/link'
+import NewsletterSignup from '@/components/NewsletterSignup'
+
 const siteName = "battery.mom"
 
 export default function Footer() {
@@ -5,16 +8,62 @@ export default function Footer() {
     <footer className="bg-[#0f0f0f] text-gray-500 mt-16 border-t border-gray-900/50">
       <div className="container mx-auto px-4 py-5 max-w-[1200px]">
         <div className="flex flex-col gap-2.5 text-center">
+          {/* Links */}
+          <div className="flex flex-wrap justify-center gap-6 text-sm mb-2">
+            <Link href="/ev" className="text-gray-400 hover:text-emerald-400 transition-colors">
+              EV Comparison
+            </Link>
+            <Link href="/bess" className="text-gray-400 hover:text-emerald-400 transition-colors">
+              Battery Storage
+            </Link>
+            <Link href="/calculators" className="text-gray-400 hover:text-emerald-400 transition-colors">
+              Calculators
+            </Link>
+            <Link href="/insights" className="text-gray-400 hover:text-emerald-400 transition-colors">
+              Insights
+            </Link>
+            <Link href="/bess/case-studies" className="text-gray-400 hover:text-emerald-400 transition-colors">
+              Case Studies
+            </Link>
+            <Link href="/bess/installers" className="text-gray-400 hover:text-emerald-400 transition-colors">
+              Installers
+            </Link>
+            <Link href="/suggest-correction" className="text-gray-400 hover:text-emerald-400 transition-colors">
+              Suggest Correction
+            </Link>
+            <Link href="/contact" className="text-gray-400 hover:text-emerald-400 transition-colors">
+              Contact
+            </Link>
+            <Link href="/api-docs" className="text-gray-400 hover:text-emerald-400 transition-colors">
+              API Docs
+            </Link>
+            <Link href="/embed-widgets" className="text-gray-400 hover:text-emerald-400 transition-colors">
+              Embed Widgets
+            </Link>
+            <Link href="/contributors" className="text-gray-400 hover:text-emerald-400 transition-colors">
+              Contributors
+            </Link>
+            <a href="/feed.xml" className="text-gray-400 hover:text-emerald-400 transition-colors">
+              RSS
+            </a>
+          </div>
+
+          {/* Newsletter */}
+          <div className="pt-2 pb-1">
+            <p className="text-xs text-gray-400 mb-2 font-medium">Monthly data digest — EV launches, price changes, policy updates</p>
+            <NewsletterSignup variant="inline" />
+          </div>
+
           {/* Data Sources - Single Row */}
           <p className="text-xs text-gray-500 leading-relaxed">
-            This living database was originally seeded and continuously updated with the help of Grok (xAI) using real-time web search (Last full update: November 2025). All entries have been manually verified or corrected against primary sources. Prices and specifications may change. Always confirm with official sources.
+            This living database was originally seeded and continuously updated with the help of Grok (xAI) using real-time web search (Last full update: February 2026). All entries have been manually verified or corrected against primary sources. Prices and specifications may change. Always confirm with official sources.
           </p>
           
           {/* Subtle Line Separator */}
           <div className="border-t border-gray-700/40 pt-2.5">
             {/* Copyright - Single Row */}
             <p className="text-xs text-gray-500">
-              © 2025 {siteName} is a{' '}
+              © 2026 {siteName} is a{' '}
               <a 
                 href="https://lamonade.xyz" 
                 className="text-gray-500 hover:text-emerald-600 transition-colors inline-flex items-center gap-1"

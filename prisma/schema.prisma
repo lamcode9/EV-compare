@@ -59,8 +59,12 @@ model Vehicle {
   onTheRoadPriceLocalCurrency Float?
   rebates                     Json             // Array of {name: string, amount: number, description: string}
   isAvailable                 Boolean          @default(true)
+  dataSourceUrl               String?          // URL of the primary data source
+  dataLastVerified            DateTime?        // When data was last manually verified
   updatedAt                   DateTime         @updatedAt
   createdAt                   DateTime         @default(now())
+
+  priceSnapshots              PriceSnapshot[]
 
   @@index([country, isAvailable])
   @@index([name])
@@ -75,5 +79,51 @@ model AuditLog {
   createdAt   DateTime @default(now())
 
   @@index([createdAt])
+}
+
+model PriceSnapshot {
+  id           String   @id @default(uuid())
+  vehicleId    String
+  vehicle      Vehicle  @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+  basePrice    Float    // basePriceLocalCurrency at snapshot time
+  otrPrice     Float?   // onTheRoadPriceLocalCurrency at snapshot time
+  currency     String   // Currency code (SGD, MYR, etc.)
+  source       String?  // Source URL for this price point
+  snapshotDate DateTime @default(now())
+
+  @@index([vehicleId, snapshotDate])
+  @@index([snapshotDate])
+}
+
+model Correction {
+  id             String   @id @default(uuid())
+  type           String   // "ev" or "bess"
+  country        Country
+  itemName       String   // Vehicle name or BESS product name
+  field          String   // Field being corrected
+  currentValue   String   // Current value in database
+  suggestedValue String   // Suggested correction
+  source         String?  // Source URL
+  email          String?  // Contact email
+  notes          String?  // Additional notes
+  status         String   @default("pending") // "pending", "approved", "rejected"
+  reviewedAt     DateTime?
+  reviewedBy     String?
+  createdAt      DateTime @default(now())
+
+  @@index([status])
+  @@index([createdAt])
+}
+
+model NewsletterSubscriber {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  country      String?  // Optional: which country they care about
+  subscribedAt DateTime @default(now())
+  confirmed    Boolean  @default(false)
+  unsubscribed Boolean  @default(false)
+
+  @@index([email])
+  @@index([subscribedAt])
 }
 

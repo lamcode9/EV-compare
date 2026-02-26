@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { Providers } from './providers'
@@ -7,12 +7,18 @@ import Footer from '@/components/Footer'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Analytics } from '@vercel/analytics/react'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'], display: 'swap' })
 
 // Hard-coded strings - reuse everywhere
 const siteName = "battery.mom"
 const tagline = "Clear data for the energy transition."
 const description = "Independent, monthly-updated data on solar, battery storage, and electric vehicles — costs, payback times, and adoption rates across Southeast Asia and the world."
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#10b981',
+}
 
 export const metadata: Metadata = {
   title: `${siteName} — ${tagline}`,
@@ -69,6 +75,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="alternate" type="application/rss+xml" title="battery.mom — Insights" href="/feed.xml" />
+      </head>
       <body className={inter.className}>
         <Providers>
           <Header />

@@ -26,7 +26,7 @@ const navLinks: NavLink[] = [
       { href: '/bess/home', label: 'Single Home' },
       { href: '/bess/shared-residential', label: 'Shared Residential' },
       { href: '/bess/commercial', label: 'Commercial BESS' },
-      { href: '/bess/grid', label: 'Grid / Industrial BESS' },
+      { href: '/bess/grid', label: 'Grid & Industrial BESS' },
     ]
   },
   { href: '/scoreboard', label: 'Scoreboard' },
@@ -153,7 +153,7 @@ export default function Header() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`px-4 py-2 text-sm font-medium transition-colors ${
+                    className={`px-4 py-2 text-sm font-medium transition-colors relative ${
                       isActive(item.href)
                         ? 'text-emerald-600'
                         : 'text-gray-700 hover:text-emerald-600'
@@ -253,7 +253,7 @@ export default function Header() {
                               <li key={item.href}>
                                 <Link
                                   href={item.href}
-                                  className={`block px-4 py-2 text-sm font-medium rounded-xl transition-all text-left ${
+                                  className={`block px-4 py-2 text-sm font-medium rounded-xl transition-all text-left relative ${
                                     isActive(item.href)
                                       ? 'text-emerald-500 bg-gray-800/50'
                                       : 'text-gray-400 hover:text-emerald-500 hover:bg-gray-800/50'
@@ -261,6 +261,11 @@ export default function Header() {
                                   onClick={handleCloseMenu}
                                 >
                                   {item.label}
+                                  {item.label === 'Shared Residential' && (
+                                    <span className="ml-2 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none">
+                                      New
+                                    </span>
+                                  )}
                                 </Link>
                               </li>
                             ))}

@@ -2,12 +2,19 @@
   "functions": {
     "app/api/cron/update-vehicles/route.ts": {
       "maxDuration": 300
+    },
+    "app/api/cron/price-snapshots/route.ts": {
+      "maxDuration": 120
     }
   },
   "crons": [
     {
       "path": "/api/cron/update-vehicles",
       "schedule": "0 2 * * *"
+    },
+    {
+      "path": "/api/cron/price-snapshots",
+      "schedule": "0 3 1 * *"
     }
   ]
 }

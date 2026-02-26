@@ -1,0 +1,443 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import { Vehicle } from '@/types/vehicle'
+import { useVehicleStore } from '@/store/VehicleStore'
+import DataFreshness from '@/components/DataFreshness'
+import InfoTooltip from '@/components/InfoTooltip'
+import { CURRENCY_SYMBOLS as CURRENCY, COUNTRY_NAMES } from '@/lib/constants'
+import {
+  BarChart,
+  Bar,
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  Cell,
+  PieChart,
+  Pie,
+} from 'recharts'
+import ResponsiveContainer from '@/components/ResponsiveContainer'
+
+interface VehicleDetailClientProps {
+  vehicle: Vehicle
+}
+
+// Battery technology colors
+const TECH_COLORS: Record<string, string> = {
+  LFP: '#10b981', // emerald
+  NMC: '#3b82f6', // blue
+  SolidState: '#8b5cf6', // purple
+  Other: '#6b7280', // gray
+}
+
+export default function VehicleDetailClient({ vehicle }: VehicleDetailClientProps) {
+  const { addVehicle, selectedVehicles } = useVehicleStore()
+  const [priceHistory, setPriceHistory] = useState<{date: string; basePrice: number}[]>([])
+  const [priceMetrics, setPriceMetrics] = useState<{priceChange: number | null; priceChangePercent: number | null; dataPoints: number} | null>(null)
+
+  useEffect(() => {
+    fetch(`/api/vehicles/${vehicle.id}/price-history`)
+      .then(res => res.ok ? res.json() : null)
+      .then(data => {
+        if (data?.history?.length > 0) {
+          setPriceHistory(data.history)
+          setPriceMetrics(data.metrics)
+        }
+      })
+      .catch(() => {}) // Silent fail — price history is optional
+  }, [vehicle.id])
+
+  const handleCompareClick = () => {
+    // Add this vehicle to the comparison if not already selected
+    if (!selectedVehicles.find(v => v.id === vehicle.id)) {
+      addVehicle(vehicle)
+    }
+    // Navigate to comparison page (will happen via Link)
+  }
+  const formatCurrency = (amount: number | null | undefined) => {
+    if (amount == null) return '—'
+    return `${CURRENCY[vehicle.country]}${amount.toLocaleString('en-US')}`
+  }
+
+  // Calculate range at different speeds (simplified model)
+  const rangeData = [
+    { speed: 'City (30 km/h)', range: Math.round((vehicle.rangeKm || vehicle.rangeWltpKm || 0) * 1.2) },
+    { speed: 'Highway (80 km/h)', range: Math.round((vehicle.rangeKm || vehicle.rangeWltpKm || 0) * 0.85) },
+    { speed: 'Mixed (60 km/h)', range: vehicle.rangeKm || vehicle.rangeWltpKm || 0 },
+  ]
+
+  // Energy consumption breakdown (estimated)
+  const energyBreakdown = [
+    { name: 'Motor/Drive', value: Math.round((vehicle.efficiencyKwhPer100km || 0) * 0.6), color: '#3b82f6' },
+    { name: 'HVAC/Climate', value: Math.round((vehicle.efficiencyKwhPer100km || 0) * 0.15), color: '#10b981' },
+    { name: 'Electronics', value: Math.round((vehicle.efficiencyKwhPer100km || 0) * 0.1), color: '#f59e0b' },
+    { name: 'Charging Loss', value: Math.round((vehicle.efficiencyKwhPer100km || 0) * 0.08), color: '#ef4444' },
+    { name: 'Other', value: Math.round((vehicle.efficiencyKwhPer100km || 0) * 0.07), color: '#6b7280' },
+  ].filter(item => item.value > 0)
+
+  // Battery degradation over 10 years (simplified)
+  const degradationData = Array.from({ length: 11 }, (_, year) => ({
+    year: year,
+    capacity: Math.max(70, 100 - (year * 2.5)), // 2.5% degradation per year, floor at 70%
+    range: Math.max(
+      Math.round(((vehicle.rangeKm || vehicle.rangeWltpKm || 0) * (100 - (year * 2.5))) / 100),
+      Math.round((vehicle.rangeKm || vehicle.rangeWltpKm || 0) * 0.7)
+    ),
+  }))
+
+  // Charging time estimates
+  const chargingData = [
+    { method: 'DC Fast (150kW)', time: vehicle.chargingTimeDc0To80Min ? `${vehicle.chargingTimeDc0To80Min} min` : 'N/A', energy: '80%' },
+    { method: 'DC Fast (50kW)', time: vehicle.chargingTimeDc0To80Min ? `${Math.round(vehicle.chargingTimeDc0To80Min * 3)} min` : 'N/A', energy: '80%' },
+    { method: 'AC Home (11kW)', time: `${Math.round((vehicle.batteryCapacityKwh || 0) * 0.8 / 11 * 60)} min`, energy: '80%' },
+    { method: 'AC Public (22kW)', time: `${Math.round((vehicle.batteryCapacityKwh || 0) * 0.8 / 22 * 60)} min`, energy: '80%' },
+  ]
+
+  return (
+    <main className="min-h-screen pt-12 md:pt-14">
+      <section className="container mx-auto px-4 pt-12 pb-16 max-w-7xl">
+        {/* Header */}
+        <div className="mb-8">
+          <nav className="flex items-center gap-2 text-sm text-gray-500 mb-4">
+            <Link href="/ev" className="hover:text-gray-700">Electric Vehicles</Link>
+            <span>/</span>
+            <span className="text-gray-900">{vehicle.name}</span>
+          </nav>
+
+          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+            <div className="flex-1">
+              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-2">
+                {vehicle.name}
+                {vehicle.modelTrim && <span className="text-gray-600"> {vehicle.modelTrim}</span>}
+              </h1>
+              <div className="flex items-center gap-4 text-lg text-gray-600 mb-3">
+                <span className="flex items-center gap-1">
+                  <span className={`text-xs px-2 py-0.5 rounded-full ${
+                    vehicle.isAvailable ? 'bg-emerald-50 text-emerald-700' : 'bg-red-50 text-red-700'
+                  }`}>
+                    {vehicle.isAvailable ? 'Available' : 'Unavailable'}
+                  </span>
+                </span>
+                <span>{COUNTRY_NAMES[vehicle.country]}</span>
+                <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${
+                  vehicle.batteryTechnology === 'LFP' ? 'bg-emerald-50 text-emerald-700' :
+                  vehicle.batteryTechnology === 'NMC' ? 'bg-blue-50 text-blue-700' :
+                  'bg-gray-50 text-gray-700'
+                }`}>
+                  {vehicle.batteryTechnology || 'Unknown'} Battery
+                </span>
+              </div>
+              <DataFreshness lastUpdated={new Date(vehicle.updatedAt)} />
+            </div>
+
+            {vehicle.basePriceLocalCurrency && (
+              <div className="lg:text-right">
+                <div className="text-3xl font-bold text-gray-900 mb-1">
+                  {formatCurrency(vehicle.basePriceLocalCurrency)}
+                </div>
+                <div className="text-sm text-gray-500 flex items-center gap-1">Base price (before options) <InfoTooltip content="Manufacturer's starting price in local currency before optional extras, insurance, or registration fees. Does not include on-the-road costs." /></div>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Key Stats Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          <div className="bg-white border border-gray-200 rounded-xl p-5">
+            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1 flex items-center gap-1">Range <InfoTooltip content="Maximum distance on a full charge under standardised test conditions. Real-world range is typically 10–20% less due to climate, driving style, and terrain." /></div>
+            <div className="text-xl font-bold text-gray-900">
+              {vehicle.rangeKm || vehicle.rangeWltpKm || 'N/A'}
+              {vehicle.rangeKm && <span className="text-sm font-normal text-gray-500 ml-1">km</span>}
+            </div>
+            <div className="text-xs text-gray-500 mt-0.5 flex items-center gap-1">
+              {vehicle.rangeWltpKm ? 'WLTP' : vehicle.rangeEpaKm ? 'EPA' : 'Real-world'}
+              <InfoTooltip content="WLTP is the European test standard. EPA is the US standard and generally more conservative. Real-world estimates account for typical driving conditions." />
+            </div>
+          </div>
+
+          <div className="bg-white border border-gray-200 rounded-xl p-5">
+            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1 flex items-center gap-1">Efficiency <InfoTooltip content="How much energy the car uses per 100 km — like litres/100 km for a petrol car. Lower is better. A typical EV uses 14–20 kWh/100 km." /></div>
+            <div className="text-xl font-bold text-gray-900">
+              {vehicle.efficiencyKwhPer100km || 'N/A'}
+              {vehicle.efficiencyKwhPer100km && <span className="text-sm font-normal text-gray-500 ml-1">kWh/100km</span>}
+            </div>
+            <div className="text-xs text-gray-500 mt-0.5">Energy consumption</div>
+          </div>
+
+          <div className="bg-white border border-gray-200 rounded-xl p-5">
+            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1 flex items-center gap-1">Battery <InfoTooltip content="Total energy the battery can store, in kilowatt-hours. Think of it as the 'tank size' — larger capacity generally means longer range but also more weight and cost." /></div>
+            <div className="text-xl font-bold text-gray-900">
+              {vehicle.batteryCapacityKwh || 'N/A'}
+              {vehicle.batteryCapacityKwh && <span className="text-sm font-normal text-gray-500 ml-1">kWh</span>}
+            </div>
+            <div className="text-xs text-gray-500 mt-0.5">{vehicle.batteryManufacturer || 'Unknown'} {vehicle.batteryTechnology}</div>
+          </div>
+
+          <div className="bg-white border border-gray-200 rounded-xl p-5">
+            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1 flex items-center gap-1">0-100 km/h <InfoTooltip content="Time in seconds from standstill to 100 km/h (≈ 0-60 mph). EVs deliver instant torque, so they often out-accelerate comparable petrol cars." /></div>
+            <div className="text-xl font-bold text-gray-900">
+              {vehicle.acceleration0To100Kmh || 'N/A'}
+              {vehicle.acceleration0To100Kmh && <span className="text-sm font-normal text-gray-500 ml-1">sec</span>}
+            </div>
+            <div className="text-xs text-gray-500 mt-0.5">Acceleration</div>
+          </div>
+        </div>
+
+        {/* Performance & Specs */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+          {/* Performance Specs */}
+          <div className="bg-white border border-gray-200 rounded-xl p-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Performance & Dimensions</h3>
+            <div className="space-y-3">
+              <div className="flex justify-between py-2 border-b border-gray-100">
+                <span className="text-gray-600 flex items-center gap-1">Power <InfoTooltip content="Peak motor output in kilowatts. 1 kW ≈ 1.34 horsepower. Higher power means faster acceleration and higher top speeds." /></span>
+                <span className="font-medium">{vehicle.powerRatingKw || 'N/A'} kW</span>
+              </div>
+              <div className="flex justify-between py-2 border-b border-gray-100">
+                <span className="text-gray-600 flex items-center gap-1">Torque <InfoTooltip content="Rotational force in Newton-metres. EVs deliver peak torque instantly from zero rpm, giving quick off-the-line acceleration compared to petrol cars." /></span>
+                <span className="font-medium">{vehicle.torqueNm || 'N/A'} Nm</span>
+              </div>
+              <div className="flex justify-between py-2 border-b border-gray-100">
+                <span className="text-gray-600">Top Speed</span>
+                <span className="font-medium">{vehicle.topSpeedKmh || 'N/A'} km/h</span>
+              </div>
+              <div className="flex justify-between py-2 border-b border-gray-100">
+                <span className="text-gray-600 flex items-center gap-1">Curb Weight <InfoTooltip content="Total vehicle weight with all fluids and a full battery, but without passengers or cargo." /></span>
+                <span className="font-medium">{vehicle.curbWeightKg || 'N/A'} kg</span>
+              </div>
+              <div className="flex justify-between py-2 border-b border-gray-100">
+                <span className="text-gray-600">Battery Weight</span>
+                <span className="font-medium">{vehicle.batteryWeightKg || 'N/A'} kg</span>
+              </div>
+              <div className="flex justify-between py-2">
+                <span className="text-gray-600 flex items-center gap-1">Battery % of Weight <InfoTooltip content="What fraction of the car's total weight is the battery pack. Typically 25–40% for EVs — heavier batteries add range but reduce efficiency." /></span>
+                <span className="font-medium">{vehicle.batteryWeightPercentage || 'N/A'}%</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Battery & Warranty */}
+          <div className="bg-white border border-gray-200 rounded-xl p-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Battery & Warranty</h3>
+            <div className="space-y-3">
+              <div className="flex justify-between py-2 border-b border-gray-100">
+                <span className="text-gray-600">Battery Warranty</span>
+                <span className="font-medium">{vehicle.batteryWarranty || 'N/A'}</span>
+              </div>
+              <div className="flex justify-between py-2 border-b border-gray-100">
+                <span className="text-gray-600 flex items-center gap-1">Bidirectional <InfoTooltip content="Can this car send power back to your home (V2H) or the grid (V2G)? Useful for backup power during outages or selling stored energy back." /></span>
+                <span className={`font-medium ${vehicle.hasBidirectional ? 'text-emerald-700' : 'text-gray-500'}`}>
+                  {vehicle.hasBidirectional ? 'Yes' : 'No'}
+                </span>
+              </div>
+              <div className="flex justify-between py-2 border-b border-gray-100">
+                <span className="text-gray-600 flex items-center gap-1">OTA Updates <InfoTooltip content="Over-the-Air software updates pushed to your car remotely — like smartphone updates. Can add features or fix bugs without visiting a dealer." /></span>
+                <span className="font-medium">{vehicle.otaUpdates || 'N/A'}</span>
+              </div>
+              <div className="flex justify-between py-2">
+                <span className="text-gray-600">Battery Manufacturer</span>
+                <span className="font-medium">{vehicle.batteryManufacturer || 'Unknown'}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Charts */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+          {/* Range at Different Speeds */}
+          <div className="bg-white border border-gray-200 rounded-xl p-6">
+            <h3 className="text-sm font-semibold text-gray-900 mb-1 flex items-center gap-1">Range by Driving Style <InfoTooltip content="Estimates using multipliers on rated range: City ×1.2 (regen braking helps), Highway ×0.85 (air resistance), Mixed ×1.0. Real-world results depend on terrain, weather, and driving habits." /></h3>
+            <p className="text-xs text-gray-500 mb-4">Estimated range at different average speeds</p>
+            <ResponsiveContainer width="100%" height={250}>
+              <BarChart data={rangeData}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
+                <XAxis dataKey="speed" tick={{ fontSize: 10 }} />
+                <YAxis tick={{ fontSize: 10 }} unit=" km" />
+                <Tooltip />
+                <Bar dataKey="range" fill="#10b981" radius={[3, 3, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+
+          {/* Energy Consumption Breakdown */}
+          <div className="bg-white border border-gray-200 rounded-xl p-6">
+            <h3 className="text-sm font-semibold text-gray-900 mb-1 flex items-center gap-1">Energy Consumption Breakdown <InfoTooltip content="Industry-average energy split: Motor ~60%, Climate ~15%, Electronics ~10%, Charging losses ~8%, Other ~7%. These are typical proportions, not vehicle-specific measurements." /></h3>
+            <p className="text-xs text-gray-500 mb-4">Where the {vehicle.efficiencyKwhPer100km} kWh/100km goes</p>
+            <ResponsiveContainer width="100%" height={250}>
+              <PieChart>
+                <Pie
+                  data={energyBreakdown}
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={40}
+                  outerRadius={80}
+                  paddingAngle={2}
+                  dataKey="value"
+                >
+                  {energyBreakdown.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.color} />
+                  ))}
+                </Pie>
+                <Tooltip formatter={(value) => [`${value} kWh/100km`, '']} />
+                <Legend wrapperStyle={{ fontSize: 11 }} />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+        {/* Battery Degradation */}
+        <div className="bg-white border border-gray-200 rounded-xl p-6 mb-8">
+          <h3 className="text-sm font-semibold text-gray-900 mb-1 flex items-center gap-1">Battery Degradation Over Time <InfoTooltip content="Assumes 2.5% capacity loss per year with a floor at 70%. Actual degradation depends on climate, charging habits, and chemistry. LFP batteries typically degrade slower than NMC." /></h3>
+          <p className="text-xs text-gray-500 mb-4">Estimated capacity and range retention (2.5% degradation/year)</p>
+          <ResponsiveContainer width="100%" height={300}>
+            <LineChart data={degradationData}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
+              <XAxis dataKey="year" tick={{ fontSize: 10 }} unit=" years" />
+              <YAxis yAxisId="left" tick={{ fontSize: 10 }} unit="%" domain={[60, 100]} />
+              <YAxis yAxisId="right" orientation="right" tick={{ fontSize: 10 }} unit=" km" />
+              <Tooltip />
+              <Legend wrapperStyle={{ fontSize: 11 }} />
+              <Line yAxisId="left" type="monotone" dataKey="capacity" stroke="#ef4444" strokeWidth={2} name="Battery capacity" />
+              <Line yAxisId="right" type="monotone" dataKey="range" stroke="#10b981" strokeWidth={2} name="Range" />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+
+        {/* Price History (only shown if data exists) */}
+        {priceHistory.length > 0 && (
+          <div className="bg-white border border-gray-200 rounded-xl p-6 mb-8">
+            <div className="flex items-center justify-between mb-1">
+              <h3 className="text-sm font-semibold text-gray-900">Price History</h3>
+              {priceMetrics?.priceChange !== null && priceMetrics?.priceChange !== undefined && (
+                <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
+                  priceMetrics.priceChange > 0 ? 'bg-red-50 text-red-700' :
+                  priceMetrics.priceChange < 0 ? 'bg-emerald-50 text-emerald-700' :
+                  'bg-gray-50 text-gray-700'
+                }`}>
+                  {priceMetrics.priceChange > 0 ? '+' : ''}{priceMetrics.priceChangePercent}% since tracking
+                </span>
+              )}
+            </div>
+            <p className="text-xs text-gray-500 mb-4">Monthly price snapshots in local currency</p>
+            <ResponsiveContainer width="100%" height={250}>
+              <LineChart data={priceHistory}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
+                <XAxis dataKey="date" tick={{ fontSize: 10 }} />
+                <YAxis tick={{ fontSize: 10 }} />
+                <Tooltip
+                  formatter={(value: number) => [formatCurrency(value), 'Base Price']}
+                />
+                <Line type="monotone" dataKey="basePrice" stroke="#3b82f6" strokeWidth={2} dot={{ r: 3 }} name="Base Price" />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+        )}
+
+        {/* Charging Information */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+          {/* Charging Times */}
+          <div className="bg-white border border-gray-200 rounded-xl p-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Charging Times</h3>
+            <div className="space-y-3">
+              {chargingData.map((charge) => (
+                <div key={charge.method} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0">
+                  <div>
+                    <div className="font-medium text-gray-900">{charge.method}</div>
+                    <div className="text-xs text-gray-500">to {charge.energy}</div>
+                  </div>
+                  <div className="text-right">
+                    <div className="font-medium">{charge.time}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-gray-500 mt-3">
+              {vehicle.chargingCapabilities || 'Standard charging capabilities'}
+            </p>
+          </div>
+
+          {/* Options & Pricing */}
+          <div className="bg-white border border-gray-200 rounded-xl p-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Options & Pricing</h3>
+            {vehicle.optionPrices && vehicle.optionPrices.length > 0 ? (
+              <div className="space-y-3 mb-4">
+                {vehicle.optionPrices.map((option, index) => (
+                  <div key={index} className="flex justify-between py-2 border-b border-gray-100 last:border-b-0">
+                    <span className="text-gray-600">{option.name}</span>
+                    <span className="font-medium">{formatCurrency(option.price)}</span>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-gray-500 text-sm mb-4">No optional equipment listed</p>
+            )}
+
+            {vehicle.rebates && vehicle.rebates.length > 0 && (
+              <div className="mt-4 pt-4 border-t border-gray-100">
+                <h4 className="text-sm font-semibold text-gray-900 mb-2">Available Rebates</h4>
+                <div className="space-y-2">
+                  {vehicle.rebates.map((rebate, index) => (
+                    <div key={index} className="text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">{rebate.name}</span>
+                        <span className="font-medium text-emerald-700">-{formatCurrency(rebate.amount)}</span>
+                      </div>
+                      {rebate.description && (
+                        <p className="text-xs text-gray-500 mt-0.5">{rebate.description}</p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Technology Features */}
+        {vehicle.technologyFeatures && (
+          <div className="bg-white border border-gray-200 rounded-xl p-6 mb-8">
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">Technology Features</h3>
+            <p className="text-gray-600 leading-relaxed">{vehicle.technologyFeatures}</p>
+          </div>
+        )}
+
+        {/* Navigation */}
+        <div className="text-center py-8 border-t border-gray-200">
+          <p className="text-gray-600 text-sm mb-4">Compare with other vehicles</p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <Link
+              href="/ev"
+              onClick={handleCompareClick}
+              className="inline-flex items-center px-5 py-2.5 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors text-sm font-medium"
+            >
+              Compare This Vehicle
+            </Link>
+            <Link
+              href="/ev"
+              className="inline-flex items-center px-5 py-2.5 bg-white text-gray-800 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
+            >
+              Back to Comparison
+            </Link>
+            <Link
+              href="/calculators/ev-vs-ice"
+              className="inline-flex items-center px-5 py-2.5 bg-white text-gray-800 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
+            >
+              TCO Calculator
+            </Link>
+            <Link
+              href="/suggest-correction"
+              className="inline-flex items-center px-5 py-2.5 bg-white text-gray-800 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
+            >
+              Suggest Correction
+            </Link>
+          </div>
+        </div>
+      </section>
+    </main>
+  )
+}

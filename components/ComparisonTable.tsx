@@ -2,12 +2,12 @@
 
 import { useState, useMemo, ReactNode, useRef, useEffect, isValidElement } from 'react'
 import { createPortal } from 'react-dom'
+import Link from 'next/link'
 import { useVehicleStore } from '@/store/VehicleStore'
 import { Vehicle } from '@/types/vehicle'
 import type { Country } from '@prisma/client'
 import Papa from 'papaparse'
 import {
-  ResponsiveContainer,
   BarChart,
   ComposedChart,
   Bar,
@@ -20,6 +20,7 @@ import {
   Tooltip,
   Scatter,
 } from 'recharts'
+import ResponsiveContainer from '@/components/ResponsiveContainer'
 import { 
   calculateCostPerKm, 
   getElectricityRate, 
@@ -30,18 +31,10 @@ import {
   formatStringOrNA,
   formatPrice as formatPriceUtil,
 } from '@/lib/utils'
+import { CURRENCY_BY_COUNTRY } from '@/lib/constants'
 
 type SortField = 'name' | 'rangeKm' | 'efficiencyKwhPer100km' | 'basePriceLocalCurrency' | 'powerRatingKw' | 'batteryWeightKg'
 type SortDirection = 'asc' | 'desc'
-
-const CURRENCY_BY_COUNTRY: Record<Country, string> = {
-  SG: 'SGD',
-  MY: 'MYR',
-  ID: 'IDR',
-  PH: 'PHP',
-  TH: 'THB',
-  VN: 'VND',
-}
 
 // Chart container sizing constants - adjust these to change all chart container heights
 const CHART_CONTAINER_HEIGHT = 'h-64' // Tailwind class: h-64 = 256px (16rem)
@@ -684,7 +677,7 @@ function CostPerFullChargeInfoBox({
 }
 
 export default function ComparisonTable() {
-  const { selectedVehicles, clearAll } = useVehicleStore()
+  const { selectedVehicles, clearAll, addVehicle, isVehicleSelected } = useVehicleStore()
   const [sortField, setSortField] = useState<SortField | null>(null)
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc')
 
@@ -1211,8 +1204,27 @@ export default function ComparisonTable() {
                   className="px-3 py-2 text-center text-xs font-semibold text-gray-700"
                 >
                   <div className="flex flex-col items-center gap-0.5">
-                    <div className="font-semibold text-xs">{vehicle.name}</div>
+                    <Link
+                      href={`/ev/${vehicle.id}`}
+                      className="font-semibold text-xs text-emerald-700 hover:text-emerald-800 hover:underline"
+                    >
+                      {vehicle.name}
+                    </Link>
                     <div className="text-[10px] text-light-gray-500">{vehicle.modelTrim}</div>
+                    <button
+                      onClick={() => {
+                        if (!isVehicleSelected(vehicle.id)) {
+                          addVehicle(vehicle)
+                        }
+                      }}
+                      className={`text-[9px] px-1.5 py-0.5 rounded-full font-medium mt-0.5 ${
+                        isVehicleSelected(vehicle.id)
+                          ? 'bg-emerald-100 text-emerald-800'
+                          : 'bg-gray-100 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700'
+                      }`}
+                    >
+                      {isVehicleSelected(vehicle.id) ? 'Selected' : 'Compare'}
+                    </button>
                   </div>
                 </th>
               ))}

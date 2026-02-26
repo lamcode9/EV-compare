@@ -48,10 +48,5 @@ export const useVehicleStore = create<VehicleState>((set, get) => ({
   isVehicleSelected: (vehicleId) => {
     return get().selectedVehicles.some(v => v.id === vehicleId)
   },
-}))
-
-// Provider component for client-side initialization
-export function VehicleProvider({ children }: { children: React.ReactNode }) {
-  return <>{children}</>
-}
+}));
 
