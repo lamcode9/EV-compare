@@ -78,11 +78,6 @@ export default function BESSPage() {
               href={section.href}
               className="group relative bg-white border border-gray-200 rounded-xl p-6 hover:border-emerald-300 hover:shadow-md transition-all duration-200"
             >
-              {section.status === 'coming' && (
-                <span className="absolute top-4 right-4 text-[11px] font-semibold text-amber-700 bg-amber-50 border border-amber-200 rounded-full px-2.5 py-0.5">
-                  Coming 2026
-                </span>
-              )}
               <div className="w-12 h-12 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center mb-5 group-hover:bg-emerald-100 transition-colors">
                 {section.icon}
               </div>

@@ -295,7 +295,7 @@ const BatteryScatter = memo(function BatteryScatter({
   }, [data])
 
   const manufacturers = useMemo(
-    () => [...new Set(data.map((d) => d.manufacturer))].sort(),
+    () => Array.from(new Set(data.map((d) => d.manufacturer))).sort(),
     [data]
   )
 
@@ -1253,7 +1253,7 @@ function SharedResidentialContent() {
                 units: isRetrofit ? retroUnits : newUnits,
                 roofArea: isRetrofit ? retroRoofArea : newRoofArea,
                 roofQuality: isRetrofit ? retroRoofQuality : newRoofQuality,
-                solarKw: isRetrofit ? o.totalSolarKwForYield ?? (o as any).solarKw : (o as any).solarKw,
+                solarKw: isRetrofit ? (o as any).totalSolarKwForYield ?? (o as any).solarKw : (o as any).solarKw,
                 batteryName: selectedBattery?.name || '—',
                 batteryQty: isRetrofit ? retroBatteryQty : newBatteryQty,
                 batteryCapacityKwh: o.batteryCapacity,
