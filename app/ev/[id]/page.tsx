@@ -4,6 +4,8 @@ import { prisma } from '@/lib/prisma'
 import VehicleDetailClient from './page-client'
 import type { Vehicle } from '@/types/vehicle'
 
+export const dynamic = 'force-dynamic'
+
 interface PageProps {
   params: {
     id: string
@@ -42,22 +44,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 }
 
-// Generate static params for all vehicles (for static generation)
-export async function generateStaticParams() {
-  try {
-    const vehicles = await prisma.vehicle.findMany({
-      select: { id: true },
-      where: { isAvailable: true },
-    })
 
-    return vehicles.map((vehicle) => ({
-      id: vehicle.id,
-    }))
-  } catch (error) {
-    console.error('Error generating static params:', error)
-    return []
-  }
-}
 
 export default async function VehicleDetailPage({ params }: PageProps) {
   try {
