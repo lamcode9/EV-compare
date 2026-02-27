@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { CURRENCY_BY_COUNTRY } from '@/lib/constants'
 
+export const dynamic = 'force-dynamic'
+
 // Called by Vercel Cron to take monthly price snapshots of all vehicles
 export async function GET(request: NextRequest) {
   const authHeader = request.headers.get('authorization')

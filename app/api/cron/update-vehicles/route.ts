@@ -3,6 +3,8 @@ import { prisma } from '@/lib/prisma'
 import { fetchVehiclesFromFile } from '@/lib/data-fetchers/file-data'
 import { transformAndSaveVehicle } from '@/lib/data-fetchers/vehicle-transformer'
 
+export const dynamic = 'force-dynamic'
+
 // This endpoint should be called by Vercel Cron
 // Set up in vercel.json or Vercel dashboard
 export async function GET(request: NextRequest) {

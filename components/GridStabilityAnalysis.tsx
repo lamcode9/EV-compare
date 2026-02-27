@@ -115,7 +115,8 @@ export default function GridStabilityAnalysis({ country }: Props) {
       localBlackoutReduction,
       hourlyData,
     }
-  }, [country, storageMwh, dischargeDurationHr, distributedPct, grid])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [storageMwh, dischargeDurationHr, distributedPct, grid])
 
   return (
     <div className="bg-white border border-gray-200 rounded-xl p-6 mb-8">
