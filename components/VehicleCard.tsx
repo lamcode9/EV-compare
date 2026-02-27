@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { useVehicleStore } from '@/store/VehicleStore'
 import { Vehicle } from '@/types/vehicle'
 import StatsGrid from './StatsGrid'
+import EVScoreGauge from './EVScoreGauge'
+import WinnerBadges, { computeBadges } from './WinnerBadges'
 
 interface VehicleCardProps {
   vehicle: Vehicle
@@ -48,7 +50,7 @@ const ManufacturerLogo = ({ manufacturer }: { manufacturer: string }) => {
 }
 
 export default function VehicleCard({ vehicle }: VehicleCardProps) {
-  const { removeVehicle } = useVehicleStore()
+  const { removeVehicle, selectedVehicles } = useVehicleStore()
 
   const [selectedOptions, setSelectedOptions] = useState<string[]>([])
 
@@ -59,6 +61,8 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
   }
 
   const manufacturer = getManufacturer(vehicle.name)
+  const allVehicles = selectedVehicles.length > 0 ? selectedVehicles : [vehicle]
+  const badges = computeBadges(allVehicles).get(vehicle.id) ?? []
 
   return (
     <div className="bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
@@ -76,15 +80,23 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
                 {vehicle.name}
               </h2>
               <p className="text-base text-gray-600">{vehicle.modelTrim}</p>
+              {badges.length > 0 && (
+                <div className="mt-1">
+                  <WinnerBadges badges={badges} maxShow={4} />
+                </div>
+              )}
             </div>
           </div>
-          <button
-            onClick={() => removeVehicle(vehicle.id)}
-            className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-md transition-colors text-sm font-medium"
-            aria-label={`Remove ${vehicle.name} from comparison`}
-          >
-            Remove
-          </button>
+          <div className="flex items-center gap-4">
+            <EVScoreGauge vehicle={vehicle} allVehicles={allVehicles} size="md" showBreakdown={false} />
+            <button
+              onClick={() => removeVehicle(vehicle.id)}
+              className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-md transition-colors text-sm font-medium"
+              aria-label={`Remove ${vehicle.name} from comparison`}
+            >
+              Remove
+            </button>
+          </div>
         </div>
       </div>
 

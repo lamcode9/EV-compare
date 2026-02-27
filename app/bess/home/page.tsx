@@ -8,6 +8,9 @@ import { useVehicleStore } from '@/store/VehicleStore'
 import { COUNTRY_NAMES, CURRENCY_SYMBOLS } from '@/lib/constants'
 import CountrySelector from '@/components/CountrySelector'
 import InfoTooltip from '@/components/InfoTooltip'
+import PDFExportButton from '@/components/PDFExportButton'
+import ScenarioComparisonTool from '@/components/ScenarioComparisonTool'
+import { useURLState, copyShareLink } from '@/lib/hooks/useURLState'
 import { loadBESSData } from '@/lib/data-fetchers/bess-data'
 import {
   calculateZeroBill,
@@ -495,6 +498,8 @@ function BatteriesAtHomePageContent() {
     return item.model?.id === other.model?.id && item.quantity === other.quantity
   })
 }
+  const pdfRef = useRef<HTMLElement>(null)
+  const [shareLabel, setShareLabel] = useState('Share Design')
   const { selectedCountry, setSelectedCountry } = useVehicleStore()
   // Use store country, default to 'MY' if null
   const country = (selectedCountry || 'MY') as Country
@@ -537,6 +542,16 @@ function BatteriesAtHomePageContent() {
   const [bessList, setBessList] = useState<BESS[]>([])
   const [vehicleList, setVehicleList] = useState<Vehicle[]>([])
   const [isLoading, setIsLoading] = useState(true)
+
+  // Sync core configurator state to/from URL for sharing
+  useURLState([
+    { key: 'solar', value: solarSizeKw, defaultValue: 10, setter: setSolarSizeKw, type: 'number' },
+    { key: 'dayLoad', value: dayLoad, defaultValue: 8, setter: setDayLoad, type: 'number' },
+    { key: 'nightLoad', value: nightLoad, defaultValue: 10, setter: setNightLoad, type: 'number' },
+    { key: 'roof', value: roofQuality, defaultValue: 'Average', setter: setRoofQuality, type: 'string' },
+    { key: 'solarCost', value: includeSolarCost, defaultValue: true, setter: setIncludeSolarCost, type: 'boolean' },
+    { key: 'backup', value: homeBackupEnabled, defaultValue: false, setter: setHomeBackupEnabled, type: 'boolean' },
+  ])
 
   // Load BESS data
   useEffect(() => {
@@ -830,7 +845,7 @@ function BatteriesAtHomePageContent() {
   return (
     <main className="min-h-screen pt-12 md:pt-14 bg-white">
       {/* Hero Section */}
-      <section className="container mx-auto px-4 pt-12 pb-8 max-w-7xl">
+      <section ref={pdfRef} className="container mx-auto px-4 pt-12 pb-8 max-w-7xl">
         <h2 className="text-2xl font-semibold text-gray-900 mb-8 text-left">
           Batteries at Home
         </h2>
@@ -1397,14 +1412,14 @@ function BatteriesAtHomePageContent() {
                               setNeedsOptimizationReapply(true)
                             }
                           }}
-                          className={`px-3 py-1 rounded-lg border text-sm font-medium transition-all ${
+                          className={`px-3 py-2 rounded-lg border text-sm font-medium transition-all ${
                             roofQuality === quality
                               ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
                               : 'bg-white text-gray-700 border-gray-300 hover:border-emerald-400 hover:bg-emerald-50'
                           }`}
                         >
                           <div className="font-semibold">{quality}</div>
-                          <div className="text-xs opacity-90">{quality === 'Ideal' ? '100%' : quality === 'Average' ? '90%' : '75%'}</div>
+                          <div className="text-xs opacity-80">{quality === 'Ideal' ? '100%' : quality === 'Average' ? '90%' : '75%'}</div>
                         </button>
                       ))}
                     </div>
@@ -1934,14 +1949,26 @@ function BatteriesAtHomePageContent() {
           </div>
         </div>
 
+        {/* Batch 4 — Scenario Comparison Tool */}
+        <ScenarioComparisonTool country={country} />
+
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-8">
-          <button className="flex-1 px-4 py-2 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors text-sm">
-            Share Design
+        <div className="flex flex-col sm:flex-row gap-4 mb-8" data-pdf-ignore>
+          <button
+            onClick={async () => {
+              const ok = await copyShareLink()
+              if (ok) { setShareLabel('Link Copied!'); setTimeout(() => setShareLabel('Share Design'), 2000) }
+            }}
+            className="flex-1 px-4 py-2 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors text-sm inline-flex items-center justify-center gap-2"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg>
+            {shareLabel}
           </button>
-          <button className="flex-1 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg font-semibold hover:bg-gray-200 transition-colors text-sm">
-            Download PDF
-          </button>
+          <PDFExportButton
+            containerRef={pdfRef}
+            options={{ filename: 'battery-mom-home-bess.pdf', title: 'battery.mom — Home BESS Calculator', subtitle: `${COUNTRY_NAMES[country]} · Solar ${solarSizeKw}kW · ${batteries.filter(b => b.model).length} batteries` }}
+            className="flex-1 bg-gray-100 text-gray-700 hover:bg-gray-200"
+          />
         </div>
 
         {/* Footnote */}

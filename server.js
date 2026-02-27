@@ -4,17 +4,13 @@ const next = require('next')
 
 const dev = process.env.NODE_ENV !== 'production'
 const hostname = '127.0.0.1'
-const port = process.env.PORT || 9000
+const port = parseInt(process.env.PORT, 10) || 9000
 
 // Disable file watching to avoid EMFILE errors
 process.env.WATCHPACK_POLLING = 'true'
-const app = next({ dev, webpack: (config) => {
-  config.watchOptions = {
-    poll: 1000,
-    aggregateTimeout: 300,
-  }
-  return config
-}})
+
+// Next.js 14.2+ requires hostname and port for proper static asset serving
+const app = next({ dev, hostname, port })
 const handle = app.getRequestHandler()
 
 app.prepare().then(() => {

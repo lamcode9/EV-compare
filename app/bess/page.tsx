@@ -37,7 +37,7 @@ const BESS_SECTIONS = [
     description:
       'Peak shaving, demand charge reduction, and revenue stacking calculators for offices, retail, and industrial facilities.',
     href: '/bess/commercial',
-    status: 'coming' as const,
+    status: 'live' as const,
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 0h.008v.008h-.008V7.5z" />
@@ -49,7 +49,7 @@ const BESS_SECTIONS = [
     description:
       'Utility-scale BESS data, LCOE/LCOS calculators, deployment maps, and policy trackers across Southeast Asia.',
     href: '/bess/grid',
-    status: 'coming' as const,
+    status: 'live' as const,
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />

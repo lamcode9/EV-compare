@@ -16,7 +16,6 @@ type NavLink = {
 
 const navLinks: NavLink[] = [
   { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
   { href: '/ev', label: 'EV' },
   { 
     href: '/bess', 
@@ -32,6 +31,7 @@ const navLinks: NavLink[] = [
   { href: '/scoreboard', label: 'Scoreboard' },
   { href: '/calculators', label: 'Calculators' },
   { href: '/insights', label: 'Insights' },
+  { href: '/about', label: 'About' },
 ]
 
 export default function Header() {
@@ -112,8 +112,11 @@ export default function Header() {
                   onMouseEnter={() => {
                     if (link.dropdown) {
                       setHoveredDropdown(link.href)
-                    } else if (link.tooltip) {
-                      setHoveredTooltip(link.tooltip)
+                    } else {
+                      setHoveredDropdown(null)
+                      if (link.tooltip) {
+                        setHoveredTooltip(link.tooltip)
+                      }
                     }
                   }}
                   onMouseLeave={() => {

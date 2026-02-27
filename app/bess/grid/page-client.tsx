@@ -1,8 +1,14 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useRef } from 'react'
 import Link from 'next/link'
 import InfoTooltip from '@/components/InfoTooltip'
+import PDFExportButton from '@/components/PDFExportButton'
+import PolicyImpactSimulator from '@/components/PolicyImpactSimulator'
+import SubsidyROICalculator from '@/components/SubsidyROICalculator'
+import BESSDeploymentMap from '@/components/BESSDeploymentMap'
+import GridStabilityAnalysis from '@/components/GridStabilityAnalysis'
+import { useURLState, copyShareLink } from '@/lib/hooks/useURLState'
 import type { Country } from '@/types/bess'
 import {
   BarChart,
@@ -184,6 +190,18 @@ export default function GridBESSClient() {
   const [capexPerMwh, setCapexPerMwh] = useState(800000)
   const [omPerMwhYear, setOmPerMwhYear] = useState(20000)
   const [revenuePerMwhCycle, setRevenuePerMwhCycle] = useState(50)
+  const pdfRef = useRef<HTMLElement>(null)
+  const [shareLabel, setShareLabel] = useState('Share Design')
+
+  useURLState([
+    { key: 'country', value: country, defaultValue: 'MY', setter: setCountry, type: 'string' },
+    { key: 'size', value: systemSizeMwh, defaultValue: 100, setter: setSystemSizeMwh, type: 'number' },
+    { key: 'cycles', value: cyclesPerYear, defaultValue: 365, setter: setCyclesPerYear, type: 'number' },
+    { key: 'life', value: projectLife, defaultValue: 20, setter: setProjectLife, type: 'number' },
+    { key: 'capex', value: capexPerMwh, defaultValue: 800000, setter: setCapexPerMwh, type: 'number' },
+    { key: 'om', value: omPerMwhYear, defaultValue: 20000, setter: setOmPerMwhYear, type: 'number' },
+    { key: 'revenue', value: revenuePerMwhCycle, defaultValue: 50, setter: setRevenuePerMwhCycle, type: 'number' },
+  ])
 
   // ── LCOE/LCOS Calculation ────────────────────────────────────────────
   const lcoeResults = useMemo(() => {
@@ -250,7 +268,7 @@ export default function GridBESSClient() {
 
   return (
     <main className="min-h-screen pt-12 md:pt-14">
-      <section className="container mx-auto px-4 pt-12 pb-16 max-w-7xl">
+      <section ref={pdfRef} className="container mx-auto px-4 pt-12 pb-16 max-w-7xl">
         {/* Header */}
         <div className="max-w-2xl mb-10">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
@@ -272,15 +290,22 @@ export default function GridBESSClient() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1.5">Country</label>
-              <select
-                value={country}
-                onChange={(e) => setCountry(e.target.value as Country)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-              >
-                {COUNTRIES.map((c) => (
-                  <option key={c.value} value={c.value}>{c.flag} {c.label}</option>
-                ))}
-              </select>
+              <div className="relative">
+                <select
+                  value={country}
+                  onChange={(e) => setCountry(e.target.value as Country)}
+                  className="w-full px-4 py-2 pr-8 rounded-full bg-gray-100 hover:bg-gray-200 text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-emerald-50 appearance-none cursor-pointer transition-colors"
+                >
+                  {COUNTRIES.map((c) => (
+                    <option key={c.value} value={c.value}>{c.flag} {c.label}</option>
+                  ))}
+                </select>
+                <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                  <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1.5">System size (MWh)</label>
@@ -552,6 +577,37 @@ export default function GridBESSClient() {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Batch 3 — Policy Impact Simulator */}
+        <PolicyImpactSimulator country={country} />
+
+        {/* Batch 3 — Subsidy ROI Calculator */}
+        <SubsidyROICalculator country={country} />
+
+        {/* Batch 3 — BESS Deployment Map */}
+        <BESSDeploymentMap country={country} />
+
+        {/* Batch 4 — Grid Stability Analysis */}
+        <GridStabilityAnalysis country={country} />
+
+        {/* Export */}
+        <div className="flex flex-wrap gap-3 mb-8" data-pdf-ignore>
+          <button
+            onClick={async () => {
+              const ok = await copyShareLink()
+              if (ok) { setShareLabel('Link Copied!'); setTimeout(() => setShareLabel('Share Design'), 2000) }
+            }}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg font-semibold text-sm hover:bg-emerald-700 transition-colors"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg>
+            {shareLabel}
+          </button>
+          <PDFExportButton
+            containerRef={pdfRef}
+            options={{ filename: `battery-mom-grid-bess-${systemSizeMwh}MWh.pdf`, title: 'battery.mom — Grid-Scale BESS Calculator', subtitle: `${COUNTRIES.find(c => c.value === country)?.label} · ${systemSizeMwh} MWh · ${projectLife}-year project` }}
+            className="bg-gray-100 text-gray-700 hover:bg-gray-200"
+          />
         </div>
 
         {/* Assumptions + CTA */}

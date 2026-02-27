@@ -8,8 +8,9 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-white">
-      <div className="max-w-4xl mx-auto px-6 md:px-8 py-16 md:py-24">
+    <main className="min-h-screen bg-white pt-12 md:pt-14">
+      <section className="container mx-auto px-4 pt-12 pb-16 max-w-7xl">
+      <div className="max-w-4xl">
         {/* Hero Title */}
         <h1 className="text-6xl md:text-7xl font-bold mb-10 text-gray-900 tracking-tight">
           battery.mom
@@ -101,6 +102,7 @@ export default function AboutPage() {
           </Link>
         </div>
       </div>
+      </section>
     </main>
   )
 }

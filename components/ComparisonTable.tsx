@@ -32,6 +32,18 @@ import {
   formatPrice as formatPriceUtil,
 } from '@/lib/utils'
 import { CURRENCY_BY_COUNTRY } from '@/lib/constants'
+import EVScoreGauge, { computeScore } from '@/components/EVScoreGauge'
+import { computeBadges, InlineBadgeRow } from '@/components/WinnerBadges'
+import EVRadarChart from '@/components/EVRadarChart'
+import ShareComparisonCard from '@/components/ShareComparisonCard'
+import BatteryHealthChart from '@/components/BatteryHealthChart'
+import EVAsBackupCalc from '@/components/EVAsBackupCalc'
+import EVTotalCostChart from '@/components/EVTotalCostChart'
+import SpeedEfficiencyHeatmap from '@/components/SpeedEfficiencyHeatmap'
+import SmartInsightsCards from '@/components/SmartInsightsCards'
+import MobileComparisonCards from '@/components/MobileComparisonCards'
+import { useComparisonURL } from '@/lib/hooks/useComparisonURL'
+import { AnimatedEntry } from '@/lib/hooks/useAnimations'
 
 type SortField = 'name' | 'rangeKm' | 'efficiencyKwhPer100km' | 'basePriceLocalCurrency' | 'powerRatingKw' | 'batteryWeightKg'
 type SortDirection = 'asc' | 'desc'
@@ -681,6 +693,9 @@ export default function ComparisonTable() {
   const [sortField, setSortField] = useState<SortField | null>(null)
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc')
 
+  // Batch 3: Sync selected vehicles with URL params
+  const { getShareURL } = useComparisonURL()
+
   const formatCostPerKm = (value: number, country: Country) =>
     formatPrice(value, country, 2)
 
@@ -828,7 +843,6 @@ export default function ComparisonTable() {
     return null
   }
 
-  const insights = generateInsights()
   // Helper function to format vehicle label with trim
   const getVehicleLabel = (vehicle: Vehicle) => {
     return vehicle.modelTrim ? `${vehicle.name} ${vehicle.modelTrim}` : vehicle.name
@@ -1095,16 +1109,34 @@ export default function ComparisonTable() {
       <div className="px-4 pt-4 pb-2 text-black">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <h2 className="text-xl font-bold">Side-by-Side Comparison</h2>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2 items-center">
+            <ShareComparisonCard vehicles={sortedVehicles} />
             <button
               onClick={exportToCSV}
-              className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors text-sm font-medium text-gray-700"
+              className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors text-sm font-medium text-gray-700 print:hidden"
             >
               Export CSV
             </button>
             <button
+              onClick={() => window.print()}
+              className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors text-sm font-medium text-gray-700 print:hidden"
+            >
+              🖨️ Print
+            </button>
+            <button
+              onClick={() => {
+                const url = getShareURL()
+                navigator.clipboard.writeText(url).then(() => {
+                  alert('Comparison link copied to clipboard!')
+                })
+              }}
+              className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors text-sm font-medium text-gray-700 print:hidden"
+            >
+              🔗 Copy Link
+            </button>
+            <button
               onClick={clearAll}
-              className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors text-sm font-medium text-gray-700"
+              className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors text-sm font-medium text-gray-700 print:hidden"
             >
               Clear All
             </button>
@@ -1158,22 +1190,60 @@ export default function ComparisonTable() {
         </div>
       </div>
 
-      {insights.length > 0 && (
-        <div className="pt-6 pb-3 px-6 flex justify-center">
-          <div className="bg-blue-50 border-l-4 border-blue-400 rounded-r-lg p-5 max-w-3xl w-full">
-            <h3 className="text-base font-semibold text-blue-900 mb-3 flex items-center gap-2">
-              💡 Key Insights
-            </h3>
-            <ul className="list-disc list-outside space-y-2 text-sm text-blue-800 pl-6">
-              {insights.map((insight, idx) => (
-                <li key={idx}>{insight}</li>
-              ))}
-            </ul>
+      {/* Radar Chart – visual score comparison */}
+      {sortedVehicles.length >= 2 && (
+        <AnimatedEntry animation="scale-up" delay={0}>
+          <div className="px-6 pt-4 pb-2">
+            <h3 className="font-semibold text-gray-800 mb-2">Score Radar</h3>
+            <div className="flex justify-center">
+              <EVRadarChart vehicles={sortedVehicles} />
+            </div>
           </div>
-        </div>
+        </AnimatedEntry>
       )}
 
-      <div className="pt-3 pb-6 px-6 border-b border-gray-100 space-y-4">
+      {/* ── Batch 2: Smart Insights Cards (replaces old Key Insights) ── */}
+      <AnimatedEntry animation="fade-up" delay={0}>
+        <div className="px-6 pt-4">
+          <SmartInsightsCards vehicles={sortedVehicles} country={sortedVehicles[0]?.country || 'MY'} />
+        </div>
+      </AnimatedEntry>
+
+      {/* ── Batch 2: Battery Health Projection ── */}
+      <AnimatedEntry animation="fade-up" delay={0}>
+        <div className="px-6 pt-4">
+          <BatteryHealthChart vehicles={sortedVehicles} />
+        </div>
+      </AnimatedEntry>
+
+      {/* ── Batch 2: Battery as Home Backup Calculator ── */}
+      <AnimatedEntry animation="fade-up" delay={100}>
+        <div className="px-6 pt-4">
+          <EVAsBackupCalc vehicles={sortedVehicles} />
+        </div>
+      </AnimatedEntry>
+
+      {/* ── Batch 2: 5-Year Total Cost of Ownership ── */}
+      <AnimatedEntry animation="fade-up" delay={200}>
+        <div className="px-6 pt-4">
+          <EVTotalCostChart vehicles={sortedVehicles} country={sortedVehicles[0]?.country || 'MY'} />
+        </div>
+      </AnimatedEntry>
+
+      {/* ── Batch 2: Efficiency Heatmap by Speed ── */}
+      <AnimatedEntry animation="fade-up" delay={300}>
+        <div className="px-6 pt-4 pb-2">
+          <SpeedEfficiencyHeatmap vehicles={sortedVehicles} />
+        </div>
+      </AnimatedEntry>
+
+      {/* ── Batch 3: Mobile Comparison Cards (replaces table on mobile) ── */}
+      <div className="px-6 pt-4 pb-4">
+        <MobileComparisonCards vehicles={sortedVehicles} />
+      </div>
+
+      {/* ── Desktop: Detailed Comparison Table (hidden on mobile) ── */}
+      <div className="hidden md:block pt-3 pb-6 px-6 border-b border-gray-100 space-y-4">
         <h3 className="font-semibold text-gray-800 flex items-center gap-2">
           Detailed Comparison
         </h3>
@@ -1198,36 +1268,46 @@ export default function ComparisonTable() {
               <th className="px-2 py-2 text-left text-xs font-semibold text-gray-700 sticky left-0 bg-gray-50 z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <span className="break-words leading-tight">Specification</span>
               </th>
-              {sortedVehicles.map((vehicle) => (
-                <th
-                  key={vehicle.id}
-                  className="px-3 py-2 text-center text-xs font-semibold text-gray-700"
-                >
-                  <div className="flex flex-col items-center gap-0.5">
-                    <Link
-                      href={`/ev/${vehicle.id}`}
-                      className="font-semibold text-xs text-emerald-700 hover:text-emerald-800 hover:underline"
+              {(() => {
+                const badgeMap = computeBadges(sortedVehicles)
+                return sortedVehicles.map((vehicle) => {
+                  const vBadges = badgeMap.get(vehicle.id) ?? []
+                  return (
+                    <th
+                      key={vehicle.id}
+                      className="px-3 py-2 text-center text-xs font-semibold text-gray-700"
                     >
-                      {vehicle.name}
-                    </Link>
-                    <div className="text-[10px] text-light-gray-500">{vehicle.modelTrim}</div>
-                    <button
-                      onClick={() => {
-                        if (!isVehicleSelected(vehicle.id)) {
-                          addVehicle(vehicle)
-                        }
-                      }}
-                      className={`text-[9px] px-1.5 py-0.5 rounded-full font-medium mt-0.5 ${
-                        isVehicleSelected(vehicle.id)
-                          ? 'bg-emerald-100 text-emerald-800'
-                          : 'bg-gray-100 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700'
-                      }`}
-                    >
-                      {isVehicleSelected(vehicle.id) ? 'Selected' : 'Compare'}
-                    </button>
-                  </div>
-                </th>
-              ))}
+                      <div className="flex flex-col items-center gap-0.5">
+                        {/* Score gauge */}
+                        <EVScoreGauge vehicle={vehicle} allVehicles={sortedVehicles} size="sm" />
+                        <Link
+                          href={`/ev/${vehicle.id}`}
+                          className="font-semibold text-xs text-emerald-700 hover:text-emerald-800 hover:underline"
+                        >
+                          {vehicle.name}
+                        </Link>
+                        <div className="text-[10px] text-light-gray-500">{vehicle.modelTrim}</div>
+                        {/* Winner badges */}
+                        <InlineBadgeRow badges={vBadges} />
+                        <button
+                          onClick={() => {
+                            if (!isVehicleSelected(vehicle.id)) {
+                              addVehicle(vehicle)
+                            }
+                          }}
+                          className={`text-[9px] px-1.5 py-0.5 rounded-full font-medium mt-0.5 ${
+                            isVehicleSelected(vehicle.id)
+                              ? 'bg-emerald-100 text-emerald-800'
+                              : 'bg-gray-100 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700'
+                          }`}
+                        >
+                          {isVehicleSelected(vehicle.id) ? 'Selected' : 'Compare'}
+                        </button>
+                      </div>
+                    </th>
+                  )
+                })
+              })()}
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">

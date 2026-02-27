@@ -1,20 +1,29 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import InfoTooltip from '@/components/InfoTooltip'
+import PDFExportButton from '@/components/PDFExportButton'
+import ESGDashboard from '@/components/ESGDashboard'
+import CarbonCreditEstimator from '@/components/CarbonCreditEstimator'
+import BESSHeadToHead from '@/components/BESSHeadToHead'
+import DemandChargeHeatmap from '@/components/DemandChargeHeatmap'
+import { useURLState, copyShareLink } from '@/lib/hooks/useURLState'
 import type { Country } from '@/types/bess'
 import {
   BarChart,
   Bar,
   LineChart,
   Line,
+  AreaChart,
+  Area,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
   Legend,
   Cell,
+  ReferenceLine,
 } from 'recharts'
 import ResponsiveContainer from '@/components/ResponsiveContainer'
 
@@ -47,6 +56,50 @@ const DEMAND_CHARGE: Record<Country, number> = {
 const PEAK_HOURS: Record<Country, string> = {
   MY: '08:00–22:00', SG: '09:00–23:00', ID: '17:00–22:00',
   TH: '09:00–22:00', VN: '09:30–11:30 & 17:00–20:00', PH: '08:00–21:00',
+}
+
+// TOU rate schedules (local currency / kWh, real C&I tariff bands)
+interface TouBand { label: string; startHr: number; endHr: number; rate: number; color: string }
+
+const TOU_RATES: Record<Country, TouBand[]> = {
+  MY: [
+    { label: 'Off-peak', startHr: 0, endHr: 8, rate: 0.337, color: '#86efac' },
+    { label: 'Mid-peak', startHr: 8, endHr: 14, rate: 0.509, color: '#fde68a' },
+    { label: 'Peak', startHr: 14, endHr: 20, rate: 0.612, color: '#fca5a5' },
+    { label: 'Mid-peak', startHr: 20, endHr: 22, rate: 0.509, color: '#fde68a' },
+    { label: 'Off-peak', startHr: 22, endHr: 24, rate: 0.337, color: '#86efac' },
+  ],
+  SG: [
+    { label: 'Off-peak', startHr: 0, endHr: 7, rate: 0.195, color: '#86efac' },
+    { label: 'Shoulder', startHr: 7, endHr: 9, rate: 0.265, color: '#fde68a' },
+    { label: 'Peak', startHr: 9, endHr: 18, rate: 0.345, color: '#fca5a5' },
+    { label: 'Shoulder', startHr: 18, endHr: 23, rate: 0.265, color: '#fde68a' },
+    { label: 'Off-peak', startHr: 23, endHr: 24, rate: 0.195, color: '#86efac' },
+  ],
+  ID: [
+    { label: 'Off-peak (LWBP)', startHr: 0, endHr: 17, rate: 1050, color: '#86efac' },
+    { label: 'Peak (WBP)', startHr: 17, endHr: 22, rate: 1890, color: '#fca5a5' },
+    { label: 'Off-peak (LWBP)', startHr: 22, endHr: 24, rate: 1050, color: '#86efac' },
+  ],
+  TH: [
+    { label: 'Off-peak', startHr: 0, endHr: 9, rate: 2.93, color: '#86efac' },
+    { label: 'Peak', startHr: 9, endHr: 22, rate: 5.11, color: '#fca5a5' },
+    { label: 'Off-peak', startHr: 22, endHr: 24, rate: 2.93, color: '#86efac' },
+  ],
+  VN: [
+    { label: 'Off-peak', startHr: 0, endHr: 4, rate: 1220, color: '#86efac' },
+    { label: 'Normal', startHr: 4, endHr: 9, rate: 1658, color: '#fde68a' },
+    { label: 'Peak', startHr: 9, endHr: 11, rate: 2871, color: '#fca5a5' },
+    { label: 'Normal', startHr: 11, endHr: 17, rate: 1658, color: '#fde68a' },
+    { label: 'Peak', startHr: 17, endHr: 20, rate: 2871, color: '#fca5a5' },
+    { label: 'Normal', startHr: 20, endHr: 22, rate: 1658, color: '#fde68a' },
+    { label: 'Off-peak', startHr: 22, endHr: 24, rate: 1220, color: '#86efac' },
+  ],
+  PH: [
+    { label: 'Off-peak', startHr: 0, endHr: 8, rate: 8.20, color: '#86efac' },
+    { label: 'Peak', startHr: 8, endHr: 21, rate: 13.50, color: '#fca5a5' },
+    { label: 'Off-peak', startHr: 21, endHr: 24, rate: 8.20, color: '#86efac' },
+  ],
 }
 
 // BESS cost per kWh (commercial-grade LFP, installed)
@@ -198,6 +251,29 @@ export default function CommercialBESSClient() {
   const [peakDemandKw, setPeakDemandKw] = useState(150)
   const [targetReductionPct, setTargetReductionPct] = useState(30)
   const [peakDurationHrs, setPeakDurationHrs] = useState(4)
+  const pdfRef = useRef<HTMLElement>(null)
+  const [shareLabel, setShareLabel] = useState('Share Design')
+
+  // Diesel genset replacement state
+  const [gensetKva, setGensetKva] = useState(200)
+  const [dieselPricePerLitre, setDieselPricePerLitre] = useState<number>(
+    { MY: 2.15, SG: 2.80, ID: 13500, TH: 30, VN: 24000, PH: 65 }[country] || 2.15
+  )
+  const [outageHoursPerMonth, setOutageHoursPerMonth] = useState(6)
+
+  // Update diesel price when country changes
+  useEffect(() => {
+    const prices: Record<Country, number> = { MY: 2.15, SG: 2.80, ID: 13500, TH: 30, VN: 24000, PH: 65 }
+    setDieselPricePerLitre(prices[country])
+  }, [country])
+
+  useURLState([
+    { key: 'country', value: country, defaultValue: 'MY', setter: setCountry, type: 'string' },
+    { key: 'useCase', value: useCase, defaultValue: 'office', setter: setUseCase, type: 'string' },
+    { key: 'peakKw', value: peakDemandKw, defaultValue: 150, setter: setPeakDemandKw, type: 'number' },
+    { key: 'reduction', value: targetReductionPct, defaultValue: 30, setter: setTargetReductionPct, type: 'number' },
+    { key: 'duration', value: peakDurationHrs, defaultValue: 4, setter: setPeakDurationHrs, type: 'number' },
+  ])
 
   // Sync presets when use-case changes
   const applyPreset = (uc: UseCase) => {
@@ -299,9 +375,103 @@ export default function CommercialBESSClient() {
     }
   }, [country, useCase, peakDemandKw, targetReductionPct, peakDurationHrs])
 
+  // ── Diesel genset replacement calculation ───────────────────────────
+  const dieselCalc = useMemo(() => {
+    const gensetKw = gensetKva * 0.8 // kVA → kW power factor
+    const fuelConsumptionPerHr = gensetKw * 0.28 // litres/hr at ~75% load
+    const monthlyFuel = fuelConsumptionPerHr * outageHoursPerMonth
+    const annualFuelCost = monthlyFuel * 12 * dieselPricePerLitre
+    const gensetCapex = gensetKva * (country === 'SG' ? 280 : country === 'ID' ? 2800000 : country === 'TH' ? 5500 : country === 'VN' ? 4500000 : country === 'PH' ? 12000 : 800)
+    const annualGensetMaint = gensetCapex * 0.08 // 8% annual maintenance
+    const annualGensetTotal = annualFuelCost + annualGensetMaint
+
+    // BESS equivalent: enough to cover the same hours at same kW
+    const bessKwh = Math.ceil(gensetKw * (outageHoursPerMonth > 4 ? 4 : outageHoursPerMonth)) // cap at 4hr for sizing
+    const bessCapex = bessKwh * BESS_COST_PER_KWH[country] + gensetKw * PCS_COST_PER_KW[country]
+    const bessCapexWithInstall = bessCapex * 1.12
+    const annualBessMaint = bessCapexWithInstall * 0.02 // 2% O&M
+
+    const years = 15
+    const yearlyComparison: { year: string; diesel: number; bess: number }[] = []
+    let dieselCum = gensetCapex
+    let bessCum = bessCapexWithInstall
+    let breakEvenYear: number | null = null
+
+    for (let y = 1; y <= years; y++) {
+      dieselCum += annualGensetTotal
+      bessCum += annualBessMaint
+      if (!breakEvenYear && bessCum < dieselCum) breakEvenYear = y
+      yearlyComparison.push({
+        year: `Y${y}`,
+        diesel: Math.round(dieselCum),
+        bess: Math.round(bessCum),
+      })
+    }
+
+    return {
+      gensetKw: Math.round(gensetKw),
+      monthlyFuelLitres: Math.round(monthlyFuel),
+      annualFuelCost: Math.round(annualFuelCost),
+      annualGensetMaint: Math.round(annualGensetMaint),
+      annualGensetTotal: Math.round(annualGensetTotal),
+      gensetCapex: Math.round(gensetCapex),
+      bessKwh,
+      bessCapex: Math.round(bessCapexWithInstall),
+      annualBessMaint: Math.round(annualBessMaint),
+      breakEvenYear,
+      totalDiesel15yr: Math.round(dieselCum),
+      totalBess15yr: Math.round(bessCum),
+      savings15yr: Math.round(dieselCum - bessCum),
+      yearlyComparison,
+    }
+  }, [gensetKva, dieselPricePerLitre, outageHoursPerMonth, country])
+
+  // ── TOU arbitrage calculation ───────────────────────────────────────
+  const touCalc = useMemo(() => {
+    const bands = TOU_RATES[country]
+    const offPeakRate = Math.min(...bands.map(b => b.rate))
+    const peakRate = Math.max(...bands.map(b => b.rate))
+    const spread = peakRate - offPeakRate
+
+    // Use the BESS size from main calc for arbitrage
+    const bessKwh = results.requiredKwh
+    const usableKwh = bessKwh * ROUND_TRIP_EFF * 0.8 // 80% DoD, round-trip eff
+
+    // Charge during cheapest band, discharge during most expensive
+    const dailyArbSavings = usableKwh * spread
+    const annualArbSavings = dailyArbSavings * 365 * 0.9 // 90% availability
+    const monthlyArbSavings = annualArbSavings / 12
+
+    // Build 24-hour rate profile data for chart
+    const hourlyProfile = Array.from({ length: 24 }, (_, h) => {
+      const band = bands.find(b => h >= b.startHr && h < b.endHr)!
+      const isCharging = band.rate === offPeakRate
+      const isDischarging = band.rate === peakRate
+      return {
+        hour: `${h.toString().padStart(2, '0')}:00`,
+        rate: band.rate,
+        label: band.label,
+        color: band.color,
+        action: isCharging ? 'Charge' : isDischarging ? 'Discharge' : 'Idle',
+      }
+    })
+
+    return {
+      offPeakRate,
+      peakRate,
+      spread,
+      bessKwh,
+      usableKwh: Math.round(usableKwh),
+      dailySavings: Math.round(dailyArbSavings),
+      monthlySavings: Math.round(monthlyArbSavings),
+      annualSavings: Math.round(annualArbSavings),
+      hourlyProfile,
+    }
+  }, [country, results.requiredKwh])
+
   return (
     <main className="min-h-screen pt-12 md:pt-14">
-      <section className="container mx-auto px-4 pt-12 pb-16 max-w-7xl">
+      <section ref={pdfRef} className="container mx-auto px-4 pt-12 pb-16 max-w-7xl">
         {/* Header */}
         <div className="max-w-2xl mb-10">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
@@ -337,15 +507,22 @@ export default function CommercialBESSClient() {
             {/* Country */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1.5">Country</label>
-              <select
-                value={country}
-                onChange={(e) => setCountry(e.target.value as Country)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-              >
-                {COUNTRIES.map((c) => (
-                  <option key={c.value} value={c.value}>{c.flag} {c.label}</option>
-                ))}
-              </select>
+              <div className="relative">
+                <select
+                  value={country}
+                  onChange={(e) => setCountry(e.target.value as Country)}
+                  className="w-full px-4 py-2 pr-8 rounded-full bg-gray-100 hover:bg-gray-200 text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-emerald-50 appearance-none cursor-pointer transition-colors"
+                >
+                  {COUNTRIES.map((c) => (
+                    <option key={c.value} value={c.value}>{c.flag} {c.label}</option>
+                  ))}
+                </select>
+                <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                  <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
               <p className="text-xs text-gray-400 mt-1">Peak hours: {PEAK_HOURS[country]}</p>
             </div>
 
@@ -584,6 +761,294 @@ export default function CommercialBESSClient() {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Diesel genset replacement calculator */}
+        <div className="bg-white border border-gray-200 rounded-xl p-6 mb-8">
+          <h3 className="text-base font-bold text-gray-900 mb-1 flex items-center gap-2">
+            ⛽ Diesel Generator Replacement
+            <InfoTooltip content="Compare the 15-year total cost of ownership (TCO) between a diesel genset and a BESS for backup power. Includes fuel costs, maintenance, and degradation. Most commercial buildings in SEA pay 20-80% more for diesel backup over a 15-year period vs BESS." />
+          </h3>
+          <p className="text-sm text-gray-500 mb-5">See if replacing your diesel genset with battery backup saves money over 15 years.</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Generator size (kVA)</label>
+              <input
+                type="range"
+                min={50}
+                max={1000}
+                step={25}
+                value={gensetKva}
+                onChange={(e) => setGensetKva(Number(e.target.value))}
+                className="w-full accent-emerald-600"
+              />
+              <div className="flex justify-between text-xs text-gray-500 mt-1">
+                <span>50 kVA</span>
+                <span className="font-semibold text-gray-800">{gensetKva} kVA ({dieselCalc.gensetKw} kW)</span>
+                <span>1,000 kVA</span>
+              </div>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Diesel price ({CURRENCY[country]}/litre)</label>
+              <input
+                type="range"
+                min={country === 'ID' ? 5000 : country === 'VN' ? 10000 : 0.5}
+                max={country === 'ID' ? 25000 : country === 'VN' ? 40000 : country === 'PH' ? 100 : country === 'TH' ? 60 : 6}
+                step={country === 'ID' ? 500 : country === 'VN' ? 1000 : 0.05}
+                value={dieselPricePerLitre}
+                onChange={(e) => setDieselPricePerLitre(Number(e.target.value))}
+                className="w-full accent-emerald-600"
+              />
+              <div className="flex justify-between text-xs text-gray-500 mt-1">
+                <span>Low</span>
+                <span className="font-semibold text-gray-800">{fmt(dieselPricePerLitre, country, 2)}/L</span>
+                <span>High</span>
+              </div>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Outage hours/month</label>
+              <input
+                type="range"
+                min={1}
+                max={30}
+                step={1}
+                value={outageHoursPerMonth}
+                onChange={(e) => setOutageHoursPerMonth(Number(e.target.value))}
+                className="w-full accent-emerald-600"
+              />
+              <div className="flex justify-between text-xs text-gray-500 mt-1">
+                <span>1 hr</span>
+                <span className="font-semibold text-gray-800">{outageHoursPerMonth} hrs/month</span>
+                <span>30 hrs</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Comparison cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div className="bg-red-50 border border-red-200 rounded-xl p-5">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-lg">⛽</span>
+                <h4 className="text-sm font-bold text-red-900">Diesel Generator</h4>
+              </div>
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Genset capex</span>
+                  <span className="font-medium">{fmtShort(dieselCalc.gensetCapex, country)}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Annual fuel ({dieselCalc.monthlyFuelLitres}L/mo)</span>
+                  <span className="font-medium">{fmtShort(dieselCalc.annualFuelCost, country)}/yr</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Annual maintenance</span>
+                  <span className="font-medium">{fmtShort(dieselCalc.annualGensetMaint, country)}/yr</span>
+                </div>
+                <div className="flex justify-between pt-2 border-t border-red-200">
+                  <span className="font-semibold text-red-900">15-year TCO</span>
+                  <span className="font-bold text-red-700">{fmtShort(dieselCalc.totalDiesel15yr, country)}</span>
+                </div>
+              </div>
+            </div>
+            <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-lg">🔋</span>
+                <h4 className="text-sm font-bold text-emerald-900">Battery (BESS)</h4>
+              </div>
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between">
+                  <span className="text-gray-600">BESS capex ({dieselCalc.bessKwh} kWh)</span>
+                  <span className="font-medium">{fmtShort(dieselCalc.bessCapex, country)}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Annual O&M (2%)</span>
+                  <span className="font-medium">{fmtShort(dieselCalc.annualBessMaint, country)}/yr</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Fuel cost</span>
+                  <span className="font-medium text-emerald-700">{fmt(0, country)} — zero fuel</span>
+                </div>
+                <div className="flex justify-between pt-2 border-t border-emerald-200">
+                  <span className="font-semibold text-emerald-900">15-year TCO</span>
+                  <span className="font-bold text-emerald-700">{fmtShort(dieselCalc.totalBess15yr, country)}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Savings summary */}
+          {dieselCalc.savings15yr > 0 && (
+            <div className="bg-emerald-100 border border-emerald-300 rounded-lg px-4 py-3 mb-6 text-sm text-emerald-900 font-medium text-center">
+              🎉 BESS saves <span className="font-bold">{fmtShort(dieselCalc.savings15yr, country)}</span> over 15 years
+              {dieselCalc.breakEvenYear ? ` — break-even in Year ${dieselCalc.breakEvenYear}` : ''}
+            </div>
+          )}
+
+          {/* TCO chart */}
+          <div>
+            <h4 className="text-sm font-semibold text-gray-700 mb-3">15-Year Total Cost of Ownership</h4>
+            <ResponsiveContainer width="100%" height={280}>
+              <LineChart data={dieselCalc.yearlyComparison} margin={{ top: 5, right: 20, left: 20, bottom: 5 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                <XAxis dataKey="year" tick={{ fontSize: 11 }} />
+                <YAxis tickFormatter={(v: number) => fmtShort(v, country)} tick={{ fontSize: 11 }} />
+                <Tooltip formatter={(v: number) => fmt(v, country)} />
+                <Legend wrapperStyle={{ fontSize: '12px' }} />
+                <Line type="monotone" dataKey="diesel" name="Diesel TCO" stroke="#ef4444" strokeWidth={2} dot={false} />
+                <Line type="monotone" dataKey="bess" name="BESS TCO" stroke="#10b981" strokeWidth={2} dot={false} />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+        {/* TOU Arbitrage Simulator */}
+        <div className="bg-white border border-gray-200 rounded-xl p-6 mb-8">
+          <h3 className="text-base font-bold text-gray-900 mb-1 flex items-center gap-2">
+            ⏱️ Time-of-Use Arbitrage
+            <InfoTooltip content="TOU arbitrage means charging your battery during cheap off-peak hours and discharging during expensive peak hours. The bigger the rate spread between off-peak and peak, the greater the savings. Most SEA utilities have 2–3 rate tiers for commercial customers." />
+          </h3>
+          <p className="text-sm text-gray-500 mb-5">
+            Charge at off-peak rates, discharge at peak rates — using your {touCalc.bessKwh} kWh BESS from the calculation above.
+          </p>
+
+          {/* Rate band legend */}
+          <div className="flex flex-wrap gap-3 mb-4 text-xs">
+            {TOU_RATES[country].map((b, i) => (
+              <div key={`${b.label}-${i}`} className="flex items-center gap-1.5">
+                <span className="w-3 h-3 rounded-sm" style={{ backgroundColor: b.color }} />
+                <span className="text-gray-600">
+                  {b.label}: {fmt(b.rate, country, country === 'ID' || country === 'VN' ? 0 : 2)}/kWh
+                  <span className="text-gray-400 ml-1">({b.startHr.toString().padStart(2,'0')}:00–{b.endHr.toString().padStart(2,'0')}:00)</span>
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* 24-hour rate chart with charge/discharge indicators */}
+          <div className="mb-5">
+            <h4 className="text-sm font-semibold text-gray-700 mb-3">24-Hour Tariff Profile</h4>
+            <ResponsiveContainer width="100%" height={220}>
+              <BarChart data={touCalc.hourlyProfile} margin={{ top: 5, right: 10, left: 20, bottom: 5 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
+                <XAxis dataKey="hour" tick={{ fontSize: 10 }} interval={2} />
+                <YAxis tickFormatter={(v: number) => fmt(v, country, country === 'ID' || country === 'VN' ? 0 : 2)} tick={{ fontSize: 10 }} />
+                <Tooltip
+                  formatter={(v: number) => fmt(v, country, country === 'ID' || country === 'VN' ? 0 : 3)}
+                  labelFormatter={(l: string) => `Time: ${l}`}
+                />
+                <ReferenceLine y={touCalc.offPeakRate} stroke="#10b981" strokeDasharray="3 3" label={{ value: 'Charge', fill: '#10b981', fontSize: 10, position: 'insideTopRight' }} />
+                <ReferenceLine y={touCalc.peakRate} stroke="#ef4444" strokeDasharray="3 3" label={{ value: 'Discharge', fill: '#ef4444', fontSize: 10, position: 'insideTopRight' }} />
+                <Bar dataKey="rate" name="Tariff rate" radius={[2, 2, 0, 0]}>
+                  {touCalc.hourlyProfile.map((entry, idx) => (
+                    <Cell key={idx} fill={entry.color} />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+
+          {/* Action timeline (visual) */}
+          <div className="mb-5">
+            <h4 className="text-sm font-semibold text-gray-700 mb-2">Battery Actions</h4>
+            <div className="flex h-8 rounded-lg overflow-hidden border border-gray-200">
+              {touCalc.hourlyProfile.map((entry, i) => (
+                <div
+                  key={i}
+                  className="flex-1 flex items-center justify-center relative group"
+                  style={{
+                    backgroundColor: entry.action === 'Charge' ? '#bbf7d0' : entry.action === 'Discharge' ? '#fecaca' : '#f3f4f6',
+                  }}
+                  title={`${entry.hour} — ${entry.action}`}
+                >
+                  {i % 4 === 0 && (
+                    <span className="text-[8px] font-medium text-gray-500">{entry.action === 'Charge' ? '⬇' : entry.action === 'Discharge' ? '⬆' : '–'}</span>
+                  )}
+                </div>
+              ))}
+            </div>
+            <div className="flex justify-between text-[10px] text-gray-400 mt-1">
+              <span>00:00</span>
+              <span>06:00</span>
+              <span>12:00</span>
+              <span>18:00</span>
+              <span>24:00</span>
+            </div>
+            <div className="flex gap-4 mt-2 text-xs text-gray-500">
+              <div className="flex items-center gap-1"><span className="w-3 h-3 rounded-sm bg-green-200" /> Charge</div>
+              <div className="flex items-center gap-1"><span className="w-3 h-3 rounded-sm bg-red-200" /> Discharge</div>
+              <div className="flex items-center gap-1"><span className="w-3 h-3 rounded-sm bg-gray-100 border border-gray-200" /> Idle</div>
+            </div>
+          </div>
+
+          {/* Savings */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div className="bg-gray-50 rounded-lg p-3 text-center">
+              <div className="text-xs text-gray-500 mb-1">Rate spread</div>
+              <div className="text-sm font-bold text-gray-900">
+                {fmt(touCalc.spread, country, country === 'ID' || country === 'VN' ? 0 : 2)}/kWh
+              </div>
+            </div>
+            <div className="bg-gray-50 rounded-lg p-3 text-center">
+              <div className="text-xs text-gray-500 mb-1">Usable capacity</div>
+              <div className="text-sm font-bold text-gray-900">{touCalc.usableKwh} kWh</div>
+            </div>
+            <div className="bg-emerald-50 rounded-lg p-3 text-center">
+              <div className="text-xs text-gray-500 mb-1">Monthly saving</div>
+              <div className="text-sm font-bold text-emerald-700">{fmtShort(touCalc.monthlySavings, country)}</div>
+            </div>
+            <div className="bg-emerald-50 rounded-lg p-3 text-center">
+              <div className="text-xs text-gray-500 mb-1">Annual saving</div>
+              <div className="text-sm font-bold text-emerald-700">{fmtShort(touCalc.annualSavings, country)}</div>
+            </div>
+          </div>
+        </div>
+
+        <ESGDashboard
+          country={country}
+          solarKw={0}
+          batteryCapacityKwh={results.requiredKwh}
+          annualSolarGenKwh={0}
+          coveragePct={targetReductionPct / 100}
+          co2AvoidedKg={dieselCalc.monthlyFuelLitres * 12 * 2.68}
+          annualSavingsLocal={results.totalAnnualSavings}
+          systemType="commercial"
+        />
+
+        {/* Carbon Credit Estimator */}
+        <CarbonCreditEstimator
+          country={country}
+          systemSizeKwh={results.requiredKwh}
+          cyclesPerYear={365}
+        />
+
+        {/* Batch 4 — BESS Head-to-Head */}
+        <BESSHeadToHead country={country} />
+
+        {/* Batch 4 — Demand Charge Heatmap */}
+        <DemandChargeHeatmap
+          country={country}
+          peakDemandKw={peakDemandKw}
+          targetReductionPct={targetReductionPct}
+          useCase={useCase}
+        />
+
+        {/* Export */}
+        <div className="flex flex-wrap gap-3 mb-8" data-pdf-ignore>
+          <button
+            onClick={async () => {
+              const ok = await copyShareLink()
+              if (ok) { setShareLabel('Link Copied!'); setTimeout(() => setShareLabel('Share Design'), 2000) }
+            }}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg font-semibold text-sm hover:bg-emerald-700 transition-colors"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg>
+            {shareLabel}
+          </button>
+          <PDFExportButton
+            containerRef={pdfRef}
+            options={{ filename: `battery-mom-commercial-bess-${useCase}.pdf`, title: 'battery.mom — Commercial BESS Calculator', subtitle: `${COUNTRIES.find(c => c.value === country)?.label} · ${USE_CASE_PRESETS[useCase].label} · ${peakDemandKw}kW peak` }}
+            className="bg-gray-100 text-gray-700 hover:bg-gray-200"
+          />
         </div>
 
         {/* Assumptions + CTA */}

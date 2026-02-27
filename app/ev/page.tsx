@@ -5,6 +5,7 @@ import SearchBox from '@/components/SearchBox'
 import VehicleSection from '@/components/VehicleSection'
 import ComparisonTable from '@/components/ComparisonTable'
 import StructuredData from '@/components/StructuredData'
+import QuickPickCards from '@/components/QuickPickCards'
 import { SearchBoxSkeleton, ComparisonTableSkeleton } from '@/components/LoadingSkeleton'
 
 export const metadata: Metadata = {
@@ -61,6 +62,9 @@ export default function EVPage() {
               </div>
             </div>
           </div>
+
+          {/* Quick pick hero cards */}
+          <QuickPickCards />
 
           <Suspense fallback={<ComparisonTableSkeleton />}>
             <ComparisonTable />

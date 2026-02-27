@@ -1,13 +1,16 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { Vehicle } from '@/types/vehicle'
 import { useVehicleStore } from '@/store/VehicleStore'
 import type { Country } from '@prisma/client'
 
 /**
- * JSON-LD structured data for SEO
- * Helps search engines understand vehicle data
+ * JSON-LD structured data for SEO.
+ *
+ * Injects a <script type="application/ld+json"> via DOM manipulation
+ * (not JSX) so it never participates in React hydration — eliminating
+ * the "Expected server HTML to contain a matching <script>" error.
  */
 
 const getCountryName = (country: Country): string => {
@@ -36,59 +39,64 @@ const getCurrencyForCountry = (country: Country): string => {
 
 export default function StructuredData() {
   const { vehicles } = useVehicleStore()
-  const [structuredData, setStructuredData] = useState<string>('')
+  const scriptRef = useRef<HTMLScriptElement | null>(null)
 
   useEffect(() => {
-    if (vehicles.length === 0) return
+    if (vehicles.length === 0) {
+      // Remove stale script if vehicles cleared
+      if (scriptRef.current) {
+        scriptRef.current.remove()
+        scriptRef.current = null
+      }
+      return
+    }
 
-    // Generate structured data for all vehicles
     const vehicleStructuredData = vehicles.map((vehicle: Vehicle) => ({
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: `${vehicle.name} ${vehicle.modelTrim || ''}`.trim(),
-    description: `Electric vehicle available in ${getCountryName(vehicle.country)}. Range: ${vehicle.rangeKm || 'N/A'}km, Power: ${vehicle.powerRatingKw || 'N/A'}kW, Efficiency: ${vehicle.efficiencyKwhPer100km || 'N/A'}kWh/100km`,
-    brand: {
-      '@type': 'Brand',
-      name: vehicle.name.split(' ')[0], // Extract manufacturer
-    },
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: getCurrencyForCountry(vehicle.country),
-      price: vehicle.basePriceLocalCurrency || 0,
-      availability: vehicle.isAvailable
-        ? 'https://schema.org/InStock'
-        : 'https://schema.org/OutOfStock',
-    },
-    additionalProperty: [
-      ...(vehicle.batteryWeightKg ? [{
-        '@type': 'PropertyValue',
-        name: 'Battery Weight',
-        value: `${vehicle.batteryWeightKg} kg`,
-      }] : []),
-      ...(vehicle.rangeKm ? [{
-        '@type': 'PropertyValue',
-        name: 'Range',
-        value: `${vehicle.rangeKm} km`,
-      }] : []),
-      ...(vehicle.powerRatingKw ? [{
-        '@type': 'PropertyValue',
-        name: 'Power Rating',
-        value: `${vehicle.powerRatingKw} kW`,
-      }] : []),
-      ...(vehicle.efficiencyKwhPer100km ? [{
-        '@type': 'PropertyValue',
-        name: 'Efficiency',
-        value: `${vehicle.efficiencyKwhPer100km} kWh/100km`,
-      }] : []),
-      ...(vehicle.batteryTechnology ? [{
-        '@type': 'PropertyValue',
-        name: 'Battery Technology',
-        value: vehicle.batteryTechnology,
-      }] : []),
-    ],
-  }))
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: `${vehicle.name} ${vehicle.modelTrim || ''}`.trim(),
+      description: `Electric vehicle available in ${getCountryName(vehicle.country)}. Range: ${vehicle.rangeKm || 'N/A'}km, Power: ${vehicle.powerRatingKw || 'N/A'}kW, Efficiency: ${vehicle.efficiencyKwhPer100km || 'N/A'}kWh/100km`,
+      brand: {
+        '@type': 'Brand',
+        name: vehicle.name.split(' ')[0],
+      },
+      offers: {
+        '@type': 'Offer',
+        priceCurrency: getCurrencyForCountry(vehicle.country),
+        price: vehicle.basePriceLocalCurrency || 0,
+        availability: vehicle.isAvailable
+          ? 'https://schema.org/InStock'
+          : 'https://schema.org/OutOfStock',
+      },
+      additionalProperty: [
+        ...(vehicle.batteryWeightKg ? [{
+          '@type': 'PropertyValue',
+          name: 'Battery Weight',
+          value: `${vehicle.batteryWeightKg} kg`,
+        }] : []),
+        ...(vehicle.rangeKm ? [{
+          '@type': 'PropertyValue',
+          name: 'Range',
+          value: `${vehicle.rangeKm} km`,
+        }] : []),
+        ...(vehicle.powerRatingKw ? [{
+          '@type': 'PropertyValue',
+          name: 'Power Rating',
+          value: `${vehicle.powerRatingKw} kW`,
+        }] : []),
+        ...(vehicle.efficiencyKwhPer100km ? [{
+          '@type': 'PropertyValue',
+          name: 'Efficiency',
+          value: `${vehicle.efficiencyKwhPer100km} kWh/100km`,
+        }] : []),
+        ...(vehicle.batteryTechnology ? [{
+          '@type': 'PropertyValue',
+          name: 'Battery Technology',
+          value: vehicle.batteryTechnology,
+        }] : []),
+      ],
+    }))
 
-    // Organization structured data
     const organizationData = {
       '@context': 'https://schema.org',
       '@type': 'Organization',
@@ -97,7 +105,6 @@ export default function StructuredData() {
       url: typeof window !== 'undefined' ? window.location.origin : '',
     }
 
-    // Website structured data
     const websiteData = {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
@@ -111,20 +118,25 @@ export default function StructuredData() {
       '@graph': [organizationData, websiteData, ...vehicleStructuredData],
     }
 
-    setStructuredData(JSON.stringify(data))
+    // Create or update the script element via DOM — not via React tree
+    if (!scriptRef.current) {
+      const script = document.createElement('script')
+      script.type = 'application/ld+json'
+      script.id = 'structured-data-vehicles'
+      document.head.appendChild(script)
+      scriptRef.current = script
+    }
+    scriptRef.current.textContent = JSON.stringify(data)
+
+    return () => {
+      if (scriptRef.current) {
+        scriptRef.current.remove()
+        scriptRef.current = null
+      }
+    }
   }, [vehicles])
 
-  if (!structuredData) {
-    return null
-  }
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: structuredData,
-      }}
-    />
-  )
+  // Renders nothing — script is injected via DOM, not React tree
+  return null
 }
 
