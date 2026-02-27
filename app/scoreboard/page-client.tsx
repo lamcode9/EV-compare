@@ -23,7 +23,7 @@ import ResponsiveContainer from '@/components/ResponsiveContainer'
 
 // ── Types ──────────────────────────────────────────────────────
 
-type CountryCode = 'SG' | 'MY' | 'TH' | 'ID' | 'VN' | 'PH'
+type CountryCode = 'SG' | 'MY' | 'TH' | 'ID' | 'VN' | 'PH' | 'US'
 
 interface CountryData {
   code: CountryCode
@@ -171,6 +171,23 @@ const COUNTRIES: CountryData[] = [
     },
     gdpPerCapita: 3905, electricityCostUsd: 0.18, avgEvPriceUsd: 30000, avgAnnualIncomeUsd: 4500,
   },
+  {
+    code: 'US', name: 'United States', flag: '🇺🇸', population: 335,
+    evAdoptionRate: 9.8, totalEvs: 4200000, chargingStations: 186000, chargersPerMillion: 555,
+    solarCapacityGw: 175, bessPenetrationPct: 12, policyGrade: 'A-', evSalesGrowth: 11,
+    topSellingEv: 'Tesla Model Y', electricityTariff: '$0.16/kWh',
+    evIncentives: '$7,500 federal tax credit (IRA), state rebates vary',
+    prev: { evAdoptionRate: 8.1, totalEvs: 3400000, chargersPerMillion: 460, solarCapacityGw: 142, bessPenetrationPct: 9.5, evSalesGrowth: 47 },
+    historical: {
+      evAdoptionRate: [3.2, 5.8, 7.6, 9.8],
+      totalEvs: [1400000, 2200000, 3100000, 4200000],
+      chargersPerMillion: [200, 310, 420, 555],
+      solarCapacityGw: [95, 113, 139, 175],
+      bessPenetrationPct: [4.0, 6.5, 8.5, 12.0],
+      evSalesGrowth: [72, 55, 47, 11],
+    },
+    gdpPerCapita: 80035, electricityCostUsd: 0.16, avgEvPriceUsd: 48000, avgAnnualIncomeUsd: 65000,
+  },
 ]
 
 // ── Metrics ────────────────────────────────────────────────────
@@ -286,10 +303,10 @@ function ScoreRing({ score, size = 52, strokeWidth = 4, medal }: { score: number
 const HISTORICAL_YEARS = [2021, 2022, 2023, 2024]
 
 /** Global & regional benchmarks for context banner */
-const BENCHMARKS: Record<string, { sea: number; global: number; eu: number; china: number; unit: string; label: string }> = {
-  evAdoptionRate: { sea: 4.6, global: 18, eu: 24, china: 38, unit: '%', label: 'EV Adoption Rate' },
-  chargersPerMillion: { sea: 192, global: 450, eu: 800, china: 1200, unit: '', label: 'Chargers per 1M People' },
-  evSalesGrowth: { sea: 80, global: 35, eu: 22, china: 25, unit: '% YoY', label: 'EV Sales Growth' },
+const BENCHMARKS: Record<string, { sea: number; us: number; global: number; eu: number; china: number; unit: string; label: string }> = {
+  evAdoptionRate: { sea: 4.6, us: 9.8, global: 18, eu: 24, china: 38, unit: '%', label: 'EV Adoption Rate' },
+  chargersPerMillion: { sea: 192, us: 555, global: 450, eu: 800, china: 1200, unit: '', label: 'Chargers per 1M People' },
+  evSalesGrowth: { sea: 80, us: 11, global: 35, eu: 22, china: 25, unit: '% YoY', label: 'EV Sales Growth' },
 }
 
 /** Detailed metric info for deep-dive modal */
@@ -729,14 +746,15 @@ export default function ScoreboardPage() {
         <div className="mb-10 bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-6">
           <h3 className="text-sm font-semibold text-gray-900 mb-1">
             🌏 How does Southeast Asia compare?
-            <InfoTooltip content="SEA average calculated from the 6 countries tracked. Global, EU, and China figures from IEA Global EV Outlook 2024 and BloombergNEF." />
+            <InfoTooltip content="SEA average calculated from the 6 Southeast Asian countries tracked. US, Global, EU, and China figures from IEA Global EV Outlook 2024 and BloombergNEF." />
           </h3>
-          <p className="text-xs text-gray-500 mb-5">SEA average vs global and regional benchmarks for three key metrics.</p>
+          <p className="text-xs text-gray-500 mb-5">SEA average vs US and regional benchmarks for three key metrics.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {Object.entries(BENCHMARKS).map(([key, bm]) => {
-              const max = Math.max(bm.sea, bm.global, bm.eu, bm.china)
+              const max = Math.max(bm.sea, bm.us, bm.global, bm.eu, bm.china)
               const entries = [
                 { label: 'SEA', value: bm.sea, color: 'bg-emerald-500', text: 'text-emerald-700' },
+                { label: 'US', value: bm.us, color: 'bg-indigo-500', text: 'text-indigo-700' },
                 { label: 'Global', value: bm.global, color: 'bg-gray-400', text: 'text-gray-600' },
                 { label: 'EU', value: bm.eu, color: 'bg-blue-500', text: 'text-blue-700' },
                 { label: 'China', value: bm.china, color: 'bg-red-400', text: 'text-red-700' },
