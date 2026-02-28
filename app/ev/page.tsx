@@ -6,6 +6,7 @@ import VehicleSection from '@/components/VehicleSection'
 import ComparisonTable from '@/components/ComparisonTable'
 import StructuredData from '@/components/StructuredData'
 import QuickPickCards from '@/components/QuickPickCards'
+import EVMethodologyFooter from '@/components/EVMethodologyFooter'
 import { SearchBoxSkeleton, ComparisonTableSkeleton } from '@/components/LoadingSkeleton'
 
 export const metadata: Metadata = {
@@ -71,6 +72,9 @@ export default function EVPage() {
           </Suspense>
 
           <VehicleSection />
+
+          {/* Methodology disclosure */}
+          <EVMethodologyFooter />
         </section>
       </main>
     </>

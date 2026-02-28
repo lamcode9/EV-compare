@@ -2,6 +2,7 @@
 
 import { useMemo } from 'react'
 import { Vehicle } from '@/types/vehicle'
+import { getElectricRangeKm } from '@/lib/utils'
 
 /* ── Scoring engine ──────────────────────────────────────────── */
 
@@ -29,12 +30,15 @@ export interface ScoreBreakdown {
  * Returns 0–100 score and per-dimension breakdown.
  */
 export function computeScore(vehicle: Vehicle, allVehicles: Vehicle[]): ScoreBreakdown {
-  const ranges = allVehicles.map(v => v.rangeKm ?? 0).filter(v => v > 0)
+  const ranges = allVehicles.map(v => getElectricRangeKm(v) ?? 0).filter(v => v > 0)
   const efficiencies = allVehicles.map(v => v.efficiencyKwhPer100km ?? Infinity).filter(v => v < Infinity && v > 0)
   const chargeTimes = allVehicles.map(v => v.chargingTimeDc0To80Min ?? Infinity).filter(v => v < Infinity && v > 0)
   const capacities = allVehicles.map(v => v.batteryCapacityKwh ?? 0).filter(v => v > 0)
   const pricePerKms = allVehicles
-    .map(v => (v.basePriceLocalCurrency && v.rangeKm && v.rangeKm > 0) ? v.basePriceLocalCurrency / v.rangeKm : Infinity)
+    .map(v => {
+      const range = getElectricRangeKm(v)
+      return (v.basePriceLocalCurrency && range && range > 0) ? v.basePriceLocalCurrency / range : Infinity
+    })
     .filter(v => v < Infinity)
 
   const maxRange = ranges.length > 0 ? Math.max(...ranges) : 1
@@ -43,9 +47,10 @@ export function computeScore(vehicle: Vehicle, allVehicles: Vehicle[]): ScoreBre
   const maxCapacity = capacities.length > 0 ? Math.max(...capacities) : 1
   const minPricePerKm = pricePerKms.length > 0 ? Math.min(...pricePerKms) : 1
 
-  // Range score (0–100): higher km = better
-  const rangeScore = vehicle.rangeKm && vehicle.rangeKm > 0
-    ? Math.min(100, (vehicle.rangeKm / maxRange) * 100)
+  // Range score (0–100): higher km = better (electric-only range for PHEVs)
+  const vehRange = getElectricRangeKm(vehicle) ?? 0
+  const rangeScore = vehRange > 0
+    ? Math.min(100, (vehRange / maxRange) * 100)
     : 0
 
   // Efficiency score (lower is better)
@@ -53,9 +58,9 @@ export function computeScore(vehicle: Vehicle, allVehicles: Vehicle[]): ScoreBre
     ? Math.min(100, (minEff / vehicle.efficiencyKwhPer100km) * 100)
     : 0
 
-  // Value score (lower price-per-km-range is better)
-  const vehiclePricePerKm = (vehicle.basePriceLocalCurrency && vehicle.rangeKm && vehicle.rangeKm > 0)
-    ? vehicle.basePriceLocalCurrency / vehicle.rangeKm
+  // Value score (lower price-per-km-range is better, using electric range)
+  const vehiclePricePerKm = (vehicle.basePriceLocalCurrency && vehRange > 0)
+    ? vehicle.basePriceLocalCurrency / vehRange
     : Infinity
   const valueScore = vehiclePricePerKm < Infinity
     ? Math.min(100, (minPricePerKm / vehiclePricePerKm) * 100)

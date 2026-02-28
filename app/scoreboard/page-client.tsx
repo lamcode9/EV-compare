@@ -23,7 +23,7 @@ import ResponsiveContainer from '@/components/ResponsiveContainer'
 
 // ── Types ──────────────────────────────────────────────────────
 
-type CountryCode = 'SG' | 'MY' | 'TH' | 'ID' | 'VN' | 'PH' | 'US'
+type CountryCode = 'SG' | 'MY' | 'TH' | 'ID' | 'VN' | 'PH'
 
 interface CountryData {
   code: CountryCode
@@ -170,23 +170,6 @@ const COUNTRIES: CountryData[] = [
       evSalesGrowth: [40, 150, 130, 110],
     },
     gdpPerCapita: 3905, electricityCostUsd: 0.18, avgEvPriceUsd: 30000, avgAnnualIncomeUsd: 4500,
-  },
-  {
-    code: 'US', name: 'United States', flag: '🇺🇸', population: 335,
-    evAdoptionRate: 9.8, totalEvs: 4200000, chargingStations: 186000, chargersPerMillion: 555,
-    solarCapacityGw: 175, bessPenetrationPct: 12, policyGrade: 'A-', evSalesGrowth: 11,
-    topSellingEv: 'Tesla Model Y', electricityTariff: '$0.16/kWh',
-    evIncentives: '$7,500 federal tax credit (IRA), state rebates vary',
-    prev: { evAdoptionRate: 8.1, totalEvs: 3400000, chargersPerMillion: 460, solarCapacityGw: 142, bessPenetrationPct: 9.5, evSalesGrowth: 47 },
-    historical: {
-      evAdoptionRate: [3.2, 5.8, 7.6, 9.8],
-      totalEvs: [1400000, 2200000, 3100000, 4200000],
-      chargersPerMillion: [200, 310, 420, 555],
-      solarCapacityGw: [95, 113, 139, 175],
-      bessPenetrationPct: [4.0, 6.5, 8.5, 12.0],
-      evSalesGrowth: [72, 55, 47, 11],
-    },
-    gdpPerCapita: 80035, electricityCostUsd: 0.16, avgEvPriceUsd: 48000, avgAnnualIncomeUsd: 65000,
   },
 ]
 

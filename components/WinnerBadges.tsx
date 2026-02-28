@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react'
 import { Vehicle } from '@/types/vehicle'
-import { calculateCostPerKm, getAcceleration0To100Kmh } from '@/lib/utils'
+import { getAcceleration0To100Kmh, getElectricRangeKm } from '@/lib/utils'
 
 /* ── Badge definitions ───────────────────────────────────────── */
 
@@ -10,20 +10,21 @@ export interface Badge {
   id: string
   label: string
   icon: string
+  tooltip: string      // Methodology explanation shown on hover
   color: string        // Tailwind text color
   bgColor: string      // Tailwind bg color
   borderColor: string   // Tailwind border color
 }
 
 const BADGE_DEFS: Badge[] = [
-  { id: 'best-range',      label: 'Best Range',       icon: '🛣️', color: 'text-emerald-700', bgColor: 'bg-emerald-50',  borderColor: 'border-emerald-200' },
-  { id: 'most-efficient',  label: 'Most Efficient',   icon: '⚡',  color: 'text-blue-700',    bgColor: 'bg-blue-50',     borderColor: 'border-blue-200' },
-  { id: 'best-value',      label: 'Best Value',       icon: '💰',  color: 'text-amber-700',   bgColor: 'bg-amber-50',    borderColor: 'border-amber-200' },
-  { id: 'biggest-battery', label: 'Biggest Battery',  icon: '🔋',  color: 'text-purple-700',  bgColor: 'bg-purple-50',   borderColor: 'border-purple-200' },
-  { id: 'fastest-charge',  label: 'Fastest Charge',   icon: '⚡',  color: 'text-cyan-700',    bgColor: 'bg-cyan-50',     borderColor: 'border-cyan-200' },
-  { id: 'most-powerful',   label: 'Most Powerful',    icon: '💪',  color: 'text-red-700',     bgColor: 'bg-red-50',      borderColor: 'border-red-200' },
-  { id: 'quickest',        label: 'Quickest',         icon: '🏎️', color: 'text-orange-700',  bgColor: 'bg-orange-50',   borderColor: 'border-orange-200' },
-  { id: 'cheapest',        label: 'Most Affordable',  icon: '🏷️', color: 'text-green-700',   bgColor: 'bg-green-50',    borderColor: 'border-green-200' },
+  { id: 'best-range',      label: 'Best Range',       icon: '🛣️', tooltip: 'Highest electric-only range (WLTP km). PHEVs use electric-only figures.',       color: 'text-emerald-700', bgColor: 'bg-emerald-50',  borderColor: 'border-emerald-200' },
+  { id: 'most-efficient',  label: 'Most Efficient',   icon: '⚡',  tooltip: 'Lowest energy consumption (kWh per 100 km).',                                     color: 'text-blue-700',    bgColor: 'bg-blue-50',     borderColor: 'border-blue-200' },
+  { id: 'best-value',      label: 'Best Value',       icon: '💰',  tooltip: 'Lowest purchase price per km of electric range. Metric: base price ÷ range.',     color: 'text-amber-700',   bgColor: 'bg-amber-50',    borderColor: 'border-amber-200' },
+  { id: 'biggest-battery', label: 'Biggest Battery',  icon: '🔋',  tooltip: 'Highest usable battery capacity (kWh). Larger batteries may offer better longevity and V2L/V2H capability.', color: 'text-purple-700',  bgColor: 'bg-purple-50',   borderColor: 'border-purple-200' },
+  { id: 'fastest-charge',  label: 'Fastest Charge',   icon: '⚡',  tooltip: 'Shortest DC fast-charge time from 0 to 80% (minutes).',                            color: 'text-cyan-700',    bgColor: 'bg-cyan-50',     borderColor: 'border-cyan-200' },
+  { id: 'most-powerful',   label: 'Most Powerful',    icon: '💪',  tooltip: 'Highest motor output (kW). Higher power does not always mean faster 0-100.',       color: 'text-red-700',     bgColor: 'bg-red-50',      borderColor: 'border-red-200' },
+  { id: 'quickest',        label: 'Quickest',         icon: '🏎️', tooltip: 'Fastest 0-100 km/h acceleration (seconds). Manufacturer-stated figures only.',     color: 'text-orange-700',  bgColor: 'bg-orange-50',   borderColor: 'border-orange-200' },
+  { id: 'cheapest',        label: 'Most Affordable',  icon: '🏷️', tooltip: 'Lowest base price in local currency. Does not include on-the-road costs or rebates.', color: 'text-green-700',   bgColor: 'bg-green-50',    borderColor: 'border-green-200' },
 ]
 
 /* ── Badge computation ───────────────────────────────────────── */
@@ -38,8 +39,8 @@ export function computeBadges(vehicles: Vehicle[]): VehicleBadges {
 
   const findBadge = (id: string) => BADGE_DEFS.find(b => b.id === id)!
 
-  // Best Range
-  const ranges = vehicles.map(v => ({ id: v.id, val: v.rangeKm ?? 0 })).filter(v => v.val > 0)
+  // Best Range (uses electric-only range for PHEVs)
+  const ranges = vehicles.map(v => ({ id: v.id, val: getElectricRangeKm(v) ?? 0 })).filter(v => v.val > 0)
   if (ranges.length > 0) {
     const best = Math.max(...ranges.map(r => r.val))
     ranges.filter(r => r.val === best).forEach(r => result.get(r.id)!.push(findBadge('best-range')))
@@ -52,14 +53,15 @@ export function computeBadges(vehicles: Vehicle[]): VehicleBadges {
     effs.filter(e => e.val === best).forEach(e => result.get(e.id)!.push(findBadge('most-efficient')))
   }
 
-  // Best Value (lowest cost per km)
-  const costs = vehicles.map(v => {
-    const cost = (v.batteryCapacityKwh && v.rangeKm) ? calculateCostPerKm(v.country, v.batteryCapacityKwh, v.rangeKm) : null
-    return { id: v.id, val: cost ?? Infinity }
+  // Best Value (lowest purchase price per km of electric range — same metric as QuickPicks)
+  const values = vehicles.map(v => {
+    const range = getElectricRangeKm(v)
+    const price = v.basePriceLocalCurrency
+    return { id: v.id, val: (price && range && range > 0) ? price / range : Infinity }
   }).filter(v => v.val < Infinity)
-  if (costs.length > 0) {
-    const best = Math.min(...costs.map(c => c.val))
-    costs.filter(c => c.val === best).forEach(c => result.get(c.id)!.push(findBadge('best-value')))
+  if (values.length > 0) {
+    const best = Math.min(...values.map(c => c.val))
+    values.filter(c => c.val === best).forEach(c => result.get(c.id)!.push(findBadge('best-value')))
   }
 
   // Biggest Battery
@@ -126,7 +128,7 @@ export default function WinnerBadges({ badges, maxShow = 3, size = 'sm' }: Winne
             ${badge.bgColor} ${badge.borderColor} ${badge.color}
             ${size === 'sm' ? 'text-[9px]' : 'text-[10px]'} font-semibold whitespace-nowrap
             transition-transform hover:scale-105`}
-          title={badge.label}
+          title={badge.tooltip}
         >
           <span>{badge.icon}</span>
           <span>{badge.label}</span>
@@ -152,7 +154,7 @@ export function InlineBadgeRow({ badges }: { badges: Badge[] }) {
           className={`inline-flex items-center gap-0.5 px-1 py-0 rounded-full border
             ${badge.bgColor} ${badge.borderColor} ${badge.color}
             text-[8px] font-semibold whitespace-nowrap`}
-          title={badge.label}
+          title={badge.tooltip}
         >
           <span className="text-[7px]">{badge.icon}</span>
           <span>{badge.label}</span>
