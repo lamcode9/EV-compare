@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react'
 import { Vehicle } from '@/types/vehicle'
-import { getAcceleration0To100Kmh, getElectricRangeKm } from '@/lib/utils'
+import { getAcceleration0To100Kmh, getRangeKm } from '@/lib/utils'
 
 /* ── Badge definitions ───────────────────────────────────────── */
 
@@ -17,7 +17,7 @@ export interface Badge {
 }
 
 const BADGE_DEFS: Badge[] = [
-  { id: 'best-range',      label: 'Best Range',       icon: '🛣️', tooltip: 'Highest electric-only range (WLTP km). PHEVs use electric-only figures.',       color: 'text-emerald-700', bgColor: 'bg-emerald-50',  borderColor: 'border-emerald-200' },
+  { id: 'best-range',      label: 'Best Range',       icon: '🛣️', tooltip: 'Highest WLTP range (km). BEVs only.',                                           color: 'text-emerald-700', bgColor: 'bg-emerald-50',  borderColor: 'border-emerald-200' },
   { id: 'most-efficient',  label: 'Most Efficient',   icon: '⚡',  tooltip: 'Lowest energy consumption (kWh per 100 km).',                                     color: 'text-blue-700',    bgColor: 'bg-blue-50',     borderColor: 'border-blue-200' },
   { id: 'best-value',      label: 'Best Value',       icon: '💰',  tooltip: 'Lowest purchase price per km of electric range. Metric: base price ÷ range.',     color: 'text-amber-700',   bgColor: 'bg-amber-50',    borderColor: 'border-amber-200' },
   { id: 'biggest-battery', label: 'Biggest Battery',  icon: '🔋',  tooltip: 'Highest usable battery capacity (kWh). Larger batteries may offer better longevity and V2L/V2H capability.', color: 'text-purple-700',  bgColor: 'bg-purple-50',   borderColor: 'border-purple-200' },
@@ -39,8 +39,8 @@ export function computeBadges(vehicles: Vehicle[]): VehicleBadges {
 
   const findBadge = (id: string) => BADGE_DEFS.find(b => b.id === id)!
 
-  // Best Range (uses electric-only range for PHEVs)
-  const ranges = vehicles.map(v => ({ id: v.id, val: getElectricRangeKm(v) ?? 0 })).filter(v => v.val > 0)
+  // Best Range
+  const ranges = vehicles.map(v => ({ id: v.id, val: getRangeKm(v) ?? 0 })).filter(v => v.val > 0)
   if (ranges.length > 0) {
     const best = Math.max(...ranges.map(r => r.val))
     ranges.filter(r => r.val === best).forEach(r => result.get(r.id)!.push(findBadge('best-range')))
@@ -55,7 +55,7 @@ export function computeBadges(vehicles: Vehicle[]): VehicleBadges {
 
   // Best Value (lowest purchase price per km of electric range — same metric as QuickPicks)
   const values = vehicles.map(v => {
-    const range = getElectricRangeKm(v)
+    const range = getRangeKm(v)
     const price = v.basePriceLocalCurrency
     return { id: v.id, val: (price && range && range > 0) ? price / range : Infinity }
   }).filter(v => v.val < Infinity)

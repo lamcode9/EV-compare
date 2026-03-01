@@ -23,7 +23,7 @@ export default function EVMethodologyFooter() {
               <li><strong>No editorial opinions.</strong> All rankings are computed from verifiable manufacturer specs.</li>
               <li><strong>No brand preferences.</strong> Every vehicle in the database is treated equally.</li>
               <li><strong>Country-scoped.</strong> Comparisons happen within the same country to ensure price and availability are meaningful.</li>
-              <li><strong>PHEV-aware.</strong> Plug-in hybrids and series hybrids are detected automatically. Range figures use electric-only km (WLTP) — never combined petrol+electric range.</li>
+              <li><strong>BEVs only.</strong> Only pure battery electric vehicles are listed. PHEVs, series hybrids, and range extenders are excluded.</li>
             </ul>
           </div>
 
@@ -40,8 +40,8 @@ export default function EVMethodologyFooter() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
-                <tr><td className="py-1 pr-3">Best Range</td><td className="pr-3">Electric-only range (WLTP km)</td><td>Higher = better</td></tr>
-                <tr><td className="py-1 pr-3">Best Value</td><td className="pr-3">Base price ÷ electric range</td><td>Lower = better</td></tr>
+                <tr><td className="py-1 pr-3">Best Range</td><td className="pr-3">WLTP range (km)</td><td>Higher = better</td></tr>
+                <tr><td className="py-1 pr-3">Best Value</td><td className="pr-3">Base price ÷ range</td><td>Lower = better</td></tr>
                 <tr><td className="py-1 pr-3">Most Efficient</td><td className="pr-3">kWh per 100 km</td><td>Lower = better</td></tr>
                 <tr><td className="py-1 pr-3">Fastest Charge</td><td className="pr-3">DC 0→80% time (min)</td><td>Lower = better</td></tr>
                 <tr><td className="py-1 pr-3">Most Affordable</td><td className="pr-3">Base price (local currency)</td><td>Lower = better</td></tr>
@@ -61,9 +61,9 @@ export default function EVMethodologyFooter() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
-                <tr><td className="py-1 pr-3">🛣️ Best Range</td><td>Highest electric-only range (WLTP km)</td></tr>
+                <tr><td className="py-1 pr-3">🛣️ Best Range</td><td>Highest WLTP range (km)</td></tr>
                 <tr><td className="py-1 pr-3">⚡ Most Efficient</td><td>Lowest kWh/100 km</td></tr>
-                <tr><td className="py-1 pr-3">💰 Best Value</td><td>Lowest base price ÷ electric range</td></tr>
+                <tr><td className="py-1 pr-3">💰 Best Value</td><td>Lowest base price ÷ range</td></tr>
                 <tr><td className="py-1 pr-3">🔋 Biggest Battery</td><td>Highest usable battery capacity (kWh)</td></tr>
                 <tr><td className="py-1 pr-3">⚡ Fastest Charge</td><td>Shortest DC 0→80% time (min)</td></tr>
                 <tr><td className="py-1 pr-3">💪 Most Powerful</td><td>Highest motor output (kW)</td></tr>
@@ -96,17 +96,6 @@ export default function EVMethodologyFooter() {
                 <tr><td className="py-1 pr-3">Battery</td><td className="pr-3">15%</td><td>vehicle kWh ÷ max kWh in set × 100</td></tr>
               </tbody>
             </table>
-          </div>
-
-          {/* PHEV handling */}
-          <div>
-            <h4 className="font-semibold text-gray-800 mb-1">PHEV / Hybrid Handling</h4>
-            <p>
-              Vehicles are classified as PHEV or series hybrid if their name contains &quot;PHEV&quot;, &quot;Hybrid&quot;, or &quot;e-POWER&quot;,
-              or if their battery capacity and stated range are physically implausible for a pure BEV (below 7 kWh/100 km).
-              For these vehicles, only the electric-only WLTP range is used. If no valid electric-only range is available,
-              the vehicle is excluded from range-based rankings.
-            </p>
           </div>
 
           {/* Data sources */}

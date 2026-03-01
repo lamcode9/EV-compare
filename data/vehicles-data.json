@@ -3048,47 +3048,6 @@
     "otaUpdates": "Yes"
   },
   {
-    "name": "Serena e-POWER",
-    "modelTrim": "Highway Star",
-    "country": "ID",
-    "powerRatingKw": 100,
-    "torqueNm": 320,
-    "acceleration0To100Kmh": 9.8,
-    "efficiencyKwhPer100km": 5.2,
-    "rangeWltpKm": 450,
-    "rangeEpaKm": 380,
-    "rangeKm": 450,
-    "batteryCapacityKwh": 2.8,
-    "batteryWeightKg": 80,
-    "curbWeightKg": 1950,
-    "batteryWeightPercentage": 4.1,
-    "batteryManufacturer": "AESC",
-    "batteryTechnology": "Other",
-    "batteryWarranty": "8 years / 160,000 km",
-    "chargingTimeDc0To80Min": null,
-    "chargingCapabilities": "AC: 6.6kW (range-extender hybrid)",
-    "technologyFeatures": "ProPILOT, e-Pedal, 360° Camera, 7-Seater Sliding Doors",
-    "basePriceLocalCurrency": 575000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 1500
-      },
-      {
-        "name": "Technology Package",
-        "price": 2400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 1800
-      }
-    ],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 2150,
-    "hasBidirectional": "N/A",
-    "otaUpdates": "No"
-  },
-  {
     "name": "Hyundai Ioniq 6",
     "modelTrim": "Long Range 2WD",
     "country": "ID",
@@ -3654,47 +3613,6 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 2280,
     "hasBidirectional": true,
-    "otaUpdates": "Yes"
-  },
-  {
-    "name": "Jaecoo J7 PHEV",
-    "modelTrim": "Premium",
-    "country": "MY",
-    "powerRatingKw": 255,
-    "torqueNm": 525,
-    "acceleration0To100Kmh": 6.8,
-    "efficiencyKwhPer100km": 19,
-    "rangeWltpKm": 88,
-    "rangeEpaKm": 75,
-    "rangeKm": 1200,
-    "batteryCapacityKwh": 18.3,
-    "batteryWeightKg": 220,
-    "curbWeightKg": 1950,
-    "batteryWeightPercentage": 11.3,
-    "batteryManufacturer": "CATL",
-    "batteryTechnology": "LFP",
-    "batteryWarranty": "8 years / 160,000 km",
-    "chargingTimeDc0To80Min": null,
-    "chargingCapabilities": "AC: 6.6kW (Plug-in Hybrid)",
-    "technologyFeatures": "ADAS Level 2+, 24.6\" Screen, AR HUD, 21\" Wheels",
-    "basePriceLocalCurrency": 179900,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 5000
-      },
-      {
-        "name": "Technology Package",
-        "price": 8000
-      },
-      {
-        "name": "Comfort Package",
-        "price": 6000
-      }
-    ],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 2150,
-    "hasBidirectional": "N/A",
     "otaUpdates": "Yes"
   },
   {
@@ -4999,47 +4917,6 @@
     "grossVehicleWeightKg": 1800,
     "hasBidirectional": "N/A",
     "otaUpdates": "N/A"
-  },
-  {
-    "name": "Changan Lumin",
-    "modelTrim": "Standard",
-    "country": "ID",
-    "powerRatingKw": 30,
-    "torqueNm": 85,
-    "acceleration0To100Kmh": 15,
-    "efficiencyKwhPer100km": 10.5,
-    "rangeWltpKm": 301,
-    "rangeEpaKm": 255,
-    "rangeKm": 301,
-    "batteryCapacityKwh": 9.4,
-    "batteryWeightKg": 100,
-    "curbWeightKg": 700,
-    "batteryWeightPercentage": 14.3,
-    "batteryManufacturer": "CATL",
-    "batteryTechnology": "LFP",
-    "batteryWarranty": "8 years / 120,000 km",
-    "chargingTimeDc0To80Min": 40,
-    "chargingCapabilities": "DC Fast Charge: Up to 20kW, AC: 3.3kW",
-    "technologyFeatures": "7\" Touchscreen, Rear Camera, Basic Connectivity",
-    "basePriceLocalCurrency": 178000000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 1500
-      },
-      {
-        "name": "Technology Package",
-        "price": 2400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 1800
-      }
-    ],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 900,
-    "hasBidirectional": true,
-    "otaUpdates": "Yes"
   },
   {
     "name": "Nissan Sakura",
@@ -7753,47 +7630,6 @@
     "otaUpdates": "Yes"
   },
   {
-    "name": "Changan Lumin",
-    "modelTrim": "Standard",
-    "country": "PH",
-    "powerRatingKw": 30,
-    "torqueNm": 85,
-    "acceleration0To100Kmh": 15,
-    "efficiencyKwhPer100km": 10.5,
-    "rangeWltpKm": 301,
-    "rangeEpaKm": 255,
-    "rangeKm": 301,
-    "batteryCapacityKwh": 9.4,
-    "batteryWeightKg": 100,
-    "curbWeightKg": 700,
-    "batteryWeightPercentage": 14.3,
-    "batteryManufacturer": "CATL",
-    "batteryTechnology": "LFP",
-    "batteryWarranty": "8 years / 120,000 km",
-    "chargingTimeDc0To80Min": 40,
-    "chargingCapabilities": "DC Fast Charge: Up to 20kW, AC: 3.3kW",
-    "technologyFeatures": "7\" Touchscreen, Rear Camera, Basic Connectivity",
-    "basePriceLocalCurrency": 588000,
-    "optionPrices": [
-      {
-        "name": "Premium Audio System",
-        "price": 4000
-      },
-      {
-        "name": "Technology Package",
-        "price": 6400
-      },
-      {
-        "name": "Comfort Package",
-        "price": 4800
-      }
-    ],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 900,
-    "hasBidirectional": true,
-    "otaUpdates": "Yes"
-  },
-  {
     "name": "Porsche Macan EV",
     "modelTrim": "4",
     "country": "VN",
@@ -9631,40 +9467,6 @@
     "otaUpdates": "Yes"
   },
   {
-    "name": "Chery Tiggo 8 Pro e+",
-    "modelTrim": "Premium",
-    "country": "MY",
-    "powerRatingKw": 238,
-    "acceleration0To100Kmh": 8.8,
-    "efficiencyKwhPer100km": 18,
-    "rangeWltpKm": 800,
-    "rangeEpaKm": 680,
-    "rangeKm": 800,
-    "batteryWeightKg": 250,
-    "curbWeightKg": 1950,
-    "batteryWeightPercentage": 12.8,
-    "batteryManufacturer": "CATL",
-    "batteryTechnology": "LFP",
-    "chargingTimeDc0To80Min": 30,
-    "chargingCapabilities": "DC Fast Charge: Up to 70kW, AC: 6.6kW",
-    "basePriceLocalCurrency": 138800,
-    "optionPrices": [
-      {
-        "name": "7-Seater",
-        "price": 5000
-      }
-    ],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 2150,
-    "topSpeedKmh": 180,
-    "batteryWarranty": "8 years / 150,000 km",
-    "torqueNm": 230,
-    "technologyFeatures": "OTA Updates, 12.3\" Touchscreen, ADAS",
-    "batteryCapacityKwh": 19.27,
-    "hasBidirectional": true,
-    "otaUpdates": "Yes"
-  },
-  {
     "name": "Porsche Macan Electric",
     "modelTrim": "4",
     "country": "MY",
@@ -10729,35 +10531,6 @@
     "isAvailable": true,
     "grossVehicleWeightKg": 1850,
     "topSpeedKmh": 160,
-    "hasBidirectional": true,
-    "otaUpdates": "Yes"
-  },
-  {
-    "name": "Chery eQ1",
-    "modelTrim": "Standard",
-    "country": "VN",
-    "powerRatingKw": 40,
-    "torqueNm": 110,
-    "acceleration0To100Kmh": 12,
-    "efficiencyKwhPer100km": 11,
-    "rangeWltpKm": 301,
-    "rangeEpaKm": 255,
-    "rangeKm": 301,
-    "batteryCapacityKwh": 9.4,
-    "batteryWeightKg": 100,
-    "curbWeightKg": 700,
-    "batteryWeightPercentage": 14.3,
-    "batteryManufacturer": "CATL",
-    "batteryTechnology": "LFP",
-    "batteryWarranty": "8 years / 120,000 km",
-    "chargingTimeDc0To80Min": 40,
-    "chargingCapabilities": "DC Fast Charge: Up to 20kW, AC: 3.3kW",
-    "technologyFeatures": "OTA Updates, 12.3\" Touchscreen, ADAS",
-    "basePriceLocalCurrency": 240000000,
-    "optionPrices": [],
-    "isAvailable": true,
-    "grossVehicleWeightKg": 900,
-    "topSpeedKmh": 100,
     "hasBidirectional": true,
     "otaUpdates": "Yes"
   },

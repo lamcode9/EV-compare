@@ -93,80 +93,19 @@ export function formatStringOrNA(value: string | null | undefined): string {
   return value
 }
 
-/* ── PHEV detection & electric range helpers ──────────────────── */
+/* ── Range helper ─────────────────────────────────────────────── */
 
 /**
- * Detect whether a vehicle is a PHEV / range-extender / series hybrid.
+ * Return the range in km for a BEV.
+ * Prefers WLTP, falls back to legacy rangeKm field.
  *
- * Heuristics (any of):
- *  1. Name contains "PHEV", "Hybrid", or "e-POWER"
- *  2. chargingCapabilities mentions "Plug-in Hybrid" or "range-extender"
- *  3. Battery < 25 kWh AND rangeKm > 3× rangeWltpKm (combined > electric)
- *  4. Physical plausibility: battery < 30 kWh and implied efficiency < 7 kWh/100 km
- *     (no production BEV achieves below ~10 kWh/100 km, so lower values indicate
- *     that rangeKm/rangeWltpKm is a combined petrol+electric figure)
+ * Note: The database now contains only pure BEVs.
+ * PHEVs / hybrids / series hybrids have been removed.
  */
-export function isPHEV(v: {
-  name: string
-  chargingCapabilities?: string | null
-  batteryCapacityKwh?: number | null
+export function getRangeKm(v: {
   rangeKm?: number | null
   rangeWltpKm?: number | null
-}): boolean {
-  const n = v.name.toLowerCase()
-  const ch = (v.chargingCapabilities ?? '').toLowerCase()
-
-  if (n.includes('phev') || n.includes('hybrid') || n.includes('e-power')) return true
-  if (ch.includes('plug-in hybrid') || ch.includes('range-extender')) return true
-
-  const batt = v.batteryCapacityKwh ?? 0
-  const rk = v.rangeKm ?? 0
-  const rwltp = v.rangeWltpKm ?? 0
-
-  // Small battery yet huge "rangeKm" (combined range includes petrol)
-  if (batt > 0 && batt < 25 && rk > 0 && rwltp > 0 && rk > rwltp * 3) return true
-
-  // Physical plausibility: no BEV can achieve < 7 kWh/100 km
-  const bestRange = rwltp || rk
-  if (batt > 0 && batt < 30 && bestRange > 0) {
-    const impliedEfficiency = (batt / bestRange) * 100 // kWh per 100 km
-    if (impliedEfficiency < 7) return true
-  }
-
-  return false
-}
-
-/**
- * Return the electric-only range in km.
- *
- * For BEVs: rangeWltpKm → rangeKm (whichever is available)
- * For PHEVs: rangeWltpKm or rangeEpaKm ONLY (never rangeKm which is combined).
- *   An additional sanity check rejects range figures that are physically
- *   implausible for the declared battery capacity (< 7 kWh/100 km).
- */
-export function getElectricRangeKm(v: {
-  name: string
-  chargingCapabilities?: string | null
-  batteryCapacityKwh?: number | null
-  rangeKm?: number | null
-  rangeWltpKm?: number | null
-  rangeEpaKm?: number | null
 }): number | null {
-  if (isPHEV(v)) {
-    // PHEVs: only electric-only range figures
-    const candidateRange = v.rangeWltpKm ?? v.rangeEpaKm ?? null
-    if (candidateRange === null || candidateRange <= 0) return null
-
-    // Reject range figures that are physically impossible for the battery size
-    const batt = v.batteryCapacityKwh ?? 0
-    if (batt > 0) {
-      const impliedEfficiency = (batt / candidateRange) * 100
-      if (impliedEfficiency < 7) return null // combined range leaked into WLTP field
-    }
-
-    return candidateRange
-  }
-  // BEVs: prefer WLTP, fall back to legacy rangeKm
   return v.rangeWltpKm ?? v.rangeKm ?? null
 }
 

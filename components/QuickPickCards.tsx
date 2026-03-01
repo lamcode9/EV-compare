@@ -4,7 +4,7 @@ import { useMemo } from 'react'
 import { useVehicleStore } from '@/store/VehicleStore'
 import { Vehicle } from '@/types/vehicle'
 import EVScoreGauge from './EVScoreGauge'
-import { formatPrice, getElectricRangeKm, isPHEV } from '@/lib/utils'
+import { formatPrice, getRangeKm } from '@/lib/utils'
 
 /* ── Quick-pick logic ────────────────────────────────────────── */
 
@@ -25,10 +25,10 @@ const CATEGORIES: PickCategory[] = [
     selector: (vehicles) => {
       const sorted = vehicles
         .filter(v => {
-          const range = getElectricRangeKm(v)
+          const range = getRangeKm(v)
           return range !== null && range > 0
         })
-        .sort((a, b) => (getElectricRangeKm(b) ?? 0) - (getElectricRangeKm(a) ?? 0))
+        .sort((a, b) => (getRangeKm(b) ?? 0) - (getRangeKm(a) ?? 0))
       return sorted[0] ?? null
     },
   },
@@ -40,12 +40,12 @@ const CATEGORIES: PickCategory[] = [
     selector: (vehicles) => {
       const sorted = vehicles
         .filter(v => {
-          const range = getElectricRangeKm(v)
+          const range = getRangeKm(v)
           return v.basePriceLocalCurrency && range && range > 0 && v.basePriceLocalCurrency > 0
         })
         .sort((a, b) => {
-          const aVal = (a.basePriceLocalCurrency ?? Infinity) / (getElectricRangeKm(a) ?? 1)
-          const bVal = (b.basePriceLocalCurrency ?? Infinity) / (getElectricRangeKm(b) ?? 1)
+          const aVal = (a.basePriceLocalCurrency ?? Infinity) / (getRangeKm(a) ?? 1)
+          const bVal = (b.basePriceLocalCurrency ?? Infinity) / (getRangeKm(b) ?? 1)
           return aVal - bVal
         })
       return sorted[0] ?? null
@@ -113,7 +113,7 @@ export default function QuickPickCards() {
     <div className="mb-6">
       <div className="flex items-center gap-2 mb-3">
         <h3 className="text-sm font-semibold text-gray-900">Quick Picks</h3>
-        <span className="text-[10px] text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded-full cursor-help" title="Each pick is the #1 vehicle in a single measurable dimension — no composite scores or editorial choices. Best Range: highest WLTP electric-only range (km). Best Value: lowest price per km of range. Most Efficient: lowest kWh/100 km. Fastest Charge: shortest DC 0→80% time (min). Most Affordable: lowest base price. PHEVs use electric-only range.">
+        <span className="text-[10px] text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded-full cursor-help" title="Each pick is the #1 vehicle in a single measurable dimension — no composite scores or editorial choices. Best Range: highest WLTP range (km). Best Value: lowest price per km of range. Most Efficient: lowest kWh/100 km. Fastest Charge: shortest DC 0→80% time (min). Most Affordable: lowest base price. BEVs only.">
           single-metric leaders ℹ️
         </span>
       </div>
@@ -153,11 +153,6 @@ export default function QuickPickCards() {
                     {/* Vehicle name */}
                     <div className="text-sm font-semibold text-gray-900 leading-snug truncate">
                       {vehicle.name}
-                      {isPHEV(vehicle) && (
-                        <span className="ml-1 text-[8px] font-medium text-violet-600 bg-violet-50 border border-violet-200 px-1 py-px rounded-full align-middle" title="Plug-in Hybrid / Series Hybrid — electric-only range shown">
-                          PHEV
-                        </span>
-                      )}
                     </div>
                     {vehicle.modelTrim && (
                       <div className="text-[10px] text-gray-500 truncate">{vehicle.modelTrim}</div>
@@ -165,8 +160,8 @@ export default function QuickPickCards() {
 
                     {/* Key specs */}
                     <div className="flex flex-wrap gap-x-3 gap-y-0.5 mt-2 text-[10px] text-gray-600">
-                      {getElectricRangeKm(vehicle) && (
-                        <span>{getElectricRangeKm(vehicle)} km</span>
+                      {getRangeKm(vehicle) && (
+                        <span>{getRangeKm(vehicle)} km</span>
                       )}
                       {vehicle.efficiencyKwhPer100km && (
                         <span>{vehicle.efficiencyKwhPer100km} kWh/100km</span>
