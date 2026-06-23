@@ -660,7 +660,7 @@ function BatteriesAtHomePageContent() {
 
   // Debounce expensive calculation
   const [debouncedInputs, setDebouncedInputs] = useState<ZeroBillInputs>(inputs)
-  const debounceTimer = useRef<NodeJS.Timeout>()
+  const debounceTimer = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
     if (debounceTimer.current) {

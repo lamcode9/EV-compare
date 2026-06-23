@@ -41,7 +41,7 @@ interface CountryData {
   topSellingEv: string
   electricityTariff: string
   evIncentives: string
-  // Previous-period data for trend arrows (simulated 6 months prior)
+  // Previous comparable period for trend arrows (mostly full-year 2024)
   prev: {
     evAdoptionRate: number
     totalEvs: number
@@ -50,7 +50,7 @@ interface CountryData {
     bessPenetrationPct: number
     evSalesGrowth: number
   }
-  // Historical data for sparklines (2021–2024)
+  // Historical data for sparklines (2021–2025)
   historical: {
     evAdoptionRate: number[]
     totalEvs: number[]
@@ -62,7 +62,7 @@ interface CountryData {
   // Economic snapshot
   gdpPerCapita: number       // USD
   electricityCostUsd: number  // USD per kWh
-  avgEvPriceUsd: number       // average BEV price
+  avgEvPriceUsd: number       // average EV price
   avgAnnualIncomeUsd: number  // average annual income
 }
 
@@ -71,117 +71,217 @@ interface CountryData {
 const COUNTRIES: CountryData[] = [
   {
     code: 'TH', name: 'Thailand', flag: '🇹🇭', population: 72,
-    evAdoptionRate: 11.2, totalEvs: 128000, chargingStations: 6800, chargersPerMillion: 94,
-    solarCapacityGw: 5.2, bessPenetrationPct: 3, policyGrade: 'A', evSalesGrowth: 67,
-    topSellingEv: 'BYD Atto 3', electricityTariff: '฿4.59/kWh',
+    evAdoptionRate: 19.4, totalEvs: 120301, chargingStations: 11622, chargersPerMillion: 161,
+    solarCapacityGw: 6.8, bessPenetrationPct: 3.5, policyGrade: 'A', evSalesGrowth: 80,
+    topSellingEv: 'BYD Dolphin', electricityTariff: '฿4.59/kWh',
     evIncentives: '฿70K-150K subsidy, excise tax cut to 2%',
-    prev: { evAdoptionRate: 9.8, totalEvs: 95000, chargersPerMillion: 78, solarCapacityGw: 4.8, bessPenetrationPct: 2.4, evSalesGrowth: 72 },
+    prev: { evAdoptionRate: 11.9, totalEvs: 66732, chargersPerMillion: 159, solarCapacityGw: 5.2, bessPenetrationPct: 3.0, evSalesGrowth: -9 },
     historical: {
-      evAdoptionRate: [1.2, 3.5, 7.8, 11.2],
-      totalEvs: [9000, 28000, 76000, 128000],
-      chargersPerMillion: [18, 35, 58, 94],
-      solarCapacityGw: [3.0, 3.6, 4.3, 5.2],
-      bessPenetrationPct: [0.5, 1.0, 1.8, 3.0],
-      evSalesGrowth: [180, 220, 95, 67],
+      evAdoptionRate: [1.2, 3.5, 7.8, 11.9, 19.4],
+      totalEvs: [9000, 28000, 76000, 66732, 120301],
+      chargersPerMillion: [18, 54, 135, 159, 161],
+      solarCapacityGw: [3.0, 3.6, 4.3, 5.2, 6.8],
+      bessPenetrationPct: [0.5, 1.0, 1.8, 3.0, 3.5],
+      evSalesGrowth: [180, 220, 95, -9, 80],
     },
     gdpPerCapita: 7066, electricityCostUsd: 0.13, avgEvPriceUsd: 28000, avgAnnualIncomeUsd: 8200,
   },
   {
     code: 'SG', name: 'Singapore', flag: '🇸🇬', population: 5.9,
-    evAdoptionRate: 8.5, totalEvs: 22000, chargingStations: 5400, chargersPerMillion: 915,
-    solarCapacityGw: 1.1, bessPenetrationPct: 8, policyGrade: 'A-', evSalesGrowth: 42,
-    topSellingEv: 'Tesla Model 3', electricityTariff: 'S$0.315/kWh',
+    evAdoptionRate: 45.1, totalEvs: 23684, chargingStations: 10996, chargersPerMillion: 1864,
+    solarCapacityGw: 1.5, bessPenetrationPct: 8.5, policyGrade: 'A-', evSalesGrowth: 64,
+    topSellingEv: 'BYD Sealion 7', electricityTariff: 'S$0.315/kWh',
     evIncentives: '$45K ARF rebate, VES rebate up to $25K',
-    prev: { evAdoptionRate: 7.2, totalEvs: 16500, chargersPerMillion: 780, solarCapacityGw: 1.0, bessPenetrationPct: 6.5, evSalesGrowth: 48 },
+    prev: { evAdoptionRate: 33.6, totalEvs: 14450, chargersPerMillion: 915, solarCapacityGw: 1.1, bessPenetrationPct: 8.0, evSalesGrowth: 218 },
     historical: {
-      evAdoptionRate: [0.8, 2.1, 5.4, 8.5],
-      totalEvs: [2500, 6800, 14500, 22000],
-      chargersPerMillion: [280, 450, 650, 915],
-      solarCapacityGw: [0.5, 0.7, 0.9, 1.1],
-      bessPenetrationPct: [2.0, 3.5, 5.0, 8.0],
-      evSalesGrowth: [90, 160, 78, 42],
+      evAdoptionRate: [5.0, 12.0, 18.0, 33.6, 45.1],
+      totalEvs: [1500, 3500, 5467, 14450, 23684],
+      chargersPerMillion: [280, 450, 650, 915, 1864],
+      solarCapacityGw: [0.5, 0.7, 0.9, 1.1, 1.5],
+      bessPenetrationPct: [2.0, 3.5, 5.0, 8.0, 8.5],
+      evSalesGrowth: [90, 160, 78, 218, 64],
     },
     gdpPerCapita: 65233, electricityCostUsd: 0.22, avgEvPriceUsd: 62000, avgAnnualIncomeUsd: 58000,
   },
   {
     code: 'MY', name: 'Malaysia', flag: '🇲🇾', population: 34,
-    evAdoptionRate: 2.8, totalEvs: 38000, chargingStations: 3200, chargersPerMillion: 94,
-    solarCapacityGw: 3.1, bessPenetrationPct: 2, policyGrade: 'B+', evSalesGrowth: 120,
-    topSellingEv: 'Tesla Model Y', electricityTariff: 'RM0.474/kWh',
+    evAdoptionRate: 3.8, totalEvs: 30848, chargingStations: 5360, chargersPerMillion: 158,
+    solarCapacityGw: 3.1, bessPenetrationPct: 2.3, policyGrade: 'B+', evSalesGrowth: 109,
+    topSellingEv: 'Proton e.MAS 7', electricityTariff: 'RM0.474/kWh',
     evIncentives: 'Zero import duty & excise to 2027, road tax exemption',
-    prev: { evAdoptionRate: 1.8, totalEvs: 18000, chargersPerMillion: 65, solarCapacityGw: 2.7, bessPenetrationPct: 1.5, evSalesGrowth: 95 },
+    prev: { evAdoptionRate: 1.8, totalEvs: 14766, chargersPerMillion: 106, solarCapacityGw: 3.1, bessPenetrationPct: 2.0, evSalesGrowth: 120 },
     historical: {
-      evAdoptionRate: [0.2, 0.6, 1.3, 2.8],
-      totalEvs: [1200, 4500, 15000, 38000],
-      chargersPerMillion: [8, 22, 45, 94],
-      solarCapacityGw: [1.4, 1.9, 2.4, 3.1],
-      bessPenetrationPct: [0.3, 0.7, 1.1, 2.0],
-      evSalesGrowth: [150, 280, 180, 120],
+      evAdoptionRate: [0.2, 0.6, 1.3, 1.8, 3.8],
+      totalEvs: [1200, 4500, 10000, 14766, 30848],
+      chargersPerMillion: [8, 22, 45, 106, 158],
+      solarCapacityGw: [1.4, 1.9, 2.4, 3.1, 3.1],
+      bessPenetrationPct: [0.3, 0.7, 1.1, 2.0, 2.3],
+      evSalesGrowth: [150, 280, 180, 120, 109],
     },
     gdpPerCapita: 12570, electricityCostUsd: 0.10, avgEvPriceUsd: 35000, avgAnnualIncomeUsd: 11500,
   },
   {
     code: 'VN', name: 'Vietnam', flag: '🇻🇳', population: 100,
-    evAdoptionRate: 3.1, totalEvs: 48000, chargingStations: 3000, chargersPerMillion: 30,
-    solarCapacityGw: 18.5, bessPenetrationPct: 1, policyGrade: 'B', evSalesGrowth: 55,
-    topSellingEv: 'VinFast VF e34', electricityTariff: '₫2,135/kWh',
+    evAdoptionRate: 39.0, totalEvs: 175099, chargingStations: 150000, chargersPerMillion: 1500,
+    solarCapacityGw: 19.3, bessPenetrationPct: 1.2, policyGrade: 'B', evSalesGrowth: 99,
+    topSellingEv: 'VinFast VF 3', electricityTariff: '₫2,135/kWh',
     evIncentives: '50% registration fee reduction, 0% luxury tax to 2027',
-    prev: { evAdoptionRate: 2.4, totalEvs: 32000, chargersPerMillion: 22, solarCapacityGw: 17.8, bessPenetrationPct: 0.8, evSalesGrowth: 60 },
+    prev: { evAdoptionRate: 20.0, totalEvs: 88000, chargersPerMillion: 1000, solarCapacityGw: 18.7, bessPenetrationPct: 1.0, evSalesGrowth: 55 },
     historical: {
-      evAdoptionRate: [0.1, 0.5, 1.6, 3.1],
-      totalEvs: [800, 5200, 25000, 48000],
-      chargersPerMillion: [2, 8, 16, 30],
-      solarCapacityGw: [5.0, 9.5, 14.0, 18.5],
-      bessPenetrationPct: [0.1, 0.3, 0.5, 1.0],
-      evSalesGrowth: [120, 350, 95, 55],
+      evAdoptionRate: [0.05, 0.5, 3.5, 20.0, 39.0],
+      totalEvs: [800, 5200, 25000, 88000, 175099],
+      chargersPerMillion: [2, 80, 600, 1000, 1500],
+      solarCapacityGw: [5.0, 9.5, 14.0, 18.7, 19.3],
+      bessPenetrationPct: [0.1, 0.3, 0.5, 1.0, 1.2],
+      evSalesGrowth: [120, 350, 95, 55, 99],
     },
     gdpPerCapita: 4163, electricityCostUsd: 0.08, avgEvPriceUsd: 22000, avgAnnualIncomeUsd: 5400,
   },
   {
     code: 'ID', name: 'Indonesia', flag: '🇮🇩', population: 278,
-    evAdoptionRate: 1.4, totalEvs: 45000, chargingStations: 2500, chargersPerMillion: 9,
-    solarCapacityGw: 0.6, bessPenetrationPct: 0.5, policyGrade: 'B', evSalesGrowth: 85,
-    topSellingEv: 'Wuling Air ev', electricityTariff: 'Rp1,750/kWh',
+    evAdoptionRate: 12.9, totalEvs: 103900, chargingStations: 4655, chargersPerMillion: 17,
+    solarCapacityGw: 1.5, bessPenetrationPct: 0.7, policyGrade: 'B', evSalesGrowth: 141,
+    topSellingEv: 'BYD Atto 1', electricityTariff: 'Rp1,750/kWh',
     evIncentives: 'Rp80M purchase subsidy, 0% luxury tax, reduced PKB',
-    prev: { evAdoptionRate: 0.9, totalEvs: 28000, chargersPerMillion: 6, solarCapacityGw: 0.4, bessPenetrationPct: 0.3, evSalesGrowth: 70 },
+    prev: { evAdoptionRate: 5.0, totalEvs: 43100, chargersPerMillion: 12, solarCapacityGw: 0.9, bessPenetrationPct: 0.5, evSalesGrowth: 190 },
     historical: {
-      evAdoptionRate: [0.05, 0.2, 0.6, 1.4],
-      totalEvs: [500, 3500, 18000, 45000],
-      chargersPerMillion: [1, 3, 5, 9],
-      solarCapacityGw: [0.1, 0.2, 0.35, 0.6],
-      bessPenetrationPct: [0.05, 0.1, 0.2, 0.5],
-      evSalesGrowth: [60, 200, 120, 85],
+      evAdoptionRate: [0.05, 0.2, 0.9, 5.0, 12.9],
+      totalEvs: [500, 3500, 18000, 43100, 103900],
+      chargersPerMillion: [1, 3, 5, 12, 17],
+      solarCapacityGw: [0.5, 0.5, 0.7, 0.9, 1.5],
+      bessPenetrationPct: [0.05, 0.1, 0.2, 0.5, 0.7],
+      evSalesGrowth: [60, 200, 120, 190, 141],
     },
     gdpPerCapita: 4788, electricityCostUsd: 0.09, avgEvPriceUsd: 25000, avgAnnualIncomeUsd: 5100,
   },
   {
     code: 'PH', name: 'Philippines', flag: '🇵🇭', population: 117,
-    evAdoptionRate: 0.6, totalEvs: 8000, chargingStations: 800, chargersPerMillion: 7,
-    solarCapacityGw: 2.8, bessPenetrationPct: 1, policyGrade: 'C+', evSalesGrowth: 110,
-    topSellingEv: 'BYD Dolphin', electricityTariff: '₱12.30/kWh',
+    evAdoptionRate: 12.0, totalEvs: 58905, chargingStations: 1110, chargersPerMillion: 9,
+    solarCapacityGw: 3.9, bessPenetrationPct: 1.2, policyGrade: 'C+', evSalesGrowth: 143,
+    topSellingEv: 'BYD Seagull', electricityTariff: '₱12.30/kWh',
     evIncentives: 'EVIDA Act: 0% tariff, priority registration, HOV access',
-    prev: { evAdoptionRate: 0.3, totalEvs: 4200, chargersPerMillion: 4, solarCapacityGw: 2.3, bessPenetrationPct: 0.6, evSalesGrowth: 80 },
+    prev: { evAdoptionRate: 5.1, totalEvs: 24294, chargersPerMillion: 5, solarCapacityGw: 3.0, bessPenetrationPct: 1.0, evSalesGrowth: 80 },
     historical: {
-      evAdoptionRate: [0.03, 0.1, 0.3, 0.6],
-      totalEvs: [200, 1000, 3500, 8000],
-      chargersPerMillion: [0.5, 1, 3, 7],
-      solarCapacityGw: [1.0, 1.5, 2.0, 2.8],
-      bessPenetrationPct: [0.1, 0.2, 0.5, 1.0],
-      evSalesGrowth: [40, 150, 130, 110],
+      evAdoptionRate: [0.2, 1.0, 2.6, 5.1, 12.0],
+      totalEvs: [1165, 3636, 11584, 24294, 58905],
+      chargersPerMillion: [0.5, 1, 3, 5, 9],
+      solarCapacityGw: [1.0, 1.5, 2.0, 3.0, 3.9],
+      bessPenetrationPct: [0.1, 0.2, 0.5, 1.0, 1.2],
+      evSalesGrowth: [40, 150, 130, 80, 143],
     },
     gdpPerCapita: 3905, electricityCostUsd: 0.18, avgEvPriceUsd: 30000, avgAnnualIncomeUsd: 4500,
   },
 ]
 
+const DATA_PERIOD_NOTE = 'Mostly full-year 2025. Vietnam EV share uses Ember Jan-Oct 2025 because a single public full-year national EV split is not yet available. Philippines uses the public electrified-vehicle category, which includes hybrids, until full-year BEV/PHEV-only national data is published. Charging-network counts use the latest public 2025 or early-2026 datasets where a full-year 2025 snapshot is not published.'
+
+const SCOREBOARD_SOURCES = [
+  {
+    label: 'IEA Global Energy Review 2026',
+    url: 'https://www.iea.org/reports/global-energy-review-2026/technology-electric-vehicles',
+    note: 'Global, US, and emerging-market EV growth context.',
+  },
+  {
+    label: 'ADB / Ember EV Leapfrog 2025',
+    url: 'https://seads.adb.org/news/southeast-asia-leads-global-boom-electric-vehicle-sales',
+    note: 'Comparable Jan-Oct 2025 EV sales-share estimates for Southeast Asian markets.',
+  },
+  {
+    label: 'IRENA Renewable Capacity Statistics 2026',
+    url: 'https://www.irena.org/Publications/2026/Mar/Renewable-capacity-statistics-2026',
+    note: 'End-2025 solar PV capacity by country.',
+  },
+  {
+    label: 'Singapore LTA / Business Times',
+    url: 'https://www.businesstimes.com.sg/singapore/evs-made-record-45-new-car-registrations-singapore-2025/',
+    note: 'Singapore 2025 EV registrations, share, and YoY growth.',
+  },
+  {
+    label: 'Malaysia MAA / paultan.org',
+    url: 'https://paultan.org/2026/01/20/maa-ev-and-hybrid-sales-2025/',
+    note: 'Malaysia 2025 EV sales and YoY growth.',
+  },
+  {
+    label: 'Thailand FTI / electrive',
+    url: 'https://www.electrive.com/2026/01/29/thailand-ev-sales-jump-80-in-2025-lifting-auto-market/',
+    note: 'Thailand 2025 BEV sales, share, and YoY growth.',
+  },
+  {
+    label: 'Indonesia GAIKINDO / Databoks',
+    url: 'https://databoks.katadata.co.id/en/transportation-logistics/statistics/69686c580eb08/byd-to-dominate-indonesias-electric-car-market-in-2025',
+    note: 'Indonesia 2025 BEV wholesale sales and YoY growth.',
+  },
+  {
+    label: 'Vietnam VinFast / VietnamPlus',
+    url: 'https://en.vietnamplus.vn/vinfast-sets-record-with-nearly-176000-ev-deliveries-in-vietnam-in-2025-post335909.vnp',
+    note: 'Vietnam 2025 VinFast domestic EV deliveries and model leaders.',
+  },
+  {
+    label: 'Philippines EVAP/DOE and GT Capital',
+    url: 'https://www.gtcapital.com.ph/storage/uploads/quarterly-reports/%5BUPLOAD%5D%20FY%202025%20Financial%20and%20Operating%20Results%20Briefing%20vF.pdf',
+    note: 'Philippines 2025 electrified-vehicle market size/share.',
+  },
+  {
+    label: 'Singapore LTA DataMall charging points',
+    url: 'https://datamall.lta.gov.sg/content/datamall/en/static-data.html',
+    note: 'Singapore EV charging-point dataset, downloaded from LTA DataMall.',
+  },
+  {
+    label: 'Malaysia Energy Commission charger licences',
+    url: 'https://www.marklines.com/en/news/337933',
+    note: 'Malaysia licensed public EV charger count by AC/DC type as of end-November 2025.',
+  },
+  {
+    label: 'Thailand BOI / EVAT charging network',
+    url: 'https://osos.boi.go.th/EN/news/2228/Thailand-EV-Board-Adjusts-EV3-EV3-5-Terms-to-Promote-Exports-as-Investment-in-EV-Supply-Chain-Tops-137-Billion-Baht/',
+    note: 'Thailand charging-station and charging-head count as of March 2025.',
+  },
+  {
+    label: 'Indonesia PLN charging network',
+    url: 'https://voi.id/en/ekonomi/557294',
+    note: 'Indonesia public EV charging-station machines operated through 2025.',
+  },
+  {
+    label: 'Vietnam V-Green charging network',
+    url: 'https://en.vietnamplus.vn/v-green-to-invest-10-trillion-vnd-in-nationwide-ultra-fast-ev-charging-network-post339467.vnp',
+    note: 'Vietnam V-Green/VinFast charging-port network and 2026 expansion plan.',
+  },
+  {
+    label: 'Philippines DOE/EVAP charging points',
+    url: 'https://www.carguide.ph/2025/08/the-state-of-philippine-ev-industry-as.html',
+    note: 'Philippines DOE/EVAP active charging-point and port counts.',
+  },
+]
+
+function SourceLinks({ labels }: { labels: string[] }) {
+  const sources = SCOREBOARD_SOURCES.filter(source => labels.includes(source.label))
+
+  return (
+    <span className="block space-y-1">
+      {sources.map(source => (
+        <a
+          key={source.label}
+          href={source.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block font-medium text-emerald-700 hover:text-emerald-800"
+        >
+          {source.label}
+        </a>
+      ))}
+    </span>
+  )
+}
+
 // ── Metrics ────────────────────────────────────────────────────
 
 const METRICS = [
-  { key: 'evAdoptionRate' as const, label: 'EV Adoption Rate', unit: '%', desc: 'Share of new car sales that are BEVs (2024)' },
-  { key: 'totalEvs' as const, label: 'Total EVs', unit: '', desc: 'Cumulative battery EVs on the road' },
+  { key: 'evAdoptionRate' as const, label: 'EV/xEV Sales Share', unit: '%', desc: 'Share of new 2025 sales/registrations that were electric or electrified, using each market\'s public reporting boundary' },
+  { key: 'totalEvs' as const, label: '2025 EV Sales', unit: '', desc: 'New 2025 EV sales, registrations, or deliveries from public market sources' },
   { key: 'chargersPerMillion' as const, label: 'Chargers/1M people', unit: '', desc: 'Public charging points per million population' },
   { key: 'solarCapacityGw' as const, label: 'Solar PV (GW)', unit: 'GW', desc: 'Total installed solar photovoltaic capacity' },
-  { key: 'bessPenetrationPct' as const, label: 'BESS Penetration', unit: '%', desc: 'Share of solar installs with home battery storage' },
-  { key: 'evSalesGrowth' as const, label: 'EV Sales Growth', unit: '% YoY', desc: 'Year-over-year BEV sales growth (2023→2024)' },
+  { key: 'bessPenetrationPct' as const, label: 'BESS Context', unit: '%', desc: 'Indicative solar-plus-storage maturity proxy; lower-confidence than vehicle and solar registry data' },
+  { key: 'evSalesGrowth' as const, label: 'EV Sales Growth', unit: '% YoY', desc: 'Year-over-year growth in each market\'s cited EV/electrified sales boundary (2024→2025)' },
 ]
 
 type MetricKey = typeof METRICS[number]['key']
@@ -283,46 +383,46 @@ function ScoreRing({ score, size = 52, strokeWidth = 4, medal }: { score: number
 
 // ── Historical & Benchmark Data ────────────────────────────────
 
-const HISTORICAL_YEARS = [2021, 2022, 2023, 2024]
+const HISTORICAL_YEARS = [2021, 2022, 2023, 2024, 2025]
 
 /** Global & regional benchmarks for context banner */
 const BENCHMARKS: Record<string, { sea: number; us: number; global: number; eu: number; china: number; unit: string; label: string }> = {
-  evAdoptionRate: { sea: 4.6, us: 9.8, global: 18, eu: 24, china: 38, unit: '%', label: 'EV Adoption Rate' },
-  chargersPerMillion: { sea: 192, us: 555, global: 450, eu: 800, china: 1200, unit: '', label: 'Chargers per 1M People' },
-  evSalesGrowth: { sea: 80, us: 11, global: 35, eu: 22, china: 25, unit: '% YoY', label: 'EV Sales Growth' },
+  evAdoptionRate: { sea: 22, us: 10, global: 25, eu: 26, china: 50, unit: '%', label: 'EV/xEV Sales Share' },
+  chargersPerMillion: { sea: 618, us: 555, global: 450, eu: 800, china: 1200, unit: '', label: 'Chargers per 1M People' },
+  evSalesGrowth: { sea: 106, us: -2, global: 20, eu: 30, china: 20, unit: '% YoY', label: 'EV Sales Growth' },
 }
 
 /** Detailed metric info for deep-dive modal */
 const METRIC_DETAILS: Record<MetricKey, { definition: string; methodology: string; source: string }> = {
   evAdoptionRate: {
-    definition: 'The share of new passenger vehicle registrations in 2024 that were battery electric vehicles (BEVs), excluding plug-in hybrids.',
-    methodology: 'BEV registrations ÷ total new car registrations × 100. Based on full-year 2024 data where available, otherwise annualised from H1 2024.',
-    source: 'National transport registries, IEA Global EV Data Explorer 2024',
+    definition: 'The share of new 2025 sales or registrations reported as electric/electrified in each market source.',
+    methodology: 'EV or xEV units ÷ total new vehicle sales/registrations × 100. BEV-only is used where public full-year data exists; Philippines is marked as xEV because its public full-year series includes hybrids.',
+    source: 'LTA, MAA, FTI, GAIKINDO, VinFast/VAMA, GT Capital/CAMPI-TMA, Ember',
   },
   totalEvs: {
-    definition: 'Cumulative number of battery electric vehicles (BEVs) registered and on the road as of December 2024.',
-    methodology: 'Running total of BEV registrations minus estimated scrapped/deregistered vehicles. Cross-referenced with national fleet census data.',
-    source: 'National transport registries, BloombergNEF',
+    definition: 'New 2025 electric/electrified vehicle sales, registrations, deliveries, or wholesale volume, depending on the source available for that market.',
+    methodology: 'Uses the highest-quality public 2025 market series per country. Singapore and Thailand use registrations/sales; Indonesia uses BEV wholesale; Vietnam uses VinFast domestic deliveries; Philippines uses electrified-vehicle sales including BYD estimates.',
+    source: 'National transport/industry registries and company-reported domestic delivery data',
   },
   chargersPerMillion: {
     definition: 'Number of publicly accessible EV charging points per million population, including Level 2 (AC) and DC fast chargers.',
-    methodology: 'Total public charger count ÷ (population in millions). Includes chargers listed in national databases and major networks (PlusPetrol, Shell Recharge, etc.).',
-    source: 'ASEAN Centre for Energy, Open Charge Map, national utility databases',
+    methodology: 'Latest public charger or charging-point count ÷ population in millions. Vietnam includes the V-Green/VinFast network, which is a materially different boundary from open multi-brand public networks.',
+    source: 'LTA DataMall, Malaysia Energy Commission, Thailand EVAT/TISI, PLN, DOE/EVAP, V-Green/VinFast public reports',
   },
   solarCapacityGw: {
     definition: 'Total installed solar photovoltaic (PV) generation capacity in gigawatts, including utility-scale, commercial, and residential installations.',
-    methodology: 'Sum of all grid-connected solar PV capacity as reported by national energy commissions and IRENA statistics.',
-    source: 'IRENA Renewable Capacity Statistics 2024, national energy commissions',
+    methodology: 'End-2025 solar PV capacity from IRENA Renewable Capacity Statistics 2026, rounded to one decimal place for display.',
+    source: 'IRENA Renewable Capacity Statistics 2026',
   },
   bessPenetrationPct: {
-    definition: 'Percentage of residential/commercial solar installations that include a battery energy storage system (BESS), typically lithium-ion.',
-    methodology: 'BESS-paired solar installs ÷ total solar installs × 100. Based on installer surveys and utility interconnection data.',
-    source: 'BloombergNEF, IRENA, national utility data',
+    definition: 'Indicative solar-plus-storage maturity signal, not a directly comparable national registry metric.',
+    methodology: 'Uses installer, utility, and market-research context where public BESS attachment data is sparse. It is kept at lower weight in the readiness score and should be read as directional.',
+    source: 'BloombergNEF, utility filings, installer market reports',
   },
   evSalesGrowth: {
-    definition: 'Year-over-year percentage change in BEV unit sales from 2023 to 2024.',
-    methodology: '(2024 BEV sales − 2023 BEV sales) ÷ 2023 BEV sales × 100. Based on full-year registration data.',
-    source: 'National transport registries, IEA Global EV Data Explorer 2024',
+    definition: 'Year-over-year percentage change in the cited 2025 EV/electrified sales series.',
+    methodology: '(2025 units − 2024 units) ÷ 2024 units × 100. Because countries publish different EV boundaries, this is best read as market momentum rather than a perfectly standardised BEV-only metric.',
+    source: 'LTA, MAA, FTI, GAIKINDO, VinFast, GT Capital/CAMPI-TMA, IEA',
   },
 }
 
@@ -346,7 +446,7 @@ function Sparkline({ data, color = '#10b981', width = 80, height = 28 }: { data:
 
 // ── 3.3 Data Freshness ────────────────────────────────────────
 
-const DATA_UPDATED_DATE = new Date('2025-02-15T00:00:00Z')
+const DATA_UPDATED_DATE = new Date('2026-05-01T00:00:00Z')
 
 function DataFreshnessBadge() {
   const now = new Date()
@@ -426,7 +526,7 @@ function AnimatedNum({ value, suffix = '', decimals = 0, large = false }: { valu
 // ── 3.4 Export Helpers ─────────────────────────────────────────
 
 function exportTableCSV(scored: (CountryData & { readinessScore: number })[]) {
-  const headers = ['Country', 'Code', 'Readiness Score', 'EV Adoption %', 'Total EVs', 'Chargers/1M', 'Solar GW', 'BESS %', 'EV Growth %', 'Policy Grade', 'GDP/Capita', 'Electricity $/kWh', 'Avg EV Price', 'Affordability Index']
+  const headers = ['Country', 'Code', 'Readiness Score', 'EV/xEV Share %', '2025 EV Sales', 'Chargers/1M', 'Solar GW', 'BESS Context %', 'EV Growth %', 'Policy Grade', 'GDP/Capita', 'Electricity $/kWh', 'Avg EV Price', 'Affordability Index']
   const rows = scored.map(c => [
     c.name, c.code, c.readinessScore, c.evAdoptionRate, c.totalEvs, c.chargersPerMillion,
     c.solarCapacityGw, c.bessPenetrationPct, c.evSalesGrowth, c.policyGrade,
@@ -438,7 +538,7 @@ function exportTableCSV(scored: (CountryData & { readinessScore: number })[]) {
   const url = URL.createObjectURL(blob)
   const a = document.createElement('a')
   a.href = url
-  a.download = 'battery-mom-scoreboard-data.csv'
+  a.download = 'battery-mom-ev-adoption-scoreboard-data.csv'
   a.click()
   URL.revokeObjectURL(url)
 }
@@ -482,8 +582,8 @@ export default function ScoreboardPage() {
     const byChargers = [...scored].sort((a, b) => b.chargersPerMillion - a.chargersPerMillion)
     const bySolar = [...scored].sort((a, b) => b.solarCapacityGw - a.solarCapacityGw)
 
-    lines.push(`${byAdoption[0].flag} ${byAdoption[0].name} leads SEA with a ${byAdoption[0].evAdoptionRate}% EV adoption rate — ${(byAdoption[0].evAdoptionRate / byAdoption[byAdoption.length - 1].evAdoptionRate).toFixed(0)}× the lowest.`)
-    lines.push(`${byGrowth[0].flag} ${byGrowth[0].name} saw the fastest growth at +${byGrowth[0].evSalesGrowth}% YoY, more than doubling last year's sales.`)
+    lines.push(`${byAdoption[0].flag} ${byAdoption[0].name} leads SEA with a ${byAdoption[0].evAdoptionRate}% EV/xEV sales share — ${(byAdoption[0].evAdoptionRate / byAdoption[byAdoption.length - 1].evAdoptionRate).toFixed(0)}× the lowest reported share.`)
+    lines.push(`${byGrowth[0].flag} ${byGrowth[0].name} saw the fastest reported growth at +${byGrowth[0].evSalesGrowth}% YoY.`)
 
     if (byChargers[0].chargersPerMillion > byChargers[byChargers.length - 1].chargersPerMillion * 5) {
       lines.push(`${byChargers[0].flag} ${byChargers[0].name} has ${Math.round(byChargers[0].chargersPerMillion / byChargers[byChargers.length - 1].chargersPerMillion)}× more chargers per capita than ${byChargers[byChargers.length - 1].name}.`)
@@ -498,7 +598,7 @@ export default function ScoreboardPage() {
     })[0]
     const jump = biggestJump.evAdoptionRate - biggestJump.prev.evAdoptionRate
     if (jump > 0) {
-      lines.push(`${biggestJump.flag} ${biggestJump.name} gained +${jump.toFixed(1)} percentage points in EV adoption — the biggest absolute jump in the region.`)
+      lines.push(`${biggestJump.flag} ${biggestJump.name} gained +${jump.toFixed(1)} percentage points in reported EV/xEV share — the biggest absolute jump in the region.`)
     }
 
     return lines
@@ -562,7 +662,7 @@ export default function ScoreboardPage() {
     const narratives: string[] = []
     if (a.totalEvs !== b.totalEvs) {
       const [hi, lo] = a.totalEvs > b.totalEvs ? [a, b] : [b, a]
-      narratives.push(`${hi.flag} ${hi.name} has ${(hi.totalEvs / lo.totalEvs).toFixed(1)}× more EVs on the road than ${lo.name}.`)
+      narratives.push(`${hi.flag} ${hi.name} reported ${(hi.totalEvs / lo.totalEvs).toFixed(1)}× more 2025 EV/xEV sales or registrations than ${lo.name}.`)
     }
     if (a.chargersPerMillion !== b.chargersPerMillion) {
       const [hi, lo] = a.chargersPerMillion > b.chargersPerMillion ? [a, b] : [b, a]
@@ -637,21 +737,55 @@ export default function ScoreboardPage() {
         {/* Header */}
         <div className="max-w-2xl mb-10">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
-            Adoption Scoreboard <InfoTooltip content="Ranks six Southeast Asian countries across EV adoption, charging infrastructure, solar capacity, and battery storage metrics. Data sourced from national transport registries, IEA, IRENA, and BloombergNEF. Updated monthly." />
+            EV Adoption Scoreboard <InfoTooltip
+              content={
+                <>
+                  <p>Ranks six Southeast Asian countries across 2025 EV/xEV sales share, charging infrastructure, sales growth, solar context, and policy support.</p>
+                  <p>{DATA_PERIOD_NOTE}</p>
+                  <SourceLinks labels={['IEA Global Energy Review 2026', 'ADB / Ember EV Leapfrog 2025', 'IRENA Renewable Capacity Statistics 2026']} />
+                </>
+              }
+            />
           </h1>
           <p className="mt-3 text-lg text-gray-600 leading-relaxed">
-            Country-by-country rankings for the energy transition across Southeast Asia — EVs, charging, solar, and battery storage.
+            Country-by-country rankings for electric-vehicle adoption across Southeast Asia, with charging, policy, solar, and battery-storage context.
           </p>
           <p className="mt-2 flex items-center gap-2 text-xs text-gray-400">
-            <DataFreshnessBadge /> Sources: national transport registries, IRENA, IEA, BloombergNEF
+            <DataFreshnessBadge /> Sources: national registries, industry bodies, IEA, ADB/Ember, IRENA
           </p>
+          <nav className="mt-5 flex flex-wrap gap-2 text-sm" aria-label="Scoreboard views">
+            <Link
+              href="/scoreboard"
+              className="rounded-full border border-gray-200 bg-white px-3 py-1.5 font-semibold text-gray-600 hover:border-emerald-200 hover:text-emerald-700"
+            >
+              Scoreboard home
+            </Link>
+            <Link
+              href="/scoreboard/ev"
+              className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1.5 font-semibold text-emerald-700"
+            >
+              EV adoption
+            </Link>
+            <Link
+              href="/scoreboard/bess"
+              className="rounded-full border border-gray-200 bg-white px-3 py-1.5 font-semibold text-gray-600 hover:border-emerald-200 hover:text-emerald-700"
+            >
+              BESS adoption
+            </Link>
+            <Link
+              href="/scoreboard/energy"
+              className="rounded-full border border-gray-200 bg-white px-3 py-1.5 font-semibold text-gray-600 hover:border-emerald-200 hover:text-emerald-700"
+            >
+              Global battery deployment
+            </Link>
+          </nav>
         </div>
 
         {/* ─── 1.2 Top-3 Podium ─────────────────────────────────── */}
         <div className="mb-10">
           <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
-            Overall Readiness Ranking
-            <InfoTooltip content="Composite score (0–100) combining EV adoption rate (25%), charger density (20%), EV sales growth (20%), solar capacity (15%), BESS penetration (10%), and policy grade (10%). All dimensions normalised to SEA best-in-class." />
+            EV Adoption Readiness Ranking
+            <InfoTooltip content="Composite score (0–100) combining EV/xEV sales share (25%), charger density (20%), EV sales growth (20%), solar capacity (15%), BESS context (10%), and policy grade (10%). BESS context is a lower-confidence directional metric." />
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {top3.map((c, i) => {
@@ -671,14 +805,14 @@ export default function ScoreboardPage() {
                       <div className="text-2xl mb-0.5">{c.flag}</div>
                       <div className="text-lg font-bold text-gray-900">{c.name}</div>
                       <div className="text-xs text-gray-500 mt-0.5">
-                        {c.evAdoptionRate}% adoption · +{c.evSalesGrowth}% growth
+                        {c.evAdoptionRate}% EV/xEV · +{c.evSalesGrowth}% growth
                       </div>
                     </div>
                   </div>
                   <div className="mt-3 pt-3 border-t border-gray-200/60 grid grid-cols-3 gap-2 text-center">
                     <div>
                       <div className="text-xs font-bold text-gray-900"><AnimatedNum value={c.evAdoptionRate} suffix="%" decimals={1} /></div>
-                      <div className="text-[9px] text-gray-400">EV %</div>
+                      <div className="text-[9px] text-gray-400">EV/xEV %</div>
                     </div>
                     <div>
                       <div className="text-xs font-bold text-gray-900"><AnimatedNum value={c.chargersPerMillion} /></div>
@@ -705,7 +839,7 @@ export default function ScoreboardPage() {
                 <ScoreRing score={c.readinessScore} size={32} strokeWidth={3} />
                 <div>
                   <div className="text-sm font-semibold text-gray-800">{c.flag} {c.name}</div>
-                  <div className="text-[10px] text-gray-400">{c.evAdoptionRate}% adoption</div>
+                  <div className="text-[10px] text-gray-400">{c.evAdoptionRate}% EV/xEV</div>
                 </div>
               </button>
             ))}
@@ -729,7 +863,14 @@ export default function ScoreboardPage() {
         <div className="mb-10 bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-6">
           <h3 className="text-sm font-semibold text-gray-900 mb-1">
             🌏 How does Southeast Asia compare?
-            <InfoTooltip content="SEA average calculated from the 6 Southeast Asian countries tracked. US, Global, EU, and China figures from IEA Global EV Outlook 2024 and BloombergNEF." />
+            <InfoTooltip
+              content={
+                <>
+                  <p>SEA average is the simple average of the six countries tracked. Global and major-market context comes from IEA 2026 and Ember 2025 reporting.</p>
+                  <SourceLinks labels={['IEA Global Energy Review 2026', 'ADB / Ember EV Leapfrog 2025']} />
+                </>
+              }
+            />
           </h3>
           <p className="text-xs text-gray-500 mb-5">SEA average vs US and regional benchmarks for three key metrics.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -899,29 +1040,50 @@ export default function ScoreboardPage() {
                   <div className="grid grid-cols-2 gap-4">
                     <div className="bg-gray-50 rounded-lg p-4">
                       <div className="flex items-center justify-between">
-                        <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">EV adoption <InfoTooltip content="Percentage of all new cars sold in 2024 that were battery electric vehicles (BEVs)." /></div>
+                        <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">EV/xEV share <InfoTooltip
+                          content={
+                            <>
+                              <p>Share of 2025 new sales or registrations reported as electric or electrified. BEV-only is used where full-year public data exists; Philippines uses the broader xEV category.</p>
+                              <p>{DATA_PERIOD_NOTE}</p>
+                            </>
+                          }
+                        /></div>
                         <Sparkline data={c.historical.evAdoptionRate} />
                       </div>
                       <div className="text-2xl font-bold text-gray-900 mt-1 flex items-center">
                         {c.evAdoptionRate}%
                         <TrendBadge current={c.evAdoptionRate} previous={c.prev.evAdoptionRate} />
                       </div>
-                      <div className="text-xs text-gray-500">of new sales</div>
+                      <div className="text-xs text-gray-500">of 2025 new sales</div>
                     </div>
                     <div className="bg-gray-50 rounded-lg p-4">
                       <div className="flex items-center justify-between">
-                        <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Total EVs</div>
+                        <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">2025 EV sales</div>
                         <Sparkline data={c.historical.totalEvs} color="#6366f1" />
                       </div>
                       <div className="text-2xl font-bold text-gray-900 mt-1 flex items-center">
                         {formatNum(c.totalEvs)}
                         <TrendBadge current={c.totalEvs} previous={c.prev.totalEvs} />
                       </div>
-                      <div className="text-xs text-gray-500">on the road</div>
+                      <div className="text-xs text-gray-500">sales / registrations</div>
                     </div>
                     <div className="bg-gray-50 rounded-lg p-4">
                       <div className="flex items-center justify-between">
-                        <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Charger density <InfoTooltip content="Public EV charging points per million people. Singapore leads SEA with 915." /></div>
+                        <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Charger density <InfoTooltip
+                          content={
+                            <>
+                              <p>Charging points per million people. Network definitions differ by country; Vietnam includes V-Green/VinFast points, while Singapore uses the LTA DataMall charger-point dataset.</p>
+                              <SourceLinks labels={[
+                                'Singapore LTA DataMall charging points',
+                                'Malaysia Energy Commission charger licences',
+                                'Thailand BOI / EVAT charging network',
+                                'Indonesia PLN charging network',
+                                'Vietnam V-Green charging network',
+                                'Philippines DOE/EVAP charging points',
+                              ]} />
+                            </>
+                          }
+                        /></div>
                         <Sparkline data={c.historical.chargersPerMillion} color="#f59e0b" />
                       </div>
                       <div className="text-2xl font-bold text-gray-900 mt-1 flex items-center">
@@ -943,16 +1105,16 @@ export default function ScoreboardPage() {
                     </div>
                     <div className="bg-gray-50 rounded-lg p-4">
                       <div className="flex items-center justify-between">
-                        <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">EV growth <InfoTooltip content="Year-over-year change in BEV sales from 2023 to 2024." /></div>
+                        <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">EV growth <InfoTooltip content="Year-over-year change from 2024 to 2025 in each market's cited EV/electrified sales boundary." /></div>
                         <Sparkline data={c.historical.evSalesGrowth} color="#ef4444" />
                       </div>
                       <div className="text-2xl font-bold text-emerald-700 mt-1">+{c.evSalesGrowth}%</div>
-                      <div className="text-xs text-gray-500">YoY 2023→2024</div>
+                      <div className="text-xs text-gray-500">YoY 2024→2025</div>
                     </div>
                     <div className="bg-gray-50 rounded-lg p-4">
                       <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Top seller</div>
                       <div className="text-lg font-bold text-gray-900 mt-1">{c.topSellingEv}</div>
-                      <div className="text-xs text-gray-500">best-selling BEV</div>
+                      <div className="text-xs text-gray-500">reported EV leader</div>
                     </div>
                   </div>
                   {radarData && (
@@ -1016,8 +1178,8 @@ export default function ScoreboardPage() {
 
                 {/* battery.mom branding for share image */}
                 <div className="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
-                  <span className="text-[10px] text-gray-300">battery.mom · Southeast Asia Energy Scoreboard</span>
-                  <span className="text-[10px] text-gray-300">Data: IEA, IRENA, BloombergNEF</span>
+                  <span className="text-[10px] text-gray-300">battery.mom · Southeast Asia EV Adoption Scoreboard</span>
+                  <span className="text-[10px] text-gray-300">Data: national registries, industry bodies, IEA, Ember, IRENA</span>
                 </div>
               </div>
             </div>
@@ -1070,13 +1232,13 @@ export default function ScoreboardPage() {
                     <div className={`text-xs font-semibold tabular-nums ${c.evAdoptionRate === bestValues['evAdoptionRate'] ? 'text-emerald-700' : 'text-gray-900'}`}>
                       {c.evAdoptionRate}%
                     </div>
-                    <div className="text-[9px] text-gray-400">EV %</div>
+                    <div className="text-[9px] text-gray-400">EV/xEV %</div>
                   </div>
                   <div>
                     <div className={`text-xs font-semibold tabular-nums ${c.totalEvs === bestValues['totalEvs'] ? 'text-emerald-700' : 'text-gray-900'}`}>
                       {formatNum(c.totalEvs)}
                     </div>
-                    <div className="text-[9px] text-gray-400">EVs</div>
+                    <div className="text-[9px] text-gray-400">Sales</div>
                   </div>
                   <div>
                     <div className={`text-xs font-semibold tabular-nums ${c.chargersPerMillion === bestValues['chargersPerMillion'] ? 'text-emerald-700' : 'text-gray-900'}`}>
@@ -1103,8 +1265,8 @@ export default function ScoreboardPage() {
                   {[
                     { f: 'name' as SortField, label: 'Country' },
                     { f: 'readinessScore' as SortField, label: 'Score' },
-                    { f: 'evAdoptionRate' as SortField, label: 'EV %' },
-                    { f: 'totalEvs' as SortField, label: 'Total EVs' },
+                    { f: 'evAdoptionRate' as SortField, label: 'EV/xEV %' },
+                    { f: 'totalEvs' as SortField, label: '2025 EV sales' },
                     { f: 'chargersPerMillion' as SortField, label: 'Chrg/1M' },
                     { f: 'solarCapacityGw' as SortField, label: 'Solar GW' },
                     { f: 'evSalesGrowth' as SortField, label: 'Growth %' },
@@ -1260,16 +1422,18 @@ export default function ScoreboardPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-gray-50 rounded-xl p-6">
             <h3 className="text-sm font-semibold text-gray-900 mb-3">Data sources</h3>
-            <ul className="text-xs text-gray-500 space-y-1.5">
-              <li>• National transport/vehicle registration databases</li>
-              <li>• IEA Global EV Data Explorer (2024)</li>
-              <li>• IRENA Renewable Capacity Statistics</li>
-              <li>• BloombergNEF EV Market Outlook</li>
-              <li>• ASEAN Centre for Energy reports</li>
-              <li>• Government incentive program publications</li>
+            <ul className="text-xs text-gray-500 space-y-2">
+              {SCOREBOARD_SOURCES.map(source => (
+                <li key={source.label}>
+                  <a href={source.url} target="_blank" rel="noopener noreferrer" className="font-medium text-emerald-700 hover:text-emerald-800">
+                    {source.label}
+                  </a>
+                  <span className="text-gray-400"> — {source.note}</span>
+                </li>
+              ))}
             </ul>
             <p className="text-xs text-gray-400 mt-3">
-              Numbers are estimates compiled from multiple sources. Some figures are annualised from partial-year data. Updated monthly.
+              {DATA_PERIOD_NOTE} Values are rounded for display and verified against public source material on 1 May 2026.
             </p>
           </div>
           <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-6 flex flex-col justify-between">
@@ -1341,7 +1505,7 @@ export default function ScoreboardPage() {
 
               {/* Historical trend for this metric */}
               <div className="mb-6">
-                <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">Historical trend (2021–2024)</h4>
+                <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">Historical trend (2021–2025)</h4>
                 <ResponsiveContainer width="100%" height={200}>
                   <AreaChart data={HISTORICAL_YEARS.map((yr, i) => {
                     const point: Record<string, string | number> = { year: yr.toString() }

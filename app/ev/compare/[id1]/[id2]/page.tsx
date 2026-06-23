@@ -5,18 +5,20 @@ import VehicleComparisonClient from './page-client'
 import type { Vehicle } from '@/types/vehicle'
 
 interface PageProps {
-  params: {
+  params: Promise<{
     id1: string
     id2: string
-  }
+  }>
 }
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { id1, id2 } = await params
+
   try {
     const [vehicle1, vehicle2] = await Promise.all([
-      prisma.vehicle.findUnique({ where: { id: params.id1 } }),
-      prisma.vehicle.findUnique({ where: { id: params.id2 } }),
+      prisma.vehicle.findUnique({ where: { id: id1 } }),
+      prisma.vehicle.findUnique({ where: { id: id2 } }),
     ])
 
     if (!vehicle1 || !vehicle2) {
@@ -45,10 +47,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function VehicleComparisonPage({ params }: PageProps) {
+  const { id1, id2 } = await params
+
   try {
     const [vehicle1, vehicle2] = await Promise.all([
-      prisma.vehicle.findUnique({ where: { id: params.id1 } }),
-      prisma.vehicle.findUnique({ where: { id: params.id2 } }),
+      prisma.vehicle.findUnique({ where: { id: id1 } }),
+      prisma.vehicle.findUnique({ where: { id: id2 } }),
     ])
 
     if (!vehicle1 || !vehicle2) {
@@ -56,7 +60,7 @@ export default async function VehicleComparisonPage({ params }: PageProps) {
     }
 
     // Don't allow comparing the same vehicle
-    if (params.id1 === params.id2) {
+    if (id1 === id2) {
       notFound()
     }
 

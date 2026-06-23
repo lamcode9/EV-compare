@@ -7,16 +7,18 @@ import type { Vehicle } from '@/types/vehicle'
 export const dynamic = 'force-dynamic'
 
 interface PageProps {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { id } = await params
+
   try {
     const vehicle = await prisma.vehicle.findUnique({
-      where: { id: params.id },
+      where: { id },
     })
 
     if (!vehicle) {
@@ -47,9 +49,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 
 export default async function VehicleDetailPage({ params }: PageProps) {
+  const { id } = await params
+
   try {
     const vehicle = await prisma.vehicle.findUnique({
-      where: { id: params.id },
+      where: { id },
     })
 
     if (!vehicle) {

@@ -39,7 +39,11 @@ export default function CountrySelector() {
           </Select.Icon>
         </Select.Trigger>
         <Select.Portal>
-          <Select.Content className="overflow-hidden bg-white rounded-lg shadow-lg border border-gray-200 z-50">
+          <Select.Content
+            position="popper"
+            sideOffset={8}
+            className="overflow-hidden bg-white rounded-lg shadow-lg border border-gray-200 z-50 min-w-[180px]"
+          >
             <Select.Viewport className="p-1">
               {countries.map((country) => (
                 <Select.Item
@@ -59,4 +63,3 @@ export default function CountrySelector() {
     </div>
   )
 }
-

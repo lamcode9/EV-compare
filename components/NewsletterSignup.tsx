@@ -87,7 +87,7 @@ export default function NewsletterSignup({ variant = 'card', className = '' }: N
         </div>
         <h3 className="text-lg font-semibold text-gray-900 mb-2">Monthly Data Digest</h3>
         <p className="text-sm text-gray-600 mb-5">
-          New EV launches, price changes, policy updates, and BESS market trends across Southeast Asia — once a month, straight to your inbox.
+          Battery deployment, solar growth, policy changes, and market signals across Southeast Asia and the world. Once a month, straight to your inbox.
         </p>
 
         {status === 'success' ? (

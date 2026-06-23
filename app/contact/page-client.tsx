@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 
-type Category = 'correction' | 'feedback' | 'installer' | 'partnership' | 'other'
+type Category = 'correction' | 'feedback' | 'data' | 'partnership' | 'other'
 
 interface ContactForm {
   name: string
@@ -77,7 +77,7 @@ export default function ContactFormClient() {
         <div className="mb-8">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">Contact</h1>
           <p className="mt-3 text-lg text-gray-600 leading-relaxed">
-            Correction, feedback, installer listing request, or just want to say hi? We read every message.
+            Correction, feedback, data request, or just want to say hi? We read every message.
           </p>
         </div>
 
@@ -91,11 +91,11 @@ export default function ContactFormClient() {
             <p className="text-xs text-gray-500 mt-1">For specific EV or BESS data issues</p>
           </Link>
           <Link
-            href="/bess/installers"
+            href="/embed-widgets"
             className="p-4 bg-white border border-gray-200 rounded-xl hover:border-emerald-300 hover:shadow-sm transition-all"
           >
-            <h3 className="font-semibold text-gray-900 text-sm">Installer Directory</h3>
-            <p className="text-xs text-gray-500 mt-1">Get listed as a BESS installer</p>
+            <h3 className="font-semibold text-gray-900 text-sm">Use battery.mom Data</h3>
+            <p className="text-xs text-gray-500 mt-1">Embed widgets or reference public tools</p>
           </Link>
         </div>
 
@@ -144,7 +144,7 @@ export default function ContactFormClient() {
             >
               <option value="feedback">General Feedback</option>
               <option value="correction">Data Correction</option>
-              <option value="installer">Installer Listing Request</option>
+              <option value="data">Data Request</option>
               <option value="partnership">Partnership / Collaboration</option>
               <option value="other">Other</option>
             </select>

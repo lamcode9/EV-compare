@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Contact — battery.mom',
-  description: 'Get in touch with the battery.mom team — corrections, feedback, installer listings, or partnership inquiries.',
+  description: 'Get in touch with battery.mom — corrections, feedback, data requests, or partnership inquiries.',
   alternates: { canonical: '/contact' },
 }
 

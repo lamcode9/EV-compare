@@ -10,9 +10,9 @@ function slugify(name: string): string {
 }
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export async function generateStaticParams() {
@@ -22,7 +22,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const product = bessData.find((item: any) => slugify(item.name) === params.slug)
+  const { slug } = await params
+  const product = bessData.find((item: any) => slugify(item.name) === slug)
 
   if (!product) {
     return { title: 'Product Not Found — battery.mom' }
@@ -34,7 +35,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title,
     description,
-    alternates: { canonical: `/bess/products/${params.slug}` },
+    alternates: { canonical: `/bess/products/${slug}` },
     openGraph: {
       title,
       description,
@@ -43,12 +44,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 }
 
-export default function BESSProductPage({ params }: PageProps) {
-  const product = bessData.find((item: any) => slugify(item.name) === params.slug)
+export default async function BESSProductPage({ params }: PageProps) {
+  const { slug } = await params
+  const product = bessData.find((item: any) => slugify(item.name) === slug)
 
   if (!product) {
     notFound()
   }
 
-  return <BESSDetailClient product={product} slug={params.slug} />
+  return <BESSDetailClient product={product} slug={slug} />
 }

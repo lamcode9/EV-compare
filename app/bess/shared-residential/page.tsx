@@ -418,9 +418,31 @@ const BatteryScatter = memo(function BatteryScatter({
   )
 })
 
-function SharedResidentialContent() {
-  const { selectedCountry, setSelectedCountry } = useVehicleStore()
-  const country = (selectedCountry || 'MY') as Country
+function CountryRequiredState() {
+  return (
+    <main className="min-h-screen pt-12 md:pt-14 bg-white">
+      <section className="container mx-auto px-4 pt-12 pb-16 max-w-7xl">
+        <div className="grid gap-8 rounded-2xl border border-gray-200 bg-gray-50 p-6 md:grid-cols-[1fr_auto] md:items-center">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-700">Shared residential BESS</p>
+            <h1 className="mt-3 text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+              Select a country to load the calculator.
+            </h1>
+            <p className="mt-4 max-w-2xl text-base leading-7 text-gray-600">
+              Tariffs, solar yield, battery pricing, currency, and emissions factors are country-specific. Choose a
+              market first, then the inputs and outputs will appear.
+            </p>
+          </div>
+          <div className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+            <CountrySelector />
+          </div>
+        </div>
+      </section>
+    </main>
+  )
+}
+
+function SharedResidentialCalculator({ country }: { country: Country }) {
   const pdfRef = useRef<HTMLElement>(null)
   const [shareLabel, setShareLabel] = useState('Share Design')
   const [compSnapshots, setCompSnapshots] = useState<BuildingSnapshot[]>([])
@@ -457,11 +479,6 @@ function SharedResidentialContent() {
     { key: 'roof', value: mode === 'retrofit' ? retroRoofArea : newRoofArea, defaultValue: mode === 'retrofit' ? 1200 : 2400, setter: (v: number) => mode === 'retrofit' ? setRetroRoofArea(v) : setNewRoofArea(v), type: 'number' },
     { key: 'batteryQty', value: mode === 'retrofit' ? retroBatteryQty : newBatteryQty, defaultValue: mode === 'retrofit' ? 6 : 10, setter: (v: number) => mode === 'retrofit' ? setRetroBatteryQty(v) : setNewBatteryQty(v), type: 'number' },
   ])
-
-  // Country sync
-  useEffect(() => {
-    if (!selectedCountry) setSelectedCountry('MY')
-  }, [selectedCountry, setSelectedCountry])
 
   useEffect(() => {
     setIsLoading(true)
@@ -1099,9 +1116,6 @@ function SharedResidentialContent() {
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
               Make Your Condo or Apartment 80–100 % Self-Powered
             </h1>
-            <span className="px-2 py-1 text-[11px] font-semibold rounded-full bg-emerald-100 text-emerald-700 border border-emerald-200">
-              New
-            </span>
           </div>
           <CountrySelector />
         </div>
@@ -1340,7 +1354,19 @@ function SharedResidentialContent() {
 }
 
 export default function SharedResidentialPage() {
+  const { selectedCountry, setSelectedCountry } = useVehicleStore()
+  const [isCountryReset, setIsCountryReset] = useState(false)
+
+  useEffect(() => {
+    setSelectedCountry(null)
+    setIsCountryReset(true)
+  }, [setSelectedCountry])
+
+  if (!isCountryReset || !selectedCountry) {
+    return <CountryRequiredState />
+  }
+
   return (
-    <SharedResidentialContent />
+    <SharedResidentialCalculator country={selectedCountry as Country} />
   )
 }

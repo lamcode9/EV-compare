@@ -19,6 +19,110 @@
   }
 }
 
+.home-page {
+  --home-ink: #101512;
+  --home-paper: #fffaf1;
+  --home-warm: #f4f0e8;
+  --home-line: #60f0a8;
+  --home-gold: #f7d18a;
+}
+
+.home-hero-scrim {
+  background:
+    linear-gradient(90deg, rgba(11, 17, 16, 0.94) 0%, rgba(11, 17, 16, 0.82) 42%, rgba(11, 17, 16, 0.32) 100%),
+    linear-gradient(0deg, rgba(11, 17, 16, 0.48), rgba(11, 17, 16, 0.08) 52%, rgba(11, 17, 16, 0.22));
+}
+
+.home-grain {
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 250, 241, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 250, 241, 0.02) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: linear-gradient(to bottom, transparent, black 14%, black 86%, transparent);
+}
+
+.home-hero-poster {
+  opacity: 0.74;
+}
+
+.home-reveal {
+  opacity: 1;
+  transform: none;
+}
+
+.home-flow-guide,
+.home-flow-line {
+  stroke-linecap: round;
+  stroke-width: 4;
+}
+
+.home-flow-guide {
+  stroke: rgba(247, 240, 228, 0.16);
+}
+
+.home-flow-line {
+  stroke: var(--home-line);
+  filter: drop-shadow(0 0 12px rgba(96, 240, 168, 0.44));
+  stroke-dasharray: 660;
+  stroke-dashoffset: 0;
+}
+
+@keyframes home-reveal-in {
+  from {
+    opacity: 0.2;
+    transform: translateY(28px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes home-flow-draw {
+  from {
+    stroke-dashoffset: 660;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .home-hero-scrim {
+    background:
+      linear-gradient(90deg, rgba(11, 17, 16, 0.9), rgba(11, 17, 16, 0.54)),
+      linear-gradient(0deg, rgba(11, 17, 16, 0.6), rgba(11, 17, 16, 0.2));
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .home-reveal {
+      animation: home-reveal-in both cubic-bezier(0.16, 1, 0.3, 1);
+      animation-timeline: view();
+      animation-range: entry 6% cover 34%;
+    }
+
+    .home-flow-line {
+      animation: home-flow-draw both linear;
+      animation-timeline: view();
+      animation-range: entry 14% cover 58%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-reveal,
+  .home-flow-line {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    stroke-dashoffset: 0 !important;
+  }
+
+}
+
 /* Minimal Fade Animation for Mobile Menu */
 @keyframes fade-in {
   0% {
@@ -82,4 +186,3 @@
   /* Footer citation visibility */
   .print-citation { display: block !important; font-size: 7pt; color: #999; margin-top: 0.25rem; }
 }
-

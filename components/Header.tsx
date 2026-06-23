@@ -28,7 +28,15 @@ const navLinks: NavLink[] = [
       { href: '/bess/grid', label: 'Grid & Industrial BESS' },
     ]
   },
-  { href: '/scoreboard', label: 'Scoreboard' },
+  {
+    href: '/scoreboard',
+    label: 'Scoreboard',
+    dropdown: [
+      { href: '/scoreboard/energy', label: 'Global Battery Deployment' },
+      { href: '/scoreboard/ev', label: 'EV Adoption' },
+      { href: '/scoreboard/bess', label: 'BESS Adoption' },
+    ],
+  },
   { href: '/calculators', label: 'Calculators' },
   { href: '/insights', label: 'Insights' },
   { href: '/about', label: 'About' },
@@ -81,13 +89,13 @@ export default function Header() {
     return pathname.startsWith(href)
   }
 
-  const isBessHovered = hoveredDropdown === '/bess'
+  const activeDropdown = navLinks.find((link) => link.href === hoveredDropdown && link.dropdown)
 
   return (
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b border-gray-200/50 transition-all duration-200 ${
-          isBessHovered ? 'h-32 md:h-36' : 'h-12 md:h-14'
+          activeDropdown ? 'h-32 md:h-36' : 'h-12 md:h-14'
         }`}
         style={{
           backgroundColor: 'rgba(255, 255, 255, 0.5)',
@@ -148,11 +156,11 @@ export default function Header() {
               )}
             </nav>
 
-          {/* Extended BESS Dropdown Area */}
-          {isBessHovered && (
+          {/* Extended Dropdown Area */}
+          {activeDropdown && (
             <div className="hidden md:flex items-center justify-center h-20 md:h-22 border-t border-gray-200/30">
               <div className="flex items-center gap-6">
-                {navLinks.find(link => link.href === '/bess')?.dropdown?.map((item) => (
+                {activeDropdown.dropdown?.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
@@ -264,11 +272,6 @@ export default function Header() {
                                   onClick={handleCloseMenu}
                                 >
                                   {item.label}
-                                  {item.label === 'Shared Residential' && (
-                                    <span className="ml-2 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none">
-                                      New
-                                    </span>
-                                  )}
                                 </Link>
                               </li>
                             ))}
@@ -304,4 +307,3 @@ export default function Header() {
     </>
   )
 }
-

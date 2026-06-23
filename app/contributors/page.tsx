@@ -3,14 +3,8 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Contributors — battery.mom',
-  description: 'The people and tools behind battery.mom — credits, data sources, and acknowledgements.',
+  description: 'The data sources, tools, and acknowledgements behind battery.mom.',
   alternates: { canonical: '/contributors' },
-}
-
-interface Contributor {
-  name: string
-  role: string
-  url?: string
 }
 
 interface DataSource {
@@ -18,19 +12,6 @@ interface DataSource {
   description: string
   url: string
 }
-
-const TEAM: Contributor[] = [
-  {
-    name: 'battery.mom team',
-    role: 'Research, data collection, verification, and engineering',
-    url: 'https://battery.mom',
-  },
-  {
-    name: 'Lamonade',
-    role: 'Studio behind battery.mom',
-    url: 'https://lamonade.xyz',
-  },
-]
 
 const TOOLS: { name: string; purpose: string; url: string }[] = [
   { name: 'Next.js', purpose: 'React framework', url: 'https://nextjs.org' },
@@ -64,9 +45,9 @@ const DATA_SOURCES: DataSource[] = [
     url: 'https://ev-database.org',
   },
   {
-    name: 'IEA Global EV Outlook',
-    description: 'International Energy Agency — global EV adoption and policy tracker',
-    url: 'https://www.iea.org/reports/global-ev-outlook-2024',
+    name: 'IEA Global Energy Review',
+    description: 'International Energy Agency — current global EV sales and policy context',
+    url: 'https://www.iea.org/reports/global-energy-review-2026/technology-electric-vehicles',
   },
   {
     name: 'IRENA',
@@ -93,36 +74,8 @@ export default function ContributorsPage() {
         <div className="mb-10">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">Contributors</h1>
           <p className="mt-4 text-lg text-gray-600 leading-relaxed">
-            battery.mom is built by a small team with a big mission: making energy transition data clear, independent, and free for everyone.
+            The public sources, tools, and references behind battery.mom&apos;s battery, solar, and energy-transition data.
           </p>
-        </div>
-
-        {/* Team */}
-        <div className="mb-12">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-500" />
-            Team
-          </h2>
-          <div className="space-y-3">
-            {TEAM.map((person) => (
-              <div key={person.name} className="bg-white border border-gray-200 rounded-xl p-5 flex items-center justify-between">
-                <div>
-                  <h3 className="font-semibold text-gray-900">{person.name}</h3>
-                  <p className="text-sm text-gray-500">{person.role}</p>
-                </div>
-                {person.url && (
-                  <a
-                    href={person.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-emerald-600 hover:text-emerald-700 font-medium"
-                  >
-                    Visit
-                  </a>
-                )}
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* Data Sources */}
