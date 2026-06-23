@@ -47,8 +47,13 @@ Verify every route with the live nested-border detector — target 0 non-interac
       migrated + serif heroes + `ShareResult` component. Detector verified 0 nested / 0 leftover
       on every page. (`/bess/products/[slug]` is 0-token already; no `installers` route exists.)
 - [x] **Embed widgets** (971fc2e): ev-stats + ev-vs-ice recolored to ink/brand, transparent bg kept.
-- [ ] NOTE: pre-existing bug flagged via background task — `/embed/*` renders the full site
-      header/footer instead of being chrome-free. Out of scope for the token migration.
+      `/embed-widgets` gallery also migrated (6df2782).
+- [x] **Embed chrome bug FIXED** (101211e): `/embed/*` widgets were rendering the full site
+      header/footer (root layout applied chrome to all routes + embed/layout.tsx's nested `<html>`
+      got flattened). New `SiteShell` client component omits chrome for `/embed/*` (SSR-safe via
+      usePathname, no flash); body is now transparent (site bg comes from SiteShell's bg-paper
+      wrapper) so widgets blend into host pages; embed/layout.tsx is a proper nested layout.
+      Verified live: embeds chrome-free + transparent; homepage, 404, /embed-widgets keep chrome.
 
 ## Design-system propagation — COMPLETE
 Every user-facing route is on the editorial ink/paper/brand system with serif display headings and
