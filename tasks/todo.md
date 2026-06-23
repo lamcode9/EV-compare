@@ -31,8 +31,12 @@ Verify every route with the live nested-border detector — target 0 non-interac
 - [x] Homepage reconciled onto the editorial system (serif headlines, ink/paper tokens,
       de-nested method metric pills, calmer brand accent). nested 5→0.
 - [x] `/bess` desk landing + `/ev` hero shell migrated to serif + tokens.
-- [ ] **Deep EV components** (shared, used by /ev, /ev/[id], /ev/compare): `ComparisonTable`,
-      `VehicleSection`, `QuickPickCards`, `StatsGrid` — still gray/emerald. (`BESSHeadToHead` done.)
+- [x] **EV pillar** (482212b): /ev, /ev/[id], /ev/compare route clients + ~19 shared components
+      (`ComparisonTable`, `StatsGrid`, `QuickPickCards`, `VehicleSection`/`Card`, score gauge,
+      radar, heatmap, TCO, battery-health, backup, smart-insights, mobile cards, share card,
+      winner badges, search, methodology, freshness, skeletons) migrated + de-nested. Detector
+      on the fully-rendered comparison (44 chart SVGs, 2 vehicles): 0 nested, 0 leftover. Fixed a
+      latent undefined-token bug (`text-light-gray-500` → `text-ink-400`).
 - [x] **BESS calculator pages** — `home` (adc36a1), `commercial` (13a2a15), `grid` (5c28aa8),
       `shared-residential` (8db0b1f), all migrated + de-nested (detector 0 non-interactive nested,
       0 leftover gray/emerald) + serif heroes + plain-language result sentences, pushed to prod.
