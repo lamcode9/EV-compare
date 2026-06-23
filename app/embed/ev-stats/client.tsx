@@ -24,12 +24,12 @@ export default function EmbedEvStatsClient({ stats }: { stats: Stats }) {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-lg font-bold text-gray-900">
+        <h2 className="text-lg font-bold text-ink">
           ⚡ EV Database Stats
         </h2>
-        <span className="text-2xl font-bold text-emerald-600 tabular-nums">
+        <span className="text-2xl font-bold text-brand-600 tabular-nums">
           {stats.totalVehicles.toLocaleString()}
-          <span className="text-xs font-normal text-gray-500 ml-1">vehicles</span>
+          <span className="text-xs font-normal text-ink-500 ml-1">vehicles</span>
         </span>
       </div>
 
@@ -38,21 +38,21 @@ export default function EmbedEvStatsClient({ stats }: { stats: Stats }) {
         {stats.countryCounts.map((c) => (
           <div
             key={c.country}
-            className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gray-50 border border-gray-200 text-sm"
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-paper-200 border border-ink/10 text-sm"
           >
             <span>{c.flag}</span>
-            <span className="font-medium text-gray-700">{c.country}</span>
-            <span className="text-gray-500 tabular-nums">{c.count}</span>
+            <span className="font-medium text-ink-700">{c.country}</span>
+            <span className="text-ink-500 tabular-nums">{c.count}</span>
           </div>
         ))}
       </div>
 
       {/* Tab toggle */}
-      <div className="flex gap-1 bg-gray-100 rounded-lg p-0.5 w-fit">
+      <div className="flex gap-1 bg-paper-200 rounded-lg p-0.5 w-fit">
         <button
           onClick={() => setTab('range')}
           className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${
-            tab === 'range' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'
+            tab === 'range' ? 'bg-paper-100 text-ink shadow-sm' : 'text-ink-500 hover:text-ink-700'
           }`}
         >
           Longest Range
@@ -60,7 +60,7 @@ export default function EmbedEvStatsClient({ stats }: { stats: Stats }) {
         <button
           onClick={() => setTab('efficiency')}
           className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${
-            tab === 'efficiency' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'
+            tab === 'efficiency' ? 'bg-paper-100 text-ink shadow-sm' : 'text-ink-500 hover:text-ink-700'
           }`}
         >
           Most Efficient
@@ -120,7 +120,7 @@ export default function EmbedEvStatsClient({ stats }: { stats: Stats }) {
         </div>
       )}
 
-      <p className="text-[10px] text-gray-400 text-right">
+      <p className="text-[10px] text-ink-400 text-right">
         Live data · Source: battery.mom
       </p>
     </div>

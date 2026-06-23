@@ -24,12 +24,12 @@ export default function EmbedLayout({
       <body className={`${inter.className} bg-transparent`}>
         <div className="p-4">
           {children}
-          <div className="mt-4 pt-3 border-t border-gray-200 text-center">
+          <div className="mt-4 pt-3 border-t border-ink/10 text-center">
             <a
               href="https://battery.mom"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-gray-400 hover:text-emerald-600 transition-colors"
+              className="text-xs text-ink-400 hover:text-brand-600 transition-colors"
             >
               Powered by battery.mom
             </a>
