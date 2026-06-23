@@ -56,6 +56,8 @@
 - BESS product count is derived from the JSON file length at build time — no async needed.
 - Design: left-aligned hero (not centered) — matches modern data-tool aesthetics (Linear, Vercel). Centered felt generic.
 - 6-card pillar grid with amber "Coming Q2/Q3 2026" badges on unreleased sections — every card is a `<Link>`, so even coming-soon pages are clickable and show clear content.
+- Current homepage hero should lead with mission-level solar and battery adoption signals, not database inventory counts such as EV trims or BESS products. The site exists to track batteries and solar powering the world first; product tools support that mission.
+- Homepage mission copy should stay anchored to the About-page line "batteries are the new oil": storage makes intermittent solar and wind reliable for homes, vehicles, businesses, and grids. Do not publish internal build/process copy such as animation explanations.
 
 ### Placeholder Pages Pattern
 - Established a consistent pattern for all "coming soon" pages: real heading + description → amber clock card with launch date → preview of planned metrics/features → CTA links to live pages. Never just "Coming Soon" text.
@@ -86,11 +88,22 @@
 
 ### Scoreboard
 - Split into server component (page.tsx with metadata) + client component (page-client.tsx for interactivity).
+- `/scoreboard` is now a scoreboard family, not the EV adoption page itself.
+- `/scoreboard` should stay a hub/index, not a specific adoption answer. EV adoption lives at `/scoreboard/ev`, BESS sector adoption at `/scoreboard/bess`, and global stationary battery deployment at `/scoreboard/energy`.
+- Label the SEA vehicle page as **EV adoption**, not vague "SEA adoption"; BESS needs a separate sector lens for home, shared residential, commercial, grid-scale, and EV-charging storage.
+- Battery deployment data must keep units explicit: batteries are storage capacity (GW/GWh), while coal, gas, oil, renewables, hydro, wind, solar, and nuclear are generation sources (TWh/year or GW capacity). Do not flatten them into one undifferentiated metric.
+- Global battery deployment source data lives in `data/energy-deployment-scoreboard.ts`; IEA 2026 is the primary source for power-capacity additions and electricity mix, with public BNEF/Carbon Brief context for GWh storage estimates and 2035 outlook.
+- Do not set custom long-lived `Cache-Control` headers on `/_next/static/*`; Next already manages hashed assets, and in local dev those headers can make the browser hydrate new server HTML with stale client chunks.
 - Real data for 6 countries: EV adoption rates, total EVs, charging density (per million), solar GW, BESS penetration %, EV sales growth YoY, policy grades, top-selling EV, tariffs, incentives.
 - Interactive: metric selector tabs re-rank countries + update bar chart. Click a country to see radar chart (normalised vs peers) + detail stats grid + tariff/incentive info.
 - "At a glance" summary table for quick comparison across all 6 metrics.
 - Data source citations section with IEA, IRENA, BloombergNEF, national registries.
 - Deferred to Batch 3: trend sparklines (need historical data collection), interactive SVG map.
+
+### Navigation / Footer
+- Do not surface `/bess/installers` links, include the installer directory in the sitemap, or publish installer directory content for now; the user does not want Battery.mom linking to installers yet.
+- Do not duplicate the newsletter signup in the footer; keep subscription capture in the dedicated homepage digest section.
+- `/contributors` should credit public data sources and tools only. Do not include internal team, battery.mom team, or Lamonade credit cards there.
 
 ### Insights / Articles
 - Used TSX content components in `/content/` directory — no MDX dependency needed. Each article is a React component exporting article body JSX. Article metadata lives in `/content/articles.ts` as a typed array.

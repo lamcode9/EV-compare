@@ -164,6 +164,8 @@ The "Best Selling" category in QuickPickCards is **algorithmically computed** fr
 ### Scoreboard Data
 The Scoreboard page (`app/scoreboard/page-client.tsx`) has a large `COUNTRIES` array with hardcoded adoption metrics, EV counts, charger stats, etc. This should be separated into its own data file in `data/` for easier updating.
 
+The global battery deployment subpage (`app/scoreboard/energy/page-client.tsx`) uses `data/energy-deployment-scoreboard.ts`. Update this file when refreshing IEA Global Energy Review, IRENA Renewable Capacity Statistics, BNEF energy storage outlook, or Ember/Carbon Brief electricity-review figures. Keep battery storage units separate from generation units: stationary batteries are GW/GWh storage, while fuels and renewables are TWh/year generation or GW plant capacity.
+
 ---
 
 ## Data Source Citations
