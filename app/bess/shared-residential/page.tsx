@@ -8,6 +8,7 @@ import CountrySelector from '@/components/CountrySelector'
 import InfoTooltip from '@/components/InfoTooltip'
 import PDFExportButton from '@/components/PDFExportButton'
 import { Eyebrow } from '@/components/ui'
+import { NextSteps } from '@/components/ui/NextSteps'
 import BuildingComparison, { type BuildingSnapshot } from '@/components/BuildingComparison'
 import MarketingPDFButton from '@/components/MarketingPDFButton'
 import GreenCertEstimator from '@/components/GreenCertEstimator'
@@ -1351,6 +1352,8 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
           monthly.*
         </div>
       </section>
+
+      <NextSteps route="/bess/shared-residential" />
     </main>
   )
 }

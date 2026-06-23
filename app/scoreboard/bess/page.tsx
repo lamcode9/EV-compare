@@ -4,15 +4,16 @@ import {
   ENERGY_DEPLOYMENT_SNAPSHOT,
   GLOBAL_BATTERY_POWER_ADDITIONS,
 } from '@/data/energy-deployment-scoreboard'
+import { NextSteps } from '@/components/ui/NextSteps'
 
 export const metadata: Metadata = {
-  title: 'BESS Adoption Scoreboard — battery.mom',
+  title: 'Storage Adoption Map — battery.mom',
   description:
-    'Sector-by-sector BESS adoption map for home, shared residential, commercial, grid-scale, and EV-charging storage markets.',
+    'An honest sector-maturity map for stationary storage: where home, shared residential, commercial, grid-scale, and EV-charging batteries are scaling first — and where country-level data is still too thin to rank.',
   openGraph: {
-    title: 'BESS Adoption Scoreboard — battery.mom',
+    title: 'Storage Adoption Map — battery.mom',
     description:
-      'Track how battery energy storage adoption differs across home, commercial, shared residential, grid-scale, and EV charging sectors.',
+      'Where battery energy storage is scaling first across home, commercial, shared residential, grid-scale, and EV-charging sectors — and where the data is still too thin to rank countries.',
     url: 'https://battery.mom/scoreboard/bess',
     siteName: 'battery.mom',
     type: 'website',
@@ -123,12 +124,14 @@ export default function BessAdoptionScoreboardPage() {
         <div className="grid gap-8 lg:grid-cols-[1fr_360px] lg:items-end">
           <div className="max-w-3xl">
             <div className="mb-4 inline-flex rounded-full bg-paper-200 px-3 py-1 text-xs font-semibold text-ink-600">
-              Stationary storage by sector
+              Sector maturity, mapped honestly
             </div>
-            <h1 className="font-display text-4xl font-medium text-ink md:text-6xl">BESS Adoption Scoreboard</h1>
+            <h1 className="font-display text-4xl font-medium text-ink md:text-6xl">Storage Adoption Map</h1>
             <p className="mt-4 text-lg leading-relaxed text-ink-600">
-              Track stationary storage across homes, shared residential buildings, commercial sites,
-              utility-scale projects, and EV charging hubs.
+              Stationary storage is scaling at wildly different speeds across homes, shared residential
+              buildings, commercial sites, utility-scale projects, and EV charging hubs. This is a map of
+              where each sector stands today — <span className="font-semibold text-ink">not a country ranking</span>.
+              Where the public data is still too thin to rank fairly, we say so rather than fake a number.
             </p>
           </div>
           <div className="rounded-card border border-ink/10 bg-ink p-5 text-white shadow-sm">
@@ -203,6 +206,8 @@ export default function BessAdoptionScoreboardPage() {
           </div>
         </section>
       </section>
+
+      <NextSteps route="/scoreboard/bess" />
     </main>
   )
 }

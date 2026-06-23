@@ -8,6 +8,7 @@ import StructuredData from '@/components/StructuredData'
 import QuickPickCards from '@/components/QuickPickCards'
 import EVMethodologyFooter from '@/components/EVMethodologyFooter'
 import { SearchBoxSkeleton, ComparisonTableSkeleton } from '@/components/LoadingSkeleton'
+import { NextSteps } from '@/components/ui/NextSteps'
 
 export const metadata: Metadata = {
   title: 'Compare Electric Vehicles — battery.mom',
@@ -76,6 +77,12 @@ export default function EVPage() {
           {/* Methodology disclosure */}
           <EVMethodologyFooter />
         </section>
+
+        <NextSteps
+          route="/ev"
+          heading="Found your shortlist? Run the numbers."
+          eyebrow="Next step"
+        />
       </main>
     </>
   )

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { NextSteps } from '@/components/ui/NextSteps'
 
 export const metadata: Metadata = {
   title: 'About - battery.mom',
@@ -92,17 +93,10 @@ export default function AboutPage() {
           </p>
         </div>
 
-        {/* Back Button */}
-        <div className="mt-12">
-          <Link
-            href="/"
-            className="inline-flex items-center px-6 py-3 bg-ev-primary text-white rounded-lg hover:bg-ev-primary/90 transition-colors font-medium"
-          >
-            ← Back to Home
-          </Link>
-        </div>
       </div>
       </section>
+
+      <NextSteps route="/about" />
     </main>
   )
 }

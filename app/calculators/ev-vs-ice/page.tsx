@@ -3,6 +3,7 @@
 import { useState, useMemo, useCallback, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import InfoTooltip from '@/components/InfoTooltip'
+import { NextSteps } from '@/components/ui/NextSteps'
 import { COUNTRY_OPTIONS as COUNTRIES, formatCurrency as fmt, formatCompact as fmtShort } from '@/lib/constants'
 import ShareResult from '@/components/ShareResult'
 import type { Country } from '@/types/bess'
@@ -426,6 +427,8 @@ export default function EVvsICEPage() {
           </p>
         </div>
       </section>
+
+      <NextSteps route="/calculators/ev-vs-ice" />
     </main>
   )
 }

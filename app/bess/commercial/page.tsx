@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import CommercialBESSClient from './page-client'
+import { NextSteps } from '@/components/ui/NextSteps'
 
 export const metadata: Metadata = {
   title: 'Commercial BESS Calculator — battery.mom',
@@ -14,6 +15,11 @@ export const metadata: Metadata = {
 }
 
 export default function BESSCommercialPage() {
-  return <CommercialBESSClient />
+  return (
+    <>
+      <CommercialBESSClient />
+      <NextSteps route="/bess/commercial" />
+    </>
+  )
 }
 

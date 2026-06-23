@@ -128,12 +128,12 @@
     <tr><th>Phase</th><th>Work</th><th>Status</th></tr>
     <tr><td>1</td><td>Design system: tokens, primitives, de-nesting across all routes</td><td><span class="tag done">done</span></td></tr>
     <tr><td>2a</td><td>Thesis + topic-pillar nav + mirrored footer</td><td><span class="tag done">shipped</span></td></tr>
-    <tr><td>2b</td><td>Page-archetype anatomy + connective "next" links across pages; reframe BESS Adoption; ladder Story&nbsp;&rarr;&nbsp;Scoreboard</td><td><span class="tag now">next</span></td></tr>
+    <tr><td>2b</td><td>Connective "next step" footer across every tool, scoreboard, and meta page (one shared <code>&lt;NextSteps&gt;</code> driven by a single journey registry); BESS board reframed as the honest "Storage Adoption Map"; Story already ladders to the live energy board</td><td><span class="tag done">shipped</span></td></tr>
     <tr><td>3</td><td>Data refresh: $/kWh cost curve, EV-over-time, China's share, un-bury SEA from "Rest of World"</td><td><span class="tag next">queued</span></td></tr>
     <tr><td>4</td><td>Forward-looking "where it's heading" editorial</td><td><span class="tag next">queued</span></td></tr>
   </table>
 
-  <p class="meta">Authored as the decisions artifact before route work. The nav + footer reorganisation (2a) is live on production. Phase 2b is the next reviewable increment.</p>
+  <p class="meta">Authored as the decisions artifact before route work. Phases 1, 2a, and 2b are live on production. The connective spine lives in <code>lib/journey.ts</code> (the catalogue of destinations + the per-page next-step map) rendered by <code>components/ui/NextSteps.tsx</code>; every page now ends pointing forward in the Track&nbsp;&rarr;&nbsp;Decide flow. Phase 3 (data refresh) is the next reviewable increment.</p>
 
 </div>
 </body>

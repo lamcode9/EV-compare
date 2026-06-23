@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { NextSteps } from '@/components/ui/NextSteps'
 
 export const metadata: Metadata = {
   title: 'BESS Case Studies — battery.mom',
@@ -312,6 +313,8 @@ export default function CaseStudiesPage() {
           </Link>
         </div>
       </section>
+
+      <NextSteps route="/bess/case-studies" />
     </main>
   )
 }

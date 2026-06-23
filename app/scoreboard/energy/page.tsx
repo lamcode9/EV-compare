@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import EnergyDeploymentScoreboardPage from './page-client'
+import { NextSteps } from '@/components/ui/NextSteps'
 
 export const metadata: Metadata = {
   title: 'Battery Deployment Scoreboard — battery.mom',
@@ -16,5 +17,10 @@ export const metadata: Metadata = {
 }
 
 export default function EnergyScoreboardPage() {
-  return <EnergyDeploymentScoreboardPage />
+  return (
+    <>
+      <EnergyDeploymentScoreboardPage />
+      <NextSteps route="/scoreboard/energy" />
+    </>
+  )
 }

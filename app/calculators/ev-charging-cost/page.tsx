@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useEffect } from 'react'
 import InfoTooltip from '@/components/InfoTooltip'
+import { NextSteps } from '@/components/ui/NextSteps'
 import { COUNTRY_OPTIONS as COUNTRIES, formatCurrency as fmt, formatCompact as fmtShort } from '@/lib/constants'
 import ShareResult from '@/components/ShareResult'
 import { useSearchParams } from 'next/navigation'
@@ -434,6 +435,8 @@ export default function EvChargingCostPage() {
           </ul>
         </div>
       </section>
+
+      <NextSteps route="/calculators/ev-charging-cost" />
     </main>
   )
 }

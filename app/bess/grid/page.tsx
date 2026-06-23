@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import GridBESSClient from './page-client'
+import { NextSteps } from '@/components/ui/NextSteps'
 
 export const metadata: Metadata = {
   title: 'Grid-Scale BESS Calculator — battery.mom',
@@ -14,6 +15,11 @@ export const metadata: Metadata = {
 }
 
 export default function BESSGridPage() {
-  return <GridBESSClient />
+  return (
+    <>
+      <GridBESSClient />
+      <NextSteps route="/bess/grid" />
+    </>
+  )
 }
 

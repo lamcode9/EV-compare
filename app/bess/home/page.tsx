@@ -10,6 +10,7 @@ import CountrySelector from '@/components/CountrySelector'
 import InfoTooltip from '@/components/InfoTooltip'
 import PDFExportButton from '@/components/PDFExportButton'
 import ScenarioComparisonTool from '@/components/ScenarioComparisonTool'
+import { NextSteps } from '@/components/ui/NextSteps'
 import { useURLState, copyShareLink } from '@/lib/hooks/useURLState'
 import { loadBESSData } from '@/lib/data-fetchers/bess-data'
 import {
@@ -1976,6 +1977,8 @@ function BatteriesAtHomePageContent() {
           *Real 2025 tariffs/yields. Assumes average household. Actual varies by roof/usage/weather. Updated monthly.*
         </p>
       </section>
+
+      <NextSteps route="/bess/home" />
     </main>
   )
 }

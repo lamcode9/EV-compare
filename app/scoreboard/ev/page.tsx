@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import ScoreboardClient from '../page-client'
+import { NextSteps } from '@/components/ui/NextSteps'
 
 export const metadata: Metadata = {
   title: 'EV Adoption Scoreboard — battery.mom',
@@ -16,5 +17,10 @@ export const metadata: Metadata = {
 }
 
 export default function EvAdoptionScoreboardPage() {
-  return <ScoreboardClient />
+  return (
+    <>
+      <ScoreboardClient />
+      <NextSteps route="/scoreboard/ev" />
+    </>
+  )
 }
