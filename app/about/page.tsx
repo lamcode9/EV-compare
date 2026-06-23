@@ -8,21 +8,21 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-white pt-12 md:pt-14">
+    <main className="min-h-screen bg-paper pt-12 md:pt-14">
       <section className="container mx-auto px-4 pt-12 pb-16 max-w-7xl">
       <div className="max-w-4xl">
         {/* Hero Title */}
-        <h1 className="text-6xl md:text-7xl font-bold mb-10 text-gray-900 tracking-tight">
+        <h1 className="font-display text-6xl md:text-7xl font-medium mb-10 text-ink tracking-tight">
           battery.mom
         </h1>
 
         {/* Intro */}
-        <p className="text-xl md:text-2xl leading-relaxed text-gray-800 mb-10 font-medium">
+        <p className="text-xl md:text-2xl leading-relaxed text-ink-800 mb-10 font-medium">
           We&apos;re obsessed with one simple idea: <strong className="text-ev-primary font-bold">batteries are the new oil</strong>.
         </p>
 
         {/* Body */}
-        <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
+        <div className="space-y-6 text-ink-700 leading-relaxed text-lg">
           <p>
             In the next decade, lithium-ion (and the chemistries that come after it) will reshape transportation, homes, and entire electric grids. Electric vehicles are just the beginning. The real revolution happens when every home, business, and community can store its own energy — turning intermittent solar and wind into reliable, 24/7 power.
           </p>
@@ -31,7 +31,7 @@ export default function AboutPage() {
             That revolution is already happening faster than most people realise — but good, up-to-date information in one place is still surprisingly hard to find.
           </p>
 
-          <p className="text-xl font-semibold text-gray-900">
+          <p className="text-xl font-semibold text-ink">
             battery.mom exists to solve exactly that.
           </p>
 
@@ -43,7 +43,7 @@ export default function AboutPage() {
             Our only job is to give homeowners, businesses, installers, and policymakers the data they actually need to make faster, better decisions.
           </p>
 
-          <p className="text-lg font-semibold text-gray-900 border-l-4 border-ev-primary pl-4 py-2 bg-gray-50 rounded-r">
+          <p className="text-lg font-semibold text-ink border-l-4 border-ev-primary pl-4 py-2 bg-paper-200 rounded-r">
             No sponsorships. No affiliate links. No ads. Ever.
           </p>
 
@@ -53,12 +53,12 @@ export default function AboutPage() {
         </div>
 
         {/* What you'll find section */}
-        <div className="mt-12 pt-8 border-t border-gray-200">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+        <div className="mt-12 pt-8 border-t border-ink/10">
+          <h2 className="text-2xl md:text-3xl font-bold text-ink mb-6">
             What you&apos;ll find here
           </h2>
 
-          <ul className="space-y-4 text-gray-700 text-lg list-none p-0 m-0">
+          <ul className="space-y-4 text-ink-700 text-lg list-none p-0 m-0">
             <li className="flex items-start gap-3">
               <span className="text-ev-primary font-bold mt-1">•</span>
               <span>Live country-by-country adoption scoreboards and payback calculators</span>
@@ -77,17 +77,17 @@ export default function AboutPage() {
             </li>
             <li className="flex items-start gap-3">
               <span className="text-ev-primary font-bold mt-1">•</span>
-              <span className="font-semibold text-gray-900">Zero hype. Just facts.</span>
+              <span className="font-semibold text-ink">Zero hype. Just facts.</span>
             </li>
           </ul>
         </div>
 
         {/* Footer */}
-        <div className="mt-12 pt-8 border-t border-gray-200">
-          <p className="text-gray-600 text-base">
+        <div className="mt-12 pt-8 border-t border-ink/10">
+          <p className="text-ink-600 text-base">
             battery.mom is a <a href="https://lamonade.xyz" className="text-yellow-500 hover:text-yellow-600 font-semibold transition-colors underline decoration-2 underline-offset-2">Lamonade</a> project.
           </p>
-          <p className="text-gray-600 text-base mt-2">
+          <p className="text-ink-600 text-base mt-2">
             Data starts now — full launch 2026.
           </p>
         </div>

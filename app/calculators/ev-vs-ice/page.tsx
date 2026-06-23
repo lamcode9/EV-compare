@@ -184,14 +184,14 @@ export default function EVvsICEPage() {
   const winner = results.savings > 0 ? 'EV' : 'ICE'
 
   return (
-    <main className="min-h-screen pt-12 md:pt-14">
+    <main className="min-h-screen bg-paper pt-12 md:pt-14">
       <section className="container mx-auto px-4 pt-12 pb-16 max-w-7xl">
         {/* Header */}
         <div className="max-w-2xl mb-10">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
+          <h1 className="font-display text-4xl md:text-5xl font-medium text-ink tracking-tight">
             EV vs ICE — Total Cost of Ownership <InfoTooltip content="TCO (Total Cost of Ownership) adds up every cost of owning a car — purchase price, fuel/energy, maintenance, insurance, and subtracts resale value. It answers: 'What does this car really cost me over X years?'" />
           </h1>
-          <p className="mt-3 text-lg text-gray-600 leading-relaxed">
+          <p className="mt-3 text-lg text-ink-600 leading-relaxed">
             Compare {yearsToCompare}-year costs: purchase price, energy, maintenance, insurance, and resale — using real local rates.
           </p>
           <div className="mt-4">
@@ -210,51 +210,51 @@ export default function EVvsICEPage() {
         </div>
 
         {/* Inputs */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6 mb-8">
+        <div className="bg-paper-100 border border-ink/10 rounded-card p-6 mb-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Country */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Country</label>
+              <label className="block text-sm font-medium text-ink-700 mb-1.5">Country</label>
               <select
                 value={country}
                 onChange={(e) => handleCountryChange(e.target.value as Country)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                className="w-full px-3 py-2 border border-ink/15 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
               >
                 {COUNTRIES.map((c) => (
                   <option key={c.value} value={c.value}>{c.flag} {c.label}</option>
                 ))}
               </select>
-              <p className="text-xs text-gray-400 mt-1">{presets[country].evLabel} vs {presets[country].iceLabel}</p>
+              <p className="text-xs text-ink-400 mt-1">{presets[country].evLabel} vs {presets[country].iceLabel}</p>
             </div>
 
             {/* EV Price */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">EV purchase price</label>
+              <label className="block text-sm font-medium text-ink-700 mb-1.5">EV purchase price</label>
               <input
                 type="number"
                 value={evPrice}
                 onChange={(e) => setEvPrice(Number(e.target.value))}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                className="w-full px-3 py-2 border border-ink/15 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
               />
               {EV_INCENTIVE[country] > 0 && (
-                <p className="text-xs text-emerald-600 mt-1">Incentive: -{fmt(EV_INCENTIVE[country], country)} applied</p>
+                <p className="text-xs text-brand-600 mt-1">Incentive: -{fmt(EV_INCENTIVE[country], country)} applied</p>
               )}
             </div>
 
             {/* ICE Price */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">ICE purchase price</label>
+              <label className="block text-sm font-medium text-ink-700 mb-1.5">ICE purchase price</label>
               <input
                 type="number"
                 value={icePrice}
                 onChange={(e) => setIcePrice(Number(e.target.value))}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                className="w-full px-3 py-2 border border-ink/15 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
               />
             </div>
 
             {/* Annual km */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Annual driving distance</label>
+              <label className="block text-sm font-medium text-ink-700 mb-1.5">Annual driving distance</label>
               <div className="flex items-center gap-2">
                 <input
                   type="range"
@@ -263,15 +263,15 @@ export default function EVvsICEPage() {
                   step={1000}
                   value={annualKm}
                   onChange={(e) => setAnnualKm(Number(e.target.value))}
-                  className="flex-1 accent-emerald-600"
+                  className="flex-1 accent-brand-600"
                 />
-                <span className="text-sm font-medium text-gray-900 w-20 text-right">{annualKm.toLocaleString()} km</span>
+                <span className="text-sm font-medium text-ink w-20 text-right">{annualKm.toLocaleString()} km</span>
               </div>
             </div>
 
             {/* Home charging % */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Home charging share <InfoTooltip content="The percentage of your total charging done at home using a wall socket or home charger. Home electricity is typically 40-60% cheaper than public DC fast chargers. More home charging = lower total cost." /></label>
+              <label className="block text-sm font-medium text-ink-700 mb-1.5">Home charging share <InfoTooltip content="The percentage of your total charging done at home using a wall socket or home charger. Home electricity is typically 40-60% cheaper than public DC fast chargers. More home charging = lower total cost." /></label>
               <div className="flex items-center gap-2">
                 <input
                   type="range"
@@ -280,16 +280,16 @@ export default function EVvsICEPage() {
                   step={5}
                   value={homeChargePercent}
                   onChange={(e) => setHomeChargePercent(Number(e.target.value))}
-                  className="flex-1 accent-emerald-600"
+                  className="flex-1 accent-brand-600"
                 />
-                <span className="text-sm font-medium text-gray-900 w-12 text-right">{homeChargePercent}%</span>
+                <span className="text-sm font-medium text-ink w-12 text-right">{homeChargePercent}%</span>
               </div>
-              <p className="text-xs text-gray-400 mt-1">Rest charged at public DC fast chargers</p>
+              <p className="text-xs text-ink-400 mt-1">Rest charged at public DC fast chargers</p>
             </div>
 
             {/* Years */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Ownership period <InfoTooltip content="How many years you plan to keep the car. Longer ownership periods increasingly favour EVs because their lower running costs compound, while the higher purchase price becomes a smaller factor." /></label>
+              <label className="block text-sm font-medium text-ink-700 mb-1.5">Ownership period <InfoTooltip content="How many years you plan to keep the car. Longer ownership periods increasingly favour EVs because their lower running costs compound, while the higher purchase price becomes a smaller factor." /></label>
               <div className="flex gap-2">
                 {[5, 7, 10].map((y) => (
                   <button
@@ -297,8 +297,8 @@ export default function EVvsICEPage() {
                     onClick={() => setYearsToCompare(y)}
                     className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
                       yearsToCompare === y
-                        ? 'bg-emerald-600 text-white'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                        ? 'bg-brand-600 text-white'
+                        : 'bg-paper-200 text-ink-700 hover:bg-paper-300'
                     }`}
                   >
                     {y} years
@@ -312,49 +312,49 @@ export default function EVvsICEPage() {
         {/* Results */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-8">
           {/* Winner card */}
-          <div className={`rounded-xl p-6 border ${
+          <div className={`rounded-card p-6 border ${
             winner === 'EV'
-              ? 'bg-emerald-50 border-emerald-200'
+              ? 'bg-brand-50 border-brand-200'
               : 'bg-red-50 border-red-200'
           }`}>
-            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">
+            <div className="text-xs font-semibold text-ink-500 uppercase tracking-wide mb-2">
               {yearsToCompare}-year winner <InfoTooltip content="The vehicle with the lower Total Cost of Ownership (purchase + running costs − resale value) over your chosen period. This accounts for the EV's higher sticker price but lower fuel, maintenance, and sometimes insurance costs." />
             </div>
-            <div className={`text-3xl font-bold ${winner === 'EV' ? 'text-emerald-700' : 'text-red-700'}`}>
+            <div className={`text-3xl font-bold ${winner === 'EV' ? 'text-brand-700' : 'text-red-700'}`}>
               {winner === 'EV' ? 'Electric Vehicle' : 'Petrol Vehicle'}
             </div>
-            <div className="text-sm text-gray-600 mt-2">
+            <div className="text-sm text-ink-600 mt-2">
               Saves {fmtShort(Math.abs(results.savings), country)} over {yearsToCompare} years
             </div>
             {results.breakEvenYear && (
-              <div className="text-xs text-gray-500 mt-1">
+              <div className="text-xs text-ink-500 mt-1">
                 Break-even at year {results.breakEvenYear} <InfoTooltip content="The year when cumulative EV costs drop below cumulative ICE costs. Before this point the petrol car is cheaper overall; after it the EV pulls ahead because its lower running costs outweigh the higher sticker price." />
               </div>
             )}
           </div>
 
           {/* EV TCO */}
-          <div className="bg-white border border-gray-200 rounded-xl p-6">
-            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">EV total cost <InfoTooltip content="Purchase price (minus any government incentive) + all charging costs + maintenance + insurance over the full period, minus the estimated resale value at the end." /></div>
-            <div className="text-2xl font-bold text-gray-900">{fmtShort(results.evTCO, country)}</div>
-            <div className="text-sm text-gray-500 mt-2">Energy: {fmt(results.evFuelPerMonth, country)}/mo</div>
-            <div className="text-sm text-gray-500">Resale: {fmtShort(results.evResidual, country)}</div>
+          <div className="bg-paper-100 border border-ink/10 rounded-card p-6">
+            <div className="text-xs font-semibold text-ink-500 uppercase tracking-wide mb-2">EV total cost <InfoTooltip content="Purchase price (minus any government incentive) + all charging costs + maintenance + insurance over the full period, minus the estimated resale value at the end." /></div>
+            <div className="text-2xl font-bold text-ink">{fmtShort(results.evTCO, country)}</div>
+            <div className="text-sm text-ink-500 mt-2">Energy: {fmt(results.evFuelPerMonth, country)}/mo</div>
+            <div className="text-sm text-ink-500">Resale: {fmtShort(results.evResidual, country)}</div>
           </div>
 
           {/* ICE TCO */}
-          <div className="bg-white border border-gray-200 rounded-xl p-6">
-            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">ICE total cost</div>
-            <div className="text-2xl font-bold text-gray-900">{fmtShort(results.iceTCO, country)}</div>
-            <div className="text-sm text-gray-500 mt-2">Fuel: {fmt(results.iceFuelPerMonth, country)}/mo</div>
-            <div className="text-sm text-gray-500">Resale: {fmtShort(results.iceResidual, country)}</div>
+          <div className="bg-paper-100 border border-ink/10 rounded-card p-6">
+            <div className="text-xs font-semibold text-ink-500 uppercase tracking-wide mb-2">ICE total cost</div>
+            <div className="text-2xl font-bold text-ink">{fmtShort(results.iceTCO, country)}</div>
+            <div className="text-sm text-ink-500 mt-2">Fuel: {fmt(results.iceFuelPerMonth, country)}/mo</div>
+            <div className="text-sm text-ink-500">Resale: {fmtShort(results.iceResidual, country)}</div>
           </div>
         </div>
 
         {/* Charts */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           {/* Cumulative cost over time */}
-          <div className="bg-white border border-gray-200 rounded-xl p-6">
-            <h3 className="text-sm font-semibold text-gray-900 mb-4">Cumulative cost over time <InfoTooltip content="Shows total money spent (purchase + running costs) for each vehicle year by year. The point where the EV line crosses below the ICE line is the break-even year." /></h3>
+          <div className="bg-paper-100 border border-ink/10 rounded-card p-6">
+            <h3 className="text-sm font-semibold text-ink mb-4">Cumulative cost over time <InfoTooltip content="Shows total money spent (purchase + running costs) for each vehicle year by year. The point where the EV line crosses below the ICE line is the break-even year." /></h3>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={results.chartData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
@@ -369,8 +369,8 @@ export default function EVvsICEPage() {
           </div>
 
           {/* Cost breakdown */}
-          <div className="bg-white border border-gray-200 rounded-xl p-6">
-            <h3 className="text-sm font-semibold text-gray-900 mb-4">Cost breakdown <InfoTooltip content="Breaks down total ownership costs into 5 categories: (1) Purchase price net of incentives, (2) Energy/fuel over the full period, (3) Maintenance (oil changes, brake pads, etc.), (4) Insurance premiums, (5) Resale value (shown as negative — it's money you get back)." /></h3>
+          <div className="bg-paper-100 border border-ink/10 rounded-card p-6">
+            <h3 className="text-sm font-semibold text-ink mb-4">Cost breakdown <InfoTooltip content="Breaks down total ownership costs into 5 categories: (1) Purchase price net of incentives, (2) Energy/fuel over the full period, (3) Maintenance (oil changes, brake pads, etc.), (4) Insurance premiums, (5) Resale value (shown as negative — it's money you get back)." /></h3>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={results.breakdownData} layout="vertical">
                 <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
@@ -386,31 +386,31 @@ export default function EVvsICEPage() {
         </div>
 
         {/* CO₂ comparison */}
-        <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 mb-8">
-          <h3 className="text-sm font-semibold text-gray-900 mb-3">CO₂ emissions comparison (annual) <InfoTooltip content="EV emissions come from the electricity grid (0.55 kg CO₂ per kWh — a Southeast Asian average including coal, gas, and renewables). ICE emissions use 2.31 kg CO₂ per litre of petrol (covers both tailpipe and refinery). EVs typically emit 50-70% less CO₂ even on a fossil-heavy grid." /></h3>
+        <div className="bg-paper-200 border border-ink/10 rounded-card p-6 mb-8">
+          <h3 className="text-sm font-semibold text-ink mb-3">CO₂ emissions comparison (annual) <InfoTooltip content="EV emissions come from the electricity grid (0.55 kg CO₂ per kWh — a Southeast Asian average including coal, gas, and renewables). ICE emissions use 2.31 kg CO₂ per litre of petrol (covers both tailpipe and refinery). EVs typically emit 50-70% less CO₂ even on a fossil-heavy grid." /></h3>
           <div className="grid grid-cols-2 gap-6">
             <div>
-              <div className="text-xs text-gray-500 uppercase tracking-wide mb-1">EV</div>
-              <div className="text-xl font-bold text-emerald-700">{results.co2EvPerYear.toLocaleString()} kg CO₂</div>
-              <div className="text-xs text-gray-500 mt-0.5">Includes grid electricity emissions</div>
+              <div className="text-xs text-ink-500 uppercase tracking-wide mb-1">EV</div>
+              <div className="text-xl font-bold text-brand-700">{results.co2EvPerYear.toLocaleString()} kg CO₂</div>
+              <div className="text-xs text-ink-500 mt-0.5">Includes grid electricity emissions</div>
             </div>
             <div>
-              <div className="text-xs text-gray-500 uppercase tracking-wide mb-1">ICE</div>
-              <div className="text-xl font-bold text-gray-700">{results.co2IcePerYear.toLocaleString()} kg CO₂</div>
-              <div className="text-xs text-gray-500 mt-0.5">Tailpipe + refinery emissions</div>
+              <div className="text-xs text-ink-500 uppercase tracking-wide mb-1">ICE</div>
+              <div className="text-xl font-bold text-ink-700">{results.co2IcePerYear.toLocaleString()} kg CO₂</div>
+              <div className="text-xs text-ink-500 mt-0.5">Tailpipe + refinery emissions</div>
             </div>
           </div>
-          <div className="mt-4 pt-4 border-t border-gray-200">
-            <div className="text-sm text-emerald-700 font-medium">
+          <div className="mt-4 pt-4 border-t border-ink/10">
+            <div className="text-sm text-brand-700 font-medium">
               EV saves {((1 - results.co2EvPerYear / results.co2IcePerYear) * 100).toFixed(0)}% CO₂ per year ({(results.co2IcePerYear - results.co2EvPerYear).toLocaleString()} kg avoided)
             </div>
           </div>
         </div>
 
         {/* Assumptions */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6">
-          <h3 className="text-sm font-semibold text-gray-900 mb-3">Key assumptions <InfoTooltip content="These are the default values used in the calculation. You can override the vehicle prices and driving distance above. Maintenance, insurance, and depreciation rates are regional averages — your actual numbers may vary." /></h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-2 text-xs text-gray-500">
+        <div className="bg-paper-100 border border-ink/10 rounded-card p-6">
+          <h3 className="text-sm font-semibold text-ink mb-3">Key assumptions <InfoTooltip content="These are the default values used in the calculation. You can override the vehicle prices and driving distance above. Maintenance, insurance, and depreciation rates are regional averages — your actual numbers may vary." /></h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-2 text-xs text-ink-500">
             <div>Petrol price: {fmt(PETROL_PRICE[country], country, 2)}/litre</div>
             <div>ICE consumption: {ICE_FUEL_CONSUMPTION_L100KM} L/100km</div>
             <div>EV efficiency: {DEFAULT_EV_EFFICIENCY} kWh/100km</div>
@@ -421,7 +421,7 @@ export default function EVvsICEPage() {
             <div>EV maintenance: {fmt(EV_ANNUAL_MAINTENANCE[country], country)}/yr</div>
             <div>ICE maintenance: {fmt(ICE_ANNUAL_MAINTENANCE[country], country)}/yr</div>
           </div>
-          <p className="text-xs text-gray-400 mt-4">
+          <p className="text-xs text-ink-400 mt-4">
             Assumptions are based on 2025/2026 averages. Actual costs vary by model, usage, and location. Insurance, road tax, and financing costs are simplified estimates.
           </p>
         </div>

@@ -153,7 +153,7 @@ const CASE_STUDIES: CaseStudy[] = [
 ]
 
 const TYPE_LABELS: Record<string, { label: string; color: string }> = {
-  residential: { label: 'Residential', color: 'bg-emerald-50 text-emerald-700 border-emerald-200' },
+  residential: { label: 'Residential', color: 'bg-brand-50 text-brand-700 border-brand-200' },
   commercial: { label: 'Commercial', color: 'bg-blue-50 text-blue-700 border-blue-200' },
   industrial: { label: 'Industrial', color: 'bg-purple-50 text-purple-700 border-purple-200' },
 }
@@ -169,48 +169,48 @@ const COUNTRY_FLAGS: Record<string, string> = {
 
 export default function CaseStudiesPage() {
   return (
-    <main className="min-h-screen pt-12 md:pt-14">
+    <main className="min-h-screen bg-paper pt-12 md:pt-14">
       <section className="container mx-auto px-4 pt-12 pb-16 max-w-7xl">
         {/* Header */}
         <div className="max-w-2xl mb-10">
           <div className="flex items-center gap-2 mb-3">
-            <Link href="/bess" className="text-sm text-emerald-600 hover:text-emerald-700">
+            <Link href="/bess" className="text-sm text-brand-600 hover:text-brand-700">
               Battery Storage
             </Link>
-            <span className="text-gray-400">/</span>
-            <span className="text-sm text-gray-500">Case Studies</span>
+            <span className="text-ink-400">/</span>
+            <span className="text-sm text-ink-500">Case Studies</span>
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
+          <h1 className="font-display text-4xl md:text-5xl font-medium text-ink tracking-tight">
             Real-World Case Studies
           </h1>
-          <p className="mt-4 text-lg text-gray-600 leading-relaxed">
+          <p className="mt-4 text-lg text-ink-600 leading-relaxed">
             How homes, offices, and factories across Southeast Asia are using battery storage to cut costs and gain energy independence.
           </p>
         </div>
 
         {/* Summary Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-          <div className="bg-white border border-gray-200 rounded-xl p-4 text-center">
-            <div className="text-2xl font-bold text-emerald-600">{CASE_STUDIES.length}</div>
-            <div className="text-xs text-gray-500 mt-1">Case Studies</div>
+          <div className="bg-paper-100 border border-ink/10 rounded-card p-4 text-center">
+            <div className="text-2xl font-bold text-brand-600">{CASE_STUDIES.length}</div>
+            <div className="text-xs text-ink-500 mt-1">Case Studies</div>
           </div>
-          <div className="bg-white border border-gray-200 rounded-xl p-4 text-center">
-            <div className="text-2xl font-bold text-gray-900">
+          <div className="bg-paper-100 border border-ink/10 rounded-card p-4 text-center">
+            <div className="text-2xl font-bold text-ink">
               {new Set(CASE_STUDIES.map((c) => c.country)).size}
             </div>
-            <div className="text-xs text-gray-500 mt-1">Countries</div>
+            <div className="text-xs text-ink-500 mt-1">Countries</div>
           </div>
-          <div className="bg-white border border-gray-200 rounded-xl p-4 text-center">
-            <div className="text-2xl font-bold text-gray-900">
+          <div className="bg-paper-100 border border-ink/10 rounded-card p-4 text-center">
+            <div className="text-2xl font-bold text-ink">
               {Math.round(CASE_STUDIES.reduce((sum, c) => sum + c.paybackYears, 0) / CASE_STUDIES.length)}y
             </div>
-            <div className="text-xs text-gray-500 mt-1">Avg. Payback</div>
+            <div className="text-xs text-ink-500 mt-1">Avg. Payback</div>
           </div>
-          <div className="bg-white border border-gray-200 rounded-xl p-4 text-center">
-            <div className="text-2xl font-bold text-gray-900">
+          <div className="bg-paper-100 border border-ink/10 rounded-card p-4 text-center">
+            <div className="text-2xl font-bold text-ink">
               {CASE_STUDIES.filter((c) => c.quote).length}
             </div>
-            <div className="text-xs text-gray-500 mt-1">Testimonials</div>
+            <div className="text-xs text-ink-500 mt-1">Testimonials</div>
           </div>
         </div>
 
@@ -221,7 +221,7 @@ export default function CaseStudiesPage() {
             return (
               <div
                 key={study.id}
-                className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-md transition-shadow"
+                className="bg-paper-100 border border-ink/10 rounded-card overflow-hidden hover:shadow-md transition-shadow"
               >
                 <div className="p-6 md:p-8">
                   {/* Badges */}
@@ -232,46 +232,46 @@ export default function CaseStudiesPage() {
                     <span className="text-sm">
                       {COUNTRY_FLAGS[study.country]} {study.location}
                     </span>
-                    <span className="text-xs text-gray-400 ml-auto">
+                    <span className="text-xs text-ink-400 ml-auto">
                       Installed {new Date(study.installedDate).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })}
                     </span>
                   </div>
 
                   {/* Title & Summary */}
-                  <h2 className="text-xl font-bold text-gray-900 mb-3">{study.title}</h2>
-                  <p className="text-gray-600 leading-relaxed mb-5">{study.summary}</p>
+                  <h2 className="text-xl font-bold text-ink mb-3">{study.title}</h2>
+                  <p className="text-ink-600 leading-relaxed mb-5">{study.summary}</p>
 
                   {/* System Details */}
                   <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-5">
-                    <div className="bg-gray-50 rounded-lg p-3">
-                      <div className="text-xs text-gray-500">System</div>
-                      <div className="text-sm font-semibold text-gray-900 mt-0.5">{study.system}</div>
+                    <div className="bg-paper-200 rounded-lg p-3">
+                      <div className="text-xs text-ink-500">System</div>
+                      <div className="text-sm font-semibold text-ink mt-0.5">{study.system}</div>
                     </div>
-                    <div className="bg-gray-50 rounded-lg p-3">
-                      <div className="text-xs text-gray-500">Capacity</div>
-                      <div className="text-sm font-semibold text-gray-900 mt-0.5">{study.capacity}</div>
+                    <div className="bg-paper-200 rounded-lg p-3">
+                      <div className="text-xs text-ink-500">Capacity</div>
+                      <div className="text-sm font-semibold text-ink mt-0.5">{study.capacity}</div>
                     </div>
-                    <div className="bg-gray-50 rounded-lg p-3">
-                      <div className="text-xs text-gray-500">Solar</div>
-                      <div className="text-sm font-semibold text-gray-900 mt-0.5">{study.solarSize}</div>
+                    <div className="bg-paper-200 rounded-lg p-3">
+                      <div className="text-xs text-ink-500">Solar</div>
+                      <div className="text-sm font-semibold text-ink mt-0.5">{study.solarSize}</div>
                     </div>
-                    <div className="bg-gray-50 rounded-lg p-3">
-                      <div className="text-xs text-gray-500">Monthly Savings</div>
-                      <div className="text-sm font-semibold text-emerald-600 mt-0.5">{study.monthlySavings}</div>
+                    <div className="bg-paper-200 rounded-lg p-3">
+                      <div className="text-xs text-ink-500">Monthly Savings</div>
+                      <div className="text-sm font-semibold text-brand-600 mt-0.5">{study.monthlySavings}</div>
                     </div>
-                    <div className="bg-gray-50 rounded-lg p-3">
-                      <div className="text-xs text-gray-500">Payback</div>
-                      <div className="text-sm font-semibold text-gray-900 mt-0.5">{study.paybackYears} years</div>
+                    <div className="bg-paper-200 rounded-lg p-3">
+                      <div className="text-xs text-ink-500">Payback</div>
+                      <div className="text-sm font-semibold text-ink mt-0.5">{study.paybackYears} years</div>
                     </div>
                   </div>
 
                   {/* Highlights */}
                   <div className="mb-5">
-                    <h3 className="text-sm font-semibold text-gray-700 mb-2">Key Results</h3>
+                    <h3 className="text-sm font-semibold text-ink-700 mb-2">Key Results</h3>
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1.5">
                       {study.highlights.map((h, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
-                          <svg className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <li key={i} className="flex items-start gap-2 text-sm text-ink-600">
+                          <svg className="w-4 h-4 text-brand-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                           </svg>
                           {h}
@@ -282,13 +282,13 @@ export default function CaseStudiesPage() {
 
                   {/* Quote */}
                   {study.quote && (
-                    <div className="border-l-4 border-emerald-400 pl-5 py-3 bg-emerald-50/50 rounded-r-lg">
-                      <p className="text-gray-700 italic leading-relaxed">
+                    <div className="border-l-4 border-brand-400 pl-5 py-3 bg-brand-50/50 rounded-r-lg">
+                      <p className="text-ink-700 italic leading-relaxed">
                         &ldquo;{study.quote.text}&rdquo;
                       </p>
                       <div className="mt-2 text-sm">
-                        <span className="font-semibold text-gray-900">{study.quote.author}</span>
-                        <span className="text-gray-500"> · {study.quote.role}</span>
+                        <span className="font-semibold text-ink">{study.quote.author}</span>
+                        <span className="text-ink-500"> · {study.quote.role}</span>
                       </div>
                     </div>
                   )}
@@ -299,14 +299,14 @@ export default function CaseStudiesPage() {
         </div>
 
         {/* Submit Your Story */}
-        <div className="mt-12 bg-gray-50 border border-gray-200 rounded-xl p-8 text-center">
-          <h2 className="text-xl font-bold text-gray-900 mb-2">Have a BESS installation story?</h2>
-          <p className="text-gray-600 mb-4">
+        <div className="mt-12 bg-paper-200 border border-ink/10 rounded-card p-8 text-center">
+          <h2 className="text-xl font-bold text-ink mb-2">Have a BESS installation story?</h2>
+          <p className="text-ink-600 mb-4">
             We feature real installations from across Southeast Asia. Share your experience — costs, savings, and lessons learned.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-6 py-2.5 bg-emerald-600 text-white rounded-lg font-medium hover:bg-emerald-700 transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-2.5 bg-brand-600 text-white rounded-lg font-medium hover:bg-brand-700 transition-colors"
           >
             Share your story
           </Link>

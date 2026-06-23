@@ -164,14 +164,14 @@ export default function EvChargingCostPage() {
   }, [country, dailyKm, efficiency, homeChargePct, dcPct, acPubPct])
 
   return (
-    <main className="min-h-screen pt-12 md:pt-14">
+    <main className="min-h-screen bg-paper pt-12 md:pt-14">
       <section className="container mx-auto px-4 pt-12 pb-16 max-w-7xl">
         {/* Header */}
         <div className="max-w-2xl mb-10">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
+          <h1 className="font-display text-4xl md:text-5xl font-medium text-ink tracking-tight">
             EV Charging Cost Calculator <InfoTooltip content="Estimates your real-world EV charging costs by mixing home, public AC, and DC fast-charging rates, accounting for energy losses during charging. Results show monthly/annual cost and how much you save compared to a petrol car." />
           </h1>
-          <p className="mt-3 text-lg text-gray-600 leading-relaxed">
+          <p className="mt-3 text-lg text-ink-600 leading-relaxed">
             Estimate your real-world EV charging costs by mixing home, public AC, and DC fast-charging — then see how much you save versus petrol.
           </p>
           <div className="mt-4">
@@ -190,15 +190,15 @@ export default function EvChargingCostPage() {
         </div>
 
         {/* Inputs */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6 mb-8">
+        <div className="bg-paper-100 border border-ink/10 rounded-card p-6 mb-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             {/* Country */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Country</label>
+              <label className="block text-sm font-medium text-ink-700 mb-1.5">Country</label>
               <select
                 value={country}
                 onChange={(e) => setCountry(e.target.value as Country)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                className="w-full px-3 py-2 border border-ink/15 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
               >
                 {COUNTRIES.map((c) => (
                   <option key={c.value} value={c.value}>{c.flag} {c.label}</option>
@@ -208,7 +208,7 @@ export default function EvChargingCostPage() {
 
             {/* EV preset */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Popular EVs</label>
+              <label className="block text-sm font-medium text-ink-700 mb-1.5">Popular EVs</label>
               <div className="flex gap-2 flex-wrap">
                 {EV_PRESETS[country].map((ev) => (
                   <button
@@ -216,8 +216,8 @@ export default function EvChargingCostPage() {
                     onClick={() => setEfficiency(ev.efficiency)}
                     className={`text-xs px-2.5 py-1.5 rounded-lg border transition-colors ${
                       efficiency === ev.efficiency
-                        ? 'bg-emerald-50 border-emerald-300 text-emerald-700'
-                        : 'border-gray-200 text-gray-600 hover:border-gray-300'
+                        ? 'bg-brand-50 border-brand-300 text-brand-700'
+                        : 'border-ink/10 text-ink-600 hover:border-ink/15'
                     }`}
                   >
                     {ev.name}
@@ -230,7 +230,7 @@ export default function EvChargingCostPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Daily km */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Daily driving</label>
+              <label className="block text-sm font-medium text-ink-700 mb-1.5">Daily driving</label>
               <div className="flex items-center gap-2">
                 <input
                   type="range"
@@ -239,16 +239,16 @@ export default function EvChargingCostPage() {
                   step={5}
                   value={dailyKm}
                   onChange={(e) => setDailyKm(Number(e.target.value))}
-                  className="flex-1 accent-emerald-600"
+                  className="flex-1 accent-brand-600"
                 />
-                <span className="text-sm font-medium text-gray-900 w-16 text-right">{dailyKm} km</span>
+                <span className="text-sm font-medium text-ink w-16 text-right">{dailyKm} km</span>
               </div>
-              <p className="text-xs text-gray-400 mt-1">{(dailyKm * 365).toLocaleString()} km/year</p>
+              <p className="text-xs text-ink-400 mt-1">{(dailyKm * 365).toLocaleString()} km/year</p>
             </div>
 
             {/* Efficiency */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">EV efficiency <InfoTooltip content="How much energy (kWh) the EV uses per 100 km of driving. Lower = more efficient. A typical compact EV uses ~14 kWh/100km; a large SUV might use 20+. This is the single biggest factor in your charging cost." /></label>
+              <label className="block text-sm font-medium text-ink-700 mb-1.5">EV efficiency <InfoTooltip content="How much energy (kWh) the EV uses per 100 km of driving. Lower = more efficient. A typical compact EV uses ~14 kWh/100km; a large SUV might use 20+. This is the single biggest factor in your charging cost." /></label>
               <div className="flex items-center gap-2">
                 <input
                   type="range"
@@ -257,15 +257,15 @@ export default function EvChargingCostPage() {
                   step={0.5}
                   value={efficiency}
                   onChange={(e) => setEfficiency(Number(e.target.value))}
-                  className="flex-1 accent-emerald-600"
+                  className="flex-1 accent-brand-600"
                 />
-                <span className="text-sm font-medium text-gray-900 w-24 text-right">{efficiency} kWh/100km</span>
+                <span className="text-sm font-medium text-ink w-24 text-right">{efficiency} kWh/100km</span>
               </div>
             </div>
 
             {/* Home charging % */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Home charging <InfoTooltip content="Percentage of total charging done at home. Home AC charging (Level 2, ~7 kW) is the cheapest option at residential tariff rates. Most EV owners charge 70-90% at home overnight." /></label>
+              <label className="block text-sm font-medium text-ink-700 mb-1.5">Home charging <InfoTooltip content="Percentage of total charging done at home. Home AC charging (Level 2, ~7 kW) is the cheapest option at residential tariff rates. Most EV owners charge 70-90% at home overnight." /></label>
               <div className="flex items-center gap-2">
                 <input
                   type="range"
@@ -278,15 +278,15 @@ export default function EvChargingCostPage() {
                     setHomeChargePct(v)
                     if (v + dcPct > 100) setDcPct(100 - v)
                   }}
-                  className="flex-1 accent-emerald-600"
+                  className="flex-1 accent-brand-600"
                 />
-                <span className="text-sm font-medium text-gray-900 w-10 text-right">{homeChargePct}%</span>
+                <span className="text-sm font-medium text-ink w-10 text-right">{homeChargePct}%</span>
               </div>
             </div>
 
             {/* DC fast % */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">DC fast charging <InfoTooltip content="Percentage charged at DC fast chargers (50-350 kW). Fastest but most expensive, with ~15% energy lost as heat during high-power charging. Best reserved for long trips." /></label>
+              <label className="block text-sm font-medium text-ink-700 mb-1.5">DC fast charging <InfoTooltip content="Percentage charged at DC fast chargers (50-350 kW). Fastest but most expensive, with ~15% energy lost as heat during high-power charging. Best reserved for long trips." /></label>
               <div className="flex items-center gap-2">
                 <input
                   type="range"
@@ -295,48 +295,48 @@ export default function EvChargingCostPage() {
                   step={5}
                   value={dcPct}
                   onChange={(e) => setDcPct(Number(e.target.value))}
-                  className="flex-1 accent-emerald-600"
+                  className="flex-1 accent-brand-600"
                 />
-                <span className="text-sm font-medium text-gray-900 w-10 text-right">{dcPct}%</span>
+                <span className="text-sm font-medium text-ink w-10 text-right">{dcPct}%</span>
               </div>
-              <p className="text-xs text-gray-400 mt-1">AC public: {acPubPct}%</p>
+              <p className="text-xs text-ink-400 mt-1">AC public: {acPubPct}%</p>
             </div>
           </div>
         </div>
 
         {/* Results */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <div className="bg-white border border-gray-200 rounded-xl p-5">
-            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Monthly cost <InfoTooltip content="Your estimated monthly electricity bill for EV charging, including energy losses. Formula: (daily km × 365 ÷ 100 × efficiency) split by charging type, divided by charging efficiency, times each rate, divided by 12." /></div>
-            <div className="text-xl font-bold text-gray-900">{fmtShort(results.monthlyCost, country)}</div>
-            <div className="text-xs text-gray-500 mt-0.5">{results.annualKwh.toLocaleString()} kWh/year</div>
+          <div className="bg-paper-100 border border-ink/10 rounded-card p-5">
+            <div className="text-xs font-semibold text-ink-500 uppercase tracking-wide mb-1">Monthly cost <InfoTooltip content="Your estimated monthly electricity bill for EV charging, including energy losses. Formula: (daily km × 365 ÷ 100 × efficiency) split by charging type, divided by charging efficiency, times each rate, divided by 12." /></div>
+            <div className="text-xl font-bold text-ink">{fmtShort(results.monthlyCost, country)}</div>
+            <div className="text-xs text-ink-500 mt-0.5">{results.annualKwh.toLocaleString()} kWh/year</div>
           </div>
-          <div className="bg-white border border-gray-200 rounded-xl p-5">
-            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Annual cost</div>
-            <div className="text-xl font-bold text-gray-900">{fmtShort(results.totalAnnual, country)}</div>
-            <div className="text-xs text-gray-500 mt-0.5">{fmt(results.costPerKm, country, 2)}/km</div>
+          <div className="bg-paper-100 border border-ink/10 rounded-card p-5">
+            <div className="text-xs font-semibold text-ink-500 uppercase tracking-wide mb-1">Annual cost</div>
+            <div className="text-xl font-bold text-ink">{fmtShort(results.totalAnnual, country)}</div>
+            <div className="text-xs text-ink-500 mt-0.5">{fmt(results.costPerKm, country, 2)}/km</div>
           </div>
-          <div className={`rounded-xl p-5 border ${
+          <div className={`rounded-card p-5 border ${
             results.savingsAnnual > 0
-              ? 'bg-emerald-50 border-emerald-200'
-              : 'bg-white border-gray-200'
+              ? 'bg-brand-50 border-brand-200'
+              : 'bg-paper-100 border-ink/10'
           }`}>
-            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">vs Petrol savings <InfoTooltip content="How much cheaper EV charging is compared to fuelling a similar petrol car. Based on a typical sedan consuming 7.5 litres per 100 km at current petrol prices." /></div>
-            <div className="text-xl font-bold text-emerald-700">{results.savingsPct}%</div>
-            <div className="text-xs text-gray-500 mt-0.5">{fmtShort(results.savingsAnnual, country)}/year</div>
+            <div className="text-xs font-semibold text-ink-500 uppercase tracking-wide mb-1">vs Petrol savings <InfoTooltip content="How much cheaper EV charging is compared to fuelling a similar petrol car. Based on a typical sedan consuming 7.5 litres per 100 km at current petrol prices." /></div>
+            <div className="text-xl font-bold text-brand-700">{results.savingsPct}%</div>
+            <div className="text-xs text-ink-500 mt-0.5">{fmtShort(results.savingsAnnual, country)}/year</div>
           </div>
-          <div className="bg-white border border-gray-200 rounded-xl p-5">
-            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Petrol equiv.</div>
-            <div className="text-xl font-bold text-gray-900">{fmtShort(results.petrolAnnual, country)}</div>
-            <div className="text-xs text-gray-500 mt-0.5">@ {PETROL_CONSUMPTION}L/100km</div>
+          <div className="bg-paper-100 border border-ink/10 rounded-card p-5">
+            <div className="text-xs font-semibold text-ink-500 uppercase tracking-wide mb-1">Petrol equiv.</div>
+            <div className="text-xl font-bold text-ink">{fmtShort(results.petrolAnnual, country)}</div>
+            <div className="text-xs text-ink-500 mt-0.5">@ {PETROL_CONSUMPTION}L/100km</div>
           </div>
         </div>
 
         {/* Charts */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           {/* Cost pie */}
-          <div className="bg-white border border-gray-200 rounded-xl p-6">
-            <h3 className="text-sm font-semibold text-gray-900 mb-4">Annual cost breakdown</h3>
+          <div className="bg-paper-100 border border-ink/10 rounded-card p-6">
+            <h3 className="text-sm font-semibold text-ink mb-4">Annual cost breakdown</h3>
             <ResponsiveContainer width="100%" height={280}>
               <PieChart>
                 <Pie
@@ -358,8 +358,8 @@ export default function EvChargingCostPage() {
           </div>
 
           {/* EV vs petrol comparison */}
-          <div className="bg-white border border-gray-200 rounded-xl p-6">
-            <h3 className="text-sm font-semibold text-gray-900 mb-4">Monthly: EV vs Petrol</h3>
+          <div className="bg-paper-100 border border-ink/10 rounded-card p-6">
+            <h3 className="text-sm font-semibold text-ink mb-4">Monthly: EV vs Petrol</h3>
             <ResponsiveContainer width="100%" height={280}>
               <BarChart
                 data={[
@@ -381,28 +381,28 @@ export default function EvChargingCostPage() {
         </div>
 
         {/* Rate table */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6 mb-8">
-          <h3 className="text-sm font-semibold text-gray-900 mb-4">Charging rates in {COUNTRIES.find(c => c.value === country)?.label} <InfoTooltip content="Rates are 2025 averages. Home uses your residential tariff. AC Public is a Level 2 charger at shopping malls etc. DC Fast is a high-power highway charger. Efficiency column shows how much energy actually reaches the battery (rest is lost as heat)." /></h3>
+        <div className="bg-paper-100 border border-ink/10 rounded-card p-6 mb-8">
+          <h3 className="text-sm font-semibold text-ink mb-4">Charging rates in {COUNTRIES.find(c => c.value === country)?.label} <InfoTooltip content="Rates are 2025 averages. Home uses your residential tariff. AC Public is a Level 2 charger at shopping malls etc. DC Fast is a high-power highway charger. Efficiency column shows how much energy actually reaches the battery (rest is lost as heat)." /></h3>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-gray-200">
-                  <th className="text-left py-2 font-medium text-gray-500">Type</th>
-                  <th className="text-right py-2 font-medium text-gray-500">Rate/kWh</th>
-                  <th className="text-right py-2 font-medium text-gray-500">Efficiency</th>
-                  <th className="text-right py-2 font-medium text-gray-500">Your annual cost</th>
+                <tr className="border-b border-ink/10">
+                  <th className="text-left py-2 font-medium text-ink-500">Type</th>
+                  <th className="text-right py-2 font-medium text-ink-500">Rate/kWh</th>
+                  <th className="text-right py-2 font-medium text-ink-500">Efficiency</th>
+                  <th className="text-right py-2 font-medium text-ink-500">Your annual cost</th>
                 </tr>
               </thead>
-              <tbody className="text-gray-700">
-                <tr className="border-b border-gray-100">
+              <tbody className="text-ink-700">
+                <tr className="border-b border-ink/5">
                   <td className="py-2 flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500" /> Home (AC)
+                    <span className="w-2 h-2 rounded-full bg-brand-500" /> Home (AC)
                   </td>
                   <td className="text-right py-2">{fmt(HOME_TARIFF[country], country, 2)}</td>
                   <td className="text-right py-2">{HOME_EFFICIENCY * 100}%</td>
                   <td className="text-right py-2 font-medium">{fmtShort(results.homeCostAnnual, country)}</td>
                 </tr>
-                <tr className="border-b border-gray-100">
+                <tr className="border-b border-ink/5">
                   <td className="py-2 flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-indigo-500" /> Public AC
                   </td>
@@ -424,9 +424,9 @@ export default function EvChargingCostPage() {
         </div>
 
         {/* Tip */}
-        <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-6">
-          <h3 className="text-sm font-semibold text-emerald-900 mb-2">Maximise your savings</h3>
-          <ul className="text-sm text-emerald-800 space-y-1.5">
+        <div className="bg-brand-50 border border-brand-200 rounded-card p-6">
+          <h3 className="text-sm font-semibold text-brand-900 mb-2">Maximise your savings</h3>
+          <ul className="text-sm text-brand-800 space-y-1.5">
             <li>• <strong>Charge at home overnight</strong> — residential rates are 40-60% cheaper than DC fast chargers.</li>
             <li>• <strong>Add rooftop solar</strong> — pay {fmt(0, country)} per kWh during the day. <a href="/calculators/solar-payback" className="underline font-medium">Check solar payback →</a></li>
             <li>• <strong>Add a home battery</strong> — store solar for overnight EV charging. <a href="/bess/home" className="underline font-medium">Zero-bill calculator →</a></li>

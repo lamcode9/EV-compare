@@ -17,10 +17,10 @@ export default function SuggestCorrectionPage() {
     <main className="min-h-screen pt-12 md:pt-14">
       <section className="container mx-auto px-4 pt-12 pb-16 max-w-4xl">
         <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-ink tracking-tight mb-4">
             Suggest a Correction
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-ink-600 max-w-2xl mx-auto">
             Help us maintain the most accurate EV and BESS data in Southeast Asia.
             Your corrections help thousands of buyers make informed decisions.
           </p>

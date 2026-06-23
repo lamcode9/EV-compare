@@ -169,14 +169,14 @@ export default function SolarPaybackPage() {
   }
 
   return (
-    <main className="min-h-screen pt-12 md:pt-14">
+    <main className="min-h-screen bg-paper pt-12 md:pt-14">
       <section className="container mx-auto px-4 pt-12 pb-16 max-w-7xl">
         {/* Header */}
         <div className="max-w-2xl mb-10">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
+          <h1 className="font-display text-4xl md:text-5xl font-medium text-ink tracking-tight">
             Solar Payback Calculator <InfoTooltip content="Calculates how many years it takes for electricity bill savings to cover the upfront cost of a rooftop solar system. After payback, all further savings are pure profit for the remaining 15-20+ years of the system's life." />
           </h1>
-          <p className="mt-3 text-lg text-gray-600 leading-relaxed">
+          <p className="mt-3 text-lg text-ink-600 leading-relaxed">
             Enter your roof size and monthly bill to see how fast solar pays for itself — with {SYSTEM_LIFE}-year projections using real local tariffs.
           </p>
           <div className="mt-4">
@@ -195,11 +195,11 @@ export default function SolarPaybackPage() {
         </div>
 
         {/* Inputs */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6 mb-8">
+        <div className="bg-paper-100 border border-ink/10 rounded-card p-6 mb-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Country */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Country</label>
+              <label className="block text-sm font-medium text-ink-700 mb-1.5">Country</label>
               <select
                 value={country}
                 onChange={(e) => {
@@ -207,7 +207,7 @@ export default function SolarPaybackPage() {
                   setCountry(c)
                   setMonthlyBill(billPresets[c][1])
                 }}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                className="w-full px-3 py-2 border border-ink/15 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
               >
                 {COUNTRIES.map((c) => (
                   <option key={c.value} value={c.value}>{c.flag} {c.label}</option>
@@ -217,7 +217,7 @@ export default function SolarPaybackPage() {
 
             {/* Roof area */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Usable roof area <InfoTooltip content="The area of your roof that gets good sunlight and can physically hold panels. Not all roof space is usable — subtract areas covered by vents, water tanks, shadows from taller buildings, or tilted sections facing away from the sun. About 0.17 kW of solar fits per m²." /></label>
+              <label className="block text-sm font-medium text-ink-700 mb-1.5">Usable roof area <InfoTooltip content="The area of your roof that gets good sunlight and can physically hold panels. Not all roof space is usable — subtract areas covered by vents, water tanks, shadows from taller buildings, or tilted sections facing away from the sun. About 0.17 kW of solar fits per m²." /></label>
               <div className="flex items-center gap-2">
                 <input
                   type="range"
@@ -226,16 +226,16 @@ export default function SolarPaybackPage() {
                   step={5}
                   value={roofM2}
                   onChange={(e) => setRoofM2(Number(e.target.value))}
-                  className="flex-1 accent-emerald-600"
+                  className="flex-1 accent-brand-600"
                 />
-                <span className="text-sm font-medium text-gray-900 w-14 text-right">{roofM2} m²</span>
+                <span className="text-sm font-medium text-ink w-14 text-right">{roofM2} m²</span>
               </div>
-              <p className="text-xs text-gray-400 mt-1">≈ {systemKw} kWp system <InfoTooltip content="kWp (kilowatt-peak) is the maximum power a solar panel can produce under ideal lab conditions (1000 W/m² irradiance, 25°C). Real-world output is typically 70-85% of kWp depending on temperature, weather, and panel orientation." /></p>
+              <p className="text-xs text-ink-400 mt-1">≈ {systemKw} kWp system <InfoTooltip content="kWp (kilowatt-peak) is the maximum power a solar panel can produce under ideal lab conditions (1000 W/m² irradiance, 25°C). Real-world output is typically 70-85% of kWp depending on temperature, weather, and panel orientation." /></p>
             </div>
 
             {/* Roof quality */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Roof quality <InfoTooltip content="Ideal: unshaded, north/south-facing, optimal tilt (100% yield). Average: minor shading or suboptimal orientation (90% yield). Shaded: significant obstruction from trees or buildings (75% yield)." /></label>
+              <label className="block text-sm font-medium text-ink-700 mb-1.5">Roof quality <InfoTooltip content="Ideal: unshaded, north/south-facing, optimal tilt (100% yield). Average: minor shading or suboptimal orientation (90% yield). Shaded: significant obstruction from trees or buildings (75% yield)." /></label>
               <div className="flex gap-2">
                 {(Object.keys(ROOF_QUALITY) as Array<keyof typeof ROOF_QUALITY>).map((q) => (
                   <button
@@ -243,8 +243,8 @@ export default function SolarPaybackPage() {
                     onClick={() => setRoofQuality(q)}
                     className={`flex-1 py-2 rounded-lg text-xs font-medium transition-colors ${
                       roofQuality === q
-                        ? 'bg-emerald-600 text-white'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                        ? 'bg-brand-600 text-white'
+                        : 'bg-paper-200 text-ink-700 hover:bg-paper-300'
                     }`}
                   >
                     {q}
@@ -255,12 +255,12 @@ export default function SolarPaybackPage() {
 
             {/* Monthly bill */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Current monthly bill</label>
+              <label className="block text-sm font-medium text-ink-700 mb-1.5">Current monthly bill</label>
               <input
                 type="number"
                 value={monthlyBill}
                 onChange={(e) => setMonthlyBill(Number(e.target.value))}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                className="w-full px-3 py-2 border border-ink/15 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
               />
               <div className="flex gap-1.5 mt-1.5">
                 {billPresets[country].map((p) => (
@@ -269,8 +269,8 @@ export default function SolarPaybackPage() {
                     onClick={() => setMonthlyBill(p)}
                     className={`text-[10px] px-1.5 py-0.5 rounded border transition-colors ${
                       monthlyBill === p
-                        ? 'bg-emerald-50 border-emerald-300 text-emerald-700'
-                        : 'border-gray-200 text-gray-400 hover:border-gray-300'
+                        ? 'bg-brand-50 border-brand-300 text-brand-700'
+                        : 'border-ink/10 text-ink-400 hover:border-ink/15'
                     }`}
                   >
                     {fmtShort(p, country)}
@@ -283,39 +283,39 @@ export default function SolarPaybackPage() {
 
         {/* Results Summary */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <div className="bg-white border border-gray-200 rounded-xl p-5">
-            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">System cost <InfoTooltip content="Fully installed price including panels, inverter, mounting, wiring, and labour. Based on average 2025 pricing for your country. Actual quotes may differ by ±15%." /></div>
-            <div className="text-xl font-bold text-gray-900">{fmtShort(results.systemCost, country)}</div>
-            <div className="text-xs text-gray-500 mt-0.5">{systemKw} kWp installed</div>
+          <div className="bg-paper-100 border border-ink/10 rounded-card p-5">
+            <div className="text-xs font-semibold text-ink-500 uppercase tracking-wide mb-1">System cost <InfoTooltip content="Fully installed price including panels, inverter, mounting, wiring, and labour. Based on average 2025 pricing for your country. Actual quotes may differ by ±15%." /></div>
+            <div className="text-xl font-bold text-ink">{fmtShort(results.systemCost, country)}</div>
+            <div className="text-xs text-ink-500 mt-0.5">{systemKw} kWp installed</div>
           </div>
-          <div className={`rounded-xl p-5 border ${
+          <div className={`rounded-card p-5 border ${
             results.paybackYear && results.paybackYear <= 8
-              ? 'bg-emerald-50 border-emerald-200'
-              : 'bg-white border-gray-200'
+              ? 'bg-brand-50 border-brand-200'
+              : 'bg-paper-100 border-ink/10'
           }`}>
-            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Payback <InfoTooltip content="The number of years until cumulative electricity savings equal the system cost. After this point, the system is 'free money'. Good systems in SEA typically pay back in 5-9 years." /></div>
-            <div className="text-xl font-bold text-gray-900">
+            <div className="text-xs font-semibold text-ink-500 uppercase tracking-wide mb-1">Payback <InfoTooltip content="The number of years until cumulative electricity savings equal the system cost. After this point, the system is 'free money'. Good systems in SEA typically pay back in 5-9 years." /></div>
+            <div className="text-xl font-bold text-ink">
               {results.paybackYear ? `${results.paybackYear} years` : '25+ years'}
             </div>
-            <div className="text-xs text-gray-500 mt-0.5">Break-even point</div>
+            <div className="text-xs text-ink-500 mt-0.5">Break-even point</div>
           </div>
-          <div className="bg-white border border-gray-200 rounded-xl p-5">
-            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">{SYSTEM_LIFE}-year savings <InfoTooltip content="Total electricity bill savings over 25 years minus the system cost and one inverter replacement. Includes 3% annual tariff inflation (electricity gets more expensive) and 0.5% annual panel degradation (panels slowly lose output)." /></div>
-            <div className="text-xl font-bold text-emerald-700">{fmtShort(results.netGain25, country)}</div>
-            <div className="text-xs text-gray-500 mt-0.5">Net after system cost</div>
+          <div className="bg-paper-100 border border-ink/10 rounded-card p-5">
+            <div className="text-xs font-semibold text-ink-500 uppercase tracking-wide mb-1">{SYSTEM_LIFE}-year savings <InfoTooltip content="Total electricity bill savings over 25 years minus the system cost and one inverter replacement. Includes 3% annual tariff inflation (electricity gets more expensive) and 0.5% annual panel degradation (panels slowly lose output)." /></div>
+            <div className="text-xl font-bold text-brand-700">{fmtShort(results.netGain25, country)}</div>
+            <div className="text-xs text-ink-500 mt-0.5">Net after system cost</div>
           </div>
-          <div className="bg-white border border-gray-200 rounded-xl p-5">
-            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Self-sufficiency <InfoTooltip content="The percentage of your total electricity needs met by solar. Without a battery, this is typically capped at ~75% because solar only generates during daylight hours. Adding a home battery can push this to 85-95%." /></div>
-            <div className="text-xl font-bold text-gray-900">{results.selfSufficiency}%</div>
-            <div className="text-xs text-gray-500 mt-0.5">Without battery storage</div>
+          <div className="bg-paper-100 border border-ink/10 rounded-card p-5">
+            <div className="text-xs font-semibold text-ink-500 uppercase tracking-wide mb-1">Self-sufficiency <InfoTooltip content="The percentage of your total electricity needs met by solar. Without a battery, this is typically capped at ~75% because solar only generates during daylight hours. Adding a home battery can push this to 85-95%." /></div>
+            <div className="text-xl font-bold text-ink">{results.selfSufficiency}%</div>
+            <div className="text-xs text-ink-500 mt-0.5">Without battery storage</div>
           </div>
         </div>
 
         {/* Charts */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           {/* Cumulative savings */}
-          <div className="bg-white border border-gray-200 rounded-xl p-6">
-            <h3 className="text-sm font-semibold text-gray-900 mb-4">Cumulative net savings <InfoTooltip content="Shows the running total of savings after subtracting the upfront system cost. The line starts negative (you paid for the system) and crosses zero at the payback year. The dip around year 12 is the inverter replacement cost." /></h3>
+          <div className="bg-paper-100 border border-ink/10 rounded-card p-6">
+            <h3 className="text-sm font-semibold text-ink mb-4">Cumulative net savings <InfoTooltip content="Shows the running total of savings after subtracting the upfront system cost. The line starts negative (you paid for the system) and crosses zero at the payback year. The dip around year 12 is the inverter replacement cost." /></h3>
             <ResponsiveContainer width="100%" height={280}>
               <LineChart data={results.yearlyData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
@@ -335,8 +335,8 @@ export default function SolarPaybackPage() {
           </div>
 
           {/* Annual generation + savings */}
-          <div className="bg-white border border-gray-200 rounded-xl p-6">
-            <h3 className="text-sm font-semibold text-gray-900 mb-4">Annual generation & savings</h3>
+          <div className="bg-paper-100 border border-ink/10 rounded-card p-6">
+            <h3 className="text-sm font-semibold text-ink mb-4">Annual generation & savings</h3>
             <ResponsiveContainer width="100%" height={280}>
               <BarChart data={results.yearlyData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
@@ -351,9 +351,9 @@ export default function SolarPaybackPage() {
         </div>
 
         {/* Assumptions */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6">
-          <h3 className="text-sm font-semibold text-gray-900 mb-3">Key assumptions <InfoTooltip content="Default values from 2025 industry data for your country. Solar yield = average daily kWh produced per kW of panels. Self-consumption at 75% means you use 3/4 of what you generate (rest goes to grid)." /></h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-2 text-xs text-gray-500">
+        <div className="bg-paper-100 border border-ink/10 rounded-card p-6">
+          <h3 className="text-sm font-semibold text-ink mb-3">Key assumptions <InfoTooltip content="Default values from 2025 industry data for your country. Solar yield = average daily kWh produced per kW of panels. Self-consumption at 75% means you use 3/4 of what you generate (rest goes to grid)." /></h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-2 text-xs text-ink-500">
             <div>Solar yield: {SOLAR_YIELD[country]} kWh/kWp/day</div>
             <div>Panel cost: {fmt(SOLAR_COST_PER_KW[country], country)}/kWp installed</div>
             <div>Tariff: {fmt(TARIFF[country], country, 3)}/kWh</div>
@@ -364,8 +364,8 @@ export default function SolarPaybackPage() {
             <div>System lifespan: {SYSTEM_LIFE} years</div>
             <div>Panel density: {KW_PER_M2} kWp/m²</div>
           </div>
-          <p className="text-xs text-gray-400 mt-4">
-            Actual yield varies with orientation, shading, and weather. Adding battery storage increases self-consumption to 85-95% — try the <a href="/bess/home" className="text-emerald-600 underline">Zero‑Bill Calculator</a> for that.
+          <p className="text-xs text-ink-400 mt-4">
+            Actual yield varies with orientation, shading, and weather. Adding battery storage increases self-consumption to 85-95% — try the <a href="/bess/home" className="text-brand-600 underline">Zero‑Bill Calculator</a> for that.
           </p>
         </div>
       </section>

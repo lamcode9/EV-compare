@@ -68,40 +68,40 @@ const DATA_SOURCES: DataSource[] = [
 
 export default function ContributorsPage() {
   return (
-    <main className="min-h-screen pt-12 md:pt-14">
+    <main className="min-h-screen bg-paper pt-12 md:pt-14">
       <section className="container mx-auto px-4 pt-12 pb-16 max-w-4xl">
         {/* Header */}
         <div className="mb-10">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">Contributors</h1>
-          <p className="mt-4 text-lg text-gray-600 leading-relaxed">
+          <h1 className="font-display text-4xl md:text-5xl font-medium text-ink tracking-tight">Contributors</h1>
+          <p className="mt-4 text-lg text-ink-600 leading-relaxed">
             The public sources, tools, and references behind battery.mom&apos;s battery, solar, and energy-transition data.
           </p>
         </div>
 
         {/* Data Sources */}
         <div className="mb-12">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+          <h2 className="text-lg font-semibold text-ink mb-4 flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-blue-500" />
             Data Sources
           </h2>
-          <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
+          <div className="bg-paper-100 border border-ink/10 rounded-card overflow-hidden">
             {DATA_SOURCES.map((source, i) => (
               <div
                 key={source.name}
                 className={`px-5 py-4 flex items-start justify-between gap-4 ${
-                  i < DATA_SOURCES.length - 1 ? 'border-b border-gray-100' : ''
+                  i < DATA_SOURCES.length - 1 ? 'border-b border-ink/5' : ''
                 }`}
               >
                 <div>
-                  <h3 className="font-medium text-gray-900 text-sm">{source.name}</h3>
-                  <p className="text-xs text-gray-500 mt-0.5">{source.description}</p>
+                  <h3 className="font-medium text-ink text-sm">{source.name}</h3>
+                  <p className="text-xs text-ink-500 mt-0.5">{source.description}</p>
                 </div>
                 {source.url !== '#' && (
                   <a
                     href={source.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs text-emerald-600 hover:text-emerald-700 font-medium flex-shrink-0"
+                    className="text-xs text-brand-600 hover:text-brand-700 font-medium flex-shrink-0"
                   >
                     Visit
                   </a>
@@ -113,7 +113,7 @@ export default function ContributorsPage() {
 
         {/* Built With */}
         <div className="mb-12">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+          <h2 className="text-lg font-semibold text-ink mb-4 flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-purple-500" />
             Built With
           </h2>
@@ -124,32 +124,32 @@ export default function ContributorsPage() {
                 href={tool.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white border border-gray-200 rounded-xl p-4 hover:border-emerald-300 hover:shadow-sm transition-all"
+                className="bg-paper-100 border border-ink/10 rounded-card p-4 hover:border-brand-300 hover:shadow-sm transition-all"
               >
-                <h3 className="font-semibold text-gray-900 text-sm">{tool.name}</h3>
-                <p className="text-xs text-gray-500 mt-1">{tool.purpose}</p>
+                <h3 className="font-semibold text-ink text-sm">{tool.name}</h3>
+                <p className="text-xs text-ink-500 mt-1">{tool.purpose}</p>
               </a>
             ))}
           </div>
         </div>
 
         {/* Contribute */}
-        <div className="bg-gray-50 border border-gray-200 rounded-xl p-8 text-center">
-          <h2 className="text-xl font-bold text-gray-900 mb-2">Want to contribute?</h2>
-          <p className="text-gray-600 mb-4 max-w-lg mx-auto">
+        <div className="bg-paper-200 border border-ink/10 rounded-card p-8 text-center">
+          <h2 className="text-xl font-bold text-ink mb-2">Want to contribute?</h2>
+          <p className="text-ink-600 mb-4 max-w-lg mx-auto">
             Whether you have data, expertise, or just a correction — we welcome contributions.
             This project is better because of the community around it.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link
               href="/suggest-correction"
-              className="px-5 py-2 bg-emerald-600 text-white rounded-lg font-medium hover:bg-emerald-700 transition-colors text-sm"
+              className="px-5 py-2 bg-brand-600 text-white rounded-lg font-medium hover:bg-brand-700 transition-colors text-sm"
             >
               Suggest Correction
             </Link>
             <Link
               href="/contact"
-              className="px-5 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg font-medium hover:border-emerald-300 transition-colors text-sm"
+              className="px-5 py-2 bg-paper-100 border border-ink/15 text-ink-700 rounded-lg font-medium hover:border-brand-300 transition-colors text-sm"
             >
               Get in Touch
             </Link>
