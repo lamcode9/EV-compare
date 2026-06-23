@@ -41,8 +41,19 @@ Verify every route with the live nested-border detector — target 0 non-interac
       `shared-residential` (8db0b1f), all migrated + de-nested (detector 0 non-interactive nested,
       0 leftover gray/emerald) + serif heroes + plain-language result sentences, pushed to prod.
       Their ~11 shared analysis components migrated alongside. Added `scripts/ds-token-migrate.pl`.
-      Still pending in this pillar: `products/[slug]`, `case-studies`, `installers`.
-- [ ] Calculators pages (`/calculators/*`), `/insights`, `/about`, `/contact`, misc.
+- [x] **Content + standalone calculators** (2700081): the 3 calculators (ev-charging-cost,
+      ev-vs-ice, solar-payback), `/calculators` hub, `/insights` (list + article), `/about`,
+      `/contributors`, `/bess/case-studies`, `/api-docs`, suggest-correction, error, not-found —
+      migrated + serif heroes + `ShareResult` component. Detector verified 0 nested / 0 leftover
+      on every page. (`/bess/products/[slug]` is 0-token already; no `installers` route exists.)
+- [x] **Embed widgets** (971fc2e): ev-stats + ev-vs-ice recolored to ink/brand, transparent bg kept.
+- [ ] NOTE: pre-existing bug flagged via background task — `/embed/*` renders the full site
+      header/footer instead of being chrome-free. Out of scope for the token migration.
+
+## Design-system propagation — COMPLETE
+Every user-facing route is on the editorial ink/paper/brand system with serif display headings and
+zero non-interactive nested borders, verified live with the DOM detector. The reusable token sed is
+`scripts/ds-token-migrate.pl`; the de-nesting + detector method is documented in `lessons.md`.
 
 ## Phase 2 + later (keep in view)
 - [ ] Data refresh: battery $/kWh cost curve, global EV-over-time, China share,
