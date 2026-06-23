@@ -80,13 +80,13 @@ export default function BatteryHealthChart({ vehicles }: Props) {
   if (vehicles.length === 0) return null
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-5">
+    <div className="bg-paper-100 rounded-card border border-ink/10 p-5">
       <div className="flex items-start justify-between mb-4">
         <div>
-          <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2">
+          <h3 className="text-sm font-bold text-ink flex items-center gap-2">
             🔋 Battery Health Projection
           </h3>
-          <p className="text-[10px] text-gray-500 mt-1">
+          <p className="text-[10px] text-ink-500 mt-1">
             Estimated usable capacity over 10 years based on battery chemistry degradation curves. Assumes typical driving patterns and climate conditions.
           </p>
         </div>
@@ -143,37 +143,37 @@ export default function BatteryHealthChart({ vehicles }: Props) {
       {/* Summary cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
         {summaryData.map((s, i) => (
-          <div key={s.vehicle.id} className="bg-gray-50 rounded-lg p-3">
+          <div key={s.vehicle.id} className="bg-paper-200 rounded-lg p-3">
             <div className="flex items-center gap-2 mb-2">
               <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: COLORS[i % COLORS.length] }} />
-              <span className="text-xs font-semibold text-gray-900 truncate">{s.label}</span>
+              <span className="text-xs font-semibold text-ink truncate">{s.label}</span>
             </div>
-            <div className="text-[10px] text-gray-500 mb-1">{s.chemLabel}</div>
+            <div className="text-[10px] text-ink-500 mb-1">{s.chemLabel}</div>
             <div className="grid grid-cols-3 gap-2 text-center">
               <div>
-                <div className="text-xs font-bold text-gray-900">{s.capacity} kWh</div>
-                <div className="text-[9px] text-gray-400">New</div>
+                <div className="text-xs font-bold text-ink">{s.capacity} kWh</div>
+                <div className="text-[9px] text-ink-400">New</div>
               </div>
               <div>
                 <div className="text-xs font-bold text-amber-700">{s.year5} kWh</div>
-                <div className="text-[9px] text-gray-400">Yr 5 ({s.year5pct}%)</div>
+                <div className="text-[9px] text-ink-400">Yr 5 ({s.year5pct}%)</div>
               </div>
               <div>
-                <div className={`text-xs font-bold ${s.year10pct >= 85 ? 'text-emerald-700' : s.year10pct >= 80 ? 'text-amber-700' : 'text-red-600'}`}>
+                <div className={`text-xs font-bold ${s.year10pct >= 85 ? 'text-brand-700' : s.year10pct >= 80 ? 'text-amber-700' : 'text-red-600'}`}>
                   {s.year10} kWh
                 </div>
-                <div className="text-[9px] text-gray-400">Yr 10 ({s.year10pct}%)</div>
+                <div className="text-[9px] text-ink-400">Yr 10 ({s.year10pct}%)</div>
               </div>
             </div>
           </div>
         ))}
       </div>
 
-      <p className="text-[9px] text-gray-400 mt-3">
+      <p className="text-[9px] text-ink-400 mt-3">
         Degradation estimates based on published research (NREL, Argonne National Lab) and manufacturer warranty data.
         LFP batteries retain ~87% after 10 years; NMC ~82%; Solid State ~92%. Actual results depend on climate, charging habits, and depth of discharge.
       </p>
-      <p className="text-[8px] text-gray-300 mt-1">
+      <p className="text-[8px] text-ink-300 mt-1">
         Sources: NREL Battery Lifetime Report 2024; Argonne ReCell Center; manufacturer datasheets. Battery chemistry from vehicle spec sheets.
       </p>
     </div>

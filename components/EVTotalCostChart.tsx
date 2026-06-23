@@ -84,13 +84,13 @@ export default function EVTotalCostChart({ vehicles, country }: Props) {
   const lowestTCO = tcoData[0]
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-5">
+    <div className="bg-paper-100 rounded-card border border-ink/10 p-5">
       <div className="flex items-start justify-between mb-4">
         <div>
-          <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2">
+          <h3 className="text-sm font-bold text-ink flex items-center gap-2">
             💰 5-Year Total Cost of Ownership
           </h3>
-          <p className="text-[10px] text-gray-500 mt-1">
+          <p className="text-[10px] text-ink-500 mt-1">
             Purchase price + electricity + maintenance + insurance − estimated resale value after 5 years.
           </p>
         </div>
@@ -98,7 +98,7 @@ export default function EVTotalCostChart({ vehicles, country }: Props) {
 
       {/* Annual km slider */}
       <div className="mb-4">
-        <label className="text-[10px] font-medium text-gray-600 block mb-2">
+        <label className="text-[10px] font-medium text-ink-600 block mb-2">
           Annual driving distance
         </label>
         <div className="flex items-center gap-3">
@@ -109,13 +109,13 @@ export default function EVTotalCostChart({ vehicles, country }: Props) {
             step={1000}
             value={annualKm}
             onChange={e => setAnnualKm(Number(e.target.value))}
-            className="flex-1 h-1.5 rounded-full appearance-none bg-gray-200 accent-indigo-600"
+            className="flex-1 h-1.5 rounded-full appearance-none bg-paper-300 accent-indigo-600"
           />
-          <span className="text-sm font-bold text-gray-900 w-24 text-right">
+          <span className="text-sm font-bold text-ink w-24 text-right">
             {annualKm.toLocaleString()} km/yr
           </span>
         </div>
-        <div className="flex justify-between text-[9px] text-gray-400 mt-0.5 px-0.5">
+        <div className="flex justify-between text-[9px] text-ink-400 mt-0.5 px-0.5">
           <span>5,000</span>
           <span>40,000 km</span>
         </div>
@@ -162,25 +162,25 @@ export default function EVTotalCostChart({ vehicles, country }: Props) {
       <div className="overflow-x-auto -mx-2 px-2">
         <table className="w-full text-[10px]">
           <thead>
-            <tr className="border-b border-gray-200">
-              <th className="text-left py-1.5 text-gray-500 font-medium">Vehicle</th>
-              <th className="text-right py-1.5 text-gray-500 font-medium">5-Yr TCO</th>
-              <th className="text-right py-1.5 text-gray-500 font-medium">Resale</th>
-              <th className="text-right py-1.5 text-gray-500 font-medium">Net Cost</th>
-              <th className="text-right py-1.5 text-gray-500 font-medium">{sym}/km</th>
+            <tr className="border-b border-ink/10">
+              <th className="text-left py-1.5 text-ink-500 font-medium">Vehicle</th>
+              <th className="text-right py-1.5 text-ink-500 font-medium">5-Yr TCO</th>
+              <th className="text-right py-1.5 text-ink-500 font-medium">Resale</th>
+              <th className="text-right py-1.5 text-ink-500 font-medium">Net Cost</th>
+              <th className="text-right py-1.5 text-ink-500 font-medium">{sym}/km</th>
             </tr>
           </thead>
           <tbody>
             {tcoData.map((d, i) => (
-              <tr key={d.id} className={`border-b border-gray-100 ${i === 0 ? 'bg-emerald-50/50' : ''}`}>
-                <td className="py-1.5 font-semibold text-gray-900 flex items-center gap-1">
+              <tr key={d.id} className={`border-b border-ink/5 ${i === 0 ? 'bg-brand-50/50' : ''}`}>
+                <td className="py-1.5 font-semibold text-ink flex items-center gap-1">
                   {i === 0 && <span className="text-[9px]">🏆</span>}
                   {d.fullLabel}
                 </td>
-                <td className="text-right py-1.5 text-gray-700">{formatCompact(d.purchase + d.electricity + d.maintenance + d.insurance, country)}</td>
-                <td className="text-right py-1.5 text-emerald-600">−{formatCompact(d.resale, country)}</td>
-                <td className="text-right py-1.5 font-bold text-gray-900">{formatCompact(d.tco, country)}</td>
-                <td className="text-right py-1.5 text-gray-600">{d.costPerKm.toFixed(2)}</td>
+                <td className="text-right py-1.5 text-ink-700">{formatCompact(d.purchase + d.electricity + d.maintenance + d.insurance, country)}</td>
+                <td className="text-right py-1.5 text-brand-600">−{formatCompact(d.resale, country)}</td>
+                <td className="text-right py-1.5 font-bold text-ink">{formatCompact(d.tco, country)}</td>
+                <td className="text-right py-1.5 text-ink-600">{d.costPerKm.toFixed(2)}</td>
               </tr>
             ))}
           </tbody>
@@ -188,19 +188,19 @@ export default function EVTotalCostChart({ vehicles, country }: Props) {
       </div>
 
       {lowestTCO && tcoData.length >= 2 && (
-        <div className="mt-3 bg-emerald-50 border border-emerald-200 rounded-lg p-2.5">
-          <p className="text-[10px] text-emerald-800">
+        <div className="mt-3 bg-brand-50 rounded-lg p-2.5">
+          <p className="text-[10px] text-brand-800">
             🏆 <strong>{lowestTCO.fullLabel}</strong> has the lowest 5-year TCO at {formatCompact(lowestTCO.tco, country)},
             saving you {formatCompact(tcoData[tcoData.length - 1].tco - lowestTCO.tco, country)} vs the most expensive option.
           </p>
         </div>
       )}
 
-      <p className="text-[9px] text-gray-400 mt-3">
+      <p className="text-[9px] text-ink-400 mt-3">
         Electricity at {sym}{tariff.toLocaleString()}/kWh (residential). Maintenance 0.5%/yr of purchase price. Insurance 2.5%/yr. Resale assumed at 50% after 5 years.
         Adjust annual km to see impact on running costs.
       </p>
-      <p className="text-[8px] text-gray-300 mt-1">
+      <p className="text-[8px] text-ink-300 mt-1">
         {getCitationFooter('electricityResidential')} · Vehicle prices from manufacturer websites.
       </p>
     </div>

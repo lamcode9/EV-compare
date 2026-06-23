@@ -51,13 +51,13 @@ export default function EVAsBackupCalc({ vehicles }: Props) {
   if (vehicles.length === 0) return null
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-5">
+    <div className="bg-paper-100 rounded-card border border-ink/10 p-5">
       <div className="flex items-start justify-between mb-4">
         <div>
-          <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2">
+          <h3 className="text-sm font-bold text-ink flex items-center gap-2">
             🏠 Battery as Home Backup
           </h3>
-          <p className="text-[10px] text-gray-500 mt-1">
+          <p className="text-[10px] text-ink-500 mt-1">
             Estimate how long each EV can power your home during an outage. Accounts for inverter losses (90%) and EV battery reserve (15%).
           </p>
         </div>
@@ -65,7 +65,7 @@ export default function EVAsBackupCalc({ vehicles }: Props) {
 
       {/* Wattage input */}
       <div className="mb-4">
-        <label className="text-[10px] font-medium text-gray-600 block mb-2">
+        <label className="text-[10px] font-medium text-ink-600 block mb-2">
           Household power draw
         </label>
 
@@ -77,8 +77,8 @@ export default function EVAsBackupCalc({ vehicles }: Props) {
               onClick={() => setWatts(p.watts)}
               className={`px-2.5 py-1 rounded-full text-[10px] font-medium transition-all ${
                 watts === p.watts
-                  ? 'bg-emerald-600 text-white shadow-sm'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  ? 'bg-brand-600 text-white shadow-sm'
+                  : 'bg-paper-200 text-ink-600 hover:bg-paper-300'
               }`}
             >
               {p.label}
@@ -95,9 +95,9 @@ export default function EVAsBackupCalc({ vehicles }: Props) {
             step={100}
             value={watts}
             onChange={e => setWatts(Number(e.target.value))}
-            className="flex-1 h-1.5 rounded-full appearance-none bg-gray-200 accent-emerald-600"
+            className="flex-1 h-1.5 rounded-full appearance-none bg-paper-300 accent-brand-600"
           />
-          <span className="text-sm font-bold text-gray-900 w-20 text-right">
+          <span className="text-sm font-bold text-ink w-20 text-right">
             {watts >= 1000 ? `${(watts / 1000).toFixed(1)} kW` : `${watts} W`}
           </span>
         </div>
@@ -110,21 +110,21 @@ export default function EVAsBackupCalc({ vehicles }: Props) {
             <div className="flex items-center justify-between mb-1">
               <div className="flex items-center gap-2 min-w-0">
                 <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: BAR_COLORS[i % BAR_COLORS.length] }} />
-                <span className="text-xs font-semibold text-gray-900 truncate">{r.label}</span>
+                <span className="text-xs font-semibold text-ink truncate">{r.label}</span>
                 {r.hasBidirectional && (
-                  <span className="shrink-0 px-1.5 py-0.5 rounded text-[8px] font-bold bg-emerald-100 text-emerald-700">V2H</span>
+                  <span className="shrink-0 px-1.5 py-0.5 rounded text-[8px] font-bold bg-brand-100 text-brand-700">V2H</span>
                 )}
                 {!r.hasBidirectional && (
                   <span className="shrink-0 px-1.5 py-0.5 rounded text-[8px] font-bold bg-amber-100 text-amber-700">V2L only</span>
                 )}
               </div>
               <div className="flex items-baseline gap-1.5 shrink-0 ml-2">
-                <span className="text-sm font-bold text-gray-900">{r.hours}h</span>
-                <span className="text-[10px] text-gray-400">({r.days} days)</span>
+                <span className="text-sm font-bold text-ink">{r.hours}h</span>
+                <span className="text-[10px] text-ink-400">({r.days} days)</span>
               </div>
             </div>
             {/* Bar */}
-            <div className="h-3 bg-gray-100 rounded-full overflow-hidden">
+            <div className="h-3 bg-paper-200 rounded-full overflow-hidden">
               <div
                 className="h-full rounded-full transition-all duration-500 ease-out"
                 style={{
@@ -134,19 +134,19 @@ export default function EVAsBackupCalc({ vehicles }: Props) {
                 }}
               />
             </div>
-            <div className="text-[9px] text-gray-400 mt-0.5">
+            <div className="text-[9px] text-ink-400 mt-0.5">
               {r.capacityKwh} kWh battery · {(r.capacityKwh * USABLE_FACTOR).toFixed(1)} kWh usable
             </div>
           </div>
         ))}
       </div>
 
-      <p className="text-[9px] text-gray-400 mt-4">
+      <p className="text-[9px] text-ink-400 mt-4">
         💡 <strong>V2H</strong> (Vehicle-to-Home) EVs can fully power a home via a bidirectional charger.
         <strong> V2L</strong> (Vehicle-to-Load) EVs provide power via an outlet (typically 1.5–3.6 kW max).
         Actual backup time varies with battery state-of-charge and ambient temperature.
       </p>
-      <p className="text-[8px] text-gray-300 mt-1">
+      <p className="text-[8px] text-ink-300 mt-1">
         Assumptions: 85% usable battery capacity (EV reserves ~15%), 90% inverter efficiency. Battery specs from manufacturer data. V2H/V2L capability per model verified against OEM feature lists.
       </p>
     </div>

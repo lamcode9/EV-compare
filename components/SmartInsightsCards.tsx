@@ -16,7 +16,7 @@ interface InsightCard {
 }
 
 const CARD_STYLES: Record<string, { bg: string; border: string; iconBg: string; title: string; body: string; highlight: string }> = {
-  emerald:  { bg: 'bg-emerald-50/80', border: 'border-emerald-200', iconBg: 'bg-emerald-100', title: 'text-emerald-900', body: 'text-emerald-700', highlight: 'text-emerald-800 bg-emerald-100' },
+  emerald:  { bg: 'bg-brand-50/80', border: 'border-brand-200', iconBg: 'bg-brand-100', title: 'text-brand-900', body: 'text-brand-700', highlight: 'text-brand-800 bg-brand-100' },
   blue:     { bg: 'bg-blue-50/80',    border: 'border-blue-200',    iconBg: 'bg-blue-100',    title: 'text-blue-900',    body: 'text-blue-700',    highlight: 'text-blue-800 bg-blue-100' },
   amber:    { bg: 'bg-amber-50/80',   border: 'border-amber-200',   iconBg: 'bg-amber-100',   title: 'text-amber-900',   body: 'text-amber-700',   highlight: 'text-amber-800 bg-amber-100' },
   purple:   { bg: 'bg-purple-50/80',  border: 'border-purple-200',  iconBg: 'bg-purple-100',  title: 'text-purple-900',  body: 'text-purple-700',  highlight: 'text-purple-800 bg-purple-100' },
@@ -152,8 +152,8 @@ export default function SmartInsightsCards({ vehicles, country }: Props) {
   if (cards.length === 0) return null
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-5">
-      <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2 mb-4">
+    <div className="bg-paper-100 rounded-card border border-ink/10 p-5">
+      <h3 className="text-sm font-bold text-ink flex items-center gap-2 mb-4">
         💡 Smart Insights
       </h3>
 
@@ -161,7 +161,7 @@ export default function SmartInsightsCards({ vehicles, country }: Props) {
         {cards.map((card, i) => {
           const style = CARD_STYLES[card.color]
           return (
-            <div key={i} className={`${style.bg} border ${style.border} rounded-xl p-4 flex flex-col`}>
+            <div key={i} className={`${style.bg} rounded-card p-4 flex flex-col`}>
               {/* Icon + Title */}
               <div className="flex items-center gap-2.5 mb-2">
                 <span className={`${style.iconBg} w-8 h-8 rounded-lg flex items-center justify-center text-base`}>

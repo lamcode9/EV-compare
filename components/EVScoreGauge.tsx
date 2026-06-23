@@ -112,7 +112,7 @@ const SIZE_CONFIG = {
 }
 
 function getScoreColor(score: number): string {
-  if (score >= 80) return '#10b981' // emerald-500
+  if (score >= 80) return '#10b981' // brand-500
   if (score >= 60) return '#f59e0b' // amber-500
   if (score >= 40) return '#f97316' // orange-500
   return '#ef4444' // red-500
@@ -187,7 +187,7 @@ export default function EVScoreGauge({ vehicle, allVehicles, size = 'md', showBr
           <span className={`${config.fontSize} font-bold`} style={{ color: scoreColor }}>
             {score.total}
           </span>
-          <span className={`${config.labelSize} text-gray-400 font-medium leading-none`}>
+          <span className={`${config.labelSize} text-ink-400 font-medium leading-none`}>
             / 100
           </span>
         </div>
@@ -204,8 +204,8 @@ export default function EVScoreGauge({ vehicle, allVehicles, size = 'md', showBr
           {BREAKDOWN.map(({ label, value, weight, icon }) => (
             <div key={label} className="flex items-center gap-1.5">
               <span className="text-[10px] w-3 text-center">{icon}</span>
-              <span className="text-[10px] text-gray-500 w-14 truncate" title={`Weight: ${weight}`}>{label}</span>
-              <div className="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+              <span className="text-[10px] text-ink-500 w-14 truncate" title={`Weight: ${weight}`}>{label}</span>
+              <div className="flex-1 h-1.5 bg-paper-200 rounded-full overflow-hidden">
                 <div
                   className="h-full rounded-full transition-all duration-700 ease-out"
                   style={{
@@ -214,32 +214,32 @@ export default function EVScoreGauge({ vehicle, allVehicles, size = 'md', showBr
                   }}
                 />
               </div>
-              <span className="text-[10px] font-medium text-gray-600 w-6 text-right">{value}</span>
+              <span className="text-[10px] font-medium text-ink-600 w-6 text-right">{value}</span>
             </div>
           ))}
 
           {/* Methodology disclosure */}
           <details className="mt-2 group">
-            <summary className="text-[10px] text-gray-400 cursor-pointer hover:text-gray-600 transition-colors select-none flex items-center gap-1">
-              <svg className="w-3 h-3 text-gray-400 group-open:rotate-90 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <summary className="text-[10px] text-ink-400 cursor-pointer hover:text-ink-600 transition-colors select-none flex items-center gap-1">
+              <svg className="w-3 h-3 text-ink-400 group-open:rotate-90 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
               </svg>
               How is this scored?
             </summary>
-            <div className="mt-1.5 pl-4 text-[10px] text-gray-400 space-y-1 border-l border-gray-100">
+            <div className="mt-1.5 pl-4 text-[10px] text-ink-400 space-y-1 border-l border-ink/5">
               <p>Each dimension compares this vehicle to the best in its country. A score of 100 means it leads that category; 50 means it&apos;s halfway to the leader.</p>
               <table className="w-full text-left">
                 <tbody>
                   {SCORE_METHODOLOGY.map(({ dim, weight, detail }) => (
                     <tr key={dim}>
-                      <td className="pr-2 font-medium text-gray-500">{dim}</td>
-                      <td className="pr-2 text-gray-400">{weight}</td>
-                      <td className="text-gray-400">{detail}</td>
+                      <td className="pr-2 font-medium text-ink-500">{dim}</td>
+                      <td className="pr-2 text-ink-400">{weight}</td>
+                      <td className="text-ink-400">{detail}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
-              <p className="text-gray-400">No editorial opinions. No brand preferences. Pure data ranking within the current comparison set.</p>
+              <p className="text-ink-400">No editorial opinions. No brand preferences. Pure data ranking within the current comparison set.</p>
             </div>
           </details>
         </div>

@@ -57,9 +57,9 @@ export default function EVRadarChart({ vehicles }: EVRadarChartProps) {
   if (vehicles.length < 2) return null
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-4">
-      <h3 className="text-sm font-semibold text-gray-900 mb-1">Radar Comparison</h3>
-      <p className="text-[10px] text-gray-500 mb-3">
+    <div className="bg-paper-100 border border-ink/10 rounded-card p-4">
+      <h3 className="text-sm font-semibold text-ink mb-1">Radar Comparison</h3>
+      <p className="text-[10px] text-ink-500 mb-3">
         Each axis is scored 0–100 relative to this comparison set. Larger area = stronger overall.
       </p>
       <ResponsiveContainer width="100%" height={320}>

@@ -50,7 +50,7 @@ export default function VehicleSection() {
   if (selectedVehicles.length === 0) {
     return (
       <div className="p-8">
-        <p className="text-gray-600 text-center">
+        <p className="text-ink-600 text-center">
           {selectedCountry 
             ? `Use the search box above to find and compare electric vehicles available in ${getCountryName(selectedCountry)}.`
             : 'Please select a country to start searching for electric vehicles.'}

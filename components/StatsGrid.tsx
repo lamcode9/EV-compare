@@ -65,7 +65,7 @@ function CostPerKmInfoBox({
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="text-gray-400 hover:text-gray-600 transition-colors"
+        className="text-ink-400 hover:text-ink-600 transition-colors"
         aria-label="Show cost per km calculation details"
       >
         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -81,56 +81,56 @@ function CostPerKmInfoBox({
             onClick={() => setIsOpen(false)}
           />
           {/* Info Box */}
-          <div className="absolute left-0 top-6 w-72 bg-white border border-gray-200 rounded-lg shadow-lg p-4 z-20">
-            <div className="text-xs font-semibold text-gray-900 mb-3">Cost / km Calculation</div>
+          <div className="absolute left-0 top-6 w-72 bg-paper-100 border border-ink/10 rounded-lg shadow-lg p-4 z-20">
+            <div className="text-xs font-semibold text-ink mb-3">Cost / km Calculation</div>
             
             {hasData ? (
-              <div className="space-y-2 text-xs text-gray-700">
+              <div className="space-y-2 text-xs text-ink-700">
                 <div>
-                  <div className="font-medium text-gray-900 mb-1">Formula:</div>
-                  <div className="bg-gray-50 p-2 rounded font-mono text-[10px]">
+                  <div className="font-medium text-ink mb-1">Formula:</div>
+                  <div className="bg-paper-200 p-2 rounded font-mono text-[10px]">
                     Cost/km = (Battery Capacity × Electricity Rate) ÷ Range
                   </div>
                 </div>
                 
-                <div className="pt-2 border-t border-gray-100">
-                  <div className="font-medium text-gray-900 mb-1.5">Key Assumptions:</div>
-                  <ul className="space-y-1.5 text-gray-600">
+                <div className="pt-2 border-t border-ink/5">
+                  <div className="font-medium text-ink mb-1.5">Key Assumptions:</div>
+                  <ul className="space-y-1.5 text-ink-600">
                     <li className="flex items-start gap-1.5">
-                      <span className="text-gray-400 mt-0.5">•</span>
+                      <span className="text-ink-400 mt-0.5">•</span>
                       <span>Battery capacity: <span className="font-medium">{batteryCapacityKwh} kWh</span></span>
                     </li>
                     <li className="flex items-start gap-1.5">
-                      <span className="text-gray-400 mt-0.5">•</span>
+                      <span className="text-ink-400 mt-0.5">•</span>
                       <span>Electricity rate: <span className="font-medium">{formatLocalPrice(electricityRate, country, 2)}/kWh</span> (avg fast-charger)</span>
                     </li>
                     <li className="flex items-start gap-1.5">
-                      <span className="text-gray-400 mt-0.5">•</span>
+                      <span className="text-ink-400 mt-0.5">•</span>
                       <span>Range: <span className="font-medium">{rangeKm} km</span></span>
                     </li>
                     {costPerFullCharge && (
                       <li className="flex items-start gap-1.5">
-                        <span className="text-gray-400 mt-0.5">•</span>
+                        <span className="text-ink-400 mt-0.5">•</span>
                         <span>Cost per full charge: <span className="font-medium">{formatLocalPrice(costPerFullCharge, country, 2)}</span></span>
                       </li>
                     )}
                   </ul>
                 </div>
                 
-                <div className="pt-2 border-t border-gray-100 text-[10px] text-gray-500">
-                  <div className="font-medium text-gray-700 mb-0.5">Note:</div>
+                <div className="pt-2 border-t border-ink/5 text-[10px] text-ink-500">
+                  <div className="font-medium text-ink-700 mb-0.5">Note:</div>
                   <div>Rates vary by location and charging method. Home charging may be cheaper.</div>
                 </div>
               </div>
             ) : (
-              <div className="text-xs text-gray-600">
+              <div className="text-xs text-ink-600">
                 Battery capacity data is required to calculate cost per km. Please ensure all vehicles have batteryCapacityKwh in the data file.
               </div>
             )}
             
             <button
               onClick={() => setIsOpen(false)}
-              className="mt-3 text-xs text-gray-500 hover:text-gray-700"
+              className="mt-3 text-xs text-ink-500 hover:text-ink-700"
             >
               Close
             </button>
@@ -464,29 +464,29 @@ export default function StatsGrid({ vehicle, selectedOptions, onToggleOption }: 
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {/* Performance */}
       <div className="space-y-4">
-        <h3 className="text-sm font-medium text-gray-900 uppercase tracking-wide pb-2 border-b border-gray-200">Performance</h3>
-        <div className="bg-gray-50/50 rounded-lg p-4 space-y-4 border border-gray-100">
-          <div className="pb-3 border-b border-gray-100 last:border-0 last:pb-0">
-            <div className="text-xs text-gray-500 mb-1.5">Power</div>
-            <div className="text-sm font-medium text-gray-900">
+        <h3 className="text-sm font-medium text-ink uppercase tracking-wide pb-2 border-b border-ink/10">Performance</h3>
+        <div className="bg-paper-200/50 rounded-lg p-4 space-y-4">
+          <div className="pb-3 border-b border-ink/5 last:border-0 last:pb-0">
+            <div className="text-xs text-ink-500 mb-1.5">Power</div>
+            <div className="text-sm font-medium text-ink">
               {formatValueOrNA(vehicle.powerRatingKw, (v) => `${v} kW`)}
             </div>
           </div>
-          <div className="pb-3 border-b border-gray-100 last:border-0 last:pb-0">
-            <div className="text-xs text-gray-500 mb-1.5">Horsepower</div>
-            <div className="text-sm font-medium text-gray-900">
+          <div className="pb-3 border-b border-ink/5 last:border-0 last:pb-0">
+            <div className="text-xs text-ink-500 mb-1.5">Horsepower</div>
+            <div className="text-sm font-medium text-ink">
               {formatValueOrNA(powerHp, (v) => `${v} hp`)}
             </div>
           </div>
-          <div className="pb-3 border-b border-gray-100 last:border-0 last:pb-0">
-            <div className="text-xs text-gray-500 mb-1.5">0-100 km/h</div>
-            <div className="text-sm font-medium text-gray-900">
+          <div className="pb-3 border-b border-ink/5 last:border-0 last:pb-0">
+            <div className="text-xs text-ink-500 mb-1.5">0-100 km/h</div>
+            <div className="text-sm font-medium text-ink">
               {formatValueOrNA(acceleration0To100Kmh, (v) => `${v.toFixed(1)}s`)}
             </div>
           </div>
           <div>
-            <div className="text-xs text-gray-500 mb-1.5">Top Speed</div>
-            <div className="text-sm font-medium text-gray-900">
+            <div className="text-xs text-ink-500 mb-1.5">Top Speed</div>
+            <div className="text-sm font-medium text-ink">
               {formatValueOrNA(vehicle.topSpeedKmh, (v) => `${v} km/h`)}
             </div>
           </div>
@@ -495,42 +495,42 @@ export default function StatsGrid({ vehicle, selectedOptions, onToggleOption }: 
 
       {/* Battery */}
       <div className="space-y-4">
-        <h3 className="text-sm font-medium text-gray-900 uppercase tracking-wide pb-2 border-b border-gray-200">Battery</h3>
-        <div className="bg-gray-50/50 rounded-lg p-4 space-y-4 border border-gray-100">
-          <div className="pb-3 border-b border-gray-100 last:border-0 last:pb-0">
-            <div className="text-xs text-gray-500 mb-1.5">Battery Capacity</div>
-            <div className="text-sm font-medium text-gray-900">
+        <h3 className="text-sm font-medium text-ink uppercase tracking-wide pb-2 border-b border-ink/10">Battery</h3>
+        <div className="bg-paper-200/50 rounded-lg p-4 space-y-4">
+          <div className="pb-3 border-b border-ink/5 last:border-0 last:pb-0">
+            <div className="text-xs text-ink-500 mb-1.5">Battery Capacity</div>
+            <div className="text-sm font-medium text-ink">
               {formatValueOrNA(batteryCapacityDisplay, (v) => `${v} kWh`)}
             </div>
           </div>
-          <div className="pb-3 border-b border-gray-100 last:border-0 last:pb-0">
-            <div className="text-xs text-gray-500 mb-1.5">Battery Manufacturer</div>
-            <div className="text-sm font-medium text-gray-900 flex items-center gap-2 flex-wrap">
+          <div className="pb-3 border-b border-ink/5 last:border-0 last:pb-0">
+            <div className="text-xs text-ink-500 mb-1.5">Battery Manufacturer</div>
+            <div className="text-sm font-medium text-ink flex items-center gap-2 flex-wrap">
               {vehicle.batteryManufacturer ? (
                 <>
                   <span>{vehicle.batteryManufacturer}</span>
                   {vehicle.batteryTechnology && (
-                    <span className="text-xs text-gray-600 px-2 py-0.5 bg-gray-200 rounded-md">
+                    <span className="text-xs text-ink-600 px-2 py-0.5 bg-paper-300 rounded-md">
                       {vehicle.batteryTechnology}
                     </span>
                   )}
                 </>
               ) : (
-                <span className="text-gray-500">N/A</span>
+                <span className="text-ink-500">N/A</span>
               )}
             </div>
           </div>
-          <div className="pb-3 border-b border-gray-100 last:border-0 last:pb-0">
-            <div className="text-xs text-gray-500 mb-1.5">Charger Power Rating</div>
-            <div className="text-sm font-medium text-gray-900">
+          <div className="pb-3 border-b border-ink/5 last:border-0 last:pb-0">
+            <div className="text-xs text-ink-500 mb-1.5">Charger Power Rating</div>
+            <div className="text-sm font-medium text-ink">
               {vehicle.chargingCapabilities 
                 ? formatStringOrNA(vehicle.chargingCapabilities.replace(/DC\s+Fast\s+Charge/gi, 'DC').replace(/Fast\s+Charge/gi, '').replace(/Up\s+to/gi, '').replace(/\s+/g, ' ').trim())
                 : 'N/A'}
             </div>
           </div>
           <div>
-            <div className="text-xs text-gray-500 mb-1.5">Battery Warranty</div>
-            <div className="text-sm font-medium text-gray-900">
+            <div className="text-xs text-ink-500 mb-1.5">Battery Warranty</div>
+            <div className="text-sm font-medium text-ink">
               {formatStringOrNA(vehicle.batteryWarranty)}
             </div>
           </div>
@@ -539,33 +539,33 @@ export default function StatsGrid({ vehicle, selectedOptions, onToggleOption }: 
 
       {/* Efficiency & Range */}
       <div className="space-y-4">
-        <h3 className="text-sm font-medium text-gray-900 uppercase tracking-wide pb-2 border-b border-gray-200">Efficiency & Range</h3>
-        <div className="bg-gray-50/50 rounded-lg p-4 space-y-4 border border-gray-100">
-          <div className="pb-3 border-b border-gray-100 last:border-0 last:pb-0">
-            <div className="text-xs text-gray-500 mb-1.5">Efficiency</div>
-            <div className="text-sm font-medium text-gray-900">
+        <h3 className="text-sm font-medium text-ink uppercase tracking-wide pb-2 border-b border-ink/10">Efficiency & Range</h3>
+        <div className="bg-paper-200/50 rounded-lg p-4 space-y-4">
+          <div className="pb-3 border-b border-ink/5 last:border-0 last:pb-0">
+            <div className="text-xs text-ink-500 mb-1.5">Efficiency</div>
+            <div className="text-sm font-medium text-ink">
               {formatValueOrNA(vehicle.efficiencyKwhPer100km, (v) => `${v} kWh/100km`)}
             </div>
           </div>
-          <div className="pb-3 border-b border-gray-100 last:border-0 last:pb-0">
-            <div className="text-xs text-gray-500 mb-1.5">Range (WLTP | EPA)</div>
-            <div className="text-sm font-medium text-gray-900">
-              {formatValueOrNA(vehicle.rangeWltpKm ?? vehicle.rangeKm, (v) => `${v} km`)} <span className="text-gray-400">|</span> {formatValueOrNA(vehicle.rangeEpaKm, (v) => `${v} km`)}
+          <div className="pb-3 border-b border-ink/5 last:border-0 last:pb-0">
+            <div className="text-xs text-ink-500 mb-1.5">Range (WLTP | EPA)</div>
+            <div className="text-sm font-medium text-ink">
+              {formatValueOrNA(vehicle.rangeWltpKm ?? vehicle.rangeKm, (v) => `${v} km`)} <span className="text-ink-400">|</span> {formatValueOrNA(vehicle.rangeEpaKm, (v) => `${v} km`)}
             </div>
           </div>
-          <div className="pb-3 border-b border-gray-100 last:border-0 last:pb-0">
-            <div className="text-xs text-gray-500 mb-1.5">Charging Speed</div>
-            <div className="text-sm font-medium text-gray-900">
+          <div className="pb-3 border-b border-ink/5 last:border-0 last:pb-0">
+            <div className="text-xs text-ink-500 mb-1.5">Charging Speed</div>
+            <div className="text-sm font-medium text-ink">
               {formatValueOrNA(vehicle.chargingTimeDc0To80Min, (v) => `${v} min`)}
               {chargingRangePerMinute && (
-                <span className="text-xs text-gray-500 ml-2">
+                <span className="text-xs text-ink-500 ml-2">
                   (~{chargingRangePerMinute.toFixed(1)} km/min)
                 </span>
               )}
             </div>
           </div>
           <div>
-            <div className="text-xs text-gray-500 mb-1.5 flex items-center gap-1.5">
+            <div className="text-xs text-ink-500 mb-1.5 flex items-center gap-1.5">
               <span>Cost / km</span>
               <CostPerKmInfoBox 
                 costPerKm={costPerKm}
@@ -574,7 +574,7 @@ export default function StatsGrid({ vehicle, selectedOptions, onToggleOption }: 
                 rangeKm={vehicle.rangeKm ?? vehicle.rangeWltpKm ?? vehicle.rangeEpaKm}
               />
             </div>
-            <div className="text-sm font-medium text-gray-900">
+            <div className="text-sm font-medium text-ink">
               {costPerKm !== null ? formatCostPerKm(costPerKm, vehicle.country) : 'N/A'}
             </div>
           </div>
@@ -583,31 +583,31 @@ export default function StatsGrid({ vehicle, selectedOptions, onToggleOption }: 
 
       {/* Costs */}
       <div className="space-y-4">
-        <h3 className="text-sm font-medium text-gray-900 uppercase tracking-wide pb-2 border-b border-gray-200">Pricing</h3>
-        <div className="bg-gray-50/50 rounded-lg p-4 space-y-4 border border-gray-100">
-          <div className="pb-3 border-b border-gray-100">
-            <div className="text-xs text-gray-500 mb-1.5">Base Price</div>
-            <div className="text-sm font-medium text-gray-900">
+        <h3 className="text-sm font-medium text-ink uppercase tracking-wide pb-2 border-b border-ink/10">Pricing</h3>
+        <div className="bg-paper-200/50 rounded-lg p-4 space-y-4">
+          <div className="pb-3 border-b border-ink/5">
+            <div className="text-xs text-ink-500 mb-1.5">Base Price</div>
+            <div className="text-sm font-medium text-ink">
               {formatPriceOrNA(vehicle.basePriceLocalCurrency, vehicle.country)}
             </div>
           </div>
 
           {vehicle.optionPrices.length > 0 && (
-            <div className="pb-3 border-b border-gray-100">
-              <div className="text-xs text-gray-500 mb-1.5">Options</div>
+            <div className="pb-3 border-b border-ink/5">
+              <div className="text-xs text-ink-500 mb-1.5">Options</div>
               <div className="space-y-1">
                 {vehicle.optionPrices.map((option) => (
                   <label key={option.name} className="flex items-center justify-between text-xs cursor-pointer py-0.5 px-1.5 rounded hover:bg-white/50 transition-colors">
                     <div className="flex items-center gap-1.5">
                       <input
                         type="checkbox"
-                        className="rounded border-gray-300 text-gray-900 focus:ring-gray-500 w-3 h-3"
+                        className="rounded border-ink/15 text-ink focus:ring-brand-500 w-3 h-3"
                         checked={selectedOptions.includes(option.name)}
                         onChange={() => onToggleOption(option.name)}
                       />
-                      <span className="text-gray-700">{option.name}</span>
+                      <span className="text-ink-700">{option.name}</span>
                     </div>
-                    <span className="text-gray-900 text-xs font-medium">
+                    <span className="text-ink text-xs font-medium">
                       {formatLocalPrice(option.price, vehicle.country)}
                     </span>
                   </label>
@@ -616,17 +616,17 @@ export default function StatsGrid({ vehicle, selectedOptions, onToggleOption }: 
             </div>
           )}
 
-          <div className="pt-3 border-t-2 border-gray-200 bg-white/50 rounded-md p-3">
+          <div className="pt-3 border-t-2 border-ink/10 bg-white/50 rounded-md p-3">
             <div className="flex items-center justify-between mb-1">
               <div>
-                <div className="text-xs text-gray-500 mb-0.5">Total Price</div>
-                <div className="text-xs text-gray-400">Base price + selected options</div>
+                <div className="text-xs text-ink-500 mb-0.5">Total Price</div>
+                <div className="text-xs text-ink-400">Base price + selected options</div>
               </div>
-              <div className="text-sm font-semibold text-gray-900">
+              <div className="text-sm font-semibold text-ink">
                 {totalPrice !== null ? formatLocalPrice(totalPrice, vehicle.country) : 'N/A'}
               </div>
             </div>
-            <div className="text-xs text-gray-400 mt-2 pt-2 border-t border-gray-100">
+            <div className="text-xs text-ink-400 mt-2 pt-2 border-t border-ink/5">
               * Excludes government fees, taxes, and rebates
             </div>
           </div>
@@ -636,7 +636,7 @@ export default function StatsGrid({ vehicle, selectedOptions, onToggleOption }: 
               href={getOfficialWebsiteUrl(vehicle.name, vehicle.country) || '#'}
               target="_blank"
               rel="noopener noreferrer"
-              className="block text-sm text-gray-600 hover:text-gray-900 transition-colors pt-2 border-t border-gray-100"
+              className="block text-sm text-ink-600 hover:text-ink transition-colors pt-2 border-t border-ink/5"
             >
               Official Website →
             </a>
@@ -646,10 +646,10 @@ export default function StatsGrid({ vehicle, selectedOptions, onToggleOption }: 
 
       {/* Features */}
       <div className="space-y-4">
-        <h3 className="text-sm font-medium text-gray-900 uppercase tracking-wide pb-2 border-b border-gray-200">Features</h3>
-        <div className="bg-gray-50/50 rounded-lg p-4 border border-gray-100">
+        <h3 className="text-sm font-medium text-ink uppercase tracking-wide pb-2 border-b border-ink/10">Features</h3>
+        <div className="bg-paper-200/50 rounded-lg p-4">
           {vehicle.technologyFeatures ? (
-            <div className="text-sm text-gray-700 leading-relaxed">
+            <div className="text-sm text-ink-700 leading-relaxed">
               {(() => {
                 // Clean the entire string first (before splitting) to handle commas inside parentheses
                 let cleaned = vehicle.technologyFeatures
@@ -670,14 +670,14 @@ export default function StatsGrid({ vehicle, selectedOptions, onToggleOption }: 
                   <span key={index}>
                     {feature}
                     {index < array.length - 1 && (
-                      <span className="text-gray-400 mx-2 font-light">|</span>
+                      <span className="text-ink-400 mx-2 font-light">|</span>
                     )}
                   </span>
                 ))
               })()}
             </div>
           ) : (
-            <span className="text-sm text-gray-500">N/A</span>
+            <span className="text-sm text-ink-500">N/A</span>
           )}
         </div>
       </div>

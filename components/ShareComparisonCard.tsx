@@ -110,14 +110,14 @@ export default function ShareComparisonCard({ vehicles }: ShareComparisonCardPro
             <button
               onClick={handleShare}
               disabled={isGenerating}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 text-white rounded-lg text-xs font-semibold hover:bg-emerald-700 transition-colors disabled:opacity-50"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand-600 text-white rounded-lg text-xs font-semibold hover:bg-brand-700 transition-colors disabled:opacity-50"
             >
               {isGenerating ? 'Generating…' : '📋 Copy to Clipboard'}
             </button>
             <button
               onClick={handleDownload}
               disabled={isGenerating}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-100 text-gray-700 rounded-lg text-xs font-semibold hover:bg-gray-200 transition-colors disabled:opacity-50"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-paper-200 text-ink-700 rounded-lg text-xs font-semibold hover:bg-paper-300 transition-colors disabled:opacity-50"
             >
               {isGenerating ? '…' : '💾 Download PNG'}
             </button>
@@ -126,17 +126,17 @@ export default function ShareComparisonCard({ vehicles }: ShareComparisonCardPro
           {/* The card that gets captured */}
           <div
             ref={cardRef}
-            className="bg-white border border-gray-200 rounded-xl overflow-hidden max-w-xl"
+            className="bg-paper-100 border border-ink/10 rounded-card overflow-hidden max-w-xl"
             style={{ width: 540 }}
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-gray-900 to-gray-800 px-5 py-3">
+            <div className="bg-gradient-to-r from-ink to-ink-800 px-5 py-3">
               <div className="flex items-center justify-between">
                 <div>
                   <div className="text-white font-bold text-sm">battery.mom</div>
-                  <div className="text-gray-400 text-[10px]">EV Comparison Scorecard</div>
+                  <div className="text-ink-400 text-[10px]">EV Comparison Scorecard</div>
                 </div>
-                <div className="text-gray-500 text-[9px]">
+                <div className="text-ink-500 text-[9px]">
                   {new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                 </div>
               </div>
@@ -153,11 +153,11 @@ export default function ShareComparisonCard({ vehicles }: ShareComparisonCardPro
                   return (
                     <div
                       key={vehicle.id}
-                      className={`rounded-xl border p-3 text-center transition-all
-                        ${isWinner ? 'border-emerald-300 bg-emerald-50/50 ring-1 ring-emerald-200' : 'border-gray-200 bg-gray-50/50'}`}
+                      className={`rounded-card border p-3 text-center transition-all
+                        ${isWinner ? 'border-brand-300 bg-brand-50/50 ring-1 ring-brand-200' : 'border-ink/10 bg-paper-200/50'}`}
                     >
                       {isWinner && (
-                        <div className="text-[9px] font-bold text-emerald-600 uppercase tracking-wider mb-1">
+                        <div className="text-[9px] font-bold text-brand-600 uppercase tracking-wider mb-1">
                           🏆 Winner
                         </div>
                       )}
@@ -180,16 +180,16 @@ export default function ShareComparisonCard({ vehicles }: ShareComparisonCardPro
                       </div>
 
                       {/* Name */}
-                      <div className="text-xs font-semibold text-gray-900 leading-tight">{vehicle.name}</div>
+                      <div className="text-xs font-semibold text-ink leading-tight">{vehicle.name}</div>
                       {vehicle.modelTrim && (
-                        <div className="text-[9px] text-gray-500 mt-0.5 truncate">{vehicle.modelTrim}</div>
+                        <div className="text-[9px] text-ink-500 mt-0.5 truncate">{vehicle.modelTrim}</div>
                       )}
 
                       {/* Badges */}
                       {vBadges.length > 0 && (
                         <div className="flex flex-wrap gap-0.5 justify-center mt-1.5">
                           {vBadges.slice(0, 2).map(b => (
-                            <span key={b.id} className="text-[8px] px-1 py-0 rounded-full bg-gray-100 text-gray-600">
+                            <span key={b.id} className="text-[8px] px-1 py-0 rounded-full bg-paper-200 text-ink-600">
                               {b.icon} {b.label}
                             </span>
                           ))}
@@ -197,11 +197,11 @@ export default function ShareComparisonCard({ vehicles }: ShareComparisonCardPro
                       )}
 
                       {/* Key specs */}
-                      <div className="mt-2 space-y-0.5 text-[9px] text-gray-600">
+                      <div className="mt-2 space-y-0.5 text-[9px] text-ink-600">
                         {vehicle.rangeKm && <div>{vehicle.rangeKm} km range</div>}
                         {vehicle.efficiencyKwhPer100km && <div>{vehicle.efficiencyKwhPer100km} kWh/100km</div>}
                         {vehicle.basePriceLocalCurrency && (
-                          <div className="font-medium text-gray-900">
+                          <div className="font-medium text-ink">
                             {formatPrice(vehicle.basePriceLocalCurrency, vehicle.country)}
                           </div>
                         )}
@@ -213,8 +213,8 @@ export default function ShareComparisonCard({ vehicles }: ShareComparisonCardPro
             </div>
 
             {/* Footer */}
-            <div className="bg-gray-50 px-5 py-2 border-t border-gray-200">
-              <div className="flex items-center justify-between text-[9px] text-gray-400">
+            <div className="bg-paper-200 px-5 py-2 border-t border-ink/10">
+              <div className="flex items-center justify-between text-[9px] text-ink-400">
                 <span>battery.mom — Clear data for the energy transition</span>
                 <span>Score methodology: Range 25% · Efficiency 25% · Value 20% · Charging 15% · Battery 15%</span>
               </div>

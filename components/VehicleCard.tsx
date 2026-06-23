@@ -30,16 +30,16 @@ const ManufacturerLogo = ({ manufacturer }: { manufacturer: string }) => {
     Tesla: { bg: 'bg-red-600', text: 'text-white' },
     BYD: { bg: 'bg-blue-600', text: 'text-white' },
     Hyundai: { bg: 'bg-slate-800', text: 'text-white' },
-    Kia: { bg: 'bg-emerald-600', text: 'text-white' },
+    Kia: { bg: 'bg-brand-600', text: 'text-white' },
     BMW: { bg: 'bg-blue-800', text: 'text-white' },
-    Mercedes: { bg: 'bg-gray-900', text: 'text-white' },
-    Audi: { bg: 'bg-gray-800', text: 'text-white' },
+    Mercedes: { bg: 'bg-ink', text: 'text-white' },
+    Audi: { bg: 'bg-ink-800', text: 'text-white' },
     Porsche: { bg: 'bg-red-800', text: 'text-white' },
     Nissan: { bg: 'bg-red-700', text: 'text-white' },
     Toyota: { bg: 'bg-red-600', text: 'text-white' },
   }
 
-  const style = logoStyle[manufacturer] || { bg: 'bg-gray-600', text: 'text-white' }
+  const style = logoStyle[manufacturer] || { bg: 'bg-ink-600', text: 'text-white' }
   const initial = manufacturer.substring(0, 1).toUpperCase()
 
   return (
@@ -65,9 +65,9 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
   const badges = computeBadges(allVehicles).get(vehicle.id) ?? []
 
   return (
-    <div className="bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
+    <div className="bg-paper-100 rounded-lg shadow-lg border border-ink/10 overflow-hidden">
       {/* Header */}
-      <div className="bg-white border-b border-gray-200">
+      <div className="bg-paper-100 border-b border-ink/10">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 p-6">
           <div className="flex items-start gap-4">
             {/* Manufacturer Logo */}
@@ -76,10 +76,10 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
             </div>
             {/* Vehicle Info */}
             <div>
-              <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-1">
+              <h2 className="text-2xl md:text-3xl font-semibold text-ink mb-1">
                 {vehicle.name}
               </h2>
-              <p className="text-base text-gray-600">{vehicle.modelTrim}</p>
+              <p className="text-base text-ink-600">{vehicle.modelTrim}</p>
               {badges.length > 0 && (
                 <div className="mt-1">
                   <WinnerBadges badges={badges} maxShow={4} />
@@ -91,7 +91,7 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
             <EVScoreGauge vehicle={vehicle} allVehicles={allVehicles} size="md" showBreakdown={false} />
             <button
               onClick={() => removeVehicle(vehicle.id)}
-              className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-md transition-colors text-sm font-medium"
+              className="px-4 py-2 bg-paper-200 hover:bg-paper-300 text-ink-700 rounded-md transition-colors text-sm font-medium"
               aria-label={`Remove ${vehicle.name} from comparison`}
             >
               Remove

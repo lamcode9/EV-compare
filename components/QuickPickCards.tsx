@@ -21,7 +21,7 @@ const CATEGORIES: PickCategory[] = [
     label: 'Best Range',
     icon: '🛣️',
     description: 'Go the furthest on a single charge',
-    gradient: 'from-emerald-500 to-teal-600',
+    gradient: 'from-brand-500 to-teal-600',
     selector: (vehicles) => {
       const sorted = vehicles
         .filter(v => {
@@ -112,8 +112,8 @@ export default function QuickPickCards() {
   return (
     <div className="mb-6">
       <div className="flex items-center gap-2 mb-3">
-        <h3 className="text-sm font-semibold text-gray-900">Quick Picks</h3>
-        <span className="text-[10px] text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded-full cursor-help" title="Each pick is the #1 vehicle in a single measurable dimension — no composite scores or editorial choices. Best Range: highest WLTP range (km). Best Value: lowest price per km of range. Most Efficient: lowest kWh/100 km. Fastest Charge: shortest DC 0→80% time (min). Most Affordable: lowest base price. BEVs only.">
+        <h3 className="text-sm font-semibold text-ink">Quick Picks</h3>
+        <span className="text-[10px] text-ink-400 bg-paper-200 px-1.5 py-0.5 rounded-full cursor-help" title="Each pick is the #1 vehicle in a single measurable dimension — no composite scores or editorial choices. Best Range: highest WLTP range (km). Best Value: lowest price per km of range. Most Efficient: lowest kWh/100 km. Fastest Charge: shortest DC 0→80% time (min). Most Affordable: lowest base price. BEVs only.">
           single-metric leaders ℹ️
         </span>
       </div>
@@ -129,12 +129,12 @@ export default function QuickPickCards() {
                 if (!selected && !full) addVehicle(vehicle)
               }}
               disabled={selected || full}
-              className={`relative overflow-hidden rounded-xl border transition-all text-left group
+              className={`relative overflow-hidden rounded-card border transition-all text-left group
                 ${selected
-                  ? 'border-emerald-300 bg-emerald-50/50 cursor-default'
+                  ? 'border-brand-300 bg-brand-50/50 cursor-default'
                   : full
-                    ? 'border-gray-200 bg-gray-50 opacity-60 cursor-not-allowed'
-                    : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow-md cursor-pointer'}`}
+                    ? 'border-ink/10 bg-paper-200 opacity-60 cursor-not-allowed'
+                    : 'border-ink/10 bg-paper-100 hover:border-ink/15 hover:shadow-md cursor-pointer'}`}
             >
               {/* Gradient accent bar */}
               <div className={`h-1 bg-gradient-to-r ${gradient}`} />
@@ -145,21 +145,21 @@ export default function QuickPickCards() {
                     {/* Category */}
                     <div className="flex items-center gap-1.5 mb-2">
                       <span className="text-sm">{icon}</span>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-ink-400">
                         {label}
                       </span>
                     </div>
 
                     {/* Vehicle name */}
-                    <div className="text-sm font-semibold text-gray-900 leading-snug truncate">
+                    <div className="text-sm font-semibold text-ink leading-snug truncate">
                       {vehicle.name}
                     </div>
                     {vehicle.modelTrim && (
-                      <div className="text-[10px] text-gray-500 truncate">{vehicle.modelTrim}</div>
+                      <div className="text-[10px] text-ink-500 truncate">{vehicle.modelTrim}</div>
                     )}
 
                     {/* Key specs */}
-                    <div className="flex flex-wrap gap-x-3 gap-y-0.5 mt-2 text-[10px] text-gray-600">
+                    <div className="flex flex-wrap gap-x-3 gap-y-0.5 mt-2 text-[10px] text-ink-600">
                       {getRangeKm(vehicle) && (
                         <span>{getRangeKm(vehicle)} km</span>
                       )}
@@ -167,14 +167,14 @@ export default function QuickPickCards() {
                         <span>{vehicle.efficiencyKwhPer100km} kWh/100km</span>
                       )}
                       {vehicle.basePriceLocalCurrency && (
-                        <span className="font-medium text-gray-900">
+                        <span className="font-medium text-ink">
                           {formatPrice(vehicle.basePriceLocalCurrency, vehicle.country)}
                         </span>
                       )}
                     </div>
 
                     {/* Description */}
-                    <div className="text-[9px] text-gray-400 mt-1.5">{description}</div>
+                    <div className="text-[9px] text-ink-400 mt-1.5">{description}</div>
                   </div>
 
                   {/* Score gauge */}
@@ -188,13 +188,13 @@ export default function QuickPickCards() {
                 </div>
 
                 {/* Action hint */}
-                <div className="mt-3 pt-2 border-t border-gray-100 text-center">
+                <div className="mt-3 pt-2 border-t border-ink/5 text-center">
                   {selected ? (
-                    <span className="text-[10px] text-emerald-600 font-medium">✓ Added to comparison</span>
+                    <span className="text-[10px] text-brand-600 font-medium">✓ Added to comparison</span>
                   ) : full ? (
-                    <span className="text-[10px] text-gray-400">Comparison full (4/4)</span>
+                    <span className="text-[10px] text-ink-400">Comparison full (4/4)</span>
                   ) : (
-                    <span className="text-[10px] text-gray-500 group-hover:text-emerald-600 transition-colors font-medium">
+                    <span className="text-[10px] text-ink-500 group-hover:text-brand-600 transition-colors font-medium">
                       Click to add to comparison →
                     </span>
                   )}

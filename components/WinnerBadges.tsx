@@ -17,7 +17,7 @@ export interface Badge {
 }
 
 const BADGE_DEFS: Badge[] = [
-  { id: 'best-range',      label: 'Best Range',       icon: '🛣️', tooltip: 'Highest WLTP range (km). BEVs only.',                                           color: 'text-emerald-700', bgColor: 'bg-emerald-50',  borderColor: 'border-emerald-200' },
+  { id: 'best-range',      label: 'Best Range',       icon: '🛣️', tooltip: 'Highest WLTP range (km). BEVs only.',                                           color: 'text-brand-700', bgColor: 'bg-brand-50',  borderColor: 'border-brand-200' },
   { id: 'most-efficient',  label: 'Most Efficient',   icon: '⚡',  tooltip: 'Lowest energy consumption (kWh per 100 km).',                                     color: 'text-blue-700',    bgColor: 'bg-blue-50',     borderColor: 'border-blue-200' },
   { id: 'best-value',      label: 'Best Value',       icon: '💰',  tooltip: 'Lowest purchase price per km of electric range. Metric: base price ÷ range.',     color: 'text-amber-700',   bgColor: 'bg-amber-50',    borderColor: 'border-amber-200' },
   { id: 'biggest-battery', label: 'Biggest Battery',  icon: '🔋',  tooltip: 'Highest usable battery capacity (kWh). Larger batteries may offer better longevity and V2L/V2H capability.', color: 'text-purple-700',  bgColor: 'bg-purple-50',   borderColor: 'border-purple-200' },
@@ -124,8 +124,8 @@ export default function WinnerBadges({ badges, maxShow = 3, size = 'sm' }: Winne
       {shown.map((badge) => (
         <span
           key={badge.id}
-          className={`inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full border
-            ${badge.bgColor} ${badge.borderColor} ${badge.color}
+          className={`inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full
+            ${badge.bgColor} ${badge.color}
             ${size === 'sm' ? 'text-[9px]' : 'text-[10px]'} font-semibold whitespace-nowrap
             transition-transform hover:scale-105`}
           title={badge.tooltip}
@@ -135,7 +135,7 @@ export default function WinnerBadges({ badges, maxShow = 3, size = 'sm' }: Winne
         </span>
       ))}
       {extra > 0 && (
-        <span className="text-[9px] text-gray-400 self-center">+{extra}</span>
+        <span className="text-[9px] text-ink-400 self-center">+{extra}</span>
       )}
     </div>
   )
@@ -151,8 +151,8 @@ export function InlineBadgeRow({ badges }: { badges: Badge[] }) {
       {badges.slice(0, 2).map((badge) => (
         <span
           key={badge.id}
-          className={`inline-flex items-center gap-0.5 px-1 py-0 rounded-full border
-            ${badge.bgColor} ${badge.borderColor} ${badge.color}
+          className={`inline-flex items-center gap-0.5 px-1 py-0 rounded-full
+            ${badge.bgColor} ${badge.color}
             text-[8px] font-semibold whitespace-nowrap`}
           title={badge.tooltip}
         >
@@ -161,7 +161,7 @@ export function InlineBadgeRow({ badges }: { badges: Badge[] }) {
         </span>
       ))}
       {badges.length > 2 && (
-        <span className="text-[8px] text-gray-400">+{badges.length - 2}</span>
+        <span className="text-[8px] text-ink-400">+{badges.length - 2}</span>
       )}
     </div>
   )

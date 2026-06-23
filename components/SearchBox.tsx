@@ -94,7 +94,7 @@ export default function SearchBox() {
           }}
           placeholder={selectedCountry ? "Search EVs like Tesla Model 3, BYD Atto 3..." : "Select a country first"}
           disabled={!selectedCountry}
-          className="w-full px-4 py-2 pl-12 text-sm rounded-lg bg-gray-100 focus:outline-none focus:ring-0 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full px-4 py-2 pl-12 text-sm rounded-lg bg-paper-200 focus:outline-none focus:ring-0 disabled:opacity-50 disabled:cursor-not-allowed"
           aria-label="Search for electric vehicles"
           aria-autocomplete="list"
           aria-expanded={showSuggestions && suggestions.length > 0}
@@ -102,7 +102,7 @@ export default function SearchBox() {
           role="combobox"
         />
         <svg
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
+          className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-ink-400"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -114,7 +114,7 @@ export default function SearchBox() {
       {showSuggestions && suggestions.length > 0 && (
         <div
           id="search-suggestions"
-          className="absolute z-50 w-full mt-2 bg-white border border-gray-200 rounded-lg shadow-lg max-h-96 overflow-y-auto"
+          className="absolute z-50 w-full mt-2 bg-paper-100 border border-ink/10 rounded-lg shadow-lg max-h-96 overflow-y-auto"
           role="listbox"
           aria-label="Vehicle suggestions"
         >
@@ -145,7 +145,7 @@ export default function SearchBox() {
                     searchRef.current?.querySelector('input')?.focus()
                   }
                 }}
-                className={`w-full flex items-center gap-4 p-4 hover:bg-gray-50 transition-colors text-left focus:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-ev-primary ${
+                className={`w-full flex items-center gap-4 p-4 hover:bg-paper-200 transition-colors text-left focus:bg-paper-200 focus:outline-none focus:ring-2 focus:ring-ev-primary ${
                   isSelected || isDisabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
                 }`}
                 aria-label={`Select ${vehicle.name} ${vehicle.modelTrim}`}
@@ -154,10 +154,10 @@ export default function SearchBox() {
                 tabIndex={isDisabled || isSelected ? -1 : 0}
               >
                 <div className="flex-1 min-w-0">
-                  <div className="font-semibold text-gray-900 truncate">
+                  <div className="font-semibold text-ink truncate">
                     {vehicle.name}
                   </div>
-                  <div className="text-sm text-gray-600 truncate">
+                  <div className="text-sm text-ink-600 truncate">
                     {vehicle.modelTrim}
                   </div>
                   <div className="text-sm font-medium text-ev-primary mt-1">
@@ -176,7 +176,7 @@ export default function SearchBox() {
       )}
 
       {showSuggestions && searchTerm && suggestions.length === 0 && (
-        <div className="absolute z-50 w-full mt-2 bg-white border border-gray-200 rounded-lg shadow-lg p-4 text-center text-gray-500">
+        <div className="absolute z-50 w-full mt-2 bg-paper-100 border border-ink/10 rounded-lg shadow-lg p-4 text-center text-ink-500">
           No vehicles found matching &quot;{searchTerm}&quot;
         </div>
       )}

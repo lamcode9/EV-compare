@@ -12,7 +12,7 @@ export default function DataFreshness({ lastUpdated, className = '' }: DataFresh
   const now = new Date()
   const daysSinceUpdate = Math.floor((now.getTime() - lastUpdated.getTime()) / (1000 * 60 * 60 * 24))
 
-  let freshnessColor = 'text-emerald-700 bg-emerald-50'
+  let freshnessColor = 'text-brand-700 bg-brand-50'
   let freshnessText = 'Fresh'
 
   if (daysSinceUpdate > 90) {
@@ -27,11 +27,11 @@ export default function DataFreshness({ lastUpdated, className = '' }: DataFresh
     <div className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-full text-xs font-medium ${freshnessColor} ${className}`}>
       <div className={`w-1.5 h-1.5 rounded-full ${
         daysSinceUpdate > 90 ? 'bg-red-500' :
-        daysSinceUpdate > 30 ? 'bg-yellow-500' : 'bg-emerald-500'
+        daysSinceUpdate > 30 ? 'bg-yellow-500' : 'bg-brand-500'
       }`} />
       <span>{freshnessText}</span>
-      <span className="text-gray-600">•</span>
-      <span className="text-gray-600">{timeAgo}</span>
+      <span className="text-ink-600">•</span>
+      <span className="text-ink-600">{timeAgo}</span>
     </div>
   )
 }

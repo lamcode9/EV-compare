@@ -157,27 +157,27 @@ export default function VehicleComparisonClient({ vehicle1, vehicle2 }: VehicleC
       <section className="container mx-auto px-4 pt-12 pb-16 max-w-7xl">
         {/* Header */}
         <div className="mb-8">
-          <nav className="flex items-center gap-2 text-sm text-gray-500 mb-4">
-            <Link href="/ev" className="hover:text-gray-700">Electric Vehicles</Link>
+          <nav className="flex items-center gap-2 text-sm text-ink-500 mb-4">
+            <Link href="/ev" className="hover:text-ink-700">Electric Vehicles</Link>
             <span>/</span>
-            <span className="text-gray-900">Compare</span>
+            <span className="text-ink">Compare</span>
           </nav>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
             {/* Vehicle 1 */}
-            <div className="bg-white border border-gray-200 rounded-xl p-6">
+            <div className="bg-paper-100 border border-ink/10 rounded-card p-6">
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <h2 className="text-xl font-bold text-gray-900 mb-1">
+                  <h2 className="text-xl font-bold text-ink mb-1">
                     {vehicle1.name}
-                    {vehicle1.modelTrim && <span className="text-gray-600"> {vehicle1.modelTrim}</span>}
+                    {vehicle1.modelTrim && <span className="text-ink-600"> {vehicle1.modelTrim}</span>}
                   </h2>
-                  <p className="text-sm text-gray-500">{COUNTRY_NAMES[vehicle1.country]}</p>
+                  <p className="text-sm text-ink-500">{COUNTRY_NAMES[vehicle1.country]}</p>
                 </div>
                 <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                  vehicle1.batteryTechnology === 'LFP' ? 'bg-emerald-50 text-emerald-700' :
+                  vehicle1.batteryTechnology === 'LFP' ? 'bg-brand-50 text-brand-700' :
                   vehicle1.batteryTechnology === 'NMC' ? 'bg-blue-50 text-blue-700' :
-                  'bg-gray-50 text-gray-700'
+                  'bg-paper-200 text-ink-700'
                 }`}>
                   {vehicle1.batteryTechnology || 'Unknown'}
                 </span>
@@ -185,41 +185,41 @@ export default function VehicleComparisonClient({ vehicle1, vehicle2 }: VehicleC
 
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900">
+                  <div className="text-2xl font-bold text-ink">
                     {vehicle1.rangeKm || vehicle1.rangeWltpKm || 'N/A'}
                   </div>
-                  <div className="text-xs text-gray-500">Range (km)</div>
+                  <div className="text-xs text-ink-500">Range (km)</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900">
+                  <div className="text-2xl font-bold text-ink">
                     {vehicle1.efficiencyKwhPer100km || 'N/A'}
                   </div>
-                  <div className="text-xs text-gray-500">kWh/100km</div>
+                  <div className="text-xs text-ink-500">kWh/100km</div>
                 </div>
               </div>
 
               <Link
                 href={`/ev/${vehicle1.id}`}
-                className="inline-flex items-center text-sm text-emerald-700 hover:text-emerald-800 font-medium"
+                className="inline-flex items-center text-sm text-brand-700 hover:text-brand-800 font-medium"
               >
                 View full details →
               </Link>
             </div>
 
             {/* Vehicle 2 */}
-            <div className="bg-white border border-gray-200 rounded-xl p-6">
+            <div className="bg-paper-100 border border-ink/10 rounded-card p-6">
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <h2 className="text-xl font-bold text-gray-900 mb-1">
+                  <h2 className="text-xl font-bold text-ink mb-1">
                     {vehicle2.name}
-                    {vehicle2.modelTrim && <span className="text-gray-600"> {vehicle2.modelTrim}</span>}
+                    {vehicle2.modelTrim && <span className="text-ink-600"> {vehicle2.modelTrim}</span>}
                   </h2>
-                  <p className="text-sm text-gray-500">{COUNTRY_NAMES[vehicle2.country]}</p>
+                  <p className="text-sm text-ink-500">{COUNTRY_NAMES[vehicle2.country]}</p>
                 </div>
                 <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                  vehicle2.batteryTechnology === 'LFP' ? 'bg-emerald-50 text-emerald-700' :
+                  vehicle2.batteryTechnology === 'LFP' ? 'bg-brand-50 text-brand-700' :
                   vehicle2.batteryTechnology === 'NMC' ? 'bg-blue-50 text-blue-700' :
-                  'bg-gray-50 text-gray-700'
+                  'bg-paper-200 text-ink-700'
                 }`}>
                   {vehicle2.batteryTechnology || 'Unknown'}
                 </span>
@@ -227,22 +227,22 @@ export default function VehicleComparisonClient({ vehicle1, vehicle2 }: VehicleC
 
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900">
+                  <div className="text-2xl font-bold text-ink">
                     {vehicle2.rangeKm || vehicle2.rangeWltpKm || 'N/A'}
                   </div>
-                  <div className="text-xs text-gray-500">Range (km)</div>
+                  <div className="text-xs text-ink-500">Range (km)</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900">
+                  <div className="text-2xl font-bold text-ink">
                     {vehicle2.efficiencyKwhPer100km || 'N/A'}
                   </div>
-                  <div className="text-xs text-gray-500">kWh/100km</div>
+                  <div className="text-xs text-ink-500">kWh/100km</div>
                 </div>
               </div>
 
               <Link
                 href={`/ev/${vehicle2.id}`}
-                className="inline-flex items-center text-sm text-emerald-700 hover:text-emerald-800 font-medium"
+                className="inline-flex items-center text-sm text-brand-700 hover:text-brand-800 font-medium"
               >
                 View full details →
               </Link>
@@ -253,8 +253,8 @@ export default function VehicleComparisonClient({ vehicle1, vehicle2 }: VehicleC
         {/* Key Metrics Comparison Charts */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
           {/* Range Comparison */}
-          <div className="bg-white border border-gray-200 rounded-xl p-6">
-            <h3 className="text-sm font-semibold text-gray-900 mb-4">Range Comparison</h3>
+          <div className="bg-paper-100 border border-ink/10 rounded-card p-6">
+            <h3 className="text-sm font-semibold text-ink mb-4">Range Comparison</h3>
             <ResponsiveContainer width="100%" height={200}>
               <BarChart data={rangeComparison}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
@@ -268,8 +268,8 @@ export default function VehicleComparisonClient({ vehicle1, vehicle2 }: VehicleC
           </div>
 
           {/* Efficiency Comparison */}
-          <div className="bg-white border border-gray-200 rounded-xl p-6">
-            <h3 className="text-sm font-semibold text-gray-900 mb-4">Efficiency Comparison <InfoTooltip content="Energy consumed per 100 km (kWh/100km). Lower is better — it means the car travels further on the same energy. Typical range: 13-22 kWh/100km depending on vehicle size, weight, and aerodynamics." /></h3>
+          <div className="bg-paper-100 border border-ink/10 rounded-card p-6">
+            <h3 className="text-sm font-semibold text-ink mb-4">Efficiency Comparison <InfoTooltip content="Energy consumed per 100 km (kWh/100km). Lower is better — it means the car travels further on the same energy. Typical range: 13-22 kWh/100km depending on vehicle size, weight, and aerodynamics." /></h3>
             <ResponsiveContainer width="100%" height={200}>
               <BarChart data={efficiencyComparison}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
@@ -283,8 +283,8 @@ export default function VehicleComparisonClient({ vehicle1, vehicle2 }: VehicleC
           </div>
 
           {/* Price Comparison */}
-          <div className="bg-white border border-gray-200 rounded-xl p-6">
-            <h3 className="text-sm font-semibold text-gray-900 mb-4">Price Comparison</h3>
+          <div className="bg-paper-100 border border-ink/10 rounded-card p-6">
+            <h3 className="text-sm font-semibold text-ink mb-4">Price Comparison</h3>
             <ResponsiveContainer width="100%" height={200}>
               <BarChart data={priceComparison}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
@@ -299,9 +299,9 @@ export default function VehicleComparisonClient({ vehicle1, vehicle2 }: VehicleC
         </div>
 
         {/* Radar Chart */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6 mb-8">
-          <h3 className="text-sm font-semibold text-gray-900 mb-1">Performance Overview <InfoTooltip content="Each metric is normalised to a 0-100 scale where 100 = the better vehicle on that dimension. For efficiency, lower kWh/100km is better so the scale is inverted. A larger shape means stronger overall performance." /></h3>
-          <p className="text-xs text-gray-500 mb-4">Normalized comparison across key metrics (higher is better)</p>
+        <div className="bg-paper-100 border border-ink/10 rounded-card p-6 mb-8">
+          <h3 className="text-sm font-semibold text-ink mb-1">Performance Overview <InfoTooltip content="Each metric is normalised to a 0-100 scale where 100 = the better vehicle on that dimension. For efficiency, lower kWh/100km is better so the scale is inverted. A larger shape means stronger overall performance." /></h3>
+          <p className="text-xs text-ink-500 mb-4">Normalized comparison across key metrics (higher is better)</p>
           <ResponsiveContainer width="100%" height={300}>
             <RadarChart data={radarData}>
               <PolarGrid />
@@ -317,16 +317,16 @@ export default function VehicleComparisonClient({ vehicle1, vehicle2 }: VehicleC
         {/* Detailed Specs Comparison */}
         <div className="space-y-6 mb-8">
           {specsComparison.map((category) => (
-            <div key={category.category} className="bg-white border border-gray-200 rounded-xl overflow-hidden">
-              <div className="px-6 py-4 border-b border-gray-100">
-                <h3 className="text-lg font-semibold text-gray-900">{category.category}</h3>
+            <div key={category.category} className="bg-paper-100 border border-ink/10 rounded-card overflow-hidden">
+              <div className="px-6 py-4 border-b border-ink/5">
+                <h3 className="text-lg font-semibold text-ink">{category.category}</h3>
               </div>
-              <div className="divide-y divide-gray-100">
+              <div className="divide-y divide-ink/5">
                 {category.specs.map((spec, index) => (
                   <div key={index} className="px-6 py-3 grid grid-cols-3 gap-4">
-                    <div className="font-medium text-gray-900">{spec.label}</div>
-                    <div className="text-gray-700">{spec.v1}</div>
-                    <div className="text-gray-700">{spec.v2}</div>
+                    <div className="font-medium text-ink">{spec.label}</div>
+                    <div className="text-ink-700">{spec.v1}</div>
+                    <div className="text-ink-700">{spec.v2}</div>
                   </div>
                 ))}
               </div>
@@ -338,39 +338,39 @@ export default function VehicleComparisonClient({ vehicle1, vehicle2 }: VehicleC
         {(vehicle1.technologyFeatures || vehicle2.technologyFeatures) && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
             {vehicle1.technologyFeatures && (
-              <div className="bg-white border border-gray-200 rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">{vehicle1.name} Features</h3>
-                <p className="text-gray-600 leading-relaxed">{vehicle1.technologyFeatures}</p>
+              <div className="bg-paper-100 border border-ink/10 rounded-card p-6">
+                <h3 className="text-lg font-semibold text-ink mb-3">{vehicle1.name} Features</h3>
+                <p className="text-ink-600 leading-relaxed">{vehicle1.technologyFeatures}</p>
               </div>
             )}
             {vehicle2.technologyFeatures && (
-              <div className="bg-white border border-gray-200 rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">{vehicle2.name} Features</h3>
-                <p className="text-gray-600 leading-relaxed">{vehicle2.technologyFeatures}</p>
+              <div className="bg-paper-100 border border-ink/10 rounded-card p-6">
+                <h3 className="text-lg font-semibold text-ink mb-3">{vehicle2.name} Features</h3>
+                <p className="text-ink-600 leading-relaxed">{vehicle2.technologyFeatures}</p>
               </div>
             )}
           </div>
         )}
 
         {/* Navigation */}
-        <div className="text-center py-8 border-t border-gray-200">
-          <p className="text-gray-600 text-sm mb-4">Compare more vehicles or view detailed specs</p>
+        <div className="text-center py-8 border-t border-ink/10">
+          <p className="text-ink-600 text-sm mb-4">Compare more vehicles or view detailed specs</p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link
               href="/ev"
-              className="inline-flex items-center px-5 py-2.5 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors text-sm font-medium"
+              className="inline-flex items-center px-5 py-2.5 bg-brand-600 text-white rounded-lg hover:bg-brand-700 transition-colors text-sm font-medium"
             >
               Back to All Vehicles
             </Link>
             <Link
               href={`/ev/${vehicle1.id}`}
-              className="inline-flex items-center px-5 py-2.5 bg-white text-gray-800 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
+              className="inline-flex items-center px-5 py-2.5 bg-paper-100 text-ink-800 border border-ink/15 rounded-lg hover:bg-paper-200 transition-colors text-sm font-medium"
             >
               {vehicle1.name} Details
             </Link>
             <Link
               href={`/ev/${vehicle2.id}`}
-              className="inline-flex items-center px-5 py-2.5 bg-white text-gray-800 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
+              className="inline-flex items-center px-5 py-2.5 bg-paper-100 text-ink-800 border border-ink/15 rounded-lg hover:bg-paper-200 transition-colors text-sm font-medium"
             >
               {vehicle2.name} Details
             </Link>

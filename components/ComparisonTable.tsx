@@ -101,7 +101,7 @@ function CostPerKmInfoBox({
         ref={buttonRef}
         type="button"
         onClick={handleClick}
-        className="text-gray-400 hover:text-gray-600 transition-colors"
+        className="text-ink-400 hover:text-ink-600 transition-colors"
         aria-label="Show cost per km definition"
       >
         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -118,49 +118,49 @@ function CostPerKmInfoBox({
           />
           {/* Info Box - rendered via portal to appear above table */}
           <div 
-            className="fixed w-72 bg-white border border-gray-200 rounded-lg shadow-lg p-4 z-[9999]"
+            className="fixed w-72 bg-paper-100 border border-ink/10 rounded-lg shadow-lg p-4 z-[9999]"
             style={{
               top: `${position.top}px`,
               left: `${position.left}px`,
             }}
           >
-            <div className="text-xs font-semibold text-gray-900 mb-3">Cost / km Definition</div>
+            <div className="text-xs font-semibold text-ink mb-3">Cost / km Definition</div>
             
-            <div className="space-y-2 text-xs text-gray-700">
+            <div className="space-y-2 text-xs text-ink-700">
               <div>
-                <div className="font-medium text-gray-900 mb-1">Formula:</div>
-                <div className="bg-gray-50 p-2 rounded font-mono text-[10px]">
+                <div className="font-medium text-ink mb-1">Formula:</div>
+                <div className="bg-paper-200 p-2 rounded font-mono text-[10px]">
                   Cost/km = (Battery Capacity × Electricity Rate) ÷ Range
                 </div>
               </div>
               
-              <div className="pt-2 border-t border-gray-100">
-                <div className="font-medium text-gray-900 mb-1.5">Key Assumptions:</div>
-                <ul className="space-y-1.5 text-gray-600">
+              <div className="pt-2 border-t border-ink/5">
+                <div className="font-medium text-ink mb-1.5">Key Assumptions:</div>
+                <ul className="space-y-1.5 text-ink-600">
                   <li className="flex items-start gap-1.5">
-                    <span className="text-gray-400 mt-0.5">•</span>
+                    <span className="text-ink-400 mt-0.5">•</span>
                     <span>Uses actual battery capacity from vehicle specifications</span>
                   </li>
                   <li className="flex items-start gap-1.5">
-                    <span className="text-gray-400 mt-0.5">•</span>
+                    <span className="text-ink-400 mt-0.5">•</span>
                     <span>Electricity rate: <span className="font-medium">{formatPriceUtil(electricityRate, country, 2)}/kWh</span> (typical DC fast charger)</span>
                   </li>
                   <li className="flex items-start gap-1.5">
-                    <span className="text-gray-400 mt-0.5">•</span>
+                    <span className="text-ink-400 mt-0.5">•</span>
                     <span>Uses WLTP or EPA rated range</span>
                   </li>
                 </ul>
               </div>
               
-              <div className="pt-2 border-t border-gray-100 text-[10px] text-gray-500">
-                <div className="font-medium text-gray-700 mb-0.5">Note:</div>
+              <div className="pt-2 border-t border-ink/5 text-[10px] text-ink-500">
+                <div className="font-medium text-ink-700 mb-0.5">Note:</div>
                 <div>Rates vary by location and charging method. Home charging may be cheaper. Values shown are for comparison purposes.</div>
               </div>
             </div>
             
             <button
               onClick={() => setIsOpen(false)}
-              className="mt-3 text-xs text-gray-500 hover:text-gray-700"
+              className="mt-3 text-xs text-ink-500 hover:text-ink-700"
             >
               Close
             </button>
@@ -206,7 +206,7 @@ function CostPerKmChartInfoBox({
         ref={buttonRef}
         type="button"
         onClick={handleClick}
-        className="text-gray-400 hover:text-gray-600 transition-colors ml-1"
+        className="text-ink-400 hover:text-ink-600 transition-colors ml-1"
         aria-label="Show cost per km calculation details"
       >
         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -221,23 +221,23 @@ function CostPerKmChartInfoBox({
             onClick={() => setIsOpen(false)}
           />
           <div 
-            className="fixed w-72 bg-white border border-gray-200 rounded-lg shadow-lg p-4 z-[9999]"
+            className="fixed w-72 bg-paper-100 border border-ink/10 rounded-lg shadow-lg p-4 z-[9999]"
             style={{
               top: `${position.top}px`,
               left: `${position.left}px`,
             }}
           >
-            <div className="text-xs font-semibold text-gray-900 mb-3">Cost / km Calculation</div>
-            <div className="space-y-2 text-xs text-gray-700">
+            <div className="text-xs font-semibold text-ink mb-3">Cost / km Calculation</div>
+            <div className="space-y-2 text-xs text-ink-700">
               <div>
-                <div className="font-medium text-gray-900 mb-1">Formula:</div>
-                <div className="bg-gray-50 p-2 rounded font-mono text-[10px]">
+                <div className="font-medium text-ink mb-1">Formula:</div>
+                <div className="bg-paper-200 p-2 rounded font-mono text-[10px]">
                   Cost/km = (Battery capacity in kWh × average electricity rate) ÷ rated range
                 </div>
               </div>
-              <div className="pt-2 border-t border-gray-100">
-                <div className="font-medium text-gray-900 mb-1.5">Electricity Rates:</div>
-                <div className="text-gray-600">
+              <div className="pt-2 border-t border-ink/5">
+                <div className="font-medium text-ink mb-1.5">Electricity Rates:</div>
+                <div className="text-ink-600">
                   We use{' '}
                   {countriesRepresented.map((country, index) => {
                     const rate = getElectricityRate(country)
@@ -266,7 +266,7 @@ function CostPerKmChartInfoBox({
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="mt-3 text-xs text-gray-500 hover:text-gray-700"
+              className="mt-3 text-xs text-ink-500 hover:text-ink-700"
             >
               Close
             </button>
@@ -314,7 +314,7 @@ function ICEComparisonInfoBox({
         ref={buttonRef}
         type="button"
         onClick={handleClick}
-        className="text-gray-400 hover:text-gray-600 transition-colors ml-1"
+        className="text-ink-400 hover:text-ink-600 transition-colors ml-1"
         aria-label="Show ICE comparison details"
       >
         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -329,20 +329,20 @@ function ICEComparisonInfoBox({
             onClick={() => setIsOpen(false)}
           />
           <div 
-            className="fixed w-72 bg-white border border-gray-200 rounded-lg shadow-lg p-4 z-[9999]"
+            className="fixed w-72 bg-paper-100 border border-ink/10 rounded-lg shadow-lg p-4 z-[9999]"
             style={{
               top: `${position.top}px`,
               left: `${position.left}px`,
             }}
           >
-            <div className="text-xs font-semibold text-gray-900 mb-3">ICE Comparison</div>
-            <div className="space-y-2 text-xs text-gray-700">
+            <div className="text-xs font-semibold text-ink mb-3">ICE Comparison</div>
+            <div className="space-y-2 text-xs text-ink-700">
               {countriesRepresented.map((country) => {
                 const fact = ICE_FACTS[country]
                 if (!fact) return null
                 return (
-                  <div key={country} className="pb-2 border-b border-gray-100 last:border-0 last:pb-4">
-                    <div className="font-medium text-gray-900 mb-1">
+                  <div key={country} className="pb-2 border-b border-ink/5 last:border-0 last:pb-4">
+                    <div className="font-medium text-ink mb-1">
                       {(() => {
                         const countryNames = {
                           SG: 'Singapore',
@@ -355,7 +355,7 @@ function ICEComparisonInfoBox({
                         return countryNames[country] || country
                       })()}
                     </div>
-                    <div className="text-gray-600">
+                    <div className="text-ink-600">
                       Comparable ICE sedans such as <span className="font-semibold">{fact.models.join(' or ')}</span> average around{' '}
                       <span className="font-semibold">
                         {formatCostPerKm(fact.costPerKm, country)}
@@ -368,7 +368,7 @@ function ICEComparisonInfoBox({
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="mt-3 text-xs text-gray-500 hover:text-gray-700"
+              className="mt-3 text-xs text-ink-500 hover:text-ink-700"
             >
               Close
             </button>
@@ -408,7 +408,7 @@ function PublicFastInfoBox() {
         ref={buttonRef}
         type="button"
         onClick={handleClick}
-        className="text-gray-400 hover:text-gray-600 transition-colors ml-1"
+        className="text-ink-400 hover:text-ink-600 transition-colors ml-1"
         aria-label="Show public fast charging info"
       >
         <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -423,19 +423,19 @@ function PublicFastInfoBox() {
             onClick={() => setIsOpen(false)}
           />
           <div 
-            className="fixed w-72 bg-white border border-gray-200 rounded-lg shadow-lg p-4 z-[9999]"
+            className="fixed w-72 bg-paper-100 border border-ink/10 rounded-lg shadow-lg p-4 z-[9999]"
             style={{
               top: `${position.top}px`,
               left: `${position.left}px`,
             }}
           >
-            <div className="text-xs font-semibold text-gray-900 mb-2">Public Fast Charging</div>
-            <div className="text-xs text-gray-600 mb-2">
+            <div className="text-xs font-semibold text-ink mb-2">Public Fast Charging</div>
+            <div className="text-xs text-ink-600 mb-2">
               *Public: 100 kW DC – the most common fast-charger power in urban SEA 2025–26 (200–350 kW hubs expanding fast).*
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="mt-2 text-xs text-gray-500 hover:text-gray-700"
+              className="mt-2 text-xs text-ink-500 hover:text-ink-700"
             >
               Close
             </button>
@@ -475,7 +475,7 @@ function HomeSolarInfoBox() {
         ref={buttonRef}
         type="button"
         onClick={handleClick}
-        className="text-gray-400 hover:text-gray-600 transition-colors ml-1"
+        className="text-ink-400 hover:text-ink-600 transition-colors ml-1"
         aria-label="Show home solar info"
       >
         <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -490,19 +490,19 @@ function HomeSolarInfoBox() {
             onClick={() => setIsOpen(false)}
           />
           <div 
-            className="fixed w-72 bg-white border border-gray-200 rounded-lg shadow-lg p-4 z-[9999]"
+            className="fixed w-72 bg-paper-100 border border-ink/10 rounded-lg shadow-lg p-4 z-[9999]"
             style={{
               top: `${position.top}px`,
               left: `${position.left}px`,
             }}
           >
-            <div className="text-xs font-semibold text-gray-900 mb-2">Home Solar Charging</div>
-            <div className="text-xs text-gray-600 mb-2">
+            <div className="text-xs font-semibold text-ink mb-2">Home Solar Charging</div>
+            <div className="text-xs text-ink-600 mb-2">
               *Home solar: Real daily production of a 10 kW rooftop system (4–5.5 peak sun hours). Most urban owners mix ~60% public + 40% home charging.*
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="mt-2 text-xs text-gray-500 hover:text-gray-700"
+              className="mt-2 text-xs text-ink-500 hover:text-ink-700"
             >
               Close
             </button>
@@ -542,7 +542,7 @@ function BidirectionalChargingInfoBox() {
         ref={buttonRef}
         type="button"
         onClick={handleClick}
-        className="text-gray-400 hover:text-gray-600 transition-colors"
+        className="text-ink-400 hover:text-ink-600 transition-colors"
         aria-label="Show bidirectional charging info"
       >
         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -559,23 +559,23 @@ function BidirectionalChargingInfoBox() {
           />
           {/* Info Box - rendered via portal to appear above table */}
           <div 
-            className="fixed w-72 bg-white border border-gray-200 rounded-lg shadow-lg p-4 z-[9999]"
+            className="fixed w-72 bg-paper-100 border border-ink/10 rounded-lg shadow-lg p-4 z-[9999]"
             style={{
               top: `${position.top}px`,
               left: `${position.left}px`,
             }}
           >
-            <div className="text-xs font-semibold text-gray-900 mb-3">Bidirectional Charging</div>
+            <div className="text-xs font-semibold text-ink mb-3">Bidirectional Charging</div>
             
-            <div className="space-y-2 text-xs text-gray-700">
-              <div className="text-gray-600">
+            <div className="space-y-2 text-xs text-ink-700">
+              <div className="text-ink-600">
                 Can power appliances (V2L) or backup home (V2H). Possible to be enabled via future OTA updates - depending on manufacturer and/or vehicle model.
               </div>
             </div>
             
             <button
               onClick={() => setIsOpen(false)}
-              className="mt-3 text-xs text-gray-500 hover:text-gray-700"
+              className="mt-3 text-xs text-ink-500 hover:text-ink-700"
             >
               Close
             </button>
@@ -622,7 +622,7 @@ function CostPerFullChargeInfoBox({
         ref={buttonRef}
         type="button"
         onClick={handleClick}
-        className="text-gray-400 hover:text-gray-600 transition-colors"
+        className="text-ink-400 hover:text-ink-600 transition-colors"
         aria-label="Show cost per full charge definition"
       >
         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -639,45 +639,45 @@ function CostPerFullChargeInfoBox({
           />
           {/* Info Box - rendered via portal to appear above table */}
           <div 
-            className="fixed w-72 bg-white border border-gray-200 rounded-lg shadow-lg p-4 z-[9999]"
+            className="fixed w-72 bg-paper-100 border border-ink/10 rounded-lg shadow-lg p-4 z-[9999]"
             style={{
               top: `${position.top}px`,
               left: `${position.left}px`,
             }}
           >
-            <div className="text-xs font-semibold text-gray-900 mb-3">Cost / Full Charge Definition</div>
+            <div className="text-xs font-semibold text-ink mb-3">Cost / Full Charge Definition</div>
             
-            <div className="space-y-2 text-xs text-gray-700">
+            <div className="space-y-2 text-xs text-ink-700">
               <div>
-                <div className="font-medium text-gray-900 mb-1">Formula:</div>
-                <div className="bg-gray-50 p-2 rounded font-mono text-[10px]">
+                <div className="font-medium text-ink mb-1">Formula:</div>
+                <div className="bg-paper-200 p-2 rounded font-mono text-[10px]">
                   Cost/Full Charge = Battery Capacity × Electricity Rate
                 </div>
               </div>
               
-              <div className="pt-2 border-t border-gray-100">
-                <div className="font-medium text-gray-900 mb-1.5">Key Assumptions:</div>
-                <ul className="space-y-1.5 text-gray-600">
+              <div className="pt-2 border-t border-ink/5">
+                <div className="font-medium text-ink mb-1.5">Key Assumptions:</div>
+                <ul className="space-y-1.5 text-ink-600">
                   <li className="flex items-start gap-1.5">
-                    <span className="text-gray-400 mt-0.5">•</span>
+                    <span className="text-ink-400 mt-0.5">•</span>
                     <span>Uses actual battery capacity from vehicle specifications</span>
                   </li>
                   <li className="flex items-start gap-1.5">
-                    <span className="text-gray-400 mt-0.5">•</span>
+                    <span className="text-ink-400 mt-0.5">•</span>
                     <span>Electricity rate: <span className="font-medium">{formatPriceUtil(electricityRate, country, 2)}/kWh</span> (typical DC fast charger)</span>
                   </li>
                 </ul>
               </div>
               
-              <div className="pt-2 border-t border-gray-100 text-[10px] text-gray-500">
-                <div className="font-medium text-gray-700 mb-0.5">Note:</div>
+              <div className="pt-2 border-t border-ink/5 text-[10px] text-ink-500">
+                <div className="font-medium text-ink-700 mb-0.5">Note:</div>
                 <div>Rates vary by location and charging method. Home charging may be cheaper. Values shown are for comparison purposes.</div>
               </div>
             </div>
             
             <button
               onClick={() => setIsOpen(false)}
-              className="mt-3 text-xs text-gray-500 hover:text-gray-700"
+              className="mt-3 text-xs text-ink-500 hover:text-ink-700"
             >
               Close
             </button>
@@ -1105,7 +1105,7 @@ export default function ComparisonTable() {
     : null
 
   return (
-    <div className="mt-8 mb-12 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
+    <div className="mt-8 mb-12 bg-paper-100 rounded-lg shadow-lg overflow-hidden">
       <div className="px-4 pt-4 pb-2 text-black">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <h2 className="text-xl font-bold">Side-by-Side Comparison</h2>
@@ -1113,13 +1113,13 @@ export default function ComparisonTable() {
             <ShareComparisonCard vehicles={sortedVehicles} />
             <button
               onClick={exportToCSV}
-              className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors text-sm font-medium text-gray-700 print:hidden"
+              className="px-4 py-2 bg-paper-200 hover:bg-paper-300 rounded-lg transition-colors text-sm font-medium text-ink-700 print:hidden"
             >
               Export CSV
             </button>
             <button
               onClick={() => window.print()}
-              className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors text-sm font-medium text-gray-700 print:hidden"
+              className="px-4 py-2 bg-paper-200 hover:bg-paper-300 rounded-lg transition-colors text-sm font-medium text-ink-700 print:hidden"
             >
               🖨️ Print
             </button>
@@ -1130,13 +1130,13 @@ export default function ComparisonTable() {
                   alert('Comparison link copied to clipboard!')
                 })
               }}
-              className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors text-sm font-medium text-gray-700 print:hidden"
+              className="px-4 py-2 bg-paper-200 hover:bg-paper-300 rounded-lg transition-colors text-sm font-medium text-ink-700 print:hidden"
             >
               🔗 Copy Link
             </button>
             <button
               onClick={clearAll}
-              className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors text-sm font-medium text-gray-700 print:hidden"
+              className="px-4 py-2 bg-paper-200 hover:bg-paper-300 rounded-lg transition-colors text-sm font-medium text-ink-700 print:hidden"
             >
               Clear All
             </button>
@@ -1145,7 +1145,7 @@ export default function ComparisonTable() {
       </div>
 
       <div className="px-6 pt-2 pb-2 space-y-4">
-        <h3 className="font-semibold text-gray-800">
+        <h3 className="font-semibold text-ink-800">
           Data Snapshot
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -1194,7 +1194,7 @@ export default function ComparisonTable() {
       {sortedVehicles.length >= 2 && (
         <AnimatedEntry animation="scale-up" delay={0}>
           <div className="px-6 pt-4 pb-2">
-            <h3 className="font-semibold text-gray-800 mb-2">Score Radar</h3>
+            <h3 className="font-semibold text-ink-800 mb-2">Score Radar</h3>
             <div className="flex justify-center">
               <EVRadarChart vehicles={sortedVehicles} />
             </div>
@@ -1243,12 +1243,12 @@ export default function ComparisonTable() {
       </div>
 
       {/* ── Desktop: Detailed Comparison Table (hidden on mobile) ── */}
-      <div className="hidden md:block pt-3 pb-6 px-6 border-b border-gray-100 space-y-4">
-        <h3 className="font-semibold text-gray-800 flex items-center gap-2">
+      <div className="hidden md:block pt-3 pb-6 px-6 border-b border-ink/5 space-y-4">
+        <h3 className="font-semibold text-ink-800 flex items-center gap-2">
           Detailed Comparison
         </h3>
         {sortedVehicles.length > 2 && (
-          <p className="text-xs text-gray-500 md:hidden">
+          <p className="text-xs text-ink-500 md:hidden">
             💡 Scroll horizontally to see all vehicles
           </p>
         )}
@@ -1263,9 +1263,9 @@ export default function ComparisonTable() {
               return <col key={index} style={{ width: vehicleColumnWidth }} />;
             })}
           </colgroup>
-          <thead className="bg-gray-50">
+          <thead className="bg-paper-200">
             <tr>
-              <th className="px-2 py-2 text-left text-xs font-semibold text-gray-700 sticky left-0 bg-gray-50 z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+              <th className="px-2 py-2 text-left text-xs font-semibold text-ink-700 sticky left-0 bg-paper-200 z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <span className="break-words leading-tight">Specification</span>
               </th>
               {(() => {
@@ -1275,18 +1275,18 @@ export default function ComparisonTable() {
                   return (
                     <th
                       key={vehicle.id}
-                      className="px-3 py-2 text-center text-xs font-semibold text-gray-700"
+                      className="px-3 py-2 text-center text-xs font-semibold text-ink-700"
                     >
                       <div className="flex flex-col items-center gap-0.5">
                         {/* Score gauge */}
                         <EVScoreGauge vehicle={vehicle} allVehicles={sortedVehicles} size="sm" />
                         <Link
                           href={`/ev/${vehicle.id}`}
-                          className="font-semibold text-xs text-emerald-700 hover:text-emerald-800 hover:underline"
+                          className="font-semibold text-xs text-brand-700 hover:text-brand-800 hover:underline"
                         >
                           {vehicle.name}
                         </Link>
-                        <div className="text-[10px] text-light-gray-500">{vehicle.modelTrim}</div>
+                        <div className="text-[10px] text-ink-400">{vehicle.modelTrim}</div>
                         {/* Winner badges */}
                         <InlineBadgeRow badges={vBadges} />
                         <button
@@ -1297,8 +1297,8 @@ export default function ComparisonTable() {
                           }}
                           className={`text-[9px] px-1.5 py-0.5 rounded-full font-medium mt-0.5 ${
                             isVehicleSelected(vehicle.id)
-                              ? 'bg-emerald-100 text-emerald-800'
-                              : 'bg-gray-100 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700'
+                              ? 'bg-brand-100 text-brand-800'
+                              : 'bg-paper-200 text-ink-700 hover:bg-brand-50 hover:text-brand-700'
                           }`}
                         >
                           {isVehicleSelected(vehicle.id) ? 'Selected' : 'Compare'}
@@ -1310,11 +1310,11 @@ export default function ComparisonTable() {
               })()}
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200">
+          <tbody className="divide-y divide-ink/10">
             {/* 1. Power (kW) */}
             <tr>
               <td
-                className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 cursor-pointer hover:bg-gray-50 focus:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-ev-primary max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]"
+                className="px-2 py-2 text-xs font-medium text-ink-700 sticky left-0 bg-paper-100 z-10 cursor-pointer hover:bg-paper-200 focus:bg-paper-200 focus:outline-none focus:ring-2 focus:ring-ev-primary max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]"
                 onClick={() => handleSort('powerRatingKw')}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
@@ -1328,7 +1328,7 @@ export default function ComparisonTable() {
               >
                 <div className="flex flex-col leading-tight">
                   <span>Power {sortField === 'powerRatingKw' && (sortDirection === 'asc' ? '↑' : '↓')}</span>
-                  <span className="text-[10px] text-gray-500">(kW)</span>
+                  <span className="text-[10px] text-ink-500">(kW)</span>
                 </div>
               </td>
               {sortedVehicles.map((vehicle) => (
@@ -1337,7 +1337,7 @@ export default function ComparisonTable() {
                   className={`px-3 py-2 text-center text-xs ${
                     bestPowerKw !== null && vehicle.powerRatingKw === bestPowerKw
                       ? 'bg-green-100 font-semibold text-green-800'
-                      : 'text-gray-600'
+                      : 'text-ink-600'
                   }`}
                 >
                   {formatValueOrNA(vehicle.powerRatingKw, (v) => `${v}`)}
@@ -1346,10 +1346,10 @@ export default function ComparisonTable() {
             </tr>
             {/* 2. Power in Horsepower (hp) */}
             <tr>
-              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+              <td className="px-2 py-2 text-xs font-medium text-ink-700 sticky left-0 bg-paper-100 z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <div className="flex flex-col leading-tight">
                   <span>Power</span>
-                  <span className="text-[10px] text-gray-500">(hp)</span>
+                  <span className="text-[10px] text-ink-500">(hp)</span>
                 </div>
               </td>
               {sortedVehicles.map((vehicle) => {
@@ -1362,7 +1362,7 @@ export default function ComparisonTable() {
                     className={`px-3 py-2 text-center text-xs ${
                       bestPowerHp !== null && hp !== null && hp === bestPowerHp
                         ? 'bg-green-100 font-semibold text-green-800'
-                        : 'text-gray-600'
+                        : 'text-ink-600'
                     }`}
                   >
                     {formatValueOrNA(hp, (v) => `${v} hp`)}
@@ -1372,10 +1372,10 @@ export default function ComparisonTable() {
             </tr>
             {/* 3. Torque (Nm) */}
             <tr>
-              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+              <td className="px-2 py-2 text-xs font-medium text-ink-700 sticky left-0 bg-paper-100 z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <div className="flex flex-col leading-tight">
                   <span>Torque</span>
-                  <span className="text-[10px] text-gray-500">(Nm)</span>
+                  <span className="text-[10px] text-ink-500">(Nm)</span>
                 </div>
               </td>
               {sortedVehicles.map((vehicle) => {
@@ -1393,7 +1393,7 @@ export default function ComparisonTable() {
                     className={`px-3 py-2 text-center text-xs ${
                       isBest
                         ? 'bg-green-100 font-semibold text-green-800'
-                        : 'text-gray-600'
+                        : 'text-ink-600'
                     }`}
                   >
                     {formatValueOrNA(vehicle.torqueNm, (v) => `${v}`)}
@@ -1403,10 +1403,10 @@ export default function ComparisonTable() {
             </tr>
             {/* 4. Acceleration */}
             <tr>
-              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+              <td className="px-2 py-2 text-xs font-medium text-ink-700 sticky left-0 bg-paper-100 z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <div className="flex flex-col leading-tight">
                   <span>Acceleration</span>
-                  <span className="text-[10px] text-gray-500">(0-100 km/h)</span>
+                  <span className="text-[10px] text-ink-500">(0-100 km/h)</span>
                 </div>
               </td>
               {sortedVehicles.map((vehicle) => {
@@ -1422,7 +1422,7 @@ export default function ComparisonTable() {
                     className={`px-3 py-2 text-center text-xs ${
                       isBest
                         ? 'bg-green-100 font-semibold text-green-800'
-                        : 'text-gray-600'
+                        : 'text-ink-600'
                     }`}
                   >
                     {formatValueOrNA(accel, (v) => `${v.toFixed(1)}s`)}
@@ -1432,10 +1432,10 @@ export default function ComparisonTable() {
             </tr>
             {/* 5. Top Speed (km/h) */}
             <tr>
-              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+              <td className="px-2 py-2 text-xs font-medium text-ink-700 sticky left-0 bg-paper-100 z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <div className="flex flex-col leading-tight">
                   <span>Top Speed</span>
-                  <span className="text-[10px] text-gray-500">(km/h)</span>
+                  <span className="text-[10px] text-ink-500">(km/h)</span>
                 </div>
                 </td>
               {sortedVehicles.map((vehicle) => {
@@ -1453,7 +1453,7 @@ export default function ComparisonTable() {
                     className={`px-3 py-2 text-center text-xs ${
                       isBest
                         ? 'bg-green-100 font-semibold text-green-800'
-                        : 'text-gray-600'
+                        : 'text-ink-600'
                     }`}
                   >
                     {formatValueOrNA(vehicle.topSpeedKmh, (v) => `${v}`)}
@@ -1463,10 +1463,10 @@ export default function ComparisonTable() {
             </tr>
             {/* 6. Range - WLTP (km) */}
             <tr>
-              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+              <td className="px-2 py-2 text-xs font-medium text-ink-700 sticky left-0 bg-paper-100 z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <div className="flex flex-col leading-tight">
                   <span>Range - WLTP</span>
-                  <span className="text-[10px] text-gray-500">(km)</span>
+                  <span className="text-[10px] text-ink-500">(km)</span>
                 </div>
               </td>
               {sortedVehicles.map((vehicle) => {
@@ -1479,7 +1479,7 @@ export default function ComparisonTable() {
                     className={`px-3 py-2 text-center text-xs ${
                       isBest
                         ? 'bg-green-100 font-semibold text-green-800'
-                        : 'text-gray-600'
+                        : 'text-ink-600'
                     }`}
                   >
                     {formatValueOrNA(rangeWltpDisplay, (v) => `${v}`)}
@@ -1489,10 +1489,10 @@ export default function ComparisonTable() {
             </tr>
             {/* 7. Range - EPA (km) */}
             <tr>
-              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+              <td className="px-2 py-2 text-xs font-medium text-ink-700 sticky left-0 bg-paper-100 z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <div className="flex flex-col leading-tight">
                   <span>Range - EPA</span>
-                  <span className="text-[10px] text-gray-500">(km)</span>
+                  <span className="text-[10px] text-ink-500">(km)</span>
                 </div>
               </td>
               {sortedVehicles.map((vehicle) => {
@@ -1507,7 +1507,7 @@ export default function ComparisonTable() {
                     className={`px-3 py-2 text-center text-xs ${
                       isBest
                         ? 'bg-green-100 font-semibold text-green-800'
-                        : 'text-gray-600'
+                        : 'text-ink-600'
                     }`}
                   >
                     {formatValueOrNA(rangeEpaDisplay, (v) => `${v}`)}
@@ -1518,7 +1518,7 @@ export default function ComparisonTable() {
             {/* 8. Efficiency (kWh/100km) */}
             <tr>
               <td
-                className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 cursor-pointer hover:bg-gray-50 focus:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-ev-primary max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]"
+                className="px-2 py-2 text-xs font-medium text-ink-700 sticky left-0 bg-paper-100 z-10 cursor-pointer hover:bg-paper-200 focus:bg-paper-200 focus:outline-none focus:ring-2 focus:ring-ev-primary max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]"
                 onClick={() => handleSort('efficiencyKwhPer100km')}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
@@ -1532,7 +1532,7 @@ export default function ComparisonTable() {
               >
                 <div className="flex flex-col leading-tight">
                   <span>Efficiency {sortField === 'efficiencyKwhPer100km' && (sortDirection === 'asc' ? '↑' : '↓')}</span>
-                  <span className="text-[10px] text-gray-500">(kWh/100km)</span>
+                  <span className="text-[10px] text-ink-500">(kWh/100km)</span>
                 </div>
               </td>
               {sortedVehicles.map((vehicle) => (
@@ -1541,7 +1541,7 @@ export default function ComparisonTable() {
                   className={`px-3 py-2 text-center text-xs ${
                     vehicle.efficiencyKwhPer100km === bestEfficiency
                       ? 'bg-green-100 font-semibold text-green-800'
-                      : 'text-gray-600'
+                      : 'text-ink-600'
                   }`}
                 >
                   {formatValueOrNA(vehicle.efficiencyKwhPer100km, (v) => `${v}`)}
@@ -1550,7 +1550,7 @@ export default function ComparisonTable() {
             </tr>
             {/* 9. Cost / km */}
             <tr>
-              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+              <td className="px-2 py-2 text-xs font-medium text-ink-700 sticky left-0 bg-paper-100 z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <div className="flex items-center gap-1.5">
                   <span className="break-words leading-tight">Cost / km</span>
                   <CostPerKmInfoBox 
@@ -1564,7 +1564,7 @@ export default function ComparisonTable() {
                   className={`px-3 py-2 text-center text-xs ${
                     bestCostPerKm !== null && getCostPerKm(vehicle) === bestCostPerKm
                       ? 'bg-green-100 font-semibold text-green-800'
-                      : 'text-gray-600'
+                      : 'text-ink-600'
                   }`}
                 >
                   {getCostPerKm(vehicle) !== null 
@@ -1575,7 +1575,7 @@ export default function ComparisonTable() {
             </tr>
             {/* 9. Cost / full charge */}
             <tr>
-              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+              <td className="px-2 py-2 text-xs font-medium text-ink-700 sticky left-0 bg-paper-100 z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <div className="flex items-center gap-1.5">
                   <span className="break-words leading-tight">Cost / Full Charge</span>
                   <CostPerFullChargeInfoBox 
@@ -1592,7 +1592,7 @@ export default function ComparisonTable() {
                     className={`px-3 py-2 text-center text-xs ${
                       isBest
                         ? 'bg-green-100 font-semibold text-green-800'
-                        : 'text-gray-600'
+                        : 'text-ink-600'
                     }`}
                   >
                     {cost !== null ? formatPrice(cost, vehicle.country) : 'N/A'}
@@ -1602,7 +1602,7 @@ export default function ComparisonTable() {
             </tr>
             {/* 11. Vehicle Base Price */}
             <tr>
-              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+              <td className="px-2 py-2 text-xs font-medium text-ink-700 sticky left-0 bg-paper-100 z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <span className="break-words leading-tight">Vehicle Base Price</span>
               </td>
               {sortedVehicles.map((vehicle) => {
@@ -1613,7 +1613,7 @@ export default function ComparisonTable() {
                     className={`px-3 py-2 text-center text-xs ${
                       isBest
                         ? 'bg-green-100 font-semibold text-green-800'
-                        : 'text-gray-600'
+                        : 'text-ink-600'
                     }`}
                   >
                     {formatPriceOrNA(vehicle.basePriceLocalCurrency, vehicle.country)}
@@ -1623,10 +1623,10 @@ export default function ComparisonTable() {
             </tr>
             {/* 12. Battery Capacity */}
             <tr>
-              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+              <td className="px-2 py-2 text-xs font-medium text-ink-700 sticky left-0 bg-paper-100 z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <div className="flex flex-col leading-tight">
                   <span>Battery Capacity</span>
-                  <span className="text-[10px] text-gray-500">(kWh)</span>
+                  <span className="text-[10px] text-ink-500">(kWh)</span>
                 </div>
               </td>
               {sortedVehicles.map((vehicle) => {
@@ -1638,7 +1638,7 @@ export default function ComparisonTable() {
                     className={`px-3 py-2 text-center text-xs ${
                       isBest
                         ? 'bg-green-100 font-semibold text-green-800'
-                        : 'text-gray-600'
+                        : 'text-ink-600'
                     }`}
                   >
                     {formatValueOrNA(capacity, (v) => `${v} kWh`)}
@@ -1648,10 +1648,10 @@ export default function ComparisonTable() {
             </tr>
             {/* 12. DC Fast Charge 0-80% (min) */}
             <tr>
-              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+              <td className="px-2 py-2 text-xs font-medium text-ink-700 sticky left-0 bg-paper-100 z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <div className="flex flex-col leading-tight">
                   <span>DC Fast Charge</span>
-                  <span className="text-[10px] text-gray-500">0-80% (min)</span>
+                  <span className="text-[10px] text-ink-500">0-80% (min)</span>
                 </div>
               </td>
               {sortedVehicles.map((vehicle) => {
@@ -1662,7 +1662,7 @@ export default function ComparisonTable() {
                     className={`px-3 py-2 text-center text-xs ${
                       isBest
                         ? 'bg-green-100 font-semibold text-green-800'
-                        : 'text-gray-600'
+                        : 'text-ink-600'
                     }`}
                   >
                     {vehicle.chargingTimeDc0To80Min}
@@ -1672,18 +1672,18 @@ export default function ComparisonTable() {
             </tr>
             {/* 13. Charging Rating */}
             <tr>
-              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+              <td className="px-2 py-2 text-xs font-medium text-ink-700 sticky left-0 bg-paper-100 z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <span className="break-words leading-tight">Charging Rating</span>
               </td>
               {sortedVehicles.map((vehicle) => (
-                <td key={vehicle.id} className="px-3 py-2 text-center text-xs text-gray-600">
+                <td key={vehicle.id} className="px-3 py-2 text-center text-xs text-ink-600">
                   {formatStringOrNA(vehicle.chargingCapabilities)}
                 </td>
               ))}
             </tr>
             {/* 14. Bidirectional Charging */}
             <tr>
-              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+              <td className="px-2 py-2 text-xs font-medium text-ink-700 sticky left-0 bg-paper-100 z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <div className="flex items-center gap-1.5">
                   <span className="break-words leading-tight">Bidirectional Charging</span>
                   <BidirectionalChargingInfoBox />
@@ -1693,7 +1693,7 @@ export default function ComparisonTable() {
                 const bidirectionalValue = vehicle.hasBidirectional === true ? 'Yes' : 
                                          vehicle.hasBidirectional === false ? 'No' : 'N/A'
                 return (
-                  <td key={vehicle.id} className="px-3 py-2 text-center text-xs text-gray-600">
+                  <td key={vehicle.id} className="px-3 py-2 text-center text-xs text-ink-600">
                     {bidirectionalValue}
                   </td>
                 )
@@ -1701,10 +1701,10 @@ export default function ComparisonTable() {
             </tr>
             {/* 15. Vehicle Weight (kg) */}
             <tr>
-              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+              <td className="px-2 py-2 text-xs font-medium text-ink-700 sticky left-0 bg-paper-100 z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <div className="flex flex-col leading-tight">
                   <span>Vehicle Weight</span>
-                  <span className="text-[10px] text-gray-500">(kg)</span>
+                  <span className="text-[10px] text-ink-500">(kg)</span>
                 </div>
               </td>
               {sortedVehicles.map((vehicle) => {
@@ -1718,7 +1718,7 @@ export default function ComparisonTable() {
                     className={`px-3 py-2 text-center text-xs ${
                       isBest
                         ? 'bg-green-100 font-semibold text-green-800'
-                        : 'text-gray-600'
+                        : 'text-ink-600'
                     }`}
                   >
                     {formatValueOrNA(weight, (v) => `${v} kg`)}
@@ -1728,10 +1728,10 @@ export default function ComparisonTable() {
             </tr>
             {/* 16. Battery Weight (kg) */}
             <tr>
-              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+              <td className="px-2 py-2 text-xs font-medium text-ink-700 sticky left-0 bg-paper-100 z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <div className="flex flex-col leading-tight">
                   <span>Battery Weight</span>
-                  <span className="text-[10px] text-gray-500">(kg)</span>
+                  <span className="text-[10px] text-ink-500">(kg)</span>
                 </div>
               </td>
               {sortedVehicles.map((vehicle) => {
@@ -1745,7 +1745,7 @@ export default function ComparisonTable() {
                     className={`px-3 py-2 text-center text-xs ${
                       isBest
                         ? 'bg-green-100 font-semibold text-green-800'
-                        : 'text-gray-600'
+                        : 'text-ink-600'
                   }`}
                 >
                     {formatValueOrNA(weight, (v) => `${v} kg`)}
@@ -1755,10 +1755,10 @@ export default function ComparisonTable() {
             </tr>
             {/* 17. Battery Weight % */}
             <tr>
-              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+              <td className="px-2 py-2 text-xs font-medium text-ink-700 sticky left-0 bg-paper-100 z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <div className="flex flex-col leading-tight">
                   <span>Battery Weight</span>
-                  <span className="text-[10px] text-gray-500">(%)</span>
+                  <span className="text-[10px] text-ink-500">(%)</span>
                 </div>
               </td>
               {sortedVehicles.map((vehicle) => {
@@ -1769,7 +1769,7 @@ export default function ComparisonTable() {
                   className={`px-3 py-2 text-center text-xs ${
                       isBest
                       ? 'bg-green-100 font-semibold text-green-800'
-                      : 'text-gray-600'
+                      : 'text-ink-600'
                   }`}
                 >
                     {formatValueOrNA(vehicle.batteryWeightPercentage, (v) => `${v.toFixed(1)}%`)}
@@ -1779,23 +1779,23 @@ export default function ComparisonTable() {
             </tr>
             {/* 18. Battery Manufacturer */}
             <tr>
-              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+              <td className="px-2 py-2 text-xs font-medium text-ink-700 sticky left-0 bg-paper-100 z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <span className="break-words leading-tight">Battery Manufacturer</span>
               </td>
               {sortedVehicles.map((vehicle) => (
-                <td key={vehicle.id} className="px-3 py-2 text-center text-xs text-gray-600">
+                <td key={vehicle.id} className="px-3 py-2 text-center text-xs text-ink-600">
                   {formatStringOrNA(vehicle.batteryManufacturer)}
                 </td>
               ))}
             </tr>
             {/* 19. Battery Technology */}
             <tr>
-              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+              <td className="px-2 py-2 text-xs font-medium text-ink-700 sticky left-0 bg-paper-100 z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <span className="break-words leading-tight">Battery Technology</span>
               </td>
               {sortedVehicles.map((vehicle) => (
-                <td key={vehicle.id} className="px-3 py-2 text-center text-xs text-gray-600">
-                  <span className="inline-block px-2 py-1 rounded-full text-xs font-medium bg-gray-200">
+                <td key={vehicle.id} className="px-3 py-2 text-center text-xs text-ink-600">
+                  <span className="inline-block px-2 py-1 rounded-full text-xs font-medium bg-paper-300">
                     {formatStringOrNA(vehicle.batteryTechnology)}
                   </span>
                 </td>
@@ -1803,23 +1803,23 @@ export default function ComparisonTable() {
             </tr>
             {/* 20. Battery Warranty */}
             <tr>
-              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+              <td className="px-2 py-2 text-xs font-medium text-ink-700 sticky left-0 bg-paper-100 z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <span className="break-words leading-tight">Battery Warranty</span>
               </td>
               {sortedVehicles.map((vehicle) => (
-                <td key={vehicle.id} className="px-3 py-2 text-center text-xs text-gray-600">
+                <td key={vehicle.id} className="px-3 py-2 text-center text-xs text-ink-600">
                   {formatStringOrNA(vehicle.batteryWarranty)}
                 </td>
               ))}
             </tr>
             {/* 21. Over the air (OTA) updates */}
             <tr>
-              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+              <td className="px-2 py-2 text-xs font-medium text-ink-700 sticky left-0 bg-paper-100 z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <span className="break-words leading-tight">Over the Air (OTA) Updates</span>
               </td>
               {sortedVehicles.map((vehicle) => {
                 return (
-                  <td key={vehicle.id} className="px-3 py-2 text-center text-xs text-gray-600">
+                  <td key={vehicle.id} className="px-3 py-2 text-center text-xs text-ink-600">
                     {formatStringOrNA(vehicle.otaUpdates)}
                   </td>
                 )
@@ -1827,11 +1827,11 @@ export default function ComparisonTable() {
             </tr>
             {/* 22. Technology Features */}
             <tr>
-              <td className="px-2 py-2 text-xs font-medium text-gray-700 sticky left-0 bg-white z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
+              <td className="px-2 py-2 text-xs font-medium text-ink-700 sticky left-0 bg-paper-100 z-10 max-w-[6rem] md:max-w-[8rem] lg:max-w-[10rem]">
                 <span className="break-words leading-tight">Technology Features</span>
               </td>
               {sortedVehicles.map((vehicle) => (
-                <td key={vehicle.id} className="px-3 py-2 text-center text-xs text-gray-600">
+                <td key={vehicle.id} className="px-3 py-2 text-center text-xs text-ink-600">
                   {formatStringOrNA(vehicle.technologyFeatures)}
                 </td>
               ))}
@@ -1892,7 +1892,7 @@ function TimeToChargeInfoBox() {
         ref={buttonRef}
         type="button"
         onClick={handleClick}
-        className="text-gray-400 hover:text-gray-600 transition-colors ml-1"
+        className="text-ink-400 hover:text-ink-600 transition-colors ml-1"
         aria-label="Show time-to-charge info"
       >
         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1907,39 +1907,39 @@ function TimeToChargeInfoBox() {
             onClick={() => setIsOpen(false)}
           />
           <div 
-            className="fixed w-72 bg-white border border-gray-200 rounded-lg shadow-lg p-4 z-[9999]"
+            className="fixed w-72 bg-paper-100 border border-ink/10 rounded-lg shadow-lg p-4 z-[9999]"
             style={{
               top: `${position.top}px`,
               left: `${position.left}px`,
             }}
           >
-            <div className="text-xs font-semibold text-gray-900 mb-3">Charging time</div>
-            <div className="space-y-3 text-xs text-gray-700">
+            <div className="text-xs font-semibold text-ink mb-3">Charging time</div>
+            <div className="space-y-3 text-xs text-ink-700">
               <div>
-                <div className="font-medium text-gray-900 mb-1.5">Public fast charging:</div>
-                <div className="text-gray-600 mb-2">
+                <div className="font-medium text-ink mb-1.5">Public fast charging:</div>
+                <div className="text-ink-600 mb-2">
                   Assume 100 kW DC — the most common fast charger in urban SEA 2025–26. Almost all real sessions are 20→80 %. Future plans for 200–350 kW hubs expanding fast.
                 </div>
-                <div className="bg-gray-50 p-2 rounded font-mono text-[10px] text-gray-700">
+                <div className="bg-paper-200 p-2 rounded font-mono text-[10px] text-ink-700">
                   Minutes = (Battery Capacity × 0.8) ÷ Max DC Rate (kW) × 60
                 </div>
               </div>
-              <div className="pt-2 border-t border-gray-100">
-                <div className="font-medium text-gray-900 mb-1.5">Home solar:</div>
-                <div className="text-gray-600 mb-2">
+              <div className="pt-2 border-t border-ink/5">
+                <div className="font-medium text-ink mb-1.5">Home solar:</div>
+                <div className="text-ink-600 mb-2">
                   Real daily yield of a 10 kW system (4–5.5 peak sun hours). Daily yield varies by country based on average sunlight hours.
                 </div>
-                <div className="bg-gray-50 p-2 rounded font-mono text-[10px] text-gray-700">
+                <div className="bg-paper-200 p-2 rounded font-mono text-[10px] text-ink-700">
                   Days = (Battery Capacity × 0.6) ÷ Daily Yield (kWh/day)
                 </div>
-                <div className="text-[10px] text-gray-500 mt-1">
+                <div className="text-[10px] text-ink-500 mt-1">
                   Assumes 20→80% charge (60% of battery capacity)
                 </div>
               </div>
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="mt-3 text-xs text-gray-500 hover:text-gray-700"
+              className="mt-3 text-xs text-ink-500 hover:text-ink-700"
             >
               Close
             </button>
@@ -1978,7 +1978,7 @@ const CustomXAxisTick = ({ x, y, payload, customLabel }: any) => {
   if (customLabel && isValidElement(customLabel)) {
     return (
       <foreignObject x={x - 30} y={y + 10} width="60" height="40">
-        <div className="flex items-center justify-center text-[9px] text-gray-600">
+        <div className="flex items-center justify-center text-[9px] text-ink-600">
           {customLabel}
         </div>
       </foreignObject>
@@ -2029,11 +2029,11 @@ function PublicFastVsHomeSolarChart({ data, country }: PublicFastVsHomeSolarChar
         {payload.map((entry: any, index: number) => (
           <div key={index} className="flex items-center gap-1">
             {entry.value === 'publicFast' ? (
-              <div className="w-2.5 h-2.5 border border-gray-400 bg-gray-200" />
+              <div className="w-2.5 h-2.5 border border-ink/30 bg-paper-300" />
             ) : (
-              <div className="w-2.5 h-2.5 rounded-full border border-gray-500 bg-gray-200" style={{ borderWidth: '1.5px' }} />
+              <div className="w-2.5 h-2.5 rounded-full border border-ink/40 bg-paper-300" style={{ borderWidth: '1.5px' }} />
             )}
-            <span className="text-[10px] text-gray-600">
+            <span className="text-[10px] text-ink-600">
               {entry.value === 'publicFast' ? 'Public Fast' : 'Home Solar'}
             </span>
           </div>
@@ -2043,23 +2043,23 @@ function PublicFastVsHomeSolarChart({ data, country }: PublicFastVsHomeSolarChar
   }
 
   return (
-    <div className="bg-gray-50 rounded-lg px-3 pt-4 pb-0 flex flex-col gap-0">
+    <div className="bg-paper-200 rounded-lg px-3 pt-4 pb-0 flex flex-col gap-0">
       <div>
         <div className="flex items-center gap-1.5">
-          <p className="font-semibold text-gray-800">Typical Top-Up</p>
+          <p className="font-semibold text-ink-800">Typical Top-Up</p>
           <TimeToChargeInfoBox />
         </div>
-        <p className="text-xs text-gray-500 mt-1">
+        <p className="text-xs text-ink-500 mt-1">
           DC fast charging vs. Home Solar (20-80%)
         </p>
         <div className="flex justify-center gap-3 mt-3.5 mb-2">
           <div className="flex items-center gap-1">
-            <div className="w-2.5 h-2.5 border border-gray-400 bg-gray-200" />
-            <span className="text-[9px] text-gray-600">Public Fast</span>
+            <div className="w-2.5 h-2.5 border border-ink/30 bg-paper-300" />
+            <span className="text-[9px] text-ink-600">Public Fast</span>
           </div>
           <div className="flex items-center gap-1">
-            <div className="w-2.5 h-2.5 rounded-full border border-gray-500 bg-gray-200" style={{ borderWidth: '1.5px' }} />
-            <span className="text-[9px] text-gray-600">Home Solar</span>
+            <div className="w-2.5 h-2.5 rounded-full border border-ink/40 bg-paper-300" style={{ borderWidth: '1.5px' }} />
+            <span className="text-[9px] text-ink-600">Home Solar</span>
           </div>
         </div>
       </div>
@@ -2171,10 +2171,10 @@ interface MetricChartProps {
 function MetricChart({ title, data, suffix, formatter, children, customLabelRenderer }: MetricChartProps) {
 
   return (
-    <div className="bg-gray-50 rounded-lg px-3 pt-4 pb-0 flex flex-col gap-3">
+    <div className="bg-paper-200 rounded-lg px-3 pt-4 pb-0 flex flex-col gap-3">
       <div>
-        <p className="font-semibold text-gray-800">{title}</p>
-        {children && <p className="text-xs text-gray-500 mt-1">{children}</p>}
+        <p className="font-semibold text-ink-800">{title}</p>
+        {children && <p className="text-xs text-ink-500 mt-1">{children}</p>}
       </div>
       <div className="h-64 flex items-end justify-center pb-0">
         <ResponsiveContainer width="100%" height="100%">

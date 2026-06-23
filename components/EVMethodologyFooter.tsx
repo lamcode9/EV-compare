@@ -6,19 +6,19 @@
  */
 export default function EVMethodologyFooter() {
   return (
-    <section className="mt-12 mb-8 border-t border-gray-200 pt-8">
+    <section className="mt-12 mb-8 border-t border-ink/10 pt-8">
       <details className="group max-w-4xl">
-        <summary className="cursor-pointer text-sm font-semibold text-gray-700 hover:text-emerald-700 transition-colors flex items-center gap-2 select-none">
-          <svg className="w-4 h-4 text-gray-400 group-open:rotate-90 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <summary className="cursor-pointer text-sm font-semibold text-ink-700 hover:text-brand-700 transition-colors flex items-center gap-2 select-none">
+          <svg className="w-4 h-4 text-ink-400 group-open:rotate-90 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
           </svg>
           How we rank and score EVs — Methodology &amp; Data Sources
         </summary>
 
-        <div className="mt-4 pl-6 space-y-6 text-sm text-gray-600 leading-relaxed">
+        <div className="mt-4 pl-6 space-y-6 text-sm text-ink-600 leading-relaxed">
           {/* Principles */}
           <div>
-            <h4 className="font-semibold text-gray-800 mb-1">Principles</h4>
+            <h4 className="font-semibold text-ink-800 mb-1">Principles</h4>
             <ul className="list-disc pl-5 space-y-1">
               <li><strong>No editorial opinions.</strong> All rankings are computed from verifiable manufacturer specs.</li>
               <li><strong>No brand preferences.</strong> Every vehicle in the database is treated equally.</li>
@@ -29,17 +29,17 @@ export default function EVMethodologyFooter() {
 
           {/* Quick Picks */}
           <div>
-            <h4 className="font-semibold text-gray-800 mb-1">Quick Picks (Hero Cards)</h4>
+            <h4 className="font-semibold text-ink-800 mb-1">Quick Picks (Hero Cards)</h4>
             <p className="mb-2">Each card shows the single best vehicle in one measurable dimension:</p>
             <table className="text-xs w-full border-collapse">
               <thead>
-                <tr className="border-b border-gray-200">
-                  <th className="text-left py-1 pr-3 text-gray-700">Category</th>
-                  <th className="text-left py-1 pr-3 text-gray-700">Metric</th>
-                  <th className="text-left py-1 text-gray-700">Direction</th>
+                <tr className="border-b border-ink/10">
+                  <th className="text-left py-1 pr-3 text-ink-700">Category</th>
+                  <th className="text-left py-1 pr-3 text-ink-700">Metric</th>
+                  <th className="text-left py-1 text-ink-700">Direction</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-100">
+              <tbody className="divide-y divide-ink/5">
                 <tr><td className="py-1 pr-3">Best Range</td><td className="pr-3">WLTP range (km)</td><td>Higher = better</td></tr>
                 <tr><td className="py-1 pr-3">Best Value</td><td className="pr-3">Base price ÷ range</td><td>Lower = better</td></tr>
                 <tr><td className="py-1 pr-3">Most Efficient</td><td className="pr-3">kWh per 100 km</td><td>Lower = better</td></tr>
@@ -51,16 +51,16 @@ export default function EVMethodologyFooter() {
 
           {/* Winner Badges */}
           <div>
-            <h4 className="font-semibold text-gray-800 mb-1">Winner Badges (Comparison Table)</h4>
+            <h4 className="font-semibold text-ink-800 mb-1">Winner Badges (Comparison Table)</h4>
             <p className="mb-2">Badges are awarded to the leader in each category <em>among the vehicles currently being compared</em>. If two vehicles tie, both receive the badge.</p>
             <table className="text-xs w-full border-collapse">
               <thead>
-                <tr className="border-b border-gray-200">
-                  <th className="text-left py-1 pr-3 text-gray-700">Badge</th>
-                  <th className="text-left py-1 text-gray-700">Metric</th>
+                <tr className="border-b border-ink/10">
+                  <th className="text-left py-1 pr-3 text-ink-700">Badge</th>
+                  <th className="text-left py-1 text-ink-700">Metric</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-100">
+              <tbody className="divide-y divide-ink/5">
                 <tr><td className="py-1 pr-3">🛣️ Best Range</td><td>Highest WLTP range (km)</td></tr>
                 <tr><td className="py-1 pr-3">⚡ Most Efficient</td><td>Lowest kWh/100 km</td></tr>
                 <tr><td className="py-1 pr-3">💰 Best Value</td><td>Lowest base price ÷ range</td></tr>
@@ -75,20 +75,20 @@ export default function EVMethodologyFooter() {
 
           {/* battery.mom Score */}
           <div>
-            <h4 className="font-semibold text-gray-800 mb-1">battery.mom Score (0–100)</h4>
+            <h4 className="font-semibold text-ink-800 mb-1">battery.mom Score (0–100)</h4>
             <p className="mb-2">
               A weighted composite that ranks each vehicle relative to the best in its country.
               A score of 100 means the vehicle leads every dimension; 50 means it is halfway to the leader in every category.
             </p>
             <table className="text-xs w-full border-collapse">
               <thead>
-                <tr className="border-b border-gray-200">
-                  <th className="text-left py-1 pr-3 text-gray-700">Dimension</th>
-                  <th className="text-left py-1 pr-3 text-gray-700">Weight</th>
-                  <th className="text-left py-1 text-gray-700">Calculation</th>
+                <tr className="border-b border-ink/10">
+                  <th className="text-left py-1 pr-3 text-ink-700">Dimension</th>
+                  <th className="text-left py-1 pr-3 text-ink-700">Weight</th>
+                  <th className="text-left py-1 text-ink-700">Calculation</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-100">
+              <tbody className="divide-y divide-ink/5">
                 <tr><td className="py-1 pr-3">Range</td><td className="pr-3">25%</td><td>vehicle range ÷ max range in set × 100</td></tr>
                 <tr><td className="py-1 pr-3">Efficiency</td><td className="pr-3">25%</td><td>best efficiency ÷ vehicle efficiency × 100</td></tr>
                 <tr><td className="py-1 pr-3">Value</td><td className="pr-3">20%</td><td>best price-per-km ÷ vehicle price-per-km × 100</td></tr>
@@ -100,7 +100,7 @@ export default function EVMethodologyFooter() {
 
           {/* Data sources */}
           <div>
-            <h4 className="font-semibold text-gray-800 mb-1">Data Sources</h4>
+            <h4 className="font-semibold text-ink-800 mb-1">Data Sources</h4>
             <p>
               Specifications are sourced from official manufacturer sites, national transport authority registries, and
               verified dealer listings for each Southeast Asian market. Prices are base prices in local currency as
@@ -109,8 +109,8 @@ export default function EVMethodologyFooter() {
             </p>
           </div>
 
-          <p className="text-xs text-gray-400 pt-2 border-t border-gray-100">
-            Found an error? <a href="/suggest-correction" className="text-emerald-600 hover:underline">Suggest a correction</a>.
+          <p className="text-xs text-ink-400 pt-2 border-t border-ink/5">
+            Found an error? <a href="/suggest-correction" className="text-brand-600 hover:underline">Suggest a correction</a>.
           </p>
         </div>
       </details>

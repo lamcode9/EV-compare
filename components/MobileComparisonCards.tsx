@@ -60,49 +60,49 @@ export default function MobileComparisonCards({ vehicles }: Props) {
         return (
           <div
             key={vehicle.id}
-            className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden"
+            className="bg-paper-100 rounded-card border border-ink/10 shadow-sm overflow-hidden"
           >
             {/* Header with score + name */}
-            <div className="bg-gradient-to-r from-gray-50 to-gray-100 px-4 py-3 flex items-center gap-3">
+            <div className="bg-gradient-to-r from-paper-200 to-paper-300 px-4 py-3 flex items-center gap-3">
               <EVScoreGauge vehicle={vehicle} allVehicles={vehicles} size="sm" />
               <div className="flex-1 min-w-0">
-                <div className="font-semibold text-sm text-gray-900 truncate">{vehicle.name}</div>
+                <div className="font-semibold text-sm text-ink truncate">{vehicle.name}</div>
                 {vehicle.modelTrim && (
-                  <div className="text-[10px] text-gray-500 truncate">{vehicle.modelTrim}</div>
+                  <div className="text-[10px] text-ink-500 truncate">{vehicle.modelTrim}</div>
                 )}
                 <InlineBadgeRow badges={badges} />
               </div>
               {vehicle.basePriceLocalCurrency && (
-                <div className="text-sm font-bold text-emerald-700 shrink-0">
+                <div className="text-sm font-bold text-brand-700 shrink-0">
                   {formatPrice(vehicle.basePriceLocalCurrency, vehicle.country)}
                 </div>
               )}
             </div>
 
             {/* Key stats grid */}
-            <div className="grid grid-cols-3 border-b border-gray-100">
-              <div className="px-3 py-2.5 text-center border-r border-gray-100">
-                <div className="text-sm font-bold text-gray-900">{vehicle.rangeKm ?? '—'}</div>
-                <div className="text-[9px] text-gray-400">km range</div>
+            <div className="grid grid-cols-3 border-b border-ink/5">
+              <div className="px-3 py-2.5 text-center border-r border-ink/5">
+                <div className="text-sm font-bold text-ink">{vehicle.rangeKm ?? '—'}</div>
+                <div className="text-[9px] text-ink-400">km range</div>
               </div>
-              <div className="px-3 py-2.5 text-center border-r border-gray-100">
-                <div className="text-sm font-bold text-gray-900">{vehicle.batteryCapacityKwh ?? '—'}</div>
-                <div className="text-[9px] text-gray-400">kWh battery</div>
+              <div className="px-3 py-2.5 text-center border-r border-ink/5">
+                <div className="text-sm font-bold text-ink">{vehicle.batteryCapacityKwh ?? '—'}</div>
+                <div className="text-[9px] text-ink-400">kWh battery</div>
               </div>
               <div className="px-3 py-2.5 text-center">
-                <div className="text-sm font-bold text-gray-900">{vehicle.efficiencyKwhPer100km ?? '—'}</div>
-                <div className="text-[9px] text-gray-400">kWh/100km</div>
+                <div className="text-sm font-bold text-ink">{vehicle.efficiencyKwhPer100km ?? '—'}</div>
+                <div className="text-[9px] text-ink-400">kWh/100km</div>
               </div>
             </div>
 
             {/* Spec groups */}
-            <div className="divide-y divide-gray-100">
+            <div className="divide-y divide-ink/5">
               {SPEC_GROUPS.map(group => (
                 <details key={group.title} className="group">
-                  <summary className="px-4 py-2.5 flex items-center gap-2 cursor-pointer hover:bg-gray-50 transition-colors">
+                  <summary className="px-4 py-2.5 flex items-center gap-2 cursor-pointer hover:bg-paper-200 transition-colors">
                     <span className="text-xs">{group.icon}</span>
-                    <span className="text-xs font-semibold text-gray-700 flex-1">{group.title}</span>
-                    <svg className="w-3.5 h-3.5 text-gray-400 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <span className="text-xs font-semibold text-ink-700 flex-1">{group.title}</span>
+                    <svg className="w-3.5 h-3.5 text-ink-400 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </summary>
@@ -114,8 +114,8 @@ export default function MobileComparisonCards({ vehicles }: Props) {
                         : 'N/A'
                       return (
                         <div key={spec.label} className="flex justify-between items-center">
-                          <span className="text-[11px] text-gray-500">{spec.label}</span>
-                          <span className="text-[11px] font-medium text-gray-900">{display}</span>
+                          <span className="text-[11px] text-ink-500">{spec.label}</span>
+                          <span className="text-[11px] font-medium text-ink">{display}</span>
                         </div>
                       )
                     })}
@@ -125,8 +125,8 @@ export default function MobileComparisonCards({ vehicles }: Props) {
             </div>
 
             {/* Score breakdown mini-bar */}
-            <div className="px-4 py-3 bg-gray-50/50 border-t border-gray-100">
-              <div className="text-[9px] font-medium text-gray-500 mb-1.5">Score Breakdown</div>
+            <div className="px-4 py-3 bg-paper-200/50 border-t border-ink/5">
+              <div className="text-[9px] font-medium text-ink-500 mb-1.5">Score Breakdown</div>
               <div className="grid grid-cols-5 gap-1">
                 {[
                   { label: 'Range', val: score.range },
@@ -136,7 +136,7 @@ export default function MobileComparisonCards({ vehicles }: Props) {
                   { label: 'Battery', val: score.battery },
                 ].map(d => (
                   <div key={d.label} className="text-center">
-                    <div className="h-10 bg-gray-200 rounded-full overflow-hidden flex flex-col-reverse">
+                    <div className="h-10 bg-paper-300 rounded-full overflow-hidden flex flex-col-reverse">
                       <div
                         className="rounded-full transition-all"
                         style={{
@@ -145,8 +145,8 @@ export default function MobileComparisonCards({ vehicles }: Props) {
                         }}
                       />
                     </div>
-                    <div className="text-[8px] text-gray-400 mt-0.5">{d.label}</div>
-                    <div className="text-[9px] font-bold text-gray-700">{d.val}</div>
+                    <div className="text-[8px] text-ink-400 mt-0.5">{d.label}</div>
+                    <div className="text-[9px] font-bold text-ink-700">{d.val}</div>
                   </div>
                 ))}
               </div>

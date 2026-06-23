@@ -69,11 +69,11 @@ export default function ShareComparisonClient() {
       <main className="min-h-screen pt-12 md:pt-14">
         <section className="container mx-auto px-4 pt-12 pb-16 max-w-7xl">
           <div className="animate-pulse space-y-4">
-            <div className="h-8 bg-gray-200 rounded w-1/3" />
-            <div className="h-4 bg-gray-100 rounded w-1/2" />
+            <div className="h-8 bg-paper-300 rounded w-1/3" />
+            <div className="h-4 bg-paper-200 rounded w-1/2" />
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
               {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="h-64 bg-gray-100 rounded-xl" />
+                <div key={i} className="h-64 bg-paper-200 rounded-card" />
               ))}
             </div>
           </div>
@@ -86,9 +86,9 @@ export default function ShareComparisonClient() {
     return (
       <main className="min-h-screen pt-12 md:pt-14">
         <section className="container mx-auto px-4 pt-12 pb-16 max-w-7xl text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">No vehicles found</h1>
-          <p className="text-gray-600 mb-6">{error || 'The shared comparison link may have expired or the vehicles are no longer available.'}</p>
-          <Link href="/ev" className="text-emerald-600 hover:text-emerald-700 font-medium">
+          <h1 className="text-2xl font-bold text-ink mb-4">No vehicles found</h1>
+          <p className="text-ink-600 mb-6">{error || 'The shared comparison link may have expired or the vehicles are no longer available.'}</p>
+          <Link href="/ev" className="text-brand-600 hover:text-brand-700 font-medium">
             Browse all vehicles
           </Link>
         </section>
@@ -124,19 +124,19 @@ export default function ShareComparisonClient() {
         <div className="flex items-start justify-between mb-8">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <Link href="/ev" className="text-sm text-emerald-600 hover:text-emerald-700">
+              <Link href="/ev" className="text-sm text-brand-600 hover:text-brand-700">
                 EV Comparison
               </Link>
-              <span className="text-gray-400">/</span>
-              <span className="text-sm text-gray-500">Shared Comparison</span>
+              <span className="text-ink-400">/</span>
+              <span className="text-sm text-ink-500">Shared Comparison</span>
             </div>
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">
+            <h1 className="text-2xl md:text-3xl font-bold text-ink tracking-tight">
               Comparing {vehicles.length} vehicle{vehicles.length !== 1 ? 's' : ''}
             </h1>
           </div>
           <button
             onClick={copyShareLink}
-            className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:border-emerald-300 transition-colors"
+            className="flex items-center gap-2 px-4 py-2 bg-paper-100 border border-ink/10 rounded-lg text-sm font-medium text-ink-700 hover:border-brand-300 transition-colors"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
@@ -146,19 +146,19 @@ export default function ShareComparisonClient() {
         </div>
 
         {/* Comparison Table */}
-        <div className="bg-white border border-gray-200 rounded-xl overflow-x-auto">
+        <div className="bg-paper-100 border border-ink/10 rounded-card overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-gray-200">
-                <th className="text-left px-4 py-3 font-medium text-gray-500 bg-gray-50 sticky left-0 min-w-[140px]">
+              <tr className="border-b border-ink/10">
+                <th className="text-left px-4 py-3 font-medium text-ink-500 bg-paper-200 sticky left-0 min-w-[140px]">
                   Spec
                 </th>
                 {vehicles.map((v) => (
-                  <th key={v.id} className="text-left px-4 py-3 font-semibold text-gray-900 min-w-[180px]">
-                    <Link href={`/ev/${v.id}`} className="hover:text-emerald-600 transition-colors">
+                  <th key={v.id} className="text-left px-4 py-3 font-semibold text-ink min-w-[180px]">
+                    <Link href={`/ev/${v.id}`} className="hover:text-brand-600 transition-colors">
                       {v.name}
                     </Link>
-                    <div className="text-xs text-gray-400 font-normal mt-0.5">
+                    <div className="text-xs text-ink-400 font-normal mt-0.5">
                       {COUNTRY_NAMES[v.country] || v.country}
                     </div>
                   </th>
@@ -167,8 +167,8 @@ export default function ShareComparisonClient() {
             </thead>
             <tbody>
               {specRows.map((row, i) => (
-                <tr key={row.key} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}>
-                  <td className="px-4 py-3 font-medium text-gray-500 sticky left-0 bg-inherit">
+                <tr key={row.key} className={i % 2 === 0 ? 'bg-paper-100' : 'bg-paper-200/50'}>
+                  <td className="px-4 py-3 font-medium text-ink-500 sticky left-0 bg-inherit">
                     {row.label}
                   </td>
                   {vehicles.map((v) => {
@@ -184,7 +184,7 @@ export default function ShareComparisonClient() {
                       display = String(rawVal)
                     }
                     return (
-                      <td key={v.id} className="px-4 py-3 text-gray-900">
+                      <td key={v.id} className="px-4 py-3 text-ink">
                         {display}
                       </td>
                     )
@@ -199,7 +199,7 @@ export default function ShareComparisonClient() {
         <div className="mt-8 text-center">
           <Link
             href="/ev"
-            className="inline-flex items-center gap-2 px-6 py-2.5 bg-emerald-600 text-white rounded-lg font-medium hover:bg-emerald-700 transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-2.5 bg-brand-600 text-white rounded-lg font-medium hover:bg-brand-700 transition-colors"
           >
             Build your own comparison
           </Link>
