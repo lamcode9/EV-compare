@@ -49,14 +49,14 @@ function ArrowIcon() {
 
 export default function ScoreboardHubPage() {
   return (
-    <main className="min-h-screen bg-white pt-12 md:pt-14">
+    <main className="min-h-screen bg-paper pt-12 md:pt-14">
       <section className="container mx-auto max-w-7xl px-4 pb-16 pt-12">
         <div className="max-w-3xl">
-          <p className="text-sm font-bold uppercase tracking-[0.22em] text-emerald-700">Scoreboards</p>
-          <h1 className="mt-3 text-4xl font-black tracking-tight text-gray-950 md:text-6xl">
+          <p className="text-sm font-bold uppercase tracking-[0.22em] text-brand-700">Scoreboards</p>
+          <h1 className="mt-3 font-display text-4xl font-medium tracking-tight text-ink md:text-6xl">
             Track battery and solar adoption.
           </h1>
-          <p className="mt-5 text-lg leading-relaxed text-gray-600">
+          <p className="mt-5 text-lg leading-relaxed text-ink-600">
             Follow how energy is shifting across storage, transport, buildings, and the grid with scoreboards built
             around real deployment, adoption, and market-readiness signals.
           </p>
@@ -67,18 +67,18 @@ export default function ScoreboardHubPage() {
             <Link
               key={scoreboard.href}
               href={scoreboard.href}
-              className="group flex min-h-[20rem] flex-col justify-between rounded-xl border border-gray-200 bg-gray-50 p-6 transition hover:-translate-y-1 hover:border-emerald-300 hover:bg-white hover:shadow-xl hover:shadow-gray-900/10"
+              className="group flex min-h-[20rem] flex-col justify-between rounded-card border border-ink/10 bg-paper-200 p-6 transition hover:-translate-y-1 hover:border-brand-300 hover:bg-paper-100 hover:shadow-xl hover:shadow-raised"
             >
               <div>
                 <div className="flex items-center justify-between gap-3">
-                  <span className="rounded-full bg-white px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-emerald-700">
+                  <span className="rounded-full bg-paper-100 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-brand-700">
                     {scoreboard.eyebrow}
                   </span>
                 </div>
-                <h2 className="mt-8 text-2xl font-black tracking-tight text-gray-950">{scoreboard.title}</h2>
-                <p className="mt-4 text-sm leading-6 text-gray-600">{scoreboard.description}</p>
+                <h2 className="mt-8 text-2xl font-black tracking-tight text-ink">{scoreboard.title}</h2>
+                <p className="mt-4 text-sm leading-6 text-ink-600">{scoreboard.description}</p>
               </div>
-              <span className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-emerald-700">
+              <span className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-brand-700">
                 Open scoreboard
                 <ArrowIcon />
               </span>

@@ -222,15 +222,15 @@ function MetricCard({
   accent?: 'emerald' | 'amber' | 'cyan' | 'slate'
 }) {
   const accentClasses = {
-    emerald: 'border-brand-200 bg-brand-50/40 text-brand-700',
-    amber: 'border-amber-200 bg-amber-50/50 text-amber-700',
-    cyan: 'border-cyan-200 bg-cyan-50/50 text-cyan-700',
-    slate: 'border-slate-200 bg-slate-50 text-slate-700',
+    emerald: 'bg-brand-50 text-brand-700',
+    amber: 'bg-amber-50 text-amber-700',
+    cyan: 'bg-cyan-50 text-cyan-700',
+    slate: 'bg-slate-100 text-slate-700',
   }
 
   return (
     <article className="rounded-card border border-ink/10 bg-paper-100 p-5 shadow-card">
-      <div className={`mb-4 inline-flex rounded-full border px-2.5 py-1 text-[11px] font-semibold ${accentClasses[accent]}`}>
+      <div className={`mb-4 inline-flex rounded-full px-2.5 py-1 text-[11px] font-semibold ${accentClasses[accent]}`}>
         {label}
       </div>
       <div className="text-2xl font-bold text-ink md:text-3xl">{value}</div>
@@ -318,10 +318,10 @@ function SourceLegend({
             type="button"
             aria-pressed={entry.active}
             onClick={() => onToggle(entry.key)}
-            className={`rounded-lg border p-3 text-left transition ${
+            className={`rounded-lg p-3 text-left transition ${
               entry.active
-                ? 'border-ink/10 bg-white shadow-sm hover:border-brand-200'
-                : 'border-ink/10 bg-white/50 opacity-45 hover:opacity-75'
+                ? 'bg-white shadow-card'
+                : 'bg-white/45 opacity-50 hover:opacity-80'
             }`}
           >
             <span className="flex items-center gap-2">
@@ -351,7 +351,7 @@ function InsightStat({
   color?: string
 }) {
   return (
-    <div className="rounded-lg border border-white/10 bg-white/[0.06] p-3">
+    <div className="rounded-lg bg-white/[0.07] p-3">
       <div className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.15em] text-ink-300">
         {color && <span className="h-2 w-2 rounded-full" style={{ backgroundColor: color }} />}
         <span>{label}</span>
@@ -431,10 +431,10 @@ function ChangeLegend({
           type="button"
           onClick={() => onSelect(item.source)}
           aria-pressed={selectedSource === item.source}
-          className={`rounded-lg border p-3 text-left transition ${
+          className={`rounded-lg p-3 text-left transition ${
             selectedSource === item.source
-              ? 'border-ink/15 bg-white shadow-sm'
-              : 'border-ink/10 bg-paper-200 hover:bg-white'
+              ? 'bg-white shadow-card'
+              : 'bg-paper-200 hover:bg-white'
           }`}
         >
           <span className="flex items-center gap-2 text-xs font-bold text-ink-700">
@@ -713,7 +713,7 @@ export default function EnergyDeploymentScoreboardPage() {
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_360px] lg:items-end">
           <div className="max-w-3xl">
-            <div className="mb-4 inline-flex rounded-full border border-ink/10 bg-paper-200 px-3 py-1 text-xs font-semibold text-ink-600">
+            <div className="mb-4 inline-flex rounded-full bg-paper-200 px-3 py-1 text-xs font-semibold text-ink-600">
               2025 actuals where available · 2035 storage outlook
             </div>
             <h1 className="font-display text-4xl font-medium tracking-tight text-ink md:text-6xl">
@@ -1141,10 +1141,10 @@ export default function EnergyDeploymentScoreboardPage() {
                     role="tab"
                     aria-selected={batteryRegionKey === region.key}
                     onClick={() => setBatteryRegionKey(region.key)}
-                    className={`rounded-lg border px-3 py-2 text-left transition ${
+                    className={`rounded-lg px-3 py-2 text-left transition ${
                       batteryRegionKey === region.key
-                        ? 'border-ink bg-ink text-white shadow-sm'
-                        : 'border-ink/10 bg-white text-ink-700 hover:border-brand-200 hover:text-brand-700'
+                        ? 'bg-ink text-white shadow-card'
+                        : 'bg-white text-ink-700 hover:text-brand-700'
                     }`}
                   >
                     <span className="block text-sm font-black">{region.label}</span>
@@ -1340,10 +1340,10 @@ export default function EnergyDeploymentScoreboardPage() {
                     type="button"
                     key={region.key}
                     onClick={() => setBatteryRegionKey(region.key)}
-                    className={`rounded-lg border bg-white p-3 text-left transition-colors ${
+                    className={`rounded-lg p-3 text-left transition ${
                       batteryRegionKey === region.key
-                        ? 'border-ink shadow-sm'
-                        : 'border-ink/10 hover:border-brand-200'
+                        ? 'bg-white shadow-card'
+                        : 'bg-white/55 hover:bg-white'
                     }`}
                   >
                     <div className="flex items-center justify-between gap-3">
