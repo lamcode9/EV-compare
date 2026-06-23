@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Newsreader } from 'next/font/google'
 import './globals.css'
 import { Providers } from './providers'
 import Header from '@/components/Header'
@@ -8,6 +8,15 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Analytics } from '@vercel/analytics/react'
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' })
+// Editorial display serif — exposed as the `--font-display` var so the
+// `font-display` Tailwind token resolves site-wide (design system).
+const newsreader = Newsreader({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-display',
+  weight: ['400', '500', '600'],
+  style: ['normal', 'italic'],
+})
 
 // Hard-coded strings - reuse everywhere
 const siteName = "battery.mom"
@@ -80,7 +89,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="alternate" type="application/rss+xml" title="battery.mom — Insights" href="/feed.xml" />
       </head>
-      <body className={inter.className} suppressHydrationWarning>
+      <body className={`${inter.className} ${newsreader.variable}`} suppressHydrationWarning>
         <Providers>
           <Header />
           {children}
