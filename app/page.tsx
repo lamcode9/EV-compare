@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import NewsletterSignup from '@/components/NewsletterSignup'
+import FeaturedStory from '@/components/home/FeaturedStory'
 
 export const metadata: Metadata = {
   title: 'battery.mom - Battery and solar adoption data',
@@ -130,6 +131,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <FeaturedStory />
 
       <section className="bg-[#f4f0e8] py-16 md:py-24">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

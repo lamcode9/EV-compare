@@ -1,0 +1,43 @@
+import { Button, Container, Eyebrow, Section, Stat } from '@/components/ui'
+import {
+  ENERGY_DEPLOYMENT_SNAPSHOT,
+  GLOBAL_BATTERY_POWER_ADDITIONS,
+} from '@/data/energy-deployment-scoreboard'
+
+// Same figures the story page leads with, computed from the dataset so they never drift.
+const battery2020 = GLOBAL_BATTERY_POWER_ADDITIONS[0].utilityScaleGw
+const battery2025 = GLOBAL_BATTERY_POWER_ADDITIONS[GLOBAL_BATTERY_POWER_ADDITIONS.length - 1].utilityScaleGw
+const batteryMultiple = Math.round(battery2025 / battery2020)
+const snap = ENERGY_DEPLOYMENT_SNAPSHOT
+
+/** Homepage centerpiece: the front door into the flagship narrative. */
+export default function FeaturedStory() {
+  return (
+    <Section tone="paper" size="md" className="border-b border-ink/10">
+      <Container width="wide">
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16">
+          <div>
+            <Eyebrow>Featured · The state of the energy transition</Eyebrow>
+            <h2 className="mt-5 font-display text-4xl font-medium leading-[1.05] tracking-tight text-ink sm:text-5xl">
+              Where battery power stands.
+            </h2>
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-600">
+              Solar and wind became the cheapest electricity ever built. The new race is storage — and it
+              just went vertical. A data-driven look at where we were, and where we are now.
+            </p>
+            <div className="mt-8">
+              <Button href="/state-of-battery-power" variant="ink">
+                Read the full story →
+              </Button>
+            </div>
+          </div>
+          <div className="grid grid-cols-3 gap-5 border-t border-ink/10 pt-8 sm:gap-6 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
+            <Stat accent value={`${batteryMultiple}×`} label="Grid battery growth, 2020–2025" />
+            <Stat accent value="885" label="GWh of storage online, 2025" />
+            <Stat accent value={`${snap.lowCarbonSharePct}%`} label="Electricity now low-carbon" />
+          </div>
+        </div>
+      </Container>
+    </Section>
+  )
+}
