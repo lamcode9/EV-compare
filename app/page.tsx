@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import NewsletterSignup from '@/components/NewsletterSignup'
 import FeaturedStory from '@/components/home/FeaturedStory'
+import { Eyebrow } from '@/components/ui'
 
 export const metadata: Metadata = {
   title: 'battery.mom - Battery and solar adoption data',
@@ -65,6 +66,13 @@ const trackingLayers = [
   },
 ]
 
+const lenses = [
+  { href: '/scoreboard/energy', label: 'Energy', sub: 'global lens' },
+  { href: '/scoreboard/bess', label: 'BESS', sub: 'sector lens' },
+  { href: '/scoreboard/ev', label: 'EV', sub: 'transport lens' },
+  { href: '/calculators', label: 'ROI', sub: 'economics lens' },
+]
+
 const proofPoints = [
   'Monthly refresh rhythm',
   'Country-specific assumptions',
@@ -82,8 +90,8 @@ function ArrowIcon() {
 
 export default function Home() {
   return (
-    <main className="home-page min-h-screen overflow-hidden bg-[#f4f0e8] pt-12 text-[#101512] md:pt-14">
-      <section className="home-hero relative isolate min-h-[72svh] overflow-hidden bg-[#0b1110] text-[#f7f0e4]">
+    <main className="home-page min-h-screen overflow-hidden bg-paper pt-12 text-ink md:pt-14">
+      <section className="home-hero relative isolate min-h-[72svh] overflow-hidden bg-ink text-paper">
         <Image
           src="/images/home-energy-transition-map-poster.jpg"
           alt=""
@@ -98,31 +106,31 @@ export default function Home() {
 
         <div className="container relative z-10 mx-auto grid min-h-[72svh] max-w-7xl content-center px-4 py-14 sm:px-6 lg:px-8">
           <div className="home-hero-copy max-w-4xl">
-            <div className="inline-flex items-center rounded-full border border-[#f7f0e4]/18 bg-[#0b1110]/45 px-3 py-1 text-[11px] font-black uppercase tracking-[0.22em] text-[#ddf8ea] backdrop-blur-md">
+            <span className="inline-flex items-center rounded-pill bg-black/30 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-200 backdrop-blur-md">
               Independent adoption data
-            </div>
+            </span>
 
-            <h1 className="mt-7 max-w-3xl text-balance text-6xl font-black leading-[0.86] tracking-tight sm:text-7xl lg:text-8xl">
+            <h1 className="mt-7 max-w-3xl text-balance text-6xl font-bold leading-[0.88] tracking-tight sm:text-7xl lg:text-8xl">
               battery.mom
             </h1>
-            <p className="mt-6 max-w-2xl text-balance text-2xl font-extrabold leading-tight text-[#fff7e8] md:text-4xl">
+            <p className="mt-6 max-w-2xl text-balance font-display text-3xl font-medium leading-[1.1] text-paper md:text-5xl">
               Track the battery and solar transition as it deploys.
             </p>
-            <p className="mt-5 max-w-xl text-base leading-7 text-[#d8d0c2] md:text-lg">
+            <p className="mt-5 max-w-xl text-base leading-7 text-paper-300 md:text-lg">
               A living view of storage GWh, solar buildout, EV adoption, BESS sectors, and the power mix behind them.
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Link
                 href="/scoreboard"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#f7f0e4] px-6 py-3 text-sm font-black text-[#101512] shadow-2xl shadow-black/30 transition hover:-translate-y-0.5 hover:bg-white sm:w-auto"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-pill bg-paper px-6 py-3 text-sm font-semibold text-ink shadow-raised transition hover:-translate-y-0.5 hover:bg-white sm:w-auto"
               >
                 View adoption scoreboard
                 <ArrowIcon />
               </Link>
               <Link
                 href="/scoreboard/energy"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#f7f0e4]/22 bg-[#f7f0e4]/10 px-6 py-3 text-sm font-black text-[#f7f0e4] backdrop-blur-md transition hover:-translate-y-0.5 hover:bg-[#f7f0e4]/16 sm:w-auto"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-pill bg-white/10 px-6 py-3 text-sm font-semibold text-paper backdrop-blur-md transition hover:-translate-y-0.5 hover:bg-white/16 sm:w-auto"
               >
                 Explore battery deployment
                 <ArrowIcon />
@@ -134,32 +142,32 @@ export default function Home() {
 
       <FeaturedStory />
 
-      <section className="bg-[#f4f0e8] py-16 md:py-24">
+      <section className="bg-paper py-16 md:py-24">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr]">
+          <div className="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16">
             <div>
-              <p className="text-sm font-black uppercase tracking-[0.24em] text-[#16734a]">Pick the first question</p>
-              <h2 className="mt-3 text-balance text-3xl font-black tracking-tight md:text-5xl">
+              <Eyebrow>Pick the first question</Eyebrow>
+              <h2 className="mt-4 text-balance font-display text-3xl font-medium leading-[1.05] tracking-tight text-ink md:text-5xl">
                 Track the transition from adoption data to system economics.
               </h2>
             </div>
 
-            <div className="grid gap-3 md:grid-cols-3">
+            <div className="grid gap-4 md:grid-cols-3">
               {decisionPaths.map((path, index) => (
                 <Link
                   key={path.href}
                   href={path.href}
-                  className="home-reveal group flex min-h-[22rem] flex-col justify-between rounded-lg border border-[#d8cfbf] bg-[#fffaf1] p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#9f8b68] hover:shadow-xl hover:shadow-[#2b1d0b]/10"
+                  className="home-reveal group flex min-h-[20rem] flex-col justify-between rounded-card border border-ink/10 bg-paper-100 p-6 shadow-card transition duration-300 hover:-translate-y-1 hover:border-brand-300 hover:shadow-raised"
                   style={{ animationDelay: `${index * 80}ms` }}
                 >
                   <div>
-                    <div className="mb-5 inline-flex rounded-full bg-[#101512] px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-[#f7d18a]">
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-700">
                       {path.eyebrow}
-                    </div>
-                    <h3 className="text-2xl font-black leading-tight tracking-tight">{path.title}</h3>
-                    <p className="mt-4 text-sm leading-6 text-[#5f594f]">{path.description}</p>
+                    </span>
+                    <h3 className="mt-4 font-display text-2xl font-medium leading-tight tracking-tight text-ink">{path.title}</h3>
+                    <p className="mt-3 text-sm leading-6 text-ink-500">{path.description}</p>
                   </div>
-                  <span className="mt-8 inline-flex items-center gap-2 text-sm font-black text-[#16734a]">
+                  <span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-brand-700">
                     {path.cta}
                     <ArrowIcon />
                   </span>
@@ -170,111 +178,93 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="home-method relative overflow-hidden bg-[#101512] py-16 text-[#f7f0e4] md:py-24">
+      <section className="home-method relative overflow-hidden bg-ink py-16 text-paper md:py-24">
         <div className="home-grain absolute inset-0 opacity-70" />
-        <div className="container relative z-10 mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
+        <div className="container relative z-10 mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-8">
           <div className="lg:sticky lg:top-24 lg:self-start">
-            <p className="text-sm font-black uppercase tracking-[0.24em] text-[#60f0a8]">What we track</p>
-            <h2 className="mt-3 text-balance text-3xl font-black tracking-tight md:text-5xl">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-300">What we track</p>
+            <h2 className="mt-4 text-balance font-display text-3xl font-medium leading-[1.05] tracking-tight md:text-5xl">
               The battery transition needs more than one number.
             </h2>
-            <p className="mt-5 max-w-xl text-base leading-7 text-[#cfc6b6]">
+            <p className="mt-5 max-w-xl text-base leading-7 text-paper-300">
               battery.mom follows the shift from fossil-heavy electricity toward solar, storage, and electrified transport.
               The useful view is not just product specs. It is deployment, adoption, market readiness, and the power mix around it.
             </p>
 
             <div className="mt-8 grid grid-cols-2 gap-3">
-              <Link
-                href="/scoreboard/energy"
-                className="rounded-lg border border-[#f7f0e4]/12 bg-[#f7f0e4]/7 p-4 transition hover:border-[#60f0a8]/50 hover:bg-[#f7f0e4]/10"
-              >
-                <div className="text-2xl font-black text-white">Energy</div>
-                <div className="mt-1 text-xs font-bold uppercase tracking-[0.16em] text-[#60f0a8]">global lens</div>
-              </Link>
-              <Link
-                href="/scoreboard/bess"
-                className="rounded-lg border border-[#f7f0e4]/12 bg-[#f7f0e4]/7 p-4 transition hover:border-[#60f0a8]/50 hover:bg-[#f7f0e4]/10"
-              >
-                <div className="text-2xl font-black text-white">BESS</div>
-                <div className="mt-1 text-xs font-bold uppercase tracking-[0.16em] text-[#60f0a8]">sector lens</div>
-              </Link>
-              <Link
-                href="/scoreboard/ev"
-                className="rounded-lg border border-[#f7f0e4]/12 bg-[#f7f0e4]/7 p-4 transition hover:border-[#60f0a8]/50 hover:bg-[#f7f0e4]/10"
-              >
-                <div className="text-2xl font-black text-white">EV</div>
-                <div className="mt-1 text-xs font-bold uppercase tracking-[0.16em] text-[#60f0a8]">transport lens</div>
-              </Link>
-              <Link
-                href="/calculators"
-                className="rounded-lg border border-[#f7f0e4]/12 bg-[#f7f0e4]/7 p-4 transition hover:border-[#60f0a8]/50 hover:bg-[#f7f0e4]/10"
-              >
-                <div className="text-2xl font-black text-white">ROI</div>
-                <div className="mt-1 text-xs font-bold uppercase tracking-[0.16em] text-[#60f0a8]">economics lens</div>
-              </Link>
+              {lenses.map((lens) => (
+                <Link
+                  key={lens.href}
+                  href={lens.href}
+                  className="rounded-card bg-white/[0.05] p-4 transition hover:bg-white/[0.1]"
+                >
+                  <div className="text-2xl font-semibold text-white">{lens.label}</div>
+                  <div className="mt-1 text-xs font-medium uppercase tracking-[0.16em] text-brand-300">{lens.sub}</div>
+                </Link>
+              ))}
             </div>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid gap-4 sm:grid-cols-2">
             {trackingLayers.map((layer, index) => (
               <article
                 key={layer.title}
-                className="home-reveal rounded-lg border border-[#f7f0e4]/12 bg-[#f7f0e4]/7 p-5 backdrop-blur-md"
+                className="home-reveal rounded-card bg-white/[0.05] p-6 backdrop-blur-md"
                 style={{ animationDelay: `${index * 80}ms` }}
               >
                 <div className="flex items-start justify-between gap-4">
-                  <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#60f0a8]">{layer.label}</p>
-                  <span className="rounded-full border border-[#f7f0e4]/14 px-2 py-1 text-[11px] font-black text-[#f7d18a]">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-300">{layer.label}</p>
+                  <span className="rounded-pill bg-white/10 px-2.5 py-1 text-[11px] font-semibold text-gold-light">
                     {layer.metric}
                   </span>
                 </div>
-                <h3 className="mt-7 text-2xl font-black leading-tight tracking-tight">{layer.title}</h3>
-                <p className="mt-3 leading-7 text-[#cfc6b6]">{layer.description}</p>
+                <h3 className="mt-6 font-display text-2xl font-medium leading-tight tracking-tight text-white">{layer.title}</h3>
+                <p className="mt-3 leading-7 text-paper-300">{layer.description}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-[#fffaf1] py-16 md:py-24">
-        <div className="container mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.82fr_1.18fr] lg:px-8">
+      <section className="bg-paper-100 py-16 md:py-24">
+        <div className="container mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16 lg:px-8">
           <div>
-            <p className="text-sm font-black uppercase tracking-[0.24em] text-[#16734a]">Why trust it</p>
-            <h2 className="mt-3 text-balance text-3xl font-black tracking-tight md:text-5xl">
+            <Eyebrow>Why trust it</Eyebrow>
+            <h2 className="mt-4 text-balance font-display text-3xl font-medium leading-[1.05] tracking-tight text-ink md:text-5xl">
               Clear data beats confident sales talk.
             </h2>
-            <p className="mt-5 text-base leading-7 text-[#5f594f]">
+            <p className="mt-5 text-base leading-7 text-ink-500">
               battery.mom is deliberately plain about uncertainty. Prices change, incentives move, and product claims age. The point is to keep the assumptions visible.
             </p>
-            <Link href="/about" className="mt-7 inline-flex items-center gap-2 rounded-full border border-[#d8cfbf] px-5 py-3 text-sm font-black text-[#101512] transition hover:border-[#16734a] hover:bg-[#edf8ef]">
+            <Link href="/about" className="mt-7 inline-flex items-center gap-2 rounded-pill bg-ink px-5 py-3 text-sm font-semibold text-paper transition hover:-translate-y-0.5 hover:bg-ink-800">
               Read the mission
               <ArrowIcon />
             </Link>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid gap-4 sm:grid-cols-2">
             {proofPoints.map((point) => (
-              <div key={point} className="home-reveal rounded-lg border border-[#d8cfbf] bg-[#f4f0e8] p-5">
-                <div className="mb-4 h-1.5 w-14 rounded-full bg-[#60f0a8]" />
-                <p className="text-xl font-black leading-snug">{point}</p>
+              <div key={point} className="home-reveal rounded-card border border-ink/10 bg-paper p-6 shadow-card">
+                <div className="mb-4 h-1.5 w-12 rounded-pill bg-brand" />
+                <p className="text-lg font-medium leading-snug text-ink">{point}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-[#101512] py-16 text-[#f7f0e4] md:py-20">
-        <div className="container mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
+      <section className="bg-ink py-16 text-paper md:py-20">
+        <div className="container mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-8">
           <div>
-            <p className="text-sm font-black uppercase tracking-[0.24em] text-[#60f0a8]">Monthly data digest</p>
-            <h2 className="mt-3 text-balance text-3xl font-black tracking-tight md:text-4xl">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-300">Monthly data digest</p>
+            <h2 className="mt-4 text-balance font-display text-3xl font-medium leading-[1.05] tracking-tight md:text-4xl">
               When the numbers move, you get the note.
             </h2>
-            <p className="mt-4 text-sm leading-6 text-[#cfc6b6]">
+            <p className="mt-4 text-sm leading-6 text-paper-300">
               EV launches, battery pricing, policy updates, calculator changes, and Southeast Asia adoption signals.
             </p>
           </div>
-          <NewsletterSignup className="home-reveal bg-[#fffaf1] text-[#101512]" />
+          <NewsletterSignup className="home-reveal bg-paper-100 text-ink" />
         </div>
       </section>
     </main>
