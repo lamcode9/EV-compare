@@ -122,15 +122,15 @@ function calcLEED(props: GreenCertProps): CertResult {
 function CertCard({ cert }: { cert: CertResult }) {
   const pctOfMax = Math.min(100, (cert.earnedPoints / cert.maxPoints) * 100)
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-5">
+    <div className="bg-paper-100 rounded-card p-5 shadow-card">
       <div className="flex items-center justify-between mb-3">
         <div>
-          <h4 className="text-sm font-bold text-gray-900">{cert.name}</h4>
-          <p className="text-[11px] text-gray-500">{cert.fullName}</p>
+          <h4 className="text-sm font-bold text-ink">{cert.name}</h4>
+          <p className="text-[11px] text-ink-500">{cert.fullName}</p>
         </div>
         <span
-          className="px-2.5 py-1 text-[11px] font-bold rounded-full border"
-          style={{ color: cert.tierColor, borderColor: cert.tierColor, backgroundColor: `${cert.tierColor}10` }}
+          className="px-2.5 py-1 text-[11px] font-bold rounded-full"
+          style={{ color: cert.tierColor, backgroundColor: `${cert.tierColor}22` }}
         >
           {cert.tier}
         </span>
@@ -140,9 +140,9 @@ function CertCard({ cert }: { cert: CertResult }) {
       <div className="mb-4">
         <div className="flex items-end justify-between mb-1">
           <span className="text-2xl font-bold" style={{ color: cert.tierColor }}>{cert.earnedPoints}</span>
-          <span className="text-xs text-gray-400">/ {cert.maxPoints} pts</span>
+          <span className="text-xs text-ink-400">/ {cert.maxPoints} pts</span>
         </div>
-        <div className="w-full bg-gray-100 rounded-full h-2">
+        <div className="w-full bg-paper-200 rounded-full h-2">
           <div
             className="h-2 rounded-full transition-all"
             style={{ width: `${pctOfMax}%`, backgroundColor: cert.tierColor }}
@@ -155,12 +155,12 @@ function CertCard({ cert }: { cert: CertResult }) {
         {cert.breakdown.map((b) => (
           <div key={b.category} className="flex items-center justify-between text-xs">
             <div className="flex-1">
-              <div className="font-medium text-gray-700">{b.category}</div>
-              <div className="text-gray-400">{b.note}</div>
+              <div className="font-medium text-ink-700">{b.category}</div>
+              <div className="text-ink-400">{b.note}</div>
             </div>
             <div className="ml-3 text-right whitespace-nowrap">
-              <span className="font-bold text-gray-800">{b.points}</span>
-              <span className="text-gray-400">/{b.maxPoints}</span>
+              <span className="font-bold text-ink-800">{b.points}</span>
+              <span className="text-ink-400">/{b.maxPoints}</span>
             </div>
           </div>
         ))}
@@ -182,14 +182,14 @@ const GreenCertEstimator = memo(function GreenCertEstimator(props: GreenCertProp
   }, [props])
 
   return (
-    <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 mt-8">
+    <div className="bg-paper-200 border border-ink/10 rounded-card p-5 mt-8">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h3 className="text-base font-bold text-gray-900 flex items-center gap-2">
+          <h3 className="text-base font-bold text-ink flex items-center gap-2">
             🏅 Green Certification Estimator
             <InfoTooltip content="Estimates how many green building certification points your solar+battery system could earn. Point values are simplified from official scoring manuals (GBI for Malaysia, BCA Green Mark for Singapore, LEED internationally). Actual certification requires full assessment by an accredited body." />
           </h3>
-          <p className="text-xs text-gray-500 mt-0.5">
+          <p className="text-xs text-ink-500 mt-0.5">
             Estimated points from your {Math.round(props.solarKw)} kW solar + {Math.round(props.batteryCapacityKwh)} kWh battery system
           </p>
         </div>
@@ -201,7 +201,7 @@ const GreenCertEstimator = memo(function GreenCertEstimator(props: GreenCertProp
         ))}
       </div>
 
-      <p className="mt-4 text-[11px] text-gray-400 leading-relaxed">
+      <p className="mt-4 text-[11px] text-ink-400 leading-relaxed">
         * Points are indicative estimates based on simplified scoring models. Actual certification requires professional assessment.
         GBI is most relevant for Malaysia, BCA Green Mark for Singapore. LEED points shown are energy-related credits only (EA + IN categories).
       </p>

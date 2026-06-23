@@ -7,6 +7,7 @@ import { COUNTRY_NAMES, CURRENCY_SYMBOLS } from '@/lib/constants'
 import CountrySelector from '@/components/CountrySelector'
 import InfoTooltip from '@/components/InfoTooltip'
 import PDFExportButton from '@/components/PDFExportButton'
+import { Eyebrow } from '@/components/ui'
 import BuildingComparison, { type BuildingSnapshot } from '@/components/BuildingComparison'
 import MarketingPDFButton from '@/components/MarketingPDFButton'
 import GreenCertEstimator from '@/components/GreenCertEstimator'
@@ -87,19 +88,19 @@ function getBulkDiscount(units: number) {
 
 function InfoChip({ label }: { label: string }) {
   return (
-    <span className="inline-flex items-center px-2 py-0.5 text-[11px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-100 rounded-full">
+    <span className="inline-flex items-center px-2 py-0.5 text-[11px] font-semibold text-brand-700 bg-brand-50 rounded-full">
       {label}
     </span>
   )
 }
 
 const MiniInfo = ({ title, copy }: { title: string; copy: string }) => (
-  <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 flex items-start gap-2 text-xs text-gray-600">
-    <div className="w-5 h-5 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center text-[10px] font-bold mt-0.5">
+  <div className="bg-paper-200 rounded-lg p-3 flex items-start gap-2 text-xs text-ink-600">
+    <div className="w-5 h-5 rounded-full bg-brand-50 text-brand-700 flex items-center justify-center text-[10px] font-bold mt-0.5">
       i
     </div>
     <div className="space-y-0.5">
-      <div className="font-semibold text-gray-800">{title}</div>
+      <div className="font-semibold text-ink-800">{title}</div>
       <div className="leading-relaxed">{copy}</div>
     </div>
   </div>
@@ -138,11 +139,11 @@ const SnapshotCharts = memo(function SnapshotCharts({
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div className={`bg-white border border-gray-200 rounded-xl p-4 ${SMALL_CARD_SHADOW}`}>
+      <div className={`bg-paper-200 rounded-card p-4 ${SMALL_CARD_SHADOW}`}>
         <div className="flex items-center justify-between mb-3">
           <div>
-            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Monthly bill</div>
-            <div className="text-sm text-gray-600">Per participating household</div>
+            <div className="text-xs font-semibold text-ink-500 uppercase tracking-wide">Monthly bill</div>
+            <div className="text-sm text-ink-600">Per participating household</div>
           </div>
           <InfoChip label="Live" />
         </div>
@@ -157,11 +158,11 @@ const SnapshotCharts = memo(function SnapshotCharts({
         </ResponsiveContainer>
       </div>
 
-      <div className={`bg-white border border-gray-200 rounded-xl p-4 ${SMALL_CARD_SHADOW}`}>
+      <div className={`bg-paper-200 rounded-card p-4 ${SMALL_CARD_SHADOW}`}>
         <div className="flex items-center justify-between mb-3">
           <div>
-            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Energy mix</div>
-            <div className="text-sm text-gray-600">Solar + battery coverage</div>
+            <div className="text-xs font-semibold text-ink-500 uppercase tracking-wide">Energy mix</div>
+            <div className="text-sm text-ink-600">Solar + battery coverage</div>
           </div>
           <InfoChip label={`${Math.round(coverage * 100)}%`} />
         </div>
@@ -186,11 +187,11 @@ const SnapshotCharts = memo(function SnapshotCharts({
         </ResponsiveContainer>
       </div>
 
-      <div className={`bg-white border border-gray-200 rounded-xl p-4 ${SMALL_CARD_SHADOW}`}>
+      <div className={`bg-paper-200 rounded-card p-4 ${SMALL_CARD_SHADOW}`}>
         <div className="flex items-center justify-between mb-3">
           <div>
-            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Payback glide</div>
-            <div className="text-sm text-gray-600">Progress to breakeven</div>
+            <div className="text-xs font-semibold text-ink-500 uppercase tracking-wide">Payback glide</div>
+            <div className="text-sm text-ink-600">Progress to breakeven</div>
           </div>
           <InfoChip label={`${paybackYears.toFixed(1)} yrs`} />
         </div>
@@ -205,11 +206,11 @@ const SnapshotCharts = memo(function SnapshotCharts({
         </ResponsiveContainer>
       </div>
 
-      <div className={`bg-white border border-gray-200 rounded-xl p-4 ${SMALL_CARD_SHADOW}`}>
+      <div className={`bg-paper-200 rounded-card p-4 ${SMALL_CARD_SHADOW}`}>
         <div className="flex items-center justify-between mb-3">
           <div>
-            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">CO₂ avoided</div>
-            <div className="text-sm text-gray-600">Tonnes per year</div>
+            <div className="text-xs font-semibold text-ink-500 uppercase tracking-wide">CO₂ avoided</div>
+            <div className="text-sm text-ink-600">Tonnes per year</div>
           </div>
           <InfoChip label={`${(co2Avoided / 1000).toFixed(1)} t`} />
         </div>
@@ -300,14 +301,14 @@ const BatteryScatter = memo(function BatteryScatter({
   )
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-5 mt-8">
+    <div className="bg-paper-100 border border-ink/10 rounded-card p-5 mt-8">
       {/* ── header ── */}
       <div className="flex items-start justify-between mb-1 gap-3">
         <div>
-          <div className="text-sm font-semibold text-gray-900">
+          <div className="text-sm font-semibold text-ink">
             Which battery pays for itself fastest — and lasts longest?
           </div>
-          <div className="text-xs text-gray-500 mt-0.5">
+          <div className="text-xs text-ink-500 mt-0.5">
             Bottom-right = best value (fast payback + long warranty). Bubble size = cost per kWh-cycle.
           </div>
         </div>
@@ -316,10 +317,10 @@ const BatteryScatter = memo(function BatteryScatter({
 
       {/* ── best pick callout ── */}
       {bestPick && bestPick.costPerKwhCycle > 0 && (
-        <div className="flex items-center gap-2 mb-3 px-3 py-2 bg-emerald-50 border border-emerald-200 rounded-lg text-xs">
-          <span className="text-emerald-600 font-bold text-base leading-none">★</span>
-          <span className="text-gray-800">
-            <strong className="text-emerald-700">{bestPick.name}</strong> has the lowest lifetime cost at{' '}
+        <div className="flex items-center gap-2 mb-3 px-3 py-2 bg-brand-50 rounded-lg text-xs">
+          <span className="text-brand-600 font-bold text-base leading-none">★</span>
+          <span className="text-ink-800">
+            <strong className="text-brand-700">{bestPick.name}</strong> has the lowest lifetime cost at{' '}
             <strong>{formatWithSymbol(bestPick.costPerKwhCycle, country, 2)}/kWh-cycle</strong> —{' '}
             payback in <strong>{bestPick.paybackYears.toFixed(1)} years</strong> with{' '}
             <strong>{bestPick.cycles.toLocaleString()}</strong> warranty cycles.
@@ -364,18 +365,18 @@ const BatteryScatter = memo(function BatteryScatter({
               const item = payload[0].payload
               const isBest = bestPick && item.name === bestPick.name
               return (
-                <div className={`bg-white border rounded-lg p-3 shadow-lg text-xs space-y-1 ${isBest ? 'border-emerald-400 ring-1 ring-emerald-200' : 'border-gray-200'}`}>
-                  <div className="font-semibold text-gray-900 flex items-center gap-1">
-                    {isBest && <span className="text-emerald-600">★</span>}
+                <div className={`bg-paper-100 border rounded-lg p-3 shadow-lg text-xs space-y-1 ${isBest ? 'border-brand-400 ring-1 ring-brand-200' : 'border-ink/10'}`}>
+                  <div className="font-semibold text-ink flex items-center gap-1">
+                    {isBest && <span className="text-brand-600">★</span>}
                     {item.name}
                   </div>
-                  <div className="text-gray-500 text-[10px]">{item.manufacturer}</div>
-                  <div className="text-gray-700">Payback: <strong>{item.paybackYears.toFixed(1)} years</strong></div>
-                  <div className="text-gray-700">Warranty: <strong>{item.cycles.toLocaleString()} cycles</strong></div>
-                  <div className="text-gray-700">
+                  <div className="text-ink-500 text-[10px]">{item.manufacturer}</div>
+                  <div className="text-ink-700">Payback: <strong>{item.paybackYears.toFixed(1)} years</strong></div>
+                  <div className="text-ink-700">Warranty: <strong>{item.cycles.toLocaleString()} cycles</strong></div>
+                  <div className="text-ink-700">
                     Cost/kWh-cycle: <strong>{formatWithSymbol(item.costPerKwhCycle, country, 2)}</strong>
                   </div>
-                  <div className="text-gray-700">
+                  <div className="text-ink-700">
                     Price: <strong>{formatWithSymbol(item.price, country, 0)}</strong>
                   </div>
                 </div>
@@ -400,7 +401,7 @@ const BatteryScatter = memo(function BatteryScatter({
       {/* ── manufacturer legend ── */}
       <div className="flex flex-wrap gap-x-4 gap-y-1 mt-2 px-1">
         {manufacturers.map((m) => (
-          <div key={m} className="flex items-center gap-1.5 text-[10px] text-gray-600">
+          <div key={m} className="flex items-center gap-1.5 text-[10px] text-ink-600">
             <span className="w-2.5 h-2.5 rounded-full inline-block" style={{ background: mfrColor(m) }} />
             {m}
           </div>
@@ -408,11 +409,11 @@ const BatteryScatter = memo(function BatteryScatter({
       </div>
 
       {/* ── quadrant guide ── */}
-      <div className="grid grid-cols-2 gap-2 mt-3 text-[10px] text-gray-400">
-        <div className="text-right pr-2 border-r border-b border-gray-100 pb-1">Expensive &amp; short-lived</div>
-        <div className="pl-2 border-b border-gray-100 pb-1">Long warranty but slow payback</div>
-        <div className="text-right pr-2 border-r border-gray-100 pt-1">Fast payback but fewer cycles</div>
-        <div className="pl-2 pt-1 font-semibold text-emerald-600">★ Best value — fast payback + long warranty</div>
+      <div className="grid grid-cols-2 gap-2 mt-3 text-[10px] text-ink-400">
+        <div className="text-right pr-2 border-r border-b border-ink/5 pb-1">Expensive &amp; short-lived</div>
+        <div className="pl-2 border-b border-ink/5 pb-1">Long warranty but slow payback</div>
+        <div className="text-right pr-2 border-r border-ink/5 pt-1">Fast payback but fewer cycles</div>
+        <div className="pl-2 pt-1 font-semibold text-brand-600">★ Best value — fast payback + long warranty</div>
       </div>
     </div>
   )
@@ -420,20 +421,20 @@ const BatteryScatter = memo(function BatteryScatter({
 
 function CountryRequiredState() {
   return (
-    <main className="min-h-screen pt-12 md:pt-14 bg-white">
+    <main className="min-h-screen bg-paper pt-12 md:pt-14">
       <section className="container mx-auto px-4 pt-12 pb-16 max-w-7xl">
-        <div className="grid gap-8 rounded-2xl border border-gray-200 bg-gray-50 p-6 md:grid-cols-[1fr_auto] md:items-center">
+        <div className="grid gap-8 rounded-2xl border border-ink/10 bg-paper-200 p-6 md:grid-cols-[1fr_auto] md:items-center">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-700">Shared residential BESS</p>
-            <h1 className="mt-3 text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-700">Shared residential BESS</p>
+            <h1 className="mt-3 font-display text-4xl md:text-5xl font-medium text-ink leading-tight">
               Select a country to load the calculator.
             </h1>
-            <p className="mt-4 max-w-2xl text-base leading-7 text-gray-600">
+            <p className="mt-4 max-w-2xl text-base leading-7 text-ink-600">
               Tariffs, solar yield, battery pricing, currency, and emissions factors are country-specific. Choose a
               market first, then the inputs and outputs will appear.
             </p>
           </div>
-          <div className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+          <div className="rounded-card bg-paper-100 p-4 shadow-sm">
             <CountrySelector />
           </div>
         </div>
@@ -676,7 +677,7 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
   const renderBatterySelect = (value: string, onChange: (id: string) => void) => (
     <div className="relative">
       <select
-        className="w-full text-sm px-3 py-2 pr-8 rounded-full bg-gray-100 hover:bg-gray-200 focus:ring-2 focus:ring-emerald-500 focus:bg-emerald-50 appearance-none cursor-pointer transition-colors"
+        className="w-full text-sm px-3 py-2 pr-8 rounded-full bg-paper-200 hover:bg-paper-300 focus:ring-2 focus:ring-brand-500 focus:bg-brand-50 appearance-none cursor-pointer transition-colors"
         value={value}
         onChange={(e) => onChange(e.target.value)}
       >
@@ -688,7 +689,7 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
         ))}
       </select>
       <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-        <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-4 h-4 text-ink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
         </svg>
       </div>
@@ -706,8 +707,8 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
           onClick={() => onChange(quality)}
           className={`px-3 py-2 rounded-lg border text-sm font-semibold transition-all ${
             value === quality
-              ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
-              : 'bg-white text-gray-700 border-gray-300 hover:border-emerald-400 hover:bg-emerald-50'
+              ? 'bg-brand-600 text-white border-brand-600 shadow-sm'
+              : 'bg-paper-100 text-ink-700 border-ink/15 hover:border-brand-400 hover:bg-brand-50'
           }`}
         >
           {quality}
@@ -733,8 +734,8 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
             onClick={() => setPreset(level)}
             className={`px-3 py-2 rounded-lg border text-sm font-medium transition-all ${
               preset === level
-                ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
-                : 'bg-white text-gray-700 border-gray-300 hover:border-emerald-400 hover:bg-emerald-50'
+                ? 'bg-brand-600 text-white border-brand-600 shadow-sm'
+                : 'bg-paper-100 text-ink-700 border-ink/15 hover:border-brand-400 hover:bg-brand-50'
             }`}
           >
             <div className="font-semibold">{level}</div>
@@ -748,9 +749,9 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
           value={manual ?? ''}
           onChange={(e) => setManual(e.target.value ? parseFloat(e.target.value) : null)}
           placeholder="Manual kWh/day"
-          className="flex-1 px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500"
+          className="flex-1 px-3 py-2 text-sm border border-ink/15 rounded-lg focus:ring-2 focus:ring-brand-500"
         />
-        <span className="text-xs text-gray-500">Optional</span>
+        <span className="text-xs text-ink-500">Optional</span>
       </div>
     </div>
   )
@@ -767,10 +768,10 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
     return (
       <div className="space-y-6">
         {/* Power requirements */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-5 space-y-5 shadow-sm">
+        <div className="bg-paper-100 rounded-2xl p-5 space-y-5">
           <div>
-            <div className="text-sm font-semibold text-gray-900">Power requirements</div>
-            <p className="text-xs text-gray-500">
+            <div className="text-sm font-semibold text-ink">Power requirements</div>
+            <p className="text-xs text-ink-500">
               {isRetrofit ? 'Participation, roof, and common loads' : 'Units, pricing, roof, and common loads'}
             </p>
           </div>
@@ -778,7 +779,7 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
           <div className="space-y-4">
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <div className="text-sm font-semibold text-gray-900">Residential units</div>
+                <div className="text-sm font-semibold text-ink">Residential units</div>
                 <InfoChip label={`${isRetrofit ? retroUnits : newUnits} units`} />
               </div>
               <input
@@ -788,9 +789,9 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
                 step={10}
                 value={isRetrofit ? retroUnits : newUnits}
                 onChange={(e) => (isRetrofit ? setRetroUnits(parseInt(e.target.value)) : setNewUnits(parseInt(e.target.value)))}
-                className="w-full accent-emerald-600"
+                className="w-full accent-brand-600"
               />
-              <div className="flex justify-between text-xs text-gray-500">
+              <div className="flex justify-between text-xs text-ink-500">
                 <span>10</span>
                 <span>500</span>
               </div>
@@ -799,7 +800,7 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
             {isRetrofit ? (
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <div className="text-sm font-semibold text-gray-900">Participation rate <InfoTooltip content="Percentage of households in the building that opt in to share the solar+battery system cost. Higher participation = lower cost per household. Typical range: 60-90% for retrofits." /></div>
+                  <div className="text-sm font-semibold text-ink">Participation rate <InfoTooltip content="Percentage of households in the building that opt in to share the solar+battery system cost. Higher participation = lower cost per household. Typical range: 60-90% for retrofits." /></div>
                   <InfoChip label={`${participation}%`} />
                 </div>
                 <input
@@ -809,9 +810,9 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
                   step={5}
                   value={participation}
                   onChange={(e) => setParticipation(parseInt(e.target.value))}
-                  className="w-full accent-emerald-600"
+                  className="w-full accent-brand-600"
                 />
-                <div className="flex justify-between text-xs text-gray-500">
+                <div className="flex justify-between text-xs text-ink-500">
                   <span>30%</span>
                   <span>100%</span>
                 </div>
@@ -819,14 +820,14 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
             ) : (
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <div className="text-sm font-semibold text-gray-900">Avg unit price</div>
+                  <div className="text-sm font-semibold text-ink">Avg unit price</div>
                   <InfoChip label={formatWithSymbol(unitPrice, country, 0)} />
                 </div>
                 <input
                   type="number"
                   value={unitPrice}
                   onChange={(e) => setUnitPrice(parseFloat(e.target.value) || 0)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 border border-ink/15 rounded-lg focus:ring-2 focus:ring-brand-500"
                 />
               </div>
             )}
@@ -834,8 +835,8 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-sm font-semibold text-gray-900">Roof area</div>
-                  <div className="text-xs text-gray-500">Solar-ready m²</div>
+                  <div className="text-sm font-semibold text-ink">Roof area</div>
+                  <div className="text-xs text-ink-500">Solar-ready m²</div>
                 </div>
                 <InfoChip label={roofAreaDisplay} />
               </div>
@@ -848,22 +849,22 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
                 onChange={(e) =>
                   isRetrofit ? setRetroRoofArea(parseInt(e.target.value)) : setNewRoofArea(parseInt(e.target.value))
                 }
-                className="w-full accent-emerald-600"
+                className="w-full accent-brand-600"
               />
-              <div className="flex justify-between text-xs text-gray-500">
+              <div className="flex justify-between text-xs text-ink-500">
                 <span>200</span>
                 <span>8000</span>
               </div>
             </div>
 
             <div>
-              <div className="text-xs font-semibold text-gray-700 mb-2">Roof quality</div>
+              <div className="text-xs font-semibold text-ink-700 mb-2">Roof quality</div>
               {renderRoofQualityButtons(isRetrofit ? retroRoofQuality : newRoofQuality, isRetrofit ? setRetroRoofQuality : setNewRoofQuality)}
             </div>
 
             {isRetrofit && (
               <div className="space-y-2">
-                <div className="text-sm font-semibold text-gray-900">Existing solar</div>
+                <div className="text-sm font-semibold text-ink">Existing solar</div>
                 <div className="grid grid-cols-3 gap-2">
                   {(['None', 'Small', 'Large'] as const).map((opt) => (
                     <button
@@ -871,8 +872,8 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
                       onClick={() => setExistingSolar(opt)}
                       className={`px-3 py-2 rounded-lg border text-sm font-medium transition-all ${
                         existingSolar === opt
-                          ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
-                          : 'bg-white text-gray-700 border-gray-300 hover:border-emerald-400 hover:bg-emerald-50'
+                          ? 'bg-brand-600 text-white border-brand-600 shadow-sm'
+                          : 'bg-paper-100 text-ink-700 border-ink/15 hover:border-brand-400 hover:bg-brand-50'
                       }`}
                     >
                       {opt === 'None' ? 'None' : opt === 'Small' ? '<20 kW' : '>20 kW'}
@@ -883,7 +884,7 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
             )}
 
             <div>
-              <div className="text-sm font-semibold text-gray-900 mb-2">Common area load</div>
+              <div className="text-sm font-semibold text-ink mb-2">Common area load</div>
               {renderCommonLoad(
                 isRetrofit ? retroCommonPreset : newCommonPreset,
                 isRetrofit ? retroCommonManual : newCommonManual,
@@ -895,26 +896,26 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
         </div>
 
         {/* System setup */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-5 space-y-5 shadow-sm">
+        <div className="bg-paper-100 rounded-2xl p-5 space-y-5">
           <div>
-            <div className="text-sm font-semibold text-gray-900">System setup</div>
-            <p className="text-xs text-gray-500">Solar sizing and shared battery bank</p>
+            <div className="text-sm font-semibold text-ink">System setup</div>
+            <p className="text-xs text-ink-500">Solar sizing and shared battery bank</p>
           </div>
 
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <div className="text-sm text-gray-700">Planned solar</div>
-              <div className="text-base font-semibold text-emerald-700 tabular-nums">
+              <div className="text-sm text-ink-700">Planned solar</div>
+              <div className="text-base font-semibold text-brand-700 tabular-nums">
                 {Math.round(solarPlannedKw)} kW
               </div>
             </div>
             <div className="flex items-center justify-between">
-              <div className="text-sm text-gray-700">Battery quantity</div>
-              <div className="text-base font-semibold text-emerald-700 tabular-nums">{batteryQty} units</div>
+              <div className="text-sm text-ink-700">Battery quantity</div>
+              <div className="text-base font-semibold text-brand-700 tabular-nums">{batteryQty} units</div>
             </div>
             <div className="flex items-center justify-between">
-              <div className="text-sm text-gray-700">Total usable capacity</div>
-              <div className="text-base font-semibold text-emerald-700 tabular-nums">
+              <div className="text-sm text-ink-700">Total usable capacity</div>
+              <div className="text-base font-semibold text-brand-700 tabular-nums">
                 {totalBatteryCapacity.toFixed(0)} kWh
               </div>
             </div>
@@ -922,11 +923,11 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
 
           <div className="flex flex-col gap-3">
             <div>
-              <div className="text-sm font-semibold text-gray-900 mb-1">Battery model</div>
+              <div className="text-sm font-semibold text-ink mb-1">Battery model</div>
               {renderBatterySelect(isRetrofit ? retroBatteryId : newBatteryId, isRetrofit ? setRetroBatteryId : setNewBatteryId)}
             </div>
             <div>
-              <div className="text-sm font-semibold text-gray-900 mb-1">Quantity</div>
+              <div className="text-sm font-semibold text-ink mb-1">Quantity</div>
               <input
                 type="number"
                 min={0}
@@ -935,7 +936,7 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
                 onChange={(e) =>
                   (isRetrofit ? setRetroBatteryQty : setNewBatteryQty)(clampNumber(parseInt(e.target.value) || 0, 0, 20))
                 }
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500"
+                className="w-full px-3 py-2 border border-ink/15 rounded-lg focus:ring-2 focus:ring-brand-500"
               />
             </div>
           </div>
@@ -949,26 +950,26 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
       return (
         <div className="space-y-5">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
+            <div className="bg-paper-200 rounded-card p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-xs font-semibold text-gray-600 uppercase tracking-wide">Total system cost <InfoTooltip content="Full installed cost of solar panels + shared battery bank, after applying the bulk discount. Split among all participating households. Larger buildings get bigger discounts (15-25% off)." /></div>
-                  <div className="text-xs text-gray-500">
+                  <div className="text-xs font-semibold text-ink-600 uppercase tracking-wide">Total system cost <InfoTooltip content="Full installed cost of solar panels + shared battery bank, after applying the bulk discount. Split among all participating households. Larger buildings get bigger discounts (15-25% off)." /></div>
+                  <div className="text-xs text-ink-500">
                     Includes {Math.round(retrofitOutputs.discount * 100)}% bulk discount
                   </div>
                 </div>
-                <div className="text-2xl font-bold text-emerald-700">
+                <div className="text-2xl font-bold text-brand-700">
                   {formatWithSymbol(retrofitOutputs.totalSystemCost, country, 0)}
                 </div>
               </div>
             </div>
-            <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
+            <div className="bg-paper-200 rounded-card p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-xs font-semibold text-gray-600 uppercase tracking-wide">Cost per household <InfoTooltip content="Your share of the total system cost, divided equally among participating units. This is the one-off investment each household pays. With bulk discounts, it's 15-25% cheaper than installing individually." /></div>
-                  <div className="text-xs text-gray-500">Participating units</div>
+                  <div className="text-xs font-semibold text-ink-600 uppercase tracking-wide">Cost per household <InfoTooltip content="Your share of the total system cost, divided equally among participating units. This is the one-off investment each household pays. With bulk discounts, it's 15-25% cheaper than installing individually." /></div>
+                  <div className="text-xs text-ink-500">Participating units</div>
                 </div>
-                <div className="text-2xl font-bold text-emerald-700">
+                <div className="text-2xl font-bold text-brand-700">
                   {formatWithSymbol(retrofitOutputs.costPerHousehold, country, 0)}
                 </div>
               </div>
@@ -976,47 +977,47 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-white border border-gray-200 rounded-xl p-4">
+            <div className="bg-paper-200 rounded-card p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-xs font-semibold text-gray-600 uppercase tracking-wide">Monthly savings <InfoTooltip content="Estimated monthly electricity bill reduction per household. Calculated from: daily load × 30 days × local tariff × coverage percentage. Actual savings depend on your usage pattern and solar generation." /></div>
-                  <div className="text-xs text-gray-500">Per participating household</div>
+                  <div className="text-xs font-semibold text-ink-600 uppercase tracking-wide">Monthly savings <InfoTooltip content="Estimated monthly electricity bill reduction per household. Calculated from: daily load × 30 days × local tariff × coverage percentage. Actual savings depend on your usage pattern and solar generation." /></div>
+                  <div className="text-xs text-ink-500">Per participating household</div>
                 </div>
-                <div className="text-2xl font-bold text-emerald-700">
+                <div className="text-2xl font-bold text-brand-700">
                   {formatWithSymbol(retrofitOutputs.monthlySavingsPerHousehold, country, 0)}
                 </div>
               </div>
-              <div className="mt-3 flex items-center justify-between text-sm text-gray-700">
+              <div className="mt-3 flex items-center justify-between text-sm text-ink-700">
                 <span>Payback</span>
-                <span className="font-semibold text-emerald-700">
+                <span className="font-semibold text-brand-700">
                   {retrofitOutputs.paybackYears.toFixed(1)} years
                 </span>
               </div>
-              <div className="mt-2 flex items-center justify-between text-sm text-gray-700">
+              <div className="mt-2 flex items-center justify-between text-sm text-ink-700">
                 <span>Zero-bill days / year</span>
                 <span className="font-semibold">{retrofitOutputs.zeroBillDays} days</span>
               </div>
             </div>
 
-            <div className="bg-white border border-gray-200 rounded-xl p-4">
+            <div className="bg-paper-200 rounded-card p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-xs font-semibold text-gray-600 uppercase tracking-wide">Blackout protection <InfoTooltip content="How many hours the shared battery bank can power the entire building during a grid outage, based on average building load (all participating units + common areas). Essential loads only would last ~3× longer." /></div>
-                  <div className="text-xs text-gray-500">Whole building runtime</div>
+                  <div className="text-xs font-semibold text-ink-600 uppercase tracking-wide">Blackout protection <InfoTooltip content="How many hours the shared battery bank can power the entire building during a grid outage, based on average building load (all participating units + common areas). Essential loads only would last ~3× longer." /></div>
+                  <div className="text-xs text-ink-500">Whole building runtime</div>
                 </div>
-                <div className="text-2xl font-bold text-emerald-700">
+                <div className="text-2xl font-bold text-brand-700">
                   {retrofitOutputs.blackoutHours.toFixed(1)} hrs
                 </div>
               </div>
-              <div className="mt-3 flex items-center justify-between text-sm text-gray-700">
+              <div className="mt-3 flex items-center justify-between text-sm text-ink-700">
                 <span>CO₂ avoided</span>
                 <span className="font-semibold">
                   {Math.round(retrofitOutputs.co2Avoided).toLocaleString()} kg/yr
                 </span>
               </div>
-              <div className="mt-2 flex items-center justify-between text-sm text-gray-700">
+              <div className="mt-2 flex items-center justify-between text-sm text-ink-700">
                 <span>Recommendation</span>
-                <span className="font-semibold text-emerald-700 text-right">
+                <span className="font-semibold text-brand-700 text-right">
                   {retrofitOutputs.recommendation}
                 </span>
               </div>
@@ -1029,27 +1030,27 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
     return (
       <div className="space-y-5">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
+          <div className="bg-paper-200 rounded-card p-4">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-xs font-semibold text-gray-600 uppercase tracking-wide">Added cost / unit</div>
-                <div className="text-xs text-gray-500">
+                <div className="text-xs font-semibold text-ink-600 uppercase tracking-wide">Added cost / unit</div>
+                <div className="text-xs text-ink-500">
                   Includes {Math.round(newDevOutputs.discount * 100)}% bulk discount
                 </div>
               </div>
-              <div className="text-2xl font-bold text-emerald-700">
+              <div className="text-2xl font-bold text-brand-700">
                 {formatWithSymbol(newDevOutputs.addedCostPerUnit, country, 0)}
               </div>
             </div>
           </div>
 
-          <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
+          <div className="bg-paper-200 rounded-card p-4">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-xs font-semibold text-gray-600 uppercase tracking-wide">% price uplift</div>
-                <div className="text-xs text-gray-500">On sale price</div>
+                <div className="text-xs font-semibold text-ink-600 uppercase tracking-wide">% price uplift</div>
+                <div className="text-xs text-ink-500">On sale price</div>
               </div>
-              <div className="text-2xl font-bold text-emerald-700">
+              <div className="text-2xl font-bold text-brand-700">
                 {newDevOutputs.priceIncreasePct.toFixed(2)}%
               </div>
             </div>
@@ -1057,49 +1058,49 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-white border border-gray-200 rounded-xl p-4">
+          <div className="bg-paper-200 rounded-card p-4">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-xs font-semibold text-gray-600 uppercase tracking-wide">20-year savings</div>
-                <div className="text-xs text-gray-500">Per buyer</div>
+                <div className="text-xs font-semibold text-ink-600 uppercase tracking-wide">20-year savings</div>
+                <div className="text-xs text-ink-500">Per buyer</div>
               </div>
-              <div className="text-2xl font-bold text-emerald-700">
+              <div className="text-2xl font-bold text-brand-700">
                 {formatWithSymbol(newDevOutputs.savings20Y, country, 0)}
               </div>
             </div>
-            <div className="mt-3 flex items-center justify-between text-sm text-gray-700">
+            <div className="mt-3 flex items-center justify-between text-sm text-ink-700">
               <span>Savings as % of price</span>
-              <span className="font-semibold text-emerald-700">
+              <span className="font-semibold text-brand-700">
                 {newDevOutputs.savingsPctOfPrice.toFixed(1)}%
               </span>
             </div>
-            <div className="mt-2 flex items-center justify-between text-sm text-gray-700">
+            <div className="mt-2 flex items-center justify-between text-sm text-ink-700">
               <span>Payback from move-in</span>
               <span className="font-semibold">{newDevOutputs.paybackYears.toFixed(1)} years</span>
             </div>
           </div>
 
-          <div className="bg-white border border-gray-200 rounded-xl p-4">
+          <div className="bg-paper-200 rounded-card p-4">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-xs font-semibold text-gray-600 uppercase tracking-wide">Blackout protection</div>
-                <div className="text-xs text-gray-500">Whole building runtime</div>
+                <div className="text-xs font-semibold text-ink-600 uppercase tracking-wide">Blackout protection</div>
+                <div className="text-xs text-ink-500">Whole building runtime</div>
               </div>
-              <div className="text-2xl font-bold text-emerald-700">
+              <div className="text-2xl font-bold text-brand-700">
                 {newDevOutputs.blackoutHours.toFixed(1)} hrs
               </div>
             </div>
-            <div className="mt-3 flex items-center justify-between text-sm text-gray-700">
+            <div className="mt-3 flex items-center justify-between text-sm text-ink-700">
               <span>Zero-bill days / year</span>
               <span className="font-semibold">{newDevOutputs.zeroBillDays} days</span>
             </div>
-            <div className="mt-2 flex items-center justify-between text-sm text-gray-700">
+            <div className="mt-2 flex items-center justify-between text-sm text-ink-700">
               <span>CO₂ avoided</span>
               <span className="font-semibold">
                 {Math.round(newDevOutputs.co2Avoided).toLocaleString()} kg/yr
               </span>
             </div>
-            <div className="mt-2 text-sm text-emerald-700 font-semibold text-right">
+            <div className="mt-2 text-sm text-brand-700 font-semibold text-right">
               {newDevOutputs.recommendation}
             </div>
           </div>
@@ -1109,29 +1110,30 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
   }
 
   return (
-    <main className="min-h-screen pt-12 md:pt-14 bg-white">
+    <main className="min-h-screen bg-paper pt-12 md:pt-14">
       <section ref={pdfRef} className="container mx-auto px-4 pt-12 pb-16 max-w-7xl">
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-2">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
-              Make Your Condo or Apartment 80–100 % Self-Powered
+        <div className="mb-6 flex items-start justify-between gap-4">
+          <div>
+            <Eyebrow>Shared residential calculator</Eyebrow>
+            <h1 className="mt-3 font-display text-4xl md:text-5xl font-medium text-ink leading-tight tracking-tight">
+              Make your condo or apartment 80–100% self-powered
             </h1>
           </div>
-          <CountrySelector />
+          <div className="shrink-0"><CountrySelector /></div>
         </div>
-        <p className="text-lg text-gray-700">
-          Instantly size the ideal shared solar + battery system for your building. Switch between retrofit and new
-          development models — see cost per unit, payback, blackout hours, and zero-bill days in real time.
+        <p className="max-w-3xl text-lg text-ink-700 leading-relaxed">
+          Size a shared solar + battery system for your building. Switch between retrofit and new-build models to see
+          cost per unit, payback, blackout hours, and zero-bill days update as you move each slider.
         </p>
 
         <div className="mt-6 flex flex-wrap items-center gap-3">
-          <div className="inline-flex items-center gap-3 bg-gray-100 border border-gray-200 rounded-full px-2 py-1">
+          <div className="inline-flex items-center gap-3 bg-paper-200 border border-ink/10 rounded-full px-2 py-1">
             <button
               onClick={() => setMode('retrofit')}
               className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
                 mode === 'retrofit'
-                  ? 'bg-emerald-600 text-white shadow'
-                  : 'text-gray-700 hover:text-emerald-700'
+                  ? 'bg-brand-600 text-white shadow'
+                  : 'text-ink-700 hover:text-brand-700'
               }`}
             >
               Retrofit (existing building)
@@ -1140,19 +1142,19 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
               onClick={() => setMode('new')}
               className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
                 mode === 'new'
-                  ? 'bg-emerald-600 text-white shadow'
-                  : 'text-gray-700 hover:text-emerald-700'
+                  ? 'bg-brand-600 text-white shadow'
+                  : 'text-ink-700 hover:text-brand-700'
               }`}
             >
               New Development (pre-construction)
             </button>
           </div>
 
-          <div className="inline-flex items-center gap-2 bg-white border border-gray-200 rounded-full px-3 py-2">
-            <span className="text-xs font-semibold text-gray-700">Optimize</span>
+          <div className="inline-flex items-center gap-2 bg-paper-100 border border-ink/10 rounded-full px-3 py-2">
+            <span className="text-xs font-semibold text-ink-700">Optimize</span>
             <button
               onClick={handleOptimize}
-              className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 transition-colors"
+              className="px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 text-brand-700 border border-brand-200 hover:bg-brand-100 transition-colors"
             >
               {optimizeTarget === 'savings' ? 'Maximize Savings' : 'Maximize Solar'}
             </button>
@@ -1161,11 +1163,11 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
 
         <div className="mt-8 grid grid-cols-1 lg:grid-cols-[5fr_4fr] gap-6">
           <div className="space-y-4">
-            <div className="bg-gray-50 border border-gray-200 rounded-2xl p-5">
+            <div className="bg-paper-200 border border-ink/10 rounded-2xl p-5">
               <div className="flex items-center justify-between mb-4">
                 <div>
-                  <div className="text-sm font-semibold text-gray-900">Inputs</div>
-                  <div className="text-xs text-gray-500">
+                  <div className="text-sm font-semibold text-ink">Inputs</div>
+                  <div className="text-xs text-ink-500">
                     {mode === 'retrofit'
                       ? 'Participation, roof, existing solar, batteries'
                       : 'Units, sale price, roof, batteries'}
@@ -1186,11 +1188,11 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
           </div>
 
           <div className="space-y-4">
-            <div className="bg-white border border-gray-200 rounded-2xl p-5">
+            <div className="bg-paper-100 border border-ink/10 rounded-2xl p-5">
               <div className="flex items-center justify-between mb-4">
                 <div>
-                  <div className="text-sm font-semibold text-gray-900">Live Outputs</div>
-                  <div className="text-xs text-gray-500">
+                  <div className="text-sm font-semibold text-ink">Live Outputs</div>
+                  <div className="text-xs text-ink-500">
                     Auto-updates when you move any slider or toggle
                   </div>
                 </div>
@@ -1291,7 +1293,7 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
           {compSnapshots.length > 0 && (
             <button
               onClick={() => setCompSnapshots([])}
-              className="text-xs text-gray-500 hover:text-red-500 transition-colors"
+              className="text-xs text-ink-500 hover:text-red-500 transition-colors"
             >
               Clear all
             </button>
@@ -1312,7 +1314,7 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
               const ok = await copyShareLink()
               if (ok) { setShareLabel('Link Copied!'); setTimeout(() => setShareLabel('Share Design'), 2000) }
             }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-colors"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-brand-600 text-white font-semibold hover:bg-brand-700 transition-colors"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg>
             {shareLabel}
@@ -1320,7 +1322,7 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
           <PDFExportButton
             containerRef={pdfRef}
             options={{ filename: `battery-mom-shared-residential-${mode}.pdf`, title: 'battery.mom — Shared Residential BESS', subtitle: `${COUNTRY_NAMES[country]} · ${mode === 'retrofit' ? 'Retrofit' : 'New Development'} · ${mode === 'retrofit' ? retroUnits : newUnits} units` }}
-            className="bg-white border border-gray-200 text-gray-800 hover:bg-gray-50"
+            className="bg-paper-100 border border-ink/10 text-ink-800 hover:bg-paper-200"
           />
           <MarketingPDFButton
             data={{
@@ -1343,7 +1345,7 @@ function SharedResidentialCalculator({ country }: { country: Country }) {
           />
         </div>
 
-        <div className="mt-6 text-[12px] text-gray-500 leading-relaxed border-t border-gray-200 pt-4">
+        <div className="mt-6 text-[12px] text-ink-500 leading-relaxed border-t border-ink/10 pt-4">
           *New-build pricing includes 15–25 % bulk discount. Buyers save full electricity bill from day one — savings
           often exceed added cost within 7 years. Retrofit assumes cost split among participating units. Data updated
           monthly.*

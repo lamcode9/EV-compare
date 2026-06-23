@@ -86,25 +86,25 @@ const BuildingComparison = memo(function BuildingComparison({ snapshots, country
   if (snapshots.length < 2) return null
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-5 mt-8 overflow-x-auto">
+    <div className="bg-paper-100 border border-ink/10 rounded-card p-5 mt-8 overflow-x-auto">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h3 className="text-base font-bold text-gray-900">Building Comparison</h3>
-          <p className="text-xs text-gray-500">Side-by-side analysis of your saved configurations</p>
+          <h3 className="text-base font-bold text-ink">Building Comparison</h3>
+          <p className="text-xs text-ink-500">Side-by-side analysis of your saved configurations</p>
         </div>
-        <span className="px-2 py-0.5 text-[11px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-100 rounded-full">
+        <span className="px-2 py-0.5 text-[11px] font-semibold text-brand-700 bg-brand-50 rounded-full">
           {snapshots.length} configs
         </span>
       </div>
 
       <table className="w-full text-sm">
         <thead>
-          <tr className="border-b border-gray-200">
-            <th className="text-left py-2 pr-4 text-xs font-semibold text-gray-500 uppercase tracking-wide w-36">Metric</th>
+          <tr className="border-b border-ink/10">
+            <th className="text-left py-2 pr-4 text-xs font-semibold text-ink-500 uppercase tracking-wide w-36">Metric</th>
             {snapshots.map((s) => (
               <th key={s.id} className="text-center py-2 px-3 min-w-[140px]">
                 <div className="flex flex-col items-center gap-1">
-                  <span className="text-xs font-bold text-gray-900">{s.label}</span>
+                  <span className="text-xs font-bold text-ink">{s.label}</span>
                   <button
                     onClick={() => onRemove(s.id)}
                     className="text-[10px] text-red-400 hover:text-red-600 transition-colors"
@@ -126,15 +126,15 @@ const BuildingComparison = memo(function BuildingComparison({ snapshots, country
               : -1
 
             return (
-              <tr key={metric.key} className="border-b border-gray-100 last:border-0">
-                <td className="py-2.5 pr-4 text-xs font-medium text-gray-600">{metric.label}</td>
+              <tr key={metric.key} className="border-b border-ink/5 last:border-0">
+                <td className="py-2.5 pr-4 text-xs font-medium text-ink-600">{metric.label}</td>
                 {snapshots.map((s, idx) => {
                   const isBest = bestIdx === idx && snapshots.length > 1
                   return (
                     <td
                       key={s.id}
                       className={`py-2.5 px-3 text-center text-xs font-medium ${
-                        isBest ? 'text-emerald-700 bg-emerald-50 font-bold' : 'text-gray-800'
+                        isBest ? 'text-brand-700 bg-brand-50 font-bold' : 'text-ink-800'
                       }`}
                     >
                       {metric.format(s[metric.key], country)}
