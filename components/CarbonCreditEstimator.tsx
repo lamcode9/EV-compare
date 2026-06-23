@@ -104,12 +104,12 @@ export default function CarbonCreditEstimator({
   }, [country, sizeKwh, cycles, years, selectedStandard])
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-6 mb-8">
-      <h2 className="text-lg font-semibold text-gray-900 mb-1">
+    <div className="bg-paper-100 border border-ink/10 rounded-card p-6 mb-8">
+      <h2 className="text-lg font-semibold text-ink mb-1">
         Carbon Credit Estimator{' '}
         <InfoTooltip content="Calculate avoided CO₂ from your BESS system and estimate potential carbon credit revenue under different standards: VCS (Verra), Gold Standard, Article 6.4 (Paris Agreement), and ACX (Asia)." />
       </h2>
-      <p className="text-sm text-gray-500 mb-6">
+      <p className="text-sm text-ink-500 mb-6">
         Estimate carbon credit revenue from your battery system under{' '}
         {CREDIT_STANDARDS.length} major standards.
       </p>
@@ -117,30 +117,30 @@ export default function CarbonCreditEstimator({
       {/* ── Inputs ── */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label className="block text-sm font-medium text-ink-700 mb-1.5">
             System size (kWh){' '}
             <InfoTooltip content="Total usable battery capacity. CO₂ avoided scales linearly with system size." />
           </label>
           <input
             type="number" value={sizeKwh}
             onChange={(e) => setSizeKwh(Math.max(10, Number(e.target.value)))}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            className="w-full px-3 py-2 border border-ink/15 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">Cycles per year</label>
+          <label className="block text-sm font-medium text-ink-700 mb-1.5">Cycles per year</label>
           <input
             type="number" value={cycles}
             onChange={(e) => setCycles(Math.max(100, Math.min(500, Number(e.target.value))))}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            className="w-full px-3 py-2 border border-ink/15 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">Projection years</label>
+          <label className="block text-sm font-medium text-ink-700 mb-1.5">Projection years</label>
           <input
             type="number" value={years}
             onChange={(e) => setYears(Math.max(1, Math.min(20, Number(e.target.value))))}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            className="w-full px-3 py-2 border border-ink/15 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
           />
         </div>
       </div>
@@ -153,8 +153,8 @@ export default function CarbonCreditEstimator({
             onClick={() => setSelectedStandard(std.id)}
             className={`px-4 py-2 rounded-full text-xs font-semibold transition-colors ${
               selectedStandard === std.id
-                ? 'bg-emerald-600 text-white'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                ? 'bg-brand-600 text-white'
+                : 'bg-paper-200 text-ink-700 hover:bg-paper-300'
             }`}
           >
             {std.name} — ${std.price}/t
@@ -164,21 +164,21 @@ export default function CarbonCreditEstimator({
 
       {/* ── Summary cards ── */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-        <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
-          <div className="text-[10px] font-semibold text-emerald-700 uppercase tracking-wide mb-1">Annual CO₂</div>
-          <div className="text-xl font-bold text-emerald-900">
+        <div className="bg-brand-50 rounded-card p-4">
+          <div className="text-[10px] font-semibold text-brand-700 uppercase tracking-wide mb-1">Annual CO₂</div>
+          <div className="text-xl font-bold text-brand-900">
             {results.annualCO2Tonnes.toFixed(1)} t
           </div>
-          <div className="text-[10px] text-emerald-600">Tonnes avoided per year</div>
+          <div className="text-[10px] text-brand-600">Tonnes avoided per year</div>
         </div>
-        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+        <div className="bg-blue-50 rounded-card p-4">
           <div className="text-[10px] font-semibold text-blue-700 uppercase tracking-wide mb-1">Total CO₂ ({years}yr)</div>
           <div className="text-xl font-bold text-blue-900">
             {results.selected.totalCO2.toFixed(1)} t
           </div>
           <div className="text-[10px] text-blue-600">With 2.5%/yr degradation</div>
         </div>
-        <div className="bg-purple-50 border border-purple-200 rounded-xl p-4">
+        <div className="bg-purple-50 rounded-card p-4">
           <div className="text-[10px] font-semibold text-purple-700 uppercase tracking-wide mb-1">
             {results.selected.name.split(' ')[0]} revenue
           </div>
@@ -189,7 +189,7 @@ export default function CarbonCreditEstimator({
             ≈ {fmtLocal(results.selected.totalRevenueUSD, country)}
           </div>
         </div>
-        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+        <div className="bg-amber-50 rounded-card p-4">
           <div className="text-[10px] font-semibold text-amber-700 uppercase tracking-wide mb-1">Rate</div>
           <div className="text-xl font-bold text-amber-900">
             ${results.selected.price}/t
@@ -199,31 +199,31 @@ export default function CarbonCreditEstimator({
       </div>
 
       {/* ── Comparison table: all standards ── */}
-      <div className="bg-gray-50 border border-gray-200 rounded-xl overflow-hidden mb-6">
-        <div className="px-4 py-2.5 bg-gray-100 border-b border-gray-200 text-xs font-semibold text-gray-700">
+      <div className="bg-paper-200 rounded-card overflow-hidden mb-6">
+        <div className="px-4 py-2.5 bg-paper-200 border-b border-ink/10 text-xs font-semibold text-ink-700">
           Revenue comparison across standards
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-gray-200">
-                <th className="text-left px-4 py-2 font-medium text-gray-500">Standard</th>
-                <th className="text-right px-4 py-2 font-medium text-gray-500">Price/t CO₂</th>
-                <th className="text-right px-4 py-2 font-medium text-gray-500">Total CO₂</th>
-                <th className="text-right px-4 py-2 font-medium text-gray-500">Revenue (USD)</th>
-                <th className="text-right px-4 py-2 font-medium text-gray-500">Revenue ({CURRENCY[country]})</th>
+              <tr className="border-b border-ink/10">
+                <th className="text-left px-4 py-2 font-medium text-ink-500">Standard</th>
+                <th className="text-right px-4 py-2 font-medium text-ink-500">Price/t CO₂</th>
+                <th className="text-right px-4 py-2 font-medium text-ink-500">Total CO₂</th>
+                <th className="text-right px-4 py-2 font-medium text-ink-500">Revenue (USD)</th>
+                <th className="text-right px-4 py-2 font-medium text-ink-500">Revenue ({CURRENCY[country]})</th>
               </tr>
             </thead>
             <tbody>
               {results.projections.map((p) => (
                 <tr
                   key={p.id}
-                  className={`border-b border-gray-100 cursor-pointer ${
-                    p.id === selectedStandard ? 'bg-emerald-50' : 'hover:bg-gray-50'
+                  className={`border-b border-ink/5 cursor-pointer ${
+                    p.id === selectedStandard ? 'bg-brand-50' : 'hover:bg-paper-200'
                   }`}
                   onClick={() => setSelectedStandard(p.id)}
                 >
-                  <td className="px-4 py-2 font-medium text-gray-900">{p.name}</td>
+                  <td className="px-4 py-2 font-medium text-ink">{p.name}</td>
                   <td className="text-right px-4 py-2 tabular-nums">${p.price}</td>
                   <td className="text-right px-4 py-2 tabular-nums">{p.totalCO2.toFixed(1)} t</td>
                   <td className="text-right px-4 py-2 tabular-nums font-semibold">{fmtShortUSD(p.totalRevenueUSD)}</td>
@@ -236,7 +236,7 @@ export default function CarbonCreditEstimator({
       </div>
 
       {/* ── Chart: selected standard revenue over time ── */}
-      <h3 className="text-sm font-semibold text-gray-900 mb-2">
+      <h3 className="text-sm font-semibold text-ink mb-2">
         {results.selected.name} — credit revenue projection
       </h3>
       <ResponsiveContainer width="100%" height={280}>
@@ -257,7 +257,7 @@ export default function CarbonCreditEstimator({
       </ResponsiveContainer>
 
       {/* ── Note ── */}
-      <p className="text-[10px] text-gray-400 mt-3">
+      <p className="text-[10px] text-ink-400 mt-3">
         Carbon credit prices are indicative 2024/25 averages. Actual revenue depends on project registration, verification, and market conditions.
         Grid emission factors sourced from IEA 2023 country data.
       </p>

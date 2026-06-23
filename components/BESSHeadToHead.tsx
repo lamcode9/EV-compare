@@ -133,23 +133,23 @@ export default function BESSHeadToHead({ country }: Props) {
   const rightShort = right.name.split(' ')[0]
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-6 mb-8">
-      <h2 className="text-lg font-semibold text-gray-900 mb-1">
+    <div className="bg-paper-100 border border-ink/10 rounded-card p-6 mb-8">
+      <h2 className="text-lg font-semibold text-ink mb-1">
         BESS Product Head-to-Head{' '}
         <InfoTooltip content="Select any two commercial BESS products to compare specs, pricing, and derived metrics side by side. Green highlight = winner for that row." />
       </h2>
-      <p className="text-sm text-gray-500 mb-5">
+      <p className="text-sm text-ink-500 mb-5">
         Pick two products to compare specs, cost-per-cycle, and lifetime value.
       </p>
 
       {/* ── Selectors ── */}
       <div className="grid grid-cols-2 gap-4 mb-6">
         <div>
-          <label className="block text-xs font-medium text-gray-500 mb-1 uppercase tracking-wide">Product A</label>
+          <label className="block text-xs font-medium text-ink-500 mb-1 uppercase tracking-wide">Product A</label>
           <select
             value={leftId}
             onChange={(e) => setLeftId(e.target.value)}
-            className="w-full px-3 py-2 rounded-lg bg-blue-50 border border-blue-200 text-sm font-medium text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
+            className="w-full px-3 py-2 rounded-lg bg-blue-50 border border-blue-200 text-sm font-medium text-ink focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
           >
             {PRODUCTS.map((p) => (
               <option key={p.id} value={p.id}>{p.name}</option>
@@ -157,11 +157,11 @@ export default function BESSHeadToHead({ country }: Props) {
           </select>
         </div>
         <div>
-          <label className="block text-xs font-medium text-gray-500 mb-1 uppercase tracking-wide">Product B</label>
+          <label className="block text-xs font-medium text-ink-500 mb-1 uppercase tracking-wide">Product B</label>
           <select
             value={rightId}
             onChange={(e) => setRightId(e.target.value)}
-            className="w-full px-3 py-2 rounded-lg bg-purple-50 border border-purple-200 text-sm font-medium text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 cursor-pointer"
+            className="w-full px-3 py-2 rounded-lg bg-purple-50 border border-purple-200 text-sm font-medium text-ink focus:outline-none focus:ring-2 focus:ring-purple-500 cursor-pointer"
           >
             {PRODUCTS.map((p) => (
               <option key={p.id} value={p.id}>{p.name}</option>
@@ -172,49 +172,49 @@ export default function BESSHeadToHead({ country }: Props) {
 
       {/* ── Score ── */}
       <div className="flex items-center justify-center gap-4 mb-5">
-        <div className={`text-center px-4 py-2 rounded-lg ${leftWins > rightWins ? 'bg-emerald-50 border border-emerald-200' : 'bg-gray-50 border border-gray-200'}`}>
-          <div className="text-xs text-gray-500">{left.manufacturer}</div>
-          <div className="text-2xl font-bold text-gray-900">{leftWins}</div>
-          <div className="text-[10px] text-gray-400">wins</div>
+        <div className={`text-center px-4 py-2 rounded-lg ${leftWins > rightWins ? 'bg-brand-50' : 'bg-paper-200'}`}>
+          <div className="text-xs text-ink-500">{left.manufacturer}</div>
+          <div className="text-2xl font-bold text-ink">{leftWins}</div>
+          <div className="text-[10px] text-ink-400">wins</div>
         </div>
-        <div className="text-lg font-bold text-gray-300">vs</div>
-        <div className={`text-center px-4 py-2 rounded-lg ${rightWins > leftWins ? 'bg-emerald-50 border border-emerald-200' : 'bg-gray-50 border border-gray-200'}`}>
-          <div className="text-xs text-gray-500">{right.manufacturer}</div>
-          <div className="text-2xl font-bold text-gray-900">{rightWins}</div>
-          <div className="text-[10px] text-gray-400">wins</div>
+        <div className="text-lg font-bold text-ink-300">vs</div>
+        <div className={`text-center px-4 py-2 rounded-lg ${rightWins > leftWins ? 'bg-brand-50' : 'bg-paper-200'}`}>
+          <div className="text-xs text-ink-500">{right.manufacturer}</div>
+          <div className="text-2xl font-bold text-ink">{rightWins}</div>
+          <div className="text-[10px] text-ink-400">wins</div>
         </div>
       </div>
 
       {/* ── Comparison table ── */}
-      <div className="bg-gray-50 border border-gray-200 rounded-xl overflow-hidden mb-6">
+      <div className="bg-paper-200 rounded-card overflow-hidden mb-6">
         <table className="w-full text-sm">
           <thead>
-            <tr className="bg-gray-100 border-b border-gray-200">
-              <th className="text-left px-4 py-2 font-medium text-gray-500 w-36">Spec</th>
+            <tr className="bg-paper-200 border-b border-ink/10">
+              <th className="text-left px-4 py-2 font-medium text-ink-500 w-36">Spec</th>
               <th className="text-center px-4 py-2 font-medium text-blue-700">{left.name}</th>
               <th className="text-center px-4 py-2 font-medium text-purple-700">{right.name}</th>
             </tr>
           </thead>
           <tbody>
-            <tr className="border-b border-gray-100">
-              <td className="px-4 py-2 text-gray-500">Chemistry</td>
+            <tr className="border-b border-ink/5">
+              <td className="px-4 py-2 text-ink-500">Chemistry</td>
               <td className="text-center px-4 py-2">
-                <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700">{left.chemistry}</span>
+                <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-brand-50 text-brand-700">{left.chemistry}</span>
               </td>
               <td className="text-center px-4 py-2">
-                <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${right.chemistry === 'LFP' ? 'bg-emerald-50 text-emerald-700' : 'bg-blue-50 text-blue-700'}`}>{right.chemistry}</span>
+                <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${right.chemistry === 'LFP' ? 'bg-brand-50 text-brand-700' : 'bg-blue-50 text-blue-700'}`}>{right.chemistry}</span>
               </td>
             </tr>
             {rows.map((r) => {
               const w = winner(r)
               return (
-                <tr key={r.label} className="border-b border-gray-100">
-                  <td className="px-4 py-2 text-gray-500 text-xs">{r.label}</td>
-                  <td className={`text-center px-4 py-2 tabular-nums font-medium ${w === 'left' ? 'text-emerald-700 bg-emerald-50/50' : 'text-gray-900'}`}>
-                    {r.leftVal} {w === 'left' && <span className="text-emerald-500 ml-1">★</span>}
+                <tr key={r.label} className="border-b border-ink/5">
+                  <td className="px-4 py-2 text-ink-500 text-xs">{r.label}</td>
+                  <td className={`text-center px-4 py-2 tabular-nums font-medium ${w === 'left' ? 'text-brand-700 bg-brand-50/50' : 'text-ink'}`}>
+                    {r.leftVal} {w === 'left' && <span className="text-brand-500 ml-1">★</span>}
                   </td>
-                  <td className={`text-center px-4 py-2 tabular-nums font-medium ${w === 'right' ? 'text-emerald-700 bg-emerald-50/50' : 'text-gray-900'}`}>
-                    {r.rightVal} {w === 'right' && <span className="text-emerald-500 ml-1">★</span>}
+                  <td className={`text-center px-4 py-2 tabular-nums font-medium ${w === 'right' ? 'text-brand-700 bg-brand-50/50' : 'text-ink'}`}>
+                    {r.rightVal} {w === 'right' && <span className="text-brand-500 ml-1">★</span>}
                   </td>
                 </tr>
               )
@@ -224,7 +224,7 @@ export default function BESSHeadToHead({ country }: Props) {
       </div>
 
       {/* ── Visual bar comparison ── */}
-      <h3 className="text-sm font-semibold text-gray-900 mb-2">Key metrics comparison</h3>
+      <h3 className="text-sm font-semibold text-ink mb-2">Key metrics comparison</h3>
       <ResponsiveContainer width="100%" height={220}>
         <BarChart data={barData} layout="vertical">
           <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
