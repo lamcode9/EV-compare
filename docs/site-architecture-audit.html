@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>battery.mom — Site Architecture Audit</title>
+<style>
+  :root{
+    --ink:#11150f; --ink-600:#4a5147; --ink-400:#7c8278; --line:rgba(17,21,15,.12);
+    --paper:#fbf7ee; --paper-100:#fffdf8; --brand:#1f8a55; --brand-700:#176a42;
+    --amber:#b06d12; --red:#a23b2e;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+  .wrap{max-width:880px;margin:0 auto;padding:56px 24px 96px}
+  h1,h2,h3{font-family:Newsreader,Georgia,"Times New Roman",serif;font-weight:500;line-height:1.1;letter-spacing:-.01em}
+  h1{font-size:42px;margin:0 0 8px}
+  .sub{color:var(--ink-400);font-size:15px;margin:0 0 40px}
+  h2{font-size:28px;margin:52px 0 14px;padding-top:24px;border-top:1px solid var(--line)}
+  h3{font-size:20px;margin:28px 0 8px}
+  p{margin:0 0 14px}
+  strong{font-weight:650}
+  .lead{font-size:18px;color:var(--ink-600)}
+  .callout{background:var(--paper-100);border-radius:14px;padding:20px 22px;margin:20px 0;
+    box-shadow:0 1px 2px rgba(17,21,15,.05)}
+  .callout.amber{box-shadow:inset 3px 0 0 var(--amber),0 1px 2px rgba(17,21,15,.05)}
+  .callout.brand{box-shadow:inset 3px 0 0 var(--brand),0 1px 2px rgba(17,21,15,.05)}
+  .callout.red{box-shadow:inset 3px 0 0 var(--red),0 1px 2px rgba(17,21,15,.05)}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-400);font-weight:650}
+  code{background:rgba(17,21,15,.06);padding:1px 6px;border-radius:5px;font-size:13px}
+  .tag{display:inline-block;font-size:11px;font-weight:650;text-transform:uppercase;letter-spacing:.06em;
+    padding:2px 8px;border-radius:20px;background:rgba(31,138,85,.12);color:var(--brand-700)}
+  .tag.done{background:rgba(31,138,85,.14);color:var(--brand-700)}
+  .tag.now{background:rgba(176,109,18,.14);color:var(--amber)}
+  .tag.next{background:rgba(17,21,15,.08);color:var(--ink-600)}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+  .cols>div{background:var(--paper-100);border-radius:12px;padding:16px 18px}
+  .cols h3{margin:0 0 8px;font-size:16px}
+  ul{margin:0 0 14px;padding-left:20px}
+  li{margin:4px 0}
+  .meta{color:var(--ink-400);font-size:13px;margin-top:64px;border-top:1px solid var(--line);padding-top:16px}
+  .strike{color:var(--ink-400);text-decoration:line-through}
+  .arrow{color:var(--brand-700)}
+  @media(max-width:640px){.cols{grid-template-columns:1fr}h1{font-size:34px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Site Architecture Audit</h1>
+  <p class="sub">battery.mom &middot; 2026-06-23 &middot; the move from a consistent skin to a coherent spine</p>
+
+  <p class="lead">The design-system migration made every page <em>look</em> like it belongs to the same site. It did not make every page <em>belong to the same argument</em>. This document fixes the second problem: it states the one thesis, sorts all 29 routes into four topic pillars and five page archetypes, resolves the duplications, and defines the navigation and page template that turn "consistent-looking chunks" into one publication.</p>
+
+  <h2>1 &middot; The diagnosis: skin vs. spine</h2>
+  <p>The first analysis found a pile of individually-built pages — boxes nested in boxes, inconsistent colour, no shared language, no narrative. Phase&nbsp;1 fixed the surface: shared <code>ink/paper/brand</code> palette, serif headings, zero nested borders, verified across every route.</p>
+  <div class="callout amber">
+    <p style="margin:0"><strong>What was optimised was the wrong layer for the goal.</strong> "Zero nested borders, same colours everywhere" is <strong>visual consistency — a skin</strong>. It removed the ugliness. It did not create <strong>cohesion — a spine</strong>: one controlling idea, a clear hierarchy, recognisable page types, and links that turn pages into a journey. The skin shipped; the spine is this document.</p>
+  </div>
+
+  <h2>2 &middot; The thesis</h2>
+  <div class="callout brand">
+    <p style="margin:0;font-size:18px"><strong>battery.mom tracks how fast batteries, solar, and EVs are deploying across Southeast Asia — and turns that into decisions you can act on.</strong></p>
+  </div>
+  <p>Every page does one of two jobs. It either helps you <strong>TRACK</strong> the transition (what is happening in the world) or <strong>DECIDE</strong> your move (what it means for you). The macro story and the scoreboards are Track. The comparison tool and the calculators are Decide. The home page already opens on this idea — the rest of the site should visibly serve it.</p>
+
+  <h2>3 &middot; The root cause of "disparate chunks"</h2>
+  <p>The site was organised by <strong>content format</strong>, not by <strong>topic</strong>. Someone who cares about EVs had to know that EV material was scattered across three separate menus: <em>EV</em> (compare), <em>Scoreboard &rarr; EV Adoption</em>, and <em>Calculators &rarr; EV vs ICE / Charging cost</em>. Five concrete symptoms:</p>
+  <ol>
+    <li><strong>No stated thesis on the surface.</strong> The one sentence above was implied, never declared as the thing every page serves.</li>
+    <li><strong>The nav was a flat pile of eight.</strong> Home &middot; Story &middot; EV &middot; BESS &middot; Scoreboard &middot; Calculators &middot; Insights &middot; About. "Story" — meant to be the spine — was just tab&nbsp;#2 with no priority.</li>
+    <li><strong>Two front doors to the same story.</strong> <code>/state-of-battery-power</code> (narrative) and <code>/scoreboard/energy</code> (dashboard) tell the same global-battery story in two formats, competing instead of laddering overview&nbsp;&rarr;&nbsp;drill-down.</li>
+    <li><strong>Tools scattered by format.</strong> Calculators lived under both <code>/calculators/*</code> and <code>/bess/*</code>; EV had a tool (<code>/ev</code>) and a board (<code>/scoreboard/ev</code>) in different menus.</li>
+    <li><strong>Every page a one-off shape.</strong> No two pages shared an anatomy, so there was no recognisable "this is what a battery.mom page looks like."</li>
+  </ol>
+
+  <h2>4 &middot; The four pillars</h2>
+  <p>Reorganise by <strong>subject</strong>, not content-type. Four topic pillars, each laddering from its headline view down to its tools. No route folders move — this is purely how the site is navigated and cross-linked.</p>
+  <table>
+    <tr><th>Pillar</th><th>Job</th><th>Contains</th></tr>
+    <tr><td><strong>Big Picture</strong></td><td>Track the macro transition</td><td>The Story &middot; Global Deployment &middot; EV Adoption &middot; Storage Adoption scoreboards</td></tr>
+    <tr><td><strong>EVs</strong></td><td>Track + decide on electric cars</td><td>Compare EVs &middot; Adoption by country &middot; EV-vs-petrol &middot; Charging-cost calculators</td></tr>
+    <tr><td><strong>Battery &amp; Solar</strong></td><td>Size storage &amp; solar at every scale</td><td>Home &middot; Shared residential &middot; Commercial &middot; Grid calculators &middot; Solar payback &middot; Case studies</td></tr>
+    <tr><td><strong>Insights</strong></td><td>Explain &amp; contextualise</td><td>Articles, explainers, market snapshots</td></tr>
+  </table>
+  <p style="color:var(--ink-400);font-size:14px">Plus a meta tier (About, Sources, Contact, Suggest a correction, API docs, Embeds) that lives in the footer and the "Site" column, not the primary nav.</p>
+
+  <h2>5 &middot; Navigation: before &rarr; after</h2>
+  <div class="cols">
+    <div>
+      <h3>Before — by format</h3>
+      <p style="margin:0;font-size:14px" class="strike">Home &middot; Story &middot; EV &middot; BESS &middot; Scoreboard &middot; Calculators &middot; Insights &middot; About</p>
+      <p style="margin:8px 0 0;font-size:13px;color:var(--ink-400)">Eight flat items. EV material split across three of them.</p>
+    </div>
+    <div>
+      <h3>After — by topic</h3>
+      <p style="margin:0;font-size:14px"><strong>Home &middot; Big Picture &middot; EVs &middot; Battery&nbsp;&amp;&nbsp;Solar &middot; Insights &middot; About</strong></p>
+      <p style="margin:8px 0 0;font-size:13px;color:var(--ink-400)">Each pillar is a dropdown laddering story&nbsp;&rarr;&nbsp;data&nbsp;&rarr;&nbsp;tools. Footer mirrors the same four groups, so header and footer share one mental model. <span class="tag done">shipped</span></p>
+    </div>
+  </div>
+
+  <h2>6 &middot; Overlaps &amp; decisions</h2>
+  <div class="callout red">
+    <p style="margin:0 0 6px"><strong>Story &harr; Energy Scoreboard (the big one).</strong> Same dataset, two formats, two front doors. <strong>Decision:</strong> the Story is the <em>narrative entry</em>; the scoreboards are the <em>drill-down</em>. The nav now places both under Big Picture with the Story first, and the Story should end by handing off to the live board. Not a merge — a ladder.</p>
+  </div>
+  <div class="callout amber">
+    <p style="margin:0 0 6px"><strong>EV tool &harr; EV Adoption board.</strong> Different intents (compare a car vs. see a country's uptake), kept — but now both sit under the EVs pillar so the relationship is visible.</p>
+    <p style="margin:0"><strong>BESS Adoption board</strong> currently reads as a data-gap audit rather than a dashboard. <span class="tag now">to reframe</span> — either commit to it as a dashboard or rename it to what it is.</p>
+  </div>
+
+  <h2>7 &middot; The page template (archetypes)</h2>
+  <p>Every page should be recognisably one of five types, each with a fixed anatomy. This is what kills the one-off-shape problem.</p>
+  <table>
+    <tr><th>Archetype</th><th>Anatomy</th><th>Examples</th></tr>
+    <tr><td>Pillar landing</td><td>Hero thesis &rarr; what's inside &rarr; cards to children &rarr; next pillar</td><td>Home, /bess, /scoreboard, /calculators, /insights</td></tr>
+    <tr><td>Tool / calculator</td><td>Hero &rarr; plain-language result sentence &rarr; inputs &rarr; results &rarr; assumptions &rarr; related tools</td><td>/ev, /bess/*, /calculators/*</td></tr>
+    <tr><td>Data scoreboard</td><td>Hero &rarr; headline number &rarr; charts &rarr; method/sources &rarr; the Story</td><td>/scoreboard/*</td></tr>
+    <tr><td>Article / editorial</td><td>Hero &rarr; standfirst &rarr; body &rarr; sources &rarr; related reading + tool</td><td>/state-of-battery-power, /bess/case-studies, /insights/[slug]</td></tr>
+    <tr><td>Utility / meta</td><td>Hero &rarr; content &rarr; back to relevant pillar</td><td>/about, /contributors, /contact, /api-docs, /embed-widgets</td></tr>
+  </table>
+  <p>The shared rule across all five: <strong>every page ends by pointing to the logical next page.</strong> That connective tissue is what makes moving through the site feel like a journey rather than teleporting between unrelated sites.</p>
+
+  <h2>8 &middot; Plan &amp; status</h2>
+  <table>
+    <tr><th>Phase</th><th>Work</th><th>Status</th></tr>
+    <tr><td>1</td><td>Design system: tokens, primitives, de-nesting across all routes</td><td><span class="tag done">done</span></td></tr>
+    <tr><td>2a</td><td>Thesis + topic-pillar nav + mirrored footer</td><td><span class="tag done">shipped</span></td></tr>
+    <tr><td>2b</td><td>Page-archetype anatomy + connective "next" links across pages; reframe BESS Adoption; ladder Story&nbsp;&rarr;&nbsp;Scoreboard</td><td><span class="tag now">next</span></td></tr>
+    <tr><td>3</td><td>Data refresh: $/kWh cost curve, EV-over-time, China's share, un-bury SEA from "Rest of World"</td><td><span class="tag next">queued</span></td></tr>
+    <tr><td>4</td><td>Forward-looking "where it's heading" editorial</td><td><span class="tag next">queued</span></td></tr>
+  </table>
+
+  <p class="meta">Authored as the decisions artifact before route work. The nav + footer reorganisation (2a) is live on production. Phase 2b is the next reviewable increment.</p>
+
+</div>
+</body>
+</html>

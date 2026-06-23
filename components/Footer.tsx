@@ -2,25 +2,60 @@ import Link from 'next/link'
 
 const siteName = 'battery.mom'
 
-const footerLinks = [
-  { href: '/scoreboard', label: 'Scoreboards' },
-  { href: '/ev', label: 'EV comparison' },
-  { href: '/bess', label: 'Battery storage' },
-  { href: '/calculators', label: 'Calculators' },
-  { href: '/insights', label: 'Insights' },
-  { href: '/bess/case-studies', label: 'Case studies' },
-  { href: '/suggest-correction', label: 'Suggest correction' },
-  { href: '/contributors', label: 'Sources' },
-  { href: '/contact', label: 'Contact' },
-  { href: '/feed.xml', label: 'RSS', external: true },
+// Grouped by the same topic pillars as the header nav, so the site presents one
+// mental model everywhere. Each column mirrors a primary nav pillar; "Site" holds
+// the editorial + meta routes.
+type FooterLink = { href: string; label: string; external?: boolean }
+type FooterGroup = { heading: string; links: FooterLink[] }
+
+const footerGroups: FooterGroup[] = [
+  {
+    heading: 'Big Picture',
+    links: [
+      { href: '/state-of-battery-power', label: 'The Story' },
+      { href: '/scoreboard/energy', label: 'Global Deployment' },
+      { href: '/scoreboard/ev', label: 'EV Adoption' },
+      { href: '/scoreboard/bess', label: 'Storage Adoption' },
+    ],
+  },
+  {
+    heading: 'EVs',
+    links: [
+      { href: '/ev', label: 'Compare EVs' },
+      { href: '/calculators/ev-vs-ice', label: 'EV vs Petrol' },
+      { href: '/calculators/ev-charging-cost', label: 'Charging Cost' },
+    ],
+  },
+  {
+    heading: 'Battery & Solar',
+    links: [
+      { href: '/bess/home', label: 'Home Battery' },
+      { href: '/bess/shared-residential', label: 'Shared Residential' },
+      { href: '/bess/commercial', label: 'Commercial' },
+      { href: '/bess/grid', label: 'Grid & Industrial' },
+      { href: '/calculators/solar-payback', label: 'Solar Payback' },
+      { href: '/bess/case-studies', label: 'Case Studies' },
+    ],
+  },
+  {
+    heading: 'Site',
+    links: [
+      { href: '/insights', label: 'Insights' },
+      { href: '/about', label: 'About' },
+      { href: '/contributors', label: 'Sources' },
+      { href: '/suggest-correction', label: 'Suggest a Correction' },
+      { href: '/contact', label: 'Contact' },
+      { href: '/feed.xml', label: 'RSS', external: true },
+    ],
+  },
 ]
 
 export default function Footer() {
   return (
     <footer className="mt-16 border-t border-ink/10 bg-paper text-ink-500">
       <div className="container mx-auto max-w-[1200px] px-4 py-8">
-        <div className="flex flex-col gap-6">
-          <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
+        <div className="flex flex-col gap-8">
+          <div className="grid gap-8 md:grid-cols-[1.2fr_2.8fr] md:gap-12">
             <div className="max-w-sm">
               <Link href="/" className="text-base font-bold text-ink transition-colors hover:text-brand-700">
                 {siteName}
@@ -30,18 +65,29 @@ export default function Footer() {
               </p>
             </div>
 
-            <nav className="flex max-w-2xl flex-wrap gap-x-5 gap-y-2 text-sm md:justify-end" aria-label="Footer">
-              {footerLinks.map((link) =>
-                link.external ? (
-                  <a key={link.href} href={link.href} className="text-ink-500 transition-colors hover:text-brand-700">
-                    {link.label}
-                  </a>
-                ) : (
-                  <Link key={link.href} href={link.href} className="text-ink-500 transition-colors hover:text-brand-700">
-                    {link.label}
-                  </Link>
-                )
-              )}
+            <nav className="grid grid-cols-2 gap-x-6 gap-y-7 sm:grid-cols-4" aria-label="Footer">
+              {footerGroups.map((group) => (
+                <div key={group.heading}>
+                  <h2 className="text-[11px] font-semibold uppercase tracking-[0.16em] text-ink-400">
+                    {group.heading}
+                  </h2>
+                  <ul className="mt-3 space-y-2 text-sm">
+                    {group.links.map((link) => (
+                      <li key={link.href}>
+                        {link.external ? (
+                          <a href={link.href} className="text-ink-600 transition-colors hover:text-brand-700">
+                            {link.label}
+                          </a>
+                        ) : (
+                          <Link href={link.href} className="text-ink-600 transition-colors hover:text-brand-700">
+                            {link.label}
+                          </Link>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </nav>
           </div>
 

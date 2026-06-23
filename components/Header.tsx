@@ -14,31 +14,48 @@ type NavLink = {
   dropdown?: Array<{ href: string; label: string }>
 }
 
+// Navigation is organised by TOPIC, not by content format. A visitor who cares
+// about EVs finds the comparison tool, the adoption data, and the cost
+// calculators in one place — instead of hunting across separate "Scoreboard"
+// and "Calculators" menus. Each pillar's label links to its landing/front-door;
+// the dropdown ladders from the headline view down to the tools.
 const navLinks: NavLink[] = [
   { href: '/', label: 'Home' },
-  { href: '/state-of-battery-power', label: 'Story' },
-  { href: '/ev', label: 'EV' },
-  { 
-    href: '/bess', 
-    label: 'BESS', 
-    tooltip: 'Battery Energy Storage Systems',
-    dropdown: [
-      { href: '/bess/home', label: 'Single Home' },
-      { href: '/bess/shared-residential', label: 'Shared Residential' },
-      { href: '/bess/commercial', label: 'Commercial BESS' },
-      { href: '/bess/grid', label: 'Grid & Industrial BESS' },
-    ]
-  },
   {
-    href: '/scoreboard',
-    label: 'Scoreboard',
+    href: '/state-of-battery-power',
+    label: 'Big Picture',
+    tooltip: 'The global battery & solar transition',
     dropdown: [
-      { href: '/scoreboard/energy', label: 'Global Battery Deployment' },
+      { href: '/state-of-battery-power', label: 'The Story' },
+      { href: '/scoreboard/energy', label: 'Global Deployment' },
       { href: '/scoreboard/ev', label: 'EV Adoption' },
-      { href: '/scoreboard/bess', label: 'BESS Adoption' },
+      { href: '/scoreboard/bess', label: 'Storage Adoption' },
     ],
   },
-  { href: '/calculators', label: 'Calculators' },
+  {
+    href: '/ev',
+    label: 'EVs',
+    tooltip: 'Compare electric vehicles & the cost of switching',
+    dropdown: [
+      { href: '/ev', label: 'Compare EVs' },
+      { href: '/scoreboard/ev', label: 'Adoption by Country' },
+      { href: '/calculators/ev-vs-ice', label: 'EV vs Petrol' },
+      { href: '/calculators/ev-charging-cost', label: 'Charging Cost' },
+    ],
+  },
+  {
+    href: '/bess',
+    label: 'Battery & Solar',
+    tooltip: 'Size storage & solar at every scale',
+    dropdown: [
+      { href: '/bess/home', label: 'Home Battery' },
+      { href: '/bess/shared-residential', label: 'Shared Residential' },
+      { href: '/bess/commercial', label: 'Commercial' },
+      { href: '/bess/grid', label: 'Grid & Industrial' },
+      { href: '/calculators/solar-payback', label: 'Solar Payback' },
+      { href: '/bess/case-studies', label: 'Case Studies' },
+    ],
+  },
   { href: '/insights', label: 'Insights' },
   { href: '/about', label: 'About' },
 ]
