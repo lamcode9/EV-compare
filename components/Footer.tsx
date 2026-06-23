@@ -17,15 +17,15 @@ const footerLinks = [
 
 export default function Footer() {
   return (
-    <footer className="mt-16 border-t border-gray-200 bg-white text-gray-500">
+    <footer className="mt-16 border-t border-ink/10 bg-paper text-ink-500">
       <div className="container mx-auto max-w-[1200px] px-4 py-8">
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
             <div className="max-w-sm">
-              <Link href="/" className="text-base font-bold text-gray-950 transition-colors hover:text-emerald-700">
+              <Link href="/" className="text-base font-bold text-ink transition-colors hover:text-brand-700">
                 {siteName}
               </Link>
-              <p className="mt-2 text-sm leading-6 text-gray-600">
+              <p className="mt-2 text-sm leading-6 text-ink-600">
                 Battery, solar, and energy adoption data. No ads, no sponsors, no affiliate pressure.
               </p>
             </div>
@@ -33,11 +33,11 @@ export default function Footer() {
             <nav className="flex max-w-2xl flex-wrap gap-x-5 gap-y-2 text-sm md:justify-end" aria-label="Footer">
               {footerLinks.map((link) =>
                 link.external ? (
-                  <a key={link.href} href={link.href} className="text-gray-500 transition-colors hover:text-emerald-700">
+                  <a key={link.href} href={link.href} className="text-ink-500 transition-colors hover:text-brand-700">
                     {link.label}
                   </a>
                 ) : (
-                  <Link key={link.href} href={link.href} className="text-gray-500 transition-colors hover:text-emerald-700">
+                  <Link key={link.href} href={link.href} className="text-ink-500 transition-colors hover:text-brand-700">
                     {link.label}
                   </Link>
                 )
@@ -45,12 +45,12 @@ export default function Footer() {
             </nav>
           </div>
 
-          <p className="max-w-4xl text-xs leading-5 text-gray-400">
+          <p className="max-w-4xl text-xs leading-5 text-ink-400">
             This living database is manually checked against primary sources where available. Prices, incentives,
             specifications, and deployment figures may change; always confirm with official sources.
           </p>
 
-          <div className="flex flex-col gap-2 border-t border-gray-100 pt-4 text-xs text-gray-400 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-col gap-2 border-t border-ink/5 pt-4 text-xs text-ink-400 md:flex-row md:items-center md:justify-between">
             <p>© 2026 {siteName}. All rights reserved.</p>
             <p>Independent energy-transition data for humans making real-world decisions.</p>
           </div>

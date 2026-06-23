@@ -16,6 +16,7 @@ type NavLink = {
 
 const navLinks: NavLink[] = [
   { href: '/', label: 'Home' },
+  { href: '/state-of-battery-power', label: 'Story' },
   { href: '/ev', label: 'EV' },
   { 
     href: '/bess', 
@@ -94,19 +95,19 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b border-gray-200/50 transition-all duration-200 ${
+        className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b border-ink/10 transition-all duration-200 ${
           activeDropdown ? 'h-32 md:h-36' : 'h-12 md:h-14'
         }`}
         style={{
-          backgroundColor: 'rgba(255, 255, 255, 0.5)',
-          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
+          backgroundColor: 'rgba(251, 247, 238, 0.78)',
+          boxShadow: '0 1px 0 rgba(17, 21, 15, 0.04)',
         }}
         onMouseLeave={() => setHoveredDropdown(null)}
       >
         <div className="max-w-[1200px] mx-auto h-full px-4 md:px-6 relative">
           {/* Logo (Left) */}
           <Link href="/" className="flex items-center absolute left-4 md:left-6 top-1/2 -translate-y-1/2">
-            <span className="font-bold text-gray-900 text-sm leading-tight">
+            <span className="font-bold text-ink text-sm leading-tight">
               {siteName}
             </span>
           </Link>
@@ -137,20 +138,20 @@ export default function Header() {
                     href={link.href}
                     className={`px-3 py-2 text-sm font-medium transition-colors ${
                       isActive(link.href) || (link.dropdown && link.dropdown.some(item => isActive(item.href)))
-                        ? 'text-emerald-600'
-                        : 'text-gray-700 hover:text-emerald-600'
+                        ? 'text-brand-600'
+                        : 'text-ink-600 hover:text-brand-600'
                     }`}
                   >
                     {link.label}
                   </Link>
                   {index < navLinks.length - 1 && (
-                    <span className="text-gray-400 mx-1">·</span>
+                    <span className="text-ink-300 mx-1">·</span>
                   )}
                 </span>
               ))}
               {/* Shared Tooltip - appears after last nav link */}
               {hoveredTooltip && (
-                <div className="absolute left-full top-1/2 transform -translate-y-1/2 ml-1 px-2.5 py-1.5 text-[10px] text-gray-500 bg-white/90 backdrop-blur-sm border border-gray-200/60 rounded-md shadow-[0_1px_3px_rgba(0,0,0,0.08),inset_0_2px_3px_rgba(0,0,0,0.1),inset_0_1px_1px_rgba(255,255,255,0.9)] whitespace-nowrap z-50">
+                <div className="absolute left-full top-1/2 transform -translate-y-1/2 ml-1 px-2.5 py-1.5 text-[10px] text-ink-500 bg-paper-100/90 backdrop-blur-sm border border-ink/10 rounded-md shadow-[0_1px_3px_rgba(0,0,0,0.08),inset_0_2px_3px_rgba(0,0,0,0.1),inset_0_1px_1px_rgba(255,255,255,0.9)] whitespace-nowrap z-50">
                   {hoveredTooltip}
                 </div>
               )}
@@ -158,7 +159,7 @@ export default function Header() {
 
           {/* Extended Dropdown Area */}
           {activeDropdown && (
-            <div className="hidden md:flex items-center justify-center h-20 md:h-22 border-t border-gray-200/30">
+            <div className="hidden md:flex items-center justify-center h-20 md:h-22 border-t border-ink/10">
               <div className="flex items-center gap-6">
                 {activeDropdown.dropdown?.map((item) => (
                   <Link
@@ -166,8 +167,8 @@ export default function Header() {
                     href={item.href}
                     className={`px-4 py-2 text-sm font-medium transition-colors relative ${
                       isActive(item.href)
-                        ? 'text-emerald-600'
-                        : 'text-gray-700 hover:text-emerald-600'
+                        ? 'text-brand-600'
+                        : 'text-ink-600 hover:text-brand-600'
                     }`}
                   >
                     {item.label}
@@ -180,7 +181,7 @@ export default function Header() {
           {/* Mobile Hamburger Button (Right) */}
           <button
             onClick={() => isMobileMenuOpen ? handleCloseMenu() : handleOpenMenu()}
-            className="md:hidden p-2 text-gray-700 hover:text-emerald-600 transition-all duration-300 absolute right-4 top-1/2 -translate-y-1/2"
+            className="md:hidden p-2 text-ink-600 hover:text-brand-600 transition-all duration-300 absolute right-4 top-1/2 -translate-y-1/2"
             aria-label="Toggle menu"
           >
             <div className="relative w-6 h-6">
@@ -236,7 +237,7 @@ export default function Header() {
               isMenuClosing ? 'animate-fade-out' : 'animate-fade-in'
             }`}
             style={{
-              backgroundColor: 'rgba(15, 15, 15, 0.5)',
+              backgroundColor: 'rgba(17, 21, 15, 0.72)',
               backdropFilter: 'blur(20px)',
               WebkitBackdropFilter: 'blur(20px)',
               borderRadius: '20px',
@@ -251,10 +252,10 @@ export default function Header() {
                     <li key={link.href}>
                       {link.dropdown ? (
                         <div>
-                          <div className="px-4 py-3 text-base font-medium text-gray-300">
+                          <div className="px-4 py-3 text-base font-medium text-paper-300">
                             <span className="block">{link.label}</span>
                             {link.tooltip && (
-                              <span className="block text-sm text-gray-500 mt-0.5">
+                              <span className="block text-sm text-ink-500 mt-0.5">
                                 {link.tooltip}
                               </span>
                             )}
@@ -266,8 +267,8 @@ export default function Header() {
                                   href={item.href}
                                   className={`block px-4 py-2 text-sm font-medium rounded-xl transition-all text-left relative ${
                                     isActive(item.href)
-                                      ? 'text-emerald-500 bg-gray-800/50'
-                                      : 'text-gray-400 hover:text-emerald-500 hover:bg-gray-800/50'
+                                      ? 'text-brand-500 bg-white/10'
+                                      : 'text-ink-300 hover:text-brand-500 hover:bg-white/10'
                                   }`}
                                   onClick={handleCloseMenu}
                                 >
@@ -282,15 +283,15 @@ export default function Header() {
                         href={link.href}
                         className={`block px-4 py-3 text-base font-medium rounded-xl transition-all text-left ${
                           isActive(link.href)
-                            ? 'text-emerald-500 bg-gray-800/50'
-                            : 'text-gray-300 hover:text-emerald-500 hover:bg-gray-800/50'
+                            ? 'text-brand-500 bg-white/10'
+                            : 'text-paper-300 hover:text-brand-500 hover:bg-white/10'
                         }`}
                         title={link.tooltip || undefined}
                         onClick={handleCloseMenu}
                       >
                         <span className="block">{link.label}</span>
                         {link.tooltip && (
-                          <span className="block text-sm text-gray-500 mt-0.5">
+                          <span className="block text-sm text-ink-500 mt-0.5">
                             {link.tooltip}
                           </span>
                         )}

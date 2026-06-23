@@ -222,19 +222,19 @@ function MetricCard({
   accent?: 'emerald' | 'amber' | 'cyan' | 'slate'
 }) {
   const accentClasses = {
-    emerald: 'border-emerald-200 bg-emerald-50/40 text-emerald-700',
+    emerald: 'border-brand-200 bg-brand-50/40 text-brand-700',
     amber: 'border-amber-200 bg-amber-50/50 text-amber-700',
     cyan: 'border-cyan-200 bg-cyan-50/50 text-cyan-700',
     slate: 'border-slate-200 bg-slate-50 text-slate-700',
   }
 
   return (
-    <article className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+    <article className="rounded-card border border-ink/10 bg-paper-100 p-5 shadow-card">
       <div className={`mb-4 inline-flex rounded-full border px-2.5 py-1 text-[11px] font-semibold ${accentClasses[accent]}`}>
         {label}
       </div>
-      <div className="text-2xl font-bold text-gray-950 md:text-3xl">{value}</div>
-      <p className="mt-2 text-sm leading-relaxed text-gray-500">{helper}</p>
+      <div className="text-2xl font-bold text-ink md:text-3xl">{value}</div>
+      <p className="mt-2 text-sm leading-relaxed text-ink-500">{helper}</p>
     </article>
   )
 }
@@ -258,8 +258,8 @@ function SegmentButton<T extends string>({
       onClick={() => onSelect(value)}
       className={`rounded-lg px-3 py-1.5 text-xs font-semibold transition-colors ${
         isSelected
-          ? 'bg-gray-950 text-white'
-          : 'bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900'
+          ? 'bg-ink text-white'
+          : 'bg-paper-200 text-ink-600 hover:bg-paper-300 hover:text-ink'
       }`}
     >
       {children}
@@ -269,14 +269,14 @@ function SegmentButton<T extends string>({
 
 function UnitNote() {
   return (
-    <div className="rounded-xl border border-gray-200 bg-gray-950 p-5 text-white shadow-sm">
-      <div className="text-xs font-semibold uppercase text-emerald-300">Important unit boundary</div>
-      <p className="mt-2 text-sm leading-relaxed text-gray-200">
+    <div className="rounded-xl bg-ink p-5 text-white shadow-sm">
+      <div className="text-xs font-semibold uppercase text-brand-300">Important unit boundary</div>
+      <p className="mt-2 text-sm leading-relaxed text-paper-300">
         Batteries are not an energy source. They are storage: measured as power capacity in GW and energy
         capacity in GWh. Coal, gas, hydro, wind, solar, and nuclear are generation sources: usually measured
         as annual output in TWh or plant capacity in GW.
       </p>
-      <p className="mt-3 text-xs leading-relaxed text-gray-400">
+      <p className="mt-3 text-xs leading-relaxed text-ink-300">
         The charts separate battery deployment, electricity generation, renewable additions, and regional grid mix
         so storage is not mistaken for a fuel source.
       </p>
@@ -298,14 +298,14 @@ function SourceLegend({
   const hasHidden = entries.some(entry => !entry.active)
 
   return (
-    <div className="rounded-xl border border-gray-200 bg-gray-50/70 p-3">
+    <div className="rounded-xl bg-paper-200/70 p-3">
       <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-        <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-gray-500">{title}</div>
+        <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-ink-500">{title}</div>
         {hasHidden && (
           <button
             type="button"
             onClick={onShowAll}
-            className="rounded-full bg-white px-2.5 py-1 text-[11px] font-semibold text-gray-600 shadow-sm ring-1 ring-gray-200 transition hover:text-emerald-700"
+            className="rounded-full bg-white px-2.5 py-1 text-[11px] font-semibold text-ink-600 shadow-sm ring-1 ring-gray-200 transition hover:text-brand-700"
           >
             Show all
           </button>
@@ -320,17 +320,17 @@ function SourceLegend({
             onClick={() => onToggle(entry.key)}
             className={`rounded-lg border p-3 text-left transition ${
               entry.active
-                ? 'border-gray-200 bg-white shadow-sm hover:border-emerald-200'
-                : 'border-gray-200 bg-white/50 opacity-45 hover:opacity-75'
+                ? 'border-ink/10 bg-white shadow-sm hover:border-brand-200'
+                : 'border-ink/10 bg-white/50 opacity-45 hover:opacity-75'
             }`}
           >
             <span className="flex items-center gap-2">
               <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: entry.color }} />
-              <span className="text-xs font-bold text-gray-800">{entry.label}</span>
+              <span className="text-xs font-bold text-ink-700">{entry.label}</span>
             </span>
-            <span className="mt-2 block text-sm font-black text-gray-950">{formatTwh(entry.value)}</span>
+            <span className="mt-2 block text-sm font-black text-ink">{formatTwh(entry.value)}</span>
             {typeof entry.share === 'number' && (
-              <span className="mt-0.5 block text-[11px] font-medium text-gray-500">{entry.share.toFixed(1)}% share</span>
+              <span className="mt-0.5 block text-[11px] font-medium text-ink-500">{entry.share.toFixed(1)}% share</span>
             )}
           </button>
         ))}
@@ -352,12 +352,12 @@ function InsightStat({
 }) {
   return (
     <div className="rounded-lg border border-white/10 bg-white/[0.06] p-3">
-      <div className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.15em] text-gray-400">
+      <div className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.15em] text-ink-300">
         {color && <span className="h-2 w-2 rounded-full" style={{ backgroundColor: color }} />}
         <span>{label}</span>
       </div>
       <div className="mt-1 break-words text-sm font-black leading-tight text-white">{value}</div>
-      {detail && <div className="mt-1 text-[11px] font-semibold leading-snug text-gray-400">{detail}</div>}
+      {detail && <div className="mt-1 text-[11px] font-semibold leading-snug text-ink-300">{detail}</div>}
     </div>
   )
 }
@@ -393,21 +393,21 @@ function ChartTooltip({
   const total = entries.reduce((sum, item) => sum + item.value, 0)
 
   return (
-    <div className="min-w-[220px] rounded-xl border border-gray-200 bg-white p-3 shadow-xl shadow-gray-900/10">
+    <div className="min-w-[220px] rounded-xl bg-white p-3 shadow-xl shadow-gray-900/10">
       <div className="flex items-baseline justify-between gap-4">
-        <div className="text-sm font-black text-gray-950">{label}</div>
-        {!signed && <div className="text-xs font-semibold text-gray-500">{formatTwh(total)}</div>}
+        <div className="text-sm font-black text-ink">{label}</div>
+        {!signed && <div className="text-xs font-semibold text-ink-500">{formatTwh(total)}</div>}
       </div>
       <div className="mt-3 space-y-2">
         {entries.map(item => {
           const source = meta[item.key]
           return (
             <div key={item.key} className="flex items-center justify-between gap-4 text-xs">
-              <span className="flex items-center gap-2 font-semibold text-gray-600">
+              <span className="flex items-center gap-2 font-semibold text-ink-600">
                 <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: source?.color ?? item.color }} />
                 {source?.label ?? item.key}
               </span>
-              <span className="font-bold text-gray-950">{signed ? formatSignedTwh(item.value) : formatTwh(item.value)}</span>
+              <span className="font-bold text-ink">{signed ? formatSignedTwh(item.value) : formatTwh(item.value)}</span>
             </div>
           )
         })}
@@ -433,15 +433,15 @@ function ChangeLegend({
           aria-pressed={selectedSource === item.source}
           className={`rounded-lg border p-3 text-left transition ${
             selectedSource === item.source
-              ? 'border-gray-300 bg-white shadow-sm'
-              : 'border-gray-200 bg-gray-50 hover:bg-white'
+              ? 'border-ink/15 bg-white shadow-sm'
+              : 'border-ink/10 bg-paper-200 hover:bg-white'
           }`}
         >
-          <span className="flex items-center gap-2 text-xs font-bold text-gray-800">
+          <span className="flex items-center gap-2 text-xs font-bold text-ink-700">
             <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: item.color }} />
             {item.source}
           </span>
-          <span className={`mt-2 block text-sm font-black ${item.changeTwh >= 0 ? 'text-emerald-700' : 'text-red-600'}`}>
+          <span className={`mt-2 block text-sm font-black ${item.changeTwh >= 0 ? 'text-brand-700' : 'text-red-600'}`}>
             {formatSignedTwh(item.changeTwh)}
           </span>
         </button>
@@ -466,7 +466,7 @@ function StackedShareBar({
 
   return (
     <div>
-      <div className="flex h-5 overflow-hidden rounded-full bg-gray-100">
+      <div className="flex h-5 overflow-hidden rounded-full bg-paper-200">
         {segments.map(segment => (
           <div
             key={segment.key}
@@ -478,12 +478,12 @@ function StackedShareBar({
       </div>
       <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-5">
         {segments.map(segment => (
-          <div key={segment.key} className="rounded-lg bg-gray-50 p-3">
+          <div key={segment.key} className="rounded-lg bg-paper-200 p-3">
             <div className="flex items-center gap-2">
               <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: segment.color }} />
-              <span className="text-[11px] font-semibold text-gray-500">{segment.label}</span>
+              <span className="text-[11px] font-semibold text-ink-500">{segment.label}</span>
             </div>
-            <div className="mt-1 text-sm font-bold text-gray-900">{segment.value.toFixed(1)}%</div>
+            <div className="mt-1 text-sm font-bold text-ink">{segment.value.toFixed(1)}%</div>
           </div>
         ))}
       </div>
@@ -493,9 +493,9 @@ function StackedShareBar({
 
 function SourceNotes() {
   return (
-    <section className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-      <h2 className="text-base font-bold text-gray-950">Sources and boundaries</h2>
-      <p className="mt-2 max-w-3xl text-sm leading-relaxed text-gray-500">
+    <section className="rounded-card border border-ink/10 bg-paper-100 p-6 shadow-card">
+      <h2 className="text-base font-bold text-ink">Sources and boundaries</h2>
+      <p className="mt-2 max-w-3xl text-sm leading-relaxed text-ink-500">
         Battery GWh figures here refer to stationary battery energy storage, not EV battery packs and not
         pumped hydro. The charging-source view is a regional electricity mix proxy, not metered battery charging.
       </p>
@@ -506,10 +506,10 @@ function SourceNotes() {
             href={source.url}
             target="_blank"
             rel="noreferrer"
-            className="rounded-lg border border-gray-200 bg-gray-50 p-4 transition-colors hover:border-emerald-200 hover:bg-emerald-50/30"
+            className="rounded-lg bg-paper-200 p-4 transition-colors hover:border-brand-200 hover:bg-brand-50/30"
           >
-            <div className="text-sm font-semibold text-gray-900">{source.label}</div>
-            <p className="mt-1 text-xs leading-relaxed text-gray-500">{source.note}</p>
+            <div className="text-sm font-semibold text-ink">{source.label}</div>
+            <p className="mt-1 text-xs leading-relaxed text-ink-500">{source.note}</p>
           </a>
         ))}
       </div>
@@ -682,30 +682,30 @@ export default function EnergyDeploymentScoreboardPage() {
   const cumulativeBatteryMilestones = BATTERY_ENERGY_MILESTONES.filter(item => item.cumulativeGwh)
 
   return (
-    <main className="min-h-screen bg-white pt-12 md:pt-14">
+    <main className="min-h-screen bg-paper pt-12 md:pt-14">
       <section className="mx-auto max-w-7xl px-4 pb-16 pt-10 md:pt-12">
         <nav className="mb-8 flex flex-wrap gap-2 text-sm">
           <Link
             href="/scoreboard"
-            className="rounded-full border border-gray-200 bg-white px-3 py-1.5 font-semibold text-gray-600 hover:border-emerald-200 hover:text-emerald-700"
+            className="rounded-full border border-ink/10 bg-white px-3 py-1.5 font-semibold text-ink-600 hover:border-brand-200 hover:text-brand-700"
           >
             Scoreboard home
           </Link>
           <Link
             href="/scoreboard/ev"
-            className="rounded-full border border-gray-200 bg-white px-3 py-1.5 font-semibold text-gray-600 hover:border-emerald-200 hover:text-emerald-700"
+            className="rounded-full border border-ink/10 bg-white px-3 py-1.5 font-semibold text-ink-600 hover:border-brand-200 hover:text-brand-700"
           >
             EV adoption
           </Link>
           <Link
             href="/scoreboard/bess"
-            className="rounded-full border border-gray-200 bg-white px-3 py-1.5 font-semibold text-gray-600 hover:border-emerald-200 hover:text-emerald-700"
+            className="rounded-full border border-ink/10 bg-white px-3 py-1.5 font-semibold text-ink-600 hover:border-brand-200 hover:text-brand-700"
           >
             BESS adoption
           </Link>
           <Link
             href="/scoreboard/energy"
-            className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1.5 font-semibold text-emerald-700"
+            className="rounded-full border border-brand-200 bg-brand-50 px-3 py-1.5 font-semibold text-brand-700"
           >
             Global battery deployment
           </Link>
@@ -713,13 +713,13 @@ export default function EnergyDeploymentScoreboardPage() {
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_360px] lg:items-end">
           <div className="max-w-3xl">
-            <div className="mb-4 inline-flex rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs font-semibold text-gray-600">
+            <div className="mb-4 inline-flex rounded-full border border-ink/10 bg-paper-200 px-3 py-1 text-xs font-semibold text-ink-600">
               2025 actuals where available · 2035 storage outlook
             </div>
-            <h1 className="text-3xl font-bold text-gray-950 md:text-5xl">
+            <h1 className="font-display text-4xl font-medium tracking-tight text-ink md:text-6xl">
               Battery Deployment Scoreboard
             </h1>
-            <p className="mt-4 text-lg leading-relaxed text-gray-600">
+            <p className="mt-4 text-lg leading-relaxed text-ink-600">
               Track how fast stationary batteries are entering the power system, and compare that buildout
               against the world&apos;s generation stack: coal, gas, oil, hydro, wind, solar, and nuclear.
             </p>
@@ -754,16 +754,16 @@ export default function EnergyDeploymentScoreboardPage() {
           />
         </div>
 
-        <section className="mt-10 rounded-xl border border-gray-200 bg-white p-5 shadow-sm md:p-6">
+        <section className="mt-10 rounded-card border border-ink/10 bg-paper-100 p-5 shadow-card md:p-6">
           <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
             <div>
-              <h2 className="text-lg font-bold text-gray-950">
+              <h2 className="text-lg font-bold text-ink">
                 World energy shift, 2015-2025
                 <InfoTooltip
                   content="Electricity generation is shown in TWh. Battery storage is shown separately because it stores energy rather than generating it."
                 />
               </h2>
-              <p className="mt-1 text-sm text-gray-500">
+              <p className="mt-1 text-sm text-ink-500">
                 Hover the chart to inspect a year. Use the source controls to isolate the parts of the generation stack.
               </p>
             </div>
@@ -775,8 +775,8 @@ export default function EnergyDeploymentScoreboardPage() {
           </div>
 
           <div className="mb-5 grid gap-3 lg:grid-cols-[340px_1fr]">
-            <div className="rounded-xl border border-gray-200 bg-gray-950 p-4 text-white">
-              <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-emerald-300">
+            <div className="rounded-xl bg-ink p-4 text-white">
+              <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-brand-300">
                 {chartMode === 'change' ? 'Selected source' : 'Selected year'}
               </div>
               <div className="mt-2 text-3xl font-black">
@@ -910,8 +910,8 @@ export default function EnergyDeploymentScoreboardPage() {
             )}
 
             {chartMode === 'change' && (
-              <div className="rounded-xl border border-gray-200 bg-gray-50/70 p-3">
-                <div className="mb-3 text-[11px] font-bold uppercase tracking-[0.16em] text-gray-500">
+              <div className="rounded-xl bg-paper-200/70 p-3">
+                <div className="mb-3 text-[11px] font-bold uppercase tracking-[0.16em] text-ink-500">
                   2025 year-on-year change
                 </div>
                 <ChangeLegend selectedSource={selectedChangeSource} onSelect={setSelectedChangeSource} />
@@ -1078,22 +1078,22 @@ export default function EnergyDeploymentScoreboardPage() {
             </ResponsiveContainer>
           )}
 
-          <div className="mt-5 grid grid-cols-1 gap-3 border-t border-gray-100 pt-5 md:grid-cols-3">
-            <div className="rounded-lg bg-gray-50 p-4">
-              <div className="text-xs font-semibold text-gray-500">{chartMode === 'renewables' ? 'Total renewables' : 'Total electricity generation'}</div>
-              <div className="mt-1 text-xl font-bold text-gray-950">
+          <div className="mt-5 grid grid-cols-1 gap-3 border-t border-ink/5 pt-5 md:grid-cols-3">
+            <div className="rounded-lg bg-paper-200 p-4">
+              <div className="text-xs font-semibold text-ink-500">{chartMode === 'renewables' ? 'Total renewables' : 'Total electricity generation'}</div>
+              <div className="mt-1 text-xl font-bold text-ink">
                 {chartMode === 'renewables' ? formatTwh(selectedRenewableTotal) : formatTwh(selectedGenerationTotal)}
               </div>
-              <div className="mt-1 text-xs text-gray-500">World, {chartMode === 'change' ? '2025 change' : selectedYear}</div>
+              <div className="mt-1 text-xs text-ink-500">World, {chartMode === 'change' ? '2025 change' : selectedYear}</div>
             </div>
-            <div className="rounded-lg bg-emerald-50/60 p-4">
-              <div className="text-xs font-semibold text-emerald-700">
+            <div className="rounded-lg bg-brand-50/60 p-4">
+              <div className="text-xs font-semibold text-brand-700">
                 {chartMode === 'renewables' ? `${selectedRenewableLeader.label} generation` : 'Renewables generation'}
               </div>
-              <div className="mt-1 text-xl font-bold text-gray-950">
+              <div className="mt-1 text-xl font-bold text-ink">
                 {chartMode === 'renewables' ? formatTwh(selectedRenewableLeader.value) : formatTwh(selectedGeneration.renewables)}
               </div>
-              <div className="mt-1 text-xs text-gray-500">
+              <div className="mt-1 text-xs text-ink-500">
                 {chartMode === 'renewables'
                   ? `${getShare(selectedRenewableLeader.value, selectedRenewableTotal).toFixed(1)}% of renewables`
                   : `${getShare(selectedGeneration.renewables, selectedGenerationTotal).toFixed(1)}% of world power`}
@@ -1103,10 +1103,10 @@ export default function EnergyDeploymentScoreboardPage() {
               <div className="text-xs font-semibold text-slate-600">
                 {chartMode === 'change' ? 'Selected source change' : `${selectedGenerationLeader.label} generation`}
               </div>
-              <div className="mt-1 text-xl font-bold text-gray-950">
+              <div className="mt-1 text-xl font-bold text-ink">
                 {chartMode === 'change' ? formatSignedTwh(selectedChange.changeTwh) : formatTwh(selectedGenerationLeader.value)}
               </div>
-              <div className="mt-1 text-xs text-gray-500">
+              <div className="mt-1 text-xs text-ink-500">
                 {chartMode === 'change'
                   ? selectedChange.source
                   : `${getShare(selectedGenerationLeader.value, selectedGenerationTotal).toFixed(1)}% of world power`}
@@ -1116,21 +1116,21 @@ export default function EnergyDeploymentScoreboardPage() {
         </section>
 
         <section className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm md:p-6">
+          <div className="rounded-card border border-ink/10 bg-paper-100 p-5 shadow-card md:p-6">
             <div className="mb-5">
               <div>
-                <h2 className="text-lg font-bold text-gray-950">Battery storage additions</h2>
-                <p className="mt-1 text-sm text-gray-500">
+                <h2 className="text-lg font-bold text-ink">Battery storage additions</h2>
+                <p className="mt-1 text-sm text-ink-500">
                   Power-capacity additions by market. Select a region to see the utility-scale vs behind-the-meter split.
                 </p>
               </div>
             </div>
 
-            <div className="mb-5 rounded-xl border border-gray-200 bg-gray-50 p-2">
+            <div className="mb-5 rounded-xl bg-paper-200 p-2">
               <div className="mb-2 flex flex-wrap items-center justify-between gap-2 px-2 pt-1">
-                <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-gray-500">Market filter</div>
-                <div className="text-xs font-semibold text-gray-500">
-                  Selected: <span className="text-gray-950">{batteryRegion.label}</span>
+                <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-ink-500">Market filter</div>
+                <div className="text-xs font-semibold text-ink-500">
+                  Selected: <span className="text-ink">{batteryRegion.label}</span>
                 </div>
               </div>
               <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-5" role="tablist" aria-label="Battery storage market">
@@ -1143,13 +1143,13 @@ export default function EnergyDeploymentScoreboardPage() {
                     onClick={() => setBatteryRegionKey(region.key)}
                     className={`rounded-lg border px-3 py-2 text-left transition ${
                       batteryRegionKey === region.key
-                        ? 'border-gray-950 bg-gray-950 text-white shadow-sm'
-                        : 'border-gray-200 bg-white text-gray-700 hover:border-emerald-200 hover:text-emerald-700'
+                        ? 'border-ink bg-ink text-white shadow-sm'
+                        : 'border-ink/10 bg-white text-ink-700 hover:border-brand-200 hover:text-brand-700'
                     }`}
                   >
                     <span className="block text-sm font-black">{region.label}</span>
                     <span className={`mt-0.5 block text-[11px] font-semibold ${
-                      batteryRegionKey === region.key ? 'text-emerald-200' : 'text-gray-500'
+                      batteryRegionKey === region.key ? 'text-brand-200' : 'text-ink-500'
                     }`}>
                       2025: {formatGw(getBatteryRegionTotal(region.key, 2025))}
                     </span>
@@ -1170,12 +1170,12 @@ export default function EnergyDeploymentScoreboardPage() {
               </BarChart>
             </ResponsiveContainer>
 
-            <div className="mt-5 grid grid-cols-1 gap-3 border-t border-gray-100 pt-5 sm:grid-cols-3">
+            <div className="mt-5 grid grid-cols-1 gap-3 border-t border-ink/5 pt-5 sm:grid-cols-3">
               {batteryRegionChartData.slice(-3).map(point => (
-                <div key={point.year} className="rounded-lg bg-gray-50 p-4">
-                  <div className="text-xs font-semibold text-gray-500">{batteryRegion.label} {point.year}</div>
-                  <div className="mt-1 text-lg font-bold text-gray-950">{formatGw(point.totalGw)}</div>
-                  <div className="mt-1 text-xs text-gray-500">
+                <div key={point.year} className="rounded-lg bg-paper-200 p-4">
+                  <div className="text-xs font-semibold text-ink-500">{batteryRegion.label} {point.year}</div>
+                  <div className="mt-1 text-lg font-bold text-ink">{formatGw(point.totalGw)}</div>
+                  <div className="mt-1 text-xs text-ink-500">
                     {((point.utilityScaleGw / point.totalGw) * 100).toFixed(0)}% utility-scale
                   </div>
                 </div>
@@ -1183,9 +1183,9 @@ export default function EnergyDeploymentScoreboardPage() {
             </div>
           </div>
 
-          <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm md:p-6">
-            <h2 className="text-lg font-bold text-gray-950">Storage GWh milestones</h2>
-            <p className="mt-1 text-sm text-gray-500">
+          <div className="rounded-card border border-ink/10 bg-paper-100 p-5 shadow-card md:p-6">
+            <h2 className="text-lg font-bold text-ink">Storage GWh milestones</h2>
+            <p className="mt-1 text-sm text-ink-500">
               The clearest public GWh view is annual stationary storage additions plus a current cumulative range.
             </p>
 
@@ -1201,25 +1201,25 @@ export default function EnergyDeploymentScoreboardPage() {
               </ResponsiveContainer>
             </div>
 
-            <div className="mt-5 rounded-lg bg-gray-950 p-4 text-white">
-              <div className="text-xs font-semibold text-emerald-300">Cumulative storage trajectory</div>
+            <div className="mt-5 rounded-lg bg-ink p-4 text-white">
+              <div className="text-xs font-semibold text-brand-300">Cumulative storage trajectory</div>
               <div className="mt-3 space-y-3">
                 {cumulativeBatteryMilestones.map(item => (
                   <div key={item.year}>
                     <div className="flex items-center justify-between gap-3">
-                      <span className="text-sm font-semibold text-gray-200">{item.year}</span>
+                      <span className="text-sm font-semibold text-paper-300">{item.year}</span>
                       <span className="text-sm font-bold">{item.cumulativeGwh ? formatGwh(item.cumulativeGwh) : 'N/A'}</span>
                     </div>
                     <div className="mt-1 h-2 overflow-hidden rounded-full bg-white/10">
                       <div
-                        className="h-full rounded-full bg-emerald-400"
+                        className="h-full rounded-full bg-brand-400"
                         style={{ width: `${item.cumulativeGwh ? Math.min(100, (item.cumulativeGwh / ENERGY_DEPLOYMENT_SNAPSHOT.forecast2035CumulativeGwh) * 100) : 0}%` }}
                       />
                     </div>
                   </div>
                 ))}
               </div>
-              <p className="mt-4 text-xs leading-relaxed text-gray-400">
+              <p className="mt-4 text-xs leading-relaxed text-ink-300">
                 The current deployed base is still small beside annual generation, but it is growing into the
                 flexibility layer that makes higher solar and wind penetration usable.
               </p>
@@ -1227,14 +1227,14 @@ export default function EnergyDeploymentScoreboardPage() {
           </div>
         </section>
 
-        <section className="mt-10 rounded-xl border border-gray-200 bg-white p-5 shadow-sm md:p-6">
+        <section className="mt-10 rounded-card border border-ink/10 bg-paper-100 p-5 shadow-card md:p-6">
           <div className="mb-5 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
             <div>
-              <h2 className="text-lg font-bold text-gray-950">
+              <h2 className="text-lg font-bold text-ink">
                 What charges the batteries?
                 <InfoTooltip content="This is a proxy: it shows each region's electricity generation mix, not metered charging energy for battery storage assets. Actual charging depends on dispatch, co-location, and market rules." />
               </h2>
-              <p className="mt-1 text-sm text-gray-500">
+              <p className="mt-1 text-sm text-ink-500">
                 Pick a region to see the grid mix batteries would meet if charged from the average electricity system.
               </p>
             </div>
@@ -1249,19 +1249,19 @@ export default function EnergyDeploymentScoreboardPage() {
 
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_320px]">
             <StackedShareBar mixKey={mixKey} />
-            <div className="rounded-xl border border-gray-200 bg-gray-50 p-5">
-              <div className="text-sm font-bold text-gray-950">{selectedMix.label}</div>
+            <div className="rounded-xl bg-paper-200 p-5">
+              <div className="text-sm font-bold text-ink">{selectedMix.label}</div>
               <div className="mt-4 grid grid-cols-2 gap-3">
                 <div>
-                  <div className="text-xs font-semibold text-gray-500">Fossil share</div>
-                  <div className="mt-1 text-2xl font-bold text-gray-950">{fossilShare.toFixed(1)}%</div>
+                  <div className="text-xs font-semibold text-ink-500">Fossil share</div>
+                  <div className="mt-1 text-2xl font-bold text-ink">{fossilShare.toFixed(1)}%</div>
                 </div>
                 <div>
-                  <div className="text-xs font-semibold text-gray-500">Low-carbon share</div>
-                  <div className="mt-1 text-2xl font-bold text-emerald-700">{lowCarbonShare.toFixed(1)}%</div>
+                  <div className="text-xs font-semibold text-ink-500">Low-carbon share</div>
+                  <div className="mt-1 text-2xl font-bold text-brand-700">{lowCarbonShare.toFixed(1)}%</div>
                 </div>
               </div>
-              <p className="mt-4 text-xs leading-relaxed text-gray-500">
+              <p className="mt-4 text-xs leading-relaxed text-ink-500">
                 For batteries, the cleanest deployment story is not only installing storage. It is pairing storage
                 with a grid that is adding solar, wind, hydro, nuclear, or other low-carbon supply.
               </p>
@@ -1270,9 +1270,9 @@ export default function EnergyDeploymentScoreboardPage() {
         </section>
 
         <section className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
-          <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm md:p-6">
-            <h2 className="text-lg font-bold text-gray-950">2025 renewable capacity additions</h2>
-            <p className="mt-1 text-sm text-gray-500">
+          <div className="rounded-card border border-ink/10 bg-paper-100 p-5 shadow-card md:p-6">
+            <h2 className="text-lg font-bold text-ink">2025 renewable capacity additions</h2>
+            <p className="mt-1 text-sm text-ink-500">
               Solar dominates new renewable capacity. Battery storage follows as the balancing layer.
             </p>
             <div className="mt-5">
@@ -1290,24 +1290,24 @@ export default function EnergyDeploymentScoreboardPage() {
                 </BarChart>
               </ResponsiveContainer>
             </div>
-            <div className="mt-5 rounded-lg bg-emerald-50/60 p-4 text-sm leading-relaxed text-gray-700">
+            <div className="mt-5 rounded-lg bg-brand-50/60 p-4 text-sm leading-relaxed text-ink-700">
               IRENA reports {ENERGY_DEPLOYMENT_SNAPSHOT.irenaRenewableCapacityAdditionsGw} GW of renewable
               capacity added in 2025, equal to {ENERGY_DEPLOYMENT_SNAPSHOT.irenaRenewablesShareOfExpansionPct}% of total net power-capacity expansion.
             </div>
           </div>
 
-          <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm md:p-6">
-            <h2 className="text-lg font-bold text-gray-950">2025 battery buildout share</h2>
-            <p className="mt-1 text-sm text-gray-500">
+          <div className="rounded-card border border-ink/10 bg-paper-100 p-5 shadow-card md:p-6">
+            <h2 className="text-lg font-bold text-ink">2025 battery buildout share</h2>
+            <p className="mt-1 text-sm text-ink-500">
               New stationary storage power additions by market. The stacked bar adds up to the same global total.
             </p>
-            <div className="mt-5 rounded-xl border border-gray-200 bg-gray-50 p-4">
+            <div className="mt-5 rounded-xl bg-paper-200 p-4">
               <div className="flex flex-wrap items-end justify-between gap-3">
                 <div>
-                  <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-gray-500">Global additions</div>
-                  <div className="mt-1 text-2xl font-black text-gray-950">{formatGw(batteryContributionTotal)}</div>
+                  <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-ink-500">Global additions</div>
+                  <div className="mt-1 text-2xl font-black text-ink">{formatGw(batteryContributionTotal)}</div>
                 </div>
-                <div className="text-right text-xs font-semibold text-gray-500">
+                <div className="text-right text-xs font-semibold text-ink-500">
                   100% of tracked 2025 market additions
                 </div>
               </div>
@@ -1319,7 +1319,7 @@ export default function EnergyDeploymentScoreboardPage() {
                     key={region.key}
                     onClick={() => setBatteryRegionKey(region.key)}
                     title={`${region.label}: ${formatGw(region.additions2025Gw)} (${region.share2025Pct.toFixed(1)}%)`}
-                    className={`relative h-full border-r border-white/80 text-left transition-opacity hover:opacity-85 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 ${
+                    className={`relative h-full border-r border-white/80 text-left transition-opacity hover:opacity-85 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 ${
                       batteryRegionKey === region.key ? 'ring-2 ring-gray-950 ring-offset-2' : ''
                     }`}
                     style={{ width: `${region.share2025Pct}%`, backgroundColor: region.color }}
@@ -1342,18 +1342,18 @@ export default function EnergyDeploymentScoreboardPage() {
                     onClick={() => setBatteryRegionKey(region.key)}
                     className={`rounded-lg border bg-white p-3 text-left transition-colors ${
                       batteryRegionKey === region.key
-                        ? 'border-gray-950 shadow-sm'
-                        : 'border-gray-200 hover:border-emerald-200'
+                        ? 'border-ink shadow-sm'
+                        : 'border-ink/10 hover:border-brand-200'
                     }`}
                   >
                     <div className="flex items-center justify-between gap-3">
                       <span className="inline-flex min-w-0 items-center gap-2">
                         <span className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ backgroundColor: region.color }} />
-                        <span className="truncate text-sm font-bold text-gray-950">{region.label}</span>
+                        <span className="truncate text-sm font-bold text-ink">{region.label}</span>
                       </span>
-                      <span className="shrink-0 text-sm font-black text-gray-950">{region.share2025Pct.toFixed(1)}%</span>
+                      <span className="shrink-0 text-sm font-black text-ink">{region.share2025Pct.toFixed(1)}%</span>
                     </div>
-                    <div className="mt-2 flex items-center justify-between gap-3 text-xs font-semibold text-gray-500">
+                    <div className="mt-2 flex items-center justify-between gap-3 text-xs font-semibold text-ink-500">
                       <span>{formatGw(region.additions2025Gw)}</span>
                       <span>{region.growthSince2023Pct >= 0 ? '+' : ''}{region.growthSince2023Pct.toFixed(0)}% vs 2023</span>
                     </div>
@@ -1363,15 +1363,15 @@ export default function EnergyDeploymentScoreboardPage() {
             </div>
 
             <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-              <div className="rounded-lg bg-emerald-50 p-3">
-                <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-emerald-700">Largest share</div>
-                <div className="mt-1 text-sm font-black text-gray-950">
+              <div className="rounded-lg bg-brand-50 p-3">
+                <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-brand-700">Largest share</div>
+                <div className="mt-1 text-sm font-black text-ink">
                   {largestBatteryContributor.label} · {largestBatteryContributor.share2025Pct.toFixed(1)}%
                 </div>
               </div>
               <div className="rounded-lg bg-sky-50 p-3">
                 <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-sky-700">Fastest buildout</div>
-                <div className="mt-1 text-sm font-black text-gray-950">
+                <div className="mt-1 text-sm font-black text-ink">
                   {fastestBatteryBuildout.label} · +{fastestBatteryBuildout.growthSince2023Pct.toFixed(0)}%
                 </div>
               </div>
@@ -1379,9 +1379,9 @@ export default function EnergyDeploymentScoreboardPage() {
           </div>
         </section>
 
-        <section className="mt-10 rounded-xl border border-gray-200 bg-white p-5 shadow-sm md:p-6">
-          <h2 className="text-lg font-bold text-gray-950">Solar and wind market signal</h2>
-          <p className="mt-1 text-sm text-gray-500">
+        <section className="mt-10 rounded-card border border-ink/10 bg-paper-100 p-5 shadow-card md:p-6">
+          <h2 className="text-lg font-bold text-ink">Solar and wind market signal</h2>
+          <p className="mt-1 text-sm text-ink-500">
             Major-market 2025 additions show where future battery charging demand is likely to cluster.
           </p>
           <div className="mt-5">
