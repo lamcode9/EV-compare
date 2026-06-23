@@ -1,7 +1,9 @@
 import { ImageResponse } from 'next/og'
 import { NextRequest } from 'next/server'
 
-export const runtime = 'edge'
+// Node runtime: next/og bundles Satori + resvg WASM (~1 MB), which exceeds
+// Vercel's 1 MB Edge function limit. Node functions have a far larger cap.
+export const runtime = 'nodejs'
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
