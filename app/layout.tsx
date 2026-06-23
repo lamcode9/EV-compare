@@ -2,8 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Inter, Newsreader } from 'next/font/google'
 import './globals.css'
 import { Providers } from './providers'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
+import SiteShell from '@/components/SiteShell'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Analytics } from '@vercel/analytics/react'
 
@@ -91,9 +90,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} ${newsreader.variable}`} suppressHydrationWarning>
         <Providers>
-          <Header />
-          {children}
-          <Footer />
+          <SiteShell>{children}</SiteShell>
         </Providers>
         <SpeedInsights />
         <Analytics />

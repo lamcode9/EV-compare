@@ -8,8 +8,11 @@
     --foreground: 222.2 84% 4.9%;
   }
 
+  /* Body stays transparent so `/embed/*` widgets blend into host pages.
+     The site's own background comes from SiteShell's `bg-paper` wrapper and
+     each page's `bg-paper` main. */
   body {
-    @apply bg-white text-slate-900;
+    @apply text-slate-900;
   }
 }
 
