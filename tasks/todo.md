@@ -32,10 +32,12 @@ Verify every route with the live nested-border detector — target 0 non-interac
       de-nested method metric pills, calmer brand accent). nested 5→0.
 - [x] `/bess` desk landing + `/ev` hero shell migrated to serif + tokens.
 - [ ] **Deep EV components** (shared, used by /ev, /ev/[id], /ev/compare): `ComparisonTable`,
-      `VehicleSection`, `QuickPickCards`, `StatsGrid`, `BESSHeadToHead` — still gray/emerald.
-- [ ] **BESS calculator pages** (the worst offenders, heavy token debt + nesting):
-      `app/bess/home` (366 old tokens, 142 borders), `commercial`, `grid`, `shared-residential`,
-      `products/[slug]`, `case-studies`, `installers`.
+      `VehicleSection`, `QuickPickCards`, `StatsGrid` — still gray/emerald. (`BESSHeadToHead` done.)
+- [x] **BESS calculator pages** — `home` (adc36a1), `commercial` (13a2a15), `grid` (5c28aa8),
+      `shared-residential` (8db0b1f), all migrated + de-nested (detector 0 non-interactive nested,
+      0 leftover gray/emerald) + serif heroes + plain-language result sentences, pushed to prod.
+      Their ~11 shared analysis components migrated alongside. Added `scripts/ds-token-migrate.pl`.
+      Still pending in this pillar: `products/[slug]`, `case-studies`, `installers`.
 - [ ] Calculators pages (`/calculators/*`), `/insights`, `/about`, `/contact`, misc.
 
 ## Phase 2 + later (keep in view)
