@@ -119,74 +119,74 @@ export default function GridStabilityAnalysis({ country }: Props) {
   }, [storageMwh, dischargeDurationHr, distributedPct, grid])
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-6 mb-8">
-      <h2 className="text-lg font-semibold text-gray-900 mb-1">
+    <div className="bg-paper-100 border border-ink/10 rounded-card p-6 mb-8">
+      <h2 className="text-lg font-semibold text-ink mb-1">
         Grid Stability Analysis{' '}
         <InfoTooltip content="Model how adding X MWh of distributed + utility-scale storage affects grid peak demand, renewable curtailment, frequency stability, and reserve margins. Based on real grid parameters for each SEA country." />
       </h2>
-      <p className="text-sm text-gray-500 mb-6">
+      <p className="text-sm text-ink-500 mb-6">
         See how battery storage strengthens the grid — from peak shaving to frequency regulation.
       </p>
 
       {/* ── Inputs ── */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label className="block text-sm font-medium text-ink-700 mb-1.5">
             Total storage (MWh){' '}
             <InfoTooltip content="Total battery storage capacity added to the grid. Can be a mix of utility-scale and distributed residential/commercial systems." />
           </label>
           <div className="flex items-center gap-2">
             <input type="range" min="50" max="5000" step="50" value={storageMwh}
               onChange={(e) => setStorageMwh(Number(e.target.value))}
-              className="flex-1 accent-emerald-600" />
-            <span className="text-sm font-medium text-gray-900 w-20 text-right">{storageMwh} MWh</span>
+              className="flex-1 accent-brand-600" />
+            <span className="text-sm font-medium text-ink w-20 text-right">{storageMwh} MWh</span>
           </div>
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label className="block text-sm font-medium text-ink-700 mb-1.5">
             Discharge duration (hrs){' '}
             <InfoTooltip content="How many hours the storage can discharge at full power. 2h = frequency regulation, 4h = peak shaving, 8h = renewable firming." />
           </label>
           <div className="flex items-center gap-2">
             <input type="range" min="1" max="8" step="1" value={dischargeDurationHr}
               onChange={(e) => setDischargeDurationHr(Number(e.target.value))}
-              className="flex-1 accent-emerald-600" />
-            <span className="text-sm font-medium text-gray-900 w-12 text-right">{dischargeDurationHr}h</span>
+              className="flex-1 accent-brand-600" />
+            <span className="text-sm font-medium text-ink w-12 text-right">{dischargeDurationHr}h</span>
           </div>
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label className="block text-sm font-medium text-ink-700 mb-1.5">
             Distributed share (%){' '}
             <InfoTooltip content="What percentage of total storage is behind-the-meter (residential/commercial). Higher distributed % = better local resilience during grid outages." />
           </label>
           <div className="flex items-center gap-2">
             <input type="range" min="0" max="100" step="5" value={distributedPct}
               onChange={(e) => setDistributedPct(Number(e.target.value))}
-              className="flex-1 accent-emerald-600" />
-            <span className="text-sm font-medium text-gray-900 w-12 text-right">{distributedPct}%</span>
+              className="flex-1 accent-brand-600" />
+            <span className="text-sm font-medium text-ink w-12 text-right">{distributedPct}%</span>
           </div>
         </div>
       </div>
 
       {/* ── Before/After metrics ── */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-        <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
-          <div className="text-[10px] font-semibold text-emerald-700 uppercase tracking-wide mb-1">Peak shaving</div>
-          <div className="text-xl font-bold text-emerald-900">
+        <div className="bg-brand-50 rounded-card p-4">
+          <div className="text-[10px] font-semibold text-brand-700 uppercase tracking-wide mb-1">Peak shaving</div>
+          <div className="text-xl font-bold text-brand-900">
             {results.peakReductionPct.toFixed(1)}%
           </div>
-          <div className="text-[10px] text-emerald-600">
+          <div className="text-[10px] text-brand-600">
             −{results.peakReductionGw.toFixed(2)} GW off peak
           </div>
-          <div className="mt-2 h-2 bg-gray-200 rounded-full overflow-hidden">
-            <div className="h-full bg-emerald-500 rounded-full transition-all" style={{ width: `${Math.min(100, results.peakReductionPct * 5)}%` }} />
+          <div className="mt-2 h-2 bg-paper-300 rounded-full overflow-hidden">
+            <div className="h-full bg-brand-500 rounded-full transition-all" style={{ width: `${Math.min(100, results.peakReductionPct * 5)}%` }} />
           </div>
         </div>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+        <div className="bg-blue-50 rounded-card p-4">
           <div className="text-[10px] font-semibold text-blue-700 uppercase tracking-wide mb-1">Curtailment</div>
           <div className="flex items-baseline gap-1">
-            <span className="text-sm text-gray-400 line-through">{grid.curtailmentPct}%</span>
+            <span className="text-sm text-ink-400 line-through">{grid.curtailmentPct}%</span>
             <span className="text-xl font-bold text-blue-900">{results.newCurtailmentPct.toFixed(1)}%</span>
           </div>
           <div className="text-[10px] text-blue-600">
@@ -194,10 +194,10 @@ export default function GridStabilityAnalysis({ country }: Props) {
           </div>
         </div>
 
-        <div className="bg-purple-50 border border-purple-200 rounded-xl p-4">
+        <div className="bg-purple-50 rounded-card p-4">
           <div className="text-[10px] font-semibold text-purple-700 uppercase tracking-wide mb-1">Frequency</div>
           <div className="flex items-baseline gap-1">
-            <span className="text-sm text-gray-400 line-through">±{grid.frequencyDeviationMhz}mHz</span>
+            <span className="text-sm text-ink-400 line-through">±{grid.frequencyDeviationMhz}mHz</span>
             <span className="text-xl font-bold text-purple-900">±{results.newFreqDeviation.toFixed(0)}mHz</span>
           </div>
           <div className="text-[10px] text-purple-600">
@@ -205,7 +205,7 @@ export default function GridStabilityAnalysis({ country }: Props) {
           </div>
         </div>
 
-        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+        <div className="bg-amber-50 rounded-card p-4">
           <div className="text-[10px] font-semibold text-amber-700 uppercase tracking-wide mb-1">Resilience</div>
           <div className="text-xl font-bold text-amber-900">
             {results.householdsProtected.toLocaleString()}
@@ -220,7 +220,7 @@ export default function GridStabilityAnalysis({ country }: Props) {
       </div>
 
       {/* ── 24h grid profile chart ── */}
-      <h3 className="text-sm font-semibold text-gray-900 mb-2">
+      <h3 className="text-sm font-semibold text-ink mb-2">
         24-hour grid profile with storage{' '}
         <InfoTooltip content="Simulated daily grid profile: demand curve (red), renewable generation (green), and storage dispatch (blue, negative=charging). Shows how BESS flattens the demand curve and absorbs renewable oversupply." />
       </h3>
@@ -240,13 +240,13 @@ export default function GridStabilityAnalysis({ country }: Props) {
       </ResponsiveContainer>
 
       {/* ── Grid baseline info ── */}
-      <div className="mt-4 grid grid-cols-3 md:grid-cols-6 gap-2 text-xs text-gray-500">
-        <div>Peak demand: <strong className="text-gray-900">{grid.peakDemandGw} GW</strong></div>
-        <div>Renewable: <strong className="text-gray-900">{grid.installedRenewableGw} GW</strong></div>
-        <div>RE share: <strong className="text-gray-900">{grid.renewablePct}%</strong></div>
-        <div>Curtailment: <strong className="text-gray-900">{grid.curtailmentPct}%</strong></div>
-        <div>Freq. dev: <strong className="text-gray-900">±{grid.frequencyDeviationMhz}mHz</strong></div>
-        <div>Reserve: <strong className="text-gray-900">{grid.reserveMarginPct}%</strong></div>
+      <div className="mt-4 grid grid-cols-3 md:grid-cols-6 gap-2 text-xs text-ink-500">
+        <div>Peak demand: <strong className="text-ink">{grid.peakDemandGw} GW</strong></div>
+        <div>Renewable: <strong className="text-ink">{grid.installedRenewableGw} GW</strong></div>
+        <div>RE share: <strong className="text-ink">{grid.renewablePct}%</strong></div>
+        <div>Curtailment: <strong className="text-ink">{grid.curtailmentPct}%</strong></div>
+        <div>Freq. dev: <strong className="text-ink">±{grid.frequencyDeviationMhz}mHz</strong></div>
+        <div>Reserve: <strong className="text-ink">{grid.reserveMarginPct}%</strong></div>
       </div>
     </div>
   )

@@ -79,12 +79,12 @@ export default function BESSDeploymentMap({ country }: Props) {
   const maxMwh = Math.max(...DEPLOYMENT.map((d) => d.installedMwh + d.plannedMwh))
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-6 mb-8">
-      <h2 className="text-lg font-semibold text-gray-900 mb-1">
+    <div className="bg-paper-100 border border-ink/10 rounded-card p-6 mb-8">
+      <h2 className="text-lg font-semibold text-ink mb-1">
         SEA BESS Deployment Map{' '}
         <InfoTooltip content="Interactive map showing installed and planned grid-scale battery storage capacity across Southeast Asia. Hover over a country to see its details. Data reflects announced projects as of early 2025." />
       </h2>
-      <p className="text-sm text-gray-500 mb-6">
+      <p className="text-sm text-ink-500 mb-6">
         {(TOTAL_INSTALLED / 1000).toFixed(1)} GWh installed · {(TOTAL_PLANNED / 1000).toFixed(1)} GWh planned across 6 countries.
       </p>
 
@@ -153,62 +153,62 @@ export default function BESSDeploymentMap({ country }: Props) {
         {/* ── Detail panel ── */}
         <div className="space-y-4">
           {/* Active country card */}
-          <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
-            <div className="text-lg font-bold text-emerald-900 mb-2">
+          <div className="bg-brand-50 rounded-card p-4">
+            <div className="text-lg font-bold text-brand-900 mb-2">
               {activeData.flag} {activeData.name}
             </div>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
-                <span className="text-gray-600">Installed</span>
-                <span className="font-semibold text-emerald-800">{activeData.installedMwh.toLocaleString()} MWh</span>
+                <span className="text-ink-600">Installed</span>
+                <span className="font-semibold text-brand-800">{activeData.installedMwh.toLocaleString()} MWh</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">Planned</span>
+                <span className="text-ink-600">Planned</span>
                 <span className="font-semibold text-blue-700">{activeData.plannedMwh.toLocaleString()} MWh</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">Projects</span>
-                <span className="font-semibold text-gray-900">{activeData.projects}</span>
+                <span className="text-ink-600">Projects</span>
+                <span className="font-semibold text-ink">{activeData.projects}</span>
               </div>
               {/* Capacity bar */}
               <div className="mt-2">
-                <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
+                <div className="h-3 bg-paper-300 rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-emerald-500 rounded-full transition-all duration-300"
+                    className="h-full bg-brand-500 rounded-full transition-all duration-300"
                     style={{ width: `${(activeData.installedMwh / (activeData.installedMwh + activeData.plannedMwh)) * 100}%` }}
                   />
                 </div>
-                <div className="flex justify-between text-[10px] text-gray-500 mt-1">
+                <div className="flex justify-between text-[10px] text-ink-500 mt-1">
                   <span>Installed {Math.round((activeData.installedMwh / (activeData.installedMwh + activeData.plannedMwh)) * 100)}%</span>
                   <span>Planned {Math.round((activeData.plannedMwh / (activeData.installedMwh + activeData.plannedMwh)) * 100)}%</span>
                 </div>
               </div>
             </div>
-            <div className="mt-3 text-xs text-emerald-700 bg-emerald-100 rounded-lg px-3 py-2">
+            <div className="mt-3 text-xs text-brand-700 bg-brand-100 rounded-lg px-3 py-2">
               💡 {activeData.highlight}
             </div>
           </div>
 
           {/* All countries ranked */}
-          <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
-            <div className="px-4 py-2.5 bg-gray-50 border-b border-gray-100 text-xs font-semibold text-gray-700">
+          <div className="bg-paper-100 rounded-card overflow-hidden">
+            <div className="px-4 py-2.5 bg-paper-200 border-b border-ink/5 text-xs font-semibold text-ink-700">
               Capacity ranking
             </div>
-            <div className="divide-y divide-gray-100">
+            <div className="divide-y divide-ink/5">
               {[...DEPLOYMENT]
                 .sort((a, b) => b.installedMwh + b.plannedMwh - (a.installedMwh + a.plannedMwh))
                 .map((dep, i) => (
                   <div
                     key={dep.code}
-                    className={`px-4 py-2 flex items-center gap-3 text-xs cursor-pointer hover:bg-gray-50 transition-colors ${
-                      dep.code === active ? 'bg-emerald-50' : ''
+                    className={`px-4 py-2 flex items-center gap-3 text-xs cursor-pointer hover:bg-paper-200 transition-colors ${
+                      dep.code === active ? 'bg-brand-50' : ''
                     }`}
                     onMouseEnter={() => setHovered(dep.code)}
                     onMouseLeave={() => setHovered(null)}
                   >
-                    <span className="text-gray-400 font-mono w-4">#{i + 1}</span>
-                    <span className="font-medium text-gray-900">{dep.flag} {dep.name}</span>
-                    <span className="ml-auto tabular-nums text-gray-600">
+                    <span className="text-ink-400 font-mono w-4">#{i + 1}</span>
+                    <span className="font-medium text-ink">{dep.flag} {dep.name}</span>
+                    <span className="ml-auto tabular-nums text-ink-600">
                       {((dep.installedMwh + dep.plannedMwh) / 1000).toFixed(1)} GWh
                     </span>
                   </div>

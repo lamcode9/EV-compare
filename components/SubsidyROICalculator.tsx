@@ -137,19 +137,19 @@ export default function SubsidyROICalculator({ country }: Props) {
   }, [country, effectiveSubsidy, effectiveBudget, systemLifeYears, cyclesPerYear])
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-6 mb-8">
-      <h2 className="text-lg font-semibold text-gray-900 mb-1">
+    <div className="bg-paper-100 border border-ink/10 rounded-card p-6 mb-8">
+      <h2 className="text-lg font-semibold text-ink mb-1">
         Subsidy ROI Calculator{' '}
         <InfoTooltip content="Estimate the return on public investment: for a given subsidy budget, how many installations, CO₂ reductions, and grid savings does the government achieve? Key metric: cost per tonne CO₂ avoided." />
       </h2>
-      <p className="text-sm text-gray-500 mb-6">
+      <p className="text-sm text-ink-500 mb-6">
         Model public spending efficiency: how much CO₂ reduction and grid relief per {CURRENCY[country]} of subsidy?
       </p>
 
       {/* ── Inputs ── */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label className="block text-sm font-medium text-ink-700 mb-1.5">
             Subsidy per kWh{' '}
             <InfoTooltip content="Amount of government grant per kWh of installed BESS capacity. Higher subsidy = more installations triggered per budget." />
           </label>
@@ -158,13 +158,13 @@ export default function SubsidyROICalculator({ country }: Props) {
               type="range" min={subsidyMin} max={subsidyMax} step={subsidyStep}
               value={effectiveSubsidy}
               onChange={(e) => setSubsidyPerKwh(Number(e.target.value))}
-              className="flex-1 accent-emerald-600"
+              className="flex-1 accent-brand-600"
             />
-            <span className="text-sm font-medium text-gray-900 w-24 text-right">{fmt(effectiveSubsidy, country)}/kWh</span>
+            <span className="text-sm font-medium text-ink w-24 text-right">{fmt(effectiveSubsidy, country)}/kWh</span>
           </div>
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label className="block text-sm font-medium text-ink-700 mb-1.5">
             Total budget{' '}
             <InfoTooltip content="Total public subsidy budget allocated for BESS incentive programme." />
           </label>
@@ -173,65 +173,65 @@ export default function SubsidyROICalculator({ country }: Props) {
               type="range" min={budgetMin} max={budgetMax} step={budgetStep}
               value={effectiveBudget}
               onChange={(e) => setBudgetTotal(Number(e.target.value))}
-              className="flex-1 accent-emerald-600"
+              className="flex-1 accent-brand-600"
             />
-            <span className="text-sm font-medium text-gray-900 w-24 text-right">{fmtShort(effectiveBudget, country)}</span>
+            <span className="text-sm font-medium text-ink w-24 text-right">{fmtShort(effectiveBudget, country)}</span>
           </div>
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">System life (years)</label>
+          <label className="block text-sm font-medium text-ink-700 mb-1.5">System life (years)</label>
           <input
             type="number" value={systemLifeYears}
             onChange={(e) => setSystemLifeYears(Math.max(5, Math.min(25, Number(e.target.value))))}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            className="w-full px-3 py-2 border border-ink/15 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">Cycles per year</label>
+          <label className="block text-sm font-medium text-ink-700 mb-1.5">Cycles per year</label>
           <input
             type="number" value={cyclesPerYear}
             onChange={(e) => setCyclesPerYear(Math.max(100, Math.min(500, Number(e.target.value))))}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            className="w-full px-3 py-2 border border-ink/15 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
           />
         </div>
       </div>
 
       {/* ── Results cards ── */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-6">
-        <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
-          <div className="text-[10px] font-semibold text-emerald-700 uppercase tracking-wide mb-1">Installations</div>
-          <div className="text-lg font-bold text-emerald-900">{results.installationsTriggered.toLocaleString()}</div>
-          <div className="text-[10px] text-emerald-600">× 100 kWh units</div>
+        <div className="bg-brand-50 rounded-card p-4">
+          <div className="text-[10px] font-semibold text-brand-700 uppercase tracking-wide mb-1">Installations</div>
+          <div className="text-lg font-bold text-brand-900">{results.installationsTriggered.toLocaleString()}</div>
+          <div className="text-[10px] text-brand-600">× 100 kWh units</div>
         </div>
-        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+        <div className="bg-blue-50 rounded-card p-4">
           <div className="text-[10px] font-semibold text-blue-700 uppercase tracking-wide mb-1">BESS deployed</div>
           <div className="text-lg font-bold text-blue-900">{results.totalMwhSubsidized.toFixed(1)} MWh</div>
           <div className="text-[10px] text-blue-600">{(results.totalMwhSubsidized / 1000).toFixed(2)} GWh</div>
         </div>
-        <div className="bg-purple-50 border border-purple-200 rounded-xl p-4">
+        <div className="bg-purple-50 rounded-card p-4">
           <div className="text-[10px] font-semibold text-purple-700 uppercase tracking-wide mb-1">CO₂ avoided</div>
           <div className="text-lg font-bold text-purple-900">{(results.co2TonnesAvoided / 1000).toFixed(1)} kt</div>
           <div className="text-[10px] text-purple-600">Over {systemLifeYears} years</div>
         </div>
-        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+        <div className="bg-amber-50 rounded-card p-4">
           <div className="text-[10px] font-semibold text-amber-700 uppercase tracking-wide mb-1">Cost per t CO₂</div>
           <div className="text-lg font-bold text-amber-900">{fmtShort(results.costPerTonneCO2, country)}</div>
           <div className="text-[10px] text-amber-600">Subsidy efficiency</div>
         </div>
-        <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
-          <div className="text-[10px] font-semibold text-gray-700 uppercase tracking-wide mb-1">Capex mobilised</div>
-          <div className="text-lg font-bold text-gray-900">{fmtShort(results.totalCapexMobilized, country)}</div>
-          <div className="text-[10px] text-gray-600">{results.leverageRatio.toFixed(1)}× leverage</div>
+        <div className="bg-paper-200 rounded-card p-4">
+          <div className="text-[10px] font-semibold text-ink-700 uppercase tracking-wide mb-1">Capex mobilised</div>
+          <div className="text-lg font-bold text-ink">{fmtShort(results.totalCapexMobilized, country)}</div>
+          <div className="text-[10px] text-ink-600">{results.leverageRatio.toFixed(1)}× leverage</div>
         </div>
-        <div className="bg-gray-50 border border-gray-200 rounded-xl p-4">
-          <div className="text-[10px] font-semibold text-gray-700 uppercase tracking-wide mb-1">Grid savings</div>
-          <div className="text-lg font-bold text-gray-900">{fmtShort(results.gridSavings, country)}</div>
-          <div className="text-[10px] text-gray-600">Avoided peak costs</div>
+        <div className="bg-paper-200 rounded-card p-4">
+          <div className="text-[10px] font-semibold text-ink-700 uppercase tracking-wide mb-1">Grid savings</div>
+          <div className="text-lg font-bold text-ink">{fmtShort(results.gridSavings, country)}</div>
+          <div className="text-[10px] text-ink-600">Avoided peak costs</div>
         </div>
       </div>
 
       {/* ── Annual chart ── */}
-      <h3 className="text-sm font-semibold text-gray-900 mb-2">Annual CO₂ reduction vs grid savings</h3>
+      <h3 className="text-sm font-semibold text-ink mb-2">Annual CO₂ reduction vs grid savings</h3>
       <ResponsiveContainer width="100%" height={280}>
         <BarChart data={results.annualData}>
           <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />

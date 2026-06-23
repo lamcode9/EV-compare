@@ -131,12 +131,12 @@ export default function PolicyImpactSimulator({ country }: Props) {
   }, [country, fitRate, subsidyPct, netMetering, fastPermitting, taxBreak])
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-6 mb-8">
-      <h2 className="text-lg font-semibold text-gray-900 mb-1">
+    <div className="bg-paper-100 border border-ink/10 rounded-card p-6 mb-8">
+      <h2 className="text-lg font-semibold text-ink mb-1">
         Policy Impact Simulator{' '}
         <InfoTooltip content="Toggle policy levers to see how different incentive combinations could accelerate BESS adoption in your country. The model estimates new capacity additions, CO₂ reductions, and peak demand shaving over a 10-year horizon." />
       </h2>
-      <p className="text-sm text-gray-500 mb-6">
+      <p className="text-sm text-ink-500 mb-6">
         Adjust policy levers to project BESS adoption, grid load reduction, and CO₂ impact over 10 years.
       </p>
 
@@ -144,7 +144,7 @@ export default function PolicyImpactSimulator({ country }: Props) {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-6">
         {/* FiT rate */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label className="block text-sm font-medium text-ink-700 mb-1.5">
             Feed-in tariff ($/MWh){' '}
             <InfoTooltip content="Price paid to BESS operators for dispatching stored energy back to the grid. Higher FiT = stronger revenue incentive = faster adoption." />
           </label>
@@ -152,15 +152,15 @@ export default function PolicyImpactSimulator({ country }: Props) {
             <input
               type="range" min="0" max="120" step="5" value={fitRate}
               onChange={(e) => setFitRate(Number(e.target.value))}
-              className="flex-1 accent-emerald-600"
+              className="flex-1 accent-brand-600"
             />
-            <span className="text-sm font-medium text-gray-900 w-16 text-right">${fitRate}/MWh</span>
+            <span className="text-sm font-medium text-ink w-16 text-right">${fitRate}/MWh</span>
           </div>
         </div>
 
         {/* Subsidy % */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label className="block text-sm font-medium text-ink-700 mb-1.5">
             Capex subsidy (%){' '}
             <InfoTooltip content="Percentage of upfront capital cost covered by government grants. Singapore's ESP offers up to 50%. Higher subsidy = lower barrier to entry for developers." />
           </label>
@@ -168,15 +168,15 @@ export default function PolicyImpactSimulator({ country }: Props) {
             <input
               type="range" min="0" max="60" step="5" value={subsidyPct}
               onChange={(e) => setSubsidyPct(Number(e.target.value))}
-              className="flex-1 accent-emerald-600"
+              className="flex-1 accent-brand-600"
             />
-            <span className="text-sm font-medium text-gray-900 w-12 text-right">{subsidyPct}%</span>
+            <span className="text-sm font-medium text-ink w-12 text-right">{subsidyPct}%</span>
           </div>
         </div>
 
         {/* Net metering */}
         <div className="flex flex-col gap-2">
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-ink-700">
             Net metering{' '}
             <InfoTooltip content="Allow BESS operators to offset consumption with stored solar/wind exports. Reduces payback period and encourages hybrid solar+storage projects." />
           </label>
@@ -184,7 +184,7 @@ export default function PolicyImpactSimulator({ country }: Props) {
             <button
               onClick={() => setNetMetering(true)}
               className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-colors ${
-                netMetering ? 'bg-emerald-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                netMetering ? 'bg-brand-600 text-white' : 'bg-paper-200 text-ink-600 hover:bg-paper-300'
               }`}
             >
               Enabled
@@ -192,7 +192,7 @@ export default function PolicyImpactSimulator({ country }: Props) {
             <button
               onClick={() => setNetMetering(false)}
               className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-colors ${
-                !netMetering ? 'bg-gray-800 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                !netMetering ? 'bg-ink text-white' : 'bg-paper-200 text-ink-600 hover:bg-paper-300'
               }`}
             >
               Disabled
@@ -207,9 +207,9 @@ export default function PolicyImpactSimulator({ country }: Props) {
             id="fastPermit"
             checked={fastPermitting}
             onChange={() => setFastPermitting(!fastPermitting)}
-            className="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+            className="rounded border-ink/15 text-brand-600 focus:ring-brand-500"
           />
-          <label htmlFor="fastPermit" className="text-sm text-gray-700">
+          <label htmlFor="fastPermit" className="text-sm text-ink-700">
             Fast-track permitting{' '}
             <InfoTooltip content="Streamlined approval process (< 6 months) for grid-connected BESS projects. Reduces project delays and developer uncertainty." />
           </label>
@@ -222,9 +222,9 @@ export default function PolicyImpactSimulator({ country }: Props) {
             id="taxBreak"
             checked={taxBreak}
             onChange={() => setTaxBreak(!taxBreak)}
-            className="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+            className="rounded border-ink/15 text-brand-600 focus:ring-brand-500"
           />
-          <label htmlFor="taxBreak" className="text-sm text-gray-700">
+          <label htmlFor="taxBreak" className="text-sm text-ink-700">
             Tax incentive (CIT exemption){' '}
             <InfoTooltip content="Corporate income tax exemption on BESS investment for 5-10 years. Common in Malaysia (Pioneer Status) and Thailand (BOI promotion)." />
           </label>
@@ -233,16 +233,16 @@ export default function PolicyImpactSimulator({ country }: Props) {
 
       {/* ── Results summary cards ── */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-        <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
-          <div className="text-xs font-semibold text-emerald-700 uppercase tracking-wide mb-1">New capacity (Y10)</div>
-          <div className="text-xl font-bold text-emerald-900">
+        <div className="bg-brand-50 rounded-card p-4">
+          <div className="text-xs font-semibold text-brand-700 uppercase tracking-wide mb-1">New capacity (Y10)</div>
+          <div className="text-xl font-bold text-brand-900">
             {(results.yr10.cumulativeCapacity / 1000).toFixed(1)} GWh
           </div>
-          <div className="text-xs text-emerald-600 mt-0.5">
+          <div className="text-xs text-brand-600 mt-0.5">
             {results.multiplier.toFixed(1)}× baseline rate
           </div>
         </div>
-        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+        <div className="bg-blue-50 rounded-card p-4">
           <div className="text-xs font-semibold text-blue-700 uppercase tracking-wide mb-1">Peak demand cut</div>
           <div className="text-xl font-bold text-blue-900">
             {results.yr10.peakReduction.toFixed(1)} GW
@@ -251,7 +251,7 @@ export default function PolicyImpactSimulator({ country }: Props) {
             {results.gridLoadReductionPct.toFixed(1)}% of national peak
           </div>
         </div>
-        <div className="bg-purple-50 border border-purple-200 rounded-xl p-4">
+        <div className="bg-purple-50 rounded-card p-4">
           <div className="text-xs font-semibold text-purple-700 uppercase tracking-wide mb-1">CO₂ avoided (10 yr)</div>
           <div className="text-xl font-bold text-purple-900">
             {(results.yr10.co2Avoided / 1000).toFixed(1)} kt
@@ -260,7 +260,7 @@ export default function PolicyImpactSimulator({ country }: Props) {
             Cumulative GHG reduction
           </div>
         </div>
-        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+        <div className="bg-amber-50 rounded-card p-4">
           <div className="text-xs font-semibold text-amber-700 uppercase tracking-wide mb-1">Year 10 annual</div>
           <div className="text-xl font-bold text-amber-900">
             {results.years[9].newCapacity.toLocaleString()} MWh
@@ -274,7 +274,7 @@ export default function PolicyImpactSimulator({ country }: Props) {
       {/* ── 10-year chart ── */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div>
-          <h3 className="text-sm font-semibold text-gray-900 mb-2">Cumulative BESS capacity</h3>
+          <h3 className="text-sm font-semibold text-ink mb-2">Cumulative BESS capacity</h3>
           <ResponsiveContainer width="100%" height={280}>
             <BarChart data={results.years}>
               <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
@@ -288,7 +288,7 @@ export default function PolicyImpactSimulator({ country }: Props) {
           </ResponsiveContainer>
         </div>
         <div>
-          <h3 className="text-sm font-semibold text-gray-900 mb-2">CO₂ avoided &amp; peak shaving</h3>
+          <h3 className="text-sm font-semibold text-ink mb-2">CO₂ avoided &amp; peak shaving</h3>
           <ResponsiveContainer width="100%" height={280}>
             <LineChart data={results.years}>
               <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
