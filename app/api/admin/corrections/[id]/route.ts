@@ -3,9 +3,10 @@ import { prisma } from '@/lib/prisma'
 
 export async function PATCH(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params
     const { status } = await request.json()
 
     if (!['approved', 'rejected'].includes(status)) {
@@ -13,7 +14,7 @@ export async function PATCH(
     }
 
     const correction = await prisma.correction.update({
-      where: { id: params.id },
+      where: { id },
       data: {
         status,
         reviewedAt: new Date(),

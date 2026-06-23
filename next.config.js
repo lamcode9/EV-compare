@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const isDev = process.env.NODE_ENV !== 'production'
+
 const nextConfig = {
   images: {
     remotePatterns: [
@@ -13,7 +15,7 @@ const nextConfig = {
     ],
   },
   experimental: {
-    // Tree-shake recharts barrel exports — reduces client bundle ~30-40 kB
+    // Tree-shake selected package barrel exports.
     optimizePackageImports: ['date-fns'],
   },
   webpack: (config, { isServer }) => {
@@ -28,6 +30,15 @@ const nextConfig = {
   },
   async headers() {
     return [
+      ...(isDev
+        ? [
+            {
+              // Keep local reviews honest after UI copy changes.
+              source: '/:path*',
+              headers: [{ key: 'Clear-Site-Data', value: '"cache"' }],
+            },
+          ]
+        : []),
       {
         // Security headers for all routes except embeds
         source: '/((?!embed).*)',
@@ -50,13 +61,6 @@ const nextConfig = {
         ],
       },
       {
-        // Long cache for static assets (hashed filenames)
-        source: '/_next/static/:path*',
-        headers: [
-          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
-        ],
-      },
-      {
         // Cache images
         source: '/images/:path*',
         headers: [
@@ -68,4 +72,3 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
-

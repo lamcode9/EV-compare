@@ -4,16 +4,17 @@ import { prisma } from '@/lib/prisma'
 export const dynamic = 'force-dynamic'
 
 interface RouteParams {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 // GET /api/vehicles/[id]/price-history
 export async function GET(request: NextRequest, { params }: RouteParams) {
   try {
+    const { id } = await params
     const vehicle = await prisma.vehicle.findUnique({
-      where: { id: params.id },
+      where: { id },
       select: {
         id: true,
         name: true,

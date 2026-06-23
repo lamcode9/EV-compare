@@ -28,7 +28,7 @@ type ParamDef = {
  */
 export function useURLState(params: ParamDef[], debounceMs = 300) {
   const hasHydrated = useRef(false)
-  const debounceTimer = useRef<NodeJS.Timeout>()
+  const debounceTimer = useRef<NodeJS.Timeout | null>(null)
 
   // On mount — read URL and hydrate state
   useEffect(() => {
