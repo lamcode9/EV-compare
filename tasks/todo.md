@@ -22,11 +22,23 @@ foundation extracted from a real page, then propagated site-wide in later phases
 - [x] `npm run build` succeeds; `/state-of-battery-power` prerenders as static
 - [x] Visual check desktop + mobile (375px); fixed JSX `{' '}` spacing bugs
 
-## Next (await user decision)
-- [ ] Promote to `/` (homepage centerpiece) + add a nav entry in `components/Header.tsx`.
-- [ ] Propagate primitives across existing pages (home, /ev, /bess, /scoreboard) — replace
-      ad-hoc `max-w-*`, inline hex, per-page card styles. This is the bulk of the "fix the
-      messy containers/borders" work.
-- [ ] Phase 2 — data refresh: battery $/kWh cost curve, global EV-over-time, China share,
+## Propagation across the site — IN PROGRESS
+Design directive (user, reaffirmed): "no container in container in container with borderlines."
+Verify every route with the live nested-border detector — target 0 non-interactive nested borders.
+- [x] Promote story to `/` (homepage centerpiece) + nav entry in `components/Header.tsx`.
+- [x] Header + Footer reskinned onto tokens.
+- [x] Scoreboard pillar (hub, /ev, /bess, /energy) — token migration + de-nested (34→0 on energy).
+- [x] Homepage reconciled onto the editorial system (serif headlines, ink/paper tokens,
+      de-nested method metric pills, calmer brand accent). nested 5→0.
+- [x] `/bess` desk landing + `/ev` hero shell migrated to serif + tokens.
+- [ ] **Deep EV components** (shared, used by /ev, /ev/[id], /ev/compare): `ComparisonTable`,
+      `VehicleSection`, `QuickPickCards`, `StatsGrid`, `BESSHeadToHead` — still gray/emerald.
+- [ ] **BESS calculator pages** (the worst offenders, heavy token debt + nesting):
+      `app/bess/home` (366 old tokens, 142 borders), `commercial`, `grid`, `shared-residential`,
+      `products/[slug]`, `case-studies`, `installers`.
+- [ ] Calculators pages (`/calculators/*`), `/insights`, `/about`, `/contact`, misc.
+
+## Phase 2 + later (keep in view)
+- [ ] Data refresh: battery $/kWh cost curve, global EV-over-time, China share,
       un-bury SEA battery deployment from "Rest of World".
 - [ ] Later phases — thought leadership / "where it's going" third act (space solar, etc.).

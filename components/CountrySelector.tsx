@@ -19,7 +19,7 @@ export default function CountrySelector() {
 
   return (
     <div className="flex items-center gap-2">
-      <label htmlFor="country-select" className="text-sm font-medium text-gray-700">
+      <label htmlFor="country-select" className="text-sm font-medium text-ink-700">
         Country:
       </label>
       <Select.Root 
@@ -28,7 +28,7 @@ export default function CountrySelector() {
       >
         <Select.Trigger
           id="country-select"
-          className="inline-flex items-center justify-center rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-0 min-w-[180px]"
+          className="inline-flex items-center justify-center rounded-lg bg-paper-200 px-4 py-2 text-sm font-medium text-ink-700 hover:bg-paper-300 focus:outline-none focus:ring-0 min-w-[180px]"
           aria-label="Select country"
         >
           <Select.Value placeholder="Select a country" />
@@ -42,14 +42,14 @@ export default function CountrySelector() {
           <Select.Content
             position="popper"
             sideOffset={8}
-            className="overflow-hidden bg-white rounded-lg shadow-lg border border-gray-200 z-50 min-w-[180px]"
+            className="overflow-hidden bg-paper-100 rounded-lg shadow-lg border border-ink/10 z-50 min-w-[180px]"
           >
             <Select.Viewport className="p-1">
               {countries.map((country) => (
                 <Select.Item
                   key={country.value}
                   value={country.value}
-                  className="relative flex items-center px-4 py-2 text-sm text-gray-700 rounded-md hover:bg-ev-primary/10 focus:bg-ev-primary/10 focus:outline-none cursor-pointer"
+                  className="relative flex items-center px-4 py-2 text-sm text-ink-700 rounded-md hover:bg-ev-primary/10 focus:bg-ev-primary/10 focus:outline-none cursor-pointer"
                 >
                   <Select.ItemText>
                     {country.flag} {country.label}

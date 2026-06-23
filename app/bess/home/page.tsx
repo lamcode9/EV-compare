@@ -118,9 +118,9 @@ const EnergyFlowChart = memo(function EnergyFlowChart({ energyFlow, country }: {
   }, [energyFlow.hourly, showGridExport])
 
   const COLORS = {
-    Solar: '#34d399', // emerald-400 (lighter green)
+    Solar: '#34d399', // brand-400 (lighter green)
     'Battery Charge': '#0891b2', // cyan-600
-    'Battery Usage': '#059669', // emerald-600
+    'Battery Usage': '#059669', // brand-600
     'Battery Level': '#06b6d4', // cyan-500
     Grid: '#ef4444', // red-500
     'Grid Export': '#f59e0b', // amber-500
@@ -180,22 +180,22 @@ const EnergyFlowChart = memo(function EnergyFlowChart({ energyFlow, country }: {
 
               return (
                 <div
-                  className="border border-gray-200 rounded-lg overflow-hidden bg-white/70 backdrop-blur-sm shadow-lg max-w-xs"
+                  className="border border-ink/10 rounded-lg overflow-hidden bg-paper-100/70 backdrop-blur-sm shadow-lg max-w-xs"
                   style={{
                     backgroundColor: 'rgba(255, 255, 255, 0.7)',
                     backdropFilter: 'blur(8px)',
                   }}
                 >
-                  <div className="px-3 py-2 bg-gray-50/80 border-b border-gray-200">
-                    <div className="text-xs font-semibold text-gray-700">{label}</div>
+                  <div className="px-3 py-2 bg-paper-200/80 border-b border-ink/10">
+                    <div className="text-xs font-semibold text-ink-700">{label}</div>
                   </div>
 
                   {/* Power Generation Section */}
                   {generationItems.filter((item: any) => (item.name || item.dataKey) !== 'Grid Export').length > 0 && (
                     <div className="p-3">
                       <div className="flex items-center justify-between mb-2">
-                        <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Power Generation</div>
-                        <div className="text-xs font-bold text-emerald-600 tabular-nums ml-8">
+                        <div className="text-xs font-semibold text-ink-500 uppercase tracking-wider">Power Generation</div>
+                        <div className="text-xs font-bold text-brand-600 tabular-nums ml-8">
                           {generationItems
                             .filter((item: any) => (item.name || item.dataKey) !== 'Grid Export')
                             .reduce((sum, item) => sum + Math.abs(Number(item.value) || 0), 0)
@@ -216,9 +216,9 @@ const EnergyFlowChart = memo(function EnergyFlowChart({ energyFlow, country }: {
                                     className="w-2.5 h-2.5 rounded-sm"
                                     style={{ backgroundColor: item.color || COLORS[name as keyof typeof COLORS] }}
                                   ></div>
-                                  <span className="text-xs text-gray-700">{displayName}</span>
+                                  <span className="text-xs text-ink-700">{displayName}</span>
                                 </div>
-                                <span className="text-xs font-semibold text-gray-900 tabular-nums">
+                                <span className="text-xs font-semibold text-ink tabular-nums">
                                   {value.toFixed(1)} kWh
                                 </span>
                               </div>
@@ -230,14 +230,14 @@ const EnergyFlowChart = memo(function EnergyFlowChart({ energyFlow, country }: {
 
                   {/* Separator line if both sections exist */}
                   {generationItems.length > 0 && consumptionItems.length > 0 && (
-                    <div className="border-t border-gray-100 mx-3 opacity-50"></div>
+                    <div className="border-t border-ink/5 mx-3 opacity-50"></div>
                   )}
 
                   {/* Power Consumption Section */}
                   {consumptionItems.length > 0 && (
                     <div className="p-3">
                       <div className="flex items-center justify-between mb-2">
-                        <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Power Consumption</div>
+                        <div className="text-xs font-semibold text-ink-500 uppercase tracking-wider">Power Consumption</div>
                         <div className="text-xs font-bold text-red-600 tabular-nums ml-8">
                           {consumptionItems.reduce((sum, item) => sum + Math.abs(Number(item.value) || 0), 0).toFixed(1)} kWh
                         </div>
@@ -254,9 +254,9 @@ const EnergyFlowChart = memo(function EnergyFlowChart({ energyFlow, country }: {
                                   className="w-2.5 h-2.5 rounded-sm opacity-60"
                                   style={{ backgroundColor: item.color || COLORS[name as keyof typeof COLORS] }}
                                 ></div>
-                                <span className="text-xs text-gray-700">{displayName}</span>
+                                <span className="text-xs text-ink-700">{displayName}</span>
                               </div>
-                              <span className="text-xs font-semibold text-gray-900 tabular-nums">
+                              <span className="text-xs font-semibold text-ink tabular-nums">
                                 {value.toFixed(1)} kWh
                               </span>
                             </div>
@@ -268,9 +268,9 @@ const EnergyFlowChart = memo(function EnergyFlowChart({ energyFlow, country }: {
 
                   {/* Grid Export Section */}
                   {generationItems.some((item: any) => (item.name || item.dataKey) === 'Grid Export') && (
-                    <div className="p-3 border-t border-gray-100">
+                    <div className="p-3 border-t border-ink/5">
                       <div className="flex items-center justify-between mb-2">
-                        <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Grid Export</div>
+                        <div className="text-xs font-semibold text-ink-500 uppercase tracking-wider">Grid Export</div>
                         <div className="text-xs font-bold text-amber-600 tabular-nums ml-8">
                           {generationItems
                             .filter((item: any) => (item.name || item.dataKey) === 'Grid Export')
@@ -290,9 +290,9 @@ const EnergyFlowChart = memo(function EnergyFlowChart({ energyFlow, country }: {
                                     className="w-2.5 h-2.5 rounded-sm"
                                     style={{ backgroundColor: item.color || COLORS['Grid Export'] }}
                                   ></div>
-                                  <span className="text-xs text-gray-700">Excess Export</span>
+                                  <span className="text-xs text-ink-700">Excess Export</span>
                                 </div>
-                                <span className="text-xs font-semibold text-gray-900 tabular-nums">
+                                <span className="text-xs font-semibold text-ink tabular-nums">
                                   {value.toFixed(1)} kWh
                                 </span>
                               </div>
@@ -303,14 +303,14 @@ const EnergyFlowChart = memo(function EnergyFlowChart({ energyFlow, country }: {
                   )}
 
                   {/* Battery Level Section - Always at bottom */}
-                  <div className="p-3 border-t border-gray-100 bg-cyan-50/50">
+                  <div className="p-3 border-t border-ink/5 bg-cyan-50/50">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <div
                           className="w-2.5 h-2.5 rounded-sm"
                           style={{ backgroundColor: COLORS['Battery Level'] }}
                         ></div>
-                        <span className="text-xs font-semibold text-gray-700">Battery Level</span>
+                        <span className="text-xs font-semibold text-ink-700">Battery Level</span>
                       </div>
                       <span className="text-xs font-bold text-cyan-600 tabular-nums">
                         {(() => {
@@ -391,74 +391,74 @@ const EnergyFlowChart = memo(function EnergyFlowChart({ energyFlow, country }: {
       </ResponsiveContainer>
       
       {/* Combined Legend with Values */}
-      <div className="-mt-2 border border-gray-200 rounded-lg overflow-hidden bg-white max-w-2xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-gray-200">
+      <div className="-mt-2 rounded-lg overflow-hidden bg-paper-100 max-w-2xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-ink/10">
           {/* Generation Sources */}
           <div className={isMobile ? "p-2" : "p-3"}>
-            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Power Generation</div>
+            <div className="text-xs font-semibold text-ink-500 uppercase tracking-wider mb-2">Power Generation</div>
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded" style={{ backgroundColor: COLORS.Solar }}></div>
-                  <span className="text-xs text-gray-700">Solar</span>
+                  <span className="text-xs text-ink-700">Solar</span>
                 </div>
-                <span className="text-xs font-semibold text-gray-900 tabular-nums">{energyFlow.solarGeneration.toFixed(1)}</span>
+                <span className="text-xs font-semibold text-ink tabular-nums">{energyFlow.solarGeneration.toFixed(1)}</span>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded" style={{ backgroundColor: COLORS['Battery Usage'] }}></div>
-                  <span className="text-xs text-gray-700">Battery</span>
+                  <span className="text-xs text-ink-700">Battery</span>
                 </div>
-                <span className="text-xs font-semibold text-gray-900 tabular-nums">{energyFlow.batteryDischarge.toFixed(1)}</span>
+                <span className="text-xs font-semibold text-ink tabular-nums">{energyFlow.batteryDischarge.toFixed(1)}</span>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded" style={{ backgroundColor: COLORS.Grid }}></div>
-                  <span className="text-xs text-gray-700">Grid</span>
+                  <span className="text-xs text-ink-700">Grid</span>
                 </div>
-                <span className="text-xs font-semibold text-gray-900 tabular-nums">{energyFlow.gridSupply.toFixed(1)}</span>
+                <span className="text-xs font-semibold text-ink tabular-nums">{energyFlow.gridSupply.toFixed(1)}</span>
               </div>
             </div>
           </div>
 
           {/* Consumption */}
           <div className={isMobile ? "p-2" : "p-3"}>
-            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Power Consumption</div>
+            <div className="text-xs font-semibold text-ink-500 uppercase tracking-wider mb-2">Power Consumption</div>
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded" style={{ backgroundColor: COLORS['Household Load'] }}></div>
-                  <span className="text-xs text-gray-700">Household</span>
+                  <span className="text-xs text-ink-700">Household</span>
                 </div>
-                <span className="text-xs font-semibold text-gray-900 tabular-nums">{(energyFlow.daytimeLoad + energyFlow.nighttimeLoad).toFixed(1)}</span>
+                <span className="text-xs font-semibold text-ink tabular-nums">{(energyFlow.daytimeLoad + energyFlow.nighttimeLoad).toFixed(1)}</span>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded" style={{ backgroundColor: COLORS['EV Charging'] }}></div>
-                  <span className="text-xs text-gray-700">EV Charging</span>
+                  <span className="text-xs text-ink-700">EV Charging</span>
                 </div>
-                <span className="text-xs font-semibold text-gray-900 tabular-nums">{energyFlow.evCharging.toFixed(1)}</span>
+                <span className="text-xs font-semibold text-ink tabular-nums">{energyFlow.evCharging.toFixed(1)}</span>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded" style={{ backgroundColor: COLORS['Battery Charge'] }}></div>
-                  <span className="text-xs text-gray-700">Battery Charging</span>
+                  <span className="text-xs text-ink-700">Battery Charging</span>
                 </div>
-                <span className="text-xs font-semibold text-gray-900 tabular-nums">{energyFlow.batteryCharging.toFixed(1)}</span>
+                <span className="text-xs font-semibold text-ink tabular-nums">{energyFlow.batteryCharging.toFixed(1)}</span>
               </div>
             </div>
           </div>
 
           {/* System Status */}
           <div className={isMobile ? "p-2" : "p-3"}>
-            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">System Status</div>
+            <div className="text-xs font-semibold text-ink-500 uppercase tracking-wider mb-2">System Status</div>
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-0.5 border-t-2 border-dashed" style={{ borderColor: COLORS['Battery Level'] }}></div>
-                  <span className="text-xs text-gray-700">Battery Level</span>
+                  <span className="text-xs text-ink-700">Battery Level</span>
                 </div>
-                <span className="text-xs font-semibold text-gray-900 tabular-nums">
+                <span className="text-xs font-semibold text-ink tabular-nums">
                   {maxBatteryCapacity > 0 ? maxBatteryCapacity.toFixed(1) : '0.0'}
                 </span>
               </div>
@@ -466,20 +466,20 @@ const EnergyFlowChart = memo(function EnergyFlowChart({ energyFlow, country }: {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded" style={{ backgroundColor: COLORS['Grid Export'] }}></div>
-                    <span className="text-xs text-gray-700">Grid Export</span>
+                    <span className="text-xs text-ink-700">Grid Export</span>
                   </div>
-                  <span className="text-xs font-semibold text-gray-900 tabular-nums">{energyFlow.excessSolarExported.toFixed(1)}</span>
+                  <span className="text-xs font-semibold text-ink tabular-nums">{energyFlow.excessSolarExported.toFixed(1)}</span>
                 </div>
               )}
               {!showGridExport && (
-                <div className="text-xs text-gray-400 italic">No grid export</div>
+                <div className="text-xs text-ink-400 italic">No grid export</div>
               )}
             </div>
           </div>
 
         </div>
-        <div className="px-3 py-2 bg-gray-50 border-t border-gray-200">
-          <div className="text-[10px] text-gray-500 text-center">All values in kWh/day</div>
+        <div className="px-3 py-2 bg-paper-200 border-t border-ink/10">
+          <div className="text-[10px] text-ink-500 text-center">All values in kWh/day</div>
         </div>
       </div>
     </div>
@@ -843,25 +843,25 @@ function BatteriesAtHomePageContent() {
   }, [hasOptimizationApplied])
 
   return (
-    <main className="min-h-screen pt-12 md:pt-14 bg-white">
+    <main className="min-h-screen pt-12 md:pt-14 bg-paper">
       {/* Hero Section */}
       <section ref={pdfRef} className="container mx-auto px-4 pt-12 pb-8 max-w-7xl">
-        <h2 className="text-2xl font-semibold text-gray-900 mb-8 text-left">
+        <h2 className="text-2xl font-semibold text-ink mb-8 text-left">
           Batteries at Home
         </h2>
-        
+
         {/* Hero Intro Section */}
         <div className="mb-8 max-w-7xl">
-          <div className="border-l-4 border-emerald-600 pl-6 md:pl-8 py-6 bg-gray-50/50">
+          <div className="border-l-4 border-brand pl-6 md:pl-8 py-6 bg-paper-200/60">
             <div className="space-y-5">
-              <p className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight tracking-tight">
+              <p className="font-display text-3xl md:text-4xl font-medium text-ink leading-tight tracking-tight">
                 Design your zero-bill setup — solar + battery + EV.
               </p>
-              <p className="text-lg md:text-xl text-gray-700 leading-relaxed max-w-3xl">
+              <p className="text-lg md:text-xl text-ink-700 leading-relaxed max-w-3xl">
                 Real tariffs, real solar yield, real loads — find the right setup for your home
               </p>
-              <div className="pt-2 border-t border-gray-200/60">
-                <p className="text-base text-gray-600 leading-relaxed whitespace-nowrap">
+              <div className="pt-2 border-t border-ink/10">
+                <p className="text-base text-ink-600 leading-relaxed whitespace-nowrap">
                   Select your country to see setup costs to optimize your home to either go off-grid, zero-bill, max-savings or anything in between
                 </p>
               </div>
@@ -880,14 +880,14 @@ function BatteriesAtHomePageContent() {
 
         {/* Energy Flow Chart */}
         {outputs && outputs.energyFlow && (
-          <div className="mb-8 bg-gray-50 rounded-lg p-3 border border-gray-200">
+          <div className="mb-8 bg-paper-200 rounded-lg p-3 border border-ink/10">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
-                <h2 className="text-xl font-semibold text-gray-900">Daily Energy Flow</h2>
+                <h2 className="text-xl font-semibold text-ink">Daily Energy Flow</h2>
               <InfoTooltip position="bottom" title="Chart Explanation" content={
                 <div className="space-y-1.5">
                   <div>This chart shows hourly energy flows throughout a typical day. Bars show generation (Solar, Battery, Grid) and areas show consumption (Household, EV, Battery Charging). The dashed line shows battery level.</div>
-                  <div className="pt-1 border-t border-gray-200 text-[11px] text-gray-600">
+                  <div className="pt-1 border-t border-ink/10 text-[11px] text-ink-600">
                     Generation bars are stacked upward. Consumption areas are stacked downward. Grid Export (if applicable) appears as negative bars below the axis. Battery Level uses the right Y-axis.
                   </div>
                 </div>
@@ -895,10 +895,10 @@ function BatteriesAtHomePageContent() {
             </div>
               <button
                 onClick={() => setShowEnergyChart(!showEnergyChart)}
-                className="text-xs text-gray-600 hover:text-gray-900 px-3 py-1.5 rounded-lg border border-gray-300 bg-white hover:bg-gray-50 transition-all duration-200 active:scale-95 flex items-center gap-1.5"
+                className="text-xs text-ink-600 hover:text-ink px-3 py-1.5 rounded-lg border border-ink/15 bg-paper-100 hover:bg-paper-200 transition-all duration-200 active:scale-95 flex items-center gap-1.5"
               >
                 <svg 
-                  className={`w-3.5 h-3.5 text-emerald-600 transition-transform duration-200 ${showEnergyChart ? '' : 'rotate-180'}`}
+                  className={`w-3.5 h-3.5 text-brand-600 transition-transform duration-200 ${showEnergyChart ? '' : 'rotate-180'}`}
                   fill="none" 
                   stroke="currentColor" 
                   viewBox="0 0 24 24"
@@ -915,45 +915,45 @@ function BatteriesAtHomePageContent() {
         )}
 
         {/* Main Content - Two Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-[6fr_4fr] gap-0 mb-12 border border-gray-200 rounded-lg overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-[6fr_4fr] gap-0 mb-12 border border-ink/10 rounded-lg overflow-hidden">
           {/* INPUTS COLUMN */}
-          <div className="bg-gray-50 p-5 border-r border-gray-200">
-            <h2 className="text-xl font-semibold text-gray-900 mb-6">Configurator</h2>
+          <div className="bg-paper-200 p-5 border-r border-ink/10">
+            <h2 className="text-xl font-semibold text-ink mb-6">Configurator</h2>
             {/* Unified Configuration Container */}
             <div className="space-y-6">
               {/* Power Usage at Home Section */}
-              <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-6 border border-gray-100 shadow-sm">
+              <div className="bg-gradient-to-br from-paper-200 to-paper-100 rounded-card p-6 shadow-card">
                 <div className="mb-6">
-                  <h2 className="text-xl font-semibold text-gray-900 mb-1">Power Usage at Home</h2>
-                  <p className="text-xs text-gray-500">Configure your household and EV-charging energy consumption at home</p>
+                  <h2 className="text-xl font-semibold text-ink mb-1">Power Usage at Home</h2>
+                  <p className="text-xs text-ink-500">Configure your household and EV-charging energy consumption at home</p>
                 </div>
 
                 {/* Household Load Subsection */}
                 <div className="mb-4 mt-5">
                   <div className="flex items-center gap-2 mb-1">
-                    <h3 className="text-base font-semibold text-gray-900">Household Load</h3>
+                    <h3 className="text-base font-semibold text-ink">Household Load</h3>
                     <InfoTooltip position="bottom" title="Power Usage Assumptions" content={
                       <div className="space-y-1.5">
                         <div><span className="font-semibold">Daytime Load:</span> Energy used during sun hours (typically 6am-6pm). Average household uses 8 kWh/day.</div>
                         <div><span className="font-semibold">Night Load:</span> Energy used during non-sun hours (typically 6pm-6am). Average household uses 10 kWh/day.</div>
-                        <div className="pt-1 border-t border-gray-200 text-[11px] text-gray-600">
+                        <div className="pt-1 border-t border-ink/10 text-[11px] text-ink-600">
                           These values represent total household consumption excluding EV charging. EV charging is calculated separately based on your vehicle configuration.
                         </div>
                       </div>
                     } />
                   </div>
-                  <p className="text-xs text-gray-500 mb-3">Configure your household energy consumption during the day and night</p>
+                  <p className="text-xs text-ink-500 mb-3">Configure your household energy consumption during the day and night</p>
                 </div>
 
                 <div className="space-y-5">
                   {/* Daytime Household Load */}
                   <div className="group">
                     <div className="flex items-center justify-between mb-2">
-                      <label className="text-sm font-medium text-gray-700">
-                        Daytime Load <span className="text-gray-400 font-normal"></span>
+                      <label className="text-sm font-medium text-ink-700">
+                        Daytime Load <span className="text-ink-400 font-normal"></span>
                       </label>
-                      <span className="text-base font-semibold text-emerald-600 tabular-nums">
-                        {dayLoad.toFixed(1)} <span className="text-xs text-gray-500 font-normal">kWh/day</span>
+                      <span className="text-base font-semibold text-brand-600 tabular-nums">
+                        {dayLoad.toFixed(1)} <span className="text-xs text-ink-500 font-normal">kWh/day</span>
                       </span>
                     </div>
                     <div className="relative">
@@ -971,7 +971,7 @@ function BatteriesAtHomePageContent() {
                             setNeedsOptimizationReapply(true)
                           }
                         }}
-                        className="w-full h-2.5 bg-gray-200 rounded-full appearance-none cursor-pointer accent-emerald-600 hover:accent-emerald-500 transition-all"
+                        className="w-full h-2.5 bg-paper-300 rounded-full appearance-none cursor-pointer accent-brand-600 hover:accent-brand-500 transition-all"
                         style={{
                           background: `linear-gradient(to right, #10b981 0%, #10b981 ${(dayLoad / 20) * 100}%, #e5e7eb ${(dayLoad / 20) * 100}%, #e5e7eb 100%)`
                         }}
@@ -982,7 +982,7 @@ function BatteriesAtHomePageContent() {
                         style={{ left: `${(8 / 20) * 100}%` }}
                         title="Average: 8 kWh"
                       />
-                      <div className="flex justify-between text-xs text-gray-400 mt-1.5 px-0.5">
+                      <div className="flex justify-between text-xs text-ink-400 mt-1.5 px-0.5">
                         <span>0</span>
                         <span className="text-blue-500 font-medium">Avg: 8</span>
                         <span>20</span>
@@ -993,11 +993,11 @@ function BatteriesAtHomePageContent() {
                   {/* Night Household Load */}
                   <div className="group">
                     <div className="flex items-center justify-between mb-2">
-                      <label className="text-sm font-medium text-gray-700">
+                      <label className="text-sm font-medium text-ink-700">
                         Night Load
                       </label>
-                      <span className="text-base font-semibold text-emerald-600 tabular-nums">
-                        {nightLoad.toFixed(1)} <span className="text-xs text-gray-500 font-normal">kWh/day</span>
+                      <span className="text-base font-semibold text-brand-600 tabular-nums">
+                        {nightLoad.toFixed(1)} <span className="text-xs text-ink-500 font-normal">kWh/day</span>
                       </span>
                     </div>
                     <div className="relative">
@@ -1015,7 +1015,7 @@ function BatteriesAtHomePageContent() {
                             setNeedsOptimizationReapply(true)
                           }
                         }}
-                        className="w-full h-2.5 bg-gray-200 rounded-full appearance-none cursor-pointer accent-emerald-600 hover:accent-emerald-500 transition-all"
+                        className="w-full h-2.5 bg-paper-300 rounded-full appearance-none cursor-pointer accent-brand-600 hover:accent-brand-500 transition-all"
                         style={{
                           background: `linear-gradient(to right, #10b981 0%, #10b981 ${(nightLoad / 20) * 100}%, #e5e7eb ${(nightLoad / 20) * 100}%, #e5e7eb 100%)`
                         }}
@@ -1026,7 +1026,7 @@ function BatteriesAtHomePageContent() {
                         style={{ left: `${(10 / 20) * 100}%` }}
                         title="Average: 10 kWh"
                       />
-                      <div className="flex justify-between text-xs text-gray-400 mt-1.5 px-0.5">
+                      <div className="flex justify-between text-xs text-ink-400 mt-1.5 px-0.5">
                         <span>0</span>
                         <span className="text-blue-500 font-medium">Avg: 10</span>
                         <span>20</span>
@@ -1038,22 +1038,22 @@ function BatteriesAtHomePageContent() {
                 {/* EVs in Household Subsection */}
                 <div className="mb-2 mt-8">
                   <div className="flex items-center gap-2 mb-1">
-                    <h3 className="text-base font-semibold text-gray-900">EVs in Household</h3>
+                    <h3 className="text-base font-semibold text-ink">EVs in Household</h3>
                     <InfoTooltip position="bottom" title="EV Charging Configuration" content={
                       <div className="space-y-1.5">
                         <div><span className="font-semibold">Driving Distance:</span> Daily kilometers driven per vehicle. Used to calculate daily energy needs.</div>
                         <div><span className="font-semibold">Home Charging %:</span> Percentage of total charging done at home vs. public chargers. Home charging can use solar/battery (free) or grid.</div>
                         <div><span className="font-semibold">Charging Time:</span> When EV charging occurs. &quot;Night only&quot; charges during off-peak hours, &quot;Day only&quot; during peak solar generation, &quot;Both&quot; distributes throughout the day.</div>
-                        <div className="pt-1 border-t border-gray-200 text-[11px] text-gray-600">
+                        <div className="pt-1 border-t border-ink/10 text-[11px] text-ink-600">
                           Public charging costs are calculated separately using country-specific public charging rates. Home charging from solar/battery is free; grid charging uses residential electricity rates.
                         </div>
                       </div>
                     } />
                   </div>
-                  <p className="text-xs text-gray-500 mb-3">Add electric vehicles in your household and configure the charging behavior for each</p>
+                  <p className="text-xs text-ink-500 mb-3">Add electric vehicles in your household and configure the charging behavior for each</p>
                 <div className="space-y-4">
                   {vehicles.map((vehicle, index) => (
-                    <div key={index} className={`${index > 0 ? 'pt-4 border-t border-gray-200' : ''}`}>
+                    <div key={index} className={`${index > 0 ? 'pt-4 border-t border-ink/10' : ''}`}>
                       <div className="flex items-start justify-between mb-3">
                         <div className="flex-1">
                           <div className="relative">
@@ -1063,7 +1063,7 @@ function BatteriesAtHomePageContent() {
                                 const model = e.target.value ? vehicleList.find(v => v.id === e.target.value) || null : null
                                 updateVehicle(index, 'model', model)
                               }}
-                              className="w-full text-sm px-3 py-2 pr-8 border-0 rounded-full bg-gray-100 hover:bg-gray-200 focus:ring-2 focus:ring-emerald-500 focus:bg-emerald-50 appearance-none cursor-pointer transition-colors"
+                              className="w-full text-sm px-3 py-2 pr-8 border-0 rounded-full bg-paper-200 hover:bg-paper-300 focus:ring-2 focus:ring-brand-500 focus:bg-brand-50 appearance-none cursor-pointer transition-colors"
                             >
                               <option value="">Select EV Model</option>
                               {vehicleList.map(v => (
@@ -1073,25 +1073,25 @@ function BatteriesAtHomePageContent() {
                               ))}
                             </select>
                             <div className="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none">
-                              <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <svg className="w-4 h-4 text-ink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                               </svg>
                             </div>
                           </div>
                         </div>
                         <div className="flex items-center gap-2 ml-3">
-                          <label className="text-xs text-gray-500 whitespace-nowrap">Qty:</label>
+                          <label className="text-xs text-ink-500 whitespace-nowrap">Qty:</label>
                           <input
                             type="number"
                             min="0"
                             max="10"
                             value={vehicle.quantity}
                             onChange={(e) => updateVehicle(index, 'quantity', parseInt(e.target.value) || 0)}
-                            className="w-14 text-sm text-center px-2 py-1.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                            className="w-14 text-sm text-center px-2 py-1.5 border border-ink/15 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
                           />
                           <button
                             onClick={() => removeVehicle(index)}
-                            className="ml-1 p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                            className="ml-1 p-1.5 text-ink-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                             title="Remove vehicle"
                           >
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1101,9 +1101,9 @@ function BatteriesAtHomePageContent() {
                         </div>
                       </div>
                       {vehicle.model && (
-                        <div className="grid grid-cols-[2fr_2fr_auto] gap-8 mt-3 pt-3 border-t border-gray-100 pl-1">
+                        <div className="grid grid-cols-[2fr_2fr_auto] gap-8 mt-3 pt-3 border-t border-ink/5 pl-1">
                           <div>
-                            <label className="block text-xs font-medium text-gray-600 mb-1.5">Driving Distance</label>
+                            <label className="block text-xs font-medium text-ink-600 mb-1.5">Driving Distance</label>
                             <div className="flex items-center gap-2">
                               <input
                                 type="range"
@@ -1112,13 +1112,13 @@ function BatteriesAtHomePageContent() {
                                 step="1"
                                 value={vehicle.drivingDistanceKm}
                                 onChange={(e) => updateVehicle(index, 'drivingDistanceKm', parseInt(e.target.value))}
-                                className="flex-1 h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+                                className="flex-1 h-1.5 bg-paper-300 rounded-lg appearance-none cursor-pointer accent-brand-600"
                               />
-                              <span className="text-sm font-semibold text-gray-900 whitespace-nowrap min-w-[3.5rem] text-right tabular-nums">{vehicle.drivingDistanceKm} km</span>
+                              <span className="text-sm font-semibold text-ink whitespace-nowrap min-w-[3.5rem] text-right tabular-nums">{vehicle.drivingDistanceKm} km</span>
                             </div>
                           </div>
                           <div>
-                            <label className="block text-xs font-medium text-gray-600 mb-1.5">Home Charging %</label>
+                            <label className="block text-xs font-medium text-ink-600 mb-1.5">Home Charging %</label>
                             <div className="flex items-center gap-2">
                               <input
                                 type="range"
@@ -1127,25 +1127,25 @@ function BatteriesAtHomePageContent() {
                                 step="1"
                                 value={vehicle.evHomeChargingPercentage}
                                 onChange={(e) => updateVehicle(index, 'evHomeChargingPercentage', parseInt(e.target.value))}
-                                className="flex-1 h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+                                className="flex-1 h-1.5 bg-paper-300 rounded-lg appearance-none cursor-pointer accent-brand-600"
                               />
-                              <span className="text-sm font-semibold text-gray-900 w-10 text-right tabular-nums">{vehicle.evHomeChargingPercentage}%</span>
+                              <span className="text-sm font-semibold text-ink w-10 text-right tabular-nums">{vehicle.evHomeChargingPercentage}%</span>
                             </div>
                           </div>
                           <div>
-                            <label className="block text-xs font-medium text-gray-600 mb-1.5">Charging Time</label>
+                            <label className="block text-xs font-medium text-ink-600 mb-1.5">Charging Time</label>
                             <div className="relative inline-block">
                               <select
                                 value={vehicle.evChargingTime}
                                 onChange={(e) => updateVehicle(index, 'evChargingTime', e.target.value as 'Night only' | 'Day only' | 'Both')}
-                                className="w-auto min-w-[90px] text-xs px-2 py-1 pr-6 border-0 rounded-full bg-gray-100 hover:bg-gray-200 focus:ring-2 focus:ring-emerald-500 focus:bg-emerald-50 appearance-none cursor-pointer transition-colors"
+                                className="w-auto min-w-[90px] text-xs px-2 py-1 pr-6 border-0 rounded-full bg-paper-200 hover:bg-paper-300 focus:ring-2 focus:ring-brand-500 focus:bg-brand-50 appearance-none cursor-pointer transition-colors"
                               >
                                 <option value="Night only">Night only</option>
                                 <option value="Day only">Day only</option>
                                 <option value="Both">Both</option>
                               </select>
                               <div className="absolute right-1.5 top-1/2 -translate-y-1/2 pointer-events-none">
-                                <svg className="w-2.5 h-2.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-2.5 h-2.5 text-ink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                                 </svg>
                               </div>
@@ -1158,7 +1158,7 @@ function BatteriesAtHomePageContent() {
                   {vehicles.length < 10 && (
                     <button
                       onClick={addVehicle}
-                      className="w-full py-2 text-sm font-medium text-gray-500 hover:text-emerald-600 rounded-lg transition-colors flex items-center justify-center gap-1.5 hover:bg-gray-50"
+                      className="w-full py-2 text-sm font-medium text-ink-500 hover:text-brand-600 rounded-lg transition-colors flex items-center justify-center gap-1.5 hover:bg-paper-200"
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -1172,16 +1172,16 @@ function BatteriesAtHomePageContent() {
 
 
               {/* System Setup Section */}
-              <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-6 border border-gray-100 shadow-sm">
+              <div className="bg-gradient-to-br from-paper-200 to-paper-100 rounded-card p-6 shadow-card">
                 <div className="mb-6">
-                  <h2 className="text-xl font-semibold text-gray-900 mb-1">System Setup</h2>
-                  <p className="text-xs text-gray-500">Configure your solar and battery system</p>
+                  <h2 className="text-xl font-semibold text-ink mb-1">System Setup</h2>
+                  <p className="text-xs text-ink-500">Configure your solar and battery system</p>
                 </div>
               
                 {/* Optimization Goal Selector */}
-                <div className="mb-6 p-4 bg-emerald-50/50 rounded-lg border border-emerald-100">
+                <div className="mb-6 p-4 bg-brand-50/50 rounded-lg">
                   <div className="flex items-center gap-2 mb-3">
-                    <label className="block text-sm font-semibold text-gray-900">
+                    <label className="block text-sm font-semibold text-ink">
                       Optimization Goal
                     </label>
                     <InfoTooltip position="bottom" title="Understanding Optimization Modes" content={
@@ -1206,8 +1206,8 @@ function BatteriesAtHomePageContent() {
                       onClick={() => applyOptimizationMode('full_off_grid')}
                       className={`px-3 py-2.5 rounded-lg border font-medium text-xs transition-all ${
                         optimizationMode === 'full_off_grid'
-                          ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
-                          : 'bg-white text-gray-700 border-gray-300 hover:border-emerald-400 hover:bg-emerald-50'
+                          ? 'bg-brand-600 text-white border-brand-600 shadow-sm'
+                          : 'bg-paper-100 text-ink-700 border-ink/15 hover:border-brand-400 hover:bg-brand-50'
                       }`}
                     >
                       Full Off-Grid
@@ -1216,8 +1216,8 @@ function BatteriesAtHomePageContent() {
                       onClick={() => applyOptimizationMode('zero_bill')}
                       className={`px-3 py-2.5 rounded-lg border font-medium text-xs transition-all ${
                         optimizationMode === 'zero_bill'
-                          ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
-                          : 'bg-white text-gray-700 border-gray-300 hover:border-emerald-400 hover:bg-emerald-50'
+                          ? 'bg-brand-600 text-white border-brand-600 shadow-sm'
+                          : 'bg-paper-100 text-ink-700 border-ink/15 hover:border-brand-400 hover:bg-brand-50'
                       }`}
                     >
                       Zero-Bill
@@ -1226,8 +1226,8 @@ function BatteriesAtHomePageContent() {
                       onClick={() => applyOptimizationMode('best_net_savings')}
                       className={`px-3 py-2.5 rounded-lg border font-medium text-xs transition-all ${
                         optimizationMode === 'best_net_savings'
-                          ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
-                          : 'bg-white text-gray-700 border-gray-300 hover:border-emerald-400 hover:bg-emerald-50'
+                          ? 'bg-brand-600 text-white border-brand-600 shadow-sm'
+                          : 'bg-paper-100 text-ink-700 border-ink/15 hover:border-brand-400 hover:bg-brand-50'
                       }`}
                     >
                       Best Net Savings
@@ -1236,8 +1236,8 @@ function BatteriesAtHomePageContent() {
                       onClick={() => applyOptimizationMode('custom')}
                       className={`px-3 py-2.5 rounded-lg border font-medium text-xs transition-all ${
                         optimizationMode === 'custom'
-                          ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
-                          : 'bg-white text-gray-700 border-gray-300 hover:border-emerald-400 hover:bg-emerald-50'
+                          ? 'bg-brand-600 text-white border-brand-600 shadow-sm'
+                          : 'bg-paper-100 text-ink-700 border-ink/15 hover:border-brand-400 hover:bg-brand-50'
                       }`}
                     >
                       Custom
@@ -1245,42 +1245,42 @@ function BatteriesAtHomePageContent() {
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-start gap-2">
-                      <div className={`w-1.5 h-1.5 rounded-full mt-1.5 ${optimizationMode === 'full_off_grid' ? 'bg-emerald-600' : 'bg-gray-300'}`}></div>
-                      <p className="text-xs text-gray-600 flex-1">
-                        <span className="font-semibold text-gray-900">Full Off-Grid:</span> Conservative system with 20% solar buffer and 2.5 days battery autonomy for maximum reliability
+                      <div className={`w-1.5 h-1.5 rounded-full mt-1.5 ${optimizationMode === 'full_off_grid' ? 'bg-brand-600' : 'bg-ink/15'}`}></div>
+                      <p className="text-xs text-ink-600 flex-1">
+                        <span className="font-semibold text-ink">Full Off-Grid:</span> Conservative system with 20% solar buffer and 2.5 days battery autonomy for maximum reliability
                       </p>
                     </div>
                     <div className="flex items-start gap-2">
-                      <div className={`w-1.5 h-1.5 rounded-full mt-1.5 ${optimizationMode === 'zero_bill' ? 'bg-emerald-600' : 'bg-gray-300'}`}></div>
-                      <p className="text-xs text-gray-600 flex-1">
-                        <span className="font-semibold text-gray-900">Zero-Bill:</span> Optimized system that achieves zero monthly bill (may be smaller than off-grid)
+                      <div className={`w-1.5 h-1.5 rounded-full mt-1.5 ${optimizationMode === 'zero_bill' ? 'bg-brand-600' : 'bg-ink/15'}`}></div>
+                      <p className="text-xs text-ink-600 flex-1">
+                        <span className="font-semibold text-ink">Zero-Bill:</span> Optimized system that achieves zero monthly bill (may be smaller than off-grid)
                       </p>
                     </div>
                     <div className="flex items-start gap-2">
-                      <div className={`w-1.5 h-1.5 rounded-full mt-1.5 ${optimizationMode === 'best_net_savings' ? 'bg-emerald-600' : 'bg-gray-300'}`}></div>
-                      <p className="text-xs text-gray-600 flex-1">
-                        <span className="font-semibold text-gray-900">Best Net Savings:</span> Best 25-year net savings including system and EV costs
+                      <div className={`w-1.5 h-1.5 rounded-full mt-1.5 ${optimizationMode === 'best_net_savings' ? 'bg-brand-600' : 'bg-ink/15'}`}></div>
+                      <p className="text-xs text-ink-600 flex-1">
+                        <span className="font-semibold text-ink">Best Net Savings:</span> Best 25-year net savings including system and EV costs
                       </p>
                     </div>
                     <div className="flex items-start gap-2">
-                      <div className={`w-1.5 h-1.5 rounded-full mt-1.5 ${optimizationMode === 'custom' ? 'bg-emerald-600' : 'bg-gray-300'}`}></div>
-                      <p className="text-xs text-gray-600 flex-1">
-                        <span className="font-semibold text-gray-900">Custom:</span> Manually configured system without optimization.
+                      <div className={`w-1.5 h-1.5 rounded-full mt-1.5 ${optimizationMode === 'custom' ? 'bg-brand-600' : 'bg-ink/15'}`}></div>
+                      <p className="text-xs text-ink-600 flex-1">
+                        <span className="font-semibold text-ink">Custom:</span> Manually configured system without optimization.
                       </p>
                     </div>
                   </div>
                   {needsOptimizationReapply && optimizationMode && optimizationMode !== 'custom' && (
-                    <div className="mt-4 pt-4 border-t border-emerald-200">
+                    <div className="mt-4 pt-4 border-t border-brand-200">
                       <button
                         onClick={applyOptimization}
-                        className="w-full px-4 py-2.5 bg-emerald-600 text-white rounded-lg font-medium text-sm hover:bg-emerald-700 transition-colors flex items-center justify-center gap-2 shadow-sm"
+                        className="w-full px-4 py-2.5 bg-brand-600 text-white rounded-lg font-medium text-sm hover:bg-brand-700 transition-colors flex items-center justify-center gap-2 shadow-sm"
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                         </svg>
                         Reapply Optimization Setting
                       </button>
-                      <p className="text-xs text-gray-500 text-center mt-2">
+                      <p className="text-xs text-ink-500 text-center mt-2">
                         Configuration has changed. Click to recalculate optimal system.
                       </p>
                     </div>
@@ -1293,21 +1293,21 @@ function BatteriesAtHomePageContent() {
                   <div>
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
-                        <label className="text-sm font-medium text-gray-700">
+                        <label className="text-sm font-medium text-ink-700">
                           Solar System Size
                         </label>
                         <InfoTooltip position="bottom" title="Solar System Efficiency Explained" content={
                           <div className="space-y-1.5">
                             <div><strong>System Rating vs Real Output:</strong> A 10kW system doesn&apos;t generate 10kW constantly - that&apos;s its peak capacity under perfect conditions.</div>
                             <div><strong>Real-World Factors:</strong> Weather, roof angle, dirt, and temperature reduce output by 15-25%. A 10kW system typically produces 35-38 kWh/day in sunny conditions.</div>
-                            <div className="pt-1 border-t border-gray-200 text-[11px] text-gray-600">
+                            <div className="pt-1 border-t border-ink/10 text-[11px] text-ink-600">
                               Your actual generation depends on local solar irradiance, system maintenance, and weather patterns.
                             </div>
                           </div>
                         } />
                       </div>
-                      <span className="text-base font-semibold text-emerald-600 tabular-nums">
-                        {solarSizeKw} <span className="text-xs text-gray-500 font-normal">kW</span>
+                      <span className="text-base font-semibold text-brand-600 tabular-nums">
+                        {solarSizeKw} <span className="text-xs text-ink-500 font-normal">kW</span>
                       </span>
                     </div>
                     <div className="relative">
@@ -1318,21 +1318,21 @@ function BatteriesAtHomePageContent() {
                         step="1"
                         value={solarSizeKw}
                         onChange={(e) => setSolarSizeKw(parseInt(e.target.value))}
-                        className="w-full h-2.5 bg-gray-200 rounded-full appearance-none cursor-pointer accent-emerald-600 hover:accent-emerald-500 transition-all"
+                        className="w-full h-2.5 bg-paper-300 rounded-full appearance-none cursor-pointer accent-brand-600 hover:accent-brand-500 transition-all"
                         style={{
                           background: `linear-gradient(to right, #10b981 0%, #10b981 ${(solarSizeKw / 30) * 100}%, #e5e7eb ${(solarSizeKw / 30) * 100}%, #e5e7eb 100%)`
                         }}
                       />
-                      <div className="flex justify-between text-xs text-gray-400 mt-1.5 px-0.5">
+                      <div className="flex justify-between text-xs text-ink-400 mt-1.5 px-0.5">
                         <span>0</span>
                         <span>30</span>
                       </div>
                     </div>
                     {/* Include Solar Cost Toggle */}
                     <div className="mt-4">
-                      <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                      <div className="flex items-center justify-between p-3 bg-paper-200 rounded-lg">
                         <div className="flex items-center gap-2">
-                          <label className="text-sm font-medium text-gray-700">
+                          <label className="text-sm font-medium text-ink-700">
                             Include solar cost in calculations?
                           </label>
                           <InfoTooltip position="bottom" title="Solar Cost Information" content={
@@ -1340,20 +1340,20 @@ function BatteriesAtHomePageContent() {
                               <div>
                                 <span className="font-semibold">Solar Cost:</span> Based on {CURRENCY_SYMBOLS[country]} {SOLAR_COST_PER_KW[country].toLocaleString()}/kW installed (2025 average, includes panels, inverters, installation).
                               </div>
-                              <div className="pt-1 border-t border-gray-200 text-[11px] text-gray-600">
+                              <div className="pt-1 border-t border-ink/10 text-[11px] text-ink-600">
                                 Toggle &quot;Include solar cost&quot; to include or exclude solar system cost from financial calculations. Useful for comparing battery-only systems or if you already have solar.
                               </div>
                             </div>
                           } />
                         </div>
                         <div className="flex items-center gap-3">
-                        <div className="flex gap-1 bg-white rounded-lg p-0.5 border border-gray-200">
+                        <div className="flex gap-1 bg-paper-100 rounded-lg p-0.5 border border-ink/10">
                           <button
                             onClick={() => setIncludeSolarCost(true)}
                             className={`px-3 py-1 rounded-md text-xs font-medium transition-all ${
                               includeSolarCost
-                                ? 'bg-emerald-600 text-white shadow-sm'
-                                : 'text-gray-600 hover:text-gray-900'
+                                ? 'bg-brand-600 text-white shadow-sm'
+                                : 'text-ink-600 hover:text-ink'
                             }`}
                           >
                             Yes
@@ -1362,15 +1362,15 @@ function BatteriesAtHomePageContent() {
                             onClick={() => setIncludeSolarCost(false)}
                             className={`px-3 py-1 rounded-md text-xs font-medium transition-all ${
                               !includeSolarCost
-                                ? 'bg-emerald-600 text-white shadow-sm'
-                                : 'text-gray-600 hover:text-gray-900'
+                                ? 'bg-brand-600 text-white shadow-sm'
+                                : 'text-ink-600 hover:text-ink'
                             }`}
                           >
                             No
                           </button>
                         </div>
                         {includeSolarCost && (
-                          <span className="text-xs font-medium text-gray-600 whitespace-nowrap">
+                          <span className="text-xs font-medium text-ink-600 whitespace-nowrap">
                             {CURRENCY_SYMBOLS[country]} {SOLAR_COST_PER_KW[country].toLocaleString()}/kW
                           </span>
                         )}
@@ -1382,7 +1382,7 @@ function BatteriesAtHomePageContent() {
                   {/* Roof Quality */}
                   <div>
                     <div className="flex items-center gap-2 mb-2">
-                      <label className="block text-sm font-medium text-gray-700">
+                      <label className="block text-sm font-medium text-ink-700">
                         Roof Quality
                       </label>
                       <InfoTooltip position="bottom" title="Roof Quality & Efficiency Loss" content={
@@ -1390,12 +1390,12 @@ function BatteriesAtHomePageContent() {
                           <div><span className="font-semibold">Ideal (100%):</span> South-facing, no shading, optimal tilt angle.</div>
                           <div><span className="font-semibold">Average (90%):</span> Some shading or suboptimal orientation.</div>
                           <div><span className="font-semibold">Shaded (75%):</span> Significant shading or poor orientation.</div>
-                          <div className="pt-2 border-t border-gray-200">
+                          <div className="pt-2 border-t border-ink/10">
                             <div className="text-xs font-semibold text-amber-700 mb-1">💡 Efficiency Loss Explained:</div>
-                            <div className="text-xs text-gray-600 space-y-1">
+                            <div className="text-xs text-ink-600 space-y-1">
                               <div><strong>Average roofs lose 10%</strong> of potential solar energy due to partial shading or poor orientation.</div>
                               <div><strong>Shaded roofs lose 25%</strong> of potential solar energy - like having only 3/4 of your solar panels working.</div>
-                              <div className="pt-1 text-[11px] text-gray-500">This is why roof quality directly impacts your solar savings and payback period.</div>
+                              <div className="pt-1 text-[11px] text-ink-500">This is why roof quality directly impacts your solar savings and payback period.</div>
                             </div>
                           </div>
                         </div>
@@ -1414,8 +1414,8 @@ function BatteriesAtHomePageContent() {
                           }}
                           className={`px-3 py-2 rounded-lg border text-sm font-medium transition-all ${
                             roofQuality === quality
-                              ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
-                              : 'bg-white text-gray-700 border-gray-300 hover:border-emerald-400 hover:bg-emerald-50'
+                              ? 'bg-brand-600 text-white border-brand-600 shadow-sm'
+                              : 'bg-paper-100 text-ink-700 border-ink/15 hover:border-brand-400 hover:bg-brand-50'
                           }`}
                         >
                           <div className="font-semibold">{quality}</div>
@@ -1428,7 +1428,7 @@ function BatteriesAtHomePageContent() {
                   {/* Home Battery */}
                   <div>
                     <div className="flex items-center gap-2 mb-3">
-                      <label className="block text-sm font-medium text-gray-700">
+                      <label className="block text-sm font-medium text-ink-700">
                         Home Battery System
                       </label>
                     </div>
@@ -1445,9 +1445,9 @@ function BatteriesAtHomePageContent() {
                               setNeedsOptimizationReapply(true)
                             }
                           }}
-                          className="rounded border-gray-300 text-emerald-600 focus:ring-1 focus:ring-emerald-500 focus:ring-offset-0 w-3.5 h-3.5 cursor-pointer transition-colors"
+                          className="rounded border-ink/15 text-brand-600 focus:ring-1 focus:ring-brand-500 focus:ring-offset-0 w-3.5 h-3.5 cursor-pointer transition-colors"
                         />
-                        <span className="text-xs text-gray-500 group-hover:text-gray-700 transition-colors">
+                        <span className="text-xs text-ink-500 group-hover:text-ink-700 transition-colors">
                           Battery with Home backup capability
                         </span>
                         <InfoTooltip position="bottom" title="Home Backup (V2H) Capability" content={
@@ -1461,7 +1461,7 @@ function BatteriesAtHomePageContent() {
                     </div>
                     <div className="space-y-3">
                       {batteries.map((battery, index) => (
-                        <div key={index} className={`flex gap-2 items-center ${index > 0 ? 'pt-3 border-t border-gray-200' : ''}`}>
+                        <div key={index} className={`flex gap-2 items-center ${index > 0 ? 'pt-3 border-t border-ink/10' : ''}`}>
                           <div className="flex-1 relative">
                             <select
                               value={battery.model?.id || ''}
@@ -1477,7 +1477,7 @@ function BatteriesAtHomePageContent() {
                                 }
                                 updateBattery(index, 'model', model)
                               }}
-                              className="w-full px-3 py-2 pr-8 border-0 rounded-full bg-gray-100 hover:bg-gray-200 focus:ring-2 focus:ring-emerald-500 focus:bg-emerald-50 appearance-none cursor-pointer transition-colors text-sm"
+                              className="w-full px-3 py-2 pr-8 border-0 rounded-full bg-paper-200 hover:bg-paper-300 focus:ring-2 focus:ring-brand-500 focus:bg-brand-50 appearance-none cursor-pointer transition-colors text-sm"
                             >
                               <option value="">Select Battery Model</option>
                               {bessList.map(b => {
@@ -1488,7 +1488,7 @@ function BatteriesAtHomePageContent() {
                                     key={b.id} 
                                     value={b.id}
                                     disabled={isDisabled}
-                                    className={isDisabled ? 'text-gray-400' : ''}
+                                    className={isDisabled ? 'text-ink-400' : ''}
                                   >
                                     {b.name}
                                   </option>
@@ -1496,25 +1496,25 @@ function BatteriesAtHomePageContent() {
                               })}
                             </select>
                             <div className="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none">
-                              <svg className={`w-4 h-4 ${homeBackupEnabled && battery.model && battery.model.v2xSupport !== 'V2H ready' ? 'text-gray-300' : 'text-gray-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <svg className={`w-4 h-4 ${homeBackupEnabled && battery.model && battery.model.v2xSupport !== 'V2H ready' ? 'text-ink-300' : 'text-ink-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                               </svg>
                             </div>
                           </div>
-                          <label className="text-xs text-gray-500 whitespace-nowrap">Qty:</label>
+                          <label className="text-xs text-ink-500 whitespace-nowrap">Qty:</label>
                           <input
                             type="number"
                             min="0"
                             max="4"
                             value={battery.quantity}
                             onChange={(e) => updateBattery(index, 'quantity', parseInt(e.target.value) || 0)}
-                            className="w-16 px-2 py-2 text-sm text-center border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                            className="w-16 px-2 py-2 text-sm text-center border border-ink/15 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
                             placeholder="0"
                             disabled={!!(homeBackupEnabled && battery.model && battery.model.v2xSupport !== 'V2H ready')}
                           />
                           <button
                             onClick={() => removeBattery(index)}
-                            className="ml-1 p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                            className="ml-1 p-1.5 text-ink-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                             title="Remove battery"
                           >
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1526,7 +1526,7 @@ function BatteriesAtHomePageContent() {
                       {batteries.length < 4 && (
                         <button
                           onClick={addBattery}
-                          className="w-full py-2 text-sm font-medium text-gray-500 hover:text-emerald-600 rounded-lg transition-colors flex items-center justify-center gap-1.5 hover:bg-gray-50"
+                          className="w-full py-2 text-sm font-medium text-ink-500 hover:text-brand-600 rounded-lg transition-colors flex items-center justify-center gap-1.5 hover:bg-paper-200"
                         >
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -1542,87 +1542,87 @@ function BatteriesAtHomePageContent() {
           </div>
 
           {/* OUTPUTS COLUMN */}
-          <div className="bg-white p-6">
+          <div className="bg-paper-100 p-6">
             <div className="mb-6">
-              <h2 className="text-xl font-semibold text-gray-900">Live Simulation</h2>
+              <h2 className="text-xl font-semibold text-ink">Live Simulation</h2>
             </div>
 
             {/* Financial Overview */}
             <div className="mb-10">
-              <h3 className="text-lg font-semibold text-gray-900 mb-6 pb-2 border-b-2 border-emerald-600">Financial Overview</h3>
+              <h3 className="text-lg font-semibold text-ink mb-6 pb-2 border-b-2 border-brand-600">Financial Overview</h3>
 
               {/* Monthly View */}
               <div className="mb-8">
                 <div className="mb-4">
-                  <h4 className="text-sm font-semibold text-gray-700 uppercase tracking-wider mb-1">Monthly View</h4>
-                  <p className="text-xs text-gray-500">Monthly electricity bill comparison</p>
+                  <h4 className="text-sm font-semibold text-ink-700 uppercase tracking-wider mb-1">Monthly View</h4>
+                  <p className="text-xs text-ink-500">Monthly electricity bill comparison</p>
                 </div>
 
                 {/* Comparison Table */}
-                <div className="border border-gray-200 rounded-lg overflow-hidden">
+                <div className="rounded-lg overflow-hidden">
                   {/* Header Row */}
-                  <div className="grid grid-cols-[2fr_1fr_1fr] gap-3 px-3 py-2 bg-gray-50 border-b border-gray-200">
-                    <div className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider"></div>
+                  <div className="grid grid-cols-[2fr_1fr_1fr] gap-3 px-3 py-2 bg-paper-200 border-b border-ink/10">
+                    <div className="text-[10px] font-semibold text-ink-500 uppercase tracking-wider"></div>
                     <div className="text-right">
-                      <div className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-0.5">
+                      <div className="text-[10px] font-semibold text-ink-500 uppercase tracking-wider mb-0.5">
                         <div>Without</div>
                         <div>System</div>
                       </div>
-                      <div className="text-lg font-bold text-gray-900 tabular-nums">
+                      <div className="text-lg font-bold text-ink tabular-nums">
                         {formatCurrency(outputs.monthlyBillWithoutSystem)}
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-0.5">
+                      <div className="text-[10px] font-semibold text-ink-500 uppercase tracking-wider mb-0.5">
                         <div>With</div>
                         <div>System</div>
                       </div>
-                      <div className="text-lg font-bold text-emerald-600 tabular-nums">
+                      <div className="text-lg font-bold text-brand-600 tabular-nums">
                         {formatCurrency(outputs.monthlyTotalCostWithSystem)}
                       </div>
                     </div>
                   </div>
 
                   {/* Data Rows */}
-                  <div className="divide-y divide-gray-100">
+                  <div className="divide-y divide-ink/5">
                     {/* Home Section */}
-                    <div className="grid grid-cols-[2fr_1fr_1fr] gap-3 px-3 py-1.5 items-center hover:bg-gray-50/50 transition-colors">
-                      <div className="text-xs text-gray-700 font-medium">Home</div>
-                      <div className="text-xs font-semibold text-gray-800 tabular-nums text-right">
+                    <div className="grid grid-cols-[2fr_1fr_1fr] gap-3 px-3 py-1.5 items-center hover:bg-paper-200/50 transition-colors">
+                      <div className="text-xs text-ink-700 font-medium">Home</div>
+                      <div className="text-xs font-semibold text-ink-800 tabular-nums text-right">
                         {formatCurrency(outputs.monthlyBillWithoutSystemHousehold + outputs.monthlyBillWithoutSystemEvHome)}
                       </div>
-                      <div className="text-xs font-semibold text-gray-800 tabular-nums text-right">
+                      <div className="text-xs font-semibold text-ink-800 tabular-nums text-right">
                         {formatCurrency(outputs.monthlyBillWithSystemHousehold + outputs.monthlyBillWithSystemEvHome)}
                       </div>
                     </div>
-                    <div className="grid grid-cols-[2fr_1fr_1fr] gap-3 px-3 py-1.5 items-center hover:bg-gray-50/50 transition-colors">
-                      <div className="text-xs text-gray-600 pl-3 border-l-2 border-emerald-200">Household</div>
-                      <div className="text-xs font-medium text-gray-700 tabular-nums text-right">
+                    <div className="grid grid-cols-[2fr_1fr_1fr] gap-3 px-3 py-1.5 items-center hover:bg-paper-200/50 transition-colors">
+                      <div className="text-xs text-ink-600 pl-3 border-l-2 border-brand-200">Household</div>
+                      <div className="text-xs font-medium text-ink-700 tabular-nums text-right">
                         {formatCurrency(outputs.monthlyBillWithoutSystemHousehold)}
                       </div>
-                      <div className="text-xs font-medium text-gray-700 tabular-nums text-right">
+                      <div className="text-xs font-medium text-ink-700 tabular-nums text-right">
                         {formatCurrency(outputs.monthlyBillWithSystemHousehold)}
                       </div>
                     </div>
                     {outputs.monthlyBillWithSystemEvHome > 0 && (
-                    <div className="grid grid-cols-[2fr_1fr_1fr] gap-3 px-3 py-1.5 items-center hover:bg-gray-50/50 transition-colors">
-                        <div className="text-xs text-gray-600 pl-3 border-l-2 border-emerald-200">EV Home Charging</div>
-                      <div className="text-xs font-medium text-gray-700 tabular-nums text-right">
+                    <div className="grid grid-cols-[2fr_1fr_1fr] gap-3 px-3 py-1.5 items-center hover:bg-paper-200/50 transition-colors">
+                        <div className="text-xs text-ink-600 pl-3 border-l-2 border-brand-200">EV Home Charging</div>
+                      <div className="text-xs font-medium text-ink-700 tabular-nums text-right">
                         {formatCurrency(outputs.monthlyBillWithoutSystemEvHome)}
                       </div>
-                      <div className="text-xs font-medium text-gray-700 tabular-nums text-right">
+                      <div className="text-xs font-medium text-ink-700 tabular-nums text-right">
                         {formatCurrency(outputs.monthlyBillWithSystemEvHome)}
                       </div>
                     </div>
                     )}
                     {/* EV Public Charging */}
                     {outputs.monthlyBillWithSystemEvPublic > 0 && (
-                    <div className="grid grid-cols-[2fr_1fr_1fr] gap-3 px-3 py-1.5 items-center hover:bg-gray-50/50 transition-colors">
-                        <div className="text-xs text-gray-700 font-medium">EV Public Charging</div>
-                        <div className="text-xs font-semibold text-gray-800 tabular-nums text-right">
+                    <div className="grid grid-cols-[2fr_1fr_1fr] gap-3 px-3 py-1.5 items-center hover:bg-paper-200/50 transition-colors">
+                        <div className="text-xs text-ink-700 font-medium">EV Public Charging</div>
+                        <div className="text-xs font-semibold text-ink-800 tabular-nums text-right">
                         {formatCurrency(outputs.monthlyBillWithoutSystemEvPublic)}
                       </div>
-                        <div className="text-xs font-semibold text-gray-800 tabular-nums text-right">
+                        <div className="text-xs font-semibold text-ink-800 tabular-nums text-right">
                         {formatCurrency(outputs.monthlyBillWithSystemEvPublic)}
                       </div>
                     </div>
@@ -1630,11 +1630,11 @@ function BatteriesAtHomePageContent() {
                   </div>
 
                   {/* Monthly Savings */}
-                  <div className="px-3 py-2 bg-gray-50/30 border-t-2 border-gray-200">
+                  <div className="px-3 py-2 bg-paper-200/30 border-t-2 border-ink/10">
                     <div className="flex items-baseline justify-between">
-                      <div className="text-[10px] font-semibold text-gray-700 uppercase tracking-wider">Monthly Savings</div>
+                      <div className="text-[10px] font-semibold text-ink-700 uppercase tracking-wider">Monthly Savings</div>
                       <div className={`text-sm font-bold tabular-nums ${
-                        outputs.monthlySavings >= 0 ? 'text-emerald-600' : 'text-red-600'
+                        outputs.monthlySavings >= 0 ? 'text-brand-600' : 'text-red-600'
                       }`}>
                         {formatCurrency(outputs.monthlySavings)}
                       </div>
@@ -1644,55 +1644,55 @@ function BatteriesAtHomePageContent() {
               </div>
 
               {/* 25-Year Projection */}
-              <div className="pt-6 border-t border-gray-300 mb-8">
+              <div className="pt-6 border-t border-ink/15 mb-8">
                 <div className="mb-4">
                   <div className="flex items-center gap-2 mb-1">
-                    <h4 className="text-sm font-semibold text-gray-700 uppercase tracking-wider">25-Year View</h4>
+                    <h4 className="text-sm font-semibold text-ink-700 uppercase tracking-wider">25-Year View</h4>
                     <InfoTooltip position="bottom" title="25-Year Projection Assumptions" content={
                       <div className="space-y-1.5">
                         <div>
                           <span className="font-semibold">Inflation Assumption:</span> Electricity tariffs and EV charging costs increase by 3% annually over 25 years.
                         </div>
-                        <div className="pt-1 border-t border-gray-200 text-[11px] text-gray-600">
+                        <div className="pt-1 border-t border-ink/10 text-[11px] text-ink-600">
                           This projection includes: system upfront cost, monthly electricity bills, EV home charging costs, and EV public charging costs. System maintenance costs are included in the system cost calculation.
                         </div>
                       </div>
                     } />
                   </div>
-                  <p className="text-xs text-gray-500">Total cost over 25 years including electricity, EV charging, and system cost (3% annual inflation)</p>
+                  <p className="text-xs text-ink-500">Total cost over 25 years including electricity, EV charging, and system cost (3% annual inflation)</p>
                 </div>
 
                 {(solarSizeKw > 0 || batteries.some(b => b.model && b.quantity > 0)) ? (
-                  <div className="border border-gray-200 rounded-lg overflow-hidden">
+                  <div className="rounded-lg overflow-hidden">
                     {/* Comparison Table */}
-                    <div className="grid grid-cols-[2fr_1fr_1fr] gap-3 px-3 py-2 bg-gray-50 border-b border-gray-200">
-                      <div className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider"></div>
+                    <div className="grid grid-cols-[2fr_1fr_1fr] gap-3 px-3 py-2 bg-paper-200 border-b border-ink/10">
+                      <div className="text-[10px] font-semibold text-ink-500 uppercase tracking-wider"></div>
                       <div className="text-right">
-                        <div className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-0.5">
+                        <div className="text-[10px] font-semibold text-ink-500 uppercase tracking-wider mb-0.5">
                           <div>Without</div>
                           <div>System</div>
                         </div>
-                        <div className="text-lg font-bold text-gray-900 tabular-nums">
+                        <div className="text-lg font-bold text-ink tabular-nums">
                           {formatCurrency(outputs.totalCost25YearsWithoutSystem)}
                         </div>
                       </div>
                       <div className="text-right">
-                        <div className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-0.5">
+                        <div className="text-[10px] font-semibold text-ink-500 uppercase tracking-wider mb-0.5">
                           <div>With</div>
                           <div>System</div>
                         </div>
-                        <div className="text-lg font-bold text-emerald-600 tabular-nums">
+                        <div className="text-lg font-bold text-brand-600 tabular-nums">
                           {formatCurrency(outputs.totalCost25YearsWithSystem)}
                         </div>
                       </div>
                     </div>
 
                     {/* Total Savings */}
-                    <div className="px-3 py-2 bg-gray-50/30 border-t-2 border-gray-200">
+                    <div className="px-3 py-2 bg-paper-200/30 border-t-2 border-ink/10">
                       <div className="flex items-baseline justify-between">
-                        <div className="text-[10px] font-semibold text-gray-700 uppercase tracking-wider">Total Savings Over 25 Years</div>
+                        <div className="text-[10px] font-semibold text-ink-700 uppercase tracking-wider">Total Savings Over 25 Years</div>
                         <div className={`text-sm font-bold tabular-nums ${
-                          (outputs.totalCost25YearsWithoutSystem - outputs.totalCost25YearsWithSystem) >= 0 ? 'text-emerald-600' : 'text-red-600'
+                          (outputs.totalCost25YearsWithoutSystem - outputs.totalCost25YearsWithSystem) >= 0 ? 'text-brand-600' : 'text-red-600'
                         }`}>
                           {formatCurrency(outputs.totalCost25YearsWithoutSystem - outputs.totalCost25YearsWithSystem)}
                         </div>
@@ -1700,10 +1700,10 @@ function BatteriesAtHomePageContent() {
                     </div>
                   </div>
                 ) : (
-                  <div className="border border-gray-200 rounded-lg px-3 py-2 bg-gray-50">
+                  <div className="rounded-lg px-3 py-2 bg-paper-200">
                     <div className="flex justify-between items-center">
-                      <div className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Without System</div>
-                      <div className="text-xs font-bold text-gray-900 tabular-nums">
+                      <div className="text-[10px] font-semibold text-ink-500 uppercase tracking-wider">Without System</div>
+                      <div className="text-xs font-bold text-ink tabular-nums">
                         {formatCurrency(outputs.totalCost25YearsWithoutSystem)}
                       </div>
                     </div>
@@ -1713,10 +1713,10 @@ function BatteriesAtHomePageContent() {
 
               {/* Setup Cost */}
               {(solarSizeKw > 0 || batteries.some(b => b.model && b.quantity > 0)) && (
-                <div className="pt-6 border-t border-gray-300">
+                <div className="pt-6 border-t border-ink/15">
                   <div className="mb-4">
                     <div className="flex items-center gap-2 mb-1">
-                      <h4 className="text-sm font-semibold text-gray-700 uppercase tracking-wider">Setup Cost</h4>
+                      <h4 className="text-sm font-semibold text-ink-700 uppercase tracking-wider">Setup Cost</h4>
                       <InfoTooltip position="bottom" title="Setup Cost Details" content={
                         <div className="space-y-1.5">
                           <div>
@@ -1725,23 +1725,23 @@ function BatteriesAtHomePageContent() {
                           <div>
                             <span className="font-semibold">Payback Period:</span> Time required to recover the initial investment through energy bill savings.
                           </div>
-                          <div className="pt-1 border-t border-gray-200 text-[11px] text-gray-600">
+                          <div className="pt-1 border-t border-ink/10 text-[11px] text-ink-600">
                             Costs include installation, wiring, and basic maintenance. Payback period assumes current electricity rates and usage patterns.
                           </div>
                         </div>
                       } />
                     </div>
-                    <p className="text-xs text-gray-500">Initial system investment and expected payback period</p>
+                    <p className="text-xs text-ink-500">Initial system investment and expected payback period</p>
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
                     {/* System Cost */}
-                    <div className="border border-gray-200 rounded-lg p-4 bg-gray-50/50">
-                      <div className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-2">System Cost</div>
-                      <div className="text-xl font-bold text-gray-900 tabular-nums">
+                    <div className="rounded-lg p-4 bg-paper-200/50">
+                      <div className="text-[10px] font-semibold text-ink-500 uppercase tracking-wider mb-2">System Cost</div>
+                      <div className="text-xl font-bold text-ink tabular-nums">
                         {formatCurrency(outputs.totalSystemCost)}
                       </div>
-                      <div className="mt-2 text-xs text-gray-600">
+                      <div className="mt-2 text-xs text-ink-600">
                         {includeSolarCost && (
                           <div>Solar: {formatCurrency(outputs.solarCost)}</div>
                         )}
@@ -1750,12 +1750,12 @@ function BatteriesAtHomePageContent() {
                     </div>
 
                     {/* Payback Period */}
-                    <div className="border border-gray-200 rounded-lg p-4 bg-gray-50/50">
-                      <div className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-2">Payback Period</div>
-                      <div className="text-xl font-bold text-gray-900 tabular-nums">
+                    <div className="rounded-lg p-4 bg-paper-200/50">
+                      <div className="text-[10px] font-semibold text-ink-500 uppercase tracking-wider mb-2">Payback Period</div>
+                      <div className="text-xl font-bold text-ink tabular-nums">
                         {outputs.fullSystemPaybackYears === Infinity ? '∞' : `${outputs.fullSystemPaybackYears.toFixed(1)} yrs`}
                       </div>
-                      <div className="mt-2 text-xs text-gray-600">
+                      <div className="mt-2 text-xs text-ink-600">
                         Time to recover investment through savings
                       </div>
                     </div>
@@ -1766,53 +1766,53 @@ function BatteriesAtHomePageContent() {
 
             {/* Energy Flow */}
             <div className="mb-10">
-              <div className="flex items-center justify-between mb-6 pb-2 border-b-2 border-emerald-600">
+              <div className="flex items-center justify-between mb-6 pb-2 border-b-2 border-brand-600">
                 <div className="flex items-center gap-2">
-                  <h3 className="text-base font-bold text-gray-900">Energy Flow</h3>
+                  <h3 className="text-base font-bold text-ink">Energy Flow</h3>
                   {EXPORT_RATE_MULTIPLIER[country].net_billing > 0 && (
                     <InfoTooltip position="bottom" title="Net Billing Explanation" content={
                       <div className="space-y-1.5">
                         <div>
                           Excess solar exported to the grid is credited at {Math.round(EXPORT_RATE_MULTIPLIER[country].net_billing * 100)}% of the import tariff rate.
                         </div>
-                        <div className="pt-1 border-t border-gray-200 text-[11px] text-gray-600">
+                        <div className="pt-1 border-t border-ink/10 text-[11px] text-ink-600">
                           This means you receive {Math.round(EXPORT_RATE_MULTIPLIER[country].net_billing * 100)}% credit for exported energy compared to what you pay for imported energy. Credits offset your monthly bill.
                         </div>
                       </div>
                     } />
                   )}
                 </div>
-                <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">kWh/month</span>
+                <span className="text-xs font-medium text-ink-500 uppercase tracking-wider">kWh/month</span>
               </div>
 
-              <div className="border border-gray-200 rounded-lg overflow-hidden">
+              <div className="rounded-lg overflow-hidden">
                 {/* Energy Consumption */}
-                <div className="px-3 py-2 border-b border-gray-200 bg-gray-50/50">
+                <div className="px-3 py-2 border-b border-ink/10 bg-paper-200/50">
                   <div className="flex justify-between items-baseline mb-2">
-                    <span className="text-[10px] font-semibold text-gray-700 uppercase tracking-wider">Total Energy Consumption</span>
-                    <span className="text-xs font-bold text-gray-900 tabular-nums">
+                    <span className="text-[10px] font-semibold text-ink-700 uppercase tracking-wider">Total Energy Consumption</span>
+                    <span className="text-xs font-bold text-ink tabular-nums">
                       {outputs.monthlyTotalEnergyUsed.toFixed(1)}
                     </span>
                   </div>
                   <div className="space-y-1.5 pt-1.5">
                     {/* Home Section */}
                     <div className="flex justify-between items-center">
-                      <span className="text-[10px] text-gray-600">Home</span>
-                      <span className="text-xs font-semibold text-gray-800 tabular-nums">
+                      <span className="text-[10px] text-ink-600">Home</span>
+                      <span className="text-xs font-semibold text-ink-800 tabular-nums">
                         {(outputs.monthlyHomeEnergyUsed + outputs.monthlyEvEnergyUsed).toFixed(1)}
                           </span>
                         </div>
-                        <div className="pl-3 space-y-1 border-l-2 border-emerald-200">
+                        <div className="pl-3 space-y-1 border-l-2 border-brand-200">
                           <div className="flex justify-between text-[10px]">
-                        <span className="text-gray-500">Household</span>
-                            <span className="font-medium text-gray-700 tabular-nums">
+                        <span className="text-ink-500">Household</span>
+                            <span className="font-medium text-ink-700 tabular-nums">
                           {outputs.monthlyHomeEnergyUsed.toFixed(1)}
                             </span>
                           </div>
                       {outputs.monthlyEvEnergyUsed > 0 && (
                           <div className="flex justify-between text-[10px]">
-                          <span className="text-gray-500">EV Home Charging</span>
-                            <span className="font-medium text-gray-700 tabular-nums">
+                          <span className="text-ink-500">EV Home Charging</span>
+                            <span className="font-medium text-ink-700 tabular-nums">
                             {outputs.monthlyEvEnergyUsed.toFixed(1)}
                             </span>
                           </div>
@@ -1821,8 +1821,8 @@ function BatteriesAtHomePageContent() {
                     {/* EV Public Charging */}
                     {outputs.monthlyEvPublicChargingEnergy > 0 && (
                       <div className="flex justify-between items-center">
-                        <span className="text-[10px] text-gray-600">EV Public Charging</span>
-                        <span className="text-xs font-semibold text-gray-800 tabular-nums">
+                        <span className="text-[10px] text-ink-600">EV Public Charging</span>
+                        <span className="text-xs font-semibold text-ink-800 tabular-nums">
                           {outputs.monthlyEvPublicChargingEnergy.toFixed(1)}
                         </span>
                       </div>
@@ -1833,28 +1833,28 @@ function BatteriesAtHomePageContent() {
                 {/* Energy Supply */}
                 <div className="px-3 py-2">
                   <div className="flex items-baseline justify-between mb-2">
-                    <div className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Home Energy Supply</div>
-                    <div className="text-xs font-bold text-gray-900 tabular-nums">
+                    <div className="text-[10px] font-semibold text-ink-500 uppercase tracking-wider">Home Energy Supply</div>
+                    <div className="text-xs font-bold text-ink tabular-nums">
                       {(outputs.monthlyHomeEnergyUsed + outputs.monthlyEvEnergyUsed).toFixed(1)}
                     </div>
                   </div>
                   <div className="space-y-1.5">
                     <div className="flex justify-between items-center">
-                      <span className="text-[10px] text-gray-600">From Solar & Battery</span>
-                      <span className="text-xs font-bold text-emerald-600 tabular-nums">
+                      <span className="text-[10px] text-ink-600">From Solar & Battery</span>
+                      <span className="text-xs font-bold text-brand-600 tabular-nums">
                         {((outputs.monthlyHomeEnergyUsed + outputs.monthlyEvEnergyUsed) - outputs.actualGridUsageThisMonth).toFixed(1)}
                       </span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-[10px] text-gray-600">From Power Grid</span>
+                      <span className="text-[10px] text-ink-600">From Power Grid</span>
                       <span className="text-xs font-bold text-red-600 tabular-nums">
                         {outputs.actualGridUsageThisMonth.toFixed(1)}
                       </span>
                     </div>
                     {EXPORT_RATE_MULTIPLIER[country].net_billing > 0 && (
-                      <div className="pt-1.5 border-t border-gray-100">
+                      <div className="pt-1.5 border-t border-ink/5">
                         <div className="flex justify-between items-center">
-                          <span className="text-[10px] text-gray-600">Grid Export</span>
+                          <span className="text-[10px] text-ink-600">Grid Export</span>
                           <span className="text-xs font-bold text-blue-600 tabular-nums">
                             {outputs.monthlyGridExport.toFixed(1)}
                           </span>
@@ -1869,9 +1869,9 @@ function BatteriesAtHomePageContent() {
             {/* EV Charging Metrics */}
             {vehicles.some(v => v.model && v.quantity > 0) && (
               <div className="mb-10">
-                <div className="flex items-center justify-between mb-6 pb-2 border-b-2 border-emerald-600">
+                <div className="flex items-center justify-between mb-6 pb-2 border-b-2 border-brand-600">
                   <div className="flex items-center gap-2">
-                    <h3 className="text-base font-bold text-gray-900">EV Charging</h3>
+                    <h3 className="text-base font-bold text-ink">EV Charging</h3>
                     <InfoTooltip position="bottom" title="EV Charging Assumptions" content={
                       <div className="space-y-1 text-xs">
                         <div><span className="font-semibold">Home Charging:</span> 7kW AC charging speed (Level 2)</div>
@@ -1881,57 +1881,57 @@ function BatteriesAtHomePageContent() {
                       </div>
                     } />
                   </div>
-                  <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">kWh/month</span>
+                  <span className="text-xs font-medium text-ink-500 uppercase tracking-wider">kWh/month</span>
                 </div>
-                <div className="border border-gray-200 rounded-lg overflow-hidden">
-                  <div className="px-3 py-2 bg-gray-50/50 border-b border-gray-200">
+                <div className="rounded-lg overflow-hidden">
+                  <div className="px-3 py-2 bg-paper-200/50 border-b border-ink/10">
                     <div className="flex justify-between items-baseline">
-                      <span className="text-[10px] font-semibold text-gray-700 uppercase tracking-wider">Total EV Charging</span>
-                      <span className="text-xs font-bold text-gray-900 tabular-nums">
+                      <span className="text-[10px] font-semibold text-ink-700 uppercase tracking-wider">Total EV Charging</span>
+                      <span className="text-xs font-bold text-ink tabular-nums">
                         {(outputs.monthlyEvEnergyUsed + outputs.monthlyEvPublicChargingEnergy).toFixed(1)}
                       </span>
                     </div>
                   </div>
                   <div className="px-3 py-2 space-y-1.5">
                     <div className="flex justify-between items-center">
-                      <span className="text-[10px] text-gray-600">Home charging</span>
-                      <span className="text-xs font-semibold text-gray-800 tabular-nums">
+                      <span className="text-[10px] text-ink-600">Home charging</span>
+                      <span className="text-xs font-semibold text-ink-800 tabular-nums">
                         {outputs.monthlyEvEnergyUsed.toFixed(1)}
                       </span>
                     </div>
                     {outputs.monthlyEvEnergyUsed > 0 && (
-                      <div className="pl-3 space-y-1 border-l-2 border-emerald-200">
+                      <div className="pl-3 space-y-1 border-l-2 border-brand-200">
                         <div className="flex justify-between text-[10px]">
-                          <span className="text-gray-500">From Solar & Battery (free)</span>
-                          <span className="font-medium text-emerald-600 tabular-nums">
+                          <span className="text-ink-500">From Solar & Battery (free)</span>
+                          <span className="font-medium text-brand-600 tabular-nums">
                             {(outputs.monthlyEvEnergyUsed - outputs.monthlyGridUsedForEvChargingHome).toFixed(1)}
                           </span>
                         </div>
                         <div className="flex justify-between text-[10px]">
-                          <span className="text-gray-500">From Grid</span>
-                          <span className="font-medium text-gray-600 tabular-nums">
+                          <span className="text-ink-500">From Grid</span>
+                          <span className="font-medium text-ink-600 tabular-nums">
                             {outputs.monthlyGridUsedForEvChargingHome.toFixed(1)}
                           </span>
                         </div>
                       </div>
                     )}
                     <div className="flex justify-between items-center">
-                      <span className="text-[10px] text-gray-600">Public charging</span>
-                      <span className="text-xs font-semibold text-gray-800 tabular-nums">
+                      <span className="text-[10px] text-ink-600">Public charging</span>
+                      <span className="text-xs font-semibold text-ink-800 tabular-nums">
                         {outputs.monthlyEvPublicChargingEnergy.toFixed(1)}
                       </span>
                     </div>
                   </div>
-                  <div className="px-3 py-2 bg-gray-50/30 border-t border-gray-200 space-y-1.5">
+                  <div className="px-3 py-2 bg-paper-200/30 border-t border-ink/10 space-y-1.5">
                     <div className="flex justify-between items-center">
-                      <span className="text-[10px] text-gray-600">Public Charging Cost</span>
+                      <span className="text-[10px] text-ink-600">Public Charging Cost</span>
                       <span className="text-xs font-bold text-red-600 tabular-nums">
                         {formatCurrency(outputs.monthlyEvPublicChargingCost)}
                       </span>
                     </div>
-                    <div className="flex justify-between items-center pt-1.5 border-t border-gray-200">
-                      <span className="text-[10px] font-semibold text-gray-700">Savings from Home Charging</span>
-                      <span className="text-xs font-bold text-emerald-600 tabular-nums">
+                    <div className="flex justify-between items-center pt-1.5 border-t border-ink/10">
+                      <span className="text-[10px] font-semibold text-ink-700">Savings from Home Charging</span>
+                      <span className="text-xs font-bold text-brand-600 tabular-nums">
                         {formatCurrency(outputs.monthlyEvChargingSavings)}
                       </span>
                     </div>
@@ -1942,7 +1942,7 @@ function BatteriesAtHomePageContent() {
 
             {/* Equilibrium Suggestion */}
             {outputs.equilibriumSuggestion && (
-              <div className="text-xs text-gray-600 italic leading-relaxed">
+              <div className="text-xs text-ink-600 italic leading-relaxed">
                 {outputs.equilibriumSuggestion}
               </div>
             )}
@@ -1959,7 +1959,7 @@ function BatteriesAtHomePageContent() {
               const ok = await copyShareLink()
               if (ok) { setShareLabel('Link Copied!'); setTimeout(() => setShareLabel('Share Design'), 2000) }
             }}
-            className="flex-1 px-4 py-2 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors text-sm inline-flex items-center justify-center gap-2"
+            className="flex-1 px-4 py-2 bg-brand-600 text-white rounded-lg font-semibold hover:bg-brand-700 transition-colors text-sm inline-flex items-center justify-center gap-2"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg>
             {shareLabel}
@@ -1967,12 +1967,12 @@ function BatteriesAtHomePageContent() {
           <PDFExportButton
             containerRef={pdfRef}
             options={{ filename: 'battery-mom-home-bess.pdf', title: 'battery.mom — Home BESS Calculator', subtitle: `${COUNTRY_NAMES[country]} · Solar ${solarSizeKw}kW · ${batteries.filter(b => b.model).length} batteries` }}
-            className="flex-1 bg-gray-100 text-gray-700 hover:bg-gray-200"
+            className="flex-1 bg-paper-200 text-ink-700 hover:bg-paper-300"
           />
         </div>
 
         {/* Footnote */}
-        <p className="text-xs text-gray-500 text-center max-w-3xl mx-auto">
+        <p className="text-xs text-ink-500 text-center max-w-3xl mx-auto">
           *Real 2025 tariffs/yields. Assumes average household. Actual varies by roof/usage/weather. Updated monthly.*
         </p>
       </section>

@@ -141,7 +141,7 @@ export default function InfoTooltip({
           e.stopPropagation()
           setIsVisible(!isVisible)
         }}
-        className="inline-flex items-center justify-center text-gray-400 hover:text-blue-600 transition-colors focus:outline-none focus:text-blue-600 cursor-help"
+        className="inline-flex items-center justify-center text-ink-400 hover:text-blue-600 transition-colors focus:outline-none focus:text-blue-600 cursor-help"
         aria-label="More information"
       >
         <svg
@@ -165,11 +165,11 @@ export default function InfoTooltip({
             onMouseEnter={() => setIsVisible(true)}
             onMouseLeave={() => setIsVisible(false)}
           >
-            <div className="bg-white border border-gray-200 rounded-lg shadow-xl px-4 py-3 w-80 max-w-[90vw] whitespace-normal font-normal">
+            <div className="bg-paper-100 border border-ink/10 rounded-lg shadow-xl px-4 py-3 w-80 max-w-[90vw] whitespace-normal font-normal">
               {title && (
-                <div className="text-xs font-semibold text-gray-900 mb-2">{title}</div>
+                <div className="text-xs font-semibold text-ink mb-2">{title}</div>
               )}
-              <div className="text-xs text-gray-700 leading-relaxed space-y-1.5">
+              <div className="text-xs text-ink-700 leading-relaxed space-y-1.5">
                 {content}
               </div>
               {/* Arrow */}

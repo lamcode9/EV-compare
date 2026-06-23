@@ -166,41 +166,41 @@ export default function ScenarioComparisonTool({ country }: Props) {
   }, [country, solarKwp, batteryKwh, dailyLoadKwh, evKmPerDay, years])
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-6 mb-8">
-      <h2 className="text-lg font-semibold text-gray-900 mb-1">
+    <div className="bg-paper-100 border border-ink/10 rounded-card p-6 mb-8">
+      <h2 className="text-lg font-semibold text-ink mb-1">
         Scenario Comparison{' '}
         <InfoTooltip content="Compare three investment paths side by side: Solar Only, Solar + Battery, Solar + Battery + EV Charging. See how each affects your bill, payback, CO₂ footprint, and power resilience." />
       </h2>
-      <p className="text-sm text-gray-500 mb-6">
+      <p className="text-sm text-ink-500 mb-6">
         How much more value does a battery (and EV) add on top of solar?
       </p>
 
       {/* ── Inputs ── */}
       <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
         <div>
-          <label className="block text-xs font-medium text-gray-700 mb-1">Solar (kWp)</label>
+          <label className="block text-xs font-medium text-ink-700 mb-1">Solar (kWp)</label>
           <input type="number" value={solarKwp} onChange={(e) => setSolarKwp(Math.max(1, Number(e.target.value)))}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+            className="w-full px-3 py-2 border border-ink/15 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500" />
         </div>
         <div>
-          <label className="block text-xs font-medium text-gray-700 mb-1">Battery (kWh)</label>
+          <label className="block text-xs font-medium text-ink-700 mb-1">Battery (kWh)</label>
           <input type="number" value={batteryKwh} onChange={(e) => setBatteryKwh(Math.max(1, Number(e.target.value)))}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+            className="w-full px-3 py-2 border border-ink/15 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500" />
         </div>
         <div>
-          <label className="block text-xs font-medium text-gray-700 mb-1">Daily load (kWh)</label>
+          <label className="block text-xs font-medium text-ink-700 mb-1">Daily load (kWh)</label>
           <input type="number" value={dailyLoadKwh} onChange={(e) => setDailyLoadKwh(Math.max(5, Number(e.target.value)))}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+            className="w-full px-3 py-2 border border-ink/15 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500" />
         </div>
         <div>
-          <label className="block text-xs font-medium text-gray-700 mb-1">EV km/day</label>
+          <label className="block text-xs font-medium text-ink-700 mb-1">EV km/day</label>
           <input type="number" value={evKmPerDay} onChange={(e) => setEvKmPerDay(Math.max(0, Number(e.target.value)))}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+            className="w-full px-3 py-2 border border-ink/15 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500" />
         </div>
         <div>
-          <label className="block text-xs font-medium text-gray-700 mb-1">Years</label>
+          <label className="block text-xs font-medium text-ink-700 mb-1">Years</label>
           <input type="number" value={years} onChange={(e) => setYears(Math.max(5, Math.min(30, Number(e.target.value))))}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+            className="w-full px-3 py-2 border border-ink/15 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500" />
         </div>
       </div>
 
@@ -209,39 +209,39 @@ export default function ScenarioComparisonTool({ country }: Props) {
         {scenarios.map((s) => {
           const meta = SCENARIO_META[s.id]
           return (
-            <div key={s.id} className="border border-gray-200 rounded-xl p-4 hover:border-emerald-300 transition-colors" style={{ borderTopColor: meta.color, borderTopWidth: 3 }}>
+            <div key={s.id} className="border-t-[3px] rounded-card p-4 bg-paper-200 hover:bg-paper-300 transition-colors" style={{ borderTopColor: meta.color }}>
               <div className="flex items-center gap-2 mb-3">
                 <span className="text-xl">{meta.icon}</span>
                 <div>
-                  <div className="text-sm font-semibold text-gray-900">{meta.label}</div>
-                  <div className="text-[10px] text-gray-500">{meta.description}</div>
+                  <div className="text-sm font-semibold text-ink">{meta.label}</div>
+                  <div className="text-[10px] text-ink-500">{meta.description}</div>
                 </div>
               </div>
 
               <div className="space-y-2">
                 <div className="flex justify-between text-xs">
-                  <span className="text-gray-500">Upfront cost</span>
-                  <span className="font-semibold text-gray-900">{fmtShort(s.totalCost, country)}</span>
+                  <span className="text-ink-500">Upfront cost</span>
+                  <span className="font-semibold text-ink">{fmtShort(s.totalCost, country)}</span>
                 </div>
                 <div className="flex justify-between text-xs">
-                  <span className="text-gray-500">Annual savings</span>
-                  <span className="font-semibold text-emerald-700">{fmtShort(s.annualSavings, country)}/yr</span>
+                  <span className="text-ink-500">Annual savings</span>
+                  <span className="font-semibold text-brand-700">{fmtShort(s.annualSavings, country)}/yr</span>
                 </div>
                 <div className="flex justify-between text-xs">
-                  <span className="text-gray-500">Payback</span>
-                  <span className="font-semibold text-gray-900">{s.paybackYears < 50 ? `${s.paybackYears.toFixed(1)} yrs` : '—'}</span>
+                  <span className="text-ink-500">Payback</span>
+                  <span className="font-semibold text-ink">{s.paybackYears < 50 ? `${s.paybackYears.toFixed(1)} yrs` : '—'}</span>
                 </div>
                 <div className="flex justify-between text-xs">
-                  <span className="text-gray-500">Self-sufficiency</span>
+                  <span className="text-ink-500">Self-sufficiency</span>
                   <span className="font-semibold text-blue-700">{s.selfSufficiency}%</span>
                 </div>
                 <div className="flex justify-between text-xs">
-                  <span className="text-gray-500">CO₂ avoided ({years}yr)</span>
+                  <span className="text-ink-500">CO₂ avoided ({years}yr)</span>
                   <span className="font-semibold text-purple-700">{s.totalCO2.toFixed(1)} t</span>
                 </div>
                 {s.blackoutHours > 0 && (
                   <div className="flex justify-between text-xs">
-                    <span className="text-gray-500">Blackout cover</span>
+                    <span className="text-ink-500">Blackout cover</span>
                     <span className="font-semibold text-amber-700">{s.blackoutHours} hrs</span>
                   </div>
                 )}
@@ -254,7 +254,7 @@ export default function ScenarioComparisonTool({ country }: Props) {
       {/* ── Side-by-side bar charts ── */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div>
-          <h3 className="text-sm font-semibold text-gray-900 mb-2">Cost vs savings</h3>
+          <h3 className="text-sm font-semibold text-ink mb-2">Cost vs savings</h3>
           <ResponsiveContainer width="100%" height={240}>
             <BarChart data={scenarios.map((s) => ({
               name: SCENARIO_META[s.id].label.replace(' + ', '+'),
@@ -272,7 +272,7 @@ export default function ScenarioComparisonTool({ country }: Props) {
           </ResponsiveContainer>
         </div>
         <div>
-          <h3 className="text-sm font-semibold text-gray-900 mb-2">CO₂ &amp; self-sufficiency</h3>
+          <h3 className="text-sm font-semibold text-ink mb-2">CO₂ &amp; self-sufficiency</h3>
           <ResponsiveContainer width="100%" height={240}>
             <BarChart data={scenarios.map((s) => ({
               name: SCENARIO_META[s.id].label.replace(' + ', '+'),

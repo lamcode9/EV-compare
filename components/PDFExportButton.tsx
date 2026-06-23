@@ -71,7 +71,7 @@ export function usePDFExport() {
       const doc = new jsPDF('p', 'mm', 'a4')
 
       // ── Header ──────────────────────────────────────────
-      doc.setFillColor(16, 185, 129) // emerald-500
+      doc.setFillColor(16, 185, 129) // brand-500
       doc.rect(0, 0, pdfWidth, headerHeight, 'F')
 
       doc.setTextColor(255, 255, 255)
