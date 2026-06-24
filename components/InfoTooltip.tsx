@@ -141,7 +141,7 @@ export default function InfoTooltip({
           e.stopPropagation()
           setIsVisible(!isVisible)
         }}
-        className="inline-flex items-center justify-center text-ink-400 hover:text-blue-600 transition-colors focus:outline-none focus:text-blue-600 cursor-help"
+        className="inline-flex items-center justify-center text-ink-400 hover:text-brand-600 transition-colors focus:outline-none focus:text-brand-600 cursor-help"
         aria-label="More information"
       >
         <svg

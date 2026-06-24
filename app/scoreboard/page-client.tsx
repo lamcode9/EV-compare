@@ -298,11 +298,12 @@ const GRADE_SCORE: Record<string, number> = {
 const GRADE_COLORS: Record<string, string> = {
   'A': 'bg-brand-100 text-brand-800',
   'A-': 'bg-brand-50 text-brand-700',
-  'B+': 'bg-blue-100 text-blue-800',
-  'B': 'bg-blue-50 text-blue-700',
-  'B-': 'bg-blue-50 text-blue-600',
+  'B+': 'bg-brand-50 text-brand-700',
+  'B': 'bg-brand-50 text-brand-600',
+  'B-': 'bg-paper-200 text-ink-700',
   'C+': 'bg-amber-100 text-amber-800',
   'C': 'bg-amber-50 text-amber-700',
+  'D': 'bg-red-50 text-red-700',
 }
 
 function formatNum(n: number): string {
@@ -336,12 +337,20 @@ function computeReadinessScore(country: CountryData, all: CountryData[]): number
   )
 }
 
-/** Score ring colours */
+// --- Chart color tokens (the SVG layer can't read Tailwind classes) ---
+const CHART_BRAND = '#0E9F6E' // brand-500
+const CHART_AMBER = '#E0A33C' // accent
+const CHART_GRID = '#F4EEE0' // paper-200
+// Categorical series for the six SEA countries — all within the ink/brand/amber
+// family so the multi-line and dual-radar charts read as one palette, no rainbow.
+const CHART_SERIES = ['#0E9F6E', '#0B6648', '#5DD9A6', '#E0A33C', '#828B80', '#454E44']
+
+/** Score ring colours — a green → amber → muted readiness ramp (no alarm red) */
 function getScoreColor(score: number): string {
-  if (score >= 75) return '#10b981'
-  if (score >= 55) return '#f59e0b'
-  if (score >= 35) return '#f97316'
-  return '#ef4444'
+  if (score >= 75) return '#0E9F6E' // brand-500
+  if (score >= 55) return '#23C088' // brand-400
+  if (score >= 35) return '#E0A33C' // accent amber
+  return '#828B80' // ink-400
 }
 
 /** Trend arrow helper */
@@ -363,12 +372,14 @@ function ScoreRing({ score, size = 52, strokeWidth = 4, medal }: { score: number
   const r = (size - strokeWidth) / 2
   const circ = 2 * Math.PI * r
   const offset = circ * (1 - score / 100)
-  const color = medal === 'gold' ? '#eab308' : medal === 'silver' ? '#9ca3af' : medal === 'bronze' ? '#d97706' : getScoreColor(score)
+  // Podium in brand tones, not literal gold/silver/bronze, so the ranking reads
+  // as part of the same palette as the rest of the board.
+  const color = medal === 'gold' ? '#0E9F6E' : medal === 'silver' ? '#A7AFA4' : medal === 'bronze' ? '#E0A33C' : getScoreColor(score)
 
   return (
     <div className="relative" style={{ width: size, height: size }}>
       <svg width={size} height={size} className="transform -rotate-90">
-        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="#f3f4f6" strokeWidth={strokeWidth} />
+        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke={CHART_GRID} strokeWidth={strokeWidth} />
         <circle
           cx={size / 2} cy={size / 2} r={r} fill="none" stroke={color} strokeWidth={strokeWidth}
           strokeLinecap="round" strokeDasharray={circ} strokeDashoffset={offset}
@@ -428,7 +439,7 @@ const METRIC_DETAILS: Record<MetricKey, { definition: string; methodology: strin
 }
 
 /** Sparkline mini chart */
-function Sparkline({ data, color = '#10b981', width = 80, height = 28 }: { data: number[]; color?: string; width?: number; height?: number }) {
+function Sparkline({ data, color = '#0E9F6E', width = 80, height = 28 }: { data: number[]; color?: string; width?: number; height?: number }) {
   const chartData = HISTORICAL_YEARS.map((yr, i) => ({ year: yr, value: data[i] }))
   return (
     <ResponsiveContainer width={width} height={height}>
@@ -767,7 +778,7 @@ export default function ScoreboardPage() {
             {top3.map((c, i) => {
               const medal = (['gold', 'silver', 'bronze'] as const)[i]
               const medalEmoji = ['🥇', '🥈', '🥉'][i]
-              const medalBorder = i === 0 ? 'border-yellow-300 bg-yellow-50/40' : i === 1 ? 'border-ink/15 bg-paper-200/40' : 'border-amber-300 bg-amber-50/30'
+              const medalBorder = i === 0 ? 'border-brand-200 bg-brand-50/50' : i === 1 ? 'border-ink/15 bg-paper-200/50' : 'border-amber-300 bg-amber-50/40'
               return (
                 <button
                   key={c.code}
@@ -823,12 +834,12 @@ export default function ScoreboardPage() {
         </div>
 
         {/* ─── 1.4 Auto-Generated Headlines ─────────────────────── */}
-        <div className="mb-10 bg-gradient-to-r from-gray-900 to-gray-800 rounded-card p-6 text-white">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-brand-400 mb-3">📊 Key Headlines</h3>
+        <div className="mb-10 bg-ink rounded-card p-6 text-white">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-brand-300 mb-3">📊 Key Headlines</h3>
           <ul className="space-y-2">
             {headlines.map((line, i) => (
               <li key={i} className="text-sm text-paper-300 leading-relaxed flex gap-2">
-                <span className="text-brand-400 font-bold shrink-0">•</span>
+                <span className="text-brand-300 font-bold shrink-0">•</span>
                 {line}
               </li>
             ))}
@@ -836,7 +847,7 @@ export default function ScoreboardPage() {
         </div>
 
         {/* ─── 2.2 Regional Context Banner ──────────────────────── */}
-        <div className="mb-10 bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-card p-6">
+        <div className="mb-10 bg-paper-200 rounded-card p-6">
           <h3 className="text-sm font-semibold text-ink mb-1">
             🌏 How does Southeast Asia compare?
             <InfoTooltip
@@ -854,10 +865,10 @@ export default function ScoreboardPage() {
               const max = Math.max(bm.sea, bm.us, bm.global, bm.eu, bm.china)
               const entries = [
                 { label: 'SEA', value: bm.sea, color: 'bg-brand-500', text: 'text-brand-700' },
-                { label: 'US', value: bm.us, color: 'bg-indigo-500', text: 'text-indigo-700' },
+                { label: 'US', value: bm.us, color: 'bg-ink-600', text: 'text-ink-700' },
                 { label: 'Global', value: bm.global, color: 'bg-ink-300', text: 'text-ink-600' },
-                { label: 'EU', value: bm.eu, color: 'bg-blue-500', text: 'text-blue-700' },
-                { label: 'China', value: bm.china, color: 'bg-red-400', text: 'text-red-700' },
+                { label: 'EU', value: bm.eu, color: 'bg-ink-400', text: 'text-ink-500' },
+                { label: 'China', value: bm.china, color: 'bg-amber-500', text: 'text-amber-700' },
               ]
               return (
                 <div key={key} className="bg-paper-100 rounded-lg p-4 shadow-sm">
@@ -927,7 +938,7 @@ export default function ScoreboardPage() {
               <h3 className="text-sm font-semibold text-ink">{metricInfo.label}</h3>
               <p className="text-xs text-ink-500 mt-0.5">{metricInfo.desc}</p>
             </div>
-            <div className="divide-y divide-gray-100">
+            <div className="divide-y divide-ink/5">
               {rankedByMetric.map((c, i) => {
                 const value = c[selectedMetric] as number
                 const max = rankedByMetric[0][selectedMetric] as number
@@ -940,7 +951,7 @@ export default function ScoreboardPage() {
                     className={`w-full flex items-center gap-4 px-6 py-3 text-left hover:bg-paper-200 transition-colors ${selectedCountry === c.code ? 'bg-brand-50' : ''}`}
                   >
                     <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
-                      i === 0 ? 'bg-brand-100 text-brand-700' : i === 1 ? 'bg-blue-100 text-blue-700' : i === 2 ? 'bg-amber-100 text-amber-700' : 'bg-paper-200 text-ink-500'
+                      i === 0 ? 'bg-brand-100 text-brand-700' : i === 1 ? 'bg-paper-200 text-ink-700' : i === 2 ? 'bg-amber-100 text-amber-700' : 'bg-paper-200 text-ink-500'
                     }`}>{i + 1}</span>
                     <span className="text-xl">{c.flag}</span>
                     <div className="flex-1 min-w-0">
@@ -965,11 +976,11 @@ export default function ScoreboardPage() {
             <h3 className="text-sm font-semibold text-ink mb-4">{metricInfo.label} by country</h3>
             <ResponsiveContainer width="100%" height={320}>
               <BarChart data={barData} layout="vertical">
-                <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" horizontal={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke={CHART_GRID} horizontal={false} />
                 <XAxis type="number" tick={{ fontSize: 10 }} />
                 <YAxis dataKey="name" type="category" tick={{ fontSize: 12 }} width={60} />
                 <Tooltip formatter={(v: number) => `${typeof v === 'number' && v >= 1000 ? formatNum(v) : v} ${metricInfo.unit}`} />
-                <Bar dataKey="value" fill="#10b981" radius={[0, 6, 6, 0]} />
+                <Bar dataKey="value" fill={CHART_BRAND} radius={[0, 6, 6, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -1035,7 +1046,7 @@ export default function ScoreboardPage() {
                     <div className="bg-paper-200 rounded-lg p-4">
                       <div className="flex items-center justify-between">
                         <div className="text-xs font-semibold text-ink-500 uppercase tracking-wide">2025 EV sales</div>
-                        <Sparkline data={c.historical.totalEvs} color="#6366f1" />
+                        <Sparkline data={c.historical.totalEvs} color="#0E9F6E" />
                       </div>
                       <div className="text-2xl font-bold text-ink mt-1 flex items-center">
                         {formatNum(c.totalEvs)}
@@ -1060,7 +1071,7 @@ export default function ScoreboardPage() {
                             </>
                           }
                         /></div>
-                        <Sparkline data={c.historical.chargersPerMillion} color="#f59e0b" />
+                        <Sparkline data={c.historical.chargersPerMillion} color="#0E9F6E" />
                       </div>
                       <div className="text-2xl font-bold text-ink mt-1 flex items-center">
                         {c.chargersPerMillion}
@@ -1071,7 +1082,7 @@ export default function ScoreboardPage() {
                     <div className="bg-paper-200 rounded-lg p-4">
                       <div className="flex items-center justify-between">
                         <div className="text-xs font-semibold text-ink-500 uppercase tracking-wide">Solar capacity</div>
-                        <Sparkline data={c.historical.solarCapacityGw} color="#eab308" />
+                        <Sparkline data={c.historical.solarCapacityGw} color="#0E9F6E" />
                       </div>
                       <div className="text-2xl font-bold text-ink mt-1 flex items-center">
                         {c.solarCapacityGw} GW
@@ -1082,7 +1093,7 @@ export default function ScoreboardPage() {
                     <div className="bg-paper-200 rounded-lg p-4">
                       <div className="flex items-center justify-between">
                         <div className="text-xs font-semibold text-ink-500 uppercase tracking-wide">EV growth <InfoTooltip content="Year-over-year change from 2024 to 2025 in each market's cited EV/electrified sales boundary." /></div>
-                        <Sparkline data={c.historical.evSalesGrowth} color="#ef4444" />
+                        <Sparkline data={c.historical.evSalesGrowth} color="#0E9F6E" />
                       </div>
                       <div className="text-2xl font-bold text-brand-700 mt-1">+{c.evSalesGrowth}%</div>
                       <div className="text-xs text-ink-500">YoY 2024→2025</div>
@@ -1101,7 +1112,7 @@ export default function ScoreboardPage() {
                           <PolarGrid stroke="#e5e7eb" />
                           <PolarAngleAxis dataKey="metric" tick={{ fontSize: 10 }} />
                           <PolarRadiusAxis domain={[0, 100]} tick={false} axisLine={false} />
-                          <Radar name={c.name} dataKey="value" stroke="#10b981" fill="#10b981" fillOpacity={0.2} strokeWidth={2} />
+                          <Radar name={c.name} dataKey="value" stroke={CHART_BRAND} fill={CHART_BRAND} fillOpacity={0.2} strokeWidth={2} />
                         </RadarChart>
                       </ResponsiveContainer>
                     </div>
@@ -1115,8 +1126,8 @@ export default function ScoreboardPage() {
                     <InfoTooltip content="Economic indicators that affect EV adoption feasibility. Affordability Index = average EV price ÷ average annual income (lower = more affordable)." />
                   </h4>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div className="bg-blue-50/60 rounded-lg p-3">
-                      <div className="text-[10px] font-medium text-blue-600 uppercase">GDP per capita</div>
+                    <div className="bg-brand-50/60 rounded-lg p-3">
+                      <div className="text-[10px] font-medium text-brand-600 uppercase">GDP per capita</div>
                       <div className="text-lg font-bold text-ink mt-0.5">${c.gdpPerCapita.toLocaleString()}</div>
                     </div>
                     <div className="bg-amber-50/60 rounded-lg p-3">
@@ -1124,8 +1135,8 @@ export default function ScoreboardPage() {
                       <div className="text-lg font-bold text-ink mt-0.5">${c.electricityCostUsd}/kWh</div>
                       <div className="text-[10px] text-ink-400">{c.electricityTariff}</div>
                     </div>
-                    <div className="bg-purple-50/60 rounded-lg p-3">
-                      <div className="text-[10px] font-medium text-purple-600 uppercase">Avg EV Price</div>
+                    <div className="bg-paper-200 rounded-lg p-3">
+                      <div className="text-[10px] font-medium text-ink-500 uppercase">Avg EV Price</div>
                       <div className="text-lg font-bold text-ink mt-0.5">${c.avgEvPriceUsd.toLocaleString()}</div>
                     </div>
                     <div className={`rounded-lg p-3 ${parseFloat(affordabilityIndex) <= 2 ? 'bg-brand-50/60' : parseFloat(affordabilityIndex) <= 4 ? 'bg-amber-50/60' : 'bg-red-50/60'}`}>
@@ -1188,7 +1199,7 @@ export default function ScoreboardPage() {
           </div>
 
           {/* ── 3.2 Mobile Card View (below md) ── */}
-          <div className="md:hidden divide-y divide-gray-100">
+          <div className="md:hidden divide-y divide-ink/5">
             {sortedForTable.map(c => (
               <button
                 key={c.code}
@@ -1305,7 +1316,7 @@ export default function ScoreboardPage() {
               <select
                 value={compareA ?? ''}
                 onChange={e => setCompareA(e.target.value as CountryCode || null)}
-                className="px-3 py-1.5 border border-ink/15 rounded-lg text-sm bg-paper-100"
+                className="px-3 py-1.5 rounded-lg text-sm bg-paper-200 font-medium text-ink shadow-sm"
               >
                 <option value="">Select…</option>
                 {COUNTRIES.map(c => <option key={c.code} value={c.code}>{c.flag} {c.name}</option>)}
@@ -1317,7 +1328,7 @@ export default function ScoreboardPage() {
               <select
                 value={compareB ?? ''}
                 onChange={e => setCompareB(e.target.value as CountryCode || null)}
-                className="px-3 py-1.5 border border-ink/15 rounded-lg text-sm bg-paper-100"
+                className="px-3 py-1.5 rounded-lg text-sm bg-paper-200 font-medium text-ink shadow-sm"
               >
                 <option value="">Select…</option>
                 {COUNTRIES.filter(c => c.code !== compareA).map(c => <option key={c.code} value={c.code}>{c.flag} {c.name}</option>)}
@@ -1334,8 +1345,8 @@ export default function ScoreboardPage() {
                     <PolarGrid stroke="#e5e7eb" />
                     <PolarAngleAxis dataKey="metric" tick={{ fontSize: 10 }} />
                     <PolarRadiusAxis domain={[0, 100]} tick={false} axisLine={false} />
-                    <Radar name={comparisonData.a.name} dataKey={comparisonData.a.name} stroke="#10b981" fill="#10b981" fillOpacity={0.15} strokeWidth={2} />
-                    <Radar name={comparisonData.b.name} dataKey={comparisonData.b.name} stroke="#6366f1" fill="#6366f1" fillOpacity={0.15} strokeWidth={2} />
+                    <Radar name={comparisonData.a.name} dataKey={comparisonData.a.name} stroke={CHART_BRAND} fill={CHART_BRAND} fillOpacity={0.15} strokeWidth={2} />
+                    <Radar name={comparisonData.b.name} dataKey={comparisonData.b.name} stroke={CHART_AMBER} fill={CHART_AMBER} fillOpacity={0.15} strokeWidth={2} />
                     <Legend />
                     <Tooltip />
                   </RadarChart>
@@ -1349,7 +1360,7 @@ export default function ScoreboardPage() {
                     <tr className="border-b border-ink/10">
                       <th className="text-left py-2 text-ink-500 font-medium">Metric</th>
                       <th className="text-right py-2 text-brand-700 font-medium">{comparisonData.a.flag} {comparisonData.a.name}</th>
-                      <th className="text-right py-2 text-indigo-700 font-medium">{comparisonData.b.flag} {comparisonData.b.name}</th>
+                      <th className="text-right py-2 text-amber-700 font-medium">{comparisonData.b.flag} {comparisonData.b.name}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -1363,7 +1374,7 @@ export default function ScoreboardPage() {
                           <td className={`text-right py-2 tabular-nums ${aWins ? 'font-semibold text-brand-700' : 'text-ink-500'}`}>
                             {typeof av === 'number' && av >= 1000 ? formatNum(av) : av}{m.unit ? ` ${m.unit}` : ''}
                           </td>
-                          <td className={`text-right py-2 tabular-nums ${!aWins ? 'font-semibold text-indigo-700' : 'text-ink-500'}`}>
+                          <td className={`text-right py-2 tabular-nums ${!aWins ? 'font-semibold text-amber-700' : 'text-ink-500'}`}>
                             {typeof bv === 'number' && bv >= 1000 ? formatNum(bv) : bv}{m.unit ? ` ${m.unit}` : ''}
                           </td>
                         </tr>
@@ -1372,15 +1383,15 @@ export default function ScoreboardPage() {
                     <tr className="border-t-2 border-ink/10">
                       <td className="py-2 font-semibold text-ink">Readiness Score</td>
                       <td className={`text-right py-2 font-bold tabular-nums ${comparisonData.a.readinessScore >= comparisonData.b.readinessScore ? 'text-brand-700' : 'text-ink-500'}`}>{comparisonData.a.readinessScore}</td>
-                      <td className={`text-right py-2 font-bold tabular-nums ${comparisonData.b.readinessScore >= comparisonData.a.readinessScore ? 'text-indigo-700' : 'text-ink-500'}`}>{comparisonData.b.readinessScore}</td>
+                      <td className={`text-right py-2 font-bold tabular-nums ${comparisonData.b.readinessScore >= comparisonData.a.readinessScore ? 'text-amber-700' : 'text-ink-500'}`}>{comparisonData.b.readinessScore}</td>
                     </tr>
                   </tbody>
                 </table>
 
                 {comparisonData.narratives.length > 0 && (
-                  <div className="bg-blue-50 border-l-4 border-blue-400 rounded-r-lg p-4">
-                    <h4 className="text-xs font-bold text-blue-900 mb-2">💡 Comparison Insights</h4>
-                    <ul className="space-y-1.5 text-xs text-blue-800">
+                  <div className="bg-brand-50 rounded-lg p-4">
+                    <h4 className="text-xs font-bold text-ink mb-2">💡 Comparison Insights</h4>
+                    <ul className="space-y-1.5 text-xs text-ink-600">
                       {comparisonData.narratives.map((n, i) => <li key={i}>• {n}</li>)}
                     </ul>
                   </div>
@@ -1470,11 +1481,11 @@ export default function ScoreboardPage() {
                     name: `${c.flag} ${c.code}`,
                     value: c[metricModal] as number,
                   }))} layout="vertical">
-                    <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" horizontal={false} />
+                    <CartesianGrid strokeDasharray="3 3" stroke={CHART_GRID} horizontal={false} />
                     <XAxis type="number" tick={{ fontSize: 10 }} />
                     <YAxis dataKey="name" type="category" tick={{ fontSize: 12 }} width={60} />
                     <Tooltip formatter={(v: number) => `${v >= 1000 ? formatNum(v) : v} ${deepDiveInsight.metricInfo.unit}`} />
-                    <Bar dataKey="value" fill="#6366f1" radius={[0, 6, 6, 0]} />
+                    <Bar dataKey="value" fill={CHART_AMBER} radius={[0, 6, 6, 0]} />
                   </BarChart>
                 </ResponsiveContainer>
               </div>
@@ -1488,13 +1499,13 @@ export default function ScoreboardPage() {
                     COUNTRIES.forEach(c => { point[c.name] = c.historical[metricModal][i] })
                     return point
                   })}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
+                    <CartesianGrid strokeDasharray="3 3" stroke={CHART_GRID} />
                     <XAxis dataKey="year" tick={{ fontSize: 10 }} />
                     <YAxis tick={{ fontSize: 10 }} />
                     <Tooltip />
                     <Legend wrapperStyle={{ fontSize: 10 }} />
                     {COUNTRIES.map((c, i) => {
-                      const colors = ['#10b981', '#6366f1', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899']
+                      const colors = CHART_SERIES
                       return (
                         <Area
                           key={c.code}
@@ -1512,9 +1523,9 @@ export default function ScoreboardPage() {
               </div>
 
               {/* Auto-generated insight */}
-              <div className="bg-indigo-50 border-l-4 border-indigo-400 rounded-r-lg p-4">
-                <h4 className="text-xs font-bold text-indigo-900 mb-2">🔍 Key Insights</h4>
-                <ul className="space-y-1.5 text-xs text-indigo-800">
+              <div className="bg-brand-50 rounded-lg p-4">
+                <h4 className="text-xs font-bold text-ink mb-2">🔍 Key Insights</h4>
+                <ul className="space-y-1.5 text-xs text-ink-600">
                   {deepDiveInsight.lines.map((line, i) => <li key={i}>• {line}</li>)}
                 </ul>
               </div>
