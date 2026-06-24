@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import {
   ENERGY_DEPLOYMENT_SNAPSHOT,
   GLOBAL_BATTERY_POWER_ADDITIONS,
 } from '@/data/energy-deployment-scoreboard'
 import { NextSteps } from '@/components/ui/NextSteps'
+import { BigPictureNav } from '@/components/ui/BigPictureNav'
 
 export const metadata: Metadata = {
   title: 'Storage Adoption Map — battery.mom',
@@ -88,38 +88,11 @@ function formatGwh(value: number) {
   return `${value.toLocaleString(undefined, { maximumFractionDigits: 0 })} GWh`
 }
 
-function ScoreboardNav() {
-  const links = [
-    { href: '/scoreboard', label: 'Scoreboard home', active: false },
-    { href: '/scoreboard/ev', label: 'EV adoption', active: false },
-    { href: '/scoreboard/bess', label: 'BESS adoption', active: true },
-    { href: '/scoreboard/energy', label: 'Global battery deployment', active: false },
-  ]
-
-  return (
-    <nav className="mb-8 flex flex-wrap gap-2 text-sm" aria-label="Scoreboard views">
-      {links.map((link) => (
-        <Link
-          key={link.href}
-          href={link.href}
-          className={
-            link.active
-              ? 'rounded-full border border-brand-200 bg-brand-50 px-3 py-1.5 font-semibold text-brand-700'
-              : 'rounded-full border border-ink/10 bg-paper-100 px-3 py-1.5 font-semibold text-ink-600 hover:border-brand-200 hover:text-brand-700'
-          }
-        >
-          {link.label}
-        </Link>
-      ))}
-    </nav>
-  )
-}
-
 export default function BessAdoptionScoreboardPage() {
   return (
     <main className="min-h-screen bg-paper pt-12 md:pt-14">
       <section className="container mx-auto max-w-7xl px-4 pb-16 pt-10 md:pt-12">
-        <ScoreboardNav />
+        <BigPictureNav className="mb-8" />
 
         <div className="grid gap-8 lg:grid-cols-[1fr_360px] lg:items-end">
           <div className="max-w-3xl">

@@ -38,7 +38,6 @@ const navLinks: NavLink[] = [
     tooltip: 'Compare electric vehicles & the cost of switching',
     dropdown: [
       { href: '/ev', label: 'Compare EVs' },
-      { href: '/scoreboard/ev', label: 'Adoption by Country' },
       { href: '/calculators/ev-vs-ice', label: 'EV vs Petrol' },
       { href: '/calculators/ev-charging-cost', label: 'Charging Cost' },
     ],

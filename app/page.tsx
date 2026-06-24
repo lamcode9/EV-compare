@@ -122,10 +122,10 @@ export default function Home() {
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Link
-                href="/scoreboard"
+                href="/state-of-battery-power"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-pill bg-paper px-6 py-3 text-sm font-semibold text-ink shadow-raised transition hover:-translate-y-0.5 hover:bg-white sm:w-auto"
               >
-                View adoption scoreboard
+                See the big picture
                 <ArrowIcon />
               </Link>
               <Link

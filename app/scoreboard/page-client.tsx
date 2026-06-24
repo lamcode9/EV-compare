@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useCallback, useRef, useEffect } from 'react'
 import Link from 'next/link'
+import { BigPictureNav } from '@/components/ui/BigPictureNav'
 import InfoTooltip from '@/components/InfoTooltip'
 import {
   BarChart,
@@ -753,32 +754,7 @@ export default function ScoreboardPage() {
           <p className="mt-2 flex items-center gap-2 text-xs text-ink-400">
             <DataFreshnessBadge /> Sources: national registries, industry bodies, IEA, ADB/Ember, IRENA
           </p>
-          <nav className="mt-5 flex flex-wrap gap-2 text-sm" aria-label="Scoreboard views">
-            <Link
-              href="/scoreboard"
-              className="rounded-full border border-ink/10 bg-paper-100 px-3 py-1.5 font-semibold text-ink-600 hover:border-brand-200 hover:text-brand-700"
-            >
-              Scoreboard home
-            </Link>
-            <Link
-              href="/scoreboard/ev"
-              className="rounded-full border border-brand-200 bg-brand-50 px-3 py-1.5 font-semibold text-brand-700"
-            >
-              EV adoption
-            </Link>
-            <Link
-              href="/scoreboard/bess"
-              className="rounded-full border border-ink/10 bg-paper-100 px-3 py-1.5 font-semibold text-ink-600 hover:border-brand-200 hover:text-brand-700"
-            >
-              BESS adoption
-            </Link>
-            <Link
-              href="/scoreboard/energy"
-              className="rounded-full border border-ink/10 bg-paper-100 px-3 py-1.5 font-semibold text-ink-600 hover:border-brand-200 hover:text-brand-700"
-            >
-              Global battery deployment
-            </Link>
-          </nav>
+          <BigPictureNav className="mt-5" />
         </div>
 
         {/* ─── 1.2 Top-3 Podium ─────────────────────────────────── */}

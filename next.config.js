@@ -28,6 +28,18 @@ const nextConfig = {
     }
     return config
   },
+  async redirects() {
+    return [
+      {
+        // The standalone "Scoreboards" hub is retired — its surfaces now live
+        // under the "Big Picture" narrative front door. Children (/scoreboard/ev,
+        // /scoreboard/energy, /scoreboard/bess) are unaffected.
+        source: '/scoreboard',
+        destination: '/state-of-battery-power',
+        permanent: true,
+      },
+    ]
+  },
   async headers() {
     return [
       ...(isDev

@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import Link from 'next/link'
+import { BigPictureNav } from '@/components/ui/BigPictureNav'
 import {
   Area,
   AreaChart,
@@ -690,32 +690,7 @@ export default function EnergyDeploymentScoreboardPage() {
   return (
     <main className="min-h-screen bg-paper pt-12 md:pt-14">
       <section className="mx-auto max-w-7xl px-4 pb-16 pt-10 md:pt-12">
-        <nav className="mb-8 flex flex-wrap gap-2 text-sm">
-          <Link
-            href="/scoreboard"
-            className="rounded-full border border-ink/10 bg-white px-3 py-1.5 font-semibold text-ink-600 hover:border-brand-200 hover:text-brand-700"
-          >
-            Scoreboard home
-          </Link>
-          <Link
-            href="/scoreboard/ev"
-            className="rounded-full border border-ink/10 bg-white px-3 py-1.5 font-semibold text-ink-600 hover:border-brand-200 hover:text-brand-700"
-          >
-            EV adoption
-          </Link>
-          <Link
-            href="/scoreboard/bess"
-            className="rounded-full border border-ink/10 bg-white px-3 py-1.5 font-semibold text-ink-600 hover:border-brand-200 hover:text-brand-700"
-          >
-            BESS adoption
-          </Link>
-          <Link
-            href="/scoreboard/energy"
-            className="rounded-full border border-brand-200 bg-brand-50 px-3 py-1.5 font-semibold text-brand-700"
-          >
-            Global battery deployment
-          </Link>
-        </nav>
+        <BigPictureNav className="mb-8" />
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_360px] lg:items-end">
           <div className="max-w-3xl">

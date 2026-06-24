@@ -1,66 +1,21 @@
-# Revamp — Phase 1 vertical slice: "The State of Battery Power"
+# Site cohesion pass — nav, naming, chart clarity, EV-page UI
 
-Goal: build one flagship narrative page on the data already in the repo, and let the
-design system (tokens + primitives) crystallize out of it. Visible artifact first;
-foundation extracted from a real page, then propagated site-wide in later phases.
+User report (2026-06-24), 4 fronts:
+1. Chart titling unclear — "is this total generation or *additions added*?" Make every chart title explicitly state the measure type (total/stock vs annual addition/flow vs cumulative vs change). Applies site-wide.
+2. EV adoption page (`/scoreboard/ev`, legacy `app/scoreboard/page-client.tsx`, 1551 lines) still on the OLD generic palette (indigo/amber/red/purple/pink hex + rainbow charts) — never migrated to the ink/paper/brand editorial system.
+3. Duplicate adoption link — `/scoreboard/ev` appears under BOTH "Big Picture → EV Adoption" and "EVs → Adoption by Country".
+4. Stale "Scoreboard" concept — orphaned `/scoreboard` hub (titled "Scoreboards"), and all 3 boards carry a duplicated pill-nav ("Scoreboard home / EV adoption / BESS adoption / Global battery deployment") whose labels don't match the header's Big Picture set.
 
-## Design system foundation (extracted from this slice) — DONE
-- [x] Tokens in `tailwind.config.ts`: ink/paper/brand/gold palette, rounded (pill/card/panel),
-      shadow (card/raised), `font-display` serif. Existing `ev` colors preserved.
-- [x] `.reveal` scroll-in utility in `globals.css` (pure CSS, progressive enhancement).
-- [x] Core primitives in `components/ui/`: Container, Section, Card, Stat, Eyebrow, Badge,
-      Button + `cn` helper + barrel index. Server components.
+## Decisions
+- **Track vs Decide thesis** (established): Big Picture = TRACK surfaces (Story + 3 boards). EVs/Battery&Solar = DECIDE tools. EV adoption is a TRACK surface → its canonical home is Big Picture. **Fix #3: remove "Adoption by Country" from the EVs dropdown** (keep "EV Adoption" under Big Picture). EVs dropdown becomes Compare · EV vs Petrol · Charging Cost.
+- **Fix #4:** one shared `BigPictureNav` component, labels matching the header (Big Picture · Global Deployment · EV Adoption · Storage Adoption). Replace the 3 duplicated inline pill-navs. Redirect `/scoreboard` → `/state-of-battery-power` (kill orphaned hub). Repoint homepage primary CTA off `/scoreboard`. Keep "Battery Deployment Scoreboard" h1 on the energy board (legit name).
+- **Fix #1:** surgical — make total-vs-additions explicit. Most charts already clear. Genuinely ambiguous: the generation area charts (story page + energy board "World energy shift" total mode). Title them "Total ... generation". Verify the rest read clearly.
+- **Fix #2:** migrate `app/scoreboard/page-client.tsx` to ink/paper/brand. Chart colors → brand greens + reuse the energy board's on-brand source palette for multi-series (no rainbow). De-nest 3 bordered violations. font-display headings.
 
-## Flagship narrative page — DONE
-- [x] `app/state-of-battery-power/page.tsx` (server, static-prerendered): 9 scenes, editorial pacing.
-- [x] `app/state-of-battery-power/_components/charts.tsx` (client island): 3 Recharts views.
-- [x] All numbers computed from `data/energy-deployment-scoreboard.ts` (no hardcoded drift).
+## Increments (each: build+lint+tsc green → commit → push → CI green)
+- [ ] **I1 — Flow/naming:** header de-dup, shared BigPictureNav, `/scoreboard` redirect, homepage CTA repoint.
+- [ ] **I2 — Chart clarity:** generation charts titled "Total ...", energy-board mode subtitle reflects total vs change. Quick verify of all chart titles.
+- [ ] **I3 — EV adoption UI migration:** palette + charts + de-nest on `app/scoreboard/page-client.tsx`.
 
-## Verify — DONE
-- [x] `npx tsc --noEmit` clean
-- [x] `npm run lint` clean (0 errors)
-- [x] `npm run build` succeeds; `/state-of-battery-power` prerenders as static
-- [x] Visual check desktop + mobile (375px); fixed JSX `{' '}` spacing bugs
-
-## Propagation across the site — IN PROGRESS
-Design directive (user, reaffirmed): "no container in container in container with borderlines."
-Verify every route with the live nested-border detector — target 0 non-interactive nested borders.
-- [x] Promote story to `/` (homepage centerpiece) + nav entry in `components/Header.tsx`.
-- [x] Header + Footer reskinned onto tokens.
-- [x] Scoreboard pillar (hub, /ev, /bess, /energy) — token migration + de-nested (34→0 on energy).
-- [x] Homepage reconciled onto the editorial system (serif headlines, ink/paper tokens,
-      de-nested method metric pills, calmer brand accent). nested 5→0.
-- [x] `/bess` desk landing + `/ev` hero shell migrated to serif + tokens.
-- [x] **EV pillar** (482212b): /ev, /ev/[id], /ev/compare route clients + ~19 shared components
-      (`ComparisonTable`, `StatsGrid`, `QuickPickCards`, `VehicleSection`/`Card`, score gauge,
-      radar, heatmap, TCO, battery-health, backup, smart-insights, mobile cards, share card,
-      winner badges, search, methodology, freshness, skeletons) migrated + de-nested. Detector
-      on the fully-rendered comparison (44 chart SVGs, 2 vehicles): 0 nested, 0 leftover. Fixed a
-      latent undefined-token bug (`text-light-gray-500` → `text-ink-400`).
-- [x] **BESS calculator pages** — `home` (adc36a1), `commercial` (13a2a15), `grid` (5c28aa8),
-      `shared-residential` (8db0b1f), all migrated + de-nested (detector 0 non-interactive nested,
-      0 leftover gray/emerald) + serif heroes + plain-language result sentences, pushed to prod.
-      Their ~11 shared analysis components migrated alongside. Added `scripts/ds-token-migrate.pl`.
-- [x] **Content + standalone calculators** (2700081): the 3 calculators (ev-charging-cost,
-      ev-vs-ice, solar-payback), `/calculators` hub, `/insights` (list + article), `/about`,
-      `/contributors`, `/bess/case-studies`, `/api-docs`, suggest-correction, error, not-found —
-      migrated + serif heroes + `ShareResult` component. Detector verified 0 nested / 0 leftover
-      on every page. (`/bess/products/[slug]` is 0-token already; no `installers` route exists.)
-- [x] **Embed widgets** (971fc2e): ev-stats + ev-vs-ice recolored to ink/brand, transparent bg kept.
-      `/embed-widgets` gallery also migrated (6df2782).
-- [x] **Embed chrome bug FIXED** (101211e): `/embed/*` widgets were rendering the full site
-      header/footer (root layout applied chrome to all routes + embed/layout.tsx's nested `<html>`
-      got flattened). New `SiteShell` client component omits chrome for `/embed/*` (SSR-safe via
-      usePathname, no flash); body is now transparent (site bg comes from SiteShell's bg-paper
-      wrapper) so widgets blend into host pages; embed/layout.tsx is a proper nested layout.
-      Verified live: embeds chrome-free + transparent; homepage, 404, /embed-widgets keep chrome.
-
-## Design-system propagation — COMPLETE
-Every user-facing route is on the editorial ink/paper/brand system with serif display headings and
-zero non-interactive nested borders, verified live with the DOM detector. The reusable token sed is
-`scripts/ds-token-migrate.pl`; the de-nesting + detector method is documented in `lessons.md`.
-
-## Phase 2 + later (keep in view)
-- [ ] Data refresh: battery $/kWh cost curve, global EV-over-time, China share,
-      un-bury SEA battery deployment from "Rest of World".
-- [ ] Later phases — thought leadership / "where it's going" third act (space solar, etc.).
+## Constraints
+- Inner repo only (`/Users/km/Developer/Battery.mom/Battery.mom`). Data-integrity: no invented numbers (this pass is UI/IA/copy, not data). One bordered surface per level. Push to prod after each increment; CI must stay green.
