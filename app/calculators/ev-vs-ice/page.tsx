@@ -35,14 +35,15 @@ const ELECTRICITY_TARIFF: Record<Country, number> = {
   MY: 0.474, SG: 0.315, ID: 1750, TH: 4.59, VN: 2135, PH: 12.30,
 }
 
-// EV registration / road tax incentive (one-time, local currency)
+// Separable one-time EV cash incentive (local currency). As of 2026 the listed
+// prices already reflect each market's tax/duty/rebate environment, so these are
+// set to 0 to avoid double-counting: MY import-duty exemption expired Dec 2025;
+// SG's VES/EEAI rebate is already netted into the COE-inclusive price; ID's
+// CBU/PPN incentives expired Dec 2025; TH's EV3.5 subsidy is reflected in the
+// promotional price; VN exempts EVs from the registration fee (an ICE-side cost
+// not modelled here); PH offers no cash rebate (0% tariff is in the SRP).
 const EV_INCENTIVE: Record<Country, number> = {
-  MY: 0,        // Malaysia — no import duty but no cash incentive
-  SG: 5000,     // SGD VES rebate (band-dependent, conservative mid)
-  ID: 0,        // Indonesia — import duty exemption built into price
-  TH: 100000,   // THB EV subsidy (EV3.5 policy, ≤2M THB models)
-  VN: 0,        // Vietnam — registration tax exemption (built into price)
-  PH: 0,        // Philippines — no direct cash incentive
+  MY: 0, SG: 0, ID: 0, TH: 0, VN: 0, PH: 0,
 }
 
 // Annual maintenance cost estimates (local currency)
@@ -61,8 +62,10 @@ const ICE_INSURANCE: Record<Country, number> = {
   MY: 2200, SG: 1600, ID: 7000000, TH: 18000, VN: 7000000, PH: 25000,
 }
 
-// Annual depreciation rate
-const EV_DEPRECIATION_RATE = 0.12    // 12% per year (faster early)
+// Annual depreciation rate. EVs historically depreciated faster, but the gap has
+// narrowed sharply through 2025/26 (the used EV-vs-petrol price spread closed to
+// roughly parity per Cox Automotive), so the EV penalty is now 1pt, not 2+.
+const EV_DEPRECIATION_RATE = 0.11    // 11% per year
 const ICE_DEPRECIATION_RATE = 0.10   // 10% per year
 
 // Average ICE fuel consumption (litres/100km for a comparable sedan)
@@ -76,8 +79,8 @@ const DEFAULT_EV_EFFICIENCY = 15
 export default function EVvsICEPage() {
   const searchParams = useSearchParams()
   const [country, setCountry] = useState<Country>('MY')
-  const [evPrice, setEvPrice] = useState(160000)
-  const [icePrice, setIcePrice] = useState(100000)
+  const [evPrice, setEvPrice] = useState(125800)
+  const [icePrice, setIcePrice] = useState(115900)
   const [annualKm, setAnnualKm] = useState(15000)
   const [homeChargePercent, setHomeChargePercent] = useState(80)
   const [yearsToCompare, setYearsToCompare] = useState(10)
@@ -98,13 +101,17 @@ export default function EVvsICEPage() {
   }, [searchParams])
 
   // Presets by country (approximate popular sedan pair)
+  // Like-for-like compact SUVs (BYD Atto 3 vs Honda HR-V), current 2025/26
+  // prices. Same vehicle class on both sides, so the purchase gap reflects a real
+  // EV premium — not an SUV-vs-sedan mismatch. TH sells the HR-V only as a hybrid
+  // (labelled); SG prices include COE.
   const presets: Record<Country, { evPrice: number; icePrice: number; evLabel: string; iceLabel: string }> = useMemo(() => ({
-    MY: { evPrice: 160000, icePrice: 100000, evLabel: 'BYD Atto 3 (RM160K)', iceLabel: 'Honda City (RM100K)' },
-    SG: { evPrice: 158000, icePrice: 115000, evLabel: 'BYD Atto 3 (S$158K)', iceLabel: 'Toyota Corolla (S$115K)' },
-    ID: { evPrice: 510000000, icePrice: 320000000, evLabel: 'BYD Atto 3 (Rp510M)', iceLabel: 'Honda City (Rp320M)' },
-    TH: { evPrice: 1100000, icePrice: 780000, evLabel: 'BYD Atto 3 (฿1.1M)', iceLabel: 'Honda City (฿780K)' },
-    VN: { evPrice: 760000000, icePrice: 530000000, evLabel: 'VinFast VF 5 (₫760M)', iceLabel: 'Honda City (₫530M)' },
-    PH: { evPrice: 1680000, icePrice: 1100000, evLabel: 'BYD Atto 3 (₱1.68M)', iceLabel: 'Honda City (₱1.1M)' },
+    MY: { evPrice: 125800, icePrice: 115900, evLabel: 'BYD Atto 3 (RM126K)', iceLabel: 'Honda HR-V (RM116K)' },
+    SG: { evPrice: 172000, icePrice: 151999, evLabel: 'BYD Atto 3 (S$172K)', iceLabel: 'Honda HR-V (S$152K)' },
+    ID: { evPrice: 390000000, icePrice: 388700000, evLabel: 'BYD Atto 3 (Rp390M)', iceLabel: 'Honda HR-V (Rp389M)' },
+    TH: { evPrice: 729900, icePrice: 959000, evLabel: 'BYD Atto 3 (฿730K)', iceLabel: 'Honda HR-V e:HEV (฿959K)' },
+    VN: { evPrice: 766000000, icePrice: 699000000, evLabel: 'BYD Atto 3 (₫766M)', iceLabel: 'Honda HR-V (₫699M)' },
+    PH: { evPrice: 1638000, icePrice: 1450000, evLabel: 'BYD Atto 3 (₱1.64M)', iceLabel: 'Honda HR-V (₱1.45M)' },
   }), [])
 
   const handleCountryChange = useCallback((c: Country) => {
@@ -363,8 +370,8 @@ export default function EVvsICEPage() {
                 <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => fmtShort(v, country)} />
                 <Tooltip formatter={(v: number) => fmt(v, country)} />
                 <Legend />
-                <Bar dataKey="EV" fill="#10b981" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="ICE" fill="#6b7280" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="EV" fill="#0E9F6E" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="ICE" fill="#A7AFA4" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -379,8 +386,8 @@ export default function EVvsICEPage() {
                 <YAxis type="category" dataKey="name" tick={{ fontSize: 11 }} width={90} />
                 <Tooltip formatter={(v: number) => fmt(v, country)} />
                 <Legend />
-                <Bar dataKey="EV" fill="#10b981" radius={[0, 4, 4, 0]} />
-                <Bar dataKey="ICE" fill="#6b7280" radius={[0, 4, 4, 0]} />
+                <Bar dataKey="EV" fill="#0E9F6E" radius={[0, 4, 4, 0]} />
+                <Bar dataKey="ICE" fill="#A7AFA4" radius={[0, 4, 4, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -423,7 +430,7 @@ export default function EVvsICEPage() {
             <div>ICE maintenance: {fmt(ICE_ANNUAL_MAINTENANCE[country], country)}/yr</div>
           </div>
           <p className="text-xs text-ink-400 mt-4">
-            Assumptions are based on 2025/2026 averages. Actual costs vary by model, usage, and location. Insurance, road tax, and financing costs are simplified estimates.
+            Defaults pair like-for-like compact SUVs — BYD Atto 3 vs Honda HR-V — at current 2025/26 prices, so the purchase gap reflects a real EV premium rather than a vehicle-class mismatch. In Thailand the HR-V is sold only as a hybrid (a tougher-than-petrol benchmark); in Singapore both prices include COE. Listed prices already reflect each market&apos;s EV tax and rebate position. Maintenance, insurance, depreciation, road tax, and financing are simplified regional estimates — your actual numbers will vary, and you can override the vehicle prices above.
           </p>
         </div>
       </section>
