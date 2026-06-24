@@ -13,9 +13,11 @@ User report (2026-06-24), 4 fronts:
 - **Fix #2:** migrate `app/scoreboard/page-client.tsx` to ink/paper/brand. Chart colors → brand greens + reuse the energy board's on-brand source palette for multi-series (no rainbow). De-nest 3 bordered violations. font-display headings.
 
 ## Increments (each: build+lint+tsc green → commit → push → CI green)
-- [ ] **I1 — Flow/naming:** header de-dup, shared BigPictureNav, `/scoreboard` redirect, homepage CTA repoint.
-- [ ] **I2 — Chart clarity:** generation charts titled "Total ...", energy-board mode subtitle reflects total vs change. Quick verify of all chart titles.
-- [ ] **I3 — EV adoption UI migration:** palette + charts + de-nest on `app/scoreboard/page-client.tsx`.
+- [x] **I1 — Flow/naming:** header de-dup, shared BigPictureNav, `/scoreboard` redirect, homepage CTA repoint. — `fe6bef3`, CI green.
+- [x] **I2 — Chart clarity:** generation charts titled "Total ...", energy-board mode subtitle reflects total vs change, per-chart measure labels. — `467c2e6`.
+- [x] **I3 — EV adoption UI migration:** palette + charts + de-nest on `app/scoreboard/page-client.tsx` + InfoTooltip hover fix. — `8d082f4`. Verified in-browser.
+
+All four user-reported fronts addressed. Done.
 
 ## Constraints
 - Inner repo only (`/Users/km/Developer/Battery.mom/Battery.mom`). Data-integrity: no invented numbers (this pass is UI/IA/copy, not data). One bordered surface per level. Push to prod after each increment; CI must stay green.
