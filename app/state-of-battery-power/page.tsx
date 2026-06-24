@@ -147,8 +147,8 @@ export default function StateOfBatteryPowerPage() {
               </p>
             </div>
             <Card className="p-5 sm:p-6">
-              <div className="text-sm font-semibold text-ink">Global electricity generation</div>
-              <div className="mb-4 text-xs text-ink-400">Terawatt-hours per year · 2015–2025</div>
+              <div className="text-sm font-semibold text-ink">Total electricity generation by source</div>
+              <div className="mb-4 text-xs text-ink-400">Terawatt-hours generated each year · 2015–2025 · annual totals, not additions</div>
               <GenerationMixChart />
               <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-xs text-ink-600">
                 <span className="inline-flex items-center gap-2">

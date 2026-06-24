@@ -745,7 +745,9 @@ export default function EnergyDeploymentScoreboardPage() {
                 />
               </h2>
               <p className="mt-1 text-sm text-ink-500">
-                Hover the chart to inspect a year. Use the source controls to isolate the parts of the generation stack.
+                {chartMode === 'change'
+                  ? 'Year-on-year change in generation by source, 2024 → 2025, in TWh — how much each source rose or fell.'
+                  : `Each year's ${chartMode === 'renewables' ? 'total renewable' : 'total electricity'} generation by source, in TWh — annual totals, not additions. Hover to inspect a year.`}
               </p>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -1109,6 +1111,7 @@ export default function EnergyDeploymentScoreboardPage() {
 
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.4fr_0.6fr]">
             <div>
+              <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-ink-400">Average pack price · $ per kWh · nominal</div>
               <ResponsiveContainer width="100%" height={320}>
                 <LineChart data={BATTERY_PACK_PRICES} margin={{ top: 12, right: 16, left: 0, bottom: 0 }}>
                   <CartesianGrid stroke="#f3f4f6" strokeDasharray="3 3" vertical={false} />
@@ -1185,6 +1188,7 @@ export default function EnergyDeploymentScoreboardPage() {
               </div>
             </div>
 
+            <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-ink-400">Added per year · GW</div>
             <ResponsiveContainer width="100%" height={330}>
               <BarChart data={batteryRegionChartData} margin={{ top: 12, right: 12, left: 0, bottom: 0 }}>
                 <CartesianGrid stroke="#f3f4f6" strokeDasharray="3 3" vertical={false} />
@@ -1217,6 +1221,7 @@ export default function EnergyDeploymentScoreboardPage() {
             </p>
 
             <div className="mt-5">
+              <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-ink-400">Added per year · GWh</div>
               <ResponsiveContainer width="100%" height={210}>
                 <BarChart data={annualBatteryMilestones} margin={{ top: 12, right: 12, left: -8, bottom: 0 }}>
                   <CartesianGrid stroke="#f3f4f6" strokeDasharray="3 3" vertical={false} />
@@ -1267,6 +1272,7 @@ export default function EnergyDeploymentScoreboardPage() {
 
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.4fr_0.6fr]">
             <div>
+              <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-ink-400">New electric cars sold per year · millions</div>
               <ResponsiveContainer width="100%" height={320}>
                 <BarChart data={GLOBAL_EV_SALES} margin={{ top: 12, right: 12, left: 0, bottom: 0 }}>
                   <CartesianGrid stroke="#f3f4f6" strokeDasharray="3 3" vertical={false} />
