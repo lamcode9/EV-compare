@@ -60,6 +60,12 @@ export interface BatteryEnergyMilestone {
   status: 'historical' | 'estimate' | 'forecast'
 }
 
+export interface BatteryPackPricePoint {
+  year: number
+  pricePerKwh: number
+  note?: string
+}
+
 export interface RegionalElectricityMix {
   key: RegionalMixKey
   label: string
@@ -187,6 +193,30 @@ export const BATTERY_ENERGY_MILESTONES: BatteryEnergyMilestone[] = [
   },
 ]
 
+// BloombergNEF annual Lithium-Ion Battery Price Survey — volume-weighted average
+// pack price across EV and stationary storage, nominal US$/kWh. Continuous 2018-2025
+// run; each value is the figure BNEF reported in that year's survey. The pre-2018
+// anchor ($1,191/kWh in 2010) and the 2010-2018 fall are carried in BATTERY_PRICE_CONTEXT.
+export const BATTERY_PACK_PRICES: BatteryPackPricePoint[] = [
+  { year: 2018, pricePerKwh: 176 },
+  { year: 2019, pricePerKwh: 156 },
+  { year: 2020, pricePerKwh: 137 },
+  { year: 2021, pricePerKwh: 132 },
+  { year: 2022, pricePerKwh: 151, note: 'First annual rise on record, driven by a lithium and raw-material price spike.' },
+  { year: 2023, pricePerKwh: 139 },
+  { year: 2024, pricePerKwh: 115, note: 'Largest annual drop since 2017; average EV packs fell to $97/kWh — below $100 for the first time.' },
+  { year: 2025, pricePerKwh: 108, note: 'New record low; EV packs stayed below $100/kWh for a second year running.' },
+]
+
+export const BATTERY_PRICE_CONTEXT = {
+  price2010PerKwh: 1191,
+  latestYear: 2025,
+  latestPricePerKwh: 108,
+  declineSince2010Pct: 91,
+  evPackPrice2024PerKwh: 97,
+  chinaPackPrice2024PerKwh: 94,
+}
+
 export const REGIONAL_ELECTRICITY_MIX: RegionalElectricityMix[] = [
   { key: 'world', label: 'World', coal: 33.8, oil: 2.3, naturalGas: 21.2, nuclear: 8.9, renewables: 33.6 },
   { key: 'china', label: 'China', coal: 55.0, oil: 0.1, naturalGas: 3.3, nuclear: 4.5, renewables: 36.7 },
@@ -296,6 +326,16 @@ export const DATA_SOURCES: SourceNote[] = [
     label: 'IRENA Renewable Capacity Statistics 2026 press release',
     url: 'https://www.irena.org/News/pressreleases/2026/Apr/Near-700-GW-Surge-in-2025-Proves-Renewable-Energy-Resilience',
     note: 'Global renewable capacity expansion and share of total power expansion.',
+  },
+  {
+    label: 'BloombergNEF 2024 Lithium-Ion Battery Price Survey',
+    url: 'https://about.bnef.com/insights/commodities/lithium-ion-battery-pack-prices-see-largest-drop-since-2017-falling-to-115-per-kilowatt-hour-bloombergnef/',
+    note: 'Volume-weighted average pack price of $115/kWh in 2024; average EV packs reached $97/kWh.',
+  },
+  {
+    label: 'BloombergNEF 2025 Lithium-Ion Battery Price Survey',
+    url: 'https://about.bnef.com/insights/clean-transport/lithium-ion-battery-pack-prices-fall-to-108-per-kilowatt-hour-despite-rising-metal-prices-bloombergnef/',
+    note: 'Latest survey: volume-weighted average pack price fell to a record $108/kWh in 2025.',
   },
   {
     label: 'BloombergNEF 2H 2025 Energy Storage Market Outlook',

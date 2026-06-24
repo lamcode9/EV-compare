@@ -10,6 +10,8 @@ import {
   Cell,
   CartesianGrid,
   Legend,
+  Line,
+  LineChart,
   ReferenceLine,
   Tooltip,
   XAxis,
@@ -19,6 +21,8 @@ import ResponsiveContainer from '@/components/ResponsiveContainer'
 import InfoTooltip from '@/components/InfoTooltip'
 import {
   BATTERY_ENERGY_MILESTONES,
+  BATTERY_PACK_PRICES,
+  BATTERY_PRICE_CONTEXT,
   BATTERY_STORAGE_REGIONS,
   DATA_SOURCES,
   ELECTRICITY_GENERATION_CHANGE_2025,
@@ -1110,6 +1114,52 @@ export default function EnergyDeploymentScoreboardPage() {
                 {chartMode === 'change'
                   ? selectedChange.source
                   : `${getShare(selectedGenerationLeader.value, selectedGenerationTotal).toFixed(1)}% of world power`}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="mt-10 rounded-card border border-ink/10 bg-paper-100 p-5 shadow-card md:p-6">
+          <div className="mb-5">
+            <h2 className="text-lg font-bold text-ink">
+              Why now: the price of storage collapsed
+              <InfoTooltip content="BloombergNEF's annual battery price survey tracks the volume-weighted average lithium-ion pack price across EV and stationary-storage applications, in nominal US dollars per kWh." />
+            </h2>
+            <p className="mt-1 text-sm text-ink-500">
+              Every chart below is downstream of this one. Storage scaled because the pack price fell far enough to make it worth building.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.4fr_0.6fr]">
+            <div>
+              <ResponsiveContainer width="100%" height={320}>
+                <LineChart data={BATTERY_PACK_PRICES} margin={{ top: 12, right: 16, left: 0, bottom: 0 }}>
+                  <CartesianGrid stroke="#f3f4f6" strokeDasharray="3 3" vertical={false} />
+                  <XAxis dataKey="year" tick={{ fontSize: 11 }} />
+                  <YAxis tick={{ fontSize: 11 }} tickFormatter={(value: number) => `$${value}`} width={48} domain={[0, 200]} />
+                  <Tooltip formatter={(value: number | string) => [`$${value}/kWh`, 'Pack price']} />
+                  <Line type="monotone" dataKey="pricePerKwh" stroke="#1f8a55" strokeWidth={2.5} dot={{ r: 3, fill: '#1f8a55' }} activeDot={{ r: 5 }} />
+                </LineChart>
+              </ResponsiveContainer>
+              <p className="mt-3 text-xs leading-relaxed text-ink-500">
+                Chart shows the continuous 2018-2025 survey. The 2022 uptick to $151/kWh was the first annual rise on record, driven by a
+                lithium-price spike; prices then resumed falling to new record lows in 2024 and 2025.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-3">
+              <div className="rounded-lg bg-ink p-4 text-white">
+                <div className="text-xs font-semibold text-brand-300">2010 → {BATTERY_PRICE_CONTEXT.latestYear}</div>
+                <div className="mt-2 text-3xl font-black">−{BATTERY_PRICE_CONTEXT.declineSince2010Pct}%</div>
+                <p className="mt-2 text-xs leading-relaxed text-ink-300">
+                  From ${BATTERY_PRICE_CONTEXT.price2010PerKwh.toLocaleString()}/kWh in 2010 to ${BATTERY_PRICE_CONTEXT.latestPricePerKwh}/kWh
+                  in {BATTERY_PRICE_CONTEXT.latestYear}{' — '}the cost collapse that makes &ldquo;batteries are the new oil&rdquo; a buildout, not a slogan.
+                </p>
+              </div>
+              <div className="rounded-lg bg-paper-200 p-4">
+                <div className="text-xs font-semibold text-ink-500">EV packs, 2024</div>
+                <div className="mt-1 text-2xl font-bold text-ink">${BATTERY_PRICE_CONTEXT.evPackPrice2024PerKwh}/kWh</div>
+                <div className="mt-1 text-xs text-ink-500">Crossed below $100/kWh for the first time — in China, packs reached ${BATTERY_PRICE_CONTEXT.chinaPackPrice2024PerKwh}/kWh.</div>
               </div>
             </div>
           </div>
