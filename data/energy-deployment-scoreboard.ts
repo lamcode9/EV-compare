@@ -66,6 +66,11 @@ export interface BatteryPackPricePoint {
   note?: string
 }
 
+export interface GlobalEvSalesPoint {
+  year: number
+  salesMillions: number
+}
+
 export interface RegionalElectricityMix {
   key: RegionalMixKey
   label: string
@@ -217,6 +222,28 @@ export const BATTERY_PRICE_CONTEXT = {
   chinaPackPrice2024PerKwh: 94,
 }
 
+// IEA Global EV Outlook headline totals for global electric car sales (BEV + PHEV),
+// million units. Values are IEA's stated annual headline figures, rounded as IEA
+// reports them ("around 3 million" in 2020 … "exceeded 20 million" in 2025).
+export const GLOBAL_EV_SALES: GlobalEvSalesPoint[] = [
+  { year: 2020, salesMillions: 3.0 },
+  { year: 2021, salesMillions: 6.6 },
+  { year: 2022, salesMillions: 10.5 },
+  { year: 2023, salesMillions: 13.9 },
+  { year: 2024, salesMillions: 17.0 },
+  { year: 2025, salesMillions: 20.0 },
+]
+
+export const EV_MARKET_CONTEXT = {
+  latestYear: 2025,
+  globalSalesMillions: 20,
+  globalSalesSharePct: 25,
+  chinaShareOfGlobalPct: 60,
+  chinaSalesMillions: 13,
+  chinaDomesticEvSharePct: 55,
+  china2024ShareOfGlobalPct: 65,
+}
+
 export const REGIONAL_ELECTRICITY_MIX: RegionalElectricityMix[] = [
   { key: 'world', label: 'World', coal: 33.8, oil: 2.3, naturalGas: 21.2, nuclear: 8.9, renewables: 33.6 },
   { key: 'china', label: 'China', coal: 55.0, oil: 0.1, naturalGas: 3.3, nuclear: 4.5, renewables: 36.7 },
@@ -326,6 +353,16 @@ export const DATA_SOURCES: SourceNote[] = [
     label: 'IRENA Renewable Capacity Statistics 2026 press release',
     url: 'https://www.irena.org/News/pressreleases/2026/Apr/Near-700-GW-Surge-in-2025-Proves-Renewable-Energy-Resilience',
     note: 'Global renewable capacity expansion and share of total power expansion.',
+  },
+  {
+    label: 'IEA Global EV Outlook 2026',
+    url: 'https://www.iea.org/reports/global-ev-outlook-2026/trends-in-electric-cars',
+    note: 'Global electric car sales exceeded 20 million in 2025 (a quarter of new cars); China supplied about 60% of global sales.',
+  },
+  {
+    label: 'IEA Global EV Outlook 2025',
+    url: 'https://www.iea.org/reports/global-ev-outlook-2025/executive-summary',
+    note: 'Historical sales milestones: ~3M (2020), 6.6M (2021), >10M (2022), ~14M (2023), 17M+ (2024); China ~11M in 2024.',
   },
   {
     label: 'BloombergNEF 2024 Lithium-Ion Battery Price Survey',

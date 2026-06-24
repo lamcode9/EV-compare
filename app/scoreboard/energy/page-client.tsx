@@ -28,7 +28,9 @@ import {
   ELECTRICITY_GENERATION_CHANGE_2025,
   ELECTRICITY_SOURCE_META,
   ENERGY_DEPLOYMENT_SNAPSHOT,
+  EV_MARKET_CONTEXT,
   GLOBAL_ELECTRICITY_GENERATION,
+  GLOBAL_EV_SALES,
   GLOBAL_RENEWABLE_GENERATION,
   REGIONAL_ELECTRICITY_MIX,
   RENEWABLE_CAPACITY_ADDITIONS_2025,
@@ -1273,6 +1275,52 @@ export default function EnergyDeploymentScoreboardPage() {
                 The current deployed base is still small beside annual generation, but it is growing into the
                 flexibility layer that makes higher solar and wind penetration usable.
               </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="mt-10 rounded-card border border-ink/10 bg-paper-100 p-5 shadow-card md:p-6">
+          <div className="mb-5">
+            <h2 className="text-lg font-bold text-ink">
+              The bigger battery market: electric cars
+              <InfoTooltip content="Electric car sales are BEV + PHEV passenger cars, in million units, per the IEA Global EV Outlook. EVs are the largest single use of lithium-ion batteries — a far bigger demand pull than stationary storage." />
+            </h2>
+            <p className="mt-1 text-sm text-ink-500">
+              Stationary storage is the headline above, but cars are where most of the world&apos;s batteries actually go — and that market is run from one country.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.4fr_0.6fr]">
+            <div>
+              <ResponsiveContainer width="100%" height={320}>
+                <BarChart data={GLOBAL_EV_SALES} margin={{ top: 12, right: 12, left: 0, bottom: 0 }}>
+                  <CartesianGrid stroke="#f3f4f6" strokeDasharray="3 3" vertical={false} />
+                  <XAxis dataKey="year" tick={{ fontSize: 11 }} />
+                  <YAxis tick={{ fontSize: 11 }} tickFormatter={(value: number) => `${value}M`} width={44} />
+                  <Tooltip formatter={(value: number | string) => [`${value} million`, 'Electric cars sold']} />
+                  <Bar dataKey="salesMillions" fill="#1f8a55" radius={[6, 6, 0, 0]} />
+                </BarChart>
+              </ResponsiveContainer>
+              <p className="mt-3 text-xs leading-relaxed text-ink-500">
+                Global electric car sales rose from about 3 million in 2020 to over 20 million in {EV_MARKET_CONTEXT.latestYear} —
+                roughly a quarter of all new cars sold. Figures are IEA Global EV Outlook headline totals.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-3">
+              <div className="rounded-lg bg-ink p-4 text-white">
+                <div className="text-xs font-semibold text-brand-300">China&apos;s share of global EV sales, {EV_MARKET_CONTEXT.latestYear}</div>
+                <div className="mt-2 text-3xl font-black">~{EV_MARKET_CONTEXT.chinaShareOfGlobalPct}%</div>
+                <p className="mt-2 text-xs leading-relaxed text-ink-300">
+                  More than {EV_MARKET_CONTEXT.chinaSalesMillions} million electric cars were sold in China — its share eased from
+                  ~{EV_MARKET_CONTEXT.china2024ShareOfGlobalPct}% in 2024 only because other markets finally started catching up.
+                </p>
+              </div>
+              <div className="rounded-lg bg-paper-200 p-4">
+                <div className="text-xs font-semibold text-ink-500">Inside China, {EV_MARKET_CONTEXT.latestYear}</div>
+                <div className="mt-1 text-2xl font-bold text-ink">~{EV_MARKET_CONTEXT.chinaDomesticEvSharePct}%</div>
+                <div className="mt-1 text-xs text-ink-500">of all new cars sold were electric — the same cost curve, seen from the demand side.</div>
+              </div>
             </div>
           </div>
         </section>
