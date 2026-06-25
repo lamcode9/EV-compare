@@ -2173,7 +2173,9 @@ function MetricChart({ title, data, suffix, formatter, children, customLabelRend
   return (
     <div className="bg-paper-200 rounded-lg px-3 pt-4 pb-0 flex flex-col gap-3">
       <div>
-        <p className="font-semibold text-ink-800">{title}</p>
+        {/* title may be a ReactNode containing block elements (e.g. the Cost/km
+            info-box trigger), so this wrapper must be a <div>, not a <p>. */}
+        <div className="font-semibold text-ink-800">{title}</div>
         {children && <p className="text-xs text-ink-500 mt-1">{children}</p>}
       </div>
       <div className="h-64 flex items-end justify-center pb-0">

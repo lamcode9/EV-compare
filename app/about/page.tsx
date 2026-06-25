@@ -89,7 +89,7 @@ export default function AboutPage() {
             battery.mom is a <a href="https://lamonade.xyz" className="text-yellow-500 hover:text-yellow-600 font-semibold transition-colors underline decoration-2 underline-offset-2">Lamonade</a> project.
           </p>
           <p className="text-ink-600 text-base mt-2">
-            Data starts now — full launch 2026.
+            Live and continuously updated as new data lands.
           </p>
         </div>
 

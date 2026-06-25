@@ -97,7 +97,7 @@ export default function Footer() {
           </p>
 
           <div className="flex flex-col gap-2 border-t border-ink/5 pt-4 text-xs text-ink-400 md:flex-row md:items-center md:justify-between">
-            <p>© 2026 {siteName}. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} {siteName}. All rights reserved.</p>
             <p>Independent energy-transition data for humans making real-world decisions.</p>
           </div>
         </div>
