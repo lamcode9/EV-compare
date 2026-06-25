@@ -42,7 +42,7 @@
 ### 0.4 Footer & Small Fixes
 - [x] Update copyright year to 2026
 - [x] Update "Last full update" to February 2026
-- [ ] Review all hardcoded dates across the codebase
+- [x] Review all hardcoded dates across the codebase — audited app/components/lib/data/content; footer copyright now `new Date().getFullYear()`, removed stale "full launch 2026" copy on /about. All other year/date literals are intentional data-vintage labels.
 
 ---
 
@@ -164,7 +164,7 @@
 - [x] Newsletter signup (monthly data digest) — `NewsletterSignup` component (card + inline variants), API route, Prisma model, homepage + footer
 - [x] Social sharing cards for each calculator result — `ShareResult` component with URL state encoding, clipboard copy, Web Share API, X/Twitter/WhatsApp/Telegram; added to all 3 calculators with URL state restoration
 - [x] Performance audit (Core Web Vitals, lighthouse) — removed `ignoreBuildErrors`, added security/caching headers, font `display: swap`, viewport export, preconnect, `optimizePackageImports` for date-fns
-- [ ] i18n groundwork (Bahasa Malaysia, Thai, Vietnamese, Bahasa Indonesia)
+- [x] i18n groundwork (Bahasa Malaysia, Thai, Vietnamese, Bahasa Indonesia) — `lib/i18n/` dictionary system (typed base + partial locale overrides with English fallback), server `getDictionary` loader, locale config/metadata, 6 unit tests. Core chrome seeded; adoption plan (routing, switcher, wiring) in `docs/i18n-groundwork.html`. Page content + native review still pending.
 
 ### 4.2 Community Features
 - [x] "Compare and share" — shareable link for any vehicle comparison
@@ -181,10 +181,10 @@
 - [x] Deduplicate `CURRENCY_BY_COUNTRY` / `COUNTRY_NAMES` maps (repeated in 5+ files)
 - [x] Extract shared constants to `/lib/constants.ts` — `COUNTRY_NAMES`, `CURRENCY_BY_COUNTRY`, `CURRENCY_SYMBOLS`, `COUNTRY_OPTIONS`, `formatCurrency`, `formatCompact`, `formatPrice`; 16 files updated
 - [x] Add unit tests for calculator functions (zero-bill, cost-per-km) — 60 tests across 2 files (`constants.test.ts`, `utils.test.ts`), Vitest framework
-- [ ] Add E2E tests for critical flows (search → compare → export)
+- [x] Add E2E tests for critical flows (search → compare → export) — Playwright (chromium) config + `e2e/compare-export.spec.ts` driving the real flow on /ev; `test:e2e` scripts; CI `e2e` job with a Postgres service + seed. Verified passing locally.
 - [x] Set up CI pipeline (lint + type-check + test) — GitHub Actions workflow: lint → tsc → vitest → build
-- [ ] Implement proper error boundaries per section
-- [ ] Add loading skeletons for all data-fetching pages
+- [x] Implement proper error boundaries per section — segment-level `error.tsx` for ev / scoreboard / bess / calculators / insights (shared `SectionError`), plus a per-chart `ErrorBoundary` baked into `ResponsiveContainer` so one chart failing degrades to an inline message instead of blanking the section.
+- [x] Add loading skeletons for all data-fetching pages — `loading.tsx` wired for the DB-backed dynamic routes (ev/[id], ev/compare, embed/ev-stats) using the `Skeletons` library; static/SSG routes render instantly and don't need one.
 
 ---
 
@@ -202,4 +202,4 @@
 
 ---
 
-*Last updated: 2026-03-01*
+*Last updated: 2026-06-25*

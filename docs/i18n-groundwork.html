@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>battery.mom — i18n Groundwork &amp; Adoption Plan</title>
+<style>
+  :root { --ink:#1e293b; --ink-600:#475569; --ink-400:#94a3b8; --line:#e2e8f0; --emerald:#10b981; --bg:#f8fafc; --card:#fff; --code:#0f172a; }
+  * { box-sizing:border-box; }
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif; color:var(--ink); background:var(--bg); margin:0; line-height:1.6; }
+  .wrap { max-width:880px; margin:0 auto; padding:48px 24px 96px; }
+  h1 { font-size:2rem; margin:0 0 4px; letter-spacing:-.02em; }
+  .sub { color:var(--ink-600); margin:0 0 32px; }
+  h2 { font-size:1.25rem; margin:40px 0 12px; padding-bottom:8px; border-bottom:1px solid var(--line); }
+  h3 { font-size:1rem; margin:24px 0 8px; }
+  p, li { color:var(--ink-600); }
+  code { background:#eef2f7; padding:.1em .4em; border-radius:4px; font-size:.875em; color:var(--code); font-family:"SF Mono",Menlo,Consolas,monospace; }
+  pre { background:var(--code); color:#e2e8f0; padding:16px 18px; border-radius:10px; overflow:auto; font-size:.82rem; line-height:1.5; }
+  pre code { background:none; color:inherit; padding:0; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 22px; margin:14px 0; }
+  .tag { display:inline-block; font-size:.7rem; font-weight:600; padding:2px 8px; border-radius:999px; background:#ecfdf5; color:#047857; border:1px solid #a7f3d0; }
+  .tag.partial { background:#fffbeb; color:#b45309; border-color:#fde68a; }
+  .tag.todo { background:#fef2f2; color:#b91c1c; border-color:#fecaca; }
+  table { width:100%; border-collapse:collapse; margin:14px 0; font-size:.9rem; }
+  th, td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); }
+  th { color:var(--ink); font-weight:600; }
+  td { color:var(--ink-600); }
+  .file { font-family:"SF Mono",Menlo,Consolas,monospace; font-size:.85em; }
+  ol li, ul li { margin:4px 0; }
+  .meta { color:var(--ink-400); font-size:.8rem; margin-top:48px; border-top:1px solid var(--line); padding-top:16px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Internationalization (i18n) Groundwork</h1>
+  <p class="sub">battery.mom · foundation for Bahasa Melayu, Bahasa Indonesia, Thai, and Vietnamese</p>
+
+  <div class="card">
+    <strong>What this is.</strong> A dictionary-based translation foundation that lets UI strings be
+    localized incrementally with graceful English fallback. It is deliberately <em>groundwork</em>:
+    it does <strong>not</strong> add locale-prefixed routing or rewire components — those are the
+    next adoption steps, scoped below. Roadmap item: <code>pipeline/PLAN.md</code> §4.1.
+  </div>
+
+  <h2>What was built</h2>
+  <table>
+    <thead><tr><th>File</th><th>Role</th></tr></thead>
+    <tbody>
+      <tr><td class="file">lib/i18n/config.ts</td><td>Locale list (<code>en, ms, id, th, vi</code>), default locale, <code>isLocale()</code> guard, and per-locale display metadata (endonym, flag, direction).</td></tr>
+      <tr><td class="file">lib/i18n/dictionaries/en.ts</td><td>Base dictionary — the source of truth. <code>Dictionary</code> type is inferred from it.</td></tr>
+      <tr><td class="file">lib/i18n/dictionaries/{ms,id,th,vi}.ts</td><td>Partial locale overrides. Only translated keys are present; the rest fall back to English.</td></tr>
+      <tr><td class="file">lib/i18n/getDictionary.ts</td><td>Server-side loader. Lazily imports the requested locale and deep-merges it over English.</td></tr>
+      <tr><td class="file">lib/i18n/types.ts</td><td><code>DeepPartial</code> / <code>LocaleDictionary</code> types so overrides stay type-checked against the base.</td></tr>
+      <tr><td class="file">lib/i18n/index.ts</td><td>Public barrel export.</td></tr>
+      <tr><td class="file">lib/i18n/__tests__/getDictionary.test.ts</td><td>6 tests: metadata coverage, key fallback, and full-key resolution per locale.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>How to use it (server components)</h2>
+  <pre><code>import { getDictionary } from '@/lib/i18n'
+
+// locale resolved from route/header — see adoption step 1
+const t = await getDictionary(locale)
+
+return &lt;h1&gt;{t.ev.searchAndCompare}&lt;/h1&gt;</code></pre>
+  <p>For client components, resolve the dictionary in the nearest server component and pass it down as a prop.
+  Any key not yet translated for the chosen locale automatically renders the English string.</p>
+
+  <h2>Translation status</h2>
+  <p>Core chrome (navigation, common buttons, country selector, EV search heading, footer) is seeded with
+  high-confidence translations. Everything else falls back to English until filled in.
+  <strong>All seeded strings still need a native-speaker review pass before any locale is marketed as complete.</strong></p>
+  <table>
+    <thead><tr><th>Locale</th><th>Status</th><th>Coverage</th></tr></thead>
+    <tbody>
+      <tr><td>English (en)</td><td><span class="tag">Source</span></td><td>100% — base dictionary</td></tr>
+      <tr><td>Bahasa Melayu (ms)</td><td><span class="tag partial">Partial</span></td><td>Core chrome · needs native review + page content</td></tr>
+      <tr><td>Bahasa Indonesia (id)</td><td><span class="tag partial">Partial</span></td><td>Core chrome · needs native review + page content</td></tr>
+      <tr><td>ไทย (th)</td><td><span class="tag partial">Partial</span></td><td>Core chrome · needs native review + page content</td></tr>
+      <tr><td>Tiếng Việt (vi)</td><td><span class="tag partial">Partial</span></td><td>Core chrome · needs native review + page content</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Adoption plan (next steps)</h2>
+  <ol>
+    <li><strong>Locale routing &amp; detection <span class="tag todo">todo</span></strong> — add a <code>[lang]</code> segment (or middleware-based locale negotiation from the <code>Accept-Language</code> header) so a locale can be resolved per request and passed to <code>getDictionary</code>.</li>
+    <li><strong>Language switcher <span class="tag todo">todo</span></strong> — a small picker driven by <code>localeMeta</code>; persists choice (cookie) and updates the URL.</li>
+    <li><strong>Wire chrome to the dictionary <span class="tag todo">todo</span></strong> — replace hardcoded strings in <code>Header</code>, <code>Footer</code>, the EV search page, and shared error/loading UI with <code>t.*</code> lookups.</li>
+    <li><strong>Expand the dictionary <span class="tag todo">todo</span></strong> — migrate remaining UI strings into <code>en.ts</code>, then translate per locale. Long-form editorial articles are a separate content workstream.</li>
+    <li><strong>Locale-aware metadata &amp; <code>hreflang</code> <span class="tag todo">todo</span></strong> — emit per-locale <code>&lt;link rel="alternate" hreflang&gt;</code> tags and translate route metadata for SEO.</li>
+    <li><strong>Number / currency / date formatting <span class="tag todo">todo</span></strong> — the app already uses <code>Intl</code> via <code>toLocaleString</code>; thread the active locale through those calls.</li>
+  </ol>
+
+  <h2>Design decisions</h2>
+  <ul>
+    <li><strong>Dictionary + fallback over a heavy i18n library.</strong> No new runtime dependency; partial translations ship safely because missing keys degrade to English.</li>
+    <li><strong>Type-inferred dictionary.</strong> Adding a key to <code>en.ts</code> makes it available everywhere and keeps locale overrides validated against the canonical shape.</li>
+    <li><strong>Lazy locale imports.</strong> Only the requested language's strings enter a request's bundle.</li>
+  </ul>
+
+  <p class="meta">Deliverable for battery.mom · i18n groundwork · pipeline/PLAN.md §4.1 Growth &amp; Distribution.</p>
+</div>
+</body>
+</html>
