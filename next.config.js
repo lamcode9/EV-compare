@@ -52,14 +52,22 @@ const nextConfig = {
           ]
         : []),
       {
-        // Security headers for all routes except embeds
+        // Security headers for all routes except embeds.
+        // Framing is locked to self + the Lamonade portfolio (which embeds the
+        // full site as a live preview). CSP frame-ancestors supersedes the old
+        // X-Frame-Options: DENY in all modern browsers and, unlike XFO, supports
+        // an allowlist of origins — so XFO is dropped here rather than kept
+        // alongside (XFO DENY would otherwise still block the allowed frames).
         source: '/((?!embed).*)',
         headers: [
           { key: 'X-Content-Type-Options', value: 'nosniff' },
-          { key: 'X-Frame-Options', value: 'DENY' },
           { key: 'X-XSS-Protection', value: '1; mode=block' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+          {
+            key: 'Content-Security-Policy',
+            value: "frame-ancestors 'self' https://lamonade.xyz https://*.lamonade.xyz http://localhost:3000;",
+          },
         ],
       },
       {
