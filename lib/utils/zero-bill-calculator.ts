@@ -797,7 +797,11 @@ export function calculateZeroBill(inputs: ZeroBillInputs): ZeroBillOutputs {
     // Debug: Detailed breakdown for hours 12 (12:00 - solar) and 22 (22:00 - EV charging)
     if (hour === 12 || hour === 22) {
       const totalGeneration = hourlySolar + hourlyBatteryDischarge + hourlyGridSupply
-      const totalConsumption = hourlyHouseholdLoad + hourlyEvCharging + hourlyBatteryCharge
+      // Grid export is an outflow too (excess solar leaving the house), so it belongs
+      // on the consumption side of the balance identity alongside load/EV/battery charging.
+      // Omitting it here previously made hours with solar export look like a mismatch
+      // even though the simulation itself conserves energy correctly.
+      const totalConsumption = hourlyHouseholdLoad + hourlyEvCharging + hourlyBatteryCharge + hourlyGridExport
       const batteryLevelBefore = currentBatteryLevel + hourlyBatteryDischarge + hourlyEvChargingFromBattery
       console.log('=== Hour 2 (02:00) Detailed Breakdown ===')
       console.log('INITIAL VALUES:')
@@ -822,11 +826,12 @@ export function calculateZeroBill(inputs: ZeroBillInputs): ZeroBillOutputs {
       console.log(`  Battery Usage: ${hourlyBatteryDischarge.toFixed(3)} kWh`)
       console.log(`  Grid: ${hourlyGridSupply.toFixed(3)} kWh`)
       console.log(`  Total Generation: ${totalGeneration.toFixed(3)} kWh`)
-      console.log('CONSUMPTION:')
+      console.log('CONSUMPTION (+ EXPORT):')
       console.log(`  Household Load: ${hourlyHouseholdLoad.toFixed(3)} kWh`)
       console.log(`  EV Charging: ${hourlyEvCharging.toFixed(3)} kWh`)
       console.log(`  Battery Charge: ${hourlyBatteryCharge.toFixed(3)} kWh`)
-      console.log(`  Total Consumption: ${totalConsumption.toFixed(3)} kWh`)
+      console.log(`  Grid Export: ${hourlyGridExport.toFixed(3)} kWh`)
+      console.log(`  Total Consumption + Export: ${totalConsumption.toFixed(3)} kWh`)
       console.log('BALANCE CHECK:')
       console.log(`  Generation = Consumption: ${Math.abs(totalGeneration - totalConsumption) < 0.01 ? '✓ MATCH' : '✗ MISMATCH'}`)
       console.log(`  Difference: ${(totalGeneration - totalConsumption).toFixed(3)} kWh`)
