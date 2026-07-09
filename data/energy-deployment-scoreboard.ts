@@ -179,8 +179,8 @@ export const BATTERY_ENERGY_MILESTONES: BatteryEnergyMilestone[] = [
   {
     year: 2024,
     annualAdditionsGwh: 169,
-    cumulativeGwh: 608,
-    note: 'Derived from public BNEF outlook language that 2035 cumulative storage is about 12x 2024 cumulative build.',
+    cumulativeGwh: 638,
+    note: 'Back-derived from the 2025 cumulative midpoint (885 GWh) less 2025 additions (247 GWh); consistent with BNEF outlook language that 2035 cumulative storage is roughly 12x the 2024 base.',
     status: 'estimate',
   },
   {
@@ -292,7 +292,7 @@ export const BATTERY_STORAGE_REGIONS: BatteryStorageRegion[] = [
     label: 'Rest of world',
     points: [
       { year: 2023, utilityScaleGw: 2.4, behindMeterGw: 0.9 },
-      { year: 2024, utilityScaleGw: 5.3, behindMeterGw: 1.3 },
+      { year: 2024, utilityScaleGw: 5.4, behindMeterGw: 1.4 },
       { year: 2025, utilityScaleGw: 9.8, behindMeterGw: 6.5 },
     ],
   },
