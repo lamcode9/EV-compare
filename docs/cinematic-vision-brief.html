@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>battery.mom — “The Long Sunrise” Cinematic Vision Brief v3</title>
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg-panel: #12121a;
+    --bg-panel-2: #171722;
+    --ink: #e8e6e1;
+    --ink-dim: #9a97a0;
+    --ink-faint: #6b6875;
+    --amber: #f5b545;
+    --amber-deep: #d98324;
+    --ember: #e05a33;
+    --sky: #6db3d9;
+    --green: #34d399;
+    --red: #e06767;
+    --line: #26242f;
+    --mono: ui-monospace, "SF Mono", Menlo, monospace;
+    --serif: "New York", Georgia, "Times New Roman", serif;
+    --sans: -apple-system, "SF Pro Text", Inter, system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.65;
+    font-size: 16.5px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- Hero ---------- */
+  header.hero {
+    position: relative;
+    padding: 100px 0 84px;
+    text-align: center;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 90% 55% at 50% 115%, rgba(245,181,69,.22), transparent 60%),
+      radial-gradient(ellipse 60% 35% at 50% 118%, rgba(224,90,51,.28), transparent 55%),
+      var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+  header.hero::after {
+    content: "";
+    position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(245,181,69,.6), transparent);
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 26px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(38px, 6vw, 64px);
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    margin-bottom: 22px;
+  }
+  h1 .glow { color: var(--amber); text-shadow: 0 0 40px rgba(245,181,69,.35); }
+  .hero-sub {
+    max-width: 660px; margin: 0 auto;
+    color: var(--ink-dim);
+    font-size: 18px;
+  }
+  .hero-meta {
+    margin-top: 36px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: .08em;
+  }
+  .hero-meta .v2 { color: var(--green); }
+
+  /* ---------- Sections ---------- */
+  section { padding: 68px 0 8px; }
+  .section-kicker {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    margin-bottom: 10px;
+  }
+  h2 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(26px, 3.6vw, 36px);
+    letter-spacing: -0.01em;
+    margin-bottom: 18px;
+  }
+  h3 {
+    font-size: 19px;
+    font-weight: 650;
+    margin: 34px 0 10px;
+    color: var(--ink);
+  }
+  p { margin-bottom: 16px; color: var(--ink-dim); }
+  p strong, li strong { color: var(--ink); font-weight: 600; }
+  em { color: var(--ink); font-style: italic; }
+  ul, ol { margin: 0 0 18px 22px; color: var(--ink-dim); }
+  li { margin-bottom: 9px; }
+  a { color: var(--sky); text-decoration: none; }
+  code {
+    font-family: var(--mono);
+    font-size: .85em;
+    background: var(--bg-panel-2);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1px 6px;
+    color: var(--amber);
+  }
+  hr.sep {
+    border: 0; height: 1px; margin: 60px 0 0;
+    background: linear-gradient(90deg, transparent, var(--line) 20%, var(--line) 80%, transparent);
+  }
+
+  /* ---------- Cards / panels ---------- */
+  .panel {
+    background: var(--bg-panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 26px 28px;
+    margin: 22px 0;
+  }
+  .panel.amber { border-color: rgba(245,181,69,.35); background: linear-gradient(180deg, rgba(245,181,69,.06), rgba(245,181,69,.015)), var(--bg-panel); }
+  .panel.red { border-color: rgba(224,103,103,.35); background: linear-gradient(180deg, rgba(224,103,103,.05), transparent), var(--bg-panel); }
+  .panel-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 12px;
+  }
+  .panel.red .panel-label { color: var(--red); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width: 720px) { .grid2, .grid3 { grid-template-columns: 1fr; } }
+  .mini {
+    background: var(--bg-panel);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .mini h4 { font-size: 15px; font-weight: 650; margin-bottom: 8px; color: var(--ink); }
+  .mini p { font-size: 14px; margin-bottom: 0; }
+  .mini .n {
+    font-family: var(--mono); font-size: 11px; color: var(--amber-deep);
+    letter-spacing: .18em; display: block; margin-bottom: 10px;
+  }
+  .mini .n .tag { color: var(--green); }
+  .mini .n .cut { color: var(--red); }
+
+  /* ---------- Acts timeline ---------- */
+  .act {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 22px;
+    padding: 26px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .act:last-of-type { border-bottom: 0; }
+  .act-num {
+    font-family: var(--serif);
+    font-size: 30px;
+    color: var(--amber);
+    line-height: 1.15;
+    padding-top: 4px;
+  }
+  .act-num.interlude { color: var(--red); font-size: 24px; }
+  .act-num.coda { color: var(--sky); font-size: 24px; }
+  .act h4 { font-size: 19px; font-weight: 650; margin-bottom: 4px; }
+  .act .act-era {
+    font-family: var(--mono); font-size: 12px; color: var(--ink-faint);
+    letter-spacing: .1em; margin-bottom: 10px;
+  }
+  .act p { font-size: 15px; margin-bottom: 10px; }
+  .act .beats { font-size: 14px; color: var(--ink-faint); }
+  .act .beats b { color: var(--amber-deep); font-weight: 600; }
+  .act .felt { font-size: 14px; color: var(--ink-faint); margin-top: 6px; }
+  .act .felt b { color: var(--green); font-weight: 600; }
+
+  /* ---------- Tables ---------- */
+  .tbl-scroll { overflow-x: auto; margin: 22px 0; border: 1px solid var(--line); border-radius: 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 640px; }
+  th {
+    text-align: left; font-family: var(--mono); font-size: 11px;
+    letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ink-faint); font-weight: 500;
+    padding: 12px 16px; border-bottom: 1px solid var(--line);
+    background: var(--bg-panel-2);
+  }
+  td { padding: 12px 16px; border-bottom: 1px solid var(--line); color: var(--ink-dim); vertical-align: top; }
+  tr:last-child td { border-bottom: 0; }
+  td:first-child { color: var(--ink); font-weight: 550; }
+  td .conf { font-family: var(--mono); color: var(--amber); white-space: nowrap; }
+
+  /* ---------- Prompt block ---------- */
+  .prompt-block {
+    background: var(--bg-panel-2);
+    border: 1px solid rgba(245,181,69,.3);
+    border-radius: 14px;
+    padding: 30px 32px;
+    margin: 26px 0;
+    position: relative;
+  }
+  .prompt-block::before {
+    content: "REFINED MASTER PROMPT · V2";
+    position: absolute; top: -9px; left: 24px;
+    background: var(--bg);
+    padding: 0 10px;
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: .25em; color: var(--amber);
+  }
+  .prompt-block p { font-size: 15.5px; }
+  .prompt-block p:last-child { margin-bottom: 0; }
+
+  /* ---------- Red-team log ---------- */
+  .rt-item {
+    display: grid; grid-template-columns: 90px 1fr; gap: 16px;
+    padding: 14px 0; border-bottom: 1px solid var(--line);
+    font-size: 14.5px;
+  }
+  .rt-item:last-child { border-bottom: 0; }
+  .rt-verdict { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; padding-top: 3px; }
+  .rt-verdict.fix { color: var(--red); }
+  .rt-verdict.keep { color: var(--green); }
+  .rt-item p { margin: 0; color: var(--ink-dim); }
+
+  /* ---------- Footer ---------- */
+  footer {
+    margin-top: 80px;
+    padding: 44px 0 60px;
+    border-top: 1px solid var(--line);
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: .1em;
+  }
+  .toc {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6px 28px;
+    margin: 20px 0 0; font-size: 14.5px;
+  }
+  @media (max-width: 720px) { .toc { grid-template-columns: 1fr; } }
+  .toc a { color: var(--ink-dim); }
+  .toc a:hover { color: var(--amber); }
+  .toc .tn { font-family: var(--mono); color: var(--amber-deep); font-size: 11.5px; margin-right: 8px; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">battery.mom · vision brief · v3 — red-teamed</div>
+    <h1>The Long Sunrise<br><span class="glow">A cinematic history &amp; future of human energy</span></h1>
+    <p class="hero-sub">From humanity’s first fire to a swarm around the sun — and a page that begins in true darkness and ends, literally, in daylight. Anchored on civilization at planetary scale, with Southeast Asia as the recurring closer-to-home lens. Every number verified against 2025–26 sources; every strong claim red-teamed before a pixel moves.</p>
+    <div class="hero-meta">Prepared 2026-07-09 · v3 — adversarial pass + anchoring corrected per KM · <span class="v2">DATA VERIFIED</span> · Status: DRAFT FOR APPROVAL</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ====================== TOC ====================== -->
+<section id="toc">
+  <div class="section-kicker">Contents</div>
+  <h2>What’s in this brief</h2>
+  <div class="toc">
+    <div><span class="tn">00</span><a href="#redteam">Red-team log — what v1 got wrong</a></div>
+    <div><span class="tn">01</span><a href="#prompt">The refined master prompt</a></div>
+    <div><span class="tn">02</span><a href="#thesis">Core thesis &amp; emotional arc</a></div>
+    <div><span class="tn">03</span><a href="#acts">Narrative architecture — five acts, an interlude, a coda</a></div>
+    <div><span class="tn">04</span><a href="#signature">Signature interactions — the MAP and the rest</a></div>
+    <div><span class="tn">05</span><a href="#visual">Visual &amp; motion language — the dawn arc</a></div>
+    <div><span class="tn">06</span><a href="#data">Data inventory — verified 2025–26</a></div>
+    <div><span class="tn">07</span><a href="#roadmap">“The Work” — gates &amp; honest constraints</a></div>
+    <div><span class="tn">08</span><a href="#ledger">The Predictions Ledger</a></div>
+    <div><span class="tn">09</span><a href="#format">Format decision &amp; technical build plan</a></div>
+    <div><span class="tn">10</span><a href="#phases">Phased delivery plan</a></div>
+    <div><span class="tn">11</span><a href="#principles">Guardrails, falsifiers &amp; open decisions</a></div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ====================== 00 RED TEAM ====================== -->
+<section id="redteam">
+  <div class="section-kicker">00 · The adversarial pass</div>
+  <h2>Red-team log — what v1 got wrong</h2>
+  <p>v1 was reviewed by three independent critics: a <strong>fact-checker</strong> (every figure verified against 2025–26 primary sources), a <strong>creative director</strong> (design, story, emotion, mobile), and a <strong>hostile energy-systems skeptic</strong> (every link in the thesis chain attacked). Publishing the log is the ethos of the site applied to its own plan. The material findings:</p>
+
+  <div class="panel">
+    <div class="rt-item"><div class="rt-verdict fix">FIXED</div><p><strong>No human in the story.</strong> v1 had six acts of ascending scale and zero people. v2 over-corrected — it literalized the brand name into a “mom in Jakarta” protagonist and made SEA the spine. KM’s call, and the right one: <strong>humanity is the protagonist and the globe is the anchor; Southeast Asia is the sub-anchor, closer to home.</strong> v3’s human thread is <em>the hearth</em> — one human-scale vignette per act, each on a different continent, with a recurring “closer to home” SEA inset.</p></div>
+    <div class="rt-item"><div class="rt-verdict fix">FIXED</div><p><strong>No darkness before dawn.</strong> v1’s arc was awe → bigger awe → homework. v2 inserts “The False Dawn” — Vietnam’s real 2020–21 rooftop boom and crash — where the page dims and the HUD stops. Stakes before triumph.</p></div>
+    <div class="rt-item"><div class="rt-verdict fix">FIXED</div><p><strong>Art direction was genre-default</strong> (dark void + gold glow = every AI landing page since 2019). v2’s signature: the page literally <em>dawns</em> — begins in true black, ends in full daylight, and the daylight <em>is the existing battery.mom UI</em>. Also solves v1’s unaddressed jarring handoff from black/gold film to white/emerald planner.</p></div>
+    <div class="rt-item"><div class="rt-verdict fix">FIXED</div><p><strong>Mobile was a degradation target, not the medium.</strong> SEA traffic is 70–90% mobile on mid/low-end Android. v2: portrait-first storyboards, native scroll only (no scroll-jacking), no letterbox bars on mobile, ≤4 MB transfer budget, acceptance device = a ~$150 Android.</p></div>
+    <div class="rt-item"><div class="rt-verdict fix">FIXED</div><p><strong>“~8× more productive per panel in orbit” was indefensible as stated</strong> — it ignored beaming losses and compared peak irradiance. NASA’s 2024 OTPS study found beam-to-ground space solar 12–80× more expensive than terrestrial alternatives. v2 states 5–8× <em>collected</em> (per Google’s Suncatcher math), itemizes the losses, quotes the strongest critics on-page, and pivots Act IV to <em>using power up there</em> (orbital compute — which is now real) rather than beaming it down.</p></div>
+    <div class="rt-item"><div class="rt-verdict fix">FIXED</div><p><strong>“Effectively free” banned.</strong> Jevons paradox means abundant ≠ free — demand rises to meet cheap supply (that’s the point). And retail bills are mostly grid + fixed costs; the planner CTA promises <em>control and payback</em>, never free energy.</p></div>
+    <div class="rt-item"><div class="rt-verdict fix">FIXED</div><p><strong>Stale or wrong figures corrected</strong> — Shuttle ~$55k/kg (not $65k); US queue ~2.3 TW and <em>falling</em> (not 2.6+); BNEF Dec-2025 pack $108/kWh, cell $74; 2025 solar additions 647 GW; CO₂ 432 ppm; battery production 1.59 TWh on &gt;4 TWh nameplate; and an honest new annotation — Chinese module prices <em>rose ~30%</em> in early 2026 on anti-overcapacity consolidation, proof the 2023–25 lows were partly dumping, not pure learning.</p></div>
+    <div class="rt-item"><div class="rt-verdict fix">FIXED</div><p><strong>Eight interactives was a solo-dev death march.</strong> v2 defines a four-piece “minimum awe-able product,” demotes the rest, and cuts sound design entirely (replaced with haptic ticks on Android — where the audience actually is).</p></div>
+    <div class="rt-item"><div class="rt-verdict fix">FIXED</div><p><strong>Acts IV–V read as e/acc boilerplate</strong> and “aligned intelligence” as a progress-meter gate was false precision. v2 merges them into one act grounded in <em>deployed</em> 2025–26 reality, demotes the Dyson swarm to a watermarked coda with its assumptions as the interface, and gives the AI-dependency gate a non-quantified treatment (“this gate has no dial we can read”).</p></div>
+    <div class="rt-item"><div class="rt-verdict keep">KEPT</div><p><strong>What survived attack:</strong> the Kardashev spine (K ≈ 0.73 verified), Wright’s Law as the physical thesis (solar 20.2%/doubling, li-ion 18–19% — robust), the six-gate bottleneck structure, the manufactured-vs-extracted asymmetry, and the “awe from truth” principle — which the skeptic concluded is best served by <em>showing</em> the counterarguments as charts rather than hiding them in footnotes.</p></div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ====================== 01 PROMPT ====================== -->
+<section id="prompt">
+  <div class="section-kicker">01 · The ask, sharpened twice</div>
+  <h2>The refined master prompt</h2>
+
+  <div class="prompt-block">
+    <p><strong>Build “The Long Sunrise”</strong> — a mobile-first, scroll-driven cinematic experience for battery.mom that tells one continuous story: humanity’s 500,000-year relationship with energy, told at planetary scale and grounded by a recurring human-scale hearth — a different home, a different continent, each act — with Southeast Asia as the closer-to-home lens; the solar-and-storage revolution measurably underway; a false dawn that nearly killed it; the compounding loop of energy → compute → AI → machines → manufacturing; the first real hardware now computing in orbit; a speculative glimpse of the stellar endgame; and the specific, unglamorous work this decade that decides whether any of it happens.</p>
+    <p><strong>Experience bar:</strong> AAA cinematic craft with one unforgettable signature — <em>the page performs its own title</em>. It opens in true darkness and, act by act, dawns: by the final scene the visitor is standing in full daylight, and the daylight is the real battery.mom interface, powered on and ready to plan their rooftop.</p>
+    <p><strong>Interaction bar:</strong> A battery-shaped HUD that charges as the story progresses — draining once, at the false dawn — and reaches 100% exactly as it powers on the final CTA. A powers-of-ten zoom from a palm-sized cell rendered at true 1:1 scale to a planetary grid. A learning-curve time machine where the visitor makes the deployment bet themselves. A personal watt-card generated to share. Somatic beats in every act: hold the ember alive with your thumb; watch the screen dim to firelight; feel data land as haptic ticks.</p>
+    <p><strong>Trust bar:</strong> Every number sourced and dated; projections visually distinct from records; the thesis’s strongest counterarguments shown <em>as charts, on the page</em>; a public ledger of dated, falsifiable predictions — including predictions against our own coolest ideas — where wrong calls stay visible forever.</p>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ====================== 02 THESIS ====================== -->
+<section id="thesis">
+  <div class="section-kicker">02 · Why this story</div>
+  <h2>Core thesis &amp; emotional arc</h2>
+  <p><strong>The thesis, hardened:</strong> <em>Every leap in what humans can do has been a leap in the energy available to each human — and for the first time, the next energy source is manufactured, not extracted.</em> Coal, oil, and gas cost roughly the same per unit forever. Solar modules and battery cells get ~19–20% cheaper every time cumulative production doubles — a curve that has held for 45+ years through every prediction of its death. Modules have fallen ~99.9% since 1977; cells ~98.6% since 1991.</p>
+  <p><strong>The honest refinement the skeptic forced:</strong> the learning curve governs the <em>manufactured</em> part. Modules are now a minority of system cost; permitting, labor, financing, and grids — the <em>human</em> part — don’t follow Wright’s Law. Australia installs residential solar at roughly a third of the US price for the same hardware. So the corrected thesis, which is stronger, not weaker: <strong>the machine part of energy gets cheaper forever; the human part is a choice.</strong> That choice is Act V — and it is battery.mom’s entire reason to exist.</p>
+  <p><strong>And the pivot that turns the best attack into the brand:</strong> cheap solar cannibalizes its own midday value (capture rates falling, negative-price hours multiplying, curtailment rising). Cheap solar creates the problem; <strong>cheap storage is the business model that solves it</strong>. A site named battery.mom gets to make value deflation its hero chart.</p>
+
+  <div class="panel amber">
+    <div class="panel-label">The anchors (all verified)</div>
+    <p><strong>K ≈ 0.73.</strong> Humanity runs on ~19–20.6 TW of primary energy — Kardashev 0.73. K1 (~10<sup>16</sup> W) is ~500× today; K2, a swarm capturing the sun’s 3.8×10<sup>26</sup> W, is ~20 trillion×. One number ties the ember to the swarm.</p>
+    <p><strong>One hour of sunlight = one year of civilization.</strong> Earth intercepts ~173,000 TW; one hour is ~623 EJ — almost exactly annual world primary energy. The math is not approximate; it lands within a few percent.</p>
+    <p style="margin-bottom:0"><strong>One second of the sun = ~10,000× everything, ever.</strong> The sun emits more energy per second than humanity has consumed in its entire history — by roughly four orders of magnitude. This is why the story ends where it ends.</p>
+  </div>
+
+  <p><strong>The emotional shape</strong> (rewritten): scarcity → ascent with a cost → <em>a false dawn and real doubt</em> → the measured revolution → the compounding century → a dream at the edge of dawn → waking into morning, with work to do. The visitor should leave with awe <em>and</em> agency — and the last thing they touch is the real planner.</p>
+</section>
+
+<hr class="sep">
+
+<!-- ====================== 03 ACTS ====================== -->
+<section id="acts">
+  <div class="section-kicker">03 · Narrative architecture</div>
+  <h2>Five acts, an interlude, a coda</h2>
+  <p>One continuous scroll, <strong>6–7 minutes at reading pace</strong>, scene budget of one hero moment plus two data moments per act (hard cap), ≤8 viewport-heights per act on mobile. Every act is deep-linkable with its own OG poster frame and a one-line “story so far” strip for visitors arriving mid-story. The through-line characters: <strong>the sun</strong> (an ember → smoke-veiled → blazing → orbited → swarmed → morning light), <strong>the battery HUD</strong> (charging as civilization does), and <strong>the hearth</strong> — one human-scale vignette per act, each on a different continent, plus a “closer to home” inset that brings each act’s numbers back to Southeast Asia. The full ~1,500-word script is written and table-read on a phone before any engineering (Phase 0.5).</p>
+
+  <div class="act">
+    <div class="act-num">I</div>
+    <div>
+      <h4>Fire — Half a Million Years of Tending</h4>
+      <div class="act-era">500,000 BCE → 1900 CE · K ≈ 0.4 · hearth: a fire pit, anywhere on Earth</div>
+      <p>True black. A single hearth gutters — the one image every ancestor of every visitor shares, on every continent. For 500,000 years, energy was a body (~100 W) plus a fire that died if you stopped feeding it. The price of light: one hour of reading light cost <strong>~58 hours of labor</strong> at a Paleolithic fire; an hour of labor today buys ~350,000× more light than it did in Babylon. Energy was the ceiling on everything — lifespan, output, night itself.</p>
+      <p class="beats"><b>Data moments:</b> per-capita watts ladder (muscle → fire → animal → wind/water) · the Nordhaus price-of-light collapse in labor-hours · <b>closer to home:</b> the same collapse priced in hours of a Jakarta or Manila minimum wage.</p>
+      <p class="felt"><b>Felt beat:</b> hold your thumb on the ember to keep it alive — lift, and it dies. Then the screen itself dims to firelight brightness for one paragraph. Fire needed tending; that was the deal for half a million years.</p>
+    </div>
+  </div>
+
+  <div class="act">
+    <div class="act-num">II</div>
+    <div>
+      <h4>Combustion — Borrowed Sunlight</h4>
+      <div class="act-era">1700 → 2010 · K 0.4 → 0.72 · hearth: the mill towns — Manchester 1850, Pittsburgh 1920, Shenzhen 1995</div>
+      <p>The hockey stick. Coal, oil, gas — ancient sunlight, fossilized, burned a million times faster than it formed. Energy per capita jumps ~10× in two centuries; the hearth becomes a furnace, and the same mill-town scene repeats across three continents and three centuries; smog is the price of the first ascent. Then the honest ledgers: CO₂ climbing the same staircase (now <strong>432 ppm</strong>), and the frontier economies <em>decoupling</em> — US energy per capita peaked in 1979 and has drifted down ~15–20% since, while GDP doubled. Watts alone were never the whole story; energy <em>services</em> are. Efficiency is abundance too.</p>
+      <p class="beats"><b>Data moments:</b> the 10,000-year energy log chart erupting · Rosling-style energy-vs-prosperity scatter, animated over time — <em>including</em> the rich-country trajectories bending (the decoupling shown, not hidden) · CO₂ ghost trace · <b>closer to home:</b> SEA is climbing this exact staircase right now — coal is 47% of its generation, up from 37% in 2015.</p>
+      <p class="felt"><b>Felt beat:</b> “energy servants” — your body runs at ~100 W; a live counter assembles the ~25 invisible full-time human-equivalents currently burning on your behalf.</p>
+    </div>
+  </div>
+
+  <div class="act">
+    <div class="act-num interlude">☾</div>
+    <div>
+      <h4>Interlude: The False Dawn</h4>
+      <div class="act-era">1954 → 2021 · the only scene where the HUD stops · scene: three broken promises, then one close to home</div>
+      <p>The doubt beat, built from real failures. “Too cheap to meter,” 1954: nuclear then delivered a <em>negative</em> learning curve — costs rose ~3× with deployment (Grubler 2010). Launch costs stagnated for forty years. Concorde went to zero. And closest to home: <strong>Vietnam, 2020 — ~9 GW of rooftop solar in a single year</strong>, then the feed-in tariff ended and installations collapsed; panels curtailed, installers stranded. The page dims; the battery HUD <em>drains</em>; the K-odometer stops ticking for the only time. Exponentials are not destiny. <strong>None of what follows happens by default.</strong></p>
+      <p class="beats"><b>Data moments:</b> the signature credibility chart — <em>curves that held vs. curves that broke</em>: PV, li-ion, LEDs, DNA sequencing against nuclear, Concorde, launch 1970–2010 — with the structural explanation (modular, factory-made, fast-iterating things learn; site-built, regulated megaprojects don’t) · Vietnam’s boom-bust bar chart.</p>
+      <p class="felt"><b>Felt beat:</b> the visitor’s scroll input momentarily yields nothing — the story refuses to advance for one beat — then catches, and dawn begins.</p>
+    </div>
+  </div>
+
+  <div class="act">
+    <div class="act-num">III</div>
+    <div>
+      <h4>The Sun, Direct — The Measured Revolution</h4>
+      <div class="act-era">2010 → 2035 · K 0.72 → 0.75 · hearth: rooftops, everywhere at once</div>
+      <p>First light on the horizon — and from here the page only brightens. The verified record: modules $76/W (1977) → <strong>~$0.09/W</strong> (2025); packs $7,500/kWh (1991) → <strong>$108/kWh</strong>, cells $74, cheapest LFP $50 (BNEF Dec 2025). Solar added <strong>647 GW in 2025</strong> — its +636 TWh was the largest annual generation increase by any power source in history; renewables passed coal in the world mix for the first time. The first terawatt of solar took ~68 years; the third took ~1.3. Then the site’s home truth: cheap midday solar cannibalizes its own price — capture rates fall, negative-price hours multiply — <strong>and storage is what restores the value</strong>. Grid batteries: +300 GWh installed in 2025, +51% y/y. The deployment ladder fills on every continent: cell → home wall pack → tower → factory → the 19 GWh farms. China installed 93 GW in a single month of 2025 — roughly a hundred panels a second — and Pakistan showed what $0.09/W does bottom-up: 27+ GW installed by households, half the country’s peak demand, no central plan. <em>Closer to home, the stakes run highest:</em> SEA demand grows +7%/yr while solar+wind sit at only ~4.5% — but climbing ~35%/yr.</p>
+      <p class="beats"><b>Data moments:</b> the Wright’s Law time machine — with the two axes honestly decoupled: cost-per-doubling is <em>measured</em>; how fast doublings arrive is <em>your bet</em> (logistic vs exponential deployment scenarios side by side), plus a shaded materials-cost floor the projection cannot cross and an annotation on 2023–25 overcapacity pricing (and the 2026 +30% consolidation rebound) · capture-rate decline → batteries restoring value (the hero chart) · installed-cost stack over time: module vs BOS vs soft costs, with the US-vs-Australia gap · solar seasonality vs latitude — Jakarta’s flat line vs Hamburg’s winter cliff: why the sunbelt’s 4 billion people electrify first, and why battery.mom starts in SEA.</p>
+      <p class="felt"><b>Felt beat:</b> the duck curve rendered as an actual sunset synced to the visitor’s real local time — the sun on the page is where the sun outside their window is.</p>
+    </div>
+  </div>
+
+  <div class="act">
+    <div class="act-num">IV</div>
+    <div>
+      <h4>The Compounding Century — Energy, Intelligence, Orbit</h4>
+      <div class="act-era">2025 → 2050 · K 0.75 → 0.85 · hearth: a gigafactory floor, then a satellite bus</div>
+      <p>Brightening toward morning. The loop: cheap energy → cheap compute → capable AI → capable machines → faster manufacturing → cheaper energy. Drawn honestly: <strong>solid edges where measured</strong> (energy→compute: datacenters 485 TWh in 2025 → ~950 TWh by 2030; Big Tech capex &gt;$400B in 2025 — now exceeding global oil-and-gas upstream investment), <strong>dashed where early</strong> (AI→robots→construction: Moravec’s paradox is undefeated; gigafactory lines are automated, building sites aren’t yet). Energy gates <em>where and how fast</em> compute grows; chips gate <em>how much</em>. And the loop has already left the ground — not as a render, as a manifest: <strong>Starcloud-1 put the first H100 in orbit (Nov 2025) and trained the first model in space a month later; Google’s Project Suncatcher launches prototype TPU satellites with Planet in early 2027; SpaceX has filed for an orbital-datacenter constellation.</strong> In orbit a panel collects 5–8× more energy than typical ground sites — <em>collected, not delivered</em>: the page shows the radiator problem (heat can only leave by radiation, ~300 W/m² realistic) and quotes the strongest critique on beam-to-ground space solar (NASA OTPS 2024: 12–80× terrestrial cost) directly. The near-term case is using power up there, not beaming it down. Jevons, owned in copy: we will use vastly more — <em>that is the point</em>. Abundance means energy stops being the limiting input, not that it stops costing money.</p>
+      <p class="beats"><b>Data moments:</b> the confidence-weighted flywheel (scroll-driven animation, visibly accelerating) · compute cost curves beside the energy curves — same Wright shape · launch $/kg: Shuttle ~$55k → Falcon 9 ~$2,700 → Starship targeting $100–200 (Suncatcher’s stated crossover: &lt;$200/kg by mid-2030s) · “the case against” inset — the site arguing with itself, on purpose.</p>
+      <p class="felt"><b>Felt beat:</b> the orbital timeline is a receipts wall — dated mission patches, not concept art. The future begins as a list of things that already happened.</p>
+    </div>
+  </div>
+
+  <div class="act">
+    <div class="act-num coda">✦</div>
+    <div>
+      <h4>Coda: The Swarm — A Dream at the Edge of Dawn</h4>
+      <div class="act-era">Undated, by design · 2 viewports · watermarked: INFORMED SPECULATION</div>
+      <p>The one dark-sky moment after dawn begins — explicitly a dream. If self-replicating manufacturing ever works (<em>no element of it exists yet</em>), exponentials do the rest: collectors thickening around the sun over centuries, K2, twenty trillion times today’s power. The interface <em>is</em> the assumptions — replication rate, ISRU efficiency — so the visitor sees the conclusion is assumption-driven, and no date is ever attached. Two viewports of wonder, one line of honesty, then the sky pales.</p>
+      <p class="felt"><b>Felt beat:</b> the sun — our companion since the ember — slowly gridded by drifting points of light, then washed out by something nearer: morning.</p>
+    </div>
+  </div>
+
+  <div class="act">
+    <div class="act-num">V</div>
+    <div>
+      <h4>The Work — Morning, Everywhere</h4>
+      <div class="act-era">2026 → 2040 · full daylight · hearth: the visitor’s own rooftop, the meter running backwards</div>
+      <p>The page completes its dawn: backgrounds lift through first light into the white, emerald, familiar daylight of battery.mom itself. The gates that decide the century, each with current → required state — and SEA-specific gates alongside the global ones: TWh manufacturing (1.59 TWh made on &gt;4 TWh nameplate — capacity isn’t the constraint, deployment is), grids and queues (~2.3 TW stalled in the US alone; ASEAN interconnects barely begun), materials and recycling, soft costs (the human part — Vietnam’s FiT cliff, Indonesian permitting, the US–Australia gap), cheap orbit, and dependable automation (no meter on this one: “unlike the others, this gate has no dial we can read”). Then the landing, back at the human scale where the story started — the hearth of Act I, now a rooftop: the battery HUD reaches 100% and visibly powers on three real cards — the home planner, the EV desk, the BESS desk. <strong>The swarm starts on a rooftop. Start with yours.</strong></p>
+      <p class="beats"><b>Data moments:</b> the six-gate bottleneck board · the living epilogue: “since this page was published: +X GW, $/kWh now Y” — auto-fed monthly from the site’s existing data pipeline, with a “since your last visit” diff · the Predictions Ledger (§08).</p>
+      <p class="felt"><b>Felt beat:</b> daylight is not a metaphor here — the final viewport <em>is</em> the product, undecorated, ready to use.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ====================== 04 SIGNATURE ====================== -->
+<section id="signature">
+  <div class="section-kicker">04 · Scoped for one builder</div>
+  <h2>Signature interactions — the MAP and the rest</h2>
+  <p>v1 specced eight hero interactives; the critic correctly called it a death march. v2 defines the <strong>Minimum Awe-able Product</strong> — four pieces that carry the identity — and demotes everything else to scripted animation, pre-render, or post-launch. The most expensive v1 line (“scrub anywhere, the whole page re-renders”) is cut: the HUD is read-only.</p>
+
+  <h3>The MAP — ships at launch</h3>
+  <div class="grid2">
+    <div class="mini"><span class="n">M1 · <span class="tag">HERO</span></span><h4>The Sun &amp; the Dawn Arc</h4><p>One WebGL shader sun, evolving per act (ember → veiled → blazing → orbited → swarmed → morning), keyed to the <em>visitor’s actual local solar time</em> — arrive at night and the piece opens at its darkest with “the sun reaches you in 3h 41m” ticking; the page itself brightens act by act until it becomes the real site. The swarm coda is this same object’s scripted final state — no separate simulator.</p></div>
+    <div class="mini"><span class="n">M2 · <span class="tag">HUD</span></span><h4>The Battery That Charges As You Scroll</h4><p>Brand-native progress: a battery cell that accumulates charge across the story — slow through history, fast in Act III, <em>draining</em> at the False Dawn — reaching 100% exactly as it powers on the final CTA cards. K-number and TW readout ride inside it. Read-only; the scrollbar becomes the product.</p></div>
+    <div class="mini"><span class="n">M3 · <span class="tag">ZOOM</span></span><h4>Powers of Ten: The Battery Ladder</h4><p>The continuous zoom — cell → a wall pack in a Southeast Asian home → tower BESS → factory → 19 GWh farm → grid at night → orbit. With the true-scale beat: mid-ladder, the zoom pauses to render a 4680 cell at physical 1:1 on the visitor’s screen. “This object, 4.6 cm wide, is what the next civilization is made of.”</p></div>
+    <div class="mini"><span class="n">M4 · <span class="tag">SCRUB</span></span><h4>Wright’s Law Time Machine</h4><p>The learning curves with the two honest upgrades: measured cost-per-doubling vs <em>chosen</em> deployment scenario (the visitor makes the bet), a materials-floor band the projection can’t cross, and the overcapacity annotation. Bottom-anchored fat slider in the thumb zone — never a mid-canvas drag.</p></div>
+  </div>
+
+  <h3>Supporting cast — cheap, scripted, or post-launch</h3>
+  <div class="grid2">
+    <div class="mini"><span class="n">S5 · SHARE</span><h4>The Watt-Card</h4><p>“Your Life in Watts” output becomes a generated, Wrapped-style card — your auto-detected country (with first-class SEA data), your draw vs. a medieval farmer vs. a K1 citizen, your rooftop’s share of the sunrise — rendered as an OG image with one share button. The distribution engine for the whole piece.</p></div>
+    <div class="mini"><span class="n">S6 · LOOP</span><h4>The Flywheel</h4><p>Scroll-driven animation (not a simulator) with confidence-weighted edges — solid for measured couplings, dashed for early ones. Honesty makes it more interesting, not less.</p></div>
+    <div class="mini"><span class="n">S7 · EARTH</span><h4>The Terminator</h4><p>Pre-rendered video/Lottie of the day-night line with one SEA close-up — not a live WebGL globe. Genre-default set piece; gets genre-default budget.</p></div>
+    <div class="mini"><span class="n">S8 · ALIVE</span><h4>The Living Epilogue</h4><p>Dated counters fed monthly by the site’s existing pipeline (“since this page was published…”), plus the Predictions Ledger cards. Turns a one-shot film into a serial that compounds trust.</p></div>
+  </div>
+
+  <div class="panel red" style="margin-top:22px">
+    <div class="panel-label">Explicitly cut from v1</div>
+    <p style="margin-bottom:0">Scrub-anywhere full-page re-render (weeks of state machine for a feature few would grab) · standalone Dyson swarm simulator (folded into M1’s final state) · live WebGL globe (pre-rendered) · sound design entirely (replaced with <code>navigator.vibrate</code> micro-ticks on data landings for Android — tactile, free, default-permitted where the audience is) · the third typeface.</p>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ====================== 05 VISUAL ====================== -->
+<section id="visual">
+  <div class="section-kicker">05 · Art direction</div>
+  <h2>Visual &amp; motion language — the dawn arc</h2>
+
+  <h3>The signature: a page that dawns</h3>
+  <p>One bold move replaces v1’s genre-default “dark + gold glow”: <strong>the background performs the title</strong>. Act I is true black; the False Dawn is the darkest beat; from Act III the horizon lightens; Act IV brightens toward morning; the Coda dips back to star-field one last time (a dream); and Act V completes the sunrise into <strong>the existing battery.mom daylight UI</strong> — the paper/ink/brand/gold editorial system the site already ships (the June-2026 narrative-first revamp; reference page <code>/state-of-battery-power</code>). The film doesn’t link to the product; it <em>becomes</em> it. Gold remains the protagonist color, earned progressively; ember orange belongs to combustion; cool cyan is reserved for compute. Every glow is motivated by a light source in the scene.</p>
+
+  <h3>Mobile is the primary medium</h3>
+  <ul>
+    <li><strong>Storyboard portrait 9:16 first;</strong> desktop is the adaptation. Acceptance device: a ~$150 Android (Redmi/Realme class), tested on throttled 4G.</li>
+    <li><strong>No letterbox bars on mobile</strong> — full-bleed, with title-card typography doing the cinematic work. Letterboxing is a desktop-only flourish.</li>
+    <li><strong>Native scroll, always.</strong> No smooth-scroll libraries on touch; pins via <code>position: sticky</code> only; never intercept wheel or touch events. Scroll-jacking is the #1 reason people close these pieces.</li>
+    <li><strong>Thumb-zone interaction:</strong> scrubs are bottom-anchored fat sliders or tap-to-step; never mid-canvas drags.</li>
+    <li><strong>Hard budget: ≤4 MB total transfer on mobile</strong> including 3D assets; ≤200 KB critical JS before first scroll.</li>
+  </ul>
+
+  <h3>Type, texture, pacing</h3>
+  <ul>
+    <li><strong>Two families only, both already in the codebase:</strong> Inter for everything, and the site’s existing display serif (Newsreader, already wired as <code>font-display</code>) for act titles. Zero new font payload; the film and the site share one typographic voice. Tabular numerals for HUD/data. (v1 specced “New York” — Apple-only; most of SEA would have seen Georgia.)</li>
+    <li><strong>Numbers animate as odometer rolls,</strong> charts draw axes-then-trace-then-annotation; one hero animation per viewport, everything else still.</li>
+    <li><strong>Pacing spec:</strong> full scroll ≈ 6–7 minutes at reading pace; one hero + two data moments per act, hard cap; a persistent act-skip rail; acts deep-linkable with OG poster frames and a one-line “story so far” strip when entered directly.</li>
+    <li><strong>Texture:</strong> fine grain over the dark acts only (it fades with the dawn), chromatic aberration on the sun shader alone. Subtle or absent.</li>
+  </ul>
+</section>
+
+<hr class="sep">
+
+<!-- ====================== 06 DATA ====================== -->
+<section id="data">
+  <div class="section-kicker">06 · Evidence base — verified</div>
+  <h2>Data inventory (2025–26 pass complete)</h2>
+  <p>Every figure below survived the fact-check against primary sources; retrieval dates get pinned in the data files (<code>content/sunrise/*.json</code>, one series per file with source + date). Headline corrections from v1 are noted in §00.</p>
+
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>Chart / figure</th><th>Where</th><th>Verified value</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td>World primary energy / Kardashev</td><td>HUD</td><td>~600–650 EJ/yr ≈ 19–20.6 TW → K ≈ 0.73</td><td>Energy Institute 2026 / IEA</td></tr>
+      <tr><td>Price of light (labor per lumen-hr)</td><td>I</td><td>58 h (paleolithic) → 0.00012 h (1992); ~350,000× since Babylon</td><td>Nordhaus 1994/97</td></tr>
+      <tr><td>Energy-vs-prosperity scatter + decoupling</td><td>II</td><td>US per-capita peak 1979, −15–20% since; GDP doubled</td><td>OWID / EIA</td></tr>
+      <tr><td>CO₂</td><td>II</td><td>432 ppm (May 2026, record)</td><td>NOAA Mauna Loa</td></tr>
+      <tr><td>Curves that held vs broke</td><td>Interlude</td><td>PV 20.2%/doubling, li-ion 18–19%, LED, DNA-seq vs nuclear (−3× cost escalation, Grubler 2010), Concorde, launch 1970–2010</td><td>OWID / Ziegler-Trancik / Grubler</td></tr>
+      <tr><td>Vietnam false dawn</td><td>Interlude</td><td>~9 GW rooftop in 2020; collapse after FiT expiry</td><td>Vietnam EVN / IEA SEA</td></tr>
+      <tr><td>Solar module $/W</td><td>III</td><td>$76 (1977) → ~$0.09 (2025); +30% rebound early 2026 on consolidation — annotated</td><td>BNEF series / OPIS / pv magazine</td></tr>
+      <tr><td>Battery $/kWh</td><td>III</td><td>$7,500 (1991) → pack $108 / cell $74 / stationary $70 (−45% y/y) / cheapest LFP $50 (Dec 2025)</td><td>BNEF Battery Price Survey 2025</td></tr>
+      <tr><td>Solar additions &amp; records</td><td>III</td><td>582 GW (2024), 647 GW (2025); +636 TWh = largest annual increase by any source ever; renewables 33.8% &gt; coal, first time; TW milestones: 68 yrs → 2 yrs → 1.3 yrs</td><td>Ember GER 2026 / SPE</td></tr>
+      <tr><td>Grid storage</td><td>III</td><td>+300 GWh in 2025 (+51% y/y); Saudi 12.5 GWh operating-class; Abu Dhabi 19 GWh; Sun Cable 42 GWh planned</td><td>BNEF / ess-news</td></tr>
+      <tr><td>Capture rate / value deflation → storage</td><td>III</td><td>Germany 450+ negative-price hours (2024); CAISO TWh-scale curtailment</td><td>CAISO / EPEX / Ember</td></tr>
+      <tr><td>Installed-cost stack &amp; soft-cost gap</td><td>III</td><td>US residential ~$2.8/W vs Australia ~$1/W, same hardware</td><td>NREL / SolarQuotes benchmarks</td></tr>
+      <tr><td>SEA energy picture</td><td>III</td><td>Demand +7% (2024); coal 47% of generation (37% in 2015); solar+wind ~4.5%, +35%/yr; Pakistan bottom-up: 27+ GW household-driven</td><td>IEA SEA Outlook 2026 / Ember / pv magazine</td></tr>
+      <tr><td>Battery manufacturing</td><td>III/V</td><td>1.59 TWh produced (2025, +29%) on &gt;4 TWh nameplate (China &gt;80%)</td><td>Benchmark / IEA GEVO 2026</td></tr>
+      <tr><td>Datacenter electricity</td><td>IV</td><td>485 TWh (2025) → ~950 TWh by 2030 (~3%); AI-focused +50% in 2025; Big Tech capex &gt;$400B &gt; global O&amp;G upstream</td><td>IEA Electricity 2026 / WEI 2026</td></tr>
+      <tr><td>Launch $/kg</td><td>IV</td><td>Shuttle ~$55k → F9 ~$2,700–3,000 → Starship target $100–200; Suncatcher crossover assumption &lt;$200/kg mid-2030s</td><td>CSIS / OWID / Google 2025</td></tr>
+      <tr><td>Orbital compute receipts</td><td>IV</td><td>Starcloud-1: first H100 in orbit (Nov 2025), first model trained in space (Dec 2025); Suncatcher prototypes w/ Planet early 2027; SpaceX ODC constellation filing + AI1 (150 kW)</td><td>NVIDIA / Google / FCC filings</td></tr>
+      <tr><td>Orbit vs ground solar</td><td>IV</td><td>5–8× <em>collected</em> (vs typical ground sites; ~4–5× vs best deserts) — beaming losses itemized; NASA OTPS 2024: beam-to-ground 12–80× terrestrial cost; radiator limit ~300 W/m² realistic</td><td>Google Suncatcher paper / NASA OTPS</td></tr>
+      <tr><td>Physical anchors</td><td>All</td><td>1 hr sunlight ≈ 623 EJ ≈ 1 yr civilization (exact); 1 sun-second ≈ 10,000× all human energy ever; world solar area ≈ Spain-sized (far less in good deserts)</td><td>Derived, cross-checked</td></tr>
+      <tr><td>Interconnection queues</td><td>V</td><td>~2.3 TW US active (−12% y/y on record withdrawals); median queue &gt;4 yrs</td><td>LBNL Queued Up 2025</td></tr>
+      <tr><td>China velocity stat</td><td>III</td><td>93 GW installed in May 2025 alone ≈ 100 panels/second</td><td>Bloomberg / NEA</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="panel">
+    <div class="panel-label">Data integrity rules (expanded in v2)</div>
+    <ul style="margin-bottom:0">
+      <li>Record vs projection visually distinct, always; the Coda carries an explicit speculation watermark and <strong>no dates</strong>.</li>
+      <li>Banned phrases: “effectively free,” “too cheap to meter,” “limitless.” Allowed: “cheaper than the fuel it replaces,” “stops being the limiting input.”</li>
+      <li>The strongest counterargument to each act appears <em>on the page as a chart or inset</em>, not in a footnote — value deflation, soft costs, seasonality, the OTPS critique, Moravec.</li>
+      <li>Retail honesty: household bills are mostly grid + fixed costs; the planner promises control and payback, never free energy.</li>
+      <li>Methodology drawer per act, matching the site’s existing transparency pattern.</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ====================== 07 THE WORK ====================== -->
+<section id="roadmap">
+  <div class="section-kicker">07 · Act V content</div>
+  <h2>“The Work” — gates &amp; honest constraints</h2>
+  <p>Six gates, each a card: current state → required state → what unblocks it. Global numbers <em>and</em> a SEA row on every card — the audience’s grid, not just Virginia’s.</p>
+
+  <div class="grid3">
+    <div class="mini"><span class="n">GATE 1</span><h4>Make: TWh manufacturing</h4><p>1.59 TWh produced on &gt;4 TWh nameplate — capacity already outruns demand 2.5×. The gate isn’t building factories; it’s absorbing their output. Chemistry diversity (LFP, sodium-ion) hedges lithium.</p></div>
+    <div class="mini"><span class="n">GATE 2</span><h4>Connect: grids &amp; queues</h4><p>~2.3 TW stalled in US queues (median &gt;4 years); ASEAN cross-border interconnects barely begun; Vietnamese curtailment wasting built capacity. Wires and paperwork now bind more than physics.</p></div>
+    <div class="mini"><span class="n">GATE 3</span><h4>Feed: materials &amp; recycling</h4><p>Silver thrifting, copper metallization, sodium-ion — the materials floor is real but bendable. By the 2040s retired packs become a primary mine; the loop must close.</p></div>
+    <div class="mini"><span class="n">GATE 4</span><h4>Install: the human part ★</h4><p>The star gate. Same hardware: ~$2.8/W installed in the US, ~$1/W in Australia. Permitting, financing, labor, and policy whiplash (Vietnam’s FiT cliff) are choices, not physics. This gate is battery.mom’s direct mission — and the story’s moral.</p></div>
+    <div class="mini"><span class="n">GATE 5</span><h4>Lift: cheap orbit</h4><p>Orbital compute is real but gated on $/kg (&lt;$200 is the stated crossover), radiators, and rad-tolerant silicon. Beam-to-ground stays speculative until the OTPS math changes — we say so.</p></div>
+    <div class="mini"><span class="n">GATE 6</span><h4>Trust: dependable automation</h4><p>No progress meter on this card, by design: “unlike the others, this gate has no dial we can read.” The compounding loop assumes grids, factories, and machines that reliably do what we intend — stated as a dependency, linked to the serious literature, not scored.</p></div>
+  </div>
+
+  <p style="margin-top:22px">Act V closes at human scale: HUD hits 100%, powers on three live cards — <code>/bess/home</code>, <code>/ev</code>, <code>/bess</code> — in the site’s real daylight UI. <em>The swarm starts on a rooftop. Start with yours.</em></p>
+</section>
+
+<hr class="sep">
+
+<!-- ====================== 08 LEDGER ====================== -->
+<section id="ledger">
+  <div class="section-kicker">08 · New in v2 — the credibility engine</div>
+  <h2>The Predictions Ledger</h2>
+  <p>Dated, falsifiable, public. Each prediction is a permalink card: claim, resolution criterion, source of truth, confidence, date published — and a status that flips to <strong>RESOLVED-RIGHT / RESOLVED-WRONG</strong>, with wrong calls left visible permanently. Two predictions deliberately bet <em>against</em> the site’s own coolest ideas; the willingness to be seen being wrong is the moat. Reviewed annually alongside the site’s monthly data updates.</p>
+
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>#</th><th>Prediction</th><th>Resolves via</th><th>Confidence</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Li-ion pack prices (global volume-weighted avg) fall below <strong>$60/kWh</strong> by the 2029 survey</td><td>BNEF annual survey, Dec 2029</td><td><span class="conf">70%</span></td></tr>
+      <tr><td>2</td><td>Global annual solar installations exceed <strong>1 TW(dc) in a single year</strong> by 2030</td><td>BNEF / IEA annual figures</td><td><span class="conf">60%</span></td></tr>
+      <tr><td>3</td><td>Solar becomes the <strong>largest single source of world electricity</strong> (annual TWh, passing coal) by 2034</td><td>Ember Global Electricity Review</td><td><span class="conf">65%</span></td></tr>
+      <tr><td>4</td><td>Annual grid-scale storage additions exceed <strong>500 GWh globally</strong> by 2029</td><td>BNEF / IEA storage reports</td><td><span class="conf">70%</span></td></tr>
+      <tr><td>5</td><td><strong>Against ourselves:</strong> no space-based solar system delivers ≥10 MW continuous to any terrestrial grid before Jan 1, 2035</td><td>Public utility / operator records</td><td><span class="conf">90%</span></td></tr>
+      <tr><td>6</td><td>A commercially published launch price below <strong>$500/kg</strong> (LEO, &gt;50 t class) exists by 2033</td><td>Public price lists / signed contracts</td><td><span class="conf">50%</span></td></tr>
+      <tr><td>7</td><td>Datacenters exceed <strong>3% of global electricity</strong> by 2030 (from ~1.7% in 2025)</td><td>IEA electricity reports</td><td><span class="conf">65%</span></td></tr>
+      <tr><td>8</td><td>A Southeast Asian market signs a utility-scale <strong>solar+storage PPA below US$45/MWh</strong> by 2031</td><td>Public tender / PPA disclosures</td><td><span class="conf">60%</span></td></tr>
+      <tr><td>9</td><td><strong>Sub-50% on our own thesis:</strong> an operational orbital datacenter with ≥1 MW of IT load by 2033</td><td>Operator disclosure / observation</td><td><span class="conf">35%</span></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<hr class="sep">
+
+<!-- ====================== 09 FORMAT ====================== -->
+<section id="format">
+  <div class="section-kicker">09 · The format decision</div>
+  <h2>Format &amp; technical build plan</h2>
+
+  <div class="panel amber">
+    <div class="panel-label">Decision (unchanged, sharpened)</div>
+    <p style="margin-bottom:0"><strong>This brief: HTML. The experience: a new immersive route in the existing Next.js app</strong> — working route <code>/sunrise</code>, linked from the homepage hero, with the option to promote later. The dawn-arc ending makes this architecturally elegant: the film’s final act renders <em>actual site components</em> (the real CTA cards, the real theme), which is only possible inside the app. React Three Fiber for the sun (lazy-loaded), SSR’d narrative text for SEO and screen readers, existing Zustand/Tailwind/analytics.</p>
+  </div>
+
+  <h3>Stack (revised after critique)</h3>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>Layer</th><th>Choice</th><th>v2 change</th></tr></thead>
+    <tbody>
+      <tr><td>3D / shaders</td><td><code>three</code> + <code>@react-three/fiber</code> + <code>drei</code> — the sun and the ladder zoom only</td><td>Globe cut to pre-rendered video; swarm folded into the sun’s final state</td></tr>
+      <tr><td>Scroll</td><td><strong>Native scroll + <code>position: sticky</code> pins + rAF-read progress.</strong> GSAP ScrollTrigger allowed for timeline math only — never intercepting input</td><td>Lenis/smooth-scroll removed on touch (and by default everywhere)</td></tr>
+      <tr><td>Charts</td><td>Custom D3-driven SVG/canvas for hero charts; Recharts for utility charts; follows the site’s dataviz conventions</td><td>Scrub = bottom-anchored slider component, shared across M4 and the scatter</td></tr>
+      <tr><td>State</td><td>Zustand: one read-only <code>storyProgress</code> scalar drives sun, HUD, dawn-arc background tokens</td><td>Write-path (scrub-anywhere) cut</td></tr>
+      <tr><td>Data</td><td>Versioned JSON in <code>content/sunrise/</code>, one series per file, source + retrieval date pinned; living-epilogue counters fed by the existing monthly pipeline</td><td>Predictions ledger as data too — status flips are commits, visible in git history</td></tr>
+      <tr><td>Share</td><td>OG image per act + watt-card generator (edge route rendering to image)</td><td>New — the distribution layer</td></tr>
+      <tr><td>Haptics</td><td><code>navigator.vibrate</code> micro-ticks on data landings (Android)</td><td>Replaces sound design entirely</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Budgets &amp; acceptance (non-negotiable)</h3>
+  <ul>
+    <li><strong>≤4 MB total transfer on mobile</strong> (including 3D + video), ≤200 KB critical JS before first scroll; act chunks lazy-load behind intersection margins.</li>
+    <li><strong>Acceptance device: ~$150 Android on throttled 4G</strong> — 30 fps there, 60 fps on laptops. GPU-tier detection downgrades the sun shader before dropping frames.</li>
+    <li><strong><code>prefers-reduced-motion</code> and no-WebGL get a fully-designed static edition</strong> — same script, same charts as elegant stills. The SSR text spine (the complete script as semantic HTML) is the accessibility and SEO backbone.</li>
+    <li>Keyboard: act rail navigable; every interactive has a non-pointer path; hero charts carry data-table drawers.</li>
+  </ul>
+</section>
+
+<hr class="sep">
+
+<!-- ====================== 10 PHASES ====================== -->
+<section id="phases">
+  <div class="section-kicker">10 · How we ship it</div>
+  <h2>Phased delivery plan</h2>
+  <p>Writer-led, as the best pieces in this genre are: the script is now a phase of its own, before any engineering. Each phase ships something reviewable.</p>
+
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>Phase</th><th>Deliverable</th><th>Proves</th></tr></thead>
+    <tbody>
+      <tr><td>0 · Research <em>(✓ done in this pass)</em></td><td>All figures verified against 2025–26 primary sources; corrections logged in §00; series list final</td><td>Every number real before a pixel moves</td></tr>
+      <tr><td>0.5 · The script</td><td>The complete ~1,500-word narration — every act, every felt beat, the hearth thread — written, edited, and <strong>table-read on a phone</strong></td><td>The long pole in this genre is the writing, not the WebGL</td></tr>
+      <tr><td>1 · The spine</td><td><code>/sunrise</code>: dawn-arc background system, sun shader v1, battery HUD, act scaffolding, full SSR script, act rail + deep links — portrait-first</td><td>The grammar works on a $150 Android</td></tr>
+      <tr><td>2 · MAP slice</td><td>Act III complete at target quality: time machine (M4), ladder zoom + 1:1 beat (M3), local-time sunset duck curve</td><td>The interaction bar; the brand thesis at full polish</td></tr>
+      <tr><td>3 · The arc</td><td>Acts I–II + Interlude (ember, energy servants, curves-held-vs-broke, HUD drain) + Act IV (flywheel, receipts wall, case-against inset)</td><td>The emotional shape — darkness before dawn lands</td></tr>
+      <tr><td>4 · The landing</td><td>Coda + Act V: swarm final-state, gates board, Predictions Ledger, living epilogue, dawn-into-product handoff, watt-card generator</td><td>Awe converts to agency (and to planner sessions)</td></tr>
+      <tr><td>5 · Polish</td><td>Static edition, OG frames, haptics, perf audit vs budgets, Playwright E2E, analytics events per act</td><td>Finished, on every device the audience owns</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<hr class="sep">
+
+<!-- ====================== 11 PRINCIPLES ====================== -->
+<section id="principles">
+  <div class="section-kicker">11 · Guardrails</div>
+  <h2>Guardrails, falsifiers &amp; open decisions</h2>
+  <ul>
+    <li><strong>Awe from truth</strong> — now with teeth: the strongest counterargument to each act appears on the page as a chart; two ledger predictions bet against our own thesis; banned-phrase list enforced in review.</li>
+    <li><strong>One story, one scroll.</strong> A visitor who only scrolls gets the complete film in 6–7 minutes; interactives are depth, not tollgates.</li>
+    <li><strong>Humanity is the protagonist; the hearth keeps it human.</strong> Scale without a person is a screensaver — every act touches down at human scale on a different continent, and Southeast Asia is the recurring closer-to-home lens, never the spine.</li>
+    <li><strong>Restraint is the AAA tell.</strong> One hero animation per viewport; the polish pass cuts anything decorative.</li>
+    <li><strong>Ends on agency, in daylight.</strong> The last thing the visitor touches is the real planner, not a metaphor.</li>
+  </ul>
+
+  <div class="panel">
+    <div class="panel-label">What would falsify the thesis (published signposts)</div>
+    <p style="margin-bottom:0">We state, on the page, what would make us change our minds: the li-ion or PV learning rate breaking below ~10%/doubling for 3+ consecutive years on sustainable (non-dumping) prices · global storage additions stalling below 20% annual growth for 3 years · capture-rate collapse in high-solar markets <em>without</em> corresponding storage buildout · launch costs re-stagnating above $1,000/kg through 2035. If the signposts fire, the site says so — that’s what the Ledger is for.</p>
+  </div>
+
+  <div class="panel">
+    <div class="panel-label">Open decisions for KM</div>
+    <ol style="margin-bottom:0">
+      <li><strong>Placement:</strong> <code>/sunrise</code> as flagship route linked from the homepage hero (recommended) vs. replacing the homepage vs. merging with <code>/state-of-battery-power</code> — note the June-2026 revamp already made that page the narrative-first reference implementation, so <code>/sunrise</code> should either absorb it or sit beside it as the cinematic flagship.</li>
+      <li><strong>The SEA inset (anchoring resolved in v3):</strong> humanity is the main anchor; SEA is the closer-to-home sub-anchor. Remaining choice: which markets lead the inset panels — Indonesia (largest market, captive-coal story), Vietnam (the False Dawn is theirs), the Philippines (brownout hours) — fixed or rotating.</li>
+      <li><strong>Ledger commitment:</strong> publishing dated predictions with confidence levels is a public commitment the site must maintain annually. Green-light separately from the film itself.</li>
+      <li><strong>Title:</strong> “The Long Sunrise” (working) — alternatives: “Powers of the Sun,” “The Terawatt Century,” “K = 0.73.”</li>
+    </ol>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  battery.mom · “The Long Sunrise” vision brief · v3 (red-teamed, globally anchored) · 2026-07-09<br>
+  Phase 0 complete — next on approval: Phase 0.5, the script
+</footer>
+
+</body>
+</html>

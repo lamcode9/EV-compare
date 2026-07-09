@@ -51,3 +51,34 @@ Use this file for durable lessons that should shape future agent work in this re
 
 - Node 26 / esbuild platform mismatch breaks vitest AND `tsx` scripts with a misleading "@esbuild/darwin-arm64 package is present but this platform needs the @esbuild/darwin-arm64 package instead" (same name on both sides = a version/binary mismatch, usually after a Node upgrade left a stale native binary). `npm run build` still works (Next uses webpack/SWC, not esbuild), so the env looks healthy until you run tests. Fix: `npm rebuild esbuild`, then re-run `npm test`. Don't reinstall node_modules wholesale for this.
 - E2E groundwork (Playwright): the search→compare→export flow lives entirely on `/ev` and is DB-backed — the page fetches `/api/vehicles?country=…` only AFTER a country is picked, so a Playwright test must (1) open the Radix Select via `getByLabel('Select country')` then click the option (it's NOT a native `<select>`), (2) `waitForResponse` on `/api/vehicles`, (3) drive the search box (`getByLabel('Search for electric vehicles')`) → `getByRole('option')`, (4) assert the CSV `download` event. CI needs a Postgres service + `prisma db push` + `npm run db:seed` (the seed has SG Tesla + BYD available, which the spec relies on). The existing `quality` CI job deliberately has no DB; E2E is a separate job.
+- Story/brand anchoring (KM correction on the Long Sunrise brief v2): never literalize the domain name into creative decisions — battery.mom does not mean a literal "mom" protagonist. Civilizational/future-of-energy storytelling anchors GLOBAL-first; Southeast Asia is the recurring "closer to home" sub-anchor (insets, one ladder stop, SEA rows on data boards), never the narrative spine. The human-scale device is "the hearth": one vignette per act, each on a different continent.
+
+## 2026-07-09 — /sunrise build gotchas
+- **Fixed background canvas + negative z-index**: a `fixed inset-0 -z-10` canvas paints
+  BENEATH the opaque `bg-*` of `<main>`/`<body>` (CSS painting order: an element's own
+  background paints before its negative-z descendants only within its own stacking
+  context — an unpositioned parent's background still covers root-context negative-z
+  children). Pattern that works: canvas at `z-0`, all page content wrapped in
+  `relative z-10`, fallback bg kept on `<main>`.
+- **Scroll-keyed keyframes vs real layout**: never hard-code document-fraction keyframes
+  for act-based scrollytelling — section positions shift per viewport/content. Measure
+  anchor elements at runtime (`getBoundingClientRect + fonts.ready + resize`) and remap
+  document fraction → story progress piecewise-linearly (see `useStoryRemap` in
+  `app/sunrise/page-client.tsx`).
+- **Claude preview tab can wedge** on a route that once failed to compile (HMR keeps the
+  Suspense fallback forever; fresh navigations still show `loading.tsx` while curl +
+  headless Chromium render fine). Don't debug the app through the wedged tab — verify
+  with a Playwright probe script (repo has @playwright/test; run the script from inside
+  the repo so node resolves it).
+- **Preview launch.json lives in the OUTER repo** (`/Users/km/Developer/Battery.mom/.claude/launch.json`,
+  config name `batterymom`) — the session cwd is the wrapper repo, not the app submodule.
+  Point it at `npm --prefix Battery.mom run dev` (port 9000) for live-edit verification.
+- **Dark-page components on the dawn handoff**: anything rendered in Act V sits on the
+  LIGHT paper/morning phase — translucent `bg-ink-900/60` surfaces wash out (use /90),
+  and intro/caption text outside dark cards must be ink-toned, not paper-toned.
+
+## 2026-07-09 — /sunrise v2 art-direction pass
+- **Alpha-fading a keyframe-lerped element across a long span leaves ghosts.** The sky sun lerping alpha 1→0 over p 0.58→0.72 rendered as a dim "dead moon" smudge mid-transition. Fix: insert an explicit zero keyframe close after the last visible one (0.645) so the fade completes before the backdrop changes character.
+- **Trapezoid envelopes must respect downstream scene boundaries.** The Earth-limb scene's fade-out (0.815→0.87) overlapped the sky's morning ramp (from 0.72→0.88), painting a gray planet dome over daylight. When two independent story-keyed layers coexist, diff their active ranges explicitly.
+- **AI-slop tells to keep hunting in this repo's dark pages:** tracked-uppercase eyebrows, 3-stat card rows with colored numerals, translucent-dark rounded panels + backdrop-blur, pill badges, dingbat numerals, staggered reveal delays. Replacement language: hairline rules, huge Newsreader tabular figures, italic serif labels, `·` separators, paper cards on light phases.
+- **A gradient is not a scene.** The single highest-leverage fix for "cinematic" pages: a horizon + ground plane + per-act silhouettes + one physically-behaved light source + film grain (seeded soft-light tile kills banding for free).

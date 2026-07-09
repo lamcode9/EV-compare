@@ -18,9 +18,13 @@ import Footer from '@/components/Footer'
 export default function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const isEmbed = pathname === '/embed' || pathname?.startsWith('/embed/')
+  // /sunrise is the cinematic scrollytelling experience: it carries its own
+  // minimal chrome (wordmark + battery HUD) and renders the Footer itself at
+  // the end of its dawn arc, so the standard Header/Footer must not wrap it.
+  const isSunrise = pathname === '/sunrise'
 
-  if (isEmbed) {
-    // Bare: the embed route's own layout supplies its transparent wrapper.
+  if (isEmbed || isSunrise) {
+    // Bare: the route supplies its own wrapper/chrome.
     return <>{children}</>
   }
 

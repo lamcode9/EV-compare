@@ -1,23 +1,65 @@
-# Site cohesion pass — nav, naming, chart clarity, EV-page UI
+# The Long Sunrise — v2 art-direction pass (de-slop + world layer)
 
-User report (2026-06-24), 4 fronts:
-1. Chart titling unclear — "is this total generation or *additions added*?" Make every chart title explicitly state the measure type (total/stock vs annual addition/flow vs cumulative vs change). Applies site-wide.
-2. EV adoption page (`/scoreboard/ev`, legacy `app/scoreboard/page-client.tsx`, 1551 lines) still on the OLD generic palette (indigo/amber/red/purple/pink hex + rainbow charts) — never migrated to the ink/paper/brand editorial system.
-3. Duplicate adoption link — `/scoreboard/ev` appears under BOTH "Big Picture → EV Adoption" and "EVs → Adoption by Country".
-4. Stale "Scoreboard" concept — orphaned `/scoreboard` hub (titled "Scoreboards"), and all 3 boards carry a duplicated pill-nav ("Scoreboard home / EV adoption / BESS adoption / Global battery deployment") whose labels don't match the header's Big Picture set.
+Verdict from v1 audit: content architecture good; presentation reads as "gradient
+with text". Fix by building a scene + adopting the site's editorial identity.
 
-## Decisions
-- **Track vs Decide thesis** (established): Big Picture = TRACK surfaces (Story + 3 boards). EVs/Battery&Solar = DECIDE tools. EV adoption is a TRACK surface → its canonical home is Big Picture. **Fix #3: remove "Adoption by Country" from the EVs dropdown** (keep "EV Adoption" under Big Picture). EVs dropdown becomes Compare · EV vs Petrol · Charging Cost.
-- **Fix #4:** one shared `BigPictureNav` component, labels matching the header (Big Picture · Global Deployment · EV Adoption · Storage Adoption). Replace the 3 duplicated inline pill-navs. Redirect `/scoreboard` → `/state-of-battery-power` (kill orphaned hub). Repoint homepage primary CTA off `/scoreboard`. Keep "Battery Deployment Scoreboard" h1 on the energy board (legit name).
-- **Fix #1:** surgical — make total-vs-additions explicit. Most charts already clear. Genuinely ambiguous: the generation area charts (story page + energy board "World energy shift" total mode). Title them "Total ... generation". Verify the rest read clearly.
-- **Fix #2:** migrate `app/scoreboard/page-client.tsx` to ink/paper/brand. Chart colors → brand greens + reuse the energy board's on-brand source palette for multi-series (no rainbow). De-nest 3 bordered violations. font-display headings.
+## v2 Increments
+- [x] World layer (hand-written, SunriseSky): ground plane + per-act silhouettes
+      (hills → mill town w/ smoke → pylons+catenaries → rooftops w/ panels →
+      sawtooth gigafactory → Earth curvature w/ city lights → morning haze),
+      ONE sun rising physically from behind the horizon (occluded lower limb,
+      scatter at horizon, right-hand lane), film grain (soft-light seeded tile),
+      sticker sun + sky swarm ring deleted (ladder owns the space frame)
+- [x] De-slop system (narrative.tsx + page-client): eyebrows/stat cards/glass/
+      pills/dingbats gone; hairline-rule editorial figures, italic serif labels,
+      GiantLine scroll-scrubbed pull quotes, wire-feed receipts
+- [x] Sub-agent restyles: GatesBoard + PredictionsLedger → paper cards + ruled
+      ledger; WrightLawChart header box/slider thumb/annotations; ladder +
+      flywheel label pass
+- [x] Per-act composition + copy trim (terawatt pull, "Then, morning." giant,
+      coda line giant, aphorism cuts)
+- [x] Round-2 scene fixes from screenshots: sun-handoff keyframe at 0.645
+      (ghost disc), earthCurve envelope ends 0.85 (dome over morning), sunlit
+      ground lift after 0.46, mobile sun lane 0.85w
+- [x] Verify: Playwright frames desktop+375px (2 rounds), tsc, lint (1 pre-
+      existing warning), build green, /sunrise static
 
-## Increments (each: build+lint+tsc green → commit → push → CI green)
-- [x] **I1 — Flow/naming:** header de-dup, shared BigPictureNav, `/scoreboard` redirect, homepage CTA repoint. — `fe6bef3`, CI green.
-- [x] **I2 — Chart clarity:** generation charts titled "Total ...", energy-board mode subtitle reflects total vs change, per-chart measure labels. — `467c2e6`.
-- [x] **I3 — EV adoption UI migration:** palette + charts + de-nest on `app/scoreboard/page-client.tsx` + InfoTooltip hover fix. — `8d082f4`. Verified in-browser.
+# v1 build log (done, kept for reference)
 
-All four user-reported fronts addressed. Done.
+New cinematic scrollytelling route `/sunrise`. Global-first anchor, SEA sub-anchor
+("closer to home" insets), hearth vignettes (one continent per act). No new deps
+(no R3F — raw canvas; recharts/zustand already available but plain hooks suffice).
+Chrome-free route (SiteShell), page dawns into the editorial paper UI + real Footer.
+
+## Architecture
+- `app/sunrise/page.tsx` (metadata) + `page-client.tsx` (composition, copy from content)
+- `content/sunrise/script.ts` — all copy + verified data moments (typed, versioned)
+- `app/sunrise/_lib/useScroll.ts` — useScrollFraction / useSectionProgress / useInView / usePrefersReducedMotion
+- `app/sunrise/_components/` — SunriseSky (fixed canvas dawn arc: night → coal dark →
+  pre-dawn → first light → brightening → space-black w/ sun disc → morning → paper),
+  PowersOfTenLadder, WrightLawChart, BatteryHUD, FlywheelDiagram, GatesBoard, PredictionsLedger
+- Narrative primitives (Act/Beat/Hearth/SeaInset/BigNumber) — hand-written, taste-critical
+
+## Increments
+- [x] Plan + infra hooks
+- [x] Sub-agents (parallel, isolated files): A SunriseSky · B PowersOfTenLadder ·
+      C WrightLawChart · D BatteryHUD+Flywheel · E GatesBoard+PredictionsLedger
+- [x] Script.ts (full copy), narrative primitives, page composition,
+      SiteShell chrome-free branch, Header/Footer/sitemap links
+- [x] Story remap (measured act anchors → sky keyframes); z-order fix (canvas z-0,
+      content z-10 — negative z painted under main's bg); Act V ink-tone fixes
+- [ ] WrightLawChart mobile layout fixes (agent round 2, in flight)
+- [ ] Final: `npm run lint && npm run build`, full-page re-verify, lessons
+
+## Deferred polish (v1.1 candidates)
+- HUD drain during False Dawn (copy softened to "the doubt beat" for now — restore
+  "the only scene where the charge stops" only when the HUD actually does it)
+- M1 real-time solar sync (duck-curve sunset synced to visitor's local time)
+- Swarm-ring visibility pass at story 0.74–0.82; OG poster frames per act
 
 ## Constraints
-- Inner repo only (`/Users/km/Developer/Battery.mom/Battery.mom`). Data-integrity: no invented numbers (this pass is UI/IA/copy, not data). One bordered surface per level. Push to prod after each increment; CI must stay green.
+- Data integrity: only verified figures from the brief's §06 inventory. Banned:
+  "effectively free", "too cheap to meter", "limitless".
+- Mobile-first 375px; ≤200 KB critical JS (no new deps); prefers-reduced-motion static.
+- Kardashev/Dyson framed honestly (thought experiment, not forecast); orbital solar
+  with NASA OTPS 12–80× cost critique on-page.

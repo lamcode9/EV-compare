@@ -12,6 +12,7 @@ const footerGroups: FooterGroup[] = [
   {
     heading: 'Big Picture',
     links: [
+      { href: '/sunrise', label: 'The Long Sunrise' },
       { href: '/state-of-battery-power', label: 'The Story' },
       { href: '/scoreboard/energy', label: 'Global Deployment' },
       { href: '/scoreboard/ev', label: 'EV Adoption' },
