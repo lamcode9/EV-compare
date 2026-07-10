@@ -794,50 +794,6 @@ export function calculateZeroBill(inputs: ZeroBillInputs): ZeroBillOutputs {
       }
     }
     
-    // Debug: Detailed breakdown for hours 12 (12:00 - solar) and 22 (22:00 - EV charging)
-    if (hour === 12 || hour === 22) {
-      const totalGeneration = hourlySolar + hourlyBatteryDischarge + hourlyGridSupply
-      // Grid export is an outflow too (excess solar leaving the house), so it belongs
-      // on the consumption side of the balance identity alongside load/EV/battery charging.
-      // Omitting it here previously made hours with solar export look like a mismatch
-      // even though the simulation itself conserves energy correctly.
-      const totalConsumption = hourlyHouseholdLoad + hourlyEvCharging + hourlyBatteryCharge + hourlyGridExport
-      const batteryLevelBefore = currentBatteryLevel + hourlyBatteryDischarge + hourlyEvChargingFromBattery
-      console.log('=== Hour 2 (02:00) Detailed Breakdown ===')
-      console.log('INITIAL VALUES:')
-      console.log(`  Solar: ${hourlySolar.toFixed(3)} kWh`)
-      console.log(`  Household Load: ${hourlyHouseholdLoad.toFixed(3)} kWh`)
-      console.log(`  EV Charging: ${hourlyEvCharging.toFixed(3)} kWh`)
-      console.log(`  Battery Level (start of hour): ${batteryLevelBefore.toFixed(3)} kWh`)
-      console.log('AFTER SOLAR ALLOCATION:')
-      console.log(`  Household Load Remaining: ${householdLoadRemaining.toFixed(3)} kWh`)
-      console.log(`  EV Charging From Solar: ${hourlyEvChargingFromSolar.toFixed(3)} kWh`)
-      console.log(`  EV Charging Remaining (after solar): ${(hourlyEvCharging - hourlyEvChargingFromSolar).toFixed(3)} kWh`)
-      console.log('AFTER BATTERY DISCHARGE:')
-      console.log(`  Battery Discharge (Household): ${hourlyBatteryDischarge.toFixed(3)} kWh`)
-      console.log(`  Battery Discharge (EV): ${hourlyEvChargingFromBattery.toFixed(3)} kWh`)
-      console.log(`  Remaining Load (after battery): ${remainingLoad.toFixed(3)} kWh`)
-      console.log(`  Remaining EV Charging (after battery): ${remainingEvCharging.toFixed(3)} kWh`)
-      console.log(`  Battery Level After: ${currentBatteryLevel.toFixed(3)} kWh`)
-      console.log('FINAL CALCULATION:')
-      console.log(`  hourlyGridSupply = remainingLoad + remainingEvCharging = ${remainingLoad.toFixed(3)} + ${remainingEvCharging.toFixed(3)} = ${hourlyGridSupply.toFixed(3)} kWh`)
-      console.log('GENERATION:')
-      console.log(`  Solar: ${hourlySolar.toFixed(3)} kWh`)
-      console.log(`  Battery Usage: ${hourlyBatteryDischarge.toFixed(3)} kWh`)
-      console.log(`  Grid: ${hourlyGridSupply.toFixed(3)} kWh`)
-      console.log(`  Total Generation: ${totalGeneration.toFixed(3)} kWh`)
-      console.log('CONSUMPTION (+ EXPORT):')
-      console.log(`  Household Load: ${hourlyHouseholdLoad.toFixed(3)} kWh`)
-      console.log(`  EV Charging: ${hourlyEvCharging.toFixed(3)} kWh`)
-      console.log(`  Battery Charge: ${hourlyBatteryCharge.toFixed(3)} kWh`)
-      console.log(`  Grid Export: ${hourlyGridExport.toFixed(3)} kWh`)
-      console.log(`  Total Consumption + Export: ${totalConsumption.toFixed(3)} kWh`)
-      console.log('BALANCE CHECK:')
-      console.log(`  Generation = Consumption: ${Math.abs(totalGeneration - totalConsumption) < 0.01 ? '✓ MATCH' : '✗ MISMATCH'}`)
-      console.log(`  Difference: ${(totalGeneration - totalConsumption).toFixed(3)} kWh`)
-      console.log('=========================================')
-    }
-    
     // Final safety check: ensure battery level is within valid bounds before storing
     // Use multiple clamping operations to handle any edge cases
     let finalBatteryLevel = currentBatteryLevel
