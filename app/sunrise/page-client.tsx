@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from 'react'
 import Link from 'next/link'
 import Footer from '@/components/Footer'
 import SunriseSky from './_components/SunriseSky'
+import FilmCel from './_components/FilmCel'
 import BatteryHUD from './_components/BatteryHUD'
 import PowersOfTenLadder from './_components/PowersOfTenLadder'
 import WrightLawChart from './_components/WrightLawChart'
@@ -24,13 +25,13 @@ import {
   SpeculationWatermark,
 } from './_components/narrative'
 import {
-  ACT_1, ACT_1_COPY,
-  ACT_2, ACT_2_COPY,
-  INTERLUDE, INTERLUDE_COPY,
-  ACT_3, ACT_3_COPY,
-  ACT_4, ACT_4_COPY,
-  CODA, CODA_COPY,
-  ACT_5, ACT_5_COPY,
+  ACT_1, ACT_1_CEL, ACT_1_COPY,
+  ACT_2, ACT_2_CEL, ACT_2_COPY,
+  INTERLUDE, INTERLUDE_CEL, INTERLUDE_COPY,
+  ACT_3, ACT_3_CEL, ACT_3_STORAGE_CEL, ACT_3_COPY,
+  ACT_4, ACT_4_CEL, ACT_4_ORBIT_CEL, ACT_4_COPY,
+  CODA, CODA_CEL, CODA_COPY,
+  ACT_5, ACT_5_CEL, ACT_5_COPY,
 } from '@/content/sunrise/script'
 
 /**
@@ -118,15 +119,20 @@ export default function SunriseClient() {
 
       {/* ── Hero ── */}
       <section className="flex min-h-screen flex-col items-center justify-center px-6 text-center">
-        <p className="font-display text-base italic text-paper-300/70">battery.mom presents</p>
-        <h1 className="mt-6 font-display text-6xl font-medium leading-[0.98] tracking-tight text-paper sm:text-8xl md:text-[7.5rem]">
+        <p className="sunrise-hero-in font-display text-base italic text-paper-300/70" style={{ animationDelay: '0.2s' }}>
+          battery.mom presents
+        </p>
+        <h1
+          className="sunrise-hero-in mt-6 font-display text-6xl font-medium leading-[0.98] tracking-tight text-paper sm:text-8xl md:text-[7.5rem]"
+          style={{ animationDelay: '0.6s' }}
+        >
           The Long Sunrise
         </h1>
-        <p className="mt-8 max-w-xl text-base leading-relaxed text-paper-300 sm:text-lg">
+        <p className="sunrise-hero-in mt-8 max-w-xl text-base leading-relaxed text-paper-300 sm:text-lg" style={{ animationDelay: '1.3s' }}>
           Half a million years of energy — and the century that changes it.
           Every number sourced. Every prediction dated.
         </p>
-        <div className="mt-16 flex flex-col items-center gap-3 text-paper-300/50" aria-hidden>
+        <div className="sunrise-hero-in mt-16 flex flex-col items-center gap-3 text-paper-300/50" style={{ animationDelay: '2.2s' }} aria-hidden>
           <span className="font-display text-xs italic">scroll</span>
           <span className="block h-10 w-px bg-gradient-to-b from-paper-300/50 to-transparent" />
         </div>
@@ -134,6 +140,7 @@ export default function SunriseClient() {
 
       {/* ── Act I · Fire ── */}
       <section className="space-y-14 py-28 sm:space-y-16 sm:py-36" aria-labelledby="fire">
+        <FilmCel cel={ACT_1_CEL} />
         <ActHeader act={ACT_1} id="fire" />
         <Prose lead>{ACT_1_COPY.open}</Prose>
         {ACT_1_COPY.body.map((p) => (
@@ -146,6 +153,7 @@ export default function SunriseClient() {
 
       {/* ── Act II · Combustion ── */}
       <section className="space-y-14 py-28 sm:space-y-16 sm:py-36" aria-labelledby="combustion">
+        <FilmCel cel={ACT_2_CEL} />
         <ActHeader act={ACT_2} id="combustion" />
         <Prose lead>{ACT_2_COPY.open}</Prose>
         {ACT_2_COPY.body.map((p) => (
@@ -160,26 +168,29 @@ export default function SunriseClient() {
       <section className="space-y-14 py-28 sm:space-y-16 sm:py-36" aria-labelledby="false-dawn">
         <ActHeader act={INTERLUDE} id="false-dawn" />
         <Prose lead>{INTERLUDE_COPY.open}</Prose>
-        {INTERLUDE_COPY.body.map((p) => (
-          <Prose key={p.slice(0, 24)}>{p}</Prose>
-        ))}
+        <Prose>{INTERLUDE_COPY.body[0]}</Prose>
+        <Prose>{INTERLUDE_COPY.body[1]}</Prose>
+        <FilmCel cel={INTERLUDE_CEL} />
+        <Prose>{INTERLUDE_COPY.body[2]}</Prose>
         <CurvesHeldBroke note={INTERLUDE_COPY.curvesNote} />
       </section>
 
       {/* ── Act III · The Sun, Direct ── */}
       <section className="space-y-14 py-28 sm:space-y-16 sm:py-36" aria-labelledby="sun-direct">
+        <FilmCel cel={ACT_3_CEL} />
         <ActHeader act={ACT_3} id="sun-direct" />
         <Prose lead>{ACT_3_COPY.open}</Prose>
         <Prose>{ACT_3_COPY.body[0]}</Prose>
         <GiantLine>{ACT_3_COPY.pull}</GiantLine>
-        {ACT_3_COPY.body.slice(1).map((p) => (
-          <Prose key={p.slice(0, 24)}>{p}</Prose>
-        ))}
+        <Prose>{ACT_3_COPY.body[1]}</Prose>
+        <Prose>{ACT_3_COPY.body[2]}</Prose>
+        <FilmCel cel={ACT_3_STORAGE_CEL} />
+        <Prose>{ACT_3_COPY.body[3]}</Prose>
         <BigNumbers items={ACT_3_COPY.numbers} />
         <div className="mx-auto max-w-5xl px-6">
           {/* Ruled scrim band (no glass): keeps axis text readable over the
               bright horizon without boxing the chart in a card. */}
-          <div className="border-y border-paper/15 bg-ink-900/45 px-4 py-6 sm:px-8 sm:py-8">
+          <div className="border-y border-paper/15 bg-ink-900/70 px-4 py-6 sm:px-8 sm:py-8">
             <WrightLawChart />
           </div>
         </div>
@@ -188,14 +199,17 @@ export default function SunriseClient() {
 
       {/* ── Act IV · The Compounding Century ── */}
       <section className="space-y-14 py-28 sm:space-y-16 sm:py-36" aria-labelledby="compounding">
+        <FilmCel cel={ACT_4_CEL} />
         <ActHeader act={ACT_4} id="compounding" />
         <Prose lead>{ACT_4_COPY.open}</Prose>
         <div className="mx-auto max-w-3xl px-6">
           <FlywheelDiagram className="mx-auto" />
         </div>
-        {ACT_4_COPY.body.map((p) => (
-          <Prose key={p.slice(0, 24)}>{p}</Prose>
-        ))}
+        <Prose>{ACT_4_COPY.body[0]}</Prose>
+        <Prose>{ACT_4_COPY.body[1]}</Prose>
+        <FilmCel cel={ACT_4_ORBIT_CEL} />
+        <Prose>{ACT_4_COPY.body[2]}</Prose>
+        <Prose>{ACT_4_COPY.body[3]}</Prose>
         <BigNumbers items={ACT_4_COPY.numbers} />
         <ReceiptsWall items={ACT_4_COPY.receipts} note={ACT_4_COPY.receiptsNote} />
       </section>
@@ -205,6 +219,7 @@ export default function SunriseClient() {
         <ActHeader act={CODA} id="swarm" />
         <SpeculationWatermark />
         <Prose lead>{CODA_COPY.open}</Prose>
+        <FilmCel cel={CODA_CEL} />
         {CODA_COPY.body.map((p) => (
           <Prose key={p.slice(0, 24)}>{p}</Prose>
         ))}
@@ -219,23 +234,8 @@ export default function SunriseClient() {
       {/* ── Act V · The Work — ink on paper: the dawn handoff ── */}
       <section className="space-y-14 pb-0 pt-28 sm:space-y-16 sm:pt-36" aria-labelledby="the-work">
         <GiantLine tone="ink">Then, morning.</GiantLine>
-        <Reveal className="mx-auto max-w-3xl px-6">
-          <header id="the-work" className="scroll-mt-24">
-            <div className="flex items-center gap-4">
-              <span aria-hidden className="h-px w-12 bg-gold/60" />
-              <span className="font-display text-sm italic text-ink-500">{ACT_5.era}</span>
-            </div>
-            <div className="mt-5 flex items-start gap-5">
-              <span aria-hidden className="font-display text-5xl leading-none text-gold sm:text-6xl">{ACT_5.numeral}</span>
-              <h2 className="font-display text-4xl font-medium leading-[1.05] tracking-tight text-ink sm:text-6xl">
-                {ACT_5.title}
-              </h2>
-            </div>
-            <p className="mt-4 font-display text-sm italic text-ink-500">
-              <span className="text-gold">the hearth</span> — {ACT_5.hearth}
-            </p>
-          </header>
-        </Reveal>
+        <FilmCel cel={ACT_5_CEL} tone="light" />
+        <ActHeader act={ACT_5} id="the-work" tone="light" />
         <Reveal className="mx-auto max-w-3xl px-6">
           <p className="font-display text-xl leading-relaxed text-ink-700 sm:text-2xl">{ACT_5_COPY.open}</p>
         </Reveal>

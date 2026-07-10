@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState, type ReactNode } from 'react'
-import { useInView, useSectionProgress, usePrefersReducedMotion } from '../_lib/useScroll'
+import { ramp, useInView, useSectionProgress, usePrefersReducedMotion } from '../_lib/useScroll'
 import type { ActMeta, BigNumberItem } from '@/content/sunrise/script'
 
 /**
@@ -57,30 +57,67 @@ export function GiantLine({
   )
 }
 
-/** Act opener: rule + era, numeral + title, hearth vignette line. */
-export function ActHeader({ act, id }: { act: ActMeta; id: string }) {
+/**
+ * Act opener as a scrubbed title card — the reader's hand drives the
+ * choreography in sequence: the rule draws itself, the era slides in along
+ * it, the numeral and title rise from behind a baseline mask, and the
+ * hearth line settles last. No fire-once fades.
+ */
+export function ActHeader({ act, id, tone = 'dark' }: { act: ActMeta; id: string; tone?: 'dark' | 'light' }) {
+  const { ref, progress } = useSectionProgress<HTMLElement>()
+  const reduced = usePrefersReducedMotion()
+  const ease = (x: number) => 1 - Math.pow(1 - x, 3)
+  const t = reduced ? 1 : ramp(progress, 0.12, 0.5)
+  const rule = ease(ramp(t, 0, 0.4))
+  const era = ease(ramp(t, 0.08, 0.45))
+  const numeral = ease(ramp(t, 0.18, 0.62))
+  const title = ease(ramp(t, 0.28, 0.8))
+  const hearth = ease(ramp(t, 0.62, 1))
+  const c =
+    tone === 'dark'
+      ? { era: 'text-paper-300/80', title: 'text-paper', hearth: 'text-paper-300/70', hearthWord: 'text-gold/80', rule: 'bg-gold/50' }
+      : { era: 'text-ink-500', title: 'text-ink', hearth: 'text-ink-500', hearthWord: 'text-gold', rule: 'bg-gold/60' }
   return (
-    <Reveal className="mx-auto max-w-3xl px-6">
-      <header id={id} className="scroll-mt-24">
-        <div className="flex items-center gap-4">
-          <span aria-hidden className="h-px w-12 bg-gold/50" />
-          <span className="font-display text-sm italic text-paper-300/80">{act.era}</span>
-        </div>
-        <div className="mt-5 flex items-start gap-5">
-          {act.numeral && (
-            <span aria-hidden className="font-display text-5xl leading-none text-gold sm:text-6xl">
+    <header ref={ref} id={id} className="mx-auto max-w-3xl scroll-mt-24 px-6">
+      <div className="flex items-center gap-4">
+        <span aria-hidden className={`h-px w-12 origin-left ${c.rule}`} style={{ transform: `scaleX(${rule})` }} />
+        <span
+          className={`font-display text-sm italic ${c.era}`}
+          style={{ opacity: era, transform: `translateX(${(1 - era) * -12}px)` }}
+        >
+          {act.era}
+        </span>
+      </div>
+      <div className="mt-5 flex items-start gap-5">
+        {act.numeral && (
+          /* shrink-0: overflow-hidden zeroes the automatic min-size, letting
+             flex crush the mask below the glyphs' width (III → II). */
+          <span aria-hidden className="shrink-0 overflow-hidden">
+            <span
+              className="block font-display text-5xl leading-none text-gold sm:text-6xl"
+              style={{ transform: `translateY(${(1 - numeral) * 110}%)` }}
+            >
               {act.numeral}
             </span>
-          )}
-          <h2 className="font-display text-4xl font-medium leading-[1.05] tracking-tight text-paper sm:text-6xl">
+          </span>
+        )}
+        {/* pb/-mb pair keeps the baseline mask from clipping descenders. */}
+        <div className="-mb-2 overflow-hidden">
+          <h2
+            className={`pb-2 font-display text-4xl font-medium leading-[1.05] tracking-tight sm:text-6xl ${c.title}`}
+            style={{ transform: `translateY(${(1 - title) * 104}%)`, opacity: 0.2 + title * 0.8 }}
+          >
             {act.title}
           </h2>
         </div>
-        <p className="mt-4 font-display text-sm italic text-paper-300/70">
-          <span className="text-gold/80">the hearth</span> — {act.hearth}
-        </p>
-      </header>
-    </Reveal>
+      </div>
+      <p
+        className={`mt-4 font-display text-sm italic ${c.hearth}`}
+        style={{ opacity: hearth, transform: `translateY(${(1 - hearth) * 8}px)` }}
+      >
+        <span className={c.hearthWord}>the hearth</span> — {act.hearth}
+      </p>
+    </header>
   )
 }
 

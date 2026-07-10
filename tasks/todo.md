@@ -1,3 +1,45 @@
+# The Long Sunrise — v3 (compelling copy · film cels · cinematic entrances)
+
+User verdict on v2: good start, not there. (1) copy not compelling, (2) no
+assets/loop videos painting the picture (esp. abundance + Dyson swarm),
+(3) act entrances not cinematic.
+
+## v3 Increments
+- [x] Copy rewrite (script.ts, hand): rhythm + verbs + motif callbacks
+      (hearth→furnace→rooftop→swarm), break up data-dump sentences, move
+      sources to subs. HARD RULE: every figure byte-identical to v2 — no new
+      numbers, no invented claims.
+- [x] Cinematic act entrances: ActHeader → scroll-scrubbed title card
+      (rule draws in, era slides, masked title rise, hearth line last);
+      hero gets a one-time slow dawn-in; Act V header unified via tone prop.
+- [x] FilmCel component: lazy loop-video slots (public/sunrise/*.mp4),
+      muted/loop/playsinline, play-on-visible, renders NOTHING until
+      loadeddata (page perfect with zero assets), reduced-motion → poster,
+      editorial hairline + italic caption chrome, dark/light tone.
+- [x] Wire cels as establishing shots: fire (I), combustion (II),
+      first-light (III), orbit (IV), swarm (mid-coda), morning (V light).
+- [x] Grok Imagine prompt laundry list → docs/sunrise-asset-prompts.html
+      (per-asset prompt, grade hexes matched to sky keyframes, loop +
+      compression specs, drop-in filenames) + registered via lamonade skill.
+- [x] Verify: tsc clean, lint (1 pre-existing warning), build green
+      (/sunrise static), Playwright frames: hero dawn-in, Act I mid/full
+      entrance, Act III over dusk, Act V light title card; 0 visible cel
+      figures with no assets (6 expected 404s in console, by design).
+- [x] Extras wired: false-dawn (mid-interlude, after Vietnam para),
+      megablock (Act III storage beat), gigafactory (leads Act IV; orbit
+      moved mid-act to "the loop has already left the ground"). 9 slots.
+- [x] Assets installed: 8/9 clips from ~/Developer/Battery.mom/videos
+      (winners: swarm.mp4 monumental-gold take, morning.mp4 aerial-metropolis
+      take; spares kept in /videos). Compressed crf 23 + posters → 5.7 MB
+      total in public/sunrise/. Verified: all 8 cels readyState 4 + visible,
+      screenshots fire/swarm/morning composited clean.
+- [x] false-dawn clip installed — all 9 slots live.
+- [x] Full re-audit (62 frames, desktop+mobile): found + fixed numeral
+      mask crush (III→II; shrink-0), SEA run-in duplication, Wright chart
+      scrim /45→/70 on daylight. Verified fixes on rebuilt prod server.
+      Accepted tradeoffs documented in lessons.md (cel layout-shift,
+      dead-black ground bands in stills).
+
 # The Long Sunrise — v2 art-direction pass (de-slop + world layer)
 
 Verdict from v1 audit: content architecture good; presentation reads as "gradient
