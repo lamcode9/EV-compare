@@ -11,7 +11,15 @@ import type { ActMeta, BigNumberItem } from '@/content/sunrise/script'
  * dark phases: hairline rules, big Newsreader figures, italic serif labels,
  * footnote-voiced sources. Deliberately absent: tracked-uppercase eyebrows,
  * stat cards, pill badges, glass panels, staggered reveal delays.
+ *
+ * v4: the words live IN the shot. Text-flow elements share one left-anchored
+ * reading column inside a max-w-6xl frame — the SceneStage scrim darkens that
+ * side and the footage's subject holds the right two-thirds. Wide data
+ * figures (charts, ladder, giants) stay centered; they play in reading light.
  */
+
+/** The film's reading column: a left-anchored measure inside the 6xl frame. */
+const COL_FRAME = 'mx-auto w-full max-w-6xl px-6'
 
 export function Reveal({ children, className = '', delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
   const { ref, inView } = useInView<HTMLDivElement>(0.2)
@@ -78,8 +86,8 @@ export function ActHeader({ act, id, tone = 'dark' }: { act: ActMeta; id: string
       ? { era: 'text-paper-300/80', title: 'text-paper', hearth: 'text-paper-300/70', hearthWord: 'text-gold/80', rule: 'bg-gold/50' }
       : { era: 'text-ink-500', title: 'text-ink', hearth: 'text-ink-500', hearthWord: 'text-gold', rule: 'bg-gold/60' }
   return (
-    <header ref={ref} id={id} className="mx-auto max-w-3xl scroll-mt-24 px-6">
-      <div className="flex items-center gap-4">
+    <header ref={ref} id={id} className={`${COL_FRAME} max-w-6xl scroll-mt-24`}>
+      <div className="flex max-w-2xl items-center gap-4">
         <span aria-hidden className={`h-px w-12 origin-left ${c.rule}`} style={{ transform: `scaleX(${rule})` }} />
         <span
           className={`font-display text-sm italic ${c.era}`}
@@ -88,7 +96,7 @@ export function ActHeader({ act, id, tone = 'dark' }: { act: ActMeta; id: string
           {act.era}
         </span>
       </div>
-      <div className="mt-5 flex items-start gap-5">
+      <div className="mt-5 flex max-w-2xl items-start gap-5">
         {act.numeral && (
           /* shrink-0: overflow-hidden zeroes the automatic min-size, letting
              flex crush the mask below the glyphs' width (III → II). */
@@ -112,7 +120,7 @@ export function ActHeader({ act, id, tone = 'dark' }: { act: ActMeta; id: string
         </div>
       </div>
       <p
-        className={`mt-4 font-display text-sm italic ${c.hearth}`}
+        className={`mt-4 max-w-2xl font-display text-sm italic ${c.hearth}`}
         style={{ opacity: hearth, transform: `translateY(${(1 - hearth) * 8}px)` }}
       >
         <span className={c.hearthWord}>the hearth</span> — {act.hearth}
@@ -123,12 +131,12 @@ export function ActHeader({ act, id, tone = 'dark' }: { act: ActMeta; id: string
 
 export function Prose({ children, lead = false }: { children: ReactNode; lead?: boolean }) {
   return (
-    <Reveal className="mx-auto max-w-3xl px-6">
+    <Reveal className={COL_FRAME}>
       <p
         className={
           lead
-            ? 'font-display text-2xl leading-snug text-paper sm:text-3xl'
-            : 'text-base leading-relaxed text-paper-300 sm:text-lg'
+            ? 'max-w-2xl font-display text-2xl leading-snug text-paper sm:text-3xl'
+            : 'max-w-xl text-base leading-relaxed text-paper-300 sm:text-lg'
         }
       >
         {children}
@@ -144,9 +152,9 @@ export function Prose({ children, lead = false }: { children: ReactNode; lead?: 
  */
 export function BigNumbers({ items }: { items: BigNumberItem[] }) {
   return (
-    <div className="mx-auto max-w-3xl px-6">
+    <div className={COL_FRAME}>
       {items.map((n) => (
-        <Reveal key={n.label}>
+        <Reveal key={n.label} className="max-w-xl">
           <div className="border-t border-paper/15 py-6 sm:py-8">
             <div className="font-display text-5xl font-medium tabular-nums tracking-tight text-paper sm:text-6xl md:text-7xl">
               {n.value}
@@ -158,7 +166,7 @@ export function BigNumbers({ items }: { items: BigNumberItem[] }) {
           </div>
         </Reveal>
       ))}
-      <div className="border-t border-paper/15" aria-hidden />
+      <div className="max-w-xl border-t border-paper/15" aria-hidden />
     </div>
   )
 }
@@ -166,8 +174,8 @@ export function BigNumbers({ items }: { items: BigNumberItem[] }) {
 /** “Closer to home” — the Southeast Asia sub-anchor, as a ruled margin note. */
 export function SeaInset({ children }: { children: ReactNode }) {
   return (
-    <Reveal className="mx-auto max-w-3xl px-6">
-      <aside className="border-l-2 border-brand-400/70 pl-5 sm:pl-6">
+    <Reveal className={COL_FRAME}>
+      <aside className="max-w-xl border-l-2 border-brand-400/70 pl-5 sm:pl-6">
         <p className="text-base leading-relaxed text-paper-300 sm:text-lg">
           <span className="font-display italic text-brand-300">Closer to home — </span>
           {children}
@@ -193,8 +201,8 @@ export function EmberHold({ caption }: { caption: string }) {
 
   const glow = reduced ? 0.8 : 0.15 + heat * 0.85
   return (
-    <Reveal className="mx-auto max-w-3xl px-6">
-      <figure className="flex flex-col items-center py-4 text-center">
+    <Reveal className={COL_FRAME}>
+      <figure className="flex max-w-xl flex-col items-center py-4 text-center">
         <button
           type="button"
           aria-label="Hold to keep the ember alive"
@@ -243,8 +251,8 @@ export function EnergyServants({ caption }: { caption: string }) {
   }, [inView, reduced])
 
   return (
-    <div ref={ref} className="mx-auto max-w-3xl px-6">
-      <figure className="border-y border-paper/15 py-6 sm:py-8">
+    <div ref={ref} className={COL_FRAME}>
+      <figure className="max-w-xl border-y border-paper/15 py-6 sm:py-8">
         <div className="flex flex-wrap gap-2" aria-hidden>
           {Array.from({ length: total }, (_, i) => (
             <span
@@ -315,8 +323,8 @@ export function CurvesHeldBroke({ note }: { note: string }) {
 /** Act IV: the receipts — a wire feed of dated events, not concept art. */
 export function ReceiptsWall({ items, note }: { items: { date: string; event: string }[]; note: string }) {
   return (
-    <div className="mx-auto max-w-3xl px-6">
-      <ol className="border-t border-paper/15">
+    <div className={COL_FRAME}>
+      <ol className="max-w-xl border-t border-paper/15">
         {items.map((r) => (
           <Reveal key={r.event}>
             <li className="flex gap-4 border-b border-paper/15 py-4 sm:gap-6">
@@ -336,7 +344,7 @@ export function ReceiptsWall({ items, note }: { items: { date: string; event: st
 /** Coda watermark — speculation, clearly labeled, in the footnote voice. */
 export function SpeculationWatermark() {
   return (
-    <div className="mx-auto max-w-3xl px-6">
+    <div className={COL_FRAME}>
       <p className="font-display text-sm italic text-gold/80">— informed speculation · undated by design —</p>
     </div>
   )

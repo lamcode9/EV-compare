@@ -1,192 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Long Sunrise — Loop-Video Asset Prompts (Grok Imagine)</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Long Sunrise — Full-Bleed Asset Prompts (v4)</title>
 <style>
-  :root {
-    --ink: #11150F; --ink-600: #3D453B; --ink-500: #5A6357;
-    --paper: #FBF7EE; --paper-300: #E9E1CF;
-    --gold: #E0A33C; --gold-light: #F4D18A; --brand: #0E9F6E;
-    --rule: rgba(17,21,15,0.14);
+  :root{
+    --ink:#11150F; --ink8:#1D231C; --ink7:#2F372E; --ink4:#828B80; --ink3:#A7AFA4;
+    --paper:#FBF7EE; --paper2:#F4EEE0;
+    --brand3:#5DD9A6; --gold:#E0A33C; --goldL:#F4D18A; --red:#D97769;
+    --serif:'Newsreader',Georgia,serif; --sans:'Inter',-apple-system,sans-serif;
+    --mono:ui-monospace,'SF Mono',Menlo,monospace;
   }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.6 Georgia, 'Times New Roman', serif; }
-  main { max-width: 860px; margin: 0 auto; padding: 56px 24px 96px; }
-  h1 { font-size: 2.1rem; line-height: 1.1; margin: 0 0 8px; font-weight: 500; }
-  h2 { font-size: 1.35rem; margin: 48px 0 4px; font-weight: 600; border-top: 1px solid var(--rule); padding-top: 24px; }
-  h3 { font-size: 1rem; margin: 20px 0 4px; }
-  .era { font-style: italic; color: var(--ink-500); font-size: .9rem; }
-  .slot { color: var(--brand); font-size: .85rem; font-family: ui-monospace, Menlo, monospace; }
-  p { margin: 10px 0; }
-  .prompt { background: #fff; border: 1px solid var(--rule); border-left: 3px solid var(--gold); padding: 14px 16px; margin: 12px 0; font-size: .95rem; }
-  .prompt b { font-size: .75rem; letter-spacing: .04em; color: var(--ink-500); display: block; margin-bottom: 6px; font-family: ui-monospace, Menlo, monospace; }
-  code, pre { font-family: ui-monospace, Menlo, monospace; font-size: .85rem; }
-  pre { background: var(--ink); color: var(--paper-300); padding: 14px 16px; overflow-x: auto; border-radius: 6px; }
-  table { border-collapse: collapse; width: 100%; margin: 16px 0; font-size: .9rem; }
-  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
-  th { font-size: .75rem; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-500); }
-  .swatch { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -1px; margin-right: 6px; border: 1px solid rgba(0,0,0,.15); }
-  .note { font-style: italic; color: var(--ink-500); font-size: .9rem; }
-  .grade { font-size: .85rem; color: var(--ink-600); }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--ink);color:var(--paper2);font-family:var(--sans);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:920px;margin:0 auto;padding:64px 32px 120px}
+  h1{font-family:var(--serif);font-weight:500;font-size:40px;line-height:1.1;color:var(--paper)}
+  h2{font-family:var(--serif);font-weight:500;font-size:26px;color:var(--paper);margin:0 0 10px}
+  .kicker{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+  .lede{font-family:var(--serif);font-size:19px;line-height:1.5;color:var(--ink3);max-width:62ch;margin-top:16px}
+  section{margin-top:72px;border-top:1px solid var(--ink7);padding-top:36px}
+  .secnum{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink4);margin-bottom:8px}
+  p{max-width:70ch;margin:10px 0;color:var(--ink3)}
+  p strong{color:var(--paper2)}
+  ul,ol{margin:10px 0 10px 22px;max-width:68ch;color:var(--ink3)}
+  li{margin:6px 0}
+  li strong{color:var(--paper2)}
+  code{font-family:var(--mono);font-size:12.5px;background:var(--ink8);border:1px solid var(--ink7);border-radius:4px;padding:1px 6px;color:var(--goldL)}
+  pre{font-family:var(--mono);font-size:12.5px;background:var(--ink8);border:1px solid var(--ink7);border-radius:8px;padding:14px 16px;overflow-x:auto;color:var(--paper2);margin:12px 0;white-space:pre-wrap}
+  .slot{border:1px solid var(--ink7);border-radius:12px;margin:30px 0;background:var(--ink8);overflow:hidden}
+  .slot-head{display:flex;align-items:baseline;gap:12px;padding:16px 24px 12px;border-bottom:1px solid var(--ink7)}
+  .slot-file{font-family:var(--mono);font-size:15px;color:var(--goldL)}
+  .slot-scene{font-family:var(--serif);font-size:16px;color:var(--paper);font-style:italic}
+  .badge{margin-left:auto;font-size:10px;letter-spacing:.14em;text-transform:uppercase;border-radius:999px;padding:2px 10px;white-space:nowrap}
+  .badge.audit{border:1px solid var(--brand3);color:var(--brand3)}
+  .badge.regen{border:1px solid var(--gold);color:var(--goldL)}
+  .slot-body{padding:16px 24px 22px}
+  .plabel{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:14px 0 6px}
+  .prompt{font-family:var(--mono);font-size:12.5px;line-height:1.7;background:#0d100c;border:1px solid var(--ink7);border-left:2px solid var(--gold);border-radius:6px;padding:12px 16px;color:var(--paper2)}
+  .note{font-size:13px;color:var(--ink4);margin-top:10px;max-width:72ch}
+  .swatches{display:flex;gap:6px;margin:10px 0 2px}
+  .sw{width:34px;height:20px;border-radius:4px;border:1px solid rgba(251,247,238,.15)}
+  .swl{font-size:10px;color:var(--ink4);margin-top:2px;font-family:var(--mono)}
+  .rule-card{border:1px solid var(--ink7);background:var(--ink8);border-radius:10px;padding:18px 22px;margin:18px 0;max-width:76ch}
+  .rule-card .rc-title{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+  .footer{margin-top:90px;border-top:1px solid var(--ink7);padding-top:20px;font-size:12px;color:var(--ink4)}
+  @media (max-width:640px){.wrap{padding:40px 20px 80px}h1{font-size:30px}}
 </style>
 </head>
 <body>
-<main>
-  <h1>The Long Sunrise — loop-video assets</h1>
-  <p class="era">Prompt laundry list for Grok Imagine · nine wired slots · v3 (all slots wired; real-hardware anchors) — 2026-07-10</p>
+<div class="wrap">
 
-  <h2>How the page consumes these</h2>
-  <p>Each act on <code>/sunrise</code> has a <code>FilmCel</code> slot that stays invisible until its file exists. Drop finished files into <code>public/sunrise/</code> with these exact names and they light up — no code changes needed:</p>
-  <table>
-    <tr><th>File</th><th>Act</th><th>Placement</th></tr>
-    <tr><td><code>fire.mp4</code> + <code>fire.jpg</code></td><td>I · Fire</td><td>Establishing shot above the Act I title card</td></tr>
-    <tr><td><code>combustion.mp4</code> + <code>.jpg</code></td><td>II · Combustion</td><td>Above the Act II title card</td></tr>
-    <tr><td><code>false-dawn.mp4</code> + <code>.jpg</code></td><td>Interlude · The False Dawn</td><td>Mid-interlude, right after the Vietnam paragraph</td></tr>
-    <tr><td><code>first-light.mp4</code> + <code>.jpg</code></td><td>III · The Sun, Direct</td><td>Above the Act III title card</td></tr>
-    <tr><td><code>megablock.mp4</code> + <code>.jpg</code></td><td>III · The Sun, Direct</td><td>Mid-act, at the storage beat (“storage restores the value”)</td></tr>
-    <tr><td><code>gigafactory.mp4</code> + <code>.jpg</code></td><td>IV · The Compounding Century</td><td>Establishing shot above the Act IV title card</td></tr>
-    <tr><td><code>orbit.mp4</code> + <code>.jpg</code></td><td>IV · The Compounding Century</td><td>Mid-act, where the copy leaves the ground</td></tr>
-    <tr><td><code>swarm.mp4</code> + <code>.jpg</code></td><td>Coda · The Swarm</td><td>Mid-coda, right after “explicitly a dream”</td></tr>
-    <tr><td><code>morning.mp4</code> + <code>.jpg</code></td><td>V · The Work (light phase)</td><td>After “Then, morning.”, above the Act V title card</td></tr>
-  </table>
-  <p class="note">The <code>.jpg</code> poster is the reduced-motion fallback and the pre-play frame — export the best single frame of each clip.</p>
+<div class="kicker">Battery.mom · /sunrise · Grok Imagine laundry list · v4 — FULL-BLEED edition</div>
+<h1>Shoot for the whole frame</h1>
+<p class="lede">v4 supersedes every v3 prompt. The clips are no longer framed exhibits — each one is the full-viewport stage behind the words (see docs/one-cinematic-work-storyboard.html). That changes the brief in four ways, below. Slots marked <strong style="color:var(--brand3)">AUDIT</strong> may already survive; run them through the three gates before reshooting. Slots marked <strong style="color:var(--goldL)">REGENERATE</strong> were composed subject-centered for a box and need the full-bleed retake.</p>
 
-  <h2>How to work the list</h2>
-  <p>One slot = one final file. <b>PRIMARY</b> is the intended shot; <b>ALTERNATE</b>s are different takes on the same slot — use them when the primary doesn’t land, or generate two or three and keep the best. Per slot:</p>
-  <ol>
-    <li>Paste the PRIMARY prompt into Grok Imagine (video mode), generate a few takes.</li>
-    <li>Judge against the grade swatches above the prompt — the clip has to sit inside that act’s palette. Wrong palette beats wrong content: regenerate or try an alternate.</li>
-    <li>Download the winner, run the two ffmpeg lines below (compress + poster), naming the output to the slot’s exact filename.</li>
-    <li>Drop both files into <code>public/sunrise/</code>, reload <code>/sunrise</code> — the cel fades in on its own.</li>
-  </ol>
-  <p class="note">Slots are independent — ship them one at a time, in any order. Start with <b>swarm</b> and <b>morning</b>; they carry the most story.</p>
+<section>
+<div class="secnum">01 · What changed — the four full-bleed rules</div>
+<h2>Every prompt below already bakes these in</h2>
+<ol>
+  <li><strong>Composition: subject right, words left.</strong> The reading column overlays the LEFT third; the bottom quarter carries a floor scrim. So: main subject weighted to the right two-thirds, left third falling into calm negative space (darkness for night scenes, soft haze for morning), bottom quarter quiet — no bright detail, no motion hotspots there.</li>
+  <li><strong>Seamless loop, stricter than before.</strong> Full-screen makes a loop seam ten times more visible than a box did. Locked tripod camera (or drift so slow it reads as stillness), no objects entering or leaving frame, end state ≈ start state.</li>
+  <li><strong>Highest resolution, 16:9 only.</strong> Generate at the largest size Grok offers. The clip covers a 1440px viewport and gets center-cropped to 9:16 on phones — which is why the subject must hold the center-right, never the far edges.</li>
+  <li><strong>Grade to the scene, not to taste.</strong> Each slot lists its grade hexes — they're the canvas sky's keyframe colors at that story beat, and the footage now shares frame edges with that canvas during cuts. Warmth belongs where the hexes say it does.</li>
+</ol>
 
-  <h2>Global spec (applies to every clip)</h2>
-  <ul>
-    <li><b>Format:</b> 16:9, highest resolution Grok offers (page renders at ~1024px wide max). 6–10 seconds.</li>
-    <li><b>Loop-friendly motion:</b> slow ambient drift only — smoke, embers, light shimmer, orbital glide. No camera cuts, no pans that start/stop, no zooms with a destination. Think “living painting”, not “trailer shot”.</li>
-    <li><b>No:</b> text, watermarks, logos, readable faces, lens-flare kitsch, teal-and-orange grading, fast motion, birds/planes crossing frame (they break the loop).</li>
-    <li><b>Grade:</b> each clip must sit inside its act’s sky palette (hexes per asset below) — the video is composited over a live canvas scene and must feel continuous with it, not pasted on.</li>
-    <li><b>Grain:</b> neutral to slightly filmic. The page composites its own grain, so don’t over-grain the source.</li>
-    <li><b>Real-hardware anchors:</b> name-check real hardware (“resembling a Starlink V3”, “resembling a Tesla Powerwall 3”, “JWST sunshield foil”) — it pulls the generator toward credible industrial design instead of generic sci-fi. Always keep the word <i>resembling</i> and the no-logos rule: the shape language, never the badge.</li>
+<div class="rule-card">
+  <div class="rc-title">The three gates — audit before you reshoot</div>
+  <p style="margin:0">A surviving v3 take must pass all three at full-screen: <strong>① Loop seam</strong> — play it looped for 30 seconds; any visible pop or drift fails. <strong>② Text-safe left third</strong> — imagine white serif over the left third for the whole loop; any bright or busy patch that crosses it fails. <strong>③ Calm floor</strong> — the bottom quarter stays dark and stable. Fail any gate → use the REGENERATE prompt.</p>
+</div>
+
+<div class="rule-card">
+  <div class="rc-title">Standing rules (unchanged from v3)</div>
+  <ul style="margin-left:18px">
+    <li><strong>Real-hardware anchors:</strong> where the story references real machines, the prompt says "resembling" — a satellite bus resembling Starlink V3, storage blocks resembling Tesla Megapack, home units resembling Powerwall 3. Never logos, badges, or legible branding.</li>
+    <li><strong>PRIMARY vs ALTERNATE:</strong> generate PRIMARY first (it's the storyboard's shot). ALTERNATE is a different composition of the same beat — use it when the primary take fights the grade or the gates, or generate both and pick the winner. Keep spares in <code>~/Developer/Battery.mom/videos/</code>.</li>
+    <li><strong>Drop-in contract:</strong> final files land at <code>public/sunrise/&lt;name&gt;.mp4</code> + <code>&lt;name&gt;.jpg</code> poster. Page needs no code change — scenes light up when files land, and a missing file just leaves that scene on the canvas score.</li>
   </ul>
+</div>
+</section>
 
-  <h2>1 · fire.mp4 — Act I</h2>
-  <p class="slot">public/sunrise/fire.mp4</p>
-  <p class="grade"><span class="swatch" style="background:#0a0805"></span>near-black <span class="swatch" style="background:#E0A33C"></span>ember amber <span class="swatch" style="background:#F4D18A"></span>flame highlight — nothing else in frame.</p>
-  <div class="prompt"><b>PRIMARY</b>
-    Extreme close-up of glowing campfire embers breathing in total darkness, night, prehistoric fire pit. Deep orange coals pulsing gently, occasional tiny spark rising slowly, thin wisps of smoke. The frame is 80% pure black; the embers are the only light source. Static camera, cinematic, shallow depth of field, photoreal, slow ambient motion, seamless loop feel. No people, no text.
-  </div>
-  <div class="prompt"><b>ALTERNATE</b>
-    A small tended fire seen from a distance across a dark plain at night, a single point of warm light under an immense starfield, sparks drifting upward slowly. Vast darkness dominates the frame. Static wide shot, photoreal, slow and calm.
-  </div>
+<section>
+<div class="secnum">02 · The nine slots</div>
+<h2>Prompts, in story order</h2>
 
-  <h2>2 · combustion.mp4 — Act II</h2>
-  <p class="slot">public/sunrise/combustion.mp4</p>
-  <p class="grade"><span class="swatch" style="background:#191008"></span>soot brown-black <span class="swatch" style="background:#4a2c14"></span>furnace glow <span class="swatch" style="background:#8a6a4a"></span>smoke haze — pre-dawn murk, no blue sky.</p>
-  <div class="prompt"><b>PRIMARY</b>
-    Silhouette of a 19th-century industrial mill town at dusk: rows of brick smokestacks and factory rooflines against a murky amber-brown sky, thick smoke columns drifting slowly upward, faint furnace glow in a few windows. Dark, sooty, painterly-photoreal. Static camera, only the smoke moves. Slow, heavy, continuous motion suitable for looping. No text, no people.
+<!-- 1 fire -->
+<div class="slot">
+  <div class="slot-head"><span class="slot-file">fire.mp4</span><span class="slot-scene">Act I — the tended hearth</span><span class="badge audit">audit</span></div>
+  <div class="slot-body">
+    <div class="swatches"><div><div class="sw" style="background:#120A04"></div><div class="swl">#120A04</div></div><div><div class="sw" style="background:#3D2008"></div><div class="swl">#3D2008</div></div><div><div class="sw" style="background:#C9772A"></div><div class="swl">#C9772A</div></div></div>
+    <div class="plabel">Primary</div>
+    <div class="prompt">Cinematic 16:9 loop, photorealistic. A small tended campfire at night, glowing embers and low flames, positioned in the right two-thirds of frame. The left third of frame is deep darkness — vast, empty night. Bottom quarter of frame calm dark ground. Locked static camera at ember height. Flames breathe gently; embers pulse. Near-black shadows #120A04, deep burnt umber #3D2008, ember highlights #C9772A. No people, no logos. Seamless loop: final frame matches first frame, no objects enter or leave.</div>
+    <div class="plabel">Alternate</div>
+    <div class="prompt">Cinematic 16:9 loop, photorealistic. Extreme close-up of glowing wood embers filling the right half of frame, breathing between dull red and bright amber, fine ash drifting upward slowly. Left third pure darkness. Locked camera. Palette: near-black, burnt umber, ember amber. Seamless loop, no logos.</div>
+    <div class="note">The v3 winner had the fire right-of-center already — likely passes. Watch gate ③: sparks popping through the bottom quarter.</div>
   </div>
-  <div class="prompt"><b>ALTERNATE</b>
-    Aerial dusk view of an endless coal power plant complex, cooling towers exhaling slow steam, sodium lights just turning on, hazy brown-orange smog horizon. Very slow drift of steam and haze, static camera, photoreal, cinematic gloom.
-  </div>
+</div>
 
-  <h2>3 · false-dawn.mp4 — Interlude (the one sad clip)</h2>
-  <p class="slot">public/sunrise/false-dawn.mp4</p>
-  <p class="grade"><span class="swatch" style="background:#2a2620"></span>grey-amber gloom <span class="swatch" style="background:#5a544a"></span>overcast <span class="swatch" style="background:#8a7a5a"></span>muted panel glass — no sun anywhere in frame.</p>
-  <div class="prompt"><b>PRIMARY</b>
-    Overcast morning over dense Vietnamese urban rooftops covered in solar panels — panel after panel on tin and tile roofs, all of them dull under a flat grey-amber sky, no sun, no shadows, still air, a few power lines sagging between poles. Nothing moves except a slow drift of low cloud. Static elevated shot, photoreal, quiet and melancholic, muted color. No text, no people.
+<!-- 2 combustion -->
+<div class="slot">
+  <div class="slot-head"><span class="slot-file">combustion.mp4</span><span class="slot-scene">Act II — the mill town</span><span class="badge audit">audit</span></div>
+  <div class="slot-body">
+    <div class="swatches"><div><div class="sw" style="background:#241C12"></div><div class="swl">#241C12</div></div><div><div class="sw" style="background:#4A3D2A"></div><div class="swl">#4A3D2A</div></div><div><div class="sw" style="background:#8A6A3A"></div><div class="swl">#8A6A3A</div></div></div>
+    <div class="plabel">Primary</div>
+    <div class="prompt">Cinematic 16:9 loop, photorealistic, 19th-century industrial skyline at dusk. Brick smokestacks and mill rooftops in the right two-thirds of frame, thick smoke rising slowly and continuously, a few sodium-warm windows glowing under the smoke. Left third: dark smoky sky, empty. Bottom quarter: dark rooftop silhouettes, calm. Locked camera, slight atmospheric shimmer only. Sepia-umber grade: shadows #241C12, midtones #4A3D2A, warm highlights #8A6A3A. Timeless — could be Manchester 1850 or Shenzhen 1995. No people, no text, no logos. Seamless loop.</div>
+    <div class="plabel">Alternate</div>
+    <div class="prompt">Cinematic 16:9 loop. Vast field of smokestacks receding to the horizon at dusk, seen from a rooftop, stacks concentrated center-right, smoke columns drifting in unison. Left third dark haze. Sepia-umber industrial grade. Locked camera, seamless loop, no logos.</div>
+    <div class="note">v3 take reads well full-bleed in the audit frames — check gate ① (smoke loops are seam-prone).</div>
   </div>
-  <div class="prompt"><b>ALTERNATE</b>
-    A rooftop solar installation left half-finished: stacked panels leaning against a wall, mounting rails empty, an idle ladder, flat overcast light, a tarp shifting slightly in the wind. Static shot, photoreal, muted grey-amber palette, still and abandoned. No text, no people.
-  </div>
+</div>
 
-  <h2>4 · first-light.mp4 — Act III</h2>
-  <p class="slot">public/sunrise/first-light.mp4</p>
-  <p class="grade"><span class="swatch" style="background:#1a120a"></span>night ground <span class="swatch" style="background:#E0A33C"></span>sunrise amber <span class="swatch" style="background:#F4D18A"></span>first light — the sun’s limb just breaking, low and warm.</p>
-  <div class="prompt"><b>PRIMARY</b>
-    Dawn breaking over a vast solar farm: the sun’s upper limb just cresting the horizon, amber light raking across thousands of photovoltaic panels stretching to the horizon, panels catching and reflecting the first gold light, gentle heat shimmer. Static wide shot, photoreal, majestic and quiet, slow ambient motion only. No text, no people.
+<!-- 3 false-dawn -->
+<div class="slot">
+  <div class="slot-head"><span class="slot-file">false-dawn.mp4</span><span class="slot-scene">Interlude — Vietnam, 2020</span><span class="badge audit">audit</span></div>
+  <div class="slot-body">
+    <div class="swatches"><div><div class="sw" style="background:#2A2724"></div><div class="swl">#2A2724</div></div><div><div class="sw" style="background:#4A4640"></div><div class="swl">#4A4640</div></div><div><div class="sw" style="background:#7A736A"></div><div class="swl">#7A736A</div></div></div>
+    <div class="plabel">Primary</div>
+    <div class="prompt">Cinematic 16:9 loop, photorealistic. Southeast Asian rooftops covered in idle solar panels under a flat overcast sky, Vietnamese urban texture, power poles and wires. Rooftops and panels weighted to the right two-thirds; left third is empty gray sky. Desaturated, drained grade — ash gray #4A4640, cold shadows #2A2724, dull highlights #7A736A. Almost nothing moves: faint cloud drift, a wire swaying barely. The stillness is the point — panels that should be working, waiting. Locked camera. No people, no logos. Seamless loop.</div>
+    <div class="plabel">Alternate</div>
+    <div class="prompt">Cinematic 16:9 loop. A single rooftop solar array under overcast light, rain-wet panels reflecting a gray sky, right-weighted composition, left third flat gray. Desaturated ash grade. One slow cloud reflection crosses the glass. Locked camera, seamless loop, no logos.</div>
+    <div class="note">The installed take passed the v3 audit and is right-weighted with a gray-sky left third — likely survives all three gates.</div>
   </div>
-  <div class="prompt"><b>ALTERNATE</b>
-    Rooftops of a dense tropical city at dawn, solar panels on roof after roof lighting up one by one as sunrise sweeps across them, warm amber sunlight, long shadows. Static elevated shot, photoreal, calm.
-  </div>
+</div>
 
-  <h2>5 · megablock.mp4 — Act III (the storage beat)</h2>
-  <p class="slot">public/sunrise/megablock.mp4</p>
-  <p class="grade"><span class="swatch" style="background:#1a120a"></span>dusk ground <span class="swatch" style="background:#E0A33C"></span>golden hour <span class="swatch" style="background:#F4D18A"></span>white cabinets catching gold — industrial, monumental, calm.</p>
-  <div class="prompt"><b>PRIMARY</b>
-    Rows of white grid-scale battery cabinets resembling Tesla Megapacks — a Megablock-style installation — stretching toward the horizon beside a substation at golden hour, low sun raking gold light along the cabinet rows, gentle heat shimmer rising off the ground, long shadows. Static wide shot, photoreal, monumental and calm, slow ambient motion only. No logos, no text, no people.
+<!-- 4 first-light -->
+<div class="slot">
+  <div class="slot-head"><span class="slot-file">first-light.mp4</span><span class="slot-scene">Act III — the film's sunrise</span><span class="badge regen">regenerate</span></div>
+  <div class="slot-body">
+    <div class="swatches"><div><div class="sw" style="background:#1D2A2E"></div><div class="swl">#1D2A2E</div></div><div><div class="sw" style="background:#2A5A52"></div><div class="swl">#2A5A52</div></div><div><div class="sw" style="background:#E8A23C"></div><div class="swl">#E8A23C</div></div></div>
+    <div class="plabel">Primary</div>
+    <div class="prompt">Cinematic 16:9 loop, photorealistic, the most beautiful shot of the film. Dawn breaking over an endless utility-scale solar farm: the sun's upper limb just cresting the horizon in the center-right of frame, low golden light raking across rows of panels that recede to the horizon, gentle lens warmth on the glass. The left third of frame is still in pre-dawn teal darkness #1D2A2E → #2A5A52. Bottom quarter: dark panel rows, calm. Golden highlights #E8A23C only around the sun and the lit glass. Locked camera. The only motion: light shimmering on panel glass, faint heat haze at the horizon. The sun does NOT visibly rise (loop). No people, no logos. Seamless loop: final frame matches first.</div>
+    <div class="plabel">Alternate</div>
+    <div class="prompt">Cinematic 16:9 loop. Low aerial hold above a solar farm at first light, panels catching a horizontal amber beam from a sun just off-frame right. Left third pre-dawn teal shadow. Slow drift forward, barely perceptible. Grade: teal darkness to amber highlight. Seamless loop, no logos.</div>
+    <div class="note">v3 take centered the sun and graded for a box — full-bleed audit shows bright sky crossing the left third (fails gate ②). Reshoot with the sun center-right and the darkness held left.</div>
   </div>
-  <div class="prompt"><b>ALTERNATE — dusk duty</b>
-    The same battery yard at blue-hour dusk just after sunset: rows of pale cabinets under a deepening amber-to-indigo sky, status lights beginning to glow as the site takes over from the sun, distant transmission towers silhouetted. Extremely slow drift of dusk haze, static camera, photoreal, quiet industrial dignity. No logos, no text.
-  </div>
+</div>
 
-  <h2>6 · gigafactory.mp4 — Act IV (leads the act)</h2>
-  <p class="slot">public/sunrise/gigafactory.mp4</p>
-  <p class="grade"><span class="swatch" style="background:#14161a"></span>cool industrial <span class="swatch" style="background:#8a94a4"></span>machine steel <span class="swatch" style="background:#E0A33C"></span>gold accent glints — rhythm and precision, no people.</p>
-  <div class="prompt"><b>PRIMARY</b>
-    Inside a battery gigafactory resembling Tesla’s cell production lines: thousands of cylindrical battery cells flowing in perfect rhythm along automated conveyors, robotic arms placing and passing them through stations, cool blue-grey industrial light with warm gold glints off the cell casings, the line receding into deep factory space. Static camera, hypnotic repetitive motion (ideal loop), photoreal, precise and relentless. No logos, no text, no people.
+<!-- 5 megablock -->
+<div class="slot">
+  <div class="slot-head"><span class="slot-file">megablock.mp4</span><span class="slot-scene">Act III storage beat — golden hour</span><span class="badge regen">regenerate</span></div>
+  <div class="slot-body">
+    <div class="swatches"><div><div class="sw" style="background:#1E1A10"></div><div class="swl">#1E1A10</div></div><div><div class="sw" style="background:#6A5426"></div><div class="swl">#6A5426</div></div><div><div class="sw" style="background:#E8A23C"></div><div class="swl">#E8A23C</div></div></div>
+    <div class="plabel">Primary</div>
+    <div class="prompt">Cinematic 16:9 loop, photorealistic. Rows of white grid-scale battery storage units resembling Tesla Megapack containers, in a desert installation at golden hour, receding diagonally through the right two-thirds of frame, long warm shadows. Left third: open dusk sky and dark ground, empty and calm. Bottom quarter: shadowed gravel, still. Warm amber key light #E8A23C on the container faces, deep shadows #1E1A10. Locked camera; motion is only heat shimmer and a slow-moving cloud shadow. No logos, no badges, no text on the units. Seamless loop.</div>
+    <div class="plabel">Alternate</div>
+    <div class="prompt">Cinematic 16:9 loop. Dusk at a grid battery yard: container rows silhouetted right-of-center against a warm horizon band, small status lights blinking softly, cool shadows advancing. Left third dark sky. Locked camera, seamless loop, no logos.</div>
+    <div class="note">The shot change happens mid-scene at the copy's "storage restores the value" beat — its time-of-day (golden hour) must read clearly later than first-light's dawn.</div>
   </div>
-  <div class="prompt"><b>ALTERNATE — the scale shot</b>
-    Elevated wide view across an endless gigafactory floor: parallel production lines running in unison to the vanishing point, robotic gantries moving in slow synchrony, cool industrial light punctuated by warm task lighting. Very slow, rhythmic, photoreal, monumental industrial scale. No logos, no text, no people.
-  </div>
+</div>
 
-  <h2>7 · orbit.mp4 — Act IV (mid-act, where the copy leaves the ground)</h2>
-  <p class="slot">public/sunrise/orbit.mp4</p>
-  <p class="grade"><span class="swatch" style="background:#03040a"></span>space black <span class="swatch" style="background:#F4D18A"></span>sun gold <span class="swatch" style="background:#2b4a6b"></span>Earth limb blue — hard light, no atmosphere-glow kitsch.</p>
-  <div class="prompt"><b>PRIMARY</b>
-    A flat rectangular satellite bus resembling a Starlink V3 — slim panel body with one long single solar-array wing — gliding slowly in low Earth orbit, the curvature of Earth below with golden city lights on the night side. The sun rises over Earth’s limb and hard gold light sweeps across the solar wing. Space is pure black, stars faint. Very slow orbital drift, static framing, photoreal NASA-documentary style. No logos, no text.
+<!-- 6 gigafactory -->
+<div class="slot">
+  <div class="slot-head"><span class="slot-file">gigafactory.mp4</span><span class="slot-scene">Act IV — where the curve is manufactured</span><span class="badge regen">regenerate</span></div>
+  <div class="slot-body">
+    <div class="swatches"><div><div class="sw" style="background:#0A0E14"></div><div class="swl">#0A0E14</div></div><div><div class="sw" style="background:#14202E"></div><div class="swl">#14202E</div></div><div><div class="sw" style="background:#5A8AB0"></div><div class="swl">#5A8AB0</div></div></div>
+    <div class="plabel">Primary</div>
+    <div class="prompt">Cinematic 16:9 loop, photorealistic. Interior of a vast battery gigafactory at night: an automated production line running through the right two-thirds of frame, battery cells moving steadily on conveyors, robotic arms in slow precise rhythm, cool industrial blue lighting #14202E with highlights #5A8AB0. Left third: deep factory shadow, empty walkway fading to dark #0A0E14. Bottom quarter: dark floor, calm. Locked wide camera. Continuous machine motion that loops perfectly — conveyor speed constant, arms in a repeating cycle. No people, no logos. Seamless loop.</div>
+    <div class="plabel">Alternate</div>
+    <div class="prompt">Cinematic 16:9 loop. Close on a single battery cell conveyor line flowing right-of-center through cool blue light, cells passing at constant rhythm, depth of field soft beyond. Left third dark. Industrial night grade. Locked camera, seamless loop, no logos.</div>
+    <div class="note">v3 take is subject-centered with motion crossing the whole frame (fails ② and ③). Constant conveyor rhythm is what makes gate ① passable.</div>
   </div>
-  <div class="prompt"><b>ALTERNATE — the train</b>
-    A train of flat-panel satellites resembling newly deployed Starlink V3s, evenly spaced in a slow ascending line over Earth’s night side, each one catching the orbital sunrise in sequence — a string of gold glints against black space, city lights far below. Extremely slow drift, photoreal, serene, documentary tone. No logos, no text.
-  </div>
-  <div class="prompt"><b>ALTERNATE — terminator</b>
-    View from orbit at the day–night terminator: darkness below scattered with golden city lights, the thin blue arc of atmosphere on the horizon, sunlight beginning to flood over the curve. Extremely slow drift, photoreal, serene, documentary tone.
-  </div>
+</div>
 
-  <h2>8 · swarm.mp4 — Coda (the money shot)</h2>
-  <p class="slot">public/sunrise/swarm.mp4</p>
-  <p class="grade"><span class="swatch" style="background:#03040a"></span>deep space <span class="swatch" style="background:#F4D18A"></span>sun core <span class="swatch" style="background:#E0A33C"></span>collector glints — vast scale, contemplative, not sci-fi-poster loud.</p>
-  <div class="prompt"><b>PRIMARY — the transit</b>
-    Astronomy-documentary shot of a partial Dyson swarm under construction: the sun’s blazing disc fills the lower third of frame, its edge boiling softly with small prominences. Crossing its face in silhouette — like an ISS solar-transit photograph — drift dozens of thin kite-shaped solar collectors made of gold-tinted foil resembling JWST’s kapton sunshield layers. Beyond the disc, thousands more collectors recede into black space as faint gold glints in slow concentric orbital shells. Extremely slow drift, static camera, photoreal telescope-footage feel, restrained and monumental. No spaceships, no lens flares, no text.
+<!-- 7 orbit -->
+<div class="slot">
+  <div class="slot-head"><span class="slot-file">orbit.mp4</span><span class="slot-scene">Act IV — the loop leaves the ground</span><span class="badge regen">regenerate</span></div>
+  <div class="slot-body">
+    <div class="swatches"><div><div class="sw" style="background:#05060A"></div><div class="swl">#05060A</div></div><div><div class="sw" style="background:#14202E"></div><div class="swl">#14202E</div></div><div><div class="sw" style="background:#C9D8E8"></div><div class="swl">#C9D8E8</div></div></div>
+    <div class="plabel">Primary</div>
+    <div class="prompt">Cinematic 16:9 loop, photorealistic. A flat-panel satellite bus resembling Starlink V3 — long solar array wings, kapton-gold foil accents — holding in the right two-thirds of frame, panels catching hard unfiltered sunlight. Below and behind it, Earth's night side curves through the lower right: city lights, thin atmosphere line. Left third: pure space black #05060A with faint stars. Bottom quarter: dark Earth shadow, calm. Locked camera relative to the satellite; the only motion is Earth's lights drifting almost imperceptibly and a slow glint moving across the array. Hardware plausible, not fantasy — a manifest, not a render. No logos. Seamless loop.</div>
+    <div class="plabel">Alternate</div>
+    <div class="prompt">Cinematic 16:9 loop. Looking down the length of a satellite solar array toward Earth's sunlit limb at lower right, JWST-style kapton foil glowing gold in raw sunlight, space black holding the left half. Barely perceptible drift. Seamless loop, no logos.</div>
+    <div class="note">The v3 take almost works full-bleed — but the array crosses the left third late in the loop (gate ②). Reshoot holding the left third black.</div>
   </div>
-  <div class="prompt"><b>ALTERNATE — inside the swarm</b>
-    Camera adrift inside a Dyson swarm: vast ultra-thin collector sails — taut gold-pink foil like JWST sunshield material, kilometers wide — in slow layered formation drift, near sails passing as dark silhouettes, far sails glinting. The sun’s surface looms immense and softly boiling behind them, its light refracting along every foil edge. Slow parallax between collector layers, deep black space, photoreal, contemplative, monumental scale. No text.
-  </div>
-  <div class="prompt"><b>ALTERNATE — the deployment train</b>
-    A line of freshly launched solar collectors unfurling in sequence as they climb away from Earth toward the sun — each one blooming from a folded packet into a thin gold foil kite, like a Starlink train crossed with solar-sail deployment footage. The sun waits huge and gold in the distance, already faintly veiled by earlier shells of collectors. Slow, ordered, inevitable motion; photoreal; deep black space. No text.
-  </div>
-  <div class="prompt"><b>ALTERNATE — the dream register</b>
-    Time-lapse from the orbit of Mercury: the sun very slowly dims as an impossibly fine lattice of collectors thickens across its face — a centuries-long eclipse made of geometry, gold glints multiplying at the edges. Deep space, minimal, eerie and beautiful, extremely slow, photoreal with a slight painterly softness. No text.
-  </div>
+</div>
 
-  <h2>9 · morning.mp4 — Act V (light phase)</h2>
-  <p class="slot">public/sunrise/morning.mp4</p>
-  <p class="grade"><span class="swatch" style="background:#FBF7EE"></span>paper white <span class="swatch" style="background:#F4D18A"></span>morning gold <span class="swatch" style="background:#0E9F6E"></span>a touch of green — bright, planetary in scale but human in light. This one sits on the light page.</p>
-  <p class="note">The act is “Morning, Everywhere” — the shot has to feel like daylight arriving at civilization scale, not one neighborhood waking up.</p>
-  <div class="prompt"><b>PRIMARY — morning at scale</b>
-    High aerial shot of a vast sprawling metropolis at dawn: the sunrise line sweeping across the city, tens of thousands of rooftops with solar panels catching fire with gold light in waves as the light front advances, towers throwing long shadows, warm haze, glass and panels glinting all the way to the horizon. Nearly static camera with imperceptible drift, photoreal, bright, optimistic, sky overexposed toward white. No text.
+<!-- 8 swarm -->
+<div class="slot">
+  <div class="slot-head"><span class="slot-file">swarm.mp4</span><span class="slot-scene">Coda — the dream, watermarked</span><span class="badge audit">audit</span></div>
+  <div class="slot-body">
+    <div class="swatches"><div><div class="sw" style="background:#05060A"></div><div class="swl">#05060A</div></div><div><div class="sw" style="background:#C98A3A"></div><div class="swl">#C98A3A</div></div><div><div class="sw" style="background:#F4D18A"></div><div class="swl">#F4D18A</div></div></div>
+    <div class="plabel">Primary</div>
+    <div class="prompt">Cinematic 16:9 loop, monumental scale. A star half-veiled by an immense swarm of thin dark solar collectors — millions of flat panels in slow orbital drift, silhouetted against molten gold light #C98A3A → #F4D18A. The star holds the center-right of frame; the left third is deep space black #05060A with sparse collector silhouettes. Bottom quarter: dense dark swarm lattice, slow. Camera locked; the swarm drifts at the speed of continents. Awe, not menace. The slowest loop of the film. No logos, no text. Seamless loop.</div>
+    <div class="plabel">Alternate</div>
+    <div class="prompt">Cinematic 16:9 loop. From inside the swarm: layers of collector silhouettes parallax slowly against the gold star-glow center-right, left third black depth. Monumental, silent, glacial motion. Seamless loop, no logos.</div>
+    <div class="note">The monumental-gold winner already holds the star center-right with black left — strongest candidate to survive as-is.</div>
   </div>
-  <div class="prompt"><b>ALTERNATE — the planet wakes</b>
-    Dawn seen from the stratosphere looking down: the day–night terminator crossing a continent, warm daylight flooding forward while golden city lights on the shrinking night side quietly switch off, thin haze glowing at the light’s leading edge. Extremely slow advance, photoreal, serene, planetary morning. No text.
-  </div>
-  <div class="prompt"><b>ALTERNATE — the human close (hardware anchor)</b>
-    Close shot of a sleek wall-mounted home battery resembling a Tesla Powerwall 3 — a clean matte-white monolith on a sunlit exterior wall — with morning light and leaf shadows drifting slowly across its face, a rooftop solar array reflected in a nearby window. Warm, bright, calm, photoreal, static camera, subtle motion only. No logos, no text, no people.
-  </div>
+</div>
 
-  <h2>Post-processing (once clips are downloaded)</h2>
-  <p>Strip audio, normalize, compress, and name into place. Target ≤ 8 MB per clip:</p>
-  <pre>ffmpeg -i raw.mp4 -an -vf "scale=1920:-2" -c:v libx264 -crf 26 -preset slow \
-  -movflags +faststart public/sunrise/fire.mp4</pre>
-  <p>Poster frame (pick the best second):</p>
-  <pre>ffmpeg -ss 2 -i public/sunrise/fire.mp4 -frames:v 1 -q:v 3 public/sunrise/fire.jpg</pre>
-  <p>If a clip doesn’t loop cleanly, make a palindrome (works for embers/smoke/shimmer, not directional motion):</p>
-  <pre>ffmpeg -i in.mp4 -filter_complex "[0:v]reverse[r];[0:v][r]concat=n=2:v=1[v]" \
-  -map "[v]" -an -c:v libx264 -crf 26 -movflags +faststart out.mp4</pre>
+<!-- 9 morning -->
+<div class="slot">
+  <div class="slot-head"><span class="slot-file">morning.mp4</span><span class="slot-scene">Act V — morning, everywhere (LIGHT tone)</span><span class="badge audit">audit</span></div>
+  <div class="slot-body">
+    <div class="swatches"><div><div class="sw" style="background:#F4D18A"></div><div class="swl">#F4D18A</div></div><div><div class="sw" style="background:#F4EEE0"></div><div class="swl">#F4EEE0</div></div><div><div class="sw" style="background:#FBF7EE"></div><div class="swl">#FBF7EE</div></div></div>
+    <div class="plabel">Primary</div>
+    <div class="prompt">Cinematic 16:9 loop, photorealistic aerial. A dense modern metropolis at golden morning, sun flaring gently center-right through haze, solar panels visible on rooftops throughout, light rays raking between towers. IMPORTANT — light tone: the LEFT third of frame is bright soft haze, low contrast, nearly white-gold #F4EEE0, so dark serif text reads over it. Bottom quarter: soft bright rooftops, calm. High-key warm grade toward paper white #FBF7EE — the frame should feel like it is developing into a printed page. Locked aerial hold, motion only in haze and light. No people close-up, no logos. Seamless loop.</div>
+    <div class="plabel">Alternate</div>
+    <div class="prompt">Cinematic 16:9 loop. Morning light over endless residential rooftops with solar panels, seen from above, sun haze washing the left half of frame to near-white, warm detail holding center-right. High-key paper-white grade. Locked camera, seamless loop, no logos.</div>
+    <div class="note">Tone inversion: this is the ONE slot where the left third must be BRIGHT (ink text over paper scrim). The aerial-metropolis winner passes in the audit frames — verify gate ② with dark text in mind, not light.</div>
+  </div>
+</div>
+</section>
 
-  <p class="note">Drop the files in, reload /sunrise, and each cel fades in on its own. Nothing else to wire.</p>
-</main>
+<section>
+<div class="secnum">03 · Encode + install</div>
+<h2>The pipeline (bumped for full-screen)</h2>
+<p>Full-bleed shows compression that a framed cel hid. CRF drops 23 → 20; keep the source resolution (never upscale); target ≤3.5&nbsp;MB per clip.</p>
+<pre># clip (from the raw Grok download)
+ffmpeg -i raw.mp4 -an -c:v libx264 -crf 20 -preset slow -movflags +faststart -pix_fmt yuv420p public/sunrise/&lt;name&gt;.mp4
+
+# poster (grab a mid-loop frame)
+ffmpeg -ss 2 -i public/sunrise/&lt;name&gt;.mp4 -frames:v 1 -q:v 3 public/sunrise/&lt;name&gt;.jpg</pre>
+<p>Then reload <code>/sunrise</code> — no code change. Audit each new clip in place at desktop + 375px before deleting the spare takes from <code>~/Developer/Battery.mom/videos/</code>.</p>
+</section>
+
+<div class="footer">
+  The Long Sunrise — full-bleed asset prompts · v4 · 2026-07-11 · supersedes v3 (framed cels) · grammar: docs/one-cinematic-work-storyboard.html §01/§06 · grade hexes trace to the canvas sky keyframes; no story figures appear in footage
+</div>
+
+</div>
 </body>
 </html>

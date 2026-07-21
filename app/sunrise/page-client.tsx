@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from 'react'
 import Link from 'next/link'
 import Footer from '@/components/Footer'
 import SunriseSky from './_components/SunriseSky'
-import FilmCel from './_components/FilmCel'
+import SceneStage, { type StageScene } from './_components/SceneStage'
 import BatteryHUD from './_components/BatteryHUD'
 import PowersOfTenLadder from './_components/PowersOfTenLadder'
 import WrightLawChart from './_components/WrightLawChart'
@@ -36,11 +36,11 @@ import {
 
 /**
  * The Long Sunrise — one continuous scroll from true black to the site's
- * paper daylight. The fixed <SunriseSky> canvas carries the dawn arc; the
- * sections below are paced so their document positions land on its keyframes
- * (hero+I ≈ 0–.12, II ≈ .14–.28, interlude ≈ .30–.40, III ≈ .42–.56,
- * IV ≈ .58–.70, coda/space ≈ .70–.84, V/morning→paper ≈ .86–1).
- * Act V flips to ink-on-paper type — the page hands off to the real site.
+ * paper daylight, played as a film (docs/one-cinematic-work-storyboard.html):
+ * the fixed <SunriseSky> canvas is the score, and <SceneStage> plays each
+ * act's loop full-bleed behind the words, cutting on the act anchors. The
+ * hero is the only scene with no footage, by design; after `morning-end`
+ * the film develops into the paper site.
  */
 /**
  * The sky canvas's dawn keyframes live at canonical story positions
@@ -57,6 +57,24 @@ const STORY_STOPS: [id: string, storyP: number][] = [
   ['swarm', 0.68],
   ['coda-end', 0.78],
   ['the-work', 0.88],
+]
+
+/**
+ * The reel: nine shots, eight cuts. Adjacent scenes share an anchor and
+ * crossfade through the score. The swarm alone hands the frame back early
+ * (outBias) so "Then, morning." plays on the canvas dawn — the turn back
+ * toward the sun.
+ */
+const SCENES: StageScene[] = [
+  { cel: ACT_1_CEL, start: 'fire', end: 'combustion' },
+  { cel: ACT_2_CEL, start: 'combustion', end: 'false-dawn' },
+  { cel: INTERLUDE_CEL, start: 'false-dawn', end: 'sun-direct' },
+  { cel: ACT_3_CEL, start: 'sun-direct', end: 'storage' },
+  { cel: ACT_3_STORAGE_CEL, start: 'storage', end: 'compounding' },
+  { cel: ACT_4_CEL, start: 'compounding', end: 'orbit' },
+  { cel: ACT_4_ORBIT_CEL, start: 'orbit', end: 'swarm' },
+  { cel: CODA_CEL, start: 'swarm', end: 'morning', outBias: 0.55 },
+  { cel: ACT_5_CEL, start: 'morning', end: 'morning-end', tone: 'light' },
 ]
 
 function useStoryRemap(): (f: number) => number {
@@ -100,12 +118,32 @@ function useStoryRemap(): (f: number) => number {
   )
 }
 
+/**
+ * A handoff: the story passes the reader to a tool at the exact beat where
+ * the claim lands (storyboard §03) — never a card dump.
+ */
+function Handoff({ href, tone = 'dark', children }: { href: string; tone?: 'dark' | 'light'; children: string }) {
+  const cls =
+    tone === 'dark'
+      ? 'text-gold/90 hover:text-gold-light'
+      : 'text-brand-700 hover:text-brand-600'
+  return (
+    <div className="mx-auto w-full max-w-6xl px-6">
+      <Link href={href} className={`group inline-flex items-baseline gap-2 font-display text-base italic transition ${cls}`}>
+        {children}
+        <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
+      </Link>
+    </div>
+  )
+}
+
 export default function SunriseClient() {
   const remap = useStoryRemap()
   return (
     <main className="relative bg-ink-900">
       <SunriseSky remap={remap} />
-      {/* Everything below sits above the fixed sky canvas (z-0). */}
+      <SceneStage scenes={SCENES} />
+      {/* Everything below sits above the score (z-0) and the stage (z-[1]). */}
       <div className="relative z-10">
       <BatteryHUD />
 
@@ -138,56 +176,65 @@ export default function SunriseClient() {
         </div>
       </section>
 
-      {/* ── Act I · Fire ── */}
+      {/* ── Act I · Fire — the spark catches into the first shot ── */}
       <section className="space-y-14 py-28 sm:space-y-16 sm:py-36" aria-labelledby="fire">
-        <FilmCel cel={ACT_1_CEL} />
         <ActHeader act={ACT_1} id="fire" />
         <Prose lead>{ACT_1_COPY.open}</Prose>
         {ACT_1_COPY.body.map((p) => (
           <Prose key={p.slice(0, 24)}>{p}</Prose>
         ))}
-        <BigNumbers items={ACT_1_COPY.numbers} />
+        <div data-stage-dim>
+          <BigNumbers items={ACT_1_COPY.numbers} />
+        </div>
         <EmberHold caption={ACT_1_COPY.ember} />
         <SeaInset>{ACT_1_COPY.sea}</SeaInset>
       </section>
 
-      {/* ── Act II · Combustion ── */}
+      {/* ── Act II · Combustion — smoke match-cuts into mill smoke ── */}
       <section className="space-y-14 py-28 sm:space-y-16 sm:py-36" aria-labelledby="combustion">
-        <FilmCel cel={ACT_2_CEL} />
         <ActHeader act={ACT_2} id="combustion" />
         <Prose lead>{ACT_2_COPY.open}</Prose>
         {ACT_2_COPY.body.map((p) => (
           <Prose key={p.slice(0, 24)}>{p}</Prose>
         ))}
-        <BigNumbers items={ACT_2_COPY.numbers} />
-        <EnergyServants caption={ACT_2_COPY.servants} />
+        <div data-stage-dim>
+          <BigNumbers items={ACT_2_COPY.numbers} />
+          <EnergyServants caption={ACT_2_COPY.servants} />
+        </div>
         <SeaInset>{ACT_2_COPY.sea}</SeaInset>
       </section>
 
-      {/* ── Interlude · The False Dawn ── */}
+      {/* ── Interlude · The False Dawn — the lights gutter out ── */}
       <section className="space-y-14 py-28 sm:space-y-16 sm:py-36" aria-labelledby="false-dawn">
         <ActHeader act={INTERLUDE} id="false-dawn" />
         <Prose lead>{INTERLUDE_COPY.open}</Prose>
         <Prose>{INTERLUDE_COPY.body[0]}</Prose>
         <Prose>{INTERLUDE_COPY.body[1]}</Prose>
-        <FilmCel cel={INTERLUDE_CEL} />
         <Prose>{INTERLUDE_COPY.body[2]}</Prose>
-        <CurvesHeldBroke note={INTERLUDE_COPY.curvesNote} />
+        <div data-stage-dim>
+          <CurvesHeldBroke note={INTERLUDE_COPY.curvesNote} />
+        </div>
       </section>
 
-      {/* ── Act III · The Sun, Direct ── */}
+      {/* ── Act III · The Sun, Direct — the switch flips back ── */}
       <section className="space-y-14 py-28 sm:space-y-16 sm:py-36" aria-labelledby="sun-direct">
-        <FilmCel cel={ACT_3_CEL} />
         <ActHeader act={ACT_3} id="sun-direct" />
         <Prose lead>{ACT_3_COPY.open}</Prose>
         <Prose>{ACT_3_COPY.body[0]}</Prose>
-        <GiantLine>{ACT_3_COPY.pull}</GiantLine>
+        <div data-stage-dim="0.45">
+          <GiantLine>{ACT_3_COPY.pull}</GiantLine>
+        </div>
         <Prose>{ACT_3_COPY.body[1]}</Prose>
         <Prose>{ACT_3_COPY.body[2]}</Prose>
-        <FilmCel cel={ACT_3_STORAGE_CEL} />
-        <Prose>{ACT_3_COPY.body[3]}</Prose>
-        <BigNumbers items={ACT_3_COPY.numbers} />
-        <div className="mx-auto max-w-5xl px-6">
+        {/* The storage beat — the shot changes with the copy: noon watt → megablock. */}
+        <div id="storage">
+          <Prose>{ACT_3_COPY.body[3]}</Prose>
+        </div>
+        <div data-stage-dim>
+          <BigNumbers items={ACT_3_COPY.numbers} />
+        </div>
+        <Handoff href="/scoreboard/energy">Watch the GWh fill in, year by year</Handoff>
+        <div data-stage-dim className="mx-auto max-w-5xl px-6">
           {/* Ruled scrim band (no glass): keeps axis text readable over the
               bright horizon without boxing the chart in a card. */}
           <div className="border-y border-paper/15 bg-ink-900/70 px-4 py-6 sm:px-8 sm:py-8">
@@ -195,22 +242,26 @@ export default function SunriseClient() {
           </div>
         </div>
         <SeaInset>{ACT_3_COPY.sea}</SeaInset>
+        <Handoff href="/state-of-battery-power">See where the deployment stands, in the data</Handoff>
       </section>
 
-      {/* ── Act IV · The Compounding Century ── */}
+      {/* ── Act IV · The Compounding Century — the camera leaves the ground ── */}
       <section className="space-y-14 py-28 sm:space-y-16 sm:py-36" aria-labelledby="compounding">
-        <FilmCel cel={ACT_4_CEL} />
         <ActHeader act={ACT_4} id="compounding" />
         <Prose lead>{ACT_4_COPY.open}</Prose>
-        <div className="mx-auto max-w-3xl px-6">
+        <div data-stage-dim className="mx-auto max-w-3xl px-6">
           <FlywheelDiagram className="mx-auto" />
         </div>
         <Prose>{ACT_4_COPY.body[0]}</Prose>
         <Prose>{ACT_4_COPY.body[1]}</Prose>
-        <FilmCel cel={ACT_4_ORBIT_CEL} />
-        <Prose>{ACT_4_COPY.body[2]}</Prose>
+        {/* Eyeline match: at "the loop has already left the ground", cut to orbit. */}
+        <div id="orbit">
+          <Prose>{ACT_4_COPY.body[2]}</Prose>
+        </div>
         <Prose>{ACT_4_COPY.body[3]}</Prose>
-        <BigNumbers items={ACT_4_COPY.numbers} />
+        <div data-stage-dim>
+          <BigNumbers items={ACT_4_COPY.numbers} />
+        </div>
         <ReceiptsWall items={ACT_4_COPY.receipts} note={ACT_4_COPY.receiptsNote} />
       </section>
 
@@ -219,29 +270,39 @@ export default function SunriseClient() {
         <ActHeader act={CODA} id="swarm" />
         <SpeculationWatermark />
         <Prose lead>{CODA_COPY.open}</Prose>
-        <FilmCel cel={CODA_CEL} />
         {CODA_COPY.body.map((p) => (
           <Prose key={p.slice(0, 24)}>{p}</Prose>
         ))}
-        <PowersOfTenLadder />
-        <div id="coda-end">
+        <div data-stage-dim>
+          <PowersOfTenLadder />
+        </div>
+        <div id="coda-end" data-stage-dim="0.45">
           <GiantLine tone="gold" className="text-center">
             <span className="italic">{CODA_COPY.line}</span>
           </GiantLine>
         </div>
       </section>
 
-      {/* ── Act V · The Work — ink on paper: the dawn handoff ── */}
+      {/* ── Act V · The Work — the film develops into the paper site ── */}
       <section className="space-y-14 pb-0 pt-28 sm:space-y-16 sm:pt-36" aria-labelledby="the-work">
-        <GiantLine tone="ink">Then, morning.</GiantLine>
-        <FilmCel cel={ACT_5_CEL} tone="light" />
+        {/* The swarm has handed the sky back; this line plays on the canvas dawn,
+            and the morning footage rises beneath it. */}
+        <div id="morning">
+          <GiantLine tone="ink">Then, morning.</GiantLine>
+        </div>
         <ActHeader act={ACT_5} id="the-work" tone="light" />
-        <Reveal className="mx-auto max-w-3xl px-6">
-          <p className="font-display text-xl leading-relaxed text-ink-700 sm:text-2xl">{ACT_5_COPY.open}</p>
+        <Reveal className="mx-auto max-w-6xl px-6">
+          <p className="max-w-2xl font-display text-xl leading-relaxed text-ink-700 sm:text-2xl">{ACT_5_COPY.open}</p>
         </Reveal>
+
+        {/* The morning shot fades to flat paper here — the rest of the page
+            (and the rest of the site) is the morning the story promised. */}
+        <div id="morning-end" aria-hidden />
+
         <div className="mx-auto max-w-6xl px-6">
           <GatesBoard />
         </div>
+        <Handoff href="/bess/home" tone="light">Gate 4 is the one you control — open the home planner</Handoff>
         <div className="mx-auto max-w-4xl px-6">
           <h3 className="mb-6 font-display text-2xl font-medium text-ink sm:text-3xl">The predictions ledger</h3>
           <PredictionsLedger />

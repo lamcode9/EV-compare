@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Battery.mom — One Cinematic Work · Storyboard &amp; Site Architecture</title>
+<style>
+  :root{
+    --ink:#11150F; --ink8:#1D231C; --ink7:#2F372E; --ink6:#454E44; --ink4:#828B80; --ink3:#A7AFA4;
+    --paper:#FBF7EE; --paper2:#F4EEE0; --paper3:#E9E1CF;
+    --brand:#0E9F6E; --brand3:#5DD9A6; --brand4:#23C088;
+    --gold:#E0A33C; --goldL:#F4D18A;
+    --serif:'Newsreader',Georgia,'Times New Roman',serif;
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--ink);color:var(--paper2);font-family:var(--sans);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:960px;margin:0 auto;padding:64px 32px 120px}
+  a{color:var(--brand3)}
+  h1{font-family:var(--serif);font-weight:500;font-size:44px;line-height:1.1;color:var(--paper);letter-spacing:-.01em}
+  h2{font-family:var(--serif);font-weight:500;font-size:30px;line-height:1.2;color:var(--paper);margin:0 0 8px}
+  h3{font-family:var(--serif);font-weight:500;font-size:21px;color:var(--goldL);margin:0 0 6px}
+  .kicker{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+  .lede{font-family:var(--serif);font-size:20px;line-height:1.5;color:var(--ink3);max-width:64ch}
+  section{margin-top:88px;border-top:1px solid var(--ink7);padding-top:40px}
+  .secnum{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink4);margin-bottom:10px}
+  p{max-width:70ch;margin:12px 0;color:var(--ink3)}
+  p strong{color:var(--paper2);font-weight:600}
+  em{font-family:var(--serif);color:var(--paper2)}
+  ul,ol{margin:12px 0 12px 22px;max-width:68ch;color:var(--ink3)}
+  li{margin:6px 0}
+  li strong{color:var(--paper2)}
+  code{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:12.5px;background:var(--ink8);border:1px solid var(--ink7);border-radius:4px;padding:1px 6px;color:var(--goldL)}
+  .rule-card{border:1px solid var(--ink7);background:var(--ink8);border-radius:10px;padding:20px 24px;margin:20px 0;max-width:74ch}
+  .rule-card .rc-title{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+  .kill{color:#D97769}
+  .keep{color:var(--brand3)}
+  table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px}
+  th{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink4);text-align:left;font-weight:600;border-bottom:1px solid var(--ink6);padding:8px 14px 8px 0}
+  td{border-bottom:1px solid var(--ink8);padding:10px 14px 10px 0;vertical-align:top;color:var(--ink3)}
+  td:first-child{color:var(--paper2);font-weight:600;white-space:nowrap}
+  /* ── scene cards ── */
+  .scene{border:1px solid var(--ink7);border-radius:12px;margin:36px 0;overflow:hidden;background:var(--ink8)}
+  .scene-head{display:flex;align-items:baseline;gap:14px;padding:18px 26px 14px;border-bottom:1px solid var(--ink7)}
+  .scene-no{font-family:var(--serif);font-size:26px;color:var(--gold);min-width:44px}
+  .scene-title{font-family:var(--serif);font-size:21px;color:var(--paper)}
+  .scene-era{margin-left:auto;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink4);white-space:nowrap}
+  .scene-body{padding:20px 26px 26px}
+  .srow{display:grid;grid-template-columns:92px 1fr;gap:14px;margin:10px 0;max-width:none}
+  .srow .k{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);padding-top:3px}
+  .srow .v{color:var(--ink3);font-size:14px;line-height:1.6}
+  .srow .v strong{color:var(--paper2)}
+  .srow .v .q{font-family:var(--serif);color:var(--paper2);font-style:italic}
+  /* wireframe: mini viewport */
+  .frame{position:relative;aspect-ratio:16/7;border:1px solid var(--ink6);border-radius:8px;margin:16px 0 8px;overflow:hidden}
+  .frame .fill{position:absolute;inset:0}
+  .frame .scrim{position:absolute;inset:0}
+  .frame .txt{position:absolute;left:6%;top:18%;width:34%;display:flex;flex-direction:column;gap:7px}
+  .frame .txt i{display:block;height:7px;border-radius:2px;background:rgba(251,247,238,.85)}
+  .frame .txt i:nth-child(1){width:52%;background:var(--goldL)}
+  .frame .txt i:nth-child(3){width:78%}
+  .frame .txt i:nth-child(4){width:64%}
+  .frame .tag{position:absolute;right:10px;bottom:8px;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(251,247,238,.55)}
+  .frame .subject{position:absolute;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(251,247,238,.4);right:12%;top:46%;border:1px dashed rgba(251,247,238,.25);border-radius:6px;padding:14px 18px}
+  .swatches{display:flex;gap:6px;margin-top:6px}
+  .sw{width:34px;height:20px;border-radius:4px;border:1px solid rgba(251,247,238,.15)}
+  .swl{font-size:10px;color:var(--ink4);margin-top:2px;font-family:ui-monospace,Menlo,monospace}
+  .cutline{display:flex;align-items:center;gap:14px;margin:2px 0 2px 8px;color:var(--ink4);font-size:12.5px;letter-spacing:.04em}
+  .cutline::before{content:'✂';color:var(--gold);font-size:14px}
+  .cutline em{color:var(--goldL);font-style:italic;font-family:var(--serif)}
+  .regen{display:inline-block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--gold);color:var(--goldL);border-radius:999px;padding:2px 10px;margin-left:8px;vertical-align:2px}
+  .keepbadge{display:inline-block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--brand);color:var(--brand3);border-radius:999px;padding:2px 10px;margin-left:8px;vertical-align:2px}
+  /* sitemap */
+  .map{border:1px solid var(--ink7);border-radius:12px;padding:26px;background:var(--ink8);margin:20px 0}
+  .map .spine{font-family:var(--serif);font-size:17px;color:var(--goldL);margin-bottom:14px}
+  .map .chap{display:grid;grid-template-columns:170px 1fr;gap:10px;padding:12px 0;border-top:1px solid var(--ink7)}
+  .map .chap .cn{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);padding-top:2px}
+  .map .chap .cr{font-size:13.5px;color:var(--ink3);line-height:1.7}
+  .map .chap .cr strong{color:var(--paper2)}
+  .phase{border-left:2px solid var(--gold);padding:4px 0 4px 22px;margin:26px 0}
+  .phase h3{color:var(--paper)}
+  .phase .ph-k{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+  .footer{margin-top:100px;border-top:1px solid var(--ink7);padding-top:24px;font-size:12px;color:var(--ink4)}
+  @media (max-width:640px){ .wrap{padding:40px 20px 80px} h1{font-size:32px} .srow{grid-template-columns:1fr} .frame{aspect-ratio:16/9} .frame .txt{width:60%} .map .chap{grid-template-columns:1fr} }
+  @media print{ body{background:#fff;color:#222} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="kicker">Battery.mom · Phase 0 gate deliverable · v1 — for KM's review before any code</div>
+<h1>One Cinematic Work</h1>
+<p class="lede" style="margin-top:18px">Storyboard and site architecture for turning battery.mom from a site with a cinematic page into a single cinematic argument: <em>the physics changed, so the economics are changing, so the smart move is now the beautiful move — and here are the numbers and tools to act on it.</em></p>
+
+<p style="margin-top:24px">Two corrections drive everything below. <strong>First:</strong> the video is the stage, not an exhibit — full-bleed, behind the words, edge to edge. The FilmCel picture-in-a-box dies. <strong>Second:</strong> /sunrise is not a destination, it is the spine — every other page becomes a chapter of evidence hanging off it, sharing one design language.</p>
+
+<!-- ══════════════ 01 THE GRAMMAR ══════════════ -->
+<section>
+<div class="secnum">01 · The film grammar</div>
+<h2>How a scene works</h2>
+
+<p>Each act becomes a <strong>scene</strong>: a full-viewport stage pinned behind the scroll. The loop video fills the stage. The act's words and data scroll <em>over</em> it in a left-anchored reading column. The reader is never looking <em>at</em> footage; they are standing <em>in</em> it.</p>
+
+<div class="frame">
+  <div class="fill" style="background:linear-gradient(115deg,#1a0f08 0%,#3d2410 45%,#8a5a1e 78%,#c98a3a 100%)"></div>
+  <div class="scrim" style="background:linear-gradient(90deg,rgba(17,21,15,.82) 0%,rgba(17,21,15,.55) 38%,rgba(17,21,15,.08) 60%,rgba(17,21,15,0) 75%),linear-gradient(0deg,rgba(17,21,15,.55) 0%,rgba(17,21,15,0) 30%)"></div>
+  <div class="txt"><i></i><i></i><i></i><i></i></div>
+  <div class="subject">subject lives here<br>(right two-thirds)</div>
+  <div class="tag">the anatomy of every scene</div>
+</div>
+<p style="font-size:13px;color:var(--ink4);max-width:74ch">The standing composition: reading column in the left third over a directional scrim; the shot's subject weighted right; a soft floor scrim so the column never collides with bright ground. Film grain (already built) lies over both video and canvas so they read as one emulsion.</p>
+
+<div class="rule-card">
+  <div class="rc-title">The five laws of the stage</div>
+  <ul style="margin-left:18px">
+    <li><strong>Full bleed, always.</strong> No frames, no hairline chrome, no caption strips, no aspect-ratio boxes. A caption, when needed, is a film subtitle: small italic serif, bottom-right, on the footage itself.</li>
+    <li><strong>The words live in the shot.</strong> Legibility comes from the directional scrim + grain + type weight — never from putting the text on a card. Contrast stays ≥4.5:1 over the darkest-case frame (scrims are tuned per shot, and we verify on real frames, not on the poster).</li>
+    <li><strong>Every act boundary is an authored cut.</strong> Scroll position drives a crossfade/match-cut between stages (~120vh of overlap). The title-card choreography we built in v3 (rule draws, era slides, masked numeral/title rise) survives — but it now plays <em>over the incoming footage</em>, which is what it was always for.</li>
+    <li><strong>Data reads in reading light.</strong> When a chart, ladder, or big-number figure enters, the stage dims to ≈25–35% and settles (video keeps looping, felt not watched). Charts never sit on busy footage. The figure chrome (hairline rules, italic serif labels) stays — it's the film's title-graphics language.</li>
+    <li><strong>The sky is the score, the video is the shot.</strong> The canvas sunrise (night → coal → false dawn → first light → space → morning) remains the master light score for the whole scroll: it owns the color temperature, fills every gap between scenes, and <em>is</em> the zero-asset fallback. When a scene has footage, the footage wins the frame and the canvas dims behind it. They never fight because the video's grade is locked to the sky's keyframe at that story position (grade hexes per scene, below).</li>
+  </ul>
+</div>
+
+<h3 style="margin-top:32px">What dies · what survives</h3>
+<table>
+  <tr><th>Element</th><th>Verdict</th><th>Why</th></tr>
+  <tr><td>FilmCel component</td><td class="kill">Dies</td><td>Picture-in-a-box is the opposite of cinema. Replaced by SceneStage (below).</td></tr>
+  <tr><td>Caption strips under media</td><td class="kill">Die</td><td>Museum labels. Captions become in-frame subtitles, used sparingly.</td></tr>
+  <tr><td>Canvas sky (SunriseSky)</td><td class="keep">Survives, demoted</td><td>Becomes score + connective tissue + the complete zero-asset fallback.</td></tr>
+  <tr><td>Title-card choreography</td><td class="keep">Survives, recomposited</td><td>Plays over incoming footage during the cut instead of over flat sky.</td></tr>
+  <tr><td>Figure chrome (rules, serif labels)</td><td class="keep">Survives</td><td>It's the title-graphics language; now it appears in reading light only.</td></tr>
+  <tr><td>All v3 copy + figures</td><td class="keep">Byte-identical</td><td>Data-integrity rule. The words were rewritten for this rhythm; they stay.</td></tr>
+</table>
+
+<h3 style="margin-top:32px">SceneStage — the one new primitive</h3>
+<p>A single fixed full-viewport layer that owns the background. Scenes register their scroll ranges; the stage crossfades between (at most two mounted) videos, drives the dim level for data beats, and hands the frame back to the canvas between scenes. Missing asset → that scene simply plays on canvas (today's zero-asset behavior, now by architecture instead of by hiding). Reduced motion → full-bleed poster stills, same scrims, same composition — the film becomes a photo essay, not a different page. Mobile: same grammar; shots are center/right-weighted so a 9:16 center-crop keeps the subject and the text column gains a slightly stronger scrim.</p>
+<p style="font-size:13px;color:var(--ink4)">Performance: only the active + next scene mount video. Clips re-encoded for full-screen (1080p, CRF ~20, target ≤3.5&nbsp;MB each, ~8&nbsp;MB total above-the-fold budget unchanged because loading is sequential and lazy). <code>preload=metadata</code> beyond the first scene.</p>
+</section>
+
+<!-- ══════════════ 02 THE SCENES ══════════════ -->
+<section>
+<div class="secnum">02 · The scenes — /sunrise, shot by shot</div>
+<h2>Nine scenes, eight cuts</h2>
+<p>Per scene: the shot (with grade), where the words sit, the data moment, and the cut. <span class="regen">regenerate</span> = current clip was shot for a framed box and needs a full-bleed retake (wider negative space, seamless loop, calmer floor). <span class="keepbadge">audit</span> = current clip may survive; test against the three gates (loop seam · text-safe left third · calm floor) before regenerating.</p>
+
+<!-- SCENE 0 -->
+<div class="scene">
+  <div class="scene-head"><div class="scene-no">0</div><div class="scene-title">Cold open — the dark</div><div class="scene-era">Hero · no footage, by design</div></div>
+  <div class="scene-body">
+    <div class="srow"><div class="k">Shot</div><div class="v">Pure canvas night — the only scene with no video. Starfield, void, the existing staggered hero dawn-in. The restraint is the point: the film earns its first image.</div></div>
+    <div class="srow"><div class="k">Words</div><div class="v"><span class="q">"The Long Sunrise"</span> + standfirst, center-stage. Unchanged.</div></div>
+    <div class="srow"><div class="k">Cut out</div><div class="v"><em>Match on a spark.</em> At the hero's end a single ember point warms low in the dark — and the cut lands on Scene 1's fire already burning, as if that spark caught.</div></div>
+  </div>
+</div>
+
+<!-- SCENE 1 -->
+<div class="scene">
+  <div class="scene-head"><div class="scene-no">I</div><div class="scene-title">Fire <span class="keepbadge">audit</span></div><div class="scene-era">500,000 BCE → 1900</div></div>
+  <div class="scene-body">
+    <div class="frame">
+      <div class="fill" style="background:radial-gradient(ellipse 60% 80% at 68% 62%,#8a4a15 0%,#3d2008 45%,#120a04 100%)"></div>
+      <div class="scrim" style="background:linear-gradient(90deg,rgba(10,7,4,.85) 0%,rgba(10,7,4,.5) 38%,rgba(10,7,4,0) 62%)"></div>
+      <div class="txt"><i></i><i></i><i></i><i></i></div>
+      <div class="tag">fire.mp4 · full bleed</div>
+    </div>
+    <div class="swatches"><div><div class="sw" style="background:#120a04"></div><div class="swl">#120A04</div></div><div><div class="sw" style="background:#3d2008"></div><div class="swl">#3D2008</div></div><div><div class="sw" style="background:#c9772a"></div><div class="swl">#C9772A</div></div></div>
+    <div class="srow" style="margin-top:14px"><div class="k">Shot</div><div class="v">The tended hearth at night, fire weighted right-of-center, vast darkness around it — the darkness IS the grid. Locked camera, breathing flame, seamless loop.</div></div>
+    <div class="srow"><div class="k">Words</div><div class="v"><span class="q">"It begins with a fire that dies if no one feeds it. For half a million years, that was the whole grid."</span> Title card plays over the flames on entry; body scrolls in the left column.</div></div>
+    <div class="srow"><div class="k">Data</div><div class="v">~100&nbsp;W · ~58&nbsp;hours of labor per hour of light · ~350,000× — big-number figures enter as the stage dims to embers.</div></div>
+    <div class="srow"><div class="k">Cut out</div><div class="v"><em>Smoke is the match cut.</em> The fire's smoke rises — crossfade finds the same smoke now pouring from mill-town stacks.</div></div>
+  </div>
+</div>
+
+<!-- SCENE 2 -->
+<div class="scene">
+  <div class="scene-head"><div class="scene-no">II</div><div class="scene-title">Combustion <span class="keepbadge">audit</span></div><div class="scene-era">1700 → 2010</div></div>
+  <div class="scene-body">
+    <div class="frame">
+      <div class="fill" style="background:linear-gradient(180deg,#2a2620 0%,#4a3d2a 55%,#241c12 100%)"></div>
+      <div class="scrim" style="background:linear-gradient(90deg,rgba(20,17,12,.85) 0%,rgba(20,17,12,.5) 40%,rgba(20,17,12,.05) 65%)"></div>
+      <div class="txt"><i></i><i></i><i></i><i></i></div>
+      <div class="tag">combustion.mp4 · full bleed</div>
+    </div>
+    <div class="swatches"><div><div class="sw" style="background:#241c12"></div><div class="swl">#241C12</div></div><div><div class="sw" style="background:#4a3d2a"></div><div class="swl">#4A3D2A</div></div><div><div class="sw" style="background:#8a6a3a"></div><div class="swl">#8A6A3A</div></div></div>
+    <div class="srow" style="margin-top:14px"><div class="k">Shot</div><div class="v">The mill town under smoke — rooftops, stacks, sodium warmth in windows. Slow drift ≤5%. Same scene, three continents: the loop should feel like it could be Manchester 1850 or Shenzhen 1995.</div></div>
+    <div class="srow"><div class="k">Words</div><div class="v"><span class="q">"Then the hockey stick."</span> — three words, huge, alone over the smoke before the column begins.</div></div>
+    <div class="srow"><div class="k">Data</div><div class="v">~10× · 432&nbsp;ppm · 1979 peak — in reading light. The "you have a staff" servants beat plays as a quiet full-stage moment, one line centered.</div></div>
+    <div class="srow"><div class="k">Cut out</div><div class="v"><em>The lights flicker.</em> Windows gutter out during the fade; the incoming Interlude is graded colder, drained — the first broken promise.</div></div>
+  </div>
+</div>
+
+<!-- SCENE 3 -->
+<div class="scene">
+  <div class="scene-head"><div class="scene-no">·</div><div class="scene-title">The False Dawn <span class="keepbadge">audit</span></div><div class="scene-era">Interlude · 1954 → 2021</div></div>
+  <div class="scene-body">
+    <div class="frame">
+      <div class="fill" style="background:linear-gradient(180deg,#2e3138 0%,#4a4640 60%,#2a2724 100%)"></div>
+      <div class="scrim" style="background:linear-gradient(90deg,rgba(24,25,28,.85) 0%,rgba(24,25,28,.5) 40%,rgba(24,25,28,.08) 66%)"></div>
+      <div class="txt"><i></i><i></i><i></i><i></i></div>
+      <div class="tag">false-dawn.mp4 · desaturated</div>
+    </div>
+    <div class="swatches"><div><div class="sw" style="background:#2a2724"></div><div class="swl">#2A2724</div></div><div><div class="sw" style="background:#4a4640"></div><div class="swl">#4A4640</div></div><div><div class="sw" style="background:#7a736a"></div><div class="swl">#7A736A</div></div></div>
+    <div class="srow" style="margin-top:14px"><div class="k">Shot</div><div class="v">Vietnam 2020 — rooftop solar as far as the eye can see, but still, overcast, drained of color. Panels that should be working, waiting. The one scene where the loop's stillness is the message.</div></div>
+    <div class="srow"><div class="k">Words</div><div class="v"><span class="q">"'Too cheap to meter,' they said in 1954."</span> The broken-promises litany scrolls the left column; the curves-that-held/broke note is the data beat.</div></div>
+    <div class="srow"><div class="k">Cut out</div><div class="v"><em>The switch flips back.</em> The film's most important cut: gray stillness → first light breaking across a live panel field. The canvas sun crests the horizon in the same beat — score and shot land the sunrise together.</div></div>
+  </div>
+</div>
+
+<!-- SCENE 4 -->
+<div class="scene">
+  <div class="scene-head"><div class="scene-no">III</div><div class="scene-title">The Sun, Direct <span class="regen">regenerate</span></div><div class="scene-era">2010 → 2035 · two shots</div></div>
+  <div class="scene-body">
+    <div class="frame">
+      <div class="fill" style="background:linear-gradient(105deg,#1d2a2e 0%,#2a5a52 40%,#e8a23c 85%,#f4d18a 100%)"></div>
+      <div class="scrim" style="background:linear-gradient(90deg,rgba(15,25,24,.85) 0%,rgba(15,25,24,.52) 40%,rgba(15,25,24,0) 64%)"></div>
+      <div class="txt"><i></i><i></i><i></i><i></i></div>
+      <div class="tag">first-light.mp4 → megablock.mp4 · shot change mid-scene</div>
+    </div>
+    <div class="swatches"><div><div class="sw" style="background:#1d2a2e"></div><div class="swl">#1D2A2E</div></div><div><div class="sw" style="background:#2a5a52"></div><div class="swl">#2A5A52</div></div><div><div class="sw" style="background:#e8a23c"></div><div class="swl">#E8A23C</div></div></div>
+    <div class="srow" style="margin-top:14px"><div class="k">Shot A</div><div class="v">Dawn breaking across a panel field to the horizon — the sun's first direct hit, lens warmth on the glass. This is the film's sunrise; it must be the most beautiful shot in the piece. Regenerate: current take was framed and graded for a box.</div></div>
+    <div class="srow"><div class="k">Words</div><div class="v"><span class="q">"First light — and a change in the rules of evidence… It is measured."</span> Then the giant pull, alone on the stage: <span class="q">"The first terawatt of solar took about 68 years. The third took about 1.3."</span></div></div>
+    <div class="srow"><div class="k">Data</div><div class="v">The act's heavy artillery in reading light: $76&nbsp;→&nbsp;$0.09 · 647&nbsp;GW · $108/kWh · +300&nbsp;GWh, the Wright-law chart, and the SEA inset (demand ~7%/yr, supply share compounding ~35%/yr).</div></div>
+    <div class="srow"><div class="k">Shot B</div><div class="v"><em>Cut within the scene, on time-of-day:</em> the same sun, hours later — grid storage (Megapack-scale blocks) at golden hour, at the copy's storage beat: "Storage is what restores the value."</div></div>
+    <div class="srow"><div class="k">Cut out</div><div class="v"><em>Light goes industrial.</em> Golden hour hands off to floodlit factory night — nature's light to manufactured light.</div></div>
+  </div>
+</div>
+
+<!-- SCENE 5 -->
+<div class="scene">
+  <div class="scene-head"><div class="scene-no">IV</div><div class="scene-title">The Compounding Century <span class="regen">regenerate</span></div><div class="scene-era">2025 → 2050 · two shots</div></div>
+  <div class="scene-body">
+    <div class="frame">
+      <div class="fill" style="background:linear-gradient(100deg,#0a0e14 0%,#14202e 45%,#2a4a6a 80%,#5a8ab0 100%)"></div>
+      <div class="scrim" style="background:linear-gradient(90deg,rgba(6,9,14,.85) 0%,rgba(6,9,14,.5) 40%,rgba(6,9,14,0) 66%)"></div>
+      <div class="txt"><i></i><i></i><i></i><i></i></div>
+      <div class="tag">gigafactory.mp4 → orbit.mp4 · the camera leaves the ground</div>
+    </div>
+    <div class="swatches"><div><div class="sw" style="background:#0a0e14"></div><div class="swl">#0A0E14</div></div><div><div class="sw" style="background:#14202e"></div><div class="swl">#14202E</div></div><div><div class="sw" style="background:#5a8ab0"></div><div class="swl">#5A8AB0</div></div></div>
+    <div class="srow" style="margin-top:14px"><div class="k">Shot A</div><div class="v">The gigafactory line at night — cool industrial blues, machine rhythm, cells moving. The loop where the curve is manufactured.</div></div>
+    <div class="srow"><div class="k">Words</div><div class="v"><span class="q">"Cheap energy buys compute. Compute buys intelligence…"</span> — the loop copy, with solid/dashed honesty preserved in the column.</div></div>
+    <div class="srow"><div class="k">Data</div><div class="v">485&nbsp;→&nbsp;~950&nbsp;TWh · &gt;$400B · $55,000&nbsp;→&nbsp;$100–200/kg, then the receipts ledger (Starcloud-1, first LLM trained in space…) as wire-feed lines over the orbit shot.</div></div>
+    <div class="srow"><div class="k">Shot B</div><div class="v"><em>Eyeline match:</em> at "the loop has already left the ground," cut from looking along the factory line to looking down from a Starlink-V3-class bus — panels catching raw unfiltered sun, Earth's night side and city lights below.</div></div>
+    <div class="srow"><div class="k">Cut out</div><div class="v"><em>The ground falls away.</em> Earth shrinks off-frame; space black takes the stage and the canvas score goes full void for the Coda.</div></div>
+  </div>
+</div>
+
+<!-- SCENE 6 -->
+<div class="scene">
+  <div class="scene-head"><div class="scene-no">·</div><div class="scene-title">The Swarm <span class="keepbadge">audit</span></div><div class="scene-era">Coda · undated, by design</div></div>
+  <div class="scene-body">
+    <div class="frame">
+      <div class="fill" style="background:radial-gradient(ellipse 45% 60% at 70% 50%,#f4d18a 0%,#c98a3a 18%,#2a1c0a 45%,#05060a 100%)"></div>
+      <div class="scrim" style="background:linear-gradient(90deg,rgba(4,5,8,.85) 0%,rgba(4,5,8,.5) 38%,rgba(4,5,8,0) 60%)"></div>
+      <div class="txt"><i></i><i></i><i></i><i></i></div>
+      <div class="tag">swarm.mp4 · monumental gold</div>
+    </div>
+    <div class="swatches"><div><div class="sw" style="background:#05060a"></div><div class="swl">#05060A</div></div><div><div class="sw" style="background:#c98a3a"></div><div class="swl">#C98A3A</div></div><div><div class="sw" style="background:#f4d18a"></div><div class="swl">#F4D18A</div></div></div>
+    <div class="srow" style="margin-top:14px"><div class="k">Shot</div><div class="v">Collectors thickening around the star — the monumental-gold take, now given the full frame it was always begging for. Slowest loop in the film.</div></div>
+    <div class="srow"><div class="k">Words</div><div class="v"><span class="q">"Before morning, one last look up. What follows is a dream — and it is watermarked as one."</span> Then the ceiling line, giant and alone: <span class="q">"One hour of sunlight on Earth ≈ one year of civilization's energy use."</span></div></div>
+    <div class="srow"><div class="k">Cut out</div><div class="v"><em>Turn back toward the sun — and it's sunrise.</em> The dream's star becomes tomorrow's dawn; the swarm's gold is the same gold as morning light.</div></div>
+  </div>
+</div>
+
+<!-- SCENE 7 -->
+<div class="scene">
+  <div class="scene-head"><div class="scene-no">V</div><div class="scene-title">Morning, Everywhere <span class="keepbadge">audit</span></div><div class="scene-era">2026 → 2040 · the film develops into the site</div></div>
+  <div class="scene-body">
+    <div class="frame">
+      <div class="fill" style="background:linear-gradient(100deg,#f4d18a 0%,#f4eee0 55%,#fbf7ee 100%)"></div>
+      <div class="scrim" style="background:linear-gradient(90deg,rgba(251,247,238,.9) 0%,rgba(251,247,238,.62) 40%,rgba(251,247,238,.05) 68%)"></div>
+      <div class="txt"><i style="background:#B4802C"></i><i style="background:#2F372E"></i><i style="background:#2F372E"></i><i style="background:#2F372E"></i></div>
+      <div class="tag">morning.mp4 · light tone · dawns into paper</div>
+    </div>
+    <div class="swatches"><div><div class="sw" style="background:#f4d18a"></div><div class="swl">#F4D18A</div></div><div><div class="sw" style="background:#f4eee0"></div><div class="swl">#F4EEE0</div></div><div><div class="sw" style="background:#fbf7ee"></div><div class="swl">#FBF7EE</div></div></div>
+    <div class="srow" style="margin-top:14px"><div class="k">Shot</div><div class="v">The aerial-metropolis morning — panels on every roof, the city waking. Ink text over light footage: the tone inversion the v3 header already handles.</div></div>
+    <div class="srow"><div class="k">Words</div><div class="v"><span class="q">"None of it is owed to us…"</span> · the six gates · <span class="q">"The story ends where it started: a hearth, tended. Yours happens to be a rooftop."</span></div></div>
+    <div class="srow"><div class="k">Cut out</div><div class="v"><em>The film develops into the page.</em> The morning footage fades up into flat paper — and the paper is the rest of the website. The three cards (planner · EV desk · BESS desk) + real Footer are now inside the fiction: every tool page is the morning the story promised.</div></div>
+  </div>
+</div>
+
+</section>
+
+<!-- ══════════════ 03 THE SITE ══════════════ -->
+<section>
+<div class="secnum">03 · The site as one work</div>
+<h2>The morning the story promises</h2>
+<p>The unifying conceit — free, already latent in what exists: <strong>the story ends at morning on paper, and every other page on battery.mom is that morning.</strong> Narrative surfaces live in the film's night grades; tool and data surfaces live in its daylight. Same emulsion (grain), same type, same chart language, same hairline title-graphics — one film, two times of day. Nothing needs a costume; everything needs the same tailor.</p>
+
+<div class="map">
+  <div class="spine">The spine — /sunrise (the argument, feature-length)</div>
+  <div class="chap"><div class="cn">The trailer · /</div><div class="cr"><strong>Homepage becomes the overture</strong> (§04). States the whole argument in three beats and routes into story, proof, and tools.</div></div>
+  <div class="chap"><div class="cn">The proof</div><div class="cr"><strong>/state-of-battery-power · /scoreboard/*</strong> — "the shift is measurable." Already scene-numbered and data-locked; the closest existing page to the film. Adopts the unified chart + header language; its 6 numbered scenes are the daylight mirror of the sunrise acts.</div></div>
+  <div class="chap"><div class="cn">The evidence desk</div><div class="cr"><strong>/ev · /ev/compare · /ev/[id]</strong> — 304 vehicles, batteries first. Unified chart theme + count-up grammar; no video needed. Rigor untouched.</div></div>
+  <div class="chap"><div class="cn">Your number</div><div class="cr"><strong>/calculators · /bess/*</strong> — "this works economically, for YOUR roof, today." The zero-bill planner is the story's final CTA made literal: Act V's rooftop is the visitor's. Calculators keep their exact math; they gain the design language and the story's framing sentence at the top.</div></div>
+  <div class="chap"><div class="cn">The field notes</div><div class="cr"><strong>/insights · /bess/case-studies</strong> — real installs, real bills (Klang Valley Powerwall 3, RM420/mo). The story's claims, verified in someone's driveway.</div></div>
+</div>
+
+<h3>Cross-links: handoffs at the moment of belief</h3>
+<p>The story should hand the reader to a tool at the exact beat where the claim lands, not in a card dump at the end:</p>
+<ul>
+  <li>Act III's SEA inset ("that is why battery.mom starts here") → inline link into <strong>/state-of-battery-power</strong>.</li>
+  <li>Act III's storage beat → <strong>/scoreboard/energy</strong> ("watch the GWh fill in").</li>
+  <li>Act V's six gates → the <strong>zero-bill planner</strong>, phrased as the first gate the reader personally controls. The existing three cards stay as the formal ending.</li>
+  <li>Reverse direction: proof/tool pages get one quiet standing line — <em>"Part of The Long Sunrise — the whole argument, from the first fire"</em> — replacing generic breadcrumbs.</li>
+</ul>
+</section>
+
+<!-- ══════════════ 04 THE TRAILER ══════════════ -->
+<section>
+<div class="secnum">04 · The trailer — homepage overture</div>
+<h2>Open the film, then get out of the way</h2>
+<p>The homepage's job stays what it is — route people to data and tools fast. The overture upgrades its opening, not its purpose. Three beats, one loop video total (performance: the home stays light):</p>
+
+<div class="scene">
+  <div class="scene-head"><div class="scene-no">T1</div><div class="scene-title">Cold open</div><div class="scene-era">one full-bleed stage · morning.mp4 reused</div></div>
+  <div class="scene-body">
+    <div class="srow"><div class="k">Shot</div><div class="v">The morning loop (or first-light), full-bleed behind the existing hero. Replaces the static poster + grid-grain treatment. Same scrim anatomy as the film.</div></div>
+    <div class="srow"><div class="k">Words</div><div class="v">Existing verified headline stays: <span class="q">"Track the battery and solar transition as it deploys."</span> One added line of story voice above the CTAs: <span class="q">"The swarm starts on a rooftop. Start with yours."</span> (already in script.ts — no new copy). CTAs: "See the big picture" · "Explore battery deployment" (unchanged).</div></div>
+  </div>
+</div>
+<div class="scene">
+  <div class="scene-head"><div class="scene-no">T2</div><div class="scene-title">The proof beat</div><div class="scene-era">paper daylight</div></div>
+  <div class="scene-body">
+    <div class="srow"><div class="k">Content</div><div class="v">The existing FeaturedStory live stats (grid-battery multiple × · 885 GWh · low-carbon %) restyled as the film's big-number figures with count-up — the same component grammar as the story's data beats. Then the existing decision paths, unchanged in content.</div></div>
+  </div>
+</div>
+<div class="scene">
+  <div class="scene-head"><div class="scene-no">T3</div><div class="scene-title">The invitation</div><div class="scene-era">ink band</div></div>
+  <div class="scene-body">
+    <div class="srow"><div class="k">Content</div><div class="v">A single dark band inviting the full film: <em>The Long Sunrise — half a million years of energy, and the century that changes it. ~12 minutes.</em> This is the one new section; newsletter and method sections continue below as today.</div></div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════ 05 UNIFICATION ══════════════ -->
+<section>
+<div class="secnum">05 · One design language</div>
+<h2>The unification pass (surgical, not a redesign)</h2>
+<table>
+  <tr><th>System</th><th>Change</th><th>Touches</th></tr>
+  <tr><td>Chart theme</td><td>One Recharts theme module: ink/paper/emerald/gold palette, hairline grid, italic serif axis labels, tabular figures — retiring the legacy <code>ev.*</code> blues/cyans where they linger.</td><td>state-of-battery-power charts, scoreboards, EV detail/compare, calculators</td></tr>
+  <tr><td>Page headers</td><td>A "title-card lite" header for major daylight pages: era-style eyebrow, serif title, hairline rule draw — the film's typography without the choreography weight.</td><td>scoreboards, calculators, /ev, /bess/*</td></tr>
+  <tr><td>Number grammar</td><td>The big-number figure + count-up-in-view becomes the one shared stat component (scoreboard already half-does this; converge, don't fork).</td><td>homepage stats, scoreboards, story data beats</td></tr>
+  <tr><td>Reveals</td><td>The existing CSS <code>view()</code>-timeline reveals stay as the sitewide entrance grammar — they're already cheap and good. Kill nothing here; align timing curves with the film's.</td><td>globals.css only</td></tr>
+  <tr><td>Grain</td><td>The film grain (very low opacity) extends to narrative surfaces only (/, /sunrise, /state-of-battery-power). Tool pages stay clean — grain over data tables is noise.</td><td>homepage hero, state-of-battery-power</td></tr>
+</table>
+<p><strong>Explicitly out of scope:</strong> calculator math, tariff data, the Prisma schema, embeds, admin, API routes. The rigor is the product; this pass changes its wardrobe, never its body.</p>
+</section>
+
+<!-- ══════════════ 06 ASSETS ══════════════ -->
+<section>
+<div class="secnum">06 · The asset plan</div>
+<h2>Reshoot for the full frame</h2>
+<p>The 9 existing clips were art-directed for framed boxes. Full-bleed changes the brief in four ways, and the Grok prompt doc (<code>docs/sunrise-asset-prompts.html</code>) gets rewritten around them before you generate:</p>
+<ol>
+  <li><strong>Composition:</strong> subject weighted to the right two-thirds; left third and bottom quarter kept calm/dark for the reading column and floor scrim. This is the biggest change — none of the current prompts asked for it.</li>
+  <li><strong>Loop:</strong> explicit seamless-loop instruction (end frame ≈ start frame; no entering/exiting objects), locked camera or ≤5% drift. Full-screen makes loop seams 10× more visible than a box did.</li>
+  <li><strong>Scale:</strong> generate at the highest resolution offered, 16:9 only; we encode at 1080p. Center/right-weighted subjects so the mobile 9:16 center-crop survives.</li>
+  <li><strong>Grade:</strong> same per-act hexes (now printed per scene above) — but graded to sit against the canvas sky at that story position, since the two now share the frame edge during cuts.</li>
+</ol>
+<p>Expected outcome: <strong>first-light, megablock, gigafactory, orbit</strong> almost certainly need retakes (subject-centered today); <strong>fire, combustion, false-dawn, swarm, morning</strong> get audited against the three gates first — the winners you picked may already hold the full frame. Real-hardware anchors (Starlink V3, Powerwall 3, Megapack, "resembling"/no-logos) all carry over.</p>
+</section>
+
+<!-- ══════════════ 07 PHASES ══════════════ -->
+<section>
+<div class="secnum">07 · Phases, gates, and "done means"</div>
+<h2>Build order</h2>
+
+<div class="phase">
+  <div class="ph-k">Phase A — the film</div>
+  <h3>/sunrise rebuilt on SceneStage</h3>
+  <p>SceneStage primitive · scene ranges + 8 authored cuts · scrim system · data-beat dimming · title cards recomposited over footage · FilmCel removed · prompt doc rewritten → <strong>you generate/audit assets</strong> → install → full-frame audit (the 62-frame treatment, desktop + 375px + reduced-motion).</p>
+  <p style="font-size:13px"><strong>Done means:</strong> scrolling /sunrise with assets plays as nine full-bleed scenes with authored cuts; zero framed media anywhere; text ≥4.5:1 on worst-case frames; zero-asset build still ships complete on canvas; lint + build green.</p>
+</div>
+<div class="phase">
+  <div class="ph-k">Phase B — the trailer</div>
+  <h3>Homepage overture</h3>
+  <p>Hero stage (reusing a Phase-A clip — no new assets), proof-beat restyle on the live stats, the invitation band. Verified figures and all CTAs/routes unchanged.</p>
+  <p style="font-size:13px"><strong>Done means:</strong> home opens full-bleed and routes exactly as before; Lighthouse/CWV no worse than current (one lazy video, poster-first).</p>
+</div>
+<div class="phase">
+  <div class="ph-k">Phase C — the morning</div>
+  <h3>Design-language unification</h3>
+  <p>Chart theme module → migrate page by page · title-card-lite headers · shared stat component · grain on narrative surfaces · story↔tool handoff links. Each page migration is its own verifiable increment.</p>
+  <p style="font-size:13px"><strong>Done means:</strong> a screenshot of any chart or header, shown cold, is attributable to battery.mom; no legacy blue/cyan chart palettes remain; calculator reference cases verified unchanged.</p>
+</div>
+
+<p style="margin-top:28px"><strong>Standing constraints (all phases):</strong> every figure byte-identical to the verified set · no invented claims · mobile-first 375px · prefers-reduced-motion fully designed (poster stills, not absence) · no new runtime deps · <code>npm run lint &amp;&amp; npm run build</code> before any "done" · zero-bill reference case re-verified after any file it imports is touched.</p>
+</section>
+
+<div class="footer">
+  Battery.mom · One Cinematic Work — storyboard &amp; site architecture · v1 · 2026-07-11 · supersedes the framed-cel treatment of sunrise v3 · companion: docs/sunrise-asset-prompts.html (to be rewritten in Phase A) · docs/cinematic-vision-brief.html (data inventory remains authoritative)
+</div>
+
+</div>
+</body>
+</html>
