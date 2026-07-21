@@ -9,6 +9,7 @@ import {
   GLOBAL_RENEWABLE_GENERATION,
 } from '@/data/energy-deployment-scoreboard'
 import { BatteryBoomChart, BatteryRegionChart, GenerationMixChart } from './_components/charts'
+import SunriseThread from '@/components/SunriseThread'
 
 // --- Derived figures (computed from the dataset so they never drift) ---
 const solar2015 = GLOBAL_RENEWABLE_GENERATION[0].solarPv
@@ -348,6 +349,7 @@ export default function StateOfBatteryPowerPage() {
               </li>
             ))}
           </ul>
+          <SunriseThread className="mt-8" />
         </Container>
       </Section>
 

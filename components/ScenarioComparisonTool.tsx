@@ -13,6 +13,7 @@ import {
   Legend,
 } from 'recharts'
 import ResponsiveContainer from '@/components/ResponsiveContainer'
+import { CHART, CHART_TOOLTIP_STYLE } from '@/lib/chart-theme'
 
 /* ── Constants ────────────────────────────────────────────────────── */
 
@@ -261,13 +262,13 @@ export default function ScenarioComparisonTool({ country }: Props) {
               'Upfront cost': s.totalCost,
               [`${years}yr savings`]: s.annualSavings * years,
             }))}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
-              <XAxis dataKey="name" tick={{ fontSize: 10 }} />
-              <YAxis tick={{ fontSize: 10 }} tickFormatter={(v) => fmtShort(v, country)} />
-              <Tooltip formatter={(v: number) => fmtShort(v, country)} />
+              <CartesianGrid strokeDasharray="3 3" stroke={CHART.grid} />
+              <XAxis dataKey="name" tick={{ fill: CHART.axis, fontSize: CHART.axisFontSize }} />
+              <YAxis tick={{ fill: CHART.axis, fontSize: CHART.axisFontSize }} tickFormatter={(v) => fmtShort(v, country)} />
+              <Tooltip contentStyle={CHART_TOOLTIP_STYLE} formatter={(v: number) => fmtShort(v, country)} />
               <Legend wrapperStyle={{ fontSize: 11 }} />
-              <Bar dataKey="Upfront cost" fill="#94a3b8" radius={[3, 3, 0, 0]} />
-              <Bar dataKey={`${years}yr savings`} fill="#10b981" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="Upfront cost" fill={CHART.negative} radius={[3, 3, 0, 0]} />
+              <Bar dataKey={`${years}yr savings`} fill={CHART.primary} radius={[3, 3, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -279,13 +280,13 @@ export default function ScenarioComparisonTool({ country }: Props) {
               'CO₂ avoided (t)': Math.round(s.totalCO2 * 10) / 10,
               'Self-sufficiency %': s.selfSufficiency,
             }))}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
-              <XAxis dataKey="name" tick={{ fontSize: 10 }} />
-              <YAxis tick={{ fontSize: 10 }} />
-              <Tooltip />
+              <CartesianGrid strokeDasharray="3 3" stroke={CHART.grid} />
+              <XAxis dataKey="name" tick={{ fill: CHART.axis, fontSize: CHART.axisFontSize }} />
+              <YAxis tick={{ fill: CHART.axis, fontSize: CHART.axisFontSize }} />
+              <Tooltip contentStyle={CHART_TOOLTIP_STYLE} />
               <Legend wrapperStyle={{ fontSize: 11 }} />
-              <Bar dataKey="CO₂ avoided (t)" fill="#8b5cf6" radius={[3, 3, 0, 0]} />
-              <Bar dataKey="Self-sufficiency %" fill="#3b82f6" radius={[3, 3, 0, 0]} />
+              <Bar dataKey="CO₂ avoided (t)" fill={CHART.primary} radius={[3, 3, 0, 0]} />
+              <Bar dataKey="Self-sufficiency %" fill={CHART.highlight} radius={[3, 3, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>

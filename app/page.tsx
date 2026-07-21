@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import NewsletterSignup from '@/components/NewsletterSignup'
 import FeaturedStory from '@/components/home/FeaturedStory'
+import HeroFilmLoop from '@/components/home/HeroFilmLoop'
 import { Eyebrow } from '@/components/ui'
 
 export const metadata: Metadata = {
@@ -101,6 +102,7 @@ export default function Home() {
           sizes="100vw"
           className="home-hero-poster object-cover object-center"
         />
+        <HeroFilmLoop />
         <div className="home-hero-scrim absolute inset-0" />
         <div className="home-grain absolute inset-0" />
 
@@ -118,6 +120,9 @@ export default function Home() {
             </p>
             <p className="mt-5 max-w-xl text-base leading-7 text-paper-300 md:text-lg">
               A living view of storage GWh, solar buildout, EV adoption, BESS sectors, and the power mix behind them.
+            </p>
+            <p className="mt-6 font-display text-lg italic text-gold-light/90">
+              The swarm starts on a rooftop. Start with yours.
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -175,6 +180,35 @@ export default function Home() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── The invitation: the feature film (storyboard §04, T3) ── */}
+      <section className="relative overflow-hidden bg-ink py-20 text-paper md:py-28">
+        <div className="home-grain absolute inset-0" />
+        <div
+          aria-hidden
+          className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/60 to-transparent"
+        />
+        <div className="container relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-4">
+            <span aria-hidden className="h-px w-12 bg-gold/50" />
+            <span className="font-display text-sm italic text-paper-300/80">The feature · a scrolling film · ~12 minutes</span>
+          </div>
+          <h2 className="mt-5 max-w-3xl font-display text-4xl font-medium leading-[1.05] tracking-tight sm:text-6xl">
+            The Long Sunrise
+          </h2>
+          <p className="mt-5 max-w-xl text-base leading-7 text-paper-300 md:text-lg">
+            Half a million years of energy — and the century that changes it. From the first tended fire to
+            terawatt solar, grid batteries, orbital compute, and the work still between us and morning.
+          </p>
+          <Link
+            href="/sunrise"
+            className="group mt-8 inline-flex items-center gap-3 font-display text-lg italic text-gold-light transition hover:text-paper"
+          >
+            Begin in the dark
+            <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
+          </Link>
         </div>
       </section>
 

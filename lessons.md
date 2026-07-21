@@ -90,3 +90,32 @@ Use this file for durable lessons that should shape future agent work in this re
 - **Flexbox crushes overflow-hidden masks silently.** `overflow-hidden` on a flex item zeroes its automatic min-size, so a long sibling (the act title) shrinks the numeral mask below its glyph width — "III" rendered as "II" and "IV" as a broken "Γ" with zero errors anywhere. Any masked element in a flex row needs `shrink-0`. Caught only by crop-zooming full-page screenshots; DOM width probes were misleading (the block inner always equals the mask width — measure glyph advance, not boxes).
 - **Run-in labels + rewritten copy drift into duplication.** SeaInset renders "Closer to home — " before the copy; the v3 rewrite started the Act III line with "Closer to home," producing a doubled phrase. When a component supplies a run-in prefix, the copy field must be written headless (lowercase continuation) — note it next to the field.
 - **FilmCel layout-shift tradeoff (accepted, documented):** cels render nothing until loadeddata, so a slow-loading cel above the reader inserts ~50vh of height. Mitigated by 100%-rootMargin preload, small files (0.2–2.5 MB), and browser scroll anchoring; revisit with reserved aspect-ratio placeholders only if it bites on real connections.
+
+## 2026-07-11 — One Cinematic Work: v4 SceneStage + site unification (Phases A–C)
+- **"Cinematic" means the media is the stage, not an exhibit.** v3's framed FilmCels failed
+  the brief; the fix was architectural, not cosmetic: one fixed full-viewport SceneStage
+  behind the words, scenes keyed to act anchors, crossfade cuts driven by a scroll
+  playhead (`scrollY + 0.45vh`), and a left-anchored reading column over a directional
+  scrim. When a redesign request says "not cinematic enough," check whether the media is
+  IN the composition or ON it before polishing anything.
+- **Storyboard-before-code gate earns its cost.** Two rounds were built beautifully wrong;
+  the reviewable storyboard (per-scene shot/words/cut) caught the framing problem for the
+  price of one HTML doc. For taste-critical work, gate implementation on an artifact the
+  user can veto.
+- **Drive scroll-keyed video state with direct DOM writes.** SceneStage sets opacity and
+  play/pause on refs inside one rAF scroll handler; React re-renders only on mount/caption
+  changes. Nine full-screen videos scrub smoothly. setState-per-scroll-frame here would
+  re-render the whole page.
+- **Cached media races React event handlers.** A video that finishes loading before
+  `onLoadedData` attaches never fires it — the homepage hero stayed at opacity 0 with
+  `readyState 4`. After mount, check `el.readyState >= 2` directly and set the ready state
+  yourself. Applies to images (`el.complete`) too.
+- **The in-app Browser pane compositor can't be trusted for full-page visual audits** (it
+  rendered only a thin strip of the viewport this session). The repo-local Playwright
+  probe (script inside the repo, screenshots to scratchpad) is the standard; delete the
+  probe after.
+- **Chart-palette migrations parallelize cleanly with a theme contract.** Writing
+  lib/chart-theme.ts first (role names: primary/comparison/highlight/negative + explicit
+  mapping rules like "peers get emerald-vs-gold, counterfactuals get emerald-vs-gray")
+  let three agents recolor 7 files without a single conflicting judgment. Also: grep the
+  prose after recoloring — one InfoTooltip still said "(red)…(blue)".

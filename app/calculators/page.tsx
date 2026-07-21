@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import PageTitleCard from '@/components/PageTitleCard'
+import SunriseThread from '@/components/SunriseThread'
 
 export const metadata: Metadata = {
   title: 'Calculators — battery.mom',
@@ -56,12 +58,12 @@ export default function CalculatorsPage() {
       <section className="container mx-auto px-4 pt-12 pb-16 max-w-7xl">
         {/* Header */}
         <div className="max-w-2xl mb-12">
-          <h1 className="font-display text-4xl md:text-5xl font-medium text-ink tracking-tight">
-            Calculators
-          </h1>
-          <p className="mt-4 text-lg text-ink-600 leading-relaxed">
-            Free, no-login tools to help you make faster decisions on EVs, solar, and battery storage — using real data from your country.
-          </p>
+          <PageTitleCard
+            eyebrow="Calculators · your number"
+            title="Calculators"
+            sub="Free, no-login tools to help you make faster decisions on EVs, solar, and battery storage — using real data from your country."
+          />
+          <SunriseThread className="mt-5" />
         </div>
 
         {/* All Calculators */}

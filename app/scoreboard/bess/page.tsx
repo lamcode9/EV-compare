@@ -5,6 +5,8 @@ import {
 } from '@/data/energy-deployment-scoreboard'
 import { NextSteps } from '@/components/ui/NextSteps'
 import { BigPictureNav } from '@/components/ui/BigPictureNav'
+import PageTitleCard from '@/components/PageTitleCard'
+import SunriseThread from '@/components/SunriseThread'
 
 export const metadata: Metadata = {
   title: 'Storage Adoption Map — battery.mom',
@@ -96,16 +98,17 @@ export default function BessAdoptionScoreboardPage() {
 
         <div className="grid gap-8 lg:grid-cols-[1fr_360px] lg:items-end">
           <div className="max-w-3xl">
-            <div className="mb-4 inline-flex rounded-full bg-paper-200 px-3 py-1 text-xs font-semibold text-ink-600">
+            <PageTitleCard eyebrow="Storage adoption · sector map" title="Storage Adoption Map" />
+            <div className="mt-4 inline-flex rounded-full bg-paper-200 px-3 py-1 text-xs font-semibold text-ink-600">
               Sector maturity, mapped honestly
             </div>
-            <h1 className="font-display text-4xl font-medium text-ink md:text-6xl">Storage Adoption Map</h1>
             <p className="mt-4 text-lg leading-relaxed text-ink-600">
               Stationary storage is scaling at wildly different speeds across homes, shared residential
               buildings, commercial sites, utility-scale projects, and EV charging hubs. This is a map of
               where each sector stands today — <span className="font-semibold text-ink">not a country ranking</span>.
               Where the public data is still too thin to rank fairly, we say so rather than fake a number.
             </p>
+            <SunriseThread className="mt-5" />
           </div>
           <div className="rounded-card border border-ink/10 bg-ink p-5 text-white shadow-sm">
             <div className="text-xs font-semibold uppercase text-brand-300">Global anchor</div>

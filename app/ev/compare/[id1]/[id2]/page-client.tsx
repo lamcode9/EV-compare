@@ -19,6 +19,7 @@ import {
   Cell,
 } from 'recharts'
 import ResponsiveContainer from '@/components/ResponsiveContainer'
+import { CHART, CHART_TOOLTIP_STYLE } from '@/lib/chart-theme'
 
 interface VehicleComparisonClientProps {
   vehicle1: Vehicle
@@ -27,10 +28,10 @@ interface VehicleComparisonClientProps {
 
 // Battery technology colors
 const TECH_COLORS: Record<string, string> = {
-  LFP: '#10b981', // emerald
-  NMC: '#3b82f6', // blue
-  SolidState: '#8b5cf6', // purple
-  Other: '#6b7280', // gray
+  LFP: CHART.primary, // emerald
+  NMC: CHART.highlight, // gold
+  SolidState: CHART.comparison, // ink-green
+  Other: CHART.comparisonLight, // gray-green
 }
 
 export default function VehicleComparisonClient({ vehicle1, vehicle2 }: VehicleComparisonClientProps) {
@@ -257,12 +258,12 @@ export default function VehicleComparisonClient({ vehicle1, vehicle2 }: VehicleC
             <h3 className="text-sm font-semibold text-ink mb-4">Range Comparison</h3>
             <ResponsiveContainer width="100%" height={200}>
               <BarChart data={rangeComparison}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
-                <XAxis dataKey="metric" tick={{ fontSize: 10 }} />
-                <YAxis tick={{ fontSize: 10 }} unit=" km" />
-                <Tooltip formatter={(value: number) => [`${value} km`, '']} />
-                <Bar dataKey={vehicle1.name} fill="#10b981" radius={[3, 3, 0, 0]} />
-                <Bar dataKey={vehicle2.name} fill="#3b82f6" radius={[3, 3, 0, 0]} />
+                <CartesianGrid strokeDasharray="3 3" stroke={CHART.grid} />
+                <XAxis dataKey="metric" tick={{ fontSize: CHART.axisFontSize, fill: CHART.axis }} />
+                <YAxis tick={{ fontSize: CHART.axisFontSize, fill: CHART.axis }} unit=" km" />
+                <Tooltip contentStyle={CHART_TOOLTIP_STYLE} formatter={(value: number) => [`${value} km`, '']} />
+                <Bar dataKey={vehicle1.name} fill={CHART.primary} radius={[3, 3, 0, 0]} />
+                <Bar dataKey={vehicle2.name} fill={CHART.highlight} radius={[3, 3, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -272,12 +273,12 @@ export default function VehicleComparisonClient({ vehicle1, vehicle2 }: VehicleC
             <h3 className="text-sm font-semibold text-ink mb-4">Efficiency Comparison <InfoTooltip content="Energy consumed per 100 km (kWh/100km). Lower is better — it means the car travels further on the same energy. Typical range: 13-22 kWh/100km depending on vehicle size, weight, and aerodynamics." /></h3>
             <ResponsiveContainer width="100%" height={200}>
               <BarChart data={efficiencyComparison}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
-                <XAxis dataKey="metric" tick={{ fontSize: 10 }} />
-                <YAxis tick={{ fontSize: 10 }} unit=" kWh/100km" />
-                <Tooltip formatter={(value: number) => [`${value} kWh/100km`, '']} />
-                <Bar dataKey={vehicle1.name} fill="#10b981" radius={[3, 3, 0, 0]} />
-                <Bar dataKey={vehicle2.name} fill="#3b82f6" radius={[3, 3, 0, 0]} />
+                <CartesianGrid strokeDasharray="3 3" stroke={CHART.grid} />
+                <XAxis dataKey="metric" tick={{ fontSize: CHART.axisFontSize, fill: CHART.axis }} />
+                <YAxis tick={{ fontSize: CHART.axisFontSize, fill: CHART.axis }} unit=" kWh/100km" />
+                <Tooltip contentStyle={CHART_TOOLTIP_STYLE} formatter={(value: number) => [`${value} kWh/100km`, '']} />
+                <Bar dataKey={vehicle1.name} fill={CHART.primary} radius={[3, 3, 0, 0]} />
+                <Bar dataKey={vehicle2.name} fill={CHART.highlight} radius={[3, 3, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -287,12 +288,12 @@ export default function VehicleComparisonClient({ vehicle1, vehicle2 }: VehicleC
             <h3 className="text-sm font-semibold text-ink mb-4">Price Comparison</h3>
             <ResponsiveContainer width="100%" height={200}>
               <BarChart data={priceComparison}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
-                <XAxis dataKey="metric" tick={{ fontSize: 10 }} />
-                <YAxis tick={{ fontSize: 10 }} tickFormatter={(value) => formatCurrency(value, vehicle1.country)} />
-                <Tooltip formatter={(value: number) => [formatCurrency(value, vehicle1.country), '']} />
-                <Bar dataKey={vehicle1.name} fill="#10b981" radius={[3, 3, 0, 0]} />
-                <Bar dataKey={vehicle2.name} fill="#3b82f6" radius={[3, 3, 0, 0]} />
+                <CartesianGrid strokeDasharray="3 3" stroke={CHART.grid} />
+                <XAxis dataKey="metric" tick={{ fontSize: CHART.axisFontSize, fill: CHART.axis }} />
+                <YAxis tick={{ fontSize: CHART.axisFontSize, fill: CHART.axis }} tickFormatter={(value) => formatCurrency(value, vehicle1.country)} />
+                <Tooltip contentStyle={CHART_TOOLTIP_STYLE} formatter={(value: number) => [formatCurrency(value, vehicle1.country), '']} />
+                <Bar dataKey={vehicle1.name} fill={CHART.primary} radius={[3, 3, 0, 0]} />
+                <Bar dataKey={vehicle2.name} fill={CHART.highlight} radius={[3, 3, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -305,11 +306,11 @@ export default function VehicleComparisonClient({ vehicle1, vehicle2 }: VehicleC
           <ResponsiveContainer width="100%" height={300}>
             <RadarChart data={radarData}>
               <PolarGrid />
-              <PolarAngleAxis dataKey="metric" tick={{ fontSize: 11 }} />
-              <PolarRadiusAxis angle={90} domain={[0, 100]} tick={{ fontSize: 10 }} />
-              <Radar name={vehicle1.name} dataKey={vehicle1.name} stroke="#10b981" fill="#10b981" fillOpacity={0.1} strokeWidth={2} />
-              <Radar name={vehicle2.name} dataKey={vehicle2.name} stroke="#3b82f6" fill="#3b82f6" fillOpacity={0.1} strokeWidth={2} />
-              <Tooltip />
+              <PolarAngleAxis dataKey="metric" tick={{ fontSize: CHART.axisFontSize, fill: CHART.axis }} />
+              <PolarRadiusAxis angle={90} domain={[0, 100]} tick={{ fontSize: CHART.axisFontSize, fill: CHART.axis }} />
+              <Radar name={vehicle1.name} dataKey={vehicle1.name} stroke={CHART.primary} fill={CHART.primary} fillOpacity={0.1} strokeWidth={2} />
+              <Radar name={vehicle2.name} dataKey={vehicle2.name} stroke={CHART.highlight} fill={CHART.highlight} fillOpacity={0.1} strokeWidth={2} />
+              <Tooltip contentStyle={CHART_TOOLTIP_STYLE} />
             </RadarChart>
           </ResponsiveContainer>
         </div>

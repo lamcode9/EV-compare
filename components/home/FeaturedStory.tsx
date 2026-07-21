@@ -1,4 +1,5 @@
-import { Button, Container, Eyebrow, Section, Stat } from '@/components/ui'
+import { Button, Container, Eyebrow, Section } from '@/components/ui'
+import BigFigure from '@/components/home/BigFigure'
 import {
   ENERGY_DEPLOYMENT_SNAPSHOT,
   GLOBAL_BATTERY_POWER_ADDITIONS,
@@ -31,10 +32,11 @@ export default function FeaturedStory() {
               </Button>
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-5 border-t border-ink/10 pt-8 sm:gap-6 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
-            <Stat accent value={`${batteryMultiple}×`} label="Grid battery growth, 2020–2025" />
-            <Stat accent value="885" label="GWh of storage online, 2025" />
-            <Stat accent value={`${snap.lowCarbonSharePct}%`} label="Electricity now low-carbon" />
+          {/* The proof beat: the film's big-number grammar, in daylight (storyboard §04 T2). */}
+          <div className="grid grid-cols-1 gap-6 border-t border-ink/10 pt-8 sm:grid-cols-3 sm:gap-6 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
+            <BigFigure value={`${batteryMultiple}×`} label="Grid battery growth, 2020–2025" />
+            <BigFigure value="885" label="GWh of storage online, 2025" />
+            <BigFigure value={`${snap.lowCarbonSharePct}%`} label="Electricity now low-carbon" />
           </div>
         </div>
       </Container>

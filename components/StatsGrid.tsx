@@ -14,6 +14,7 @@ import {
   formatPrice,
 } from '@/lib/utils'
 import { CURRENCY_BY_COUNTRY } from '@/lib/constants'
+import { CHART_SERIES } from '@/lib/chart-theme'
 
 interface StatsGridProps {
   vehicle: Vehicle
@@ -22,10 +23,10 @@ interface StatsGridProps {
 }
 
 const batteryTechColors: Record<string, string> = {
-  NMC: '#10b981',
-  LFP: '#3b82f6',
-  SolidState: '#8b5cf6',
-  Other: '#6b7280',
+  NMC: CHART_SERIES[0],
+  LFP: CHART_SERIES[1],
+  SolidState: CHART_SERIES[2],
+  Other: CHART_SERIES[3],
 }
 
 const formatLocalPrice = (price: number, country: Country, digits: number = 0) =>

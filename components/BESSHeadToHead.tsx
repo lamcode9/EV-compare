@@ -14,6 +14,7 @@ import {
   Cell,
 } from 'recharts'
 import ResponsiveContainer from '@/components/ResponsiveContainer'
+import { CHART, CHART_TOOLTIP_STYLE } from '@/lib/chart-theme'
 
 /* ── Product data ─────────────────────────────────────────────────── */
 
@@ -227,13 +228,13 @@ export default function BESSHeadToHead({ country }: Props) {
       <h3 className="text-sm font-semibold text-ink mb-2">Key metrics comparison</h3>
       <ResponsiveContainer width="100%" height={220}>
         <BarChart data={barData} layout="vertical">
-          <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
-          <XAxis type="number" tick={{ fontSize: 10 }} />
-          <YAxis type="category" dataKey="metric" tick={{ fontSize: 11 }} width={80} />
-          <Tooltip />
+          <CartesianGrid strokeDasharray="3 3" stroke={CHART.grid} />
+          <XAxis type="number" tick={{ fill: CHART.axis, fontSize: CHART.axisFontSize }} />
+          <YAxis type="category" dataKey="metric" tick={{ fill: CHART.axis, fontSize: CHART.axisFontSize }} width={80} />
+          <Tooltip contentStyle={CHART_TOOLTIP_STYLE} />
           <Legend wrapperStyle={{ fontSize: 11 }} />
-          <Bar dataKey={leftShort} fill="#3b82f6" radius={[0, 3, 3, 0]} />
-          <Bar dataKey={rightShort} fill="#8b5cf6" radius={[0, 3, 3, 0]} />
+          <Bar dataKey={leftShort} fill={CHART.highlight} radius={[0, 3, 3, 0]} />
+          <Bar dataKey={rightShort} fill={CHART.primary} radius={[0, 3, 3, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>

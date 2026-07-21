@@ -1,3 +1,48 @@
+# One Cinematic Work — v4 (full-bleed scene stages · site-wide cohesion)
+
+User verdict on v3: "really not great." Two root causes: (1) framed film cels are
+the opposite of cinema — the video must BE the stage, full-bleed behind the words;
+(2) /sunrise was built as an island — the real goal is the whole site as one
+cinematic argument (story spine, data proof, calculator practicality, one design
+language). Reconstructed prompt approved; storyboard gate before any code.
+
+## Phase 0 — storyboard gate
+- [x] docs/one-cinematic-work-storyboard.html — film grammar (SceneStage, five
+      laws, kill/keep table), 9 scenes × 8 authored cuts w/ grade hexes + text
+      safe areas, site architecture ("the morning the story promises"), homepage
+      overture (3 beats), unification pass table, asset reshoot plan, phases A/B/C
+      with done-means. AWAITING KM REVIEW — no implementation until approved.
+
+## Phase A — the film (/sunrise on SceneStage) — approved, built
+- [x] SceneStage primitive: fixed full-viewport stage, anchor-measured scene
+      ranges, scroll-playhead crossfade cuts (window −0.6vh→+0.3vh around
+      anchors, so the cut plays under the title-card choreography), data-beat
+      dimming via [data-stage-dim] (partial strengths supported), directional
+      dark/light scrims + SVG grain emulsion, in-frame subtitles (desktop
+      only — mobile collided with the column), missing-asset → canvas
+      fallback, reduced-motion → full-bleed posters. Direct DOM writes from
+      one rAF handler — scrolling never re-renders React.
+- [x] FilmCel + caption strips + filmcel-in keyframes removed; 9 scenes wired
+      (fire→combustion→false-dawn→first-light→megablock→gigafactory→orbit→
+      swarm→morning) with new anchors: storage, orbit, morning, morning-end.
+      Swarm hands the sky back early (outBias) so "Then, morning." plays on
+      the canvas dawn. Morning scene tone=light; film develops to paper at
+      morning-end before GatesBoard.
+- [x] Reading column moved left (COL_FRAME max-w-6xl + max-w-xl/2xl measure)
+      across narrative primitives; wide figures stay centered in reading light.
+- [x] docs/sunrise-asset-prompts.html rewritten v4 full-bleed (4 rules, 3
+      audit gates, audit-vs-regenerate per slot, crf 20 pipeline); registered.
+- [x] Verify: tsc clean, lint 1 pre-existing warning, build green (/sunrise
+      static), Playwright 19 frames × desktop/mobile/reduced-motion — cuts,
+      dims, scrims, tone flip, paper develop all confirmed; fixed mobile
+      caption collision. Browser-pane compositor unreliable for full-page
+      shots → used repo-local Playwright probe (established pattern).
+- [ ] KM audits/regenerates clips per v4 gates → install → final full audit
+
+## Phase B — the trailer (homepage overture)
+## Phase C — the morning (chart theme, title-card-lite headers, shared stat
+   component, grain on narrative surfaces, story↔tool handoffs)
+
 # The Long Sunrise — v3 (compelling copy · film cels · cinematic entrances)
 
 User verdict on v2: good start, not there. (1) copy not compelling, (2) no

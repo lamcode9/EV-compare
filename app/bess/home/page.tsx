@@ -42,6 +42,7 @@ import {
   Cell,
 } from 'recharts'
 import ResponsiveContainer from '@/components/ResponsiveContainer'
+import { CHART } from '@/lib/chart-theme'
 
 // InfoBox removed — now using shared InfoTooltip component
 
@@ -119,17 +120,17 @@ const EnergyFlowChart = memo(function EnergyFlowChart({ energyFlow, country }: {
   }, [energyFlow.hourly, showGridExport])
 
   const COLORS = {
-    Solar: '#34d399', // brand-400 (lighter green)
-    'Battery Charge': '#0891b2', // cyan-600
-    'Battery Usage': '#059669', // brand-600
-    'Battery Level': '#06b6d4', // cyan-500
-    Grid: '#ef4444', // red-500
-    'Grid Export': '#f59e0b', // amber-500
-    'Household Load': '#6b7280', // gray-500
-    'EV Charging': '#8b5cf6', // violet-500
-    'EV from Solar': '#a78bfa', // violet-400
-    'EV from Battery': '#7c3aed', // violet-600
-    'EV from Grid': '#dc2626', // red-600
+    Solar: CHART.highlight, // solar generation — gold
+    'Battery Charge': CHART.primaryLight,
+    'Battery Usage': CHART.primary, // battery flow — emerald
+    'Battery Level': CHART.primaryLight,
+    Grid: CHART.negative, // grid import (cost)
+    'Grid Export': CHART.highlightLight, // exported solar
+    'Household Load': CHART.comparison, // baseline load
+    'EV Charging': CHART.comparisonLight,
+    'EV from Solar': CHART.highlightLight,
+    'EV from Battery': CHART.primaryLight,
+    'EV from Grid': CHART.negative,
   }
 
   return (
@@ -139,10 +140,10 @@ const EnergyFlowChart = memo(function EnergyFlowChart({ energyFlow, country }: {
           data={chartData}
           margin={isMobile ? { top: 20, right: 20, left: 30, bottom: 40 } : { top: 40, right: 50, left: 50, bottom: 20 }}
         >
-          <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-          <XAxis 
-            dataKey="time" 
-            stroke="#6b7280"
+          <CartesianGrid strokeDasharray="3 3" stroke={CHART.grid} />
+          <XAxis
+            dataKey="time"
+            stroke={CHART.axis}
             fontSize={isMobile ? 9 : 11}
             height={isMobile ? 50 : 40}
             interval={isMobile ? 2 : 1} // Show every 2 hours on mobile, every hour on desktop
@@ -151,16 +152,16 @@ const EnergyFlowChart = memo(function EnergyFlowChart({ energyFlow, country }: {
           />
           <YAxis
             yAxisId="energy"
-            stroke="#6b7280"
+            stroke={CHART.axis}
             fontSize={isMobile ? 10 : 12}
             width={isMobile ? 35 : 50}
             domain={[0, (dataMax: number) => Math.ceil(dataMax + 1)]}
             label={isMobile ? { value: 'Energy (kWh)', angle: -90, position: 'insideLeft', style: { textAnchor: 'middle', fontSize: '9px' } } : { value: 'Energy (kWh)', angle: -90, position: 'insideLeft', style: { textAnchor: 'middle' } }}
           />
-          <YAxis 
+          <YAxis
             yAxisId="battery"
             orientation="right"
-            stroke="#06b6d4"
+            stroke={CHART.primaryLight}
             fontSize={isMobile ? 10 : 12}
             width={isMobile ? 35 : 50}
             domain={[0, 'auto']} // Ensure battery level Y-axis always starts at 0, never goes negative

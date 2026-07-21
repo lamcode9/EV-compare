@@ -22,6 +22,7 @@ import {
   Pie,
 } from 'recharts'
 import ResponsiveContainer from '@/components/ResponsiveContainer'
+import { CHART, CHART_TOOLTIP_STYLE } from '@/lib/chart-theme'
 
 interface VehicleDetailClientProps {
   vehicle: Vehicle
@@ -29,10 +30,10 @@ interface VehicleDetailClientProps {
 
 // Battery technology colors
 const TECH_COLORS: Record<string, string> = {
-  LFP: '#10b981', // emerald
-  NMC: '#3b82f6', // blue
-  SolidState: '#8b5cf6', // purple
-  Other: '#6b7280', // gray
+  LFP: CHART.primary, // emerald
+  NMC: CHART.highlight, // gold
+  SolidState: CHART.comparison, // ink-green
+  Other: CHART.comparisonLight, // gray-green
 }
 
 export default function VehicleDetailClient({ vehicle }: VehicleDetailClientProps) {
@@ -73,11 +74,11 @@ export default function VehicleDetailClient({ vehicle }: VehicleDetailClientProp
 
   // Energy consumption breakdown (estimated)
   const energyBreakdown = [
-    { name: 'Motor/Drive', value: Math.round((vehicle.efficiencyKwhPer100km || 0) * 0.6), color: '#3b82f6' },
-    { name: 'HVAC/Climate', value: Math.round((vehicle.efficiencyKwhPer100km || 0) * 0.15), color: '#10b981' },
-    { name: 'Electronics', value: Math.round((vehicle.efficiencyKwhPer100km || 0) * 0.1), color: '#f59e0b' },
-    { name: 'Charging Loss', value: Math.round((vehicle.efficiencyKwhPer100km || 0) * 0.08), color: '#ef4444' },
-    { name: 'Other', value: Math.round((vehicle.efficiencyKwhPer100km || 0) * 0.07), color: '#6b7280' },
+    { name: 'Motor/Drive', value: Math.round((vehicle.efficiencyKwhPer100km || 0) * 0.6), color: CHART.primary },
+    { name: 'HVAC/Climate', value: Math.round((vehicle.efficiencyKwhPer100km || 0) * 0.15), color: CHART.highlight },
+    { name: 'Electronics', value: Math.round((vehicle.efficiencyKwhPer100km || 0) * 0.1), color: CHART.comparison },
+    { name: 'Charging Loss', value: Math.round((vehicle.efficiencyKwhPer100km || 0) * 0.08), color: CHART.negative },
+    { name: 'Other', value: Math.round((vehicle.efficiencyKwhPer100km || 0) * 0.07), color: CHART.comparisonLight },
   ].filter(item => item.value > 0)
 
   // Battery degradation over 10 years (simplified)
@@ -255,11 +256,11 @@ export default function VehicleDetailClient({ vehicle }: VehicleDetailClientProp
             <p className="text-xs text-ink-500 mb-4">Estimated range at different average speeds</p>
             <ResponsiveContainer width="100%" height={250}>
               <BarChart data={rangeData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
-                <XAxis dataKey="speed" tick={{ fontSize: 10 }} />
-                <YAxis tick={{ fontSize: 10 }} unit=" km" />
-                <Tooltip />
-                <Bar dataKey="range" fill="#10b981" radius={[3, 3, 0, 0]} />
+                <CartesianGrid strokeDasharray="3 3" stroke={CHART.grid} />
+                <XAxis dataKey="speed" tick={{ fontSize: CHART.axisFontSize, fill: CHART.axis }} />
+                <YAxis tick={{ fontSize: CHART.axisFontSize, fill: CHART.axis }} unit=" km" />
+                <Tooltip contentStyle={CHART_TOOLTIP_STYLE} />
+                <Bar dataKey="range" fill={CHART.primary} radius={[3, 3, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -283,7 +284,7 @@ export default function VehicleDetailClient({ vehicle }: VehicleDetailClientProp
                     <Cell key={`cell-${index}`} fill={entry.color} />
                   ))}
                 </Pie>
-                <Tooltip formatter={(value) => [`${value} kWh/100km`, '']} />
+                <Tooltip contentStyle={CHART_TOOLTIP_STYLE} formatter={(value) => [`${value} kWh/100km`, '']} />
                 <Legend wrapperStyle={{ fontSize: 11 }} />
               </PieChart>
             </ResponsiveContainer>
@@ -296,14 +297,14 @@ export default function VehicleDetailClient({ vehicle }: VehicleDetailClientProp
           <p className="text-xs text-ink-500 mb-4">Estimated capacity and range retention (2.5% degradation/year)</p>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={degradationData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
-              <XAxis dataKey="year" tick={{ fontSize: 10 }} unit=" years" />
-              <YAxis yAxisId="left" tick={{ fontSize: 10 }} unit="%" domain={[60, 100]} />
-              <YAxis yAxisId="right" orientation="right" tick={{ fontSize: 10 }} unit=" km" />
-              <Tooltip />
+              <CartesianGrid strokeDasharray="3 3" stroke={CHART.grid} />
+              <XAxis dataKey="year" tick={{ fontSize: CHART.axisFontSize, fill: CHART.axis }} unit=" years" />
+              <YAxis yAxisId="left" tick={{ fontSize: CHART.axisFontSize, fill: CHART.axis }} unit="%" domain={[60, 100]} />
+              <YAxis yAxisId="right" orientation="right" tick={{ fontSize: CHART.axisFontSize, fill: CHART.axis }} unit=" km" />
+              <Tooltip contentStyle={CHART_TOOLTIP_STYLE} />
               <Legend wrapperStyle={{ fontSize: 11 }} />
-              <Line yAxisId="left" type="monotone" dataKey="capacity" stroke="#ef4444" strokeWidth={2} name="Battery capacity" />
-              <Line yAxisId="right" type="monotone" dataKey="range" stroke="#10b981" strokeWidth={2} name="Range" />
+              <Line yAxisId="left" type="monotone" dataKey="capacity" stroke={CHART.negative} strokeWidth={2} name="Battery capacity" />
+              <Line yAxisId="right" type="monotone" dataKey="range" stroke={CHART.primary} strokeWidth={2} name="Range" />
             </LineChart>
           </ResponsiveContainer>
         </div>
@@ -326,13 +327,14 @@ export default function VehicleDetailClient({ vehicle }: VehicleDetailClientProp
             <p className="text-xs text-ink-500 mb-4">Monthly price snapshots in local currency</p>
             <ResponsiveContainer width="100%" height={250}>
               <LineChart data={priceHistory}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
-                <XAxis dataKey="date" tick={{ fontSize: 10 }} />
-                <YAxis tick={{ fontSize: 10 }} />
+                <CartesianGrid strokeDasharray="3 3" stroke={CHART.grid} />
+                <XAxis dataKey="date" tick={{ fontSize: CHART.axisFontSize, fill: CHART.axis }} />
+                <YAxis tick={{ fontSize: CHART.axisFontSize, fill: CHART.axis }} />
                 <Tooltip
+                  contentStyle={CHART_TOOLTIP_STYLE}
                   formatter={(value: number) => [formatCurrency(value), 'Base Price']}
                 />
-                <Line type="monotone" dataKey="basePrice" stroke="#3b82f6" strokeWidth={2} dot={{ r: 3 }} name="Base Price" />
+                <Line type="monotone" dataKey="basePrice" stroke={CHART.primary} strokeWidth={2} dot={{ r: 3 }} name="Base Price" />
               </LineChart>
             </ResponsiveContainer>
           </div>

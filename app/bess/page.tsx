@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import PageTitleCard from '@/components/PageTitleCard'
+import SunriseThread from '@/components/SunriseThread'
 
 export const metadata: Metadata = {
   title: 'Battery Storage (BESS) — battery.mom',
@@ -63,12 +65,12 @@ export default function BESSPage() {
     <main className="min-h-screen bg-paper pt-12 md:pt-14">
       <section className="container mx-auto px-4 pt-12 pb-16 max-w-7xl">
         <div className="max-w-2xl mb-12">
-          <h1 className="font-display text-4xl md:text-5xl font-medium text-ink tracking-tight">
-            Battery Energy Storage
-          </h1>
-          <p className="mt-4 text-lg text-ink-600 leading-relaxed">
-            From a single rooftop to a national grid — explore the data and calculators for every scale of battery storage.
-          </p>
+          <PageTitleCard
+            eyebrow="Battery storage · from rooftop to grid"
+            title="Battery Energy Storage"
+            sub="From a single rooftop to a national grid — explore the data and calculators for every scale of battery storage."
+          />
+          <SunriseThread className="mt-5" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

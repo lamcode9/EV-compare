@@ -16,6 +16,7 @@ import {
   ReferenceLine,
 } from 'recharts'
 import ResponsiveContainer from '@/components/ResponsiveContainer'
+import { CHART, CHART_TOOLTIP_STYLE } from '@/lib/chart-theme'
 
 /* ── Country grid data ───────────────────────────────────────────── */
 
@@ -115,7 +116,6 @@ export default function GridStabilityAnalysis({ country }: Props) {
       localBlackoutReduction,
       hourlyData,
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [storageMwh, dischargeDurationHr, distributedPct, grid])
 
   return (
@@ -222,20 +222,20 @@ export default function GridStabilityAnalysis({ country }: Props) {
       {/* ── 24h grid profile chart ── */}
       <h3 className="text-sm font-semibold text-ink mb-2">
         24-hour grid profile with storage{' '}
-        <InfoTooltip content="Simulated daily grid profile: demand curve (red), renewable generation (green), and storage dispatch (blue, negative=charging). Shows how BESS flattens the demand curve and absorbs renewable oversupply." />
+        <InfoTooltip content="Simulated daily grid profile: demand curve (terracotta), renewable generation (gold), and storage dispatch (emerald, negative=charging). Shows how BESS flattens the demand curve and absorbs renewable oversupply." />
       </h3>
       <ResponsiveContainer width="100%" height={300}>
         <AreaChart data={results.hourlyData}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
-          <XAxis dataKey="hour" tick={{ fontSize: 9 }} interval={2} />
-          <YAxis tick={{ fontSize: 10 }} tickFormatter={(v) => `${v} GW`} />
-          <Tooltip formatter={(v: number, name: string) => [`${v.toFixed(2)} GW`, name]} />
+          <CartesianGrid strokeDasharray="3 3" stroke={CHART.grid} />
+          <XAxis dataKey="hour" tick={{ fill: CHART.axis, fontSize: CHART.axisFontSize }} interval={2} />
+          <YAxis tick={{ fill: CHART.axis, fontSize: CHART.axisFontSize }} tickFormatter={(v) => `${v} GW`} />
+          <Tooltip contentStyle={CHART_TOOLTIP_STYLE} formatter={(v: number, name: string) => [`${v.toFixed(2)} GW`, name]} />
           <Legend wrapperStyle={{ fontSize: 11 }} />
-          <ReferenceLine y={0} stroke="#d1d5db" />
-          <Area type="monotone" dataKey="demand" fill="#fee2e2" stroke="#ef4444" strokeWidth={2} name="Demand" fillOpacity={0.3} />
-          <Area type="monotone" dataKey="renewable" fill="#d1fae5" stroke="#10b981" strokeWidth={2} name="Renewable" fillOpacity={0.4} />
-          <Area type="monotone" dataKey="storage" fill="#dbeafe" stroke="#3b82f6" strokeWidth={2} name="Storage" fillOpacity={0.4} />
-          <Line type="monotone" dataKey="net" stroke="#6b7280" strokeWidth={1.5} strokeDasharray="4 4" name="Net demand" dot={false} />
+          <ReferenceLine y={0} stroke={CHART.grid} />
+          <Area type="monotone" dataKey="demand" fill={CHART.negative} stroke={CHART.negative} strokeWidth={2} name="Demand" fillOpacity={0.3} />
+          <Area type="monotone" dataKey="renewable" fill={CHART.highlight} stroke={CHART.highlight} strokeWidth={2} name="Renewable" fillOpacity={0.4} />
+          <Area type="monotone" dataKey="storage" fill={CHART.primary} stroke={CHART.primary} strokeWidth={2} name="Storage" fillOpacity={0.4} />
+          <Line type="monotone" dataKey="net" stroke={CHART.comparison} strokeWidth={1.5} strokeDasharray="4 4" name="Net demand" dot={false} />
         </AreaChart>
       </ResponsiveContainer>
 
