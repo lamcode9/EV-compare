@@ -111,7 +111,7 @@ export const INTERLUDE_COPY = {
     'A closer heartbreak: Vietnam in 2020. In one year the country added about 9 GW of rooftop solar — among the fastest build-outs anywhere. Then the payment that rewarded solar power ended. The boom stopped almost overnight. Panels sat underused. Installers lost their work.',
     'Hold onto this when the next chapters feel certain. Fast growth is not a guarantee. Things we stamp out in factories, again and again, tend to get cheaper. Huge one-of-a-kind projects, built on site under thick rules, often do not. Nothing later in this story happens by itself.',
   ],
-  curvesNote: 'Curves that held: solar panels (−20.2% cost each time output doubled), lithium-ion batteries (−18–19%), LED lights. Curves that broke: nuclear (cost rose ~3× as more were built), space launch (flat 1970–2010), Concorde (to zero).',
+  curvesNote: 'Sources in the story above — Grubler 2010 on nuclear costs; launch flat 1970–2010; solar and battery learning rates as labeled.',
 }
 
 // ── Act III ──────────────────────────────────────────────────────────

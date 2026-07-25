@@ -272,48 +272,197 @@ export function EnergyServants({ caption }: { caption: string }) {
   )
 }
 
-/** Interlude schematic: curves that held vs curves that broke. Stylized — labeled as such. */
+/**
+ * Interlude schematic: cost over time for things that got cheaper vs things that failed.
+ * Y = cost (high at top). X = as more was built / time. Stylized — shapes teach the shape,
+ * not exact data; rates live in the legend.
+ */
 export function CurvesHeldBroke({ note }: { note: string }) {
+  // Distinct strokes so three lines never read as one green blob / one red blob.
   const held = [
-    { label: 'Solar PV −20.2%/dbl', d: 'M10,20 C60,30 120,70 190,96' },
-    { label: 'Li-ion −18–19%/dbl', d: 'M10,32 C64,44 124,78 190,102' },
-    { label: 'LEDs', d: 'M10,44 C66,56 130,86 190,108' },
+    {
+      label: 'Solar panels',
+      detail: '~20% cheaper each time output doubled',
+      // steep, smooth fall — high → low
+      d: 'M28,22 C70,28 110,70 178,98',
+      stroke: '#5DD9A6',
+      width: 2.25,
+    },
+    {
+      label: 'Batteries',
+      detail: '~18–19% cheaper per doubling',
+      d: 'M28,34 C72,42 118,78 178,104',
+      stroke: '#8BE0C0',
+      width: 2,
+      dash: '5 3.5',
+    },
+    {
+      label: 'LED lights',
+      detail: 'same pattern — factory-made, repeated',
+      d: 'M28,48 C76,58 124,88 178,110',
+      stroke: '#C8F0DC',
+      width: 1.75,
+      dash: '2 3',
+    },
   ]
   const broke = [
-    { label: 'Nuclear (~3× up)', d: 'M10,96 C70,88 130,52 190,24' },
-    { label: 'Launch (flat 40 yrs)', d: 'M10,70 L190,66' },
-    { label: 'Concorde (to zero)', d: 'M10,60 C100,60 150,60 168,118' },
+    {
+      label: 'Nuclear plants',
+      detail: 'cost rose ~3× as more were built',
+      // low → high (the wrong way)
+      d: 'M28,100 C70,92 120,48 178,22',
+      stroke: '#E07A6E',
+      width: 2.25,
+    },
+    {
+      label: 'Space launch',
+      detail: 'price froze ~40 years (1970–2010)',
+      // flat
+      d: 'M28,62 L178,60',
+      stroke: '#C0564A',
+      width: 2,
+      dash: '5 3.5',
+    },
+    {
+      label: 'Concorde',
+      detail: 'the “future of flight” → museum',
+      // flat, then collapses to zero
+      d: 'M28,48 L120,48 C140,48 155,70 178,112',
+      stroke: '#F0A89E',
+      width: 1.75,
+      dash: '2 3',
+    },
   ]
+
+  const panels = [
+    {
+      title: 'Cost kept falling',
+      subtitle: 'Made in factories, over and over',
+      series: held,
+      aria: 'Schematic: solar, batteries, and LEDs — costs falling as more were built',
+    },
+    {
+      title: 'Promises that failed',
+      subtitle: 'One-offs, frozen prices, dead ends',
+      series: broke,
+      aria: 'Schematic: nuclear costs rising, launch cost flat, Concorde collapsing to zero',
+    },
+  ] as const
+
   return (
     <Reveal className="mx-auto max-w-4xl px-6">
       <figure className="border-y border-paper/15 py-6 sm:py-8">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-0 sm:divide-x sm:divide-paper/15">
-          {[
-            { title: 'curves that held', series: held, stroke: '#5DD9A6' },
-            { title: 'curves that broke', series: broke, stroke: '#C0564A' },
-          ].map((panel, i) => (
+        <div className="mb-5 max-w-xl">
+          <p className="font-display text-lg italic text-paper sm:text-xl">
+            Same chart, two outcomes
+          </p>
+          <p className="mt-1 text-sm leading-relaxed text-paper-300/80 sm:text-base">
+            Vertical axis is cost — high at the top, cheap at the bottom. Horizontal is time, as more was built. Not to scale; the shape is the lesson.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-0 sm:divide-x sm:divide-paper/15">
+          {panels.map((panel, i) => (
             <div key={panel.title} className={i === 0 ? 'sm:pr-8' : 'sm:pl-8'}>
-              <div className="font-display text-base italic text-paper-300">{panel.title}</div>
-              <svg viewBox="0 0 200 130" className="mt-3 w-full" role="img" aria-label={panel.title}>
-                <line x1="10" y1="120" x2="190" y2="120" stroke="#E9E1CF" strokeOpacity="0.15" />
-                <line x1="10" y1="10" x2="10" y2="120" stroke="#E9E1CF" strokeOpacity="0.15" />
+              <div className="font-display text-base italic text-paper">{panel.title}</div>
+              <div className="mt-0.5 text-xs text-paper-300/70 sm:text-sm">{panel.subtitle}</div>
+
+              <svg
+                viewBox="0 0 200 140"
+                className="mt-4 w-full"
+                role="img"
+                aria-label={panel.aria}
+              >
+                {/* Plot frame */}
+                <line x1="24" y1="16" x2="24" y2="118" stroke="#E9E1CF" strokeOpacity="0.22" />
+                <line x1="24" y1="118" x2="186" y2="118" stroke="#E9E1CF" strokeOpacity="0.22" />
+                {/* Soft mid guide */}
+                <line
+                  x1="24"
+                  y1="67"
+                  x2="186"
+                  y2="67"
+                  stroke="#E9E1CF"
+                  strokeOpacity="0.08"
+                  strokeDasharray="3 4"
+                />
+
+                {/* Axis words — the thing the old chart never said out loud */}
+                <text
+                  x="10"
+                  y="70"
+                  fill="#E9E1CF"
+                  fillOpacity="0.45"
+                  fontSize="8"
+                  fontStyle="italic"
+                  textAnchor="middle"
+                  transform="rotate(-90 10 70)"
+                >
+                  cost
+                </text>
+                <text x="28" y="14" fill="#E9E1CF" fillOpacity="0.4" fontSize="7">
+                  high
+                </text>
+                <text x="28" y="116" fill="#E9E1CF" fillOpacity="0.4" fontSize="7">
+                  low
+                </text>
+                <text
+                  x="105"
+                  y="132"
+                  fill="#E9E1CF"
+                  fillOpacity="0.45"
+                  fontSize="8"
+                  fontStyle="italic"
+                  textAnchor="middle"
+                >
+                  as more was built →
+                </text>
+
                 {panel.series.map((s) => (
-                  <path key={s.label} d={s.d} fill="none" stroke={panel.stroke} strokeWidth="1.75" strokeLinecap="round" opacity="0.85" />
+                  <path
+                    key={s.label}
+                    d={s.d}
+                    fill="none"
+                    stroke={s.stroke}
+                    strokeWidth={s.width}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeDasharray={'dash' in s ? s.dash : undefined}
+                    opacity={0.95}
+                  />
                 ))}
               </svg>
-              <ul className="mt-2 space-y-1">
+
+              <ul className="mt-3 space-y-2">
                 {panel.series.map((s) => (
-                  <li key={s.label} className="text-xs text-paper-300">
-                    <span aria-hidden className="mr-2 inline-block h-1.5 w-4 rounded-full align-middle" style={{ background: panel.stroke, opacity: 0.85 }} />
-                    {s.label}
+                  <li key={s.label} className="flex items-start gap-2.5 text-sm text-paper-200">
+                    <span
+                      aria-hidden
+                      className="mt-2 inline-block h-0.5 w-5 shrink-0 rounded-full"
+                      style={{
+                        background: s.stroke,
+                        opacity: 0.95,
+                        // dashed preview for dashed series
+                        backgroundImage:
+                          'dash' in s
+                            ? `repeating-linear-gradient(90deg, ${s.stroke} 0 4px, transparent 4px 7px)`
+                            : undefined,
+                        backgroundColor: 'dash' in s ? 'transparent' : s.stroke,
+                      }}
+                    />
+                    <span>
+                      <span className="font-medium text-paper">{s.label}</span>
+                      <span className="text-paper-300/75"> — {s.detail}</span>
+                    </span>
                   </li>
                 ))}
               </ul>
             </div>
           ))}
         </div>
-        <figcaption className="mt-4 font-display text-xs italic text-paper-300/60">
-          Stylized schematic — shapes indicative, rates as labeled. {note}
+
+        <figcaption className="mt-5 font-display text-xs italic leading-relaxed text-paper-300/55">
+          Sketch, not a precise plot. {note}
         </figcaption>
       </figure>
     </Reveal>
