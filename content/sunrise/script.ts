@@ -1,11 +1,12 @@
 /**
- * The Long Sunrise — page script, v3.
+ * The Long Sunrise — page script, v5 (clarity pass).
  * Single source of copy for /sunrise. Derived from docs/cinematic-vision-brief.html (v3).
  * Every figure here traces to the brief's §06 verified data inventory — do not
  * add numbers that aren't in the brief without re-verification.
  *
- * v3 rewrite rule: rhythm, verbs, and motif callbacks (hearth → furnace →
- * rooftop → swarm) may change; the figures may not. No new numbers.
+ * v5 rewrite rule: anyone can read it once and get the point. Short sentences.
+ * No clever punchlines, no analyst slang, no AI-sounding turns of phrase.
+ * Figures locked. Layout, film cels, charts, and act order unchanged.
  *
  * Anchoring rule (KM): humanity/global scale is the protagonist; the "hearth"
  * is one human-scale vignette per act, each on a different continent;
@@ -36,7 +37,7 @@ export interface FilmCelMeta {
 export const PAGE_META = {
   title: 'The Long Sunrise — half a million years of energy, and the century that changes it',
   description:
-    'A cinematic, data-driven story of humanity and power: from the first tended fire to terawatt solar, grid batteries, orbital compute, and the work still between us and morning. Every number sourced, every prediction dated.',
+    'From the first fire to cheap solar, home batteries, and the work still ahead. A clear, data-backed story of how humans get power. Every number sourced. Every prediction dated.',
 }
 
 // ── Act I ────────────────────────────────────────────────────────────
@@ -48,20 +49,20 @@ export const ACT_1: ActMeta = {
 }
 export const ACT_1_CEL: FilmCelMeta = {
   asset: 'fire',
-  caption: 'a hearth, anywhere on Earth · 500,000 years, one scene',
+  caption: 'a fire, anywhere on Earth · half a million years, one scene',
 }
 export const ACT_1_COPY = {
-  open: 'It begins with a fire that dies if no one feeds it. For half a million years, that was the whole grid.',
+  open: 'It begins with a fire that dies if no one feeds it. For half a million years, that was all the power we had.',
   body: [
-    'A human body runs at about a hundred watts. That was the budget — muscle, then animals, then wind and falling water — and a hundred generations could pass without the ceiling moving an inch.',
-    'Energy was the ceiling on everything: how long you lived, what you could make, whether the night belonged to you at all. Light was not an amenity. Light was wealth.',
+    'A human body uses about a hundred watts — roughly a bright light bulb. That was our limit: our own muscles, then animals, then wind and falling water. For hundreds of generations, that limit barely changed.',
+    'How much energy you had shaped everything — how long you lived, what you could build, whether night belonged to you. Light was not a small comfort. Light was wealth.',
   ],
   numbers: [
-    { value: '~100 W', label: 'the human body’s power', sub: 'the original hearth', tone: 'gold' },
-    { value: '~58 hours', label: 'of labor for one hour of reading light', sub: 'at a Paleolithic fire (Nordhaus)', tone: 'paper' },
-    { value: '~350,000×', label: 'more light per hour of labor today', sub: 'than in Babylon', tone: 'brand' },
+    { value: '~100 W', label: 'power used by one human body', sub: 'about a bright light bulb', tone: 'gold' },
+    { value: '~58 hours', label: 'of work to buy one hour of reading light', sub: 'at an early fire (Nordhaus)', tone: 'paper' },
+    { value: '~350,000×', label: 'more light from one hour of work today', sub: 'than in ancient Babylon', tone: 'brand' },
   ] satisfies BigNumberItem[],
-  sea: 'Price that same hour of light in a Jakarta or Manila minimum wage and the story repeats: within living memory, light fell from a luxury priced in workdays to a rounding error on the bill.',
+  sea: 'In Jakarta or Manila, grandparents still remember when light cost real money. An hour of light once took days of wages. Now it is so cheap it barely shows on the bill.',
   ember: 'Fire needed tending. That was the deal for half a million years.',
 }
 
@@ -74,21 +75,22 @@ export const ACT_2: ActMeta = {
 }
 export const ACT_2_CEL: FilmCelMeta = {
   asset: 'combustion',
-  caption: 'the mill town — the same scene, three continents, three centuries',
+  caption: 'the mill town — same scene, three continents, three centuries',
 }
 export const ACT_2_COPY = {
-  open: 'Then the hockey stick.',
+  open: 'Then we learned to burn old sunlight.',
   body: [
-    'Coal, oil, gas — sunlight that fell on ferns before there were flowers, fossilized, and burned a million times faster than it formed. Energy per person jumped roughly tenfold in two centuries. The hearth became a furnace, and the same scene was shot on three continents: smoke over the rooftops, and under the smoke, people growing richer than anyone had ever been.',
-    'The bill arrived as carbon — 432 parts per million and climbing the same staircase. But the frontier told a stranger story: US energy use per person peaked in 1979 and has drifted down 15–20% since, while the economy doubled. Watts were never the point. The services are — the cold food, the lit page, the moved ton. Efficiency is abundance too.',
+    'Coal, oil, and gas are sunlight that fell on plants long before people existed — buried underground, then burned a million times faster than it formed. In about two hundred years, energy use per person rose roughly ten times. The small fire became a furnace. The same picture appeared on three continents: smoke over the roofs, and under the smoke, people living better than anyone before them.',
+    'The cost showed up in the air. Carbon dioxide is now 432 parts per million, and still rising. Even so, rich countries began to need less energy per person. In the United States the peak was 1979; use has fallen 15–20% since, while the economy doubled. What people wanted was never the fuel itself. It was cold food, a bright page, a heavy load moved. Getting more life from less fuel is progress too.',
   ],
   numbers: [
-    { value: '~10×', label: 'energy per person, in two centuries', tone: 'gold' },
-    { value: '432 ppm', label: 'atmospheric CO₂ today', sub: 'climbing the same staircase', tone: 'paper' },
-    { value: '1979', label: 'the year US per-capita energy peaked', sub: 'GDP has doubled since', tone: 'brand' },
+    { value: '~10×', label: 'more energy per person, in two centuries', tone: 'gold' },
+    { value: '432 ppm', label: 'carbon dioxide in the air today', sub: 'still rising', tone: 'paper' },
+    { value: '1979', label: 'US energy use per person peaked', sub: 'the economy has doubled since', tone: 'brand' },
   ] satisfies BigNumberItem[],
-  sea: 'Southeast Asia is on this staircase right now: coal generates 47% of its electricity, up from 37% in 2015. Here, this act is not history. It is the present tense.',
-  servants: 'Your body still runs at about a hundred watts. But count everything burning on your behalf right now — the average person commands roughly 25 invisible, full-time human-equivalents of power. You have a staff.',
+  sea: 'Southeast Asia is still on this climb. Coal makes 47% of its electricity, up from 37% in 2015. Here, this chapter is not the past. It is happening now.',
+  servants:
+    'Your body still uses about a hundred watts. Now add the power plants, cars, heaters, factories, and grids that work for the average person. All together, it is as if about 25 people were laboring full-time, day and night, just for you.',
 }
 
 // ── Interlude ────────────────────────────────────────────────────────
@@ -100,16 +102,16 @@ export const INTERLUDE: ActMeta = {
 }
 export const INTERLUDE_CEL: FilmCelMeta = {
   asset: 'false-dawn',
-  caption: 'Vietnam, 2020 · the boom that stopped like a switch',
+  caption: 'Vietnam, 2020 · a solar boom that stopped overnight',
 }
 export const INTERLUDE_COPY = {
-  open: '“Too cheap to meter,” they said in 1954.',
+  open: '“Too cheap to meter,” they said of nuclear power in 1954.',
   body: [
-    'Nuclear then delivered the opposite of a learning curve: the more the world built, the more it cost — roughly tripling as it deployed (Grubler, 2010). The price of reaching orbit froze for forty years. And Concorde — the future of flight, the actual future — flew backwards into a museum.',
-    'The nearest heartbreak is ours. Vietnam, 2020: around 9 GW of rooftop solar in a single year, one of the fastest booms recorded anywhere. Then the feed-in tariff lapsed — and the boom stopped as if a switch had been thrown. Panels curtailed. Installers stranded.',
-    'Hold this act in mind when the next ones feel inevitable. Exponentials are not destiny. Modular, factory-made, fast-iterating things learn their way down the cost curve; site-built, regulated megaprojects mostly don’t. None of what follows happens by default.',
+    'It did not work out that way. The more nuclear plants the world built, the more each one cost — about three times higher as more were built (Grubler, 2010). The cost of sending a kilogram into space stayed flat for forty years. Concorde was sold as the future of flight. It ended in a museum.',
+    'A closer heartbreak: Vietnam in 2020. In one year the country added about 9 GW of rooftop solar — among the fastest build-outs anywhere. Then the payment that rewarded solar power ended. The boom stopped almost overnight. Panels sat underused. Installers lost their work.',
+    'Hold onto this when the next chapters feel certain. Fast growth is not a guarantee. Things we stamp out in factories, again and again, tend to get cheaper. Huge one-of-a-kind projects, built on site under thick rules, often do not. Nothing later in this story happens by itself.',
   ],
-  curvesNote: 'Curves that held: solar PV (−20.2% per doubling), lithium-ion (−18–19%), LEDs. Curves that broke: nuclear (costs ~3× up with deployment), launch (flat 1970–2010), Concorde (to zero).',
+  curvesNote: 'Curves that held: solar panels (−20.2% cost each time output doubled), lithium-ion batteries (−18–19%), LED lights. Curves that broke: nuclear (cost rose ~3× as more were built), space launch (flat 1970–2010), Concorde (to zero).',
 }
 
 // ── Act III ──────────────────────────────────────────────────────────
@@ -121,30 +123,30 @@ export const ACT_3: ActMeta = {
 }
 export const ACT_3_CEL: FilmCelMeta = {
   asset: 'first-light',
-  caption: 'first light on the panel field · the revolution you can audit',
+  caption: 'morning light on a solar field · change you can measure',
 }
 /** Mid-act, at the storage beat — grid-scale packs restoring the noon watt. */
 export const ACT_3_STORAGE_CEL: FilmCelMeta = {
   asset: 'megablock',
-  caption: 'grid storage at golden hour · what restores the noon watt',
+  caption: 'grid batteries at sunset · storing cheap noon for the evening',
 }
 export const ACT_3_COPY = {
-  open: 'First light — and a change in the rules of evidence. From here on, nothing in this story is promised. It is measured.',
+  open: 'First light. From here, we stop guessing. We measure.',
   body: [
-    'A solar module cost $76 a watt in 1977. It costs about nine cents in 2025. A battery pack cost $7,500 per kWh in 1991; BNEF’s December 2025 read is $108, with cells at $74 and the cheapest LFP near $50. Prices like that stop being economics and start changing what a roof is for.',
-    'In 2025 the world added 647 GW of solar, and the 636 TWh of new generation that came with it was the largest one-year increase by any power source in history. Renewables passed coal in the world’s electricity mix for the first time.',
-    'Then the home truth this site exists for: cheap midday solar eats its own lunch. The more of it on a grid, the less each noon watt earns — capture rates fall, negative-price hours multiply. Storage is what restores the value. That is why grid batteries added ~300 GWh in 2025, up 51% in a year, and why the ladder is filling on every continent: cell, wall pack, tower block, factory floor, and the 19 GWh farms.',
-    'China installed 93 GW of solar in a single month of 2025 — roughly a hundred panels a second. Pakistan ran the bottom-up experiment: households imported 27+ GW of panels, about half the country’s peak demand, with no central plan at all. Nine-cent watts don’t wait for permission.',
+    'A solar panel cost $76 per watt in 1977. In 2025 it costs about nine cents. A battery pack cost $7,500 per kilowatt-hour in 1991. By late 2025 the pack price was $108 (BNEF) — and the cheapest packs near $50. At those prices a roof is not only shelter. It can make electricity.',
+    'In 2025 the world added 647 GW of solar. The new electricity that came with it was the largest one-year jump from any power source in history. For the first time, wind and solar together made more of the world’s electricity than coal.',
+    'Here is the hard truth — and why batteries matter. When midday solar is very cheap and very common, the grid can have more power than it needs at noon. Prices fall. Sometimes power is almost worthless for an hour. Batteries solve that. They store the cheap midday power and use it after dark. That is why large grid batteries added about 300 GWh in 2025 — up 51% in one year — from home wall units to huge battery farms on every continent.',
+    'China installed 93 GW of solar in a single month of 2025 — about a hundred panels every second. In Pakistan, families and shops imported more than 27 GW of panels on their own, about half the country’s peak demand, with no national plan. When power costs nine cents a watt, people do not wait for permission.',
   ],
   /** Pulled out of the body as the act’s giant-type moment. */
-  pull: 'The first terawatt of solar took about 68 years. The third took about 1.3.',
+  pull: 'The first terawatt of solar took about 68 years. The third took about 1.3 years.',
   numbers: [
-    { value: '$76 → $0.09', label: 'per watt of solar module, 1977 → 2025', tone: 'gold' },
-    { value: '647 GW', label: 'solar added worldwide in 2025', sub: 'largest generation jump ever recorded', tone: 'gold' },
-    { value: '$108/kWh', label: 'battery pack price, Dec 2025', sub: 'from $7,500 in 1991 (BNEF)', tone: 'brand' },
-    { value: '+300 GWh', label: 'grid batteries added in 2025', sub: '+51% year on year', tone: 'brand' },
+    { value: '$76 → $0.09', label: 'price per watt of solar panel, 1977 → 2025', tone: 'gold' },
+    { value: '647 GW', label: 'solar added worldwide in 2025', sub: 'largest yearly jump in power ever recorded', tone: 'gold' },
+    { value: '$108/kWh', label: 'battery pack price, Dec 2025', sub: 'down from $7,500 in 1991 (BNEF)', tone: 'brand' },
+    { value: '+300 GWh', label: 'grid batteries added in 2025', sub: '+51% from the year before', tone: 'brand' },
   ] satisfies BigNumberItem[],
-  sea: 'the stakes run highest. Southeast Asian electricity demand grows ~7% a year, and solar and wind supply only ~4.5% of it — but that share is compounding ~35% a year. The sunbelt has the geometry: Jakarta’s solar output holds nearly flat all year while Hamburg falls off a winter cliff. Four billion people live under the good sun. They electrify first — and that is why battery.mom starts here.',
+  sea: 'The stakes are highest here. Southeast Asia’s electricity use grows about 7% a year. Solar and wind still supply only about 4.5% of it — but that share is growing about 35% a year. Jakarta’s sun stays strong all year; Hamburg loses most of it in winter. About four billion people live under strong sun. They will need more power first. That is why battery.mom starts here.',
 }
 
 // ── Act IV ───────────────────────────────────────────────────────────
@@ -157,33 +159,33 @@ export const ACT_4: ActMeta = {
 /** Leads the act — the hearth is "a gigafactory floor, then a satellite bus". */
 export const ACT_4_CEL: FilmCelMeta = {
   asset: 'gigafactory',
-  caption: 'the gigafactory floor · where the curve is manufactured',
+  caption: 'inside a battery factory · where cheaper power is made',
 }
 /** Mid-act, where the copy leaves the ground. */
 export const ACT_4_ORBIT_CEL: FilmCelMeta = {
   asset: 'orbit',
-  caption: 'the loop leaves the ground · not a render — a manifest',
+  caption: 'the story leaves Earth · real hardware, not a movie still',
 }
 export const ACT_4_COPY = {
-  open: 'Cheap energy buys compute. Compute buys intelligence. Intelligence designs the machines that make energy cheaper. The loop is real — drawn here with honest line-weights: solid where measured, dashed where hoped.',
+  open: 'Cheap energy runs more computers. More computers train smarter software. Smarter software helps design better machines — including machines that make energy cheaper. That loop is real. What follows marks fact and hope clearly.',
   body: [
-    'Solid: datacenters drew ~485 TWh in 2025, heading toward ~950 TWh by 2030, and Big Tech capital spending passed $400 billion in 2025 — more than the world invests in finding and drilling oil and gas. The intelligence buildout now outspends the fossil frontier. Energy gates where compute grows; chips gate how much.',
-    'Dashed: intelligence walks into the physical world slowly. Moravec’s paradox is undefeated — the gigafactory line is automated; the building site, mostly, still isn’t.',
-    'And the loop has already left the ground — not as a render, as a manifest. In orbit a panel collects 5–8× more energy than typical ground sites. Collects, not delivers: heat can only leave a satellite by radiation (~300 W/m² is realistic), and NASA’s own 2024 assessment put beam-to-ground space solar at 12–80× terrestrial cost. So the near-term case is blunt — use the power up there.',
-    'Say the quiet part plainly: we will use vastly more energy than today. That is the point. Abundance means energy stops being the limiting input on what we can attempt — not that it stops costing money.',
+    'What we can measure: data centers used about 485 TWh of electricity in 2025, and may reach about 950 TWh by 2030. Big technology companies spent more than $400 billion in 2025 — more than the world spent finding and drilling oil and gas. Building computers and AI now outspends the hunt for new fossil fuel. Power and chips pull each other: chips need power; power investment follows the chips.',
+    'What is still hard: clever software is not the same as clever hands. Battery and car factory lines are highly automated. Most building sites still run on people with tools. Machines learned to write and calculate before they learned to work well in dust, rain, and half-finished rooms.',
+    'The loop has already left the ground. In orbit, a solar panel can collect five to eight times more energy than a typical panel on Earth. Collect — not send home. A satellite can only get rid of heat by radiating it into space, which is slow. NASA’s 2024 study found that beaming space solar down to Earth would cost 12 to 80 times more than making power on the ground. So the near-term idea is simple: use that power in space.',
+    'We will use far more energy than we do today. That is not an accident. That is the goal. When energy is abundant, it stops being the hard limit on what we can attempt. It does not mean energy is free.',
   ],
   numbers: [
-    { value: '485 → ~950 TWh', label: 'datacenter electricity, 2025 → 2030', tone: 'brand' },
-    { value: '>$400B', label: 'Big Tech capex, 2025', sub: 'now above global oil & gas upstream', tone: 'paper' },
-    { value: '$55,000 → $100–200', label: 'launch cost per kg: Shuttle → Starship target', sub: 'Falcon 9 today: ~$2,700', tone: 'gold' },
+    { value: '485 → ~950 TWh', label: 'electricity used by data centers, 2025 → 2030', tone: 'brand' },
+    { value: '>$400B', label: 'Big Tech spending, 2025', sub: 'more than global oil & gas drilling', tone: 'paper' },
+    { value: '$55,000 → $100–200', label: 'cost to launch 1 kg: Shuttle → Starship goal', sub: 'Falcon 9 today: about $2,700', tone: 'gold' },
   ] satisfies BigNumberItem[],
   receipts: [
-    { date: 'Nov 2025', event: 'Starcloud-1 puts the first NVIDIA H100 in orbit.' },
+    { date: 'Nov 2025', event: 'Starcloud-1 flies the first NVIDIA H100 computer chip to orbit.' },
     { date: 'Dec 2025', event: 'The first language model is trained in space.' },
-    { date: 'Filed', event: 'SpaceX seeks approval for an orbital-datacenter constellation.' },
-    { date: 'Early 2027', event: 'Google’s Project Suncatcher launches prototype TPU satellites with Planet.' },
+    { date: 'Filed', event: 'SpaceX asks permission for a network of data-center satellites.' },
+    { date: 'Early 2027', event: 'Google’s Project Suncatcher plans to launch test AI chips with Planet.' },
   ],
-  receiptsNote: 'The future begins as a list of things that already happened.',
+  receiptsNote: 'The future often starts as a short list of things that already happened.',
 }
 
 // ── Coda ─────────────────────────────────────────────────────────────
@@ -191,17 +193,17 @@ export const CODA: ActMeta = {
   numeral: '',
   title: 'The Swarm — A Dream at the Edge of Dawn',
   era: 'undated, by design',
-  hearth: 'informed speculation — clearly watermarked',
+  hearth: 'a dream — clearly labeled as one',
 }
 export const CODA_CEL: FilmCelMeta = {
   asset: 'swarm',
-  caption: 'collectors thickening around a star · a dream, watermarked as one',
+  caption: 'collectors gathering around a star · a dream, labeled as one',
 }
 export const CODA_COPY = {
-  open: 'Before morning, one last look up. What follows is a dream — and it is watermarked as one.',
+  open: 'Before morning, one last look up. What follows is a dream — and we label it as one.',
   body: [
-    'If self-replicating manufacturing ever works — and no element of it exists yet — the exponential does the rest: collectors thickening around the sun over centuries, until noon is something you build. Kardashev II. Twenty trillion times the power we command today.',
-    'No date will ever be attached to this. The conclusion is contained entirely in its assumptions, and the assumptions are unproven. But physics keeps a ceiling, and it is worth seeing once:',
+    'If machines ever build more machines in space — and none of that exists yet — solar collectors could slowly gather around the sun over centuries. Daylight becomes something people build, not only something they wait for. A full ring of collectors around the star. About twenty trillion times the power we use today.',
+    'We put no year on this. It depends on ideas we have not proven. Physics still draws a ceiling, and it is worth seeing once:',
   ],
   line: 'One hour of sunlight on Earth ≈ one year of civilization’s energy use.',
 }
@@ -211,19 +213,19 @@ export const ACT_5: ActMeta = {
   numeral: 'V',
   title: 'The Work — Morning, Everywhere',
   era: '2026 → 2040 · full daylight',
-  hearth: 'the visitor’s own rooftop, the meter running backwards',
+  hearth: 'your own roof, the meter running backwards',
 }
 export const ACT_5_CEL: FilmCelMeta = {
   asset: 'morning',
   caption: 'morning, everywhere · the meter running backwards',
 }
 export const ACT_5_COPY = {
-  open: 'None of it is owed to us. Between here and that morning stand six gates — permits, interconnects, factory lines — and every one of them is a job, not a prophecy.',
-  closing: 'The story ends where it started: a hearth, tended. Yours happens to be a rooftop.',
-  tagline: 'The swarm starts on a rooftop. Start with yours.',
+  open: 'None of this is owed to us. Between today and that morning sit six gates — permits, grid connections, factory lines — and each one is ordinary work, not a guarantee.',
+  closing: 'The story ends where it started: a fire someone tends. Yours happens to be a rooftop.',
+  tagline: 'Big change starts on a roof. Start with yours.',
   cards: [
-    { href: '/calculators', title: 'The home planner', sub: 'Size solar + storage for a real bill.' },
+    { href: '/calculators', title: 'The home planner', sub: 'Size solar and a battery for a real bill.' },
     { href: '/ev', title: 'The EV desk', sub: 'Compare every EV sold in Southeast Asia.' },
-    { href: '/bess', title: 'The BESS desk', sub: 'Home batteries, specced and priced.' },
+    { href: '/bess', title: 'The battery desk', sub: 'Home batteries, with specs and prices.' },
   ],
 }

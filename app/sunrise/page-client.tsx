@@ -167,7 +167,7 @@ export default function SunriseClient() {
           The Long Sunrise
         </h1>
         <p className="sunrise-hero-in mt-8 max-w-xl text-base leading-relaxed text-paper-300 sm:text-lg" style={{ animationDelay: '1.3s' }}>
-          Half a million years of energy — and the century that changes it.
+          From the first fire to cheap solar — half a million years, and the century that changes it.
           Every number sourced. Every prediction dated.
         </p>
         <div className="sunrise-hero-in mt-16 flex flex-col items-center gap-3 text-paper-300/50" style={{ animationDelay: '2.2s' }} aria-hidden>
@@ -233,7 +233,7 @@ export default function SunriseClient() {
         <div data-stage-dim>
           <BigNumbers items={ACT_3_COPY.numbers} />
         </div>
-        <Handoff href="/scoreboard/energy">Watch the GWh fill in, year by year</Handoff>
+        <Handoff href="/scoreboard/energy">See solar and storage grow, year by year</Handoff>
         <div data-stage-dim className="mx-auto max-w-5xl px-6">
           {/* Ruled scrim band (no glass): keeps axis text readable over the
               bright horizon without boxing the chart in a card. */}
@@ -242,7 +242,7 @@ export default function SunriseClient() {
           </div>
         </div>
         <SeaInset>{ACT_3_COPY.sea}</SeaInset>
-        <Handoff href="/state-of-battery-power">See where the deployment stands, in the data</Handoff>
+        <Handoff href="/state-of-battery-power">See how much is installed today, in the data</Handoff>
       </section>
 
       {/* ── Act IV · The Compounding Century — the camera leaves the ground ── */}
@@ -302,7 +302,7 @@ export default function SunriseClient() {
         <div className="mx-auto max-w-6xl px-6">
           <GatesBoard />
         </div>
-        <Handoff href="/bess/home" tone="light">Gate 4 is the one you control — open the home planner</Handoff>
+        <Handoff href="/bess/home" tone="light">Your roof is the gate you control — open the home planner</Handoff>
         <div className="mx-auto max-w-4xl px-6">
           <h3 className="mb-6 font-display text-2xl font-medium text-ink sm:text-3xl">The predictions ledger</h3>
           <PredictionsLedger />
