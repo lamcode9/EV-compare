@@ -9,7 +9,7 @@ import BatteryHUD from './_components/BatteryHUD'
 import PowersOfTenLadder from './_components/PowersOfTenLadder'
 import WrightLawChart from './_components/WrightLawChart'
 import FlywheelDiagram from './_components/FlywheelDiagram'
-import GatesBoard from './_components/GatesBoard'
+import WorkBoard from './_components/WorkBoard'
 import PredictionsLedger from './_components/PredictionsLedger'
 import {
   ActHeader,
@@ -283,53 +283,75 @@ export default function SunriseClient() {
         </div>
       </section>
 
-      {/* ── Act V · The Work — the film develops into the paper site ── */}
-      <section className="space-y-14 pb-0 pt-28 sm:space-y-16 sm:pt-36" aria-labelledby="the-work">
-        {/* The swarm has handed the sky back; this line plays on the canvas dawn,
-            and the morning footage rises beneath it. */}
+      {/* ── Act V · Morning — film develops into the paper site ── */}
+      <section className="space-y-16 pb-0 pt-28 sm:space-y-20 sm:pt-36" aria-labelledby="the-work">
+        {/* Canvas dawn line; morning footage rises under it. */}
         <div id="morning">
           <GiantLine tone="ink">Then, morning.</GiantLine>
         </div>
         <ActHeader act={ACT_5} id="the-work" tone="light" />
-        <Reveal className="mx-auto max-w-6xl px-6">
-          <p className="max-w-2xl font-display text-xl leading-relaxed text-ink-700 sm:text-2xl">{ACT_5_COPY.open}</p>
-        </Reveal>
 
-        {/* The morning shot fades to flat paper here — the rest of the page
-            (and the rest of the site) is the morning the story promised. */}
+        {/* Ordinary life — earn the daylight before any tools. */}
+        <div className="mx-auto w-full max-w-6xl space-y-6 px-6">
+          {ACT_5_COPY.morning.map((p) => (
+            <Reveal key={p.slice(0, 28)}>
+              <p className="max-w-2xl font-display text-xl leading-relaxed text-ink-700 sm:text-2xl">
+                {p}
+              </p>
+            </Reveal>
+          ))}
+        </div>
+
+        {/* Morning shot fades to flat paper — the rest of the site is this morning. */}
         <div id="morning-end" aria-hidden />
 
-        <div className="mx-auto max-w-6xl px-6">
-          <GatesBoard />
+        {/* Three real constraints — editorial list, not a framework board. */}
+        <div className="mx-auto w-full max-w-6xl px-6">
+          <WorkBoard />
         </div>
-        <Handoff href="/bess/home" tone="light">Your roof is the gate you control — open the home planner</Handoff>
-        <div className="mx-auto max-w-4xl px-6">
-          <h3 className="mb-6 font-display text-2xl font-medium text-ink sm:text-3xl">The predictions ledger</h3>
-          <PredictionsLedger />
-        </div>
-        <Reveal className="mx-auto max-w-3xl px-6">
-          <p className="text-base leading-relaxed text-ink-600 sm:text-lg">{ACT_5_COPY.closing}</p>
-        </Reveal>
 
-        {/* The landing: three real cards, powered on */}
-        <div className="mx-auto max-w-5xl px-6">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        {/* Tools: one CTA cluster. */}
+        <div className="mx-auto w-full max-w-6xl px-6">
+          <Reveal>
+            <p className="font-display text-lg italic text-ink-600 sm:text-xl">
+              {ACT_5_COPY.toolsIntro}
+            </p>
+          </Reveal>
+          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5">
             {ACT_5_COPY.cards.map((c) => (
               <Reveal key={c.href}>
                 <Link
                   href={c.href}
-                  className="block rounded-card border border-ink-900/10 bg-paper-100 p-6 shadow-card transition hover:shadow-raised"
+                  className="group block rounded-card border border-ink-900/10 bg-paper-100 p-6 shadow-card transition hover:border-ink-900/15 hover:shadow-raised"
                 >
-                  <div className="font-display text-sm italic text-brand-600">powered on</div>
-                  <div className="mt-2 font-display text-xl font-medium text-ink">{c.title}</div>
-                  <div className="mt-1 text-sm text-ink-500">{c.sub}</div>
+                  <div className="font-display text-xl font-medium text-ink group-hover:text-brand-800">
+                    {c.title}
+                  </div>
+                  <div className="mt-1.5 text-sm leading-relaxed text-ink-500">{c.sub}</div>
+                  <div className="mt-4 font-display text-sm italic text-brand-600 transition group-hover:translate-x-0.5">
+                    Open →
+                  </div>
                 </Link>
               </Reveal>
             ))}
           </div>
         </div>
-        <Reveal className="mx-auto max-w-3xl px-6 pb-24 text-center">
-          <p className="font-display text-2xl italic text-ink sm:text-3xl">{ACT_5_COPY.tagline}</p>
+
+        {/* Trust: collapsed ledger — available, not a second climax. */}
+        <div className="mx-auto w-full max-w-3xl px-6">
+          <h3 className="font-display text-xl font-medium text-ink sm:text-2xl">
+            Predictions we will be graded on
+          </h3>
+          <div className="mt-4">
+            <PredictionsLedger intro={ACT_5_COPY.trustIntro} />
+          </div>
+        </div>
+
+        {/* One closer. Then the site footer is the real world. */}
+        <Reveal className="mx-auto max-w-3xl px-6 pb-20 text-center sm:pb-28">
+          <p className="font-display text-2xl font-medium leading-snug tracking-tight text-ink sm:text-3xl md:text-4xl">
+            {ACT_5_COPY.closing}
+          </p>
         </Reveal>
 
         <Footer />

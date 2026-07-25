@@ -211,7 +211,7 @@ export const CODA_COPY = {
 // ── Act V ────────────────────────────────────────────────────────────
 export const ACT_5: ActMeta = {
   numeral: 'V',
-  title: 'The Work — Morning, Everywhere',
+  title: 'Morning',
   era: '2026 → 2040 · full daylight',
   hearth: 'your own roof, the meter running backwards',
 }
@@ -219,13 +219,61 @@ export const ACT_5_CEL: FilmCelMeta = {
   asset: 'morning',
   caption: 'morning, everywhere · the meter running backwards',
 }
+
+export type WorkItemTone = 'open' | 'hard' | 'yours'
+
+export interface WorkItem {
+  numeral: string
+  title: string
+  tone: WorkItemTone
+  toneLabel: string
+  stat: string
+  body: string
+  sea?: string
+}
+
 export const ACT_5_COPY = {
-  open: 'None of this is owed to us. Between today and that morning sit six gates — permits, grid connections, factory lines — and each one is ordinary work, not a guarantee.',
-  closing: 'The story ends where it started: a fire someone tends. Yours happens to be a rooftop.',
-  tagline: 'Big change starts on a roof. Start with yours.',
-  cards: [
-    { href: '/calculators', title: 'The home planner', sub: 'Size solar and a battery for a real bill.' },
-    { href: '/ev', title: 'The EV desk', sub: 'Compare every EV sold in Southeast Asia.' },
-    { href: '/bess', title: 'The battery desk', sub: 'Home batteries, with specs and prices.' },
+  /** After “Then, morning.” — ordinary light before any homework. */
+  morning: [
+    'The light outside is ordinary. Coffee. A bill on the table. A room that stayed bright all night without anyone feeding a fire.',
+    'Nothing in the story you just read is owed to us. Cheap solar and batteries are real. Whether they reach your street is still work — mostly human, mostly local.',
   ],
+  workIntro: 'Three things still matter more than the next invention.',
+  work: [
+    {
+      numeral: '01',
+      title: 'Factories can already build',
+      tone: 'open',
+      toneLabel: 'Moving',
+      stat: '1.59 TWh of batteries made · factories built for more than 4 TWh',
+      body: 'The world can produce more cells than it currently buys. The open question is not “can we make them?” It is getting them into cars, homes, and power systems.',
+    },
+    {
+      numeral: '02',
+      title: 'Wires and paperwork lag behind',
+      tone: 'hard',
+      toneLabel: 'Stuck',
+      stat: 'About 2.3 TW of projects waiting · often more than four years in line',
+      body: 'A finished solar farm still needs a free wire and a signature. Queues and permits now slow more projects than the cost of the panels themselves.',
+      sea: 'Southeast Asia is only starting to link national grids. In Vietnam, some built solar still cannot run full when the network is full.',
+    },
+    {
+      numeral: '03',
+      title: 'The hard part is on the roof',
+      tone: 'yours',
+      toneLabel: 'Yours',
+      stat: 'Same panels: about $2.80 per watt in the US · about $1 in Australia',
+      body: 'Loans, installers, local rules, and sudden policy changes decide the real price. Same hardware, very different bills. This is the work a household can touch — and why this site exists.',
+      sea: 'Vietnam’s 2020 boom stopped when the solar subsidy ended overnight. Policy, not panels.',
+    },
+  ] satisfies WorkItem[],
+  toolsIntro: 'Start with a real bill, a real car, or a real battery.',
+  cards: [
+    { href: '/calculators', title: 'Home planner', sub: 'Size solar and storage for your bill.' },
+    { href: '/ev', title: 'EV desk', sub: 'Every electric car sold in Southeast Asia.' },
+    { href: '/bess', title: 'Battery desk', sub: 'Home batteries, with specs and prices.' },
+  ],
+  trustIntro:
+    'We also put dates on our bets — nine of them, including some that bet against our own coolest ideas. If we are wrong, the wrong call stays on the page.',
+  closing: 'The story ends where it started: a fire someone tends. Yours happens to be a rooftop.',
 }
