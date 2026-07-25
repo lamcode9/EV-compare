@@ -4,11 +4,10 @@ import { useInView, usePrefersReducedMotion } from '../_lib/useScroll'
 
 /**
  * "The Work" — the six gates between here and the energy-abundant future.
- * Content extracted verbatim from docs/cinematic-vision-brief.html §07.
- * Status (open / straining / bottleneck / unscored) is this component's own
- * qualitative read of each gate's prose — the brief itself scores five gates
- * and explicitly declines to score the sixth ("this gate has no dial we can
- * read"), which is honored here as `unscored` rather than invented.
+ * Facts trace to docs/cinematic-vision-brief.html §07. Copy is plain-speech
+ * (v5): same numbers and statuses, no brief jargon.
+ * Status (open / straining / bottleneck / unscored): five gates scored; the
+ * sixth is deliberately `unscored` — no inventing a progress meter.
  */
 
 type GateStatus = 'open' | 'straining' | 'bottleneck' | 'unscored'
@@ -17,15 +16,15 @@ interface Gate {
   id: number
   name: string
   isInstall?: boolean
-  /** One-line definition, verbatim from the brief's gate subtitle. */
+  /** Plain one-line what this gate is. */
   subtitle: string
   status: GateStatus
   statusLabel: string
-  /** Key stat(s) from the brief, rendered in tabular-nums. */
+  /** Key stat(s), tabular-nums. */
   stat: string
-  /** Full supporting sentence(s), verbatim from the brief. */
+  /** Supporting sentence anyone can follow. */
   detail: string
-  /** "Closer to home — SEA" inset, verbatim clause from the brief. Only some gates have one. */
+  /** "Closer to home — SEA" inset. Only some gates have one. */
   sea?: string
 }
 
@@ -33,65 +32,65 @@ const GATES: readonly Gate[] = [
   {
     id: 1,
     name: 'Make',
-    subtitle: 'TWh manufacturing',
+    subtitle: 'Build enough batteries',
     status: 'open',
     statusLabel: 'Flowing',
-    stat: '1.59 TWh produced / >4 TWh nameplate',
+    stat: '1.59 TWh made last year · factories can do >4 TWh',
     detail:
-      "Capacity already outruns demand 2.5×. The gate isn’t building factories; it’s absorbing their output. Chemistry diversity (LFP, sodium-ion) hedges lithium.",
+      'We can already build more batteries than the world is buying — about 2.5× spare factory capacity. The hard part is not more plants. It is putting the cells we make into cars, homes, and grids. Different chemistries (including iron-based and sodium) also reduce the risk of depending on one metal.',
   },
   {
     id: 2,
     name: 'Connect',
-    subtitle: 'grids & queues',
+    subtitle: 'Hook projects to the grid',
     status: 'bottleneck',
     statusLabel: 'Bottleneck',
-    stat: '~2.3 TW stalled (median >4 yrs)',
+    stat: '~2.3 TW waiting in line · median wait >4 years',
     detail:
-      'Wires and paperwork now bind more than physics.',
-    sea: 'ASEAN cross-border interconnects barely begun; Vietnamese curtailment wasting built capacity.',
+      'Solar farms and batteries often sit idle not because the tech failed, but because the wires are full and the permits are slow. Paperwork and grid queues now slow us more than the physics of power.',
+    sea: 'Southeast Asia has barely started linking national grids. In Vietnam, some built solar still cannot be fully used when the network is congested.',
   },
   {
     id: 3,
     name: 'Feed',
-    subtitle: 'materials & recycling',
+    subtitle: 'Materials and recycling',
     status: 'straining',
     statusLabel: 'Straining',
-    stat: 'By the 2040s: retired packs → primary mine',
+    stat: 'By the 2040s, old batteries can rival new mining',
     detail:
-      'Silver thrifting, copper metallization, sodium-ion — the materials floor is real but bendable. The loop must close.',
+      'Panels and packs need metals and minerals. Designers are already using less silver and copper where they can, and testing chemistries that skip scarce metals. There is a real floor to how cheap cells can get — but recycling closed loops will matter more every decade.',
   },
   {
     id: 4,
     name: 'Install',
     isInstall: true,
-    subtitle: 'the human part',
+    subtitle: 'The human part — your roof, your street',
     status: 'bottleneck',
     statusLabel: 'Bottleneck',
-    stat: '~$2.8/W (US) vs ~$1/W (Australia) — same hardware',
+    stat: '~$2.8/W in the US vs ~$1/W in Australia — same panels',
     detail:
-      'Permitting, financing, labor, and policy whiplash are choices, not physics. This gate is battery.mom’s direct mission — and the story’s moral.',
-    sea: "Vietnam's FiT cliff: policy whiplash, not physics.",
+      'Permits, loans, skilled installers, and sudden policy changes decide the real price more than the panel factory does. Same hardware, very different bills. This is the gate people control — and the reason battery.mom exists.',
+    sea: "Vietnam's 2020 solar crash: the subsidy ended overnight. Policy whiplash, not bad panels.",
   },
   {
     id: 5,
     name: 'Lift',
-    subtitle: 'cheap orbit',
+    subtitle: 'Cheap enough to reach orbit',
     status: 'bottleneck',
     statusLabel: 'Bottleneck',
-    stat: '<$200/kg is the stated crossover',
+    stat: 'Under ~$200 per kg to orbit is the stated crossover',
     detail:
-      'Orbital compute is real but gated on $/kg, radiators, and rad-tolerant silicon. Beam-to-ground stays speculative until the OTPS math changes — we say so.',
+      'Computers in space are no longer science fiction — but cost per kilogram to launch, heat rejection, and radiation-hard chips still limit how far this goes. Sending space solar down to Earth as a power beam is still much more expensive than making power on the ground. We say that plainly.',
   },
   {
     id: 6,
     name: 'Trust',
-    subtitle: 'dependable automation',
+    subtitle: 'Machines that do what we intend',
     status: 'unscored',
     statusLabel: 'Not scored',
-    stat: 'No progress meter, by design',
+    stat: 'No progress meter — on purpose',
     detail:
-      'Unlike the others, this gate has no dial we can read. The compounding loop assumes grids, factories, and machines that reliably do what we intend — stated as a dependency, linked to the serious literature, not scored.',
+      'The whole loop assumes grids, factories, and software that keep working as designed. Unlike the other gates, we have no honest number that tracks this. So we name the dependency and refuse to fake a score.',
   },
 ] as const
 
