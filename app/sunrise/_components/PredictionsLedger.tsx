@@ -1,12 +1,10 @@
 'use client'
 
 import { useId, useState } from 'react'
-import { useInView, usePrefersReducedMotion } from '../_lib/useScroll'
 
 /**
- * The Predictions Ledger — nine dated, falsifiable predictions.
- * Figures from docs/cinematic-vision-brief.html §08.
- * Act V presents this collapsed by default: trust without killing the landing.
+ * Nine dated predictions (brief §08). Collapsed by default so Act V stays short.
+ * Claims kept plain; figures unchanged.
  */
 
 interface Prediction {
@@ -22,176 +20,119 @@ interface Prediction {
 const PREDICTIONS: readonly Prediction[] = [
   {
     id: 1,
-    claim: 'Average lithium-ion battery pack prices fall below $60 per kWh',
+    claim: 'Average lithium-ion pack price below $60/kWh',
     byWhen: 'Dec 2029',
     confidence: 70,
-    resolvesVia: 'BNEF annual survey, Dec 2029',
-    wrongIf: 'Pack prices stay at or above $60/kWh in the 2029 BNEF survey.',
+    resolvesVia: 'BNEF annual survey',
+    wrongIf: 'Pack prices still at or above $60/kWh in the 2029 BNEF survey.',
   },
   {
     id: 2,
-    claim: 'The world installs more than 1 TW of solar in a single year',
+    claim: 'More than 1 TW of solar installed in one calendar year',
     byWhen: '2030',
     confidence: 60,
-    resolvesVia: 'BNEF / IEA annual figures',
+    resolvesVia: 'BNEF / IEA',
     wrongIf: 'No year through 2030 reaches 1 TW of solar installations.',
   },
   {
     id: 3,
-    claim: 'Solar becomes the world’s largest source of electricity, passing coal',
+    claim: 'Solar passes coal as the largest source of world electricity',
     byWhen: '2034',
     confidence: 65,
     resolvesVia: 'Ember Global Electricity Review',
-    wrongIf: 'Solar has not passed coal as the largest annual electricity source by 2034.',
+    wrongIf: 'Solar has not passed coal by 2034.',
   },
   {
     id: 4,
-    claim: 'New grid batteries exceed 500 GWh added in one year worldwide',
+    claim: 'More than 500 GWh of grid storage added in one year',
     byWhen: '2029',
     confidence: 70,
     resolvesVia: 'BNEF / IEA storage reports',
-    wrongIf: 'Annual storage additions stay at or below 500 GWh by 2029.',
+    wrongIf: 'Annual additions stay at or below 500 GWh by 2029.',
   },
   {
     id: 5,
-    claim:
-      'Against ourselves: no space solar system sends 10 MW or more of continuous power to any earth grid',
-    byWhen: 'Jan 1, 2035',
+    claim: 'No space solar system delivers ≥10 MW continuous to any earth grid (against us)',
+    byWhen: '1 Jan 2035',
     confidence: 90,
-    resolvesVia: 'Public utility / operator records',
-    wrongIf: 'Any space solar system delivers ≥10 MW continuous to a grid before that date.',
+    resolvesVia: 'Utility / operator records',
+    wrongIf: 'Any system hits that threshold before the date.',
     againstOwnThesis: true,
   },
   {
     id: 6,
-    claim: 'A public launch price below $500 per kg to low Earth orbit exists (large rockets)',
+    claim: 'Published launch price below $500/kg to low Earth orbit (large vehicles)',
     byWhen: '2033',
     confidence: 50,
-    resolvesVia: 'Public price lists / signed contracts',
-    wrongIf: 'No commercial launch price below $500/kg to LEO is published by 2033.',
+    resolvesVia: 'Public prices or contracts',
+    wrongIf: 'No such price exists by 2033.',
   },
   {
     id: 7,
-    claim: 'Data centers use more than 3% of world electricity (from about 1.7% in 2025)',
+    claim: 'Data centers use more than 3% of world electricity',
     byWhen: '2030',
     confidence: 65,
-    resolvesVia: 'IEA electricity reports',
-    wrongIf: 'Data-center share stays at or below 3% by 2030.',
+    resolvesVia: 'IEA',
+    wrongIf: 'Share stays at or below 3% by 2030.',
   },
   {
     id: 8,
-    claim: 'A Southeast Asian market signs utility solar-plus-storage below US$45 per MWh',
+    claim: 'A Southeast Asian solar+storage power contract below US$45/MWh',
     byWhen: '2031',
     confidence: 60,
-    resolvesVia: 'Public tender / PPA disclosures',
-    wrongIf: 'No such contract below $45/MWh is signed in SEA by 2031.',
+    resolvesVia: 'Public tender or PPA',
+    wrongIf: 'No such contract by 2031.',
   },
   {
     id: 9,
-    claim: 'Against ourselves (low odds): an orbital data center with ≥1 MW of computer load is running',
+    claim: 'An orbital data center with ≥1 MW of IT load is operating (against us, low odds)',
     byWhen: '2033',
     confidence: 35,
-    resolvesVia: 'Operator disclosure / observation',
-    wrongIf: 'No orbital data center with ≥1 MW IT load is operating by 2033.',
+    resolvesVia: 'Operator disclosure',
+    wrongIf: 'None operating by 2033.',
     againstOwnThesis: true,
   },
 ] as const
-
-function PredictionRow({ prediction }: { prediction: Prediction }) {
-  const { ref, inView } = useInView<HTMLLIElement>(0.12)
-  const reducedMotion = usePrefersReducedMotion()
-
-  return (
-    <li
-      ref={ref}
-      className={`border-t border-ink-900/10 py-5 first:border-t-0 sm:py-6 ${
-        reducedMotion
-          ? ''
-          : `transition-all duration-700 ease-out ${
-              inView ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'
-            }`
-      }`}
-    >
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-6">
-        <div className="flex shrink-0 items-baseline gap-3 sm:w-24 sm:flex-col sm:gap-0.5">
-          <span
-            className="font-display text-3xl tabular-nums text-gold sm:text-4xl"
-            aria-label={`${prediction.confidence} percent confidence`}
-          >
-            {prediction.confidence}%
-          </span>
-          <span className="font-display text-xs italic text-ink-500">
-            #{prediction.id}
-            {prediction.againstOwnThesis ? ' · against us' : ''}
-          </span>
-        </div>
-
-        <div className="min-w-0 flex-1">
-          <p className="text-base leading-relaxed text-ink sm:text-[1.05rem]">{prediction.claim}</p>
-          <p className="mt-2 text-sm text-ink-500">
-            by {prediction.byWhen}
-            <span className="text-ink-900/20"> · </span>
-            checked via {prediction.resolvesVia}
-          </p>
-          <p className="mt-1.5 text-sm leading-relaxed text-ink-600">
-            <span className="font-medium text-ink">Wrong if </span>
-            {prediction.wrongIf}
-          </p>
-        </div>
-      </div>
-    </li>
-  )
-}
 
 export default function PredictionsLedger({
   className,
   intro,
 }: {
   className?: string
-  /** Optional lead from the page script. */
   intro?: string
 }) {
   const [open, setOpen] = useState(false)
   const panelId = useId()
-  const againstCount = PREDICTIONS.filter((p) => p.againstOwnThesis).length
 
   return (
     <div className={className ?? ''}>
-      {intro && (
-        <p className="max-w-2xl text-base leading-relaxed text-ink-600 sm:text-lg">{intro}</p>
-      )}
-
-      {/* Quiet summary strip — trust without nine research rows on first paint */}
-      <div className="mt-5 flex flex-wrap items-baseline gap-x-4 gap-y-1 border-y border-ink-900/10 py-4">
-        <span className="font-display text-3xl tabular-nums text-ink sm:text-4xl">
-          {PREDICTIONS.length}
-        </span>
-        <span className="font-display text-base italic text-ink-600">
-          dated bets · {againstCount} written against our own ideas · graded each January
-        </span>
-      </div>
+      {intro && <p className="max-w-2xl text-base leading-relaxed text-ink-600 sm:text-lg">{intro}</p>}
 
       <button
         type="button"
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((v) => !v)}
-        className="mt-4 font-display text-base italic text-brand-700 underline decoration-brand-400/50 underline-offset-4 transition hover:text-brand-600 hover:decoration-brand-500"
+        className="mt-3 text-sm text-ink-700 underline underline-offset-2 hover:text-ink"
       >
-        {open ? 'Hide the full list' : 'Read every bet'}
+        {open ? 'Hide list' : 'Show list'}
       </button>
 
       {open && (
-        <div id={panelId} className="mt-2">
-          <ul className="border-b border-ink-900/10">
-            {PREDICTIONS.map((prediction) => (
-              <PredictionRow key={prediction.id} prediction={prediction} />
-            ))}
-          </ul>
-          <p className="mt-4 text-xs text-ink-500">
-            Wrong calls stay visible. First grading: each January.
-          </p>
-        </div>
+        <ol id={panelId} className="mt-4 border-t border-ink-900/10">
+          {PREDICTIONS.map((p) => (
+            <li key={p.id} className="border-b border-ink-900/10 py-4">
+              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-sm text-ink-500">
+                <span className="tabular-nums text-ink">{p.confidence}%</span>
+                <span>by {p.byWhen}</span>
+                {p.againstOwnThesis && <span>against our own thesis</span>}
+              </div>
+              <p className="mt-1 text-base leading-relaxed text-ink">{p.claim}</p>
+              <p className="mt-1 text-sm text-ink-500">Source: {p.resolvesVia}</p>
+              <p className="mt-1 text-sm text-ink-600">Wrong if: {p.wrongIf}</p>
+            </li>
+          ))}
+        </ol>
       )}
     </div>
   )

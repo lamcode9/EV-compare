@@ -283,73 +283,50 @@ export default function SunriseClient() {
         </div>
       </section>
 
-      {/* ── Act V · Morning — film develops into the paper site ── */}
-      <section className="space-y-16 pb-0 pt-28 sm:space-y-20 sm:pt-36" aria-labelledby="the-work">
-        {/* Canvas dawn line; morning footage rises under it. */}
+      {/* ── Act V · The Work — daylight is the paper site ── */}
+      <section className="space-y-14 pb-0 pt-28 sm:space-y-16 sm:pt-36" aria-labelledby="the-work">
         <div id="morning">
           <GiantLine tone="ink">Then, morning.</GiantLine>
         </div>
         <ActHeader act={ACT_5} id="the-work" tone="light" />
 
-        {/* Ordinary life — earn the daylight before any tools. */}
-        <div className="mx-auto w-full max-w-6xl space-y-6 px-6">
-          {ACT_5_COPY.morning.map((p) => (
-            <Reveal key={p.slice(0, 28)}>
-              <p className="max-w-2xl font-display text-xl leading-relaxed text-ink-700 sm:text-2xl">
-                {p}
-              </p>
-            </Reveal>
-          ))}
-        </div>
+        <Reveal className="mx-auto w-full max-w-6xl px-6">
+          <p className="max-w-2xl text-lg leading-relaxed text-ink-700 sm:text-xl">
+            {ACT_5_COPY.morning}
+          </p>
+        </Reveal>
 
-        {/* Morning shot fades to flat paper — the rest of the site is this morning. */}
         <div id="morning-end" aria-hidden />
 
-        {/* Three real constraints — editorial list, not a framework board. */}
         <div className="mx-auto w-full max-w-6xl px-6">
           <WorkBoard />
         </div>
 
-        {/* Tools: one CTA cluster. */}
         <div className="mx-auto w-full max-w-6xl px-6">
-          <Reveal>
-            <p className="font-display text-lg italic text-ink-600 sm:text-xl">
-              {ACT_5_COPY.toolsIntro}
-            </p>
-          </Reveal>
-          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5">
+          <div className="grid max-w-3xl grid-cols-1 gap-3 sm:max-w-none sm:grid-cols-3 sm:gap-4">
             {ACT_5_COPY.cards.map((c) => (
               <Reveal key={c.href}>
                 <Link
                   href={c.href}
-                  className="group block rounded-card border border-ink-900/10 bg-paper-100 p-6 shadow-card transition hover:border-ink-900/15 hover:shadow-raised"
+                  className="block border border-ink-900/10 bg-paper-100 px-5 py-4 transition hover:border-ink-900/20"
                 >
-                  <div className="font-display text-xl font-medium text-ink group-hover:text-brand-800">
-                    {c.title}
-                  </div>
-                  <div className="mt-1.5 text-sm leading-relaxed text-ink-500">{c.sub}</div>
-                  <div className="mt-4 font-display text-sm italic text-brand-600 transition group-hover:translate-x-0.5">
-                    Open →
-                  </div>
+                  <div className="font-display text-lg font-medium text-ink">{c.title}</div>
+                  <div className="mt-1 text-sm text-ink-500">{c.sub}</div>
                 </Link>
               </Reveal>
             ))}
           </div>
         </div>
 
-        {/* Trust: collapsed ledger — available, not a second climax. */}
-        <div className="mx-auto w-full max-w-3xl px-6">
-          <h3 className="font-display text-xl font-medium text-ink sm:text-2xl">
-            Predictions we will be graded on
-          </h3>
-          <div className="mt-4">
+        <div className="mx-auto w-full max-w-2xl px-6">
+          <h3 className="text-base font-medium text-ink">Predictions</h3>
+          <div className="mt-2">
             <PredictionsLedger intro={ACT_5_COPY.trustIntro} />
           </div>
         </div>
 
-        {/* One closer. Then the site footer is the real world. */}
-        <Reveal className="mx-auto max-w-3xl px-6 pb-20 text-center sm:pb-28">
-          <p className="font-display text-2xl font-medium leading-snug tracking-tight text-ink sm:text-3xl md:text-4xl">
+        <Reveal className="mx-auto max-w-2xl px-6 pb-20 sm:pb-24">
+          <p className="max-w-xl font-display text-xl leading-snug text-ink sm:text-2xl">
             {ACT_5_COPY.closing}
           </p>
         </Reveal>

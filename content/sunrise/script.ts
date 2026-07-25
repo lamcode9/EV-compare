@@ -211,69 +211,46 @@ export const CODA_COPY = {
 // ── Act V ────────────────────────────────────────────────────────────
 export const ACT_5: ActMeta = {
   numeral: 'V',
-  title: 'Morning',
-  era: '2026 → 2040 · full daylight',
-  hearth: 'your own roof, the meter running backwards',
+  title: 'The Work',
+  era: '2026 → 2040',
+  hearth: 'your roof',
 }
 export const ACT_5_CEL: FilmCelMeta = {
   asset: 'morning',
-  caption: 'morning, everywhere · the meter running backwards',
+  caption: 'morning',
 }
 
-export type WorkItemTone = 'open' | 'hard' | 'yours'
-
 export interface WorkItem {
-  numeral: string
   title: string
-  tone: WorkItemTone
-  toneLabel: string
   stat: string
   body: string
-  sea?: string
 }
 
 export const ACT_5_COPY = {
-  /** After “Then, morning.” — ordinary light before any homework. */
-  morning: [
-    'The light outside is ordinary. Coffee. A bill on the table. A room that stayed bright all night without anyone feeding a fire.',
-    'Nothing in the story you just read is owed to us. Cheap solar and batteries are real. Whether they reach your street is still work — mostly human, mostly local.',
-  ],
-  workIntro: 'Three things still matter more than the next invention.',
+  morning:
+    'Cheap solar and batteries are real. Getting them onto a roof, into a car, or onto a grid still takes permits, installers, money, and time. None of that is automatic.',
   work: [
     {
-      numeral: '01',
-      title: 'Factories can already build',
-      tone: 'open',
-      toneLabel: 'Moving',
-      stat: '1.59 TWh of batteries made · factories built for more than 4 TWh',
-      body: 'The world can produce more cells than it currently buys. The open question is not “can we make them?” It is getting them into cars, homes, and power systems.',
+      title: 'Building cells is not the bottleneck',
+      stat: '1.59 TWh produced · factory capacity above 4 TWh',
+      body: 'Factories already make more batteries than the market absorbs. The lag is use — cars, homes, and storage projects that buy and install them.',
     },
     {
-      numeral: '02',
-      title: 'Wires and paperwork lag behind',
-      tone: 'hard',
-      toneLabel: 'Stuck',
-      stat: 'About 2.3 TW of projects waiting · often more than four years in line',
-      body: 'A finished solar farm still needs a free wire and a signature. Queues and permits now slow more projects than the cost of the panels themselves.',
-      sea: 'Southeast Asia is only starting to link national grids. In Vietnam, some built solar still cannot run full when the network is full.',
+      title: 'Grids and permits lag',
+      stat: '~2.3 TW waiting to connect · median wait over 4 years',
+      body: 'Many projects sit finished or ready while wires and paperwork catch up. That delay now blocks more progress than panel prices do.',
     },
     {
-      numeral: '03',
-      title: 'The hard part is on the roof',
-      tone: 'yours',
-      toneLabel: 'Yours',
-      stat: 'Same panels: about $2.80 per watt in the US · about $1 in Australia',
-      body: 'Loans, installers, local rules, and sudden policy changes decide the real price. Same hardware, very different bills. This is the work a household can touch — and why this site exists.',
-      sea: 'Vietnam’s 2020 boom stopped when the solar subsidy ended overnight. Policy, not panels.',
+      title: 'Installed cost varies wildly for the same hardware',
+      stat: '~$2.8/W in the US · ~$1/W in Australia',
+      body: 'Same panels. Different labor, financing, and rules. That gap is where households and local policy decide the pace.',
     },
   ] satisfies WorkItem[],
-  toolsIntro: 'Start with a real bill, a real car, or a real battery.',
   cards: [
-    { href: '/calculators', title: 'Home planner', sub: 'Size solar and storage for your bill.' },
-    { href: '/ev', title: 'EV desk', sub: 'Every electric car sold in Southeast Asia.' },
-    { href: '/bess', title: 'Battery desk', sub: 'Home batteries, with specs and prices.' },
+    { href: '/calculators', title: 'Solar & storage planner', sub: 'Estimate size and payback for a bill.' },
+    { href: '/ev', title: 'Electric vehicles', sub: 'Compare models sold in Southeast Asia.' },
+    { href: '/bess', title: 'Home batteries', sub: 'Specs and prices.' },
   ],
-  trustIntro:
-    'We also put dates on our bets — nine of them, including some that bet against our own coolest ideas. If we are wrong, the wrong call stays on the page.',
-  closing: 'The story ends where it started: a fire someone tends. Yours happens to be a rooftop.',
+  trustIntro: 'Nine dated predictions. Two of them bet against ideas we like. Wrong answers stay listed.',
+  closing: 'It still ends with a fire someone tends. On a good day, that fire is a rooftop.',
 }
