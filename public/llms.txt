@@ -1,0 +1,44 @@
+# battery.mom
+
+> Clear data for the energy transition. Independent, monthly-updated data on
+> solar, battery storage, and electric vehicles — costs, payback times, and
+> adoption rates across Southeast Asia and the world.
+
+Figures are sourced and dated, corrections are invited, and the underlying data
+is available through a public API and embeddable widgets. Regional focus is
+Singapore, Malaysia, Indonesia, Thailand, Vietnam and the Philippines.
+
+## Electric vehicles
+
+- [Compare EVs](https://battery.mom/ev): Every electric vehicle available in Southeast Asia — specs, range, efficiency, battery tech, local pricing, and side-by-side charts.
+- [EV adoption scoreboard](https://battery.mom/scoreboard/ev): Adoption rates by market.
+
+## Battery storage
+
+- [Battery storage (BESS)](https://battery.mom/bess): Storage for homes, shared residential, commercial and grid-scale use.
+- [Home storage](https://battery.mom/bess/home) · [Shared residential](https://battery.mom/bess/shared-residential) · [Commercial](https://battery.mom/bess/commercial) · [Grid-scale](https://battery.mom/bess/grid)
+- [Case studies](https://battery.mom/bess/case-studies): Real installations with real numbers.
+- [Storage adoption map](https://battery.mom/scoreboard/bess) · [Battery deployment scoreboard](https://battery.mom/scoreboard/energy)
+
+## Calculators
+
+- [All calculators](https://battery.mom/calculators): Zero-bill battery sizing, shared residential BESS ROI, and more.
+- [EV vs ICE total cost](https://battery.mom/calculators/ev-vs-ice)
+- [Solar payback](https://battery.mom/calculators/solar-payback)
+- [EV charging cost](https://battery.mom/calculators/ev-charging-cost)
+
+## Analysis
+
+- [Insights](https://battery.mom/insights): Data-driven analysis, explainers and market snapshots. [RSS](https://battery.mom/feed.xml)
+- [Where Battery Power Stands](https://battery.mom/state-of-battery-power): A data-driven look at where battery-power adoption stands — from a 10x rise in solar to a 23x jump in grid batteries.
+- [The Long Sunrise](https://battery.mom/sunrise): How humans get power, from the first fire to cheap solar and home batteries. Every number sourced, every prediction dated.
+
+## Using the data
+
+- [API documentation](https://battery.mom/api-docs): Programmatic access to the dataset.
+- [Embed widgets](https://battery.mom/embed-widgets): Drop-in charts for other sites.
+- [Suggest a correction](https://battery.mom/suggest-correction): Report a wrong or stale figure.
+
+## About
+
+- [About](https://battery.mom/about) · [Contributors](https://battery.mom/contributors) · [Contact](https://battery.mom/contact)
